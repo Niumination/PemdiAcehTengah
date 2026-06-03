@@ -1,64 +1,87 @@
-# 🏔️ Portal Digital Aceh Tengah
+# 🏛️ Pemdi Aceh Tengah
 
-**Startup Utama Daerah — Transformasi Digital Nasional**
+**Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah**
 
-Platform portal digital untuk tata kelola pemerintahan Kabupaten Aceh Tengah. Menyajikan peta proses bisnis, layanan publik digital, dashboard kinerja OPD, dan rekomendasi transformasi digital — sebagai langkah menuju **Aceh Tengah Satu Data**.
+Transformasi menuju **Pemerintah Digital (Pemdi)** — open source government technology untuk tata kelola yang transparan, efisien, dan berorientasi pada masyarakat.
 
-## ✨ Fitur Utama
-
-- 🏛️ **Peta Proses Bisnis Level 0-2** — 37 OPD terintegrasi sesuai Permenpan RB 19/2018
-- 📊 **Dashboard Kinerja** — Monitoring real-time capaian OPD & APBD
-- 🚀 **Program Unggulan Satu Data** — Integrasi Adminduk, Alibata, Sekolah Belangi, Pariwisata, e-Kinerja, Baitul Mal, PAD
-- 📋 **Rekomendasi Transformasi** — 7 rekomendasi prioritas perubahan tata kelola
-- 🏘️ **Smart Kampung** — Akses layanan untuk 14 kecamatan
-
-## 🛠️ Tech Stack
-
-- HTML5 + CSS3 + Vanilla JS
-- Dark theme hybrid (govtech + gaming HUD)
-- Font: Orbitron, Rajdhani, Inter
-- Font Awesome Icons
-- Static site — ready for GitHub Pages
-
-## 📁 Struktur Proyek
-
-```
-├── PLAN.md                    # Dokumen perencanaan lengkap
-├── README.md                  # File ini
-├── docs/
-│   ├── riset-aceh-tengah.md   # Data riset lengkap daerah
-│   └── struktur-opd.md        # Detail 37 OPD + 14 kecamatan
-├── portal/
-│   ├── index.html             # Halaman utama portal
-│   ├── css/
-│   │   └── style.css          # Stylesheet dark theme
-│   ├── js/
-│   └── assets/
-│       ├── img/
-│       └── data/
-├── probis/
-│   ├── pohon-kinerja.md       # Pohon kinerja level 0-2
-│   └── rekomendasi.md         # Rekomendasi transformasi digital
-├── output/                    # Hasil pipeline Niu-Flow
-└── scripts/
-```
-
-## 🚀 Cara Menjalankan
-
-Buka `portal/index.html` di browser, atau deploy ke GitHub Pages.
-
-## 📄 Dokumen Terkait
-
-- **PLAN.md** — Dokumen perencanaan proyek
-- **docs/riset-aceh-tengah.md** — Data riset daerah
-- **docs/struktur-opd.md** — Struktur OPD lengkap
-- **probis/pohon-kinerja.md** — Pohon kinerja & peta proses bisnis
-- **probis/rekomendasi.md** — 7 rekomendasi transformasi digital
-
-## 👨‍💻 Author
-
-Dibuat dengan pipeline Niu-Flow (Hermes Agent + JCode AI) untuk transformasi digital Kabupaten Aceh Tengah.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Next.js](https://img.shields.io/badge/Next.js-14-black)](https://nextjs.org)
+[![Vercel](https://img.shields.io/badge/Deploy-Vercel-000?logo=vercel)](https://vercel.com)
 
 ---
 
-*"Aceh Tengah Islami, Maju, Sejahtera, dan Berkeadilan"*
+## 🎯 Fokus Utama
+
+**Peta Proses Bisnis** — Berdasarkan Peraturan Menteri PANRB Nomor 19 Tahun 2018 tentang Penyusunan Peta Proses Bisnis Instansi Pemerintah:
+
+| Level | Deskripsi |
+|-------|-----------|
+| **Level 0** | Visi, Misi, dan Strategi Pemerintahan |
+| **Level 1** | 24 Urusan Konkuren dan OPD terkait |
+| **Level 2** | Proses Bisnis Spesifik per OPD |
+
+## 📊 Data & Indikator
+
+- **Indeks SPBE 2025**: 2,59 (Cukup)
+- **Target Minimal**: Level 3 setiap indikator
+- **Perangkat Daerah**: 38 Instansi + 14 Kecamatan
+- **ASN**: 4.955 Orang
+
+## 🏗️ Arsitektur
+
+```
+PemdiAcehTengah/
+├── pages/          # Halaman Next.js (SSR/SSG)
+│   ├── index.js    # Beranda — Peta Proses Bisnis
+│   └── api/        # Backend API Routes
+├── components/     # Komponen React
+├── styles/         # CSS Global
+├── data/           # Data JSON terstruktur
+└── public/         # Aset statis
+```
+
+## 🚀 Deploy di Vercel
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Niumination/PemdiAcehTengah)
+
+```bash
+git clone https://github.com/Niumination/PemdiAcehTengah.git
+cd PemdiAcehTengah
+npm install
+npm run dev     # Development di http://localhost:3000
+npm run build   # Build production
+npm run start   # Production server
+```
+
+## 🔧 Teknologi
+
+- **Framework**: Next.js 14 (Fullstack — frontend + backend API)
+- **Deploy**: Vercel (Free Tier)
+- **Lisensi**: MIT — Open Source
+
+## 📋 Sumber Data
+
+- **Narasumber**: Dinas Komunikasi dan Informatika Kab. Aceh Tengah (Walidata)
+- **SPBE**: Laporan Hasil Pemantauan SPBE 2025 — Kementerian PANRB
+- **OPD**: Surat resmi Diskominfo Aceh Tengah, 14 Januari 2026
+- **Probis**: Permenpan RB 19/2018 tentang Penyusunan Peta Proses Bisnis
+
+## 🗺️ Tahapan Pengembangan
+
+| Fase | Target | Timeline |
+|------|--------|----------|
+| **1** | Peta Proses Bisnis & Dashboard SPBE | Juni 2026 |
+| **2** | Integrasi Data OPD & Layanan Publik | Q3 2026 |
+| **3** | Smart Dashboard & API Publik | 2027 |
+| **4** | Pemerintah Digital Penuh (Pemdi) | 2028+ |
+
+## 🤝 Kontribusi
+
+Kami menyambut kontribusi dari siapa pun — pemerintah, akademisi, pengembang, dan masyarakat.
+
+Lihat [CONTRIBUTING.md](CONTRIBUTING.md) untuk panduan berkontribusi.
+
+---
+
+**Pemdi Aceh Tengah** — Open Source Government Technology untuk Indonesia.
+Dibangun dengan ❤️ untuk transformasi digital Kabupaten Aceh Tengah.

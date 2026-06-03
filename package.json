@@ -1,0 +1,22 @@
+{
+  "name": "pemdi-aceh-tengah",
+  "version": "1.0.0",
+  "description": "Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah — Transformasi Menuju Pemerintah Digital (Pemdi)",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "^14.2.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.2.0"
+  }
+}

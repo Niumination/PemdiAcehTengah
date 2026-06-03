@@ -1,0 +1,218 @@
+{
+  "metadata": {
+    "pemda": "Kabupaten Aceh Tengah",
+    "ibukota": "Takengon",
+    "pimpinan": "Drs. Haili Yoga, M.Si. (Bupati) & Muchsin Hasan (Wakil Bupati)",
+    "periode": "2025–2030",
+    "visi": "Aceh Tengah Islami, Maju, Sejahtera, dan Berkeadilan",
+    "sumber": "Dinas Komunikasi dan Informatika Kabupaten Aceh Tengah — 14 Januari 2026",
+    "update": "2026-06-04"
+  },
+  "spbe": {
+    "indeks": 2.59,
+    "kategori": "Cukup",
+    "tahun": 2025,
+    "domain": {
+      "kebijakan_spbe": 2.30,
+      "tata_kelola_spbe": 1.70,
+      "manajemen_spbe": 1.00,
+      "layanan_spbe": 3.75
+    },
+    "rekomendasi_prioritas": [
+      "Perencanaan Strategis SPBE (nilai 1.00 — level terendah)",
+      "Penerapan Manajemen SPBE (nilai 1.00)",
+      "Audit TIK (nilai 1.00)",
+      "Inovasi Proses Bisnis SPBE (nilai 1.00)",
+      "Pembangunan Aplikasi SPBE (nilai 1.00)",
+      "Penerapan Manajemen Risiko & Keamanan Informasi (nilai 1.00)"
+    ],
+    "kekuatan": [
+      "Layanan Administrasi Pemerintahan (3.80)",
+      "Layanan Publik Berbasis Elektronik (3.67)",
+      "Layanan Perencanaan, Penganggaran, Keuangan, PBJ, Kepegawaian (4.00)"
+    ]
+  },
+  "opd": {
+    "total_perangkat_daerah": 52,
+    "total_instansi": 38,
+    "total_kecamatan": 14,
+    "total_asn": 4955,
+    "instansi": [
+      {"id": 1, "nama": "Sekretaris Daerah", "level": "Sekretariat", "urusan": "Sekretariat"},
+      {"id": 2, "nama": "Dinas Keluarga Berencana, Pemberdayaan Perempuan dan Perlindungan Anak", "level": "Dinas", "urusan": "Pemberdayaan Perempuan dan Perlindungan Anak"},
+      {"id": 3, "nama": "Dinas Kependudukan dan Pencatatan Sipil", "level": "Dinas", "urusan": "Administrasi Kependudukan"},
+      {"id": 4, "nama": "Dinas Kesehatan", "level": "Dinas", "urusan": "Kesehatan"},
+      {"id": 5, "nama": "Dinas Komunikasi dan Informatika", "level": "Dinas", "urusan": "Komunikasi dan Informatika"},
+      {"id": 6, "nama": "Dinas Koperasi dan UKM", "level": "Dinas", "urusan": "Koperasi dan UKM"},
+      {"id": 7, "nama": "Dinas Lingkungan Hidup", "level": "Dinas", "urusan": "Lingkungan Hidup"},
+      {"id": 8, "nama": "Dinas Pangan", "level": "Dinas", "urusan": "Pangan"},
+      {"id": 9, "nama": "Dinas Pariwisata", "level": "Dinas", "urusan": "Pariwisata"},
+      {"id": 10, "nama": "Dinas Pekerjaan Umum dan Penataan Ruang", "level": "Dinas", "urusan": "Pekerjaan Umum dan Penataan Ruang"},
+      {"id": 11, "nama": "Dinas Pemberdayaan Masyarakat dan Kampung", "level": "Dinas", "urusan": "Pemberdayaan Masyarakat dan Kampung"},
+      {"id": 12, "nama": "Dinas Pemuda dan Olahraga", "level": "Dinas", "urusan": "Pemuda dan Olahraga"},
+      {"id": 13, "nama": "Dinas Penanaman Modal dan Perizinan Terpadu Satu Pintu", "level": "Dinas", "urusan": "Penanaman Modal"},
+      {"id": 14, "nama": "Dinas Pendidikan dan Kebudayaan", "level": "Dinas", "urusan": "Pendidikan dan Kebudayaan"},
+      {"id": 15, "nama": "Dinas Pendidikan Dayah", "level": "Dinas", "urusan": "Pendidikan Dayah"},
+      {"id": 16, "nama": "Dinas Perdagangan", "level": "Dinas", "urusan": "Perdagangan"},
+      {"id": 17, "nama": "Dinas Perhubungan", "level": "Dinas", "urusan": "Perhubungan"},
+      {"id": 18, "nama": "Dinas Perikanan", "level": "Dinas", "urusan": "Perikanan"},
+      {"id": 19, "nama": "Dinas Perkebunan", "level": "Dinas", "urusan": "Perkebunan"},
+      {"id": 20, "nama": "Dinas Perpustakaan dan Kearsipan", "level": "Dinas", "urusan": "Perpustakaan dan Kearsipan"},
+      {"id": 21, "nama": "Dinas Pertanahan", "level": "Dinas", "urusan": "Pertanahan"},
+      {"id": 22, "nama": "Dinas Pertanian", "level": "Dinas", "urusan": "Pertanian"},
+      {"id": 23, "nama": "Dinas Perumahan dan Permukiman", "level": "Dinas", "urusan": "Perumahan dan Permukiman"},
+      {"id": 24, "nama": "Dinas Sosial", "level": "Dinas", "urusan": "Sosial"},
+      {"id": 25, "nama": "Dinas Syari'at Islam", "level": "Dinas", "urusan": "Syari'at Islam"},
+      {"id": 26, "nama": "Dinas Transmigrasi dan Tenaga Kerja", "level": "Dinas", "urusan": "Transmigrasi dan Tenaga Kerja"},
+      {"id": 27, "nama": "Badan Kepegawaian dan Pengembangan SDM", "level": "Badan", "urusan": "Kepegawaian"},
+      {"id": 28, "nama": "Badan Kesatuan Bangsa dan Politik", "level": "Badan", "urusan": "Kesatuan Bangsa dan Politik"},
+      {"id": 29, "nama": "Badan Penanggulangan Bencana Daerah", "level": "Badan", "urusan": "Penanggulangan Bencana"},
+      {"id": 30, "nama": "Badan Pengelolaan Keuangan", "level": "Badan", "urusan": "Pengelolaan Keuangan"},
+      {"id": 31, "nama": "Badan Perencanaan Pembangunan Daerah (BAPPEDA)", "level": "Badan", "urusan": "Perencanaan Pembangunan"},
+      {"id": 32, "nama": "Inspektorat", "level": "Inspektorat", "urusan": "Pengawasan"},
+      {"id": 33, "nama": "Satuan Polisi Pamong Praja dan Wilayatul Hisbah", "level": "Satpol", "urusan": "Ketertiban"},
+      {"id": 34, "nama": "Sekretariat Baitul Mal", "level": "Sekretariat", "urusan": "Baitul Mal"},
+      {"id": 35, "nama": "Sekretariat DPRK", "level": "Sekretariat", "urusan": "Legislatif"},
+      {"id": 36, "nama": "Sekretariat Majelis Adat Gayo", "level": "Sekretariat", "urusan": "Adat"},
+      {"id": 37, "nama": "Sekretariat Majelis Pendidikan Daerah", "level": "Sekretariat", "urusan": "Pendidikan"},
+      {"id": 38, "nama": "Sekretariat Majelis Permusyawaratan Ulama", "level": "Sekretariat", "urusan": "Keagamaan"}
+    ],
+    "kecamatan": [
+      "Atu Lintang", "Bebesen", "Bies", "Bintang", "Celala",
+      "Jagong Jeget", "Kebayakan", "Ketol", "Kute Panang", "Linge",
+      "Lut Tawar", "Pegasing", "Rusip Antara", "Silih Nara"
+    ]
+  },
+  "probis": {
+    "level_0": {
+      "label": "Visi & Misi",
+      "deskripsi": "Aceh Tengah Islami, Maju, Sejahtera, dan Berkeadilan",
+      "misi": [
+        "Transformasi Sosial Budaya",
+        "Transformasi Ekonomi",
+        "Transformasi Tata Kelola",
+        "Infrastruktur dan Konektivitas",
+        "Pariwisata dan Ekonomi Kreatif",
+        "Lingkungan Hidup dan Ketahanan Bencana",
+        "Pendidikan dan Pelayanan Publik",
+        "Pemuda dan Olahraga"
+      ]
+    },
+    "level_1": {
+      "label": "Urusan Pemerintahan",
+      "deskripsi": "24 urusan konkuren berdasarkan Permenpan 19/2018",
+      "urusan": [
+        {"nama": "Pendidikan", "opd_terkait": ["Dinas Pendidikan dan Kebudayaan", "Dinas Pendidikan Dayah", "Sekretariat Majelis Pendidikan Daerah"]},
+        {"nama": "Kesehatan", "opd_terkait": ["Dinas Kesehatan"]},
+        {"nama": "Pekerjaan Umum dan Penataan Ruang", "opd_terkait": ["Dinas Pekerjaan Umum dan Penataan Ruang"]},
+        {"nama": "Perumahan dan Permukiman", "opd_terkait": ["Dinas Perumahan dan Permukiman"]},
+        {"nama": "Ketenteraman dan Ketertiban", "opd_terkait": ["Satuan Polisi Pamong Praja dan Wilayatul Hisbah"]},
+        {"nama": "Sosial", "opd_terkait": ["Dinas Sosial"]},
+        {"nama": "Tenaga Kerja dan Transmigrasi", "opd_terkait": ["Dinas Transmigrasi dan Tenaga Kerja"]},
+        {"nama": "Pangan", "opd_terkait": ["Dinas Pangan"]},
+        {"nama": "Lingkungan Hidup", "opd_terkait": ["Dinas Lingkungan Hidup"]},
+        {"nama": "Administrasi Kependudukan", "opd_terkait": ["Dinas Kependudukan dan Pencatatan Sipil"]},
+        {"nama": "Pemberdayaan Perempuan dan Anak", "opd_terkait": ["Dinas Keluarga Berencana, PPPA"]},
+        {"nama": "Komunikasi dan Informatika", "opd_terkait": ["Dinas Komunikasi dan Informatika"]},
+        {"nama": "Pertanian", "opd_terkait": ["Dinas Pertanian", "Dinas Perkebunan", "Dinas Perikanan"]},
+        {"nama": "Perdagangan", "opd_terkait": ["Dinas Perdagangan", "Dinas Koperasi dan UKM"]},
+        {"nama": "Perindustrian", "opd_terkait": ["Dinas Perdagangan"]},
+        {"nama": "Perhubungan", "opd_terkait": ["Dinas Perhubungan"]},
+        {"nama": "Kepemudaan dan Olahraga", "opd_terkait": ["Dinas Pemuda dan Olahraga"]},
+        {"nama": "Penanaman Modal", "opd_terkait": ["Dinas Penanaman Modal dan PTSP"]},
+        {"nama": "Kebudayaan", "opd_terkait": ["Dinas Pendidikan dan Kebudayaan", "Sekretariat Majelis Adat Gayo"]},
+        {"nama": "Perpustakaan dan Kearsipan", "opd_terkait": ["Dinas Perpustakaan dan Kearsipan"]},
+        {"nama": "Pariwisata", "opd_terkait": ["Dinas Pariwisata"]},
+        {"nama": "Kelautan dan Perikanan", "opd_terkait": ["Dinas Perikanan"]},
+        {"nama": "Syari'at Islam", "opd_terkait": ["Dinas Syari'at Islam", "Sekretariat Baitul Mal", "Sekretariat MPU"]},
+        {"nama": "Pemberdayaan Masyarakat", "opd_terkait": ["Dinas Pemberdayaan Masyarakat dan Kampung"]}
+      ]
+    },
+    "level_2": {
+      "label": "Proses Bisnis OPD",
+      "deskripsi": "Setiap OPD menjalankan proses bisnis spesifik sesuai tugas dan fungsi",
+      "kategori": [
+        {"nama": "Perencanaan", "warna": "#1565c0"},
+        {"nama": "Pelaksanaan", "warna": "#2e7d32"},
+        {"nama": "Penganggaran", "warna": "#e65100"},
+        {"nama": "Monitoring & Evaluasi", "warna": "#6a1b9a"},
+        {"nama": "Pelayanan Publik", "warna": "#00838f"},
+        {"nama": "Pengawasan", "warna": "#c62828"}
+      ]
+    }
+  },
+  "rekomendasi": [
+    {
+      "prioritas": 1,
+      "judul": "Penyusunan Peta Proses Bisnis Terintegrasi",
+      "deskripsi": "Dari 52 perangkat daerah, belum semua memiliki peta proses bisnis yang terdokumentasi sesuai Permenpan 19/2018. Prioritas penyusunan untuk 24 urusan konkuren.",
+      "dampak": "Tinggi",
+      "kesulitan": "Sedang",
+      "timeline": "Q3 2026"
+    },
+    {
+      "prioritas": 2,
+      "judul": "Penguatan Perencanaan Strategis SPBE",
+      "deskripsi": "Nilai Perencanaan Strategis SPBE masih 1.00 (level terendah). Perlu Arsitektur SPBE, Peta Rencana, dan Keterpaduan Rencana-Anggaran.",
+      "dampak": "Tinggi",
+      "kesulitan": "Sedang",
+      "timeline": "Q3 2026"
+    },
+    {
+      "prioritas": 3,
+      "judul": "Penerapan Manajemen SPBE",
+      "deskripsi": "Manajemen Risiko, Keamanan Informasi, Manajemen Data, Aset TIK, SDM SPBE, Pengetahuan, Perubahan, dan Layanan SPBE semuanya masih level 1.",
+      "dampak": "Tinggi",
+      "kesulitan": "Tinggi",
+      "timeline": "2026–2027"
+    },
+    {
+      "prioritas": 4,
+      "judul": "Digitalisasi Layanan Publik Prioritas",
+      "deskripsi": "Fokus pada layanan Adminduk, Perizinan, Kesehatan, dan Pendidikan yang memiliki dampak langsung ke masyarakat.",
+      "dampak": "Tinggi",
+      "kesulitan": "Sedang",
+      "timeline": "Q4 2026"
+    },
+    {
+      "prioritas": 5,
+      "judul": "Pembangunan Aplikasi SPBE Terpadu",
+      "deskripsi": "Nilai Pembangunan Aplikasi SPBE masih 1.00. Perlu platform aplikasi terintegrasi (bukan parsial) dengan arsitektur layanan.",
+      "dampak": "Sedang",
+      "kesulitan": "Tinggi",
+      "timeline": "2027"
+    },
+    {
+      "prioritas": 6,
+      "judul": "Audit TIK dan Keamanan Informasi",
+      "deskripsi": "Audit Infrastruktur, Aplikasi, dan Keamanan SPBE semuanya level 1. Perlu pembentukan tim audit TIK internal.",
+      "dampak": "Sedang",
+      "kesulitan": "Sedang",
+      "timeline": "Q1 2027"
+    },
+    {
+      "prioritas": 7,
+      "judul": "Penguatan Kapasitas SDM SPBE",
+      "deskripsi": "Kompetensi SDM SPBE level 1. Perlu pelatihan dan sertifikasi SDM di bidang TIK dan SPBE untuk 4.955 ASN.",
+      "dampak": "Tinggi",
+      "kesulitan": "Tinggi",
+      "timeline": "2026–2028"
+    }
+  ],
+  "startup": {
+    "nama": "Pemdi Aceh Tengah",
+    "tagline": "Transformasi Digital Tata Kelola Pemerintahan Aceh Tengah",
+    "model": "Open Source Government Technology",
+    "lisensi": "MIT",
+    "narasumber": "Dinas Komunikasi dan Informatika Kabupaten Aceh Tengah — sebagai Walidata",
+    "target": "Publik & Internal Pemerintah",
+    "hosting": "Vercel (Fullstack — Next.js)",
+    "repositori": "github.com/Niumination/PemdiAcehTengah",
+    "tahapan": [
+      "Fase 1 — Peta Proses Bisnis & Dashboard SPBE (Juni 2026)",
+      "Fase 2 — Integrasi Data OPD & Layanan Publik (Q3 2026)",
+      "Fase 3 — Smart Dashboard & API Publik (2027)",
+      "Fase 4 — Pemerintah Digital Penuh (2028+)"
+    ]
+  }
+}
