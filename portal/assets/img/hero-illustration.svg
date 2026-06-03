@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0e17"/>
+      <stop offset="100%" style="stop-color:#1a2332"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00f0ff;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#0099cc;stop-opacity:0.6"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f0c000;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#cc8800;stop-opacity:0.7"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="glowStrong">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="600" fill="url(#bgGrad)"/>
+
+  <!-- Grid overlay -->
+  <g opacity="0.04">
+    <line x1="0" y1="0" x2="0" y2="600" stroke="#00f0ff" stroke-width="0.5"/>
+    <line x1="60" y1="0" x2="60" y2="600" stroke="#00f0ff" stroke-width="0.5"/>
+    <line x1="120" y1="0" x2="120" y2="600" stroke="#00f0ff" stroke-width="0.5"/>
+    <line x1="200" y1="0" x2="200" y2="600" stroke="#00f0ff" stroke-width="0.5"/>
+    <line x1="300" y1="0" x2="300" y2="600" stroke="#00f0ff" stroke-width="0.5"/>
+    <line x1="400" y1="0" x2="400" y2="600" stroke="#00f0ff" stroke-width="0.5"/>
+    <line x1="500" y1="0" x2="500" y2="600" stroke="#00f0ff" stroke-width="0.5"/>
+    <line x1="600" y1="0" x2="600" y2="600" stroke="#00f0ff" stroke-width="0.5"/>
+    <line x1="700" y1="0" x2="700" y2="600" stroke="#00f0ff" stroke-width="0.5"/>
+    <line x1="800" y1="0" x2="800" y2="600" stroke="#00f0ff" stroke-width="0.5"/>
+    <line x1="900" y1="0" x2="900" y2="600" stroke="#00f0ff" stroke-width="0.5"/>
+    <line x1="1000" y1="0" x2="1000" y2="600" stroke="#00f0ff" stroke-width="0.5"/>
+    <line x1="1100" y1="0" x2="1100" y2="600" stroke="#00f0ff" stroke-width="0.5"/>
+    <line x1="0" y1="0" x2="1200" y2="0" stroke="#00f0ff" stroke-width="0.5"/>
+    <line x1="0" y1="60" x2="1200" y2="60" stroke="#00f0ff" stroke-width="0.5"/>
+    <line x1="0" y1="120" x2="1200" y2="120" stroke="#00f0ff" stroke-width="0.5"/>
+    <line x1="0" y1="200" x2="1200" y2="200" stroke="#00f0ff" stroke-width="0.5"/>
+    <line x1="0" y1="300" x2="1200" y2="300" stroke="#00f0ff" stroke-width="0.5"/>
+    <line x1="0" y1="400" x2="1200" y2="400" stroke="#00f0ff" stroke-width="0.5"/>
+    <line x1="0" y1="500" x2="1200" y2="500" stroke="#00f0ff" stroke-width="0.5"/>
+    <line x1="0" y1="600" x2="1200" y2="600" stroke="#00f0ff" stroke-width="0.5"/>
+  </g>
+
+  <!-- Mountain silhouettes -->
+  <g opacity="0.15" transform="translate(0, 280)">
+    <polygon points="0,200 150,0 300,200" fill="#00f0ff"/>
+    <polygon points="200,200 400,30 550,200" fill="#00f0ff"/>
+    <polygon points="450,200 650,50 800,200" fill="#00f0ff"/>
+    <polygon points="700,200 900,20 1050,200" fill="#00f0ff"/>
+    <polygon points="950,200 1100,60 1200,200" fill="#00f0ff"/>
+  </g>
+
+  <!-- Lake Lut Tawar -->
+  <ellipse cx="600" cy="420" rx="500" ry="40" fill="#00f0ff" opacity="0.05"/>
+
+  <!-- Digital network connections -->
+  <g stroke="#00f0ff" stroke-width="1" opacity="0.2" fill="none">
+    <line x1="100" y1="100" x2="250" y2="200"/>
+    <line x1="250" y1="200" x2="400" y2="150"/>
+    <line x1="400" y1="150" x2="550" y2="250"/>
+    <line x1="550" y1="250" x2="700" y2="180"/>
+    <line x1="700" y1="180" x2="850" y2="280"/>
+    <line x1="850" y1="280" x2="1000" y2="200"/>
+    <line x1="100" y1="100" x2="400" y2="150"/>
+    <line x1="250" y1="200" x2="550" y2="250"/>
+    <line x1="400" y1="150" x2="700" y2="180"/>
+    <line x1="550" y1="250" x2="850" y2="280"/>
+    <line x1="700" y1="180" x2="1000" y2="200"/>
+  </g>
+
+  <!-- Data nodes -->
+  <g fill="#00f0ff" opacity="0.3">
+    <circle cx="100" cy="100" r="4"/>
+    <circle cx="250" cy="200" r="3"/>
+    <circle cx="400" cy="150" r="4"/>
+    <circle cx="550" cy="250" r="3"/>
+    <circle cx="700" cy="180" r="4"/>
+    <circle cx="850" cy="280" r="3"/>
+    <circle cx="1000" cy="200" r="4"/>
+  </g>
+
+  <!-- Coffee plant icon (left) -->
+  <g transform="translate(80, 360)" filter="url(#glowStrong)">
+    <line x1="0" y1="0" x2="0" y2="80" stroke="#00ff88" stroke-width="2" opacity="0.4"/>
+    <ellipse cx="-15" cy="15" rx="10" ry="6" fill="none" stroke="#00ff88" stroke-width="1.5" opacity="0.5"/>
+    <ellipse cx="15" cy="25" rx="10" ry="6" fill="none" stroke="#00ff88" stroke-width="1.5" opacity="0.5"/>
+    <ellipse cx="-10" cy="45" rx="8" ry="5" fill="none" stroke="#00ff88" stroke-width="1.5" opacity="0.5"/>
+    <circle cx="-15" cy="60" r="4" fill="#ff3355" opacity="0.6"/>
+    <circle cx="10" cy="70" r="4" fill="#ff3355" opacity="0.6"/>
+  </g>
+
+  <!-- Gayo traditional house silhouette (right) -->
+  <g transform="translate(1000, 320)" opacity="0.2" fill="none" stroke="#f0c000" stroke-width="1.5">
+    <polygon points="0,60 30,10 60,60"/>
+    <rect x="5" y="60" width="50" height="30"/>
+    <line x1="30" y1="10" x2="30" y2="90"/>
+    <!-- Roof detail -->
+    <line x1="0" y1="60" x2="15" y2="40"/>
+    <line x1="60" y1="60" x2="45" y2="40"/>
+  </g>
+
+  <!-- Central abstract icon: hexagon with data symbols -->
+  <g transform="translate(600, 260)">
+    <!-- Hexagon -->
+    <polygon points="0,-80 69,-40 69,40 0,80 -69,40 -69,-40" fill="none" stroke="url(#cyanGrad)" stroke-width="2" opacity="0.6" filter="url(#glow)"/>
+    <!-- Inner data symbols -->
+    <g stroke="#00f0ff" stroke-width="1.5" opacity="0.5" fill="none">
+      <line x1="-25" y1="-20" x2="25" y2="-20"/>
+      <line x1="-25" y1="0" x2="25" y2="0"/>
+      <line x1="-25" y1="20" x2="25" y2="20"/>
+    </g>
+    <!-- Center glowing dot -->
+    <circle cx="0" cy="0" r="5" fill="#00f0ff" opacity="0.8" filter="url(#glow)"/>
+  </g>
+
+  <!-- Title text -->
+  <g transform="translate(600, 480)" text-anchor="middle">
+    <text x="0" y="0" font-family="monospace" font-size="14" fill="#00f0ff" opacity="0.5" letter-spacing="8">PORTAL DIGITAL</text>
+    <text x="0" y="25" font-family="monospace" font-size="18" fill="#f0c000" opacity="0.6" letter-spacing="4" font-weight="bold">ACEH TENGAH</text>
+  </g>
+
+  <!-- Ornamental corner brackets -->
+  <g stroke="#00f0ff" stroke-width="1.5" opacity="0.2" fill="none">
+    <!-- Top-left -->
+    <polyline points="20,50 20,20 50,20"/>
+    <!-- Top-right -->
+    <polyline points="1150,20 1180,20 1180,50"/>
+    <!-- Bottom-left -->
+    <polyline points="20,550 20,580 50,580"/>
+    <!-- Bottom-right -->
+    <polyline points="1150,580 1180,580 1180,550"/>
+  </g>
+
+  <!-- Decorative dots -->
+  <g fill="#00f0ff" opacity="0.15">
+    <circle cx="30" cy="30" r="2"/>
+    <circle cx="1170" cy="30" r="2"/>
+    <circle cx="30" cy="570" r="2"/>
+    <circle cx="1170" cy="570" r="2"/>
+  </g>
+</svg>

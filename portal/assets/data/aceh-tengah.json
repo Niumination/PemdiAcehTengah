@@ -1,0 +1,93 @@
+{
+  "nama": "Kabupaten Aceh Tengah",
+  "ibu_kota": "Takengon",
+  "provinsi": "Aceh",
+  "luas": "4.318,39 km²",
+  "populasi": 220000,
+  "kecamatan": 14,
+  "suku": "Gayo",
+  "bahasa": ["Gayo", "Aceh", "Indonesia"],
+  "komoditas_unggulan": "Kopi Arabika Gayo",
+  "pimpinan": {
+    "bupati": "Drs. Haili Yoga, M.Si.",
+    "wakil_bupati": "Muchsin Hasan",
+    "periode": "2025-2030",
+    "visi": "Aceh Tengah Islami, Maju, Sejahtera, dan Berkeadilan"
+  },
+  "opd": {
+    "total_opd": 37,
+    "total_asn": 4955,
+    "struktural": 662,
+    "fungsional_tertentu": 2759,
+    "fungsional_umum": 1534
+  },
+  "program_unggulan": [
+    {
+      "nama": "Aceh Tengah Satu Data",
+      "deskripsi": "Integrasi seluruh basis data pemerintahan dalam satu platform terpadu",
+      "mitra": ["AWS", "Komdigi"],
+      "status": "aktif"
+    },
+    {
+      "nama": "Alibata",
+      "deskripsi": "Program baca tulis Al-Quran digital",
+      "status": "aktif"
+    },
+    {
+      "nama": "Sekolah Belangi",
+      "deskripsi": "Program persiapan pendidikan berkualitas",
+      "status": "aktif"
+    }
+  ],
+  "rekomendasi": [
+    {
+      "id": 1,
+      "judul": "Digitalisasi Peta Proses Bisnis",
+      "prioritas": "P1",
+      "dampak": "Tinggi",
+      "timeline": "Q3 2026"
+    },
+    {
+      "id": 2,
+      "judul": "Integrasi Portal Satu Data",
+      "prioritas": "P1",
+      "dampak": "Tinggi",
+      "timeline": "Q3-Q4 2026"
+    },
+    {
+      "id": 3,
+      "judul": "Dashboard Kinerja OPD",
+      "prioritas": "P1",
+      "dampak": "Tinggi",
+      "timeline": "Q4 2026"
+    },
+    {
+      "id": 4,
+      "judul": "Open Data API",
+      "prioritas": "P2",
+      "dampak": "Sedang",
+      "timeline": "Q1 2027"
+    },
+    {
+      "id": 5,
+      "judul": "Talenta Digital",
+      "prioritas": "P2",
+      "dampak": "Sedang",
+      "timeline": "Q1-Q2 2027"
+    },
+    {
+      "id": 6,
+      "judul": "Smart Kampung",
+      "prioritas": "P1",
+      "dampak": "Tinggi",
+      "timeline": "2026-2028"
+    },
+    {
+      "id": 7,
+      "judul": "Reformasi Birokrasi Digital",
+      "prioritas": "P1",
+      "dampak": "Tinggi",
+      "timeline": "2026-2028"
+    }
+  ]
+}
