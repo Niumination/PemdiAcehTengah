@@ -27,16 +27,31 @@ Transformasi menuju **Pemerintah Digital (Pemdi)** — open source government te
 - **Perangkat Daerah**: 38 Instansi + 14 Kecamatan
 - **ASN**: 4.955 Orang
 
+|## 📄 Halaman & API
+
+| Halaman | URL | Deskripsi |
+|---------|-----|-----------|
+| Beranda | `/` | Dashboard utama, SPBE gauge, Peta Proses Bisnis |
+| Requirements PPB | `/requirement` | 83 item kebutuhan data/API untuk PPB real |
+| API Data OPD | `/api/opd` | REST: filter search, level, limit |
+| API SPBE | `/api/spbe` | Indeks, domain, rekomendasi SPBE |
+| API Requirement | `/api/requirement` | Data lengkap requirement PPB |
+
 ## 🏗️ Arsitektur
 
 ```
 PemdiAcehTengah/
 ├── pages/          # Halaman Next.js (SSR/SSG)
 │   ├── index.js    # Beranda — Peta Proses Bisnis
+│   ├── requirement.js  # Daftar Kebutuhan PPB
 │   └── api/        # Backend API Routes
 ├── components/     # Komponen React
 ├── styles/         # CSS Global
 ├── data/           # Data JSON terstruktur
+├── docs/           # Dokumentasi proyek
+│   ├── requirement-peta-proses-bisnis.md  # 83 item kebutuhan PPB
+│   ├── riset-peta-proses-bisnis-permenpan-19-2018.md
+│   └── riset-data-aceh-tengah.md
 └── public/         # Aset statis
 ```
 

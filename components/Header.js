@@ -23,10 +23,11 @@ export default function Header() {
         </button>
 
         <nav className={`gov-nav ${mobileOpen ? 'mobile-open' : ''}`}>
-          <a href="/" className="active">Beranda</a>
+          <a href="/">Beranda</a>
           <a href="#probis">Peta Proses Bisnis</a>
           <a href="#spbe">Indeks SPBE</a>
           <a href="#opd">Perangkat Daerah</a>
+          <a href="/requirement">📋 Kebutuhan PPB</a>
           <a href="#rekomendasi">Rekomendasi</a>
           <a href="#tentang">Tentang</a>
         </nav>
