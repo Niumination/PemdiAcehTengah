@@ -95,6 +95,7 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 | `styles/AGENTS.md` | CSS architecture, design tokens, responsive breakpoints |
 | `data/AGENTS.md` | Struktur data opd.json — metadata, OPD, SPBE (47 indikator), PPB Level 0-2, rekomendasi |
 | `docs/AGENTS.md` | Dokumentasi proyek — file MD, PDF, referensi regulasi, docs.old/ |
+| `STRATEGI_PEMDIACEHTENGAH.md` | **Dokumen perencanaan strategis (file ini)** — 4 fase, quick wins, risiko, metrik |
 
 ## User Preferences
 
