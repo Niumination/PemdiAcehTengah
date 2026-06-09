@@ -55,7 +55,8 @@ Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah. Transformasi menuju Peme
 - Output Bahasa Indonesia
 - Government professional theme (Inter, blue/white, clean, GOV.UK-inspired)
 - Open source (MIT License)
-- Fokus konten: Peta Proses Bisnis (Level 0-2 Permenpan 19/2018)
+- Fokus konten: Peta Proses Bisnis (Level 0-2 Permenpan 19/2018, perhatikan Permenpan RB 8/2026 sebagai update)
+- **Permenpan RB 8/2026** ada di `docs/permenpanrb 8 2026.pdf` — WAJIB dibaca sebelum kerja PPB, bisa mengubah framework
 
 ## Closeout Checklist
 
