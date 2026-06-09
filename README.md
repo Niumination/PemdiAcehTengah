@@ -7,6 +7,7 @@ Transformasi menuju **Pemerintah Digital (Pemdi)** — open source government te
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Next.js](https://img.shields.io/badge/Next.js-14-black)](https://nextjs.org)
 [![Vercel](https://img.shields.io/badge/Deploy-Vercel-000?logo=vercel)](https://vercel.com)
+[![DOX](https://img.shields.io/badge/🧭%20DOX-Self--Documenting-1d70b8)](https://github.com/agent0ai/dox)
 
 ---
 
@@ -54,6 +55,22 @@ PemdiAcehTengah/
 │   └── riset-data-aceh-tengah.md
 └── public/         # Aset statis
 ```
+
+## 🧭 DOX — Self-Documenting Project
+
+Project ini menggunakan [DOX](https://github.com/agent0ai/dox) — hierarki AGENTS.md untuk navigasi AI agent yang presisi.
+
+| Lokasi | Fungsi |
+|--------|--------|
+| `AGENTS.md` | Root — project rules, global contracts, child index |
+| `pages/AGENTS.md` | Halaman & routing |
+| `pages/api/AGENTS.md` | REST API data contracts |
+| `components/AGENTS.md` | Component library & props |
+| `styles/AGENTS.md` | CSS architecture & design tokens |
+| `data/AGENTS.md` | Data structure opd.json |
+| `docs/AGENTS.md` | Dokumentasi index |
+
+**DOX pass**: Setiap perubahan kode wajib update nearest AGENTS.md.
 
 ## 🚀 Deploy di Vercel
 
