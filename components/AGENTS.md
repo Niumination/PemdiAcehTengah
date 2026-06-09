@@ -13,9 +13,9 @@ React component library — reusable UI building blocks. Semua components-driven
 | **Layout** | `Layout.js` | Wrapper: Header + main + Footer |
 | **ScrollTop** | `ScrollTop.js` | Tombol scroll-to-top muncul saat scroll |
 | **OPDTable** | `OPDTable.js` | Tabel interaktif daftar OPD — search, filter, sort |
-| **ProbisSection** | `ProbisSection.js` | Peta Proses Bisnis visual — Level 0, 1, 2 |
-| **SpbeGauge** | `SpbeGauge.js` | Gauge/indikator indeks SPBE dengan domain scores |
-| **Rekomendasi** | `Rekomendasi.js` | Timeline rekomendasi prioritas (Q3 2026 — 2028) |
+|| **ProbisSection** | `ProbisSection.js` | Peta Proses Bisnis visual — Level 0, 1, 2. ⚠️ Data masih template generik (Permenpan 19/2018 placeholder — perlu data real Aceh Tengah) |
+|| **SpbeGauge** | `SpbeGauge.js` | Gauge/indikator indeks SPBE dengan domain scores |
+|| **Rekomendasi** | `Rekomendasi.js` | Timeline rekomendasi prioritas (Q3 2026 — 2028) |
 
 ## Local Contracts
 
