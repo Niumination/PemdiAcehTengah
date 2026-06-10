@@ -13,47 +13,65 @@ Transformasi menuju **Pemerintah Digital (Pemdi)** — open source government te
 
 ## 🎯 Fokus Utama
 
-**Peta Proses Bisnis** — Berdasarkan Peraturan Menteri PANRB Nomor 19 Tahun 2018 tentang Penyusunan Peta Proses Bisnis Instansi Pemerintah:
+**Indeks Pemerintah Digital (Pemdi)** — Dashboard evaluasi 7 aspek × 20 indikator berdasarkan PermenPANRB 8/2026, dengan data baseline dari konversi SPBE 2025 dan target 2026.
 
-| Level | Deskripsi |
-|-------|-----------|
-| **Level 0** | Visi, Misi, dan Strategi Pemerintahan |
-| **Level 1** | 24 Urusan Konkuren dan OPD terkait |
-| **Level 2** | Proses Bisnis Spesifik per OPD |
+**Peta Proses Bisnis** — Hierarki 3 level sesuai Permenpan RB 19/2018.
 
 ## 📊 Data & Indikator
 
-- **Indeks SPBE 2025**: 2,59 (Cukup)
-- **Target Minimal**: Level 3 setiap indikator
-- **Perangkat Daerah**: 38 Instansi + 14 Kecamatan
-- **ASN**: 4.955 Orang
+| Indikator | Nilai |
+|-----------|-------|
+| **Indeks Pemdi Baseline** | ~1.84 |
+| **Target Pemdi 2026** | 2.50 (Baik) |
+| **Indeks SPBE 2025** | 2,59 (Cukup) |
+| **7 Aspek** | Tata Kelola, SDM Digital, Data, Keamanan, Teknologi, Keterpaduan, Kepuasan |
+| **20 Indikator** | I1–I20 — dari Tata Kelola hingga Pengelolaan Kepuasan |
+| **Perangkat Daerah** | 38 Instansi + 14 Kecamatan |
+| **ASN** | 4.955 Orang |
 
-|## 📄 Halaman & API
+## 📄 Halaman
 
 | Halaman | URL | Deskripsi |
 |---------|-----|-----------|
-| Beranda | `/` | Dashboard utama, SPBE gauge, Peta Proses Bisnis |
+| Beranda | `/` | Dashboard utama — Pemdi badge, SPBE gauge, Peta Proses Bisnis, fitur publik |
+| Indeks Pemdi | `/pemdi` | Dashboard Pemdi penuh — radar chart, 7 aspek cards + modal detail indikator, SPBE vs Pemdi |
+| Peta Proses Bisnis | `/probis` | PPB 3 level — Visi-Misi, 24 Urusan, Proses Bisnis OPD + DetailModal misi |
+| Direktori Layanan | `/layanan` | 27 layanan publik dalam 7 kategori — status, biaya, SLA, syarat |
+| Survei Kepuasan | `/skm` | Survei SKM online — 8 dimensi |
+| Tanya Jawab | `/faq` | FAQ seputar layanan, portal, SPBE, dan Pemdi |
 | Requirements PPB | `/requirement` | 83 item kebutuhan data/API untuk PPB real |
 | API Data OPD | `/api/opd` | REST: filter search, level, limit |
 | API SPBE | `/api/spbe` | Indeks, domain, rekomendasi SPBE |
 | API Requirement | `/api/requirement` | Data lengkap requirement PPB |
+| Detail OPD | `/opd/[slug]` | Halaman detail tiap OPD (50 halaman statis) |
 
 ## 🏗️ Arsitektur
 
 ```
 PemdiAcehTengah/
-├── pages/          # Halaman Next.js (SSR/SSG)
-│   ├── index.js    # Beranda — Peta Proses Bisnis
+├── pages/              # Halaman Next.js (SSR/SSG)
+│   ├── index.js        # Beranda — Pemdi badge, SPBE, PPB, fitur publik
+│   ├── pemdi.js        # Dashboard Indeks Pemdi (7 aspek × 20 indikator)
+│   ├── probis.js       # Peta Proses Bisnis 3 level
+│   ├── layanan.js      # Direktori layanan publik
+│   ├── faq.js          # Tanya jawab
+│   ├── skm.js          # Survei Kepuasan Masyarakat
 │   ├── requirement.js  # Daftar Kebutuhan PPB
-│   └── api/        # Backend API Routes
-├── components/     # Komponen React
-├── styles/         # CSS Global
-├── data/           # Data JSON terstruktur
-├── docs/           # Dokumentasi proyek
-│   ├── requirement-peta-proses-bisnis.md  # 83 item kebutuhan PPB
-│   ├── riset-peta-proses-bisnis-permenpan-19-2018.md
-│   └── riset-data-aceh-tengah.md
-└── public/         # Aset statis
+│   ├── opd/[slug].js   # 50 halaman detail OPD
+│   └── api/            # Backend API Routes
+├── components/         # 11 React komponen
+│   ├── Header.js, Footer.js, Layout.js
+│   ├── OPDTable.js, ProbisSection.js, SpbeGauge.js
+│   ├── Rekomendasi.js, ScrollTop.js
+│   ├── DataBadge.js    # 🆕 Badge progress dinamis
+│   ├── DetailModal.js  # 🆕 Modal overlay interaktif
+│   └── ExpandablePanel.js  # 🆕 Panel accordion
+├── styles/globals.css  # CSS Global — GOV.UK-inspired
+├── data/
+│   ├── opd.json        # Data OPD, SPBE, PPB, rekomendasi
+│   └── pemdi.json      # 🆕 Data 7 aspek × 20 indikator Pemdi
+├── docs/               # Dokumentasi proyek
+└── public/             # Aset statis
 ```
 
 ## 🧭 DOX — Self-Documenting Project
@@ -100,12 +118,12 @@ npm run start   # Production server
 
 ## 🗺️ Tahapan Pengembangan
 
-| Fase | Target | Timeline |
-|------|--------|----------|
-| **1** | Peta Proses Bisnis & Dashboard SPBE | Juni 2026 |
-| **2** | Integrasi Data OPD & Layanan Publik | Q3 2026 |
-| **3** | Smart Dashboard & API Publik | 2027 |
-| **4** | Pemerintah Digital Penuh (Pemdi) | 2028+ |
+| Fase | Target | Timeline | Status |
+|------|--------|----------|--------|
+| **1** | Fondasi Data — Harmonisasi OPD, Mapping Urusan, Struktur PPB | Jun 2026 | ✅ |
+| **2** | PPB Final — Level 0/1/2, Halaman OPD, Integrasi | Jun 2026 | ✅ |
+| **3** | Fitur Publik — Layanan, FAQ, SKM, Lapor, Pencarian | Jun 2026 | ⏳ Sedang dikerjakan |
+| **4** | Pemdi Dashboard — 7 aspek, radar chart, gap analysis | Mulai lebih awal | ◌ Pemdi page sudah live |
 
 ## 🤝 Kontribusi
 

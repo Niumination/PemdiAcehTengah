@@ -13,7 +13,7 @@
 **Tantangan**: Manajemen SPBE = 1.00 (Kurang), Tata Kelola = 1.70, Audit TIK = 1.00.
 **Modal**: Portal sudah berjalan (Next.js/Vercel), data OPD terkumpul, PPB framework dipahami, ada Panduan strategis dari Diskominfo.
 
-**Strategi**: 4 fase — **Fondasi Data (Q3 2026) → PPB Final (Q4 2026) → Fitur Publik (Q1 2027) → Pemdi Dashboard (Q2 2027)**.
+**Strategi**: 4 fase — **Fondasi Data ✅ (Jun 2026) → PPB Final ✅ (Jun 2026) → Fitur Publik ⏳ (Jun 2026) → Pemdi Dashboard ◌ (Mulai lebih awal)**.
 
 ---
 

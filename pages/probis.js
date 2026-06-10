@@ -1,5 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { useState } from 'react';
+import DetailModal from '@/components/DetailModal';
 import portalData from '@/data/opd.json';
 
 function slugify(text) {
@@ -10,6 +12,7 @@ function slugify(text) {
 }
 
 export default function PetaProsesBisnis({ data }) {
+  const [modalMisi, setModalMisi] = useState(null);
   const probis = data.probis;
   const opdList = data.opd.daftar;
 
@@ -83,46 +86,66 @@ export default function PetaProsesBisnis({ data }) {
             <div className="ppb-visi-text-inline">"{probis.level_0.deskripsi}"</div>
           </div>
 
-          {/* 8 Misi */}
+          {/* 8 Misi — Compact Cards with Modal Detail */}
           <div className="section-subheader">
             <h3>8 Misi Pembangunan</h3>
-            <p>Setiap misi dijabarkan ke fokus strategis dan OPD pelaksana</p>
+            <p>Klik card untuk lihat detail — fokus strategis dan OPD pelaksana</p>
           </div>
           <div className="misi-grid">
             {probis.level_0.misi.map((m, i) => (
-              <div key={i} className="misi-card">
+              <div key={i} className="misi-card-compact" onClick={() => setModalMisi(m)}>
                 <div className="misi-number">Misi {i + 1}</div>
                 <h3 className="misi-nama">{m.nama}</h3>
-                <p className="misi-deskripsi">{m.deskripsi}</p>
-                {m.fokus && (
-                  <div className="misi-fokus">
-                    <div className="misi-fokus-label">Fokus Strategis:</div>
-                    <div className="misi-tags">
-                      {m.fokus.map((f, j) => (
-                        <span key={j} className="misi-tag">{f}</span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-                {m.opd_terkait && m.opd_terkait.length > 0 && (
-                  <div className="misi-opd-links">
-                    <div className="misi-fokus-label">OPD Terkait:</div>
-                    <div className="opd-tags">
-                      {m.opd_terkait.map((id) => {
-                        const opd = opdMap[id];
-                        return opd ? (
-                          <Link key={id} href={`/opd/${slugify(opd.nama)}`} className="opd-tag-link">
-                            {opd.singkat}
-                          </Link>
-                        ) : null;
-                      })}
-                    </div>
-                  </div>
-                )}
+                <div className="misi-detail-link">Lihat Detail →</div>
               </div>
             ))}
           </div>
         </section>
+
+        {/* ============ MODAL MISI DETAIL ============ */}
+        <DetailModal
+          title={modalMisi ? modalMisi.nama : ''}
+          open={!!modalMisi}
+          onClose={() => setModalMisi(null)}
+          maxWidth={600}
+        >
+          {modalMisi && (
+            <div>
+              <p style={{ fontSize: '0.875rem', color: '#505a5f', lineHeight: 1.7, marginBottom: '1rem' }}>
+                {modalMisi.deskripsi}
+              </p>
+              {modalMisi.fokus && (
+                <div style={{ marginBottom: '1rem' }}>
+                  <div style={{ fontSize: '0.6875rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#505a5f', marginBottom: '0.5rem' }}>
+                    Fokus Strategis:
+                  </div>
+                  <div className="flex flex-wrap gap-1">
+                    {modalMisi.fokus.map((f, j) => (
+                      <span key={j} className="misi-tag">{f}</span>
+                    ))}
+                  </div>
+                </div>
+              )}
+              {modalMisi.opd_terkait && modalMisi.opd_terkait.length > 0 && (
+                <div>
+                  <div style={{ fontSize: '0.6875rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#505a5f', marginBottom: '0.5rem' }}>
+                    OPD Pelaksana:
+                  </div>
+                  <div className="opd-tags">
+                    {modalMisi.opd_terkait.map((id) => {
+                      const opd = opdMap[id];
+                      return opd ? (
+                        <Link key={id} href={`/opd/${slugify(opd.nama)}`} className="opd-tag-link">
+                          {opd.singkat}
+                        </Link>
+                      ) : null;
+                    })}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+        </DetailModal>
 
         {/* ============ LEVEL 1: URUSAN ============ */}
         <section className="ppb-section" id="level-1">
@@ -332,6 +355,19 @@ export default function PetaProsesBisnis({ data }) {
         .misi-card {
           background: var(--bg-card); border: 1px solid var(--border);
           border-radius: 10px; padding: 1.25rem;
+        }
+        .misi-card-compact {
+          background: var(--bg-card); border: 1px solid var(--border);
+          border-radius: 10px; padding: 1.25rem;
+          cursor: pointer; transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .misi-card-compact:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+        .misi-detail-link {
+          margin-top: 0.75rem; font-size: 0.75rem; font-weight: 600;
+          color: var(--primary); text-align: right;
         }
         .misi-number {
           font-size: 0.625rem; font-weight: 700; text-transform: uppercase;

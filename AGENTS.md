@@ -22,11 +22,11 @@ Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah. Transformasi menuju Peme
 
 | Atribut | Nilai |
 |---------|-------|
-| **Stack** | Next.js 14.1.0, React 18.2.0, Vercel |
+| **Stack** | Next.js 14.2.35, React 18.2.0, Vercel |
 | **Config** | `next.config.js` → standalone output, reactStrictMode, images unoptimized |
 | **Path Alias** | `@/*` (via `jsconfig.json`) — ex: `@/components/Header` |
 | **Font** | Inter (government professional, GOV.UK-inspired) |
-| **Data Source** | `data/opd.json` — single source of truth |
+| **Data Source** | `data/opd.json` (OPD, SPBE, PPB) + `data/pemdi.json` (7 aspek × 20 indikator Pemdi) |
 | **Remote** | `git@github.com:Niumination/PemdiAcehTengah.git` |
 | **Production** | https://pemdi-aceh-tengah.vercel.app |
 | **License** | MIT |
@@ -89,11 +89,11 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 
 | Path | Scope |
 |------|-------|
-| `pages/AGENTS.md` | Halaman Next.js (index, requirement), routing, SSR/SSG — `/` dan `/requirement` |
+| `pages/AGENTS.md` | Halaman Next.js — index, pemdi, probis, layanan, faq, skm, requirement, opd/[slug] — routing, SSR/SSG |
 | `pages/api/AGENTS.md` | REST API routes: GET opd, spbe, requirement (read-only, JSON) |
-| `components/AGENTS.md` | 8 React komponen: Header, Footer, Layout, ScrollTop, OPDTable, ProbisSection, SpbeGauge, Rekomendasi |
+| `components/AGENTS.md` | 11 React komponen: Header, Footer, Layout, ScrollTop, OPDTable, ProbisSection, SpbeGauge, Rekomendasi, DataBadge, DetailModal, ExpandablePanel |
 | `styles/AGENTS.md` | CSS architecture, design tokens, responsive breakpoints |
-| `data/AGENTS.md` | Struktur data opd.json — metadata, OPD, SPBE (47 indikator), PPB Level 0-2, rekomendasi |
+| `data/AGENTS.md` | Struktur data opd.json + pemdi.json |
 | `docs/AGENTS.md` | Dokumentasi proyek — file MD, PDF, referensi regulasi, docs.old/ |
 | `STRATEGI_PEMDIACEHTENGAH.md` | **Dokumen perencanaan strategis (file ini)** — 4 fase, quick wins, risiko, metrik |
 
