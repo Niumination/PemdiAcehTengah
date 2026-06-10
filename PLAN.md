@@ -30,7 +30,7 @@ Pemerintah daerah telah meluncurkan program unggulan **"Aceh Tengah Satu Data"**
 8. Pembangunan berkelanjutan untuk Aceh Tengah maju
 
 ### Kondisi Saat Ini:
-- **4.955 ASN** tersebar di **37 OPD** + 14 kecamatan
+- **4.507 ASN** tersebar di **52 Perangkat Daerah** (38 instansi + 14 kecamatan)
 - Website OPD dan desa sudah aktif (penghargaan pengelola website terbaik)
 - Program Satu Data masih dalam tahap perencanaan sistem terpadu
 - Masih banyak proses bisnis manual/tradisional
@@ -69,7 +69,7 @@ PORTAL DIGITAL ACEH TENGAH
 ├── Beranda — Hero section, visi misi, statistik cepat
 ├── Tentang — Profil daerah, sejarah, geografis, demografi
 ├── Tata Kelola / Pemerintahan
-│   ├── Struktur OPD (37 OPD + organisasi)
+│   ├── Struktur Perangkat Daerah (52 Perangkat Daerah)
 │   ├── Peta Proses Bisnis Level 0-2
 │   ├── Pohon Kinerja & Indikator
 │   └── Relasi Bisnis Lintas Fungsi
@@ -111,7 +111,7 @@ PORTAL DIGITAL ACEH TENGAH
 ├── docs/
 │   ├── riset-aceh-tengah.md   ← Data lengkap daerah & pemerintah
 │   ├── ref-permenpan19.md     ← Framework Permenpan 19/2018
-│   └── struktur-opd.md        ← Detail 37 OPD + kecamatan
+│   └── struktur-opd.md        ← Detail 52 Perangkat Daerah
 ├── portal/                    ← Source code portal web
 │   ├── index.html
 │   ├── css/
@@ -208,7 +208,7 @@ Berikut poin yang perlu dikonfirmasi sebelum eksekusi:
 |----------|--------|------------|
 | Visi & Misi Aceh Tengah | ✅ Terkonfirmasi | Haili Yoga - Muchsin Hasan (HAMAS) |
 | Program Satu Data | ✅ Terkonfirmasi | Dukungan AWS & Wamen Komdigi |
-| Struktur OPD (37) | ✅ Terkonfirmasi | Data e-Keurani Mei 2026 |
+| Struktur Perangkat Daerah (52) | ✅ Terkonfirmasi | Data Diskominfo (Jumlah Perangkat Daerah.docx) |
 | Referensi Probis | ✅ Tersedia | Aceh Jaya, Simalungun, Madiun |
 | Framework Hukum | ✅ Tersedia | Permenpan 19/2018 |
 | Plan Dokumen | ✅ Selesai | File ini |

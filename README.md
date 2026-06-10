@@ -27,7 +27,7 @@ Transformasi menuju **Pemerintah Digital (Pemdi)** — open source government te
 | **7 Aspek** | Tata Kelola, SDM Digital, Data, Keamanan, Teknologi, Keterpaduan, Kepuasan |
 | **20 Indikator** | I1–I20 — dari Tata Kelola hingga Pengelolaan Kepuasan |
 | **Perangkat Daerah** | 38 Instansi + 14 Kecamatan |
-| **ASN** | 4.955 Orang |
+| **ASN** | 4.507 Orang |
 
 ## 📄 Halaman
 
@@ -43,7 +43,7 @@ Transformasi menuju **Pemerintah Digital (Pemdi)** — open source government te
 | API Data OPD | `/api/opd` | REST: filter search, level, limit |
 | API SPBE | `/api/spbe` | Indeks, domain, rekomendasi SPBE |
 | API Requirement | `/api/requirement` | Data lengkap requirement PPB |
-| Detail OPD | `/opd/[slug]` | Halaman detail tiap OPD (50 halaman statis) |
+| Detail OPD | `/opd/[slug]` | Halaman detail tiap PD (52 halaman statis) |
 
 ## 🏗️ Arsitektur
 
@@ -57,7 +57,7 @@ PemdiAcehTengah/
 │   ├── faq.js          # Tanya jawab
 │   ├── skm.js          # Survei Kepuasan Masyarakat
 │   ├── requirement.js  # Daftar Kebutuhan PPB
-│   ├── opd/[slug].js   # 50 halaman detail OPD
+│   ├── opd/[slug].js   # 52 halaman detail PD
 │   └── api/            # Backend API Routes
 ├── components/         # 11 React komponen
 │   ├── Header.js, Footer.js, Layout.js
@@ -70,6 +70,7 @@ PemdiAcehTengah/
 ├── data/
 │   ├── opd.json        # Data OPD, SPBE, PPB, rekomendasi
 │   └── pemdi.json      # 🆕 Data 7 aspek × 20 indikator Pemdi
+├── MASTERPLAN.md       # Master plan pengembangan
 ├── docs/               # Dokumentasi proyek
 └── public/             # Aset statis
 ```

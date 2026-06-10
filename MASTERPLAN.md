@@ -3,9 +3,15 @@
 
 > **Dokumen ini adalah cetak biru strategis untuk mengubah portal informasi Pemdi Aceh Tengah menjadi platform digital pemerintahan yang terintegrasi, interoperabel, dan kolaboratif — sesuai amanat Permenpan RB 8/2026 (Pemerintah Digital), Perpres 95/2018 (SPBE), dan arsitektur INA Digital.**
 
-**Versi:** 1.0 — 10 Juni 2026
+**Versi:** 1.1 — 10 Juni 2026
 **Status:** 🔵 Masterplan — Menunggu persetujuan stakeholder
 **Penanggung Jawab:** Diskominfo Kabupaten Aceh Tengah
+
+**Riwayat Perubahan:**
+| Versi | Tanggal | Perubahan |
+|-------|---------|-----------|
+| 1.0 | 10 Juni 2026 | Dokumen awal — masterplan 3 tahun (2026–2029) |
+| 1.1 | 10 Juni 2026 | Penyesuaian struktur OPD: 50 → **52 Perangkat Daerah** (restrukturisasi data dari dokumen resmi Diskominfo). 7 pemisahan OPD, 1 OPD baru (Dinas Perkebunan), 2 OPD dihapus (KORPRI & RSUD Datu Beru). Data Champion: 50→52. Portal: 63 halaman, 0 error. |
 
 ---
 
@@ -95,6 +101,8 @@ Kerangka regulasi yang mengikat dan mendorong transformasi ini:
 │                   GitHub (source)                        │
 └────────────────────────────────────────────────────────┘
 ```
+
+**Update 10 Juni 2026:** Struktur OPD telah direstrukturisasi dari 50 → **52 Perangkat Daerah** berdasarkan dokumen resmi Diskominfo (`Jumlah Perangkat Daerah.docx`). Perubahan: 7 pemisahan OPD (Perdagangan-Koperasi, Pariwisata-Pemuda, Syari'at Islam-Pendidikan Dayah), 1 OPD baru (Dinas Perkebunan), 2 dihapus (KORPRI & RSUD Datu Beru). Total ASN: **4.507**. Portal: 63 halaman statis (Next.js SSG), 0 error.
 
 ### Assessment Matang vs Target Pemdi 8/2026
 
@@ -591,7 +599,7 @@ INTEGRASI OPD BARU MENGIKUTI PROTOKOL:
 | UI/UX Designer | Kontrak | 1 | 2026–2027 |
 | Security Engineer | Kontrak | 1 (paruh waktu) | 2026–2029 |
 | Project Manager | Full-time | 1 | 2026–2029 |
-| Data Champion OPD | In-house (existing ASN) | 50 | 2026–2029 |
+| Data Champion OPD | In-house (existing ASN) | 52 | 2026–2029 |
 | Helpdesk & Support | Full-time | 2 | 2027–2029 |
 
 ---

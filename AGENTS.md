@@ -16,7 +16,7 @@ Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah. Transformasi menuju Peme
 4. Jika parent mencantumkan child AGENTS.md di index, baca child tersebut
 5. Nearest AGENTS.md adalah local contract; parent untuk repo-wide rules
 6. Jika ada konflik, doc yang lebih dekat menang, tapi no child boleh melemahkan DOX
-7. PLAN.md (8,767 chars) adalah dokumen perencanaan awal — beberapa detail (37 OPD, portal/ folder) sudah out of date; DOX ini sumber kebenaran terkini
+7. PLAN.md adalah dokumen perencanaan awal — beberapa detail (portal/ folder tidak dipakai) masih out of date; DOX ini sumber kebenaran terkini
 
 ## Project Overview
 
@@ -33,8 +33,9 @@ Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah. Transformasi menuju Peme
 | **Bupati** | Drs. Haili Yoga, M.Si. & Muchsin Hasan, MSP (2025–2030) |
 | **Visi** | *"Aceh Tengah Islami, Maju, Sejahtera, dan Berkeadilan"* |
 | **8 Misi** | Transformasi Sosial, Ekonomi Hijau, Tata Kelola, Kondusifitas Syariah, Ketahanan Sosial Budaya, Pembangunan Kewilayahan, Sarpras Berkualitas, Kesinambungan Pembangunan |
-| **Total OPD** | ~50 (36 non-kecamatan + 14 kecamatan) — lihat data/AGENTS.md |
-| **Total ASN** | ~4,955 orang per data e-Keurani |
+| **Total Perangkat Daerah** | 52 (38 instansi + 14 kecamatan) — lihat data/AGENTS.md |
+| **Total ASN** | 4,507 orang per data Diskominfo (Jumlah Perangkat Daerah.docx) |
+| **Restrukturisasi OPD** | 7 pemisahan OPD, 1 OPD baru (Dinas Perkebunan) — RSUD Datu Beru & KORPRI tidak lagi sebagai OPD |
 | **Jargon** | HAMAS (Haili Yoga + Muchsin Hasan), 17 sasaran prioritas |
 | **Program Unggulan** | Aceh Tengah Satu Data (AWS + Komdigi), MPP, Satu OPD Satu Inovasi |
 
@@ -56,7 +57,7 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 
 | File | Isi |
 |------|-----|
-| `PLAN.md` | Perencanaan awal proyek — sebagian out of date (37 OPD, portal/ folder tidak dipakai) |
+| `PLAN.md` | Perencanaan awal proyek — beberapa detail (portal/ folder tidak dipakai) masih out of date; DOX ini sumber kebenaran terkini |
 | `README.md` | Gambaran umum, cara deploy, badge DOX |
 | `CONTRIBUTING.md` | Panduan kontribusi — data/kode/issues |
 | `AGENTS.md` | **File ini** — DOX root |

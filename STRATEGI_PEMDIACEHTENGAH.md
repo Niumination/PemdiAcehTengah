@@ -102,7 +102,7 @@
 
 | # | Task | Output | Estimasi |
 |---|------|--------|----------|
-| 1.1 | Harmonisasi OPD 50 + ASN dari e-Keurani ke `data/opd.json` | opd.json dengan 50 OPD + jumlah_asn | ⏱ 1 hari |
+| 1.1 | Harmonisasi 52 Perangkat Daerah + ASN dari e-Keurani ke `data/opd.json` | opd.json dengan 52 Perangkat Daerah + jumlah_asn | ⏱ 1 hari |
 | 1.2 | Mapping urusan konkuren → OPD (24 wajib + 8 pilihan) | Setiap OPD punya field `urusan` | ⏱ 2 hari |
 | 1.3 | Tambah konten tupoksi per OPD (dari data existing + riset) | Tiap OPD punya tupoksi + layanan | ⏱ 3 hari |
 | 1.4 | Struktur ulang PPB Level 1: urusan → OPD mapping | Level 1 akurat, bukan template | ⏱ 2 hari |
@@ -115,7 +115,7 @@
 
 ### FASE 2: PPB Level 0-1-2 Final (Q3-Q4 2026 — Agustus-Oktober) 🟡 60 hari
 
-**Goal**: PPB lengkap untuk 50 OPD, bukan template generik.
+**Goal**: PPB lengkap untuk 52 Perangkat Daerah, bukan template generik.
 
 | # | Task | Output | Estimasi |
 |---|------|--------|----------|
@@ -129,7 +129,7 @@
 
 **Total**: ~24 hari kerja — bisa 2 bulan kalender.
 
-**Strategi PPB Level 2 Efisien**: jangan buat 50 unik dari awal. Buat 3-5 template:
+**Strategi PPB Level 2 Efisien**: jangan buat 52 unik dari awal. Buat 3-5 template:
 - **Template Dinas Layanan Publik** (Pendidikan, Kesehatan, Sosial, dll) — ada interaksi langsung masyarakat
 - **Template Dinas Regulasi** (Perhubungan, Satpol PP, DPMPTSP) — lebih banyak perizinan
 - **Template Badan/Staf** (Bappeda, BKPSDM, BPKAD, Setda) — lebih banyak koordinasi internal
@@ -181,7 +181,7 @@ Hal-hal yang bisa dikerjakan **hari ini** dengan effort minimal:
 
 | # | Quick Win | Nilai | Effort |
 |---|-----------|-------|--------|
-| ✅ | **Publikasi data OPD 50 + ASN** di portal | Data akurat, bangun kepercayaan publik | 1 jam |
+| ✅ | **Publikasi data 52 Perangkat Daerah + ASN** di portal | Data akurat, bangun kepercayaan publik | 1 jam |
 | ✅ | **Tambahkan jumlah ASN per OPD** di tabel OPD | Transparansi data kepegawaian | 1 jam |
 | ✅ | **Halaman /opd dinamis** — dari data/opd.json (sudah siap tinggal routing) | Setiap OPD punya landing page | 3 jam |
 | ✅ | **Permenpan 8/2026 diseminasi** — info grafik perbandingan SPBE vs Pemdi | Edukasi publik tentang framework baru | 2 jam |
@@ -203,14 +203,14 @@ Next.js 14 → Vercel → data/opd.json (statis)
 ```
 Next.js 14 → Vercel
   ├── /                          ← Landing + Pemdi Dashboard
-  ├── /opd/[slug]               ← 50 halaman OPD (dinamis SSG)
+  ├── /opd/[slug]               ← 52 halaman Perangkat Daerah (dinamis SSG)
   ├── /layanan                  ← Direktori layanan digital
   ├── /pemdi                    ← Dashboard 7 aspek 20 indikator
   ├── /evaluasi                 ← Self-assessment mandiri
   └── /api/v1/*                 ← Endpoint Satu Data Indonesia
 
   Data:
-  ├── data/opd.json             ← Master data 50 OPD
+  ├── data/opd.json             ← Master data 52 Perangkat Daerah
   ├── data/layanan.json         ← Layanan digital per OPD
   ├── data/pemdi.json           ← Indikator & skor Pemdi
   └── data/probis.json          ← PPB lengkap Level 0-1-2
@@ -236,7 +236,7 @@ GOV.UK-inspired (Inter font, `#1d70b8`, clean) adalah pilihan tepat karena:
 | Risiko | Dampak | Mitigasi |
 |--------|--------|----------|
 | Data OPD tidak akurat / ditolak Diskominfo | 🔴 Fase 1 gagal | Validasi bertahap, mulai dari data yang sudah diverifikasi |
-| PPB Level 2 terlalu berat (50 OPD) | 🟡 Fase 2 molor | **Template reuse** — jangan buat 50 unik. Cukup 5 prototype |
+| PPB Level 2 terlalu berat (52 Perangkat Daerah) | 🟡 Fase 2 molor | **Template reuse** — jangan buat 52 unik. Cukup 5 prototype |
 | Komitmen pimpinan rendah | 🔴 Semua fase | Portal publik sebagai bukti konkret — tunjukkan hasil ke Bupati/Sekda |
 | Kapasitas teknis terbatas (server/dev) | 🟡 Fase 3-4 | **Vercel gratis** untuk statis, Next.js ISR untuk data semi-dinamis |
 | Perubahan regulasi di tengah jalan | 🟡 Penyesuaian | **Desain modular** — pisah framework (Permenpan) dari data (Pemda) |
@@ -252,8 +252,8 @@ GOV.UK-inspired (Inter font, `#1d70b8`, clean) adalah pilihan tepat karena:
 | Build success rate | 100% | Semua fase |
 | Lighthouse Performance | ≥90 | Fase 3 |
 | Lighthouse Accessibility | ≥95 | Fase 3 |
-| Halaman OPD live | 50/50 | Fase 1 |
-| Data PPB OPD final | 50/50 | Fase 2 |
+| Halaman OPD live | 52/52 | Fase 1 |
+| Data PPB OPD final | 52/52 | Fase 2 |
 
 ### Dampak (Pemdi)
 | Metrik | Baseline | Target | 
@@ -271,7 +271,7 @@ GOV.UK-inspired (Inter font, `#1d70b8`, clean) adalah pilihan tepat karena:
 |--------|--------|
 | Visitor bulanan | ≥1,000 (Q2 2027) |
 | SKM entries | ≥100/bulan |
-| OPD mengisi self-assessment | 50/50 |
+| OPD mengisi self-assessment | 52/52 |
 
 ---
 
@@ -301,11 +301,11 @@ Portal saja tidak cukup — harus dipromosikan:
 ┌────────────────────────────────────────────────┐
 │              Q3 2026 (Juli)                     │
 │  🔴 FASE 1 — Fondasi Data                      │
-│  Output: 50 OPD valid, live di portal          │
+│  Output: 52 Perangkat Daerah valid, live       │
 ├────────────────────────────────────────────────┤
 │              Q3-Q4 2026 (Agu-Okt)              │
 │  🟡 FASE 2 — PPB Final                         │
-│  Output: 5 OPD riil + template 45 lainnya      │
+│  Output: 5 Perangkat Daerah riil + template 47 lainnya      │
 ├────────────────────────────────────────────────┤
 │              Q1 2027 (Jan-Mar)                 │
 │  🟢 FASE 3 — Fitur Publik & Kepuasan           │
@@ -320,7 +320,7 @@ Portal saja tidak cukup — harus dipromosikan:
 ### Hari Ini — Langkah Pertama
 1. ✅ BACKLOG.md sudah diupdate
 2. ✅ Memory sudah disimpan
-3. ⬜ **Mulai Fase 1.1**: update data/opd.json → 50 OPD
+3. ⬜ **Mulai Fase 1.1**: update data/opd.json → 52 Perangkat Daerah
 4. ⬜ **Buat halaman `/opd/[slug]`** — routing dinamis
 
 ---
