@@ -23,22 +23,23 @@ export default function PetaProsesBisnis({ data }) {
         <meta name="description" content="Peta Proses Bisnis Pemkab Aceh Tengah 3 level — Visi-Misi, Urusan, Proses Bisnis OPD. Berdasarkan Permenpan 19/2018 dan RPJMD 2025-2030." />
       </Head>
 
-      <div className="gov-container">
-        {/* ============ BREADCRUMB ============ */}
-        <nav className="breadcrumb" aria-label="Breadcrumb">
-          <Link href="/">Beranda</Link>
-          <span className="breadcrumb-sep">›</span>
-          <span aria-current="page">Peta Proses Bisnis</span>
-        </nav>
+      {/* ============ HERO ============ */}
+      <section className="section-hero-probis">
+        <div className="container">
+          <Link href="/" className="back-link">← Beranda</Link>
+          <div style={{ marginTop: '1rem' }}>
+            <h1>Peta Proses Bisnis (PPB)</h1>
+            <p>
+              Hierarki proses bisnis Pemerintah Kabupaten Aceh Tengah — 3 level sesuai
+              Permenpan RB 19/2018 tentang Penyusunan Peta Proses Bisnis Instansi Pemerintah.
+            </p>
+          </div>
+        </div>
+      </section>
 
-        {/* ============ HEADER ============ */}
-        <section className="section-header">
-          <h1>Peta Proses Bisnis (PPB)</h1>
-          <p className="section-subtitle">
-            Hierarki proses bisnis Pemerintah Kabupaten Aceh Tengah — 3 level sesuai 
-            Permenpan RB 19/2018 tentang Penyusunan Peta Proses Bisnis Instansi Pemerintah.
-          </p>
-        </section>
+      {/* ============ CONTENT ============ */}
+      <section className="section">
+        <div className="container">
 
         {/* ============ HIERARCHY OVERVIEW ============ */}
         <section className="ppb-overview">
@@ -69,17 +70,17 @@ export default function PetaProsesBisnis({ data }) {
             <div className="ppb-level-badge level-0">Level 0</div>
             <div>
               <h2>{probis.level_0.label}</h2>
-              <p className="ppb-section-desc">{probis.level_0.deskripsi}</p>
+              <p className="ppb-section-desc">Visi &amp; Misi Pembangunan Kabupaten Aceh Tengah</p>
               {probis.level_0.sumber && (
                 <p className="ppb-section-source">Sumber: {probis.level_0.sumber}</p>
               )}
             </div>
           </div>
 
-          {/* Visi */}
-          <div className="ppb-visi-card">
-            <div className="ppb-visi-label">Visi</div>
-            <div className="ppb-visi-text">{probis.level_0.deskripsi}</div>
+          {/* Visi — Highlight */}
+          <div className="ppb-visi-inline">
+            <div className="ppb-visi-label-inline">Visi</div>
+            <div className="ppb-visi-text-inline">"{probis.level_0.deskripsi}"</div>
           </div>
 
           {/* 8 Misi */}
@@ -241,9 +242,20 @@ export default function PetaProsesBisnis({ data }) {
             </div>
           </div>
         </section>
-      </div>
+        </div>
+      </section>
 
       <style jsx>{`
+        .section-hero-probis {
+          background: linear-gradient(135deg, #1d70b8 0%, #003078 100%);
+          color: white;
+          padding: 3rem 0;
+        }
+        .section-hero-probis .back-link { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.875rem; }
+        .section-hero-probis .back-link:hover { color: white; text-decoration: underline; }
+        .section-hero-probis h1 { color: white; font-size: 2rem; margin-bottom: 0.5rem; }
+        .section-hero-probis p { color: rgba(255,255,255,0.85) !important; font-size: 1rem; }
+
         .ppb-overview { margin-bottom: 3rem; }
         .ppb-chain-large {
           display: flex; align-items: center; justify-content: center;
@@ -279,6 +291,23 @@ export default function PetaProsesBisnis({ data }) {
         .level-2 { background: #e65100; border-color: #e65100; }
         .ppb-section-desc { color: var(--muted); margin: 0; font-size: 0.9375rem; }
         .ppb-section-source { font-size: 0.75rem; color: var(--muted); margin: 0.25rem 0 0; }
+
+        .ppb-visi-inline {
+          background: var(--bg-card);
+          border: 2px solid var(--primary);
+          border-radius: 12px;
+          padding: 1.25rem 1.5rem;
+          margin-bottom: 2rem;
+          text-align: center;
+        }
+        .ppb-visi-label-inline {
+          font-size: 0.6875rem; font-weight: 700; text-transform: uppercase;
+          letter-spacing: 0.1em; color: var(--primary); margin-bottom: 0.5rem;
+        }
+        .ppb-visi-text-inline {
+          font-size: 1.125rem; font-weight: 600; line-height: 1.5;
+          color: var(--text);
+        }
 
         .ppb-visi-card {
           background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);
