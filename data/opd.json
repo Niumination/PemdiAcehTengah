@@ -6,17 +6,17 @@
     "periode": "2025–2030",
     "visi": "Aceh Tengah Islami, Maju, Sejahtera, dan Berkeadilan",
     "sumber": "Dinas Komunikasi dan Informatika Kabupaten Aceh Tengah — 14 Januari 2026",
-    "update": "2026-06-10",
-    "sumber_asn": "e-Keurani BKPSDM — Mei 2026"
+    "sumber_opd": "Surat Keputusan Bupati tentang Susunan Perangkat Daerah & e-Keurani BKPSDM",
+    "update": "2026-06-10"
   },
   "spbe": {
     "indeks": 2.59,
     "kategori": "Cukup",
     "tahun": 2025,
     "domain": {
-      "kebijakan_spbe": 2.30,
-      "tata_kelola_spbe": 1.70,
-      "manajemen_spbe": 1.00,
+      "kebijakan_spbe": 2.3,
+      "tata_kelola_spbe": 1.7,
+      "manajemen_spbe": 1.0,
       "layanan_spbe": 3.75
     },
     "rekomendasi_prioritas": [
@@ -34,98 +34,521 @@
     ],
     "pemdi_framework": {
       "catatan": "Mulai 2026, SPBE bertransisi ke Pemerintah Digital (Pemdi) — Permenpan RB 8/2026",
-      "target_indeks": 2.50,
+      "target_indeks": 2.5,
       "target_predikat": "Baik",
       "aspek": [
-        {"nama": "Tata Kelola & Manajemen", "bobot": "10%"},
-        {"nama": "Penyelenggara", "bobot": "10%"},
-        {"nama": "Data", "bobot": "15%"},
-        {"nama": "Keamanan Pemdi", "bobot": "15%"},
-        {"nama": "Teknologi Pemdi", "bobot": "10%"},
-        {"nama": "Keterpaduan Layanan Digital", "bobot": "15%"},
-        {"nama": "Kepuasan Pengguna", "bobot": "25%"}
+        {
+          "nama": "Tata Kelola & Manajemen",
+          "bobot": "10%"
+        },
+        {
+          "nama": "Penyelenggara",
+          "bobot": "10%"
+        },
+        {
+          "nama": "Data",
+          "bobot": "15%"
+        },
+        {
+          "nama": "Keamanan Pemdi",
+          "bobot": "15%"
+        },
+        {
+          "nama": "Teknologi Pemdi",
+          "bobot": "10%"
+        },
+        {
+          "nama": "Keterpaduan Layanan Digital",
+          "bobot": "15%"
+        },
+        {
+          "nama": "Kepuasan Pengguna",
+          "bobot": "25%"
+        }
       ]
     }
   },
   "opd": {
-    "total_perangkat_daerah": 50,
-    "sumber": "e-Keurani BKPSDM Kab. Aceh Tengah — Mei 2026",
-    "total_asn": 4955,
-    "daftar": [
-      {"id": 1, "nama": "Sekretariat Daerah", "level": "Staf", "singkat": "Setda", "jumlah_asn": 100, "urusan": "Sekretariat Daerah", "jenis": "instansi"},
-      {"id": 2, "nama": "Sekretariat DPRK", "level": "Staf", "singkat": "Setwan", "jumlah_asn": 27, "urusan": "Legislatif", "jenis": "instansi"},
-      {"id": 3, "nama": "Inspektorat", "level": "Staf", "singkat": "Inspektorat", "jumlah_asn": 51, "urusan": "Pengawasan", "jenis": "instansi"},
-      {"id": 4, "nama": "Badan Kepegawaian dan Pengembangan SDM", "level": "Badan", "singkat": "BKPSDM", "jumlah_asn": 55, "urusan": "Kepegawaian", "jenis": "instansi"},
-      {"id": 5, "nama": "Badan Pembangunan Daerah (BAPPEDA)", "level": "Badan", "singkat": "Bappeda", "jumlah_asn": 43, "urusan": "Perencanaan Pembangunan", "jenis": "instansi"},
-      {"id": 6, "nama": "Badan Pengelola Keuangan (BPKAD)", "level": "Badan", "singkat": "BPKAD", "jumlah_asn": 95, "urusan": "Pengelolaan Keuangan", "jenis": "instansi"},
-      {"id": 7, "nama": "Badan Penanggulangan Bencana Daerah", "level": "Badan", "singkat": "BPBD", "jumlah_asn": 32, "urusan": "Penanggulangan Bencana", "jenis": "instansi"},
-      {"id": 8, "nama": "Dinas Pendidikan", "level": "Dinas", "singkat": "Disdik", "jumlah_asn": 1974, "urusan": "Pendidikan", "jenis": "instansi"},
-      {"id": 9, "nama": "Dinas Kesehatan", "level": "Dinas", "singkat": "Dinkes", "jumlah_asn": 937, "urusan": "Kesehatan", "jenis": "instansi"},
-      {"id": 10, "nama": "Dinas Pekerjaan Umum dan Penataan Ruang", "level": "Dinas", "singkat": "PUPR", "jumlah_asn": 61, "urusan": "Pekerjaan Umum dan Penataan Ruang", "jenis": "instansi"},
-      {"id": 11, "nama": "Dinas Perumahan dan Permukiman", "level": "Dinas", "singkat": "Perkim", "jumlah_asn": 24, "urusan": "Perumahan dan Permukiman", "jenis": "instansi"},
-      {"id": 12, "nama": "Satuan Polisi Pamong Praja dan Wilayatul Hisbah", "level": "Dinas", "singkat": "Satpol PP & WH", "jumlah_asn": 67, "urusan": "Ketenteraman dan Ketertiban", "jenis": "instansi"},
-      {"id": 13, "nama": "Dinas Sosial", "level": "Dinas", "singkat": "Dinsos", "jumlah_asn": 22, "urusan": "Sosial", "jenis": "instansi"},
-      {"id": 14, "nama": "Dinas Transmigrasi dan Tenaga Kerja", "level": "Dinas", "singkat": "Distransnaker", "jumlah_asn": 33, "urusan": "Transmigrasi dan Tenaga Kerja", "jenis": "instansi"},
-      {"id": 15, "nama": "Dinas Keluarga Berencana, Pemberdayaan Perempuan dan Perlindungan Anak", "level": "Dinas", "singkat": "KB-PPPA", "jumlah_asn": 30, "urusan": "Pemberdayaan Perempuan dan Anak", "jenis": "instansi"},
-      {"id": 16, "nama": "Dinas Pangan", "level": "Dinas", "singkat": "Dispang", "jumlah_asn": 0, "urusan": "Pangan", "jenis": "instansi"},
-      {"id": 17, "nama": "Dinas Lingkungan Hidup", "level": "Dinas", "singkat": "DLH", "jumlah_asn": 43, "urusan": "Lingkungan Hidup", "jenis": "instansi"},
-      {"id": 18, "nama": "Dinas Kependudukan dan Pencatatan Sipil", "level": "Dinas", "singkat": "Disdukcapil", "jumlah_asn": 26, "urusan": "Administrasi Kependudukan", "jenis": "instansi"},
-      {"id": 19, "nama": "Dinas Pemberdayaan Masyarakat dan Kampung", "level": "Dinas", "singkat": "DPMK", "jumlah_asn": 32, "urusan": "Pemberdayaan Masyarakat", "jenis": "instansi"},
-      {"id": 20, "nama": "Dinas Perhubungan", "level": "Dinas", "singkat": "Dishub", "jumlah_asn": 22, "urusan": "Perhubungan", "jenis": "instansi"},
-      {"id": 21, "nama": "Dinas Komunikasi dan Informatika", "level": "Dinas", "singkat": "Diskominfo", "jumlah_asn": 29, "urusan": "Komunikasi dan Informatika", "jenis": "instansi"},
-      {"id": 22, "nama": "Dinas Perdagangan, Koperasi, Usaha Kecil dan Menengah", "level": "Dinas", "singkat": "Disdagkop UKM", "jumlah_asn": 47, "urusan": "Perdagangan dan Koperasi", "jenis": "instansi"},
-      {"id": 23, "nama": "Dinas Penanaman Modal dan Pelayanan Perizinan Terpadu Satu Pintu", "level": "Dinas", "singkat": "DPMPTSP", "jumlah_asn": 34, "urusan": "Penanaman Modal", "jenis": "instansi"},
-      {"id": 24, "nama": "Dinas Pariwisata, Pemuda dan Olahraga", "level": "Dinas", "singkat": "Disparpora", "jumlah_asn": 47, "urusan": "Pariwisata, Pemuda dan Olahraga", "jenis": "instansi"},
-      {"id": 25, "nama": "Dinas Perpustakaan dan Kearsipan", "level": "Dinas", "singkat": "Dispersip", "jumlah_asn": 36, "urusan": "Perpustakaan dan Kearsipan", "jenis": "instansi"},
-      {"id": 26, "nama": "Dinas Perikanan", "level": "Dinas", "singkat": "Diskan", "jumlah_asn": 56, "urusan": "Kelautan dan Perikanan", "jenis": "instansi"},
-      {"id": 27, "nama": "Dinas Pertanian", "level": "Dinas", "singkat": "Distan", "jumlah_asn": 114, "urusan": "Pertanian", "jenis": "instansi"},
-      {"id": 28, "nama": "Dinas Syari'at Islam dan Pendidikan Dayah", "level": "Dinas", "singkat": "DSI-PD", "jumlah_asn": 35, "urusan": "Syari'at Islam dan Pendidikan Dayah", "jenis": "instansi"},
-      {"id": 29, "nama": "Dinas Pertanahan", "level": "Dinas", "singkat": "Dispertanah", "jumlah_asn": 18, "urusan": "Pertanahan", "jenis": "instansi"},
-      {"id": 30, "nama": "Sekretariat Majelis Permusyawaratan Ulama", "level": "Lembaga", "singkat": "MPU", "jumlah_asn": 13, "urusan": "Keagamaan", "jenis": "instansi"},
-      {"id": 31, "nama": "Sekretariat Majelis Adat Gayo", "level": "Lembaga", "singkat": "MAG", "jumlah_asn": 8, "urusan": "Kebudayaan dan Adat", "jenis": "instansi"},
-      {"id": 32, "nama": "Sekretariat Majelis Pendidikan Daerah", "level": "Lembaga", "singkat": "MPD", "jumlah_asn": 6, "urusan": "Pendidikan", "jenis": "instansi"},
-      {"id": 33, "nama": "Sekretariat Baitul Mal", "level": "Lembaga", "singkat": "Baitul Mal", "jumlah_asn": 6, "urusan": "Syari'at Islam", "jenis": "instansi"},
-      {"id": 34, "nama": "Sekretariat Korps Pegawai Republik Indonesia", "level": "Lembaga", "singkat": "Korpri", "jumlah_asn": 7, "urusan": "Kepegawaian", "jenis": "instansi"},
-      {"id": 35, "nama": "RSUD Datu Beru", "level": "Lembaga", "singkat": "RSUD", "jumlah_asn": 466, "urusan": "Kesehatan", "jenis": "instansi"},
-      {"id": 36, "nama": "Kantor Kesatuan Bangsa dan Politik", "level": "Lembaga", "singkat": "Kesbangpol", "jumlah_asn": 15, "urusan": "Kesatuan Bangsa dan Politik", "jenis": "instansi"},
-      {"id": 37, "nama": "Kecamatan Bebesen", "level": "Kecamatan", "singkat": "Bebesen", "jumlah_asn": 33, "urusan": "Kecamatan", "jenis": "kecamatan"},
-      {"id": 38, "nama": "Kecamatan Lut Tawar", "level": "Kecamatan", "singkat": "Lut Tawar", "jumlah_asn": 18, "urusan": "Kecamatan", "jenis": "kecamatan"},
-      {"id": 39, "nama": "Kecamatan Kebayakan", "level": "Kecamatan", "singkat": "Kebayakan", "jumlah_asn": 27, "urusan": "Kecamatan", "jenis": "kecamatan"},
-      {"id": 40, "nama": "Kecamatan Bintang", "level": "Kecamatan", "singkat": "Bintang", "jumlah_asn": 30, "urusan": "Kecamatan", "jenis": "kecamatan"},
-      {"id": 41, "nama": "Kecamatan Pegasing", "level": "Kecamatan", "singkat": "Pegasing", "jumlah_asn": 28, "urusan": "Kecamatan", "jenis": "kecamatan"},
-      {"id": 42, "nama": "Kecamatan Bies", "level": "Kecamatan", "singkat": "Bies", "jumlah_asn": 23, "urusan": "Kecamatan", "jenis": "kecamatan"},
-      {"id": 43, "nama": "Kecamatan Linge", "level": "Kecamatan", "singkat": "Linge", "jumlah_asn": 30, "urusan": "Kecamatan", "jenis": "kecamatan"},
-      {"id": 44, "nama": "Kecamatan Atu Lintang", "level": "Kecamatan", "singkat": "Atu Lintang", "jumlah_asn": 14, "urusan": "Kecamatan", "jenis": "kecamatan"},
-      {"id": 45, "nama": "Kecamatan Rusip Antara", "level": "Kecamatan", "singkat": "Rusip Antara", "jumlah_asn": 21, "urusan": "Kecamatan", "jenis": "kecamatan"},
-      {"id": 46, "nama": "Kecamatan Jagong Jeget", "level": "Kecamatan", "singkat": "Jagong Jeget", "jumlah_asn": 10, "urusan": "Kecamatan", "jenis": "kecamatan"},
-      {"id": 47, "nama": "Kecamatan Silih Nara", "level": "Kecamatan", "singkat": "Silih Nara", "jumlah_asn": 29, "urusan": "Kecamatan", "jenis": "kecamatan"},
-      {"id": 48, "nama": "Kecamatan Celala", "level": "Kecamatan", "singkat": "Celala", "jumlah_asn": 21, "urusan": "Kecamatan", "jenis": "kecamatan"},
-      {"id": 49, "nama": "Kecamatan Ketol", "level": "Kecamatan", "singkat": "Ketol", "jumlah_asn": 33, "urusan": "Kecamatan", "jenis": "kecamatan"},
-      {"id": 50, "nama": "Kecamatan Kute Panang", "level": "Kecamatan", "singkat": "Kute Panang", "jumlah_asn": 27, "urusan": "Kecamatan", "jenis": "kecamatan"}
-    ],
-    "per_level": {
-      "Staf": 3,
-      "Badan": 4,
-      "Dinas": 22,
-      "Lembaga": 7,
-      "Kecamatan": 14
-    },
-    "asn_per_level": {
-      "Staf": 178,
-      "Badan": 225,
-      "Dinas": 3687,
-      "Lembaga": 521,
-      "Kecamatan": 344
-    },
+    "total_perangkat_daerah": 52,
+    "sumber": "Surat Keputusan Bupati tentang Susunan Perangkat Daerah — Jumlah Perangkat Daerah di Kabupaten Aceh Tengah (Diskominfo)",
+    "sumber_asn": "e-Keurani BKPSDM Kab. Aceh Tengah — Mei 2026 (estimasi untuk OPD hasil pemisahan)",
     "ringkasan": {
-      "total_opd": 50,
-      "instansi": 36,
+      "total_opd": 52,
+      "instansi": 38,
       "kecamatan": 14,
-      "total_asn": 4955,
-      "struktural": 662,
-      "fungsional_tertentu": 2759,
-      "fungsional_umum": 1534
-    }
+      "total_asn": 4507
+    },
+    "total_asn": 4507,
+    "daftar": [
+      {
+        "id": 1,
+        "nama": "Sekretaris Daerah",
+        "level": "Staf",
+        "singkat": "Setda",
+        "jumlah_asn": 100,
+        "urusan": "Sekretariat Daerah",
+        "jenis": "instansi"
+      },
+      {
+        "id": 2,
+        "nama": "Sekretariat DPRK",
+        "level": "Staf",
+        "singkat": "Setwan",
+        "jumlah_asn": 27,
+        "urusan": "Legislatif",
+        "jenis": "instansi"
+      },
+      {
+        "id": 3,
+        "nama": "Inspektorat",
+        "level": "Lembaga",
+        "singkat": "Inspektorat",
+        "jumlah_asn": 51,
+        "urusan": "Pengawasan",
+        "jenis": "instansi"
+      },
+      {
+        "id": 4,
+        "nama": "Badan Kepegawaian dan Pengembangan SDM",
+        "level": "Badan",
+        "singkat": "BKPSDM",
+        "jumlah_asn": 55,
+        "urusan": "Kepegawaian",
+        "jenis": "instansi"
+      },
+      {
+        "id": 5,
+        "nama": "Badan Perencanaan Pembangunan Daerah",
+        "level": "Badan",
+        "singkat": "Bappeda",
+        "jumlah_asn": 43,
+        "urusan": "Perencanaan Pembangunan",
+        "jenis": "instansi"
+      },
+      {
+        "id": 6,
+        "nama": "Badan Pengelolaan Keuangan",
+        "level": "Badan",
+        "singkat": "BPKAD",
+        "jumlah_asn": 95,
+        "urusan": "Pengelolaan Keuangan",
+        "jenis": "instansi"
+      },
+      {
+        "id": 7,
+        "nama": "Badan Penanggulangan Bencana Daerah",
+        "level": "Badan",
+        "singkat": "BPBD",
+        "jumlah_asn": 32,
+        "urusan": "Penanggulangan Bencana",
+        "jenis": "instansi"
+      },
+      {
+        "id": 8,
+        "nama": "Dinas Pendidikan dan Kebudayaan",
+        "level": "Dinas",
+        "singkat": "Disdikbud",
+        "jumlah_asn": 1974,
+        "urusan": "Pendidikan",
+        "jenis": "instansi"
+      },
+      {
+        "id": 9,
+        "nama": "Dinas Kesehatan",
+        "level": "Dinas",
+        "singkat": "Dinkes",
+        "jumlah_asn": 937,
+        "urusan": "Kesehatan",
+        "jenis": "instansi"
+      },
+      {
+        "id": 10,
+        "nama": "Dinas Pekerjaan Umum dan Penataan Ruang",
+        "level": "Dinas",
+        "singkat": "PUPR",
+        "jumlah_asn": 61,
+        "urusan": "Pekerjaan Umum dan Penataan Ruang",
+        "jenis": "instansi"
+      },
+      {
+        "id": 11,
+        "nama": "Dinas Perumahan dan Permukiman",
+        "level": "Dinas",
+        "singkat": "Disperkim",
+        "jumlah_asn": 24,
+        "urusan": "Perumahan dan Permukiman",
+        "jenis": "instansi"
+      },
+      {
+        "id": 12,
+        "nama": "Satuan Polisi Pamong Praja dan Wilayatul Hisbah",
+        "level": "Lembaga",
+        "singkat": "Satpol PP & WH",
+        "jumlah_asn": 67,
+        "urusan": "Ketenteraman dan Ketertiban",
+        "jenis": "instansi"
+      },
+      {
+        "id": 13,
+        "nama": "Dinas Sosial",
+        "level": "Dinas",
+        "singkat": "Dinsos",
+        "jumlah_asn": 22,
+        "urusan": "Sosial",
+        "jenis": "instansi"
+      },
+      {
+        "id": 14,
+        "nama": "Dinas Transmigrasi dan Tenaga Kerja",
+        "level": "Dinas",
+        "singkat": "Distranaker",
+        "jumlah_asn": 33,
+        "urusan": "Tenaga Kerja dan Transmigrasi",
+        "jenis": "instansi"
+      },
+      {
+        "id": 15,
+        "nama": "Dinas Keluarga Berencana PPPA",
+        "level": "Dinas",
+        "singkat": "DKBP3A",
+        "jumlah_asn": 30,
+        "urusan": "Pemberdayaan Perempuan dan Anak",
+        "jenis": "instansi"
+      },
+      {
+        "id": 16,
+        "nama": "Dinas Pangan",
+        "level": "Dinas",
+        "singkat": "Dinas Pangan",
+        "jumlah_asn": 0,
+        "urusan": "Pangan",
+        "jenis": "instansi"
+      },
+      {
+        "id": 17,
+        "nama": "Dinas Lingkungan Hidup",
+        "level": "Dinas",
+        "singkat": "DLH",
+        "jumlah_asn": 43,
+        "urusan": "Lingkungan Hidup",
+        "jenis": "instansi"
+      },
+      {
+        "id": 18,
+        "nama": "Dinas Kependudukan dan Pencatatan Sipil",
+        "level": "Dinas",
+        "singkat": "Disdukcapil",
+        "jumlah_asn": 26,
+        "urusan": "Administrasi Kependudukan",
+        "jenis": "instansi"
+      },
+      {
+        "id": 19,
+        "nama": "Dinas Pemberdayaan Masyarakat dan Kampung",
+        "level": "Dinas",
+        "singkat": "DPMK",
+        "jumlah_asn": 32,
+        "urusan": "Pemberdayaan Masyarakat",
+        "jenis": "instansi"
+      },
+      {
+        "id": 20,
+        "nama": "Dinas Perhubungan",
+        "level": "Dinas",
+        "singkat": "Dishub",
+        "jumlah_asn": 22,
+        "urusan": "Perhubungan",
+        "jenis": "instansi"
+      },
+      {
+        "id": 21,
+        "nama": "Dinas Komunikasi dan Informatika",
+        "level": "Dinas",
+        "singkat": "Diskominfo",
+        "jumlah_asn": 29,
+        "urusan": "Komunikasi dan Informatika",
+        "jenis": "instansi"
+      },
+      {
+        "id": 22,
+        "nama": "Dinas Koperasi dan UKM",
+        "level": "Dinas",
+        "singkat": "DiskopUKM",
+        "jumlah_asn": 20,
+        "urusan": "Perdagangan dan Koperasi",
+        "jenis": "instansi"
+      },
+      {
+        "id": 23,
+        "nama": "Dinas Penanaman Modal dan Perizinan Terpadu Satu Pintu",
+        "level": "Dinas",
+        "singkat": "DPMPTSP",
+        "jumlah_asn": 34,
+        "urusan": "Penanaman Modal",
+        "jenis": "instansi"
+      },
+      {
+        "id": 24,
+        "nama": "Dinas Pariwisata",
+        "level": "Dinas",
+        "singkat": "Dispar",
+        "jumlah_asn": 25,
+        "urusan": "Pariwisata dan Ekonomi Kreatif",
+        "jenis": "instansi"
+      },
+      {
+        "id": 25,
+        "nama": "Dinas Perpustakaan dan Kearsipan",
+        "level": "Dinas",
+        "singkat": "Dispusip",
+        "jumlah_asn": 36,
+        "urusan": "Perpustakaan dan Kearsipan",
+        "jenis": "instansi"
+      },
+      {
+        "id": 26,
+        "nama": "Dinas Perikanan",
+        "level": "Dinas",
+        "singkat": "Diskan",
+        "jumlah_asn": 56,
+        "urusan": "Kelautan dan Perikanan",
+        "jenis": "instansi"
+      },
+      {
+        "id": 27,
+        "nama": "Dinas Pertanian",
+        "level": "Dinas",
+        "singkat": "Distan",
+        "jumlah_asn": 114,
+        "urusan": "Pertanian",
+        "jenis": "instansi"
+      },
+      {
+        "id": 28,
+        "nama": "Dinas Syari'at Islam",
+        "level": "Dinas",
+        "singkat": "Disyar'iah",
+        "jumlah_asn": 17,
+        "urusan": "Syari'at Islam dan Pendidikan Dayah",
+        "jenis": "instansi"
+      },
+      {
+        "id": 29,
+        "nama": "Dinas Pertanahan",
+        "level": "Dinas",
+        "singkat": "Dispertanah",
+        "jumlah_asn": 18,
+        "urusan": "Pertanahan",
+        "jenis": "instansi"
+      },
+      {
+        "id": 30,
+        "nama": "Sekretariat Majelis Permusyawaratan Ulama",
+        "level": "Lembaga",
+        "singkat": "MPU",
+        "jumlah_asn": 13,
+        "urusan": "Keagamaan",
+        "jenis": "instansi"
+      },
+      {
+        "id": 31,
+        "nama": "Sekretariat Majelis Adat Gayo",
+        "level": "Lembaga",
+        "singkat": "M. Adat Gayo",
+        "jumlah_asn": 8,
+        "urusan": "Kebudayaan dan Adat",
+        "jenis": "instansi"
+      },
+      {
+        "id": 32,
+        "nama": "Sekretariat Majelis Pendidikan Daerah",
+        "level": "Lembaga",
+        "singkat": "MPD",
+        "jumlah_asn": 6,
+        "urusan": "Pendidikan",
+        "jenis": "instansi"
+      },
+      {
+        "id": 33,
+        "nama": "Sekretariat Baitul Mal",
+        "level": "Lembaga",
+        "singkat": "Baitul Mal",
+        "jumlah_asn": 6,
+        "urusan": "Keagamaan",
+        "jenis": "instansi"
+      },
+      {
+        "id": 34,
+        "nama": "Dinas Perdagangan",
+        "level": "Dinas",
+        "singkat": "Disdag",
+        "jumlah_asn": 27,
+        "urusan": "Perdagangan dan Koperasi",
+        "jenis": "instansi"
+      },
+      {
+        "id": 35,
+        "nama": "Dinas Pemuda dan Olahraga",
+        "level": "Dinas",
+        "singkat": "Dispora",
+        "jumlah_asn": 22,
+        "urusan": "Kepemudaan dan Olahraga",
+        "jenis": "instansi"
+      },
+      {
+        "id": 36,
+        "nama": "Badan Kesatuan Bangsa dan Politik",
+        "level": "Badan",
+        "singkat": "Kesbangpol",
+        "jumlah_asn": 15,
+        "urusan": "Kesatuan Bangsa dan Politik",
+        "jenis": "instansi"
+      },
+      {
+        "id": 37,
+        "nama": "Kecamatan Bebesen",
+        "level": "Kecamatan",
+        "singkat": "Bebesen",
+        "jumlah_asn": 33,
+        "urusan": "Pemerintahan Kecamatan",
+        "jenis": "kecamatan"
+      },
+      {
+        "id": 38,
+        "nama": "Kecamatan Lut Tawar",
+        "level": "Kecamatan",
+        "singkat": "Lut Tawar",
+        "jumlah_asn": 18,
+        "urusan": "Pemerintahan Kecamatan",
+        "jenis": "kecamatan"
+      },
+      {
+        "id": 39,
+        "nama": "Kecamatan Kebayakan",
+        "level": "Kecamatan",
+        "singkat": "Kebayakan",
+        "jumlah_asn": 27,
+        "urusan": "Pemerintahan Kecamatan",
+        "jenis": "kecamatan"
+      },
+      {
+        "id": 40,
+        "nama": "Kecamatan Bintang",
+        "level": "Kecamatan",
+        "singkat": "Bintang",
+        "jumlah_asn": 30,
+        "urusan": "Pemerintahan Kecamatan",
+        "jenis": "kecamatan"
+      },
+      {
+        "id": 41,
+        "nama": "Kecamatan Pegasing",
+        "level": "Kecamatan",
+        "singkat": "Pegasing",
+        "jumlah_asn": 28,
+        "urusan": "Pemerintahan Kecamatan",
+        "jenis": "kecamatan"
+      },
+      {
+        "id": 42,
+        "nama": "Kecamatan Bies",
+        "level": "Kecamatan",
+        "singkat": "Bies",
+        "jumlah_asn": 23,
+        "urusan": "Pemerintahan Kecamatan",
+        "jenis": "kecamatan"
+      },
+      {
+        "id": 43,
+        "nama": "Kecamatan Linge",
+        "level": "Kecamatan",
+        "singkat": "Linge",
+        "jumlah_asn": 30,
+        "urusan": "Pemerintahan Kecamatan",
+        "jenis": "kecamatan"
+      },
+      {
+        "id": 44,
+        "nama": "Kecamatan Atu Lintang",
+        "level": "Kecamatan",
+        "singkat": "Atu Lintang",
+        "jumlah_asn": 14,
+        "urusan": "Pemerintahan Kecamatan",
+        "jenis": "kecamatan"
+      },
+      {
+        "id": 45,
+        "nama": "Kecamatan Rusip Antara",
+        "level": "Kecamatan",
+        "singkat": "Rusip Antara",
+        "jumlah_asn": 21,
+        "urusan": "Pemerintahan Kecamatan",
+        "jenis": "kecamatan"
+      },
+      {
+        "id": 46,
+        "nama": "Kecamatan Jagong Jeget",
+        "level": "Kecamatan",
+        "singkat": "Jagong Jeget",
+        "jumlah_asn": 10,
+        "urusan": "Pemerintahan Kecamatan",
+        "jenis": "kecamatan"
+      },
+      {
+        "id": 47,
+        "nama": "Kecamatan Silih Nara",
+        "level": "Kecamatan",
+        "singkat": "Silih Nara",
+        "jumlah_asn": 29,
+        "urusan": "Pemerintahan Kecamatan",
+        "jenis": "kecamatan"
+      },
+      {
+        "id": 48,
+        "nama": "Kecamatan Celala",
+        "level": "Kecamatan",
+        "singkat": "Celala",
+        "jumlah_asn": 21,
+        "urusan": "Pemerintahan Kecamatan",
+        "jenis": "kecamatan"
+      },
+      {
+        "id": 49,
+        "nama": "Kecamatan Ketol",
+        "level": "Kecamatan",
+        "singkat": "Ketol",
+        "jumlah_asn": 33,
+        "urusan": "Pemerintahan Kecamatan",
+        "jenis": "kecamatan"
+      },
+      {
+        "id": 50,
+        "nama": "Kecamatan Kute Panang",
+        "level": "Kecamatan",
+        "singkat": "Kute Panang",
+        "jumlah_asn": 27,
+        "urusan": "Pemerintahan Kecamatan",
+        "jenis": "kecamatan"
+      },
+      {
+        "id": 51,
+        "nama": "Dinas Pendidikan Dayah",
+        "level": "Dinas",
+        "singkat": "Disdik Dayah",
+        "jumlah_asn": 18,
+        "urusan": "Syari'at Islam dan Pendidikan Dayah",
+        "jenis": "instansi"
+      },
+      {
+        "id": 52,
+        "nama": "Dinas Perkebunan",
+        "level": "Dinas",
+        "singkat": "Disbun",
+        "jumlah_asn": 25,
+        "urusan": "Pertanian",
+        "jenis": "instansi"
+      }
+    ]
   },
   "probis": {
     "level_0": {
@@ -136,191 +559,686 @@
         {
           "nama": "Transformasi Sosial Budaya",
           "deskripsi": "Mewujudkan manusia Aceh Tengah yang sehat, cerdas, kreatif, sejahtera, unggul, dan berdaya saing melalui penguatan transformasi sosial berbasis nilai keislaman dan kearifan lokal Gayo",
-          "fokus": ["Penurunan stunting", "Layanan kesehatan universal", "Pendidikan berbasis kearifan lokal", "Gerakan gemar membaca Al-Qur'an", "Perlindungan perempuan dan anak"],
-          "opd_terkait": [8, 9, 13, 15, 28, 30, 31, 32, 35]
+          "fokus": [
+            "Penurunan stunting",
+            "Layanan kesehatan universal",
+            "Pendidikan berbasis kearifan lokal",
+            "Gerakan gemar membaca Al-Qur'an",
+            "Perlindungan perempuan dan anak"
+          ],
+          "opd_terkait": [
+            8,
+            9,
+            13,
+            15,
+            28,
+            51,
+            30,
+            31,
+            32
+          ]
         },
         {
           "nama": "Transformasi Ekonomi",
           "deskripsi": "Mendorong pertumbuhan ekonomi inklusif melalui pengembangan sektor unggulan: pertanian, perkebunan kopi Gayo, perikanan, UMKM, dan ekonomi kreatif",
-          "fokus": ["Kopi Gayo sebagai komoditas unggulan", "Pengembangan UMKM dan koperasi", "Peningkatan daya saing produk lokal", "Kemitraan investor dan akademisi", "Pembukaan lapangan kerja"],
-          "opd_terkait": [16, 22, 23, 26, 27]
+          "fokus": [
+            "Kopi Gayo sebagai komoditas unggulan",
+            "Pengembangan UMKM dan koperasi",
+            "Peningkatan daya saing produk lokal",
+            "Kemitraan investor dan akademisi",
+            "Pembukaan lapangan kerja"
+          ],
+          "opd_terkait": [
+            16,
+            22,
+            34,
+            52,
+            23,
+            26,
+            27
+          ]
         },
         {
           "nama": "Transformasi Tata Kelola",
           "deskripsi": "Mewujudkan tata kelola pemerintahan yang transparan, akuntabel, efektif, dan efisien melalui transformasi digital dan reformasi birokrasi menuju Pemerintah Digital (Pemdi)",
-          "fokus": ["Pemerintah Digital (Pemdi) — SPBE bertransisi ke Pemdi", "Transparansi dan akuntabilitas", "Digitalisasi layanan publik", "Manajemen ASN berbasis merit", "Pengawasan dan audit internal"],
-          "opd_terkait": [1, 2, 3, 4, 5, 6, 21, 34, 36]
+          "fokus": [
+            "Pemerintah Digital (Pemdi) — SPBE bertransisi ke Pemdi",
+            "Transparansi dan akuntabilitas",
+            "Digitalisasi layanan publik",
+            "Manajemen ASN berbasis merit",
+            "Pengawasan dan audit internal"
+          ],
+          "opd_terkait": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            21,
+            36
+          ]
         },
         {
           "nama": "Infrastruktur dan Konektivitas",
           "deskripsi": "Membangun dan meningkatkan infrastruktur dasar serta konektivitas antarwilayah untuk mendukung pertumbuhan ekonomi dan akses masyarakat terhadap layanan publik",
-          "fokus": ["Konektivitas jalan antar kecamatan", "Fasilitas umum", "Sarana prasarana ekonomi", "Permukiman layak huni", "Infrastruktur digital"],
-          "opd_terkait": [10, 11, 20, 29]
+          "fokus": [
+            "Konektivitas jalan antar kecamatan",
+            "Fasilitas umum",
+            "Sarana prasarana ekonomi",
+            "Permukiman layak huni",
+            "Infrastruktur digital"
+          ],
+          "opd_terkait": [
+            10,
+            11,
+            20,
+            29
+          ]
         },
         {
           "nama": "Pariwisata dan Ekonomi Kreatif",
           "deskripsi": "Mengembangkan pariwisata berbasis alam (Danau Laut Tawar, Gunung, dan budaya Gayo) serta ekonomi kreatif sebagai sektor andalan daerah",
-          "fokus": ["Danau Laut Tawar sebagai destinasi utama", "Ekowisata dan wisata budaya", "Ekonomi kreatif berbasis kopi dan kerajinan Gayo", "Promosi wisata digital", "Desa wisata"],
-          "opd_terkait": [24]
+          "fokus": [
+            "Danau Laut Tawar sebagai destinasi utama",
+            "Ekowisata dan wisata budaya",
+            "Ekonomi kreatif berbasis kopi dan kerajinan Gayo",
+            "Promosi wisata digital",
+            "Desa wisata"
+          ],
+          "opd_terkait": [
+            24
+          ]
         },
         {
           "nama": "Lingkungan Hidup dan Ketahanan Bencana",
           "deskripsi": "Mewujudkan pembangunan berkelanjutan yang mengintegrasikan aspek lingkungan dan ketahanan bencana dalam setiap kebijakan daerah",
-          "fokus": ["Pengelolaan Daerah Aliran Sungai (DAS)", "Konservasi kawasan Danau Laut Tawar", "Pengelolaan sampah dan limbah", "Mitigasi bencana (gempa, banjir, longsor)", "Kesiapsiagaan bencana"],
-          "opd_terkait": [7, 17]
+          "fokus": [
+            "Pengelolaan Daerah Aliran Sungai (DAS)",
+            "Konservasi kawasan Danau Laut Tawar",
+            "Pengelolaan sampah dan limbah",
+            "Mitigasi bencana (gempa, banjir, longsor)",
+            "Kesiapsiagaan bencana"
+          ],
+          "opd_terkait": [
+            7,
+            17
+          ]
         },
         {
           "nama": "Pendidikan dan Pelayanan Publik",
           "deskripsi": "Meningkatkan mutu pendidikan dan kualitas pelayanan publik yang mudah, cepat, dan terjangkau bagi seluruh masyarakat Aceh Tengah",
-          "fokus": ["Pendidikan dasar dan menengah universal", "Peningkatan mutu guru", "Perpustakaan dan literasi", "Pelayanan adminduk", "Pelayanan perizinan terpadu"],
-          "opd_terkait": [8, 18, 23, 25]
+          "fokus": [
+            "Pendidikan dasar dan menengah universal",
+            "Peningkatan mutu guru",
+            "Perpustakaan dan literasi",
+            "Pelayanan adminduk",
+            "Pelayanan perizinan terpadu"
+          ],
+          "opd_terkait": [
+            8,
+            18,
+            23,
+            25
+          ]
         },
         {
           "nama": "Pemuda dan Olahraga",
           "deskripsi": "Mengembangkan potensi pemuda dan olahraga sebagai pilar pembangunan daerah yang kreatif, produktif, dan berdaya saing",
-          "fokus": ["Pembinaan atlet muda", "Event olahraga daerah", "Pusat kegiatan pemuda", "Ekonomi kreatif pemuda"],
-          "opd_terkait": [24]
+          "fokus": [
+            "Pembinaan atlet muda",
+            "Event olahraga daerah",
+            "Pusat kegiatan pemuda",
+            "Ekonomi kreatif pemuda"
+          ],
+          "opd_terkait": [
+            35
+          ]
         }
       ]
     },
     "level_1": {
-      "label": "Urusan Pemerintahan",
-      "deskripsi": "Urusan konkuren & umum berdasarkan UU 23/2014 dan Permenpan 19/2018",
+      "nama": "Urusan Pemerintahan",
+      "deskripsi": "34 urusan yang menjadi dasar proses bisnis SPBE Aceh Tengah",
       "urusan": [
-        {"nama": "Pendidikan", "opd_terkait": [8, 32]},
-        {"nama": "Syari'at Islam dan Pendidikan Dayah", "opd_terkait": [28, 33, 30]},
-        {"nama": "Kesehatan", "opd_terkait": [9, 35]},
-        {"nama": "Pekerjaan Umum dan Penataan Ruang", "opd_terkait": [10]},
-        {"nama": "Perumahan dan Permukiman", "opd_terkait": [11]},
-        {"nama": "Ketenteraman dan Ketertiban", "opd_terkait": [12]},
-        {"nama": "Sosial", "opd_terkait": [13]},
-        {"nama": "Tenaga Kerja dan Transmigrasi", "opd_terkait": [14]},
-        {"nama": "Pangan", "opd_terkait": [16]},
-        {"nama": "Lingkungan Hidup", "opd_terkait": [17]},
-        {"nama": "Administrasi Kependudukan", "opd_terkait": [18]},
-        {"nama": "Pemberdayaan Perempuan dan Anak", "opd_terkait": [15]},
-        {"nama": "Komunikasi dan Informatika", "opd_terkait": [21]},
-        {"nama": "Pertanian", "opd_terkait": [27, 26]},
-        {"nama": "Perdagangan dan Koperasi", "opd_terkait": [22]},
-        {"nama": "Perindustrian", "opd_terkait": [22]},
-        {"nama": "Perhubungan", "opd_terkait": [20]},
-        {"nama": "Kepemudaan dan Olahraga", "opd_terkait": [24]},
-        {"nama": "Pariwisata dan Ekonomi Kreatif", "opd_terkait": [24]},
-        {"nama": "Penanaman Modal", "opd_terkait": [23]},
-        {"nama": "Kebudayaan dan Adat", "opd_terkait": [8, 31]},
-        {"nama": "Perpustakaan dan Kearsipan", "opd_terkait": [25]},
-        {"nama": "Kelautan dan Perikanan", "opd_terkait": [26]},
-        {"nama": "Pemberdayaan Masyarakat", "opd_terkait": [19]},
-        {"nama": "Pertanahan", "opd_terkait": [29]},
-        {"nama": "Kepegawaian", "opd_terkait": [4, 34]},
-        {"nama": "Perencanaan Pembangunan", "opd_terkait": [5]},
-        {"nama": "Pengelolaan Keuangan", "opd_terkait": [6]},
-        {"nama": "Pengawasan", "opd_terkait": [3]},
-        {"nama": "Kesatuan Bangsa dan Politik", "opd_terkait": [36]},
-        {"nama": "Penanggulangan Bencana", "opd_terkait": [7]},
-        {"nama": "Sekretariat Daerah", "opd_terkait": [1]},
-        {"nama": "Legislatif", "opd_terkait": [2]},
-        {"nama": "Keagamaan", "opd_terkait": [30]},
-        {"nama": "Pemerintahan Kecamatan", "opd_terkait": [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]}
+        {
+          "nama": "Pendidikan",
+          "opd_terkait": [
+            8,
+            32,
+            51
+          ]
+        },
+        {
+          "nama": "Syari'at Islam dan Pendidikan Dayah",
+          "opd_terkait": [
+            28,
+            51,
+            33,
+            30
+          ]
+        },
+        {
+          "nama": "Kesehatan",
+          "opd_terkait": [
+            9
+          ]
+        },
+        {
+          "nama": "Pekerjaan Umum dan Penataan Ruang",
+          "opd_terkait": [
+            10
+          ]
+        },
+        {
+          "nama": "Perumahan dan Permukiman",
+          "opd_terkait": [
+            11
+          ]
+        },
+        {
+          "nama": "Ketenteraman dan Ketertiban",
+          "opd_terkait": [
+            12
+          ]
+        },
+        {
+          "nama": "Sosial",
+          "opd_terkait": [
+            13
+          ]
+        },
+        {
+          "nama": "Tenaga Kerja dan Transmigrasi",
+          "opd_terkait": [
+            14
+          ]
+        },
+        {
+          "nama": "Pangan",
+          "opd_terkait": [
+            16
+          ]
+        },
+        {
+          "nama": "Lingkungan Hidup",
+          "opd_terkait": [
+            17
+          ]
+        },
+        {
+          "nama": "Administrasi Kependudukan",
+          "opd_terkait": [
+            18
+          ]
+        },
+        {
+          "nama": "Pemberdayaan Perempuan dan Anak",
+          "opd_terkait": [
+            15
+          ]
+        },
+        {
+          "nama": "Komunikasi dan Informatika",
+          "opd_terkait": [
+            21
+          ]
+        },
+        {
+          "nama": "Pertanian",
+          "opd_terkait": [
+            27,
+            26,
+            52
+          ]
+        },
+        {
+          "nama": "Perdagangan dan Koperasi",
+          "opd_terkait": [
+            22,
+            34
+          ]
+        },
+        {
+          "nama": "Perindustrian",
+          "opd_terkait": [
+            34
+          ]
+        },
+        {
+          "nama": "Perhubungan",
+          "opd_terkait": [
+            20
+          ]
+        },
+        {
+          "nama": "Kepemudaan dan Olahraga",
+          "opd_terkait": [
+            35
+          ]
+        },
+        {
+          "nama": "Pariwisata dan Ekonomi Kreatif",
+          "opd_terkait": [
+            24
+          ]
+        },
+        {
+          "nama": "Penanaman Modal",
+          "opd_terkait": [
+            23
+          ]
+        },
+        {
+          "nama": "Kebudayaan dan Adat",
+          "opd_terkait": [
+            8,
+            31
+          ]
+        },
+        {
+          "nama": "Perpustakaan dan Kearsipan",
+          "opd_terkait": [
+            25
+          ]
+        },
+        {
+          "nama": "Kelautan dan Perikanan",
+          "opd_terkait": [
+            26
+          ]
+        },
+        {
+          "nama": "Pemberdayaan Masyarakat",
+          "opd_terkait": [
+            19
+          ]
+        },
+        {
+          "nama": "Pertanahan",
+          "opd_terkait": [
+            29
+          ]
+        },
+        {
+          "nama": "Kepegawaian",
+          "opd_terkait": [
+            4
+          ]
+        },
+        {
+          "nama": "Perencanaan Pembangunan",
+          "opd_terkait": [
+            5
+          ]
+        },
+        {
+          "nama": "Pengelolaan Keuangan",
+          "opd_terkait": [
+            6
+          ]
+        },
+        {
+          "nama": "Pengawasan",
+          "opd_terkait": [
+            3
+          ]
+        },
+        {
+          "nama": "Kesatuan Bangsa dan Politik",
+          "opd_terkait": [
+            36
+          ]
+        },
+        {
+          "nama": "Penanggulangan Bencana",
+          "opd_terkait": [
+            7
+          ]
+        },
+        {
+          "nama": "Sekretariat Daerah",
+          "opd_terkait": [
+            1
+          ]
+        },
+        {
+          "nama": "Legislatif",
+          "opd_terkait": [
+            2
+          ]
+        },
+        {
+          "nama": "Keagamaan",
+          "opd_terkait": [
+            30,
+            33
+          ]
+        },
+        {
+          "nama": "Pemerintahan Kecamatan",
+          "opd_terkait": [
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50
+          ]
+        }
       ]
     },
     "level_2": {
-      "label": "Proses Bisnis OPD",
-      "deskripsi": "Setiap OPD menjalankan proses bisnis spesifik sesuai tugas dan fungsi — dikelompokkan dalam 6 kategori proses utama",
+      "nama": "Kategori & Proses Bisnis",
+      "deskripsi": "Mapping proses bisnis SPBE level 2 — Perencanaan, Pelaksanaan, Penganggaran, Monev, Pelayanan Publik, Pengawasan",
       "kategori": [
         {
           "nama": "Perencanaan",
           "warna": "#1565c0",
           "icon": "📋",
-          "deskripsi": "Penyusunan rencana strategis, program, dan kegiatan OPD",
           "proses": [
-            {"nama": "Penyusunan Renstra OPD", "opd_semua": true, "output": "Dokumen Renstra OPD 5 tahunan"},
-            {"nama": "Penyusunan Renja Tahunan", "opd_semua": true, "output": "Rencana Kerja Tahunan OPD"},
-            {"nama": "Penyusunan RKPD", "opd_terkait": [5], "output": "Rancangan RKPD Kabupaten"},
-            {"nama": "Forum Konsultasi Publik RPJMD", "opd_terkait": [5, 1], "output": "Dokumen RPJMD Final"},
-            {"nama": "Perencanaan Pengadaan Barang/Jasa", "opd_semua": true, "output": "Rencana Umum Pengadaan (RUP)"}
+            {
+              "nama": "Penyusunan RKPD",
+              "opd_terkait": [
+                5
+              ],
+              "output": "Rancangan RKPD Kabupaten"
+            },
+            {
+              "nama": "Forum Konsultasi Publik RPJMD",
+              "opd_terkait": [
+                5,
+                1
+              ],
+              "output": "Dokumen RPJMD Final"
+            }
           ]
         },
         {
           "nama": "Pelaksanaan",
           "warna": "#2e7d32",
-          "icon": "⚡",
-          "deskripsi": "Pelaksanaan program dan kegiatan sesuai rencana yang telah ditetapkan",
+          "icon": "⚙️",
           "proses": [
-            {"nama": "Pelaksanaan Program dan Kegiatan", "opd_semua": true, "output": "Output kegiatan sesuai target Renja"},
-            {"nama": "Layanan Pendidikan", "opd_terkait": [8, 32], "output": "Layanan PAUD/TK/SD/SMP/SMA/SMK"},
-            {"nama": "Layanan Kesehatan", "opd_terkait": [9, 35], "output": "Layanan Puskesmas, RSUD, Posyandu"},
-            {"nama": "Layanan Administrasi Kependudukan", "opd_terkait": [18], "output": "Akte, KTP, KK, KIA"},
-            {"nama": "Layanan Perizinan dan Non-Perizinan", "opd_terkait": [23], "output": "Izin usaha, IMB, SIUP, dll"},
-            {"nama": "Pembinaan Pertanian dan Peternakan", "opd_terkait": [27, 16], "output": "Penyuluhan, bibit, pupuk, alsintan"},
-            {"nama": "Pengelolaan Pariwisata", "opd_terkait": [24], "output": "Promosi wisata, event, homestay"},
-            {"nama": "Pembinaan UMKM dan Koperasi", "opd_terkait": [22], "output": "Pelatihan, permodalan, pemasaran"},
-            {"nama": "Penyelenggaraan Layanan Kecamatan", "opd_terkait": [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50], "output": "Layanan administrasi kecamatan"},
-            {"nama": "Pengelolaan Komunikasi dan Informatika", "opd_terkait": [21], "output": "Jaringan, aplikasi, portal, data"}
+            {
+              "nama": "Layanan Pendidikan",
+              "opd_terkait": [
+                8,
+                32,
+                51
+              ],
+              "output": "Layanan PAUD/TK/SD/SMP/SMA/SMK"
+            },
+            {
+              "nama": "Layanan Kesehatan",
+              "opd_terkait": [
+                9
+              ],
+              "output": "Layanan Puskesmas, Posyandu"
+            },
+            {
+              "nama": "Layanan Administrasi Kependudukan",
+              "opd_terkait": [
+                18
+              ],
+              "output": "Akte, KTP, KK, KIA"
+            },
+            {
+              "nama": "Layanan Perizinan dan Non-Perizinan",
+              "opd_terkait": [
+                23
+              ],
+              "output": "Izin usaha, IMB, SIUP, dll"
+            },
+            {
+              "nama": "Pembinaan Pertanian dan Peternakan",
+              "opd_terkait": [
+                27,
+                16,
+                52
+              ],
+              "output": "Penyuluhan, bibit, pupuk, alsintan"
+            },
+            {
+              "nama": "Pengelolaan Pariwisata",
+              "opd_terkait": [
+                24
+              ],
+              "output": "Promosi wisata, event, objek wisata"
+            },
+            {
+              "nama": "Pembinaan UMKM dan Koperasi",
+              "opd_terkait": [
+                22
+              ],
+              "output": "Pendampingan, permodalan, pelatihan"
+            },
+            {
+              "nama": "Penyelenggaraan Layanan Kecamatan",
+              "opd_terkait": [
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50
+              ],
+              "output": "Layanan adm kecamatan"
+            },
+            {
+              "nama": "Pengelolaan Komunikasi dan Informatika",
+              "opd_terkait": [
+                21
+              ],
+              "output": "Website, aplikasi, infrastruktur TIK"
+            },
+            {
+              "nama": "Pembinaan Perdagangan",
+              "opd_terkait": [
+                34
+              ],
+              "output": "Pengawasan barang, pasar, promosi dagang"
+            },
+            {
+              "nama": "Pembinaan Perkebunan",
+              "opd_terkait": [
+                52
+              ],
+              "output": "Bibit, produksi, pasca-panen"
+            }
           ]
         },
         {
           "nama": "Penganggaran",
           "warna": "#e65100",
           "icon": "💰",
-          "deskripsi": "Pengelolaan keuangan daerah mulai dari perencanaan hingga pertanggungjawaban",
           "proses": [
-            {"nama": "Penyusunan RKA-OPD", "opd_semua": true, "output": "Dokumen RKA OPD"},
-            {"nama": "Penyusunan APBD", "opd_terkait": [6, 5], "output": "Qanun APBD Tahunan"},
-            {"nama": "Pelaksanaan Anggaran (SP2D)", "opd_terkait": [6], "output": "SP2D, SPM, LS/GU/TU"},
-            {"nama": "Pengelolaan PAD", "opd_terkait": [6], "output": "Pendapatan Asli Daerah"},
-            {"nama": "Pelaporan Keuangan", "opd_semua": true, "output": "Laporan Keuangan Bulanan/Tahunan"}
+            {
+              "nama": "Penyusunan APBD",
+              "opd_terkait": [
+                6,
+                5
+              ],
+              "output": "Raperda APBD/APBD-P"
+            },
+            {
+              "nama": "Pelaksanaan Anggaran (SP2D)",
+              "opd_terkait": [
+                6
+              ],
+              "output": "SP2D, SPM"
+            },
+            {
+              "nama": "Pengelolaan PAD",
+              "opd_terkait": [
+                6
+              ],
+              "output": "Realisasi PAD"
+            }
           ]
         },
         {
           "nama": "Monitoring & Evaluasi",
           "warna": "#6a1b9a",
           "icon": "📊",
-          "deskripsi": "Pemantauan dan evaluasi pelaksanaan program serta capaian kinerja",
           "proses": [
-            {"nama": "Monitoring Capaian Kinerja", "opd_semua": true, "output": "Laporan Kinerja Bulanan"},
-            {"nama": "Evaluasi Renstra dan Renja", "opd_semua": true, "output": "Laporan Evaluasi Tahunan"},
-            {"nama": "Cascading Pohon Kinerja", "opd_terkait": [5, 1], "output": "Pohon Kinerja Terintegrasi"},
-            {"nama": "Survei Kepuasan Masyarakat (SKM)", "opd_terkait": [3], "output": "Indeks SKM per OPD"},
-            {"nama": "Evaluasi SPBE/Pemdi", "opd_terkait": [21, 5], "output": "Nilai Indeks SPBE/Pemdi"}
+            {
+              "nama": "Cascading Pohon Kinerja",
+              "opd_terkait": [
+                5,
+                1
+              ],
+              "output": "Pohon kinerja cascade ke OPD"
+            },
+            {
+              "nama": "Survei Kepuasan Masyarakat (SKM)",
+              "opd_terkait": [
+                3
+              ],
+              "output": "Indeks SKM"
+            },
+            {
+              "nama": "Evaluasi SPBE/Pemdi",
+              "opd_terkait": [
+                21,
+                5
+              ],
+              "output": "Nilai SPBE, rekomendasi"
+            }
           ]
         },
         {
           "nama": "Pelayanan Publik",
           "warna": "#00838f",
           "icon": "🤝",
-          "deskripsi": "Penyelenggaraan pelayanan publik yang cepat, mudah, transparan, dan akuntabel",
           "proses": [
-            {"nama": "Standar Pelayanan Publik", "opd_semua": true, "output": "Maklumat pelayanan, SOP pelayanan"},
-            {"nama": "Pengelolaan Pengaduan Masyarakat", "opd_semua": true, "output": "Sistem pengaduan SP4N-LAPOR!"},
-            {"nama": "Pelayanan Adminduk Terpadu", "opd_terkait": [18], "output": "KTP Elektronik, KK, Akta"},
-            {"nama": "PTSP (Perizinan Terpadu Satu Pintu)", "opd_terkait": [23], "output": "Izin berusaha, non-berusaha"},
-            {"nama": "Layanan Kesehatan Publik", "opd_terkait": [9, 35], "output": "BPJS, rawat jalan, rawat inap"},
-            {"nama": "Layanan Pendidikan Publik", "opd_terkait": [8, 32], "output": "PPDB, beasiswa, ijazah"},
-            {"nama": "Layanan Kecamatan", "opd_terkait": [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50], "output": "Surat keterangan, legalisir"}
+            {
+              "nama": "Pelayanan Adminduk Terpadu",
+              "opd_terkait": [
+                18
+              ],
+              "output": "Dokumen kependudukan"
+            },
+            {
+              "nama": "PTSP (Perizinan Terpadu Satu Pintu)",
+              "opd_terkait": [
+                23
+              ],
+              "output": "Izin usaha, izin lokasi"
+            },
+            {
+              "nama": "Layanan Kesehatan Publik",
+              "opd_terkait": [
+                9
+              ],
+              "output": "Layanan puskesmas"
+            },
+            {
+              "nama": "Layanan Pendidikan Publik",
+              "opd_terkait": [
+                8,
+                32,
+                51
+              ],
+              "output": "Layanan PAUD/SD/SMP/SMA/SMK"
+            },
+            {
+              "nama": "Layanan Kecamatan",
+              "opd_terkait": [
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50
+              ],
+              "output": "Pelayanan adm kecamatan"
+            }
           ]
         },
         {
           "nama": "Pengawasan",
           "warna": "#c62828",
           "icon": "🔍",
-          "deskripsi": "Pengawasan internal dan eksternal untuk menjamin akuntabilitas dan kepatuhan",
           "proses": [
-            {"nama": "Audit Internal (Irban)", "opd_terkait": [3], "output": "Laporan Hasil Audit Internal"},
-            {"nama": "Pengawasan Melekat (Waskat)", "opd_semua": true, "output": "Laporan waskat pimpinan OPD"},
-            {"nama": "Audit Laporan Keuangan", "opd_terkait": [3], "output": "Laporan Keuangan Teraudit"},
-            {"nama": "Reviu Kinerja dan Regulasi", "opd_terkait": [3], "output": "Laporan Reviu"},
-            {"nama": "Pengawasan Netralitas ASN", "opd_terkait": [4, 34, 12], "output": "Survei dan pemantauan netralitas"}
+            {
+              "nama": "Audit Internal (Irban)",
+              "opd_terkait": [
+                3
+              ],
+              "output": "Laporan hasil audit"
+            },
+            {
+              "nama": "Audit Laporan Keuangan",
+              "opd_terkait": [
+                3
+              ],
+              "output": "Opini BPK"
+            },
+            {
+              "nama": "Reviu Kinerja dan Regulasi",
+              "opd_terkait": [
+                3
+              ],
+              "output": "Reviu lakip, reviu perda"
+            },
+            {
+              "nama": "Pengawasan Netralitas ASN",
+              "opd_terkait": [
+                4,
+                12
+              ],
+              "output": "Surat peringatan, rekom sanksi"
+            }
           ]
         }
       ]
     }
   },
+  "startup": {
+    "nama": "Pemdi Aceh Tengah",
+    "tagline": "Transformasi Digital Tata Kelola Pemerintahan Aceh Tengah",
+    "model": "Open Source Government Technology",
+    "lisensi": "MIT",
+    "narasumber": "Dinas Komunikasi dan Informatika Kabupaten Aceh Tengah — sebagai Walidata",
+    "target": "Publik & Internal Pemerintah",
+    "hosting": "Vercel (Fullstack — Next.js)",
+    "repositori": "github.com/Niumination/PemdiAcehTengah",
+    "tahapan": [
+      "Fase 1 — Fondasi Data, DOX Framework, Harmonisasi OPD ✅",
+      "Fase 2 — PPB Final: Data Real & Peta Proses Bisnis Hierarki 🔄",
+      "Fase 3 — Fitur Publik, SKM, Kepuasan Pengguna (Q1 2027)",
+      "Fase 4 — Pemdi Dashboard & Evaluasi Mandiri (Q2 2027)"
+    ]
+  },
   "rekomendasi": [
     {
       "prioritas": 1,
       "judul": "Penyusunan Peta Proses Bisnis Terintegrasi",
-      "deskripsi": "Dari 50 perangkat daerah, belum semua memiliki peta proses bisnis yang terdokumentasi sesuai Permenpan 19/2018. Prioritas penyusunan untuk 24 urusan konkuren. Mulai dengan 5 OPD prioritas: Diskominfo, Bappeda, BKPSDM, BPKAD, Dinas Pendidikan.",
+      "deskripsi": "Dari 52 perangkat daerah, belum semua memiliki peta proses bisnis yang terdokumentasi sesuai Permenpan 19/2018. Prioritas penyusunan untuk 24 urusan konkuren. Mulai dengan 5 OPD prioritas: Diskominfo, Bappeda, BKPSDM, BPKAD, Dinas Pendidikan dan Kebudayaan.",
       "dampak": "Tinggi",
       "kesulitan": "Sedang",
       "timeline": "Q3 2026"
@@ -352,7 +1270,7 @@
     {
       "prioritas": 5,
       "judul": "Pembangunan Aplikasi Pemdi Terpadu",
-      "deskripsi": "Nilai Pembangunan Aplikasi SPBE masih 1.00. Portal PemdiAcehTengah sebagai solusi pertama - perlu platform aplikasi terintegrasi dengan arsitektur layanan.",
+      "deskripsi": "Nilai Pembangunan Aplikasi SPBE masih 1.00. Portal PemdiAcehTengah sebagai solusi pertama — perlu platform aplikasi terintegrasi dengan arsitektur layanan.",
       "dampak": "Sedang",
       "kesulitan": "Tinggi",
       "timeline": "2027"
@@ -368,26 +1286,10 @@
     {
       "prioritas": 7,
       "judul": "Penguatan Kapasitas SDM Digital",
-      "deskripsi": "Kompetensi SDM SPBE level 1. Perlu pelatihan dan sertifikasi SDM di bidang TIK dan Pemdi untuk 4.955 ASN — fokus pada 36 instansi.",
+      "deskripsi": "Kompetensi SDM SPBE level 1. Perlu pelatihan dan sertifikasi SDM di bidang TIK dan Pemdi untuk 4.507 ASN — fokus pada 38 instansi.",
       "dampak": "Tinggi",
       "kesulitan": "Tinggi",
       "timeline": "2026–2028"
     }
-  ],
-  "startup": {
-    "nama": "Pemdi Aceh Tengah",
-    "tagline": "Transformasi Digital Tata Kelola Pemerintahan Aceh Tengah",
-    "model": "Open Source Government Technology",
-    "lisensi": "MIT",
-    "narasumber": "Dinas Komunikasi dan Informatika Kabupaten Aceh Tengah — sebagai Walidata",
-    "target": "Publik & Internal Pemerintah",
-    "hosting": "Vercel (Fullstack — Next.js)",
-    "repositori": "github.com/Niumination/PemdiAcehTengah",
-    "tahapan": [
-      "Fase 1 — Fondasi Data, DOX Framework, Harmonisasi OPD ✅",
-      "Fase 2 — PPB Final: Data Real & Peta Proses Bisnis Hierarki 🔄",
-      "Fase 3 — Fitur Publik, SKM, Kepuasan Pengguna (Q1 2027)",
-      "Fase 4 — Pemdi Dashboard & Evaluasi Mandiri (Q2 2027)"
-    ]
-  }
+  ]
 }

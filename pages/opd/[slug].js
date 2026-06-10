@@ -46,6 +46,7 @@ const URUSAN_TO_MISI = {
   'Perumahan dan Permukiman':                'Infrastruktur dan Konektivitas',
   'Perhubungan':                             'Infrastruktur dan Konektivitas',
   'Pertanahan':                              'Infrastruktur dan Konektivitas',
+  'Kepemudaan dan Olahraga':                 'Pariwisata dan Ekonomi Kreatif',
   'Pariwisata, Pemuda dan Olahraga':         'Pariwisata dan Ekonomi Kreatif',
   'Perpustakaan dan Kearsipan':              'Pendidikan dan Pelayanan Publik',
 };
@@ -219,7 +220,7 @@ export default function OPDPage({ opd, urusanTerkait, probisMisi, relatedOpd, pr
                     <td className="info-value">
                       {opd.jumlah_asn > 0 ? (
                         <span className="stat-number-sm">
-                          {((opd.jumlah_asn / 4955) * 100).toFixed(1)}%
+                          {((opd.jumlah_asn / 4507) * 100).toFixed(1)}%
                         </span>
                       ) : (
                         <span style={{ color: 'var(--gray-400)' }}>—</span>
@@ -479,7 +480,7 @@ export default function OPDPage({ opd, urusanTerkait, probisMisi, relatedOpd, pr
 }
 
 /* =============================================
-   STATIC GENERATION — all 50 OPD paths
+   STATIC GENERATION — all 52 OPD paths
    ============================================= */
 export async function getStaticPaths() {
   const { opd } = portalData;
