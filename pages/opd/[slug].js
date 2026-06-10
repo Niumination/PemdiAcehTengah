@@ -57,6 +57,19 @@ function cariUrusanTerkait(probis, opdId) {
     .map((u) => u.nama);
 }
 
+/* Cari proses bisnis spesifik OPD dari Level 2 — opd_semua true atau opd_terkait includes opdId */
+function cariProsesOPD(probis, opdId) {
+  const hasil = [];
+  probis.level_2.kategori.forEach((k) => {
+    k.proses.forEach((p) => {
+      if (p.opd_semua || (p.opd_terkait && p.opd_terkait.includes(opdId))) {
+        hasil.push({ kategori: k.nama, warna: k.warna, icon: k.icon, ...p });
+      }
+    });
+  });
+  return hasil;
+}
+
 /* Cari OPD lain dengan level atau urusan yang sama */
 function cariRelated(daftar, opd, limit = 6) {
   return daftar
@@ -79,7 +92,7 @@ const LEVEL_META = {
 /* =============================================
    PAGE COMPONENT
    ============================================= */
-export default function OPDPage({ opd, urusanTerkait, probisMisi, relatedOpd }) {
+export default function OPDPage({ opd, urusanTerkait, probisMisi, relatedOpd, prosesOPD }) {
   if (!opd) {
     return (
       <div className="container section" style={{ textAlign: 'center', paddingTop: '5rem' }}>
@@ -325,28 +338,20 @@ export default function OPDPage({ opd, urusanTerkait, probisMisi, relatedOpd }) 
             <div className="card ppb-card ppb-level-2">
               <div className="ppb-level-badge">Level 2</div>
               <h3>Proses Bisnis OPD</h3>
-              <p className="ppb-label">Kategori Proses Bisnis</p>
-              <div className="flex flex-wrap gap-1" style={{ marginTop: '0.5rem' }}>
-                {[
-                  { nama: 'Perencanaan',     warna: '#1565c0' },
-                  { nama: 'Pelaksanaan',     warna: '#2e7d32' },
-                  { nama: 'Penganggaran',    warna: '#e65100' },
-                  { nama: 'Monev',           warna: '#6a1b9a' },
-                  { nama: 'Pelayanan Publik',warna: '#00838f' },
-                  { nama: 'Pengawasan',      warna: '#c62828' },
-                ].map((k, i) => (
-                  <span key={i} className="badge ppb-kategori" style={{
-                    background: `${k.warna}18`,
-                    color: k.warna,
-                    border: `1px solid ${k.warna}40`,
+              <p className="ppb-label">Total Proses Terkait</p>
+              <p className="ppb-value" style={{ fontSize: '2rem' }}>{prosesOPD.length}</p>
+              <div className="flex flex-wrap gap-1" style={{ marginTop: '0.75rem' }}>
+                {[...new Set(prosesOPD.map(p => p.kategori))].map(k => (
+                  <span key={k} className="badge badge-sm" style={{
+                    background: `${prosesOPD.find(p => p.kategori === k)?.warna}18`,
+                    color: prosesOPD.find(p => p.kategori === k)?.warna,
+                    border: `1px solid ${prosesOPD.find(p => p.kategori === k)?.warna}40`,
                   }}>
-                    {k.nama}
+                    {k}
                   </span>
                 ))}
               </div>
-              <p className="ppb-footnote">
-                Setiap OPD menjalankan proses bisnis spesifik sesuai tugas dan fungsi
-              </p>
+              <p className="ppb-footnote">Proses bisnis spesifik untuk {opd.singkat}</p>
             </div>
           </div>
 
@@ -374,6 +379,46 @@ export default function OPDPage({ opd, urusanTerkait, probisMisi, relatedOpd }) 
               <strong>{opd.singkat}</strong>
             </div>
           </div>
+
+          {/* Proses Bisnis Spesifik OPD */}
+          {prosesOPD.length > 0 && (
+            <>
+              <div className="section-subheader" style={{ marginTop: '2.5rem', marginBottom: '1.25rem' }}>
+                <h3 style={{ fontSize: '1.125rem', fontWeight: 600, margin: 0 }}>
+                  ⚙️ Proses Bisnis {opd.singkat}
+                </h3>
+                <p style={{ fontSize: '0.8125rem', color: 'var(--muted)', margin: '0.25rem 0 0' }}>
+                  {prosesOPD.length} proses bisnis spesifik berdasarkan tugas dan fungsi {opd.nama}
+                </p>
+              </div>
+              <div className="grid grid-2" style={{ gap: '0.75rem' }}>
+                {prosesOPD.map((p, i) => (
+                  <div key={i} className="card" style={{ padding: '1rem' }}>
+                    <div className="flex items-center gap-2 mb-1">
+                      <span>{p.icon}</span>
+                      <span className="badge badge-sm" style={{
+                        background: `${p.warna}18`, color: p.warna,
+                        border: `1px solid ${p.warna}40`, fontSize: '0.625rem',
+                      }}>
+                        {p.kategori}
+                      </span>
+                    </div>
+                    <h4 style={{ fontSize: '0.875rem', fontWeight: 600, margin: '0.375rem 0 0.25rem' }}>
+                      {p.nama}
+                    </h4>
+                    <p style={{ fontSize: '0.75rem', color: 'var(--muted)', margin: 0 }}>
+                      <span style={{ fontWeight: 600 }}>Output:</span> {p.output}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <div className="flex justify-center" style={{ marginTop: '1.5rem' }}>
+                <a href="/probis#level-2" className="btn btn-outline btn-sm">
+                  Lihat Semua Proses Bisnis →
+                </a>
+              </div>
+            </>
+          )}
         </div>
       </section>
 
@@ -457,6 +502,7 @@ export async function getStaticProps({ params }) {
       urusanTerkait: cariUrusanTerkait(probis, opd.id),
       probisMisi: URUSAN_TO_MISI[opd.urusan] || null,
       relatedOpd: cariRelated(opdSection.daftar, opd),
+      prosesOPD: cariProsesOPD(probis, opd.id),
     },
   };
 }

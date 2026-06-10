@@ -131,15 +131,56 @@
     "level_0": {
       "label": "Visi & Misi",
       "deskripsi": "Aceh Tengah Islami, Maju, Sejahtera, dan Berkeadilan",
+      "sumber": "RPJMD 2025-2030 — Qanun No. 4/2025, diperkuat Prokopim Pemkab Aceh Tengah (Maret 2025)",
       "misi": [
-        "Transformasi Sosial Budaya",
-        "Transformasi Ekonomi",
-        "Transformasi Tata Kelola",
-        "Infrastruktur dan Konektivitas",
-        "Pariwisata dan Ekonomi Kreatif",
-        "Lingkungan Hidup dan Ketahanan Bencana",
-        "Pendidikan dan Pelayanan Publik",
-        "Pemuda dan Olahraga"
+        {
+          "nama": "Transformasi Sosial Budaya",
+          "deskripsi": "Mewujudkan manusia Aceh Tengah yang sehat, cerdas, kreatif, sejahtera, unggul, dan berdaya saing melalui penguatan transformasi sosial berbasis nilai keislaman dan kearifan lokal Gayo",
+          "fokus": ["Penurunan stunting", "Layanan kesehatan universal", "Pendidikan berbasis kearifan lokal", "Gerakan gemar membaca Al-Qur'an", "Perlindungan perempuan dan anak"],
+          "opd_terkait": [8, 9, 13, 15, 28, 30, 31, 32, 35]
+        },
+        {
+          "nama": "Transformasi Ekonomi",
+          "deskripsi": "Mendorong pertumbuhan ekonomi inklusif melalui pengembangan sektor unggulan: pertanian, perkebunan kopi Gayo, perikanan, UMKM, dan ekonomi kreatif",
+          "fokus": ["Kopi Gayo sebagai komoditas unggulan", "Pengembangan UMKM dan koperasi", "Peningkatan daya saing produk lokal", "Kemitraan investor dan akademisi", "Pembukaan lapangan kerja"],
+          "opd_terkait": [16, 22, 23, 26, 27]
+        },
+        {
+          "nama": "Transformasi Tata Kelola",
+          "deskripsi": "Mewujudkan tata kelola pemerintahan yang transparan, akuntabel, efektif, dan efisien melalui transformasi digital dan reformasi birokrasi menuju Pemerintah Digital (Pemdi)",
+          "fokus": ["Pemerintah Digital (Pemdi) — SPBE bertransisi ke Pemdi", "Transparansi dan akuntabilitas", "Digitalisasi layanan publik", "Manajemen ASN berbasis merit", "Pengawasan dan audit internal"],
+          "opd_terkait": [1, 2, 3, 4, 5, 6, 21, 34, 36]
+        },
+        {
+          "nama": "Infrastruktur dan Konektivitas",
+          "deskripsi": "Membangun dan meningkatkan infrastruktur dasar serta konektivitas antarwilayah untuk mendukung pertumbuhan ekonomi dan akses masyarakat terhadap layanan publik",
+          "fokus": ["Konektivitas jalan antar kecamatan", "Fasilitas umum", "Sarana prasarana ekonomi", "Permukiman layak huni", "Infrastruktur digital"],
+          "opd_terkait": [10, 11, 20, 29]
+        },
+        {
+          "nama": "Pariwisata dan Ekonomi Kreatif",
+          "deskripsi": "Mengembangkan pariwisata berbasis alam (Danau Laut Tawar, Gunung, dan budaya Gayo) serta ekonomi kreatif sebagai sektor andalan daerah",
+          "fokus": ["Danau Laut Tawar sebagai destinasi utama", "Ekowisata dan wisata budaya", "Ekonomi kreatif berbasis kopi dan kerajinan Gayo", "Promosi wisata digital", "Desa wisata"],
+          "opd_terkait": [24]
+        },
+        {
+          "nama": "Lingkungan Hidup dan Ketahanan Bencana",
+          "deskripsi": "Mewujudkan pembangunan berkelanjutan yang mengintegrasikan aspek lingkungan dan ketahanan bencana dalam setiap kebijakan daerah",
+          "fokus": ["Pengelolaan Daerah Aliran Sungai (DAS)", "Konservasi kawasan Danau Laut Tawar", "Pengelolaan sampah dan limbah", "Mitigasi bencana (gempa, banjir, longsor)", "Kesiapsiagaan bencana"],
+          "opd_terkait": [7, 17]
+        },
+        {
+          "nama": "Pendidikan dan Pelayanan Publik",
+          "deskripsi": "Meningkatkan mutu pendidikan dan kualitas pelayanan publik yang mudah, cepat, dan terjangkau bagi seluruh masyarakat Aceh Tengah",
+          "fokus": ["Pendidikan dasar dan menengah universal", "Peningkatan mutu guru", "Perpustakaan dan literasi", "Pelayanan adminduk", "Pelayanan perizinan terpadu"],
+          "opd_terkait": [8, 18, 23, 25]
+        },
+        {
+          "nama": "Pemuda dan Olahraga",
+          "deskripsi": "Mengembangkan potensi pemuda dan olahraga sebagai pilar pembangunan daerah yang kreatif, produktif, dan berdaya saing",
+          "fokus": ["Pembinaan atlet muda", "Event olahraga daerah", "Pusat kegiatan pemuda", "Ekonomi kreatif pemuda"],
+          "opd_terkait": [24]
+        }
       ]
     },
     "level_1": {
@@ -185,14 +226,93 @@
     },
     "level_2": {
       "label": "Proses Bisnis OPD",
-      "deskripsi": "Setiap OPD menjalankan proses bisnis spesifik sesuai tugas dan fungsi",
+      "deskripsi": "Setiap OPD menjalankan proses bisnis spesifik sesuai tugas dan fungsi — dikelompokkan dalam 6 kategori proses utama",
       "kategori": [
-        {"nama": "Perencanaan", "warna": "#1565c0"},
-        {"nama": "Pelaksanaan", "warna": "#2e7d32"},
-        {"nama": "Penganggaran", "warna": "#e65100"},
-        {"nama": "Monitoring & Evaluasi", "warna": "#6a1b9a"},
-        {"nama": "Pelayanan Publik", "warna": "#00838f"},
-        {"nama": "Pengawasan", "warna": "#c62828"}
+        {
+          "nama": "Perencanaan",
+          "warna": "#1565c0",
+          "icon": "📋",
+          "deskripsi": "Penyusunan rencana strategis, program, dan kegiatan OPD",
+          "proses": [
+            {"nama": "Penyusunan Renstra OPD", "opd_semua": true, "output": "Dokumen Renstra OPD 5 tahunan"},
+            {"nama": "Penyusunan Renja Tahunan", "opd_semua": true, "output": "Rencana Kerja Tahunan OPD"},
+            {"nama": "Penyusunan RKPD", "opd_terkait": [5], "output": "Rancangan RKPD Kabupaten"},
+            {"nama": "Forum Konsultasi Publik RPJMD", "opd_terkait": [5, 1], "output": "Dokumen RPJMD Final"},
+            {"nama": "Perencanaan Pengadaan Barang/Jasa", "opd_semua": true, "output": "Rencana Umum Pengadaan (RUP)"}
+          ]
+        },
+        {
+          "nama": "Pelaksanaan",
+          "warna": "#2e7d32",
+          "icon": "⚡",
+          "deskripsi": "Pelaksanaan program dan kegiatan sesuai rencana yang telah ditetapkan",
+          "proses": [
+            {"nama": "Pelaksanaan Program dan Kegiatan", "opd_semua": true, "output": "Output kegiatan sesuai target Renja"},
+            {"nama": "Layanan Pendidikan", "opd_terkait": [8, 32], "output": "Layanan PAUD/TK/SD/SMP/SMA/SMK"},
+            {"nama": "Layanan Kesehatan", "opd_terkait": [9, 35], "output": "Layanan Puskesmas, RSUD, Posyandu"},
+            {"nama": "Layanan Administrasi Kependudukan", "opd_terkait": [18], "output": "Akte, KTP, KK, KIA"},
+            {"nama": "Layanan Perizinan dan Non-Perizinan", "opd_terkait": [23], "output": "Izin usaha, IMB, SIUP, dll"},
+            {"nama": "Pembinaan Pertanian dan Peternakan", "opd_terkait": [27, 16], "output": "Penyuluhan, bibit, pupuk, alsintan"},
+            {"nama": "Pengelolaan Pariwisata", "opd_terkait": [24], "output": "Promosi wisata, event, homestay"},
+            {"nama": "Pembinaan UMKM dan Koperasi", "opd_terkait": [22], "output": "Pelatihan, permodalan, pemasaran"},
+            {"nama": "Penyelenggaraan Layanan Kecamatan", "opd_terkait": [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50], "output": "Layanan administrasi kecamatan"},
+            {"nama": "Pengelolaan Komunikasi dan Informatika", "opd_terkait": [21], "output": "Jaringan, aplikasi, portal, data"}
+          ]
+        },
+        {
+          "nama": "Penganggaran",
+          "warna": "#e65100",
+          "icon": "💰",
+          "deskripsi": "Pengelolaan keuangan daerah mulai dari perencanaan hingga pertanggungjawaban",
+          "proses": [
+            {"nama": "Penyusunan RKA-OPD", "opd_semua": true, "output": "Dokumen RKA OPD"},
+            {"nama": "Penyusunan APBD", "opd_terkait": [6, 5], "output": "Qanun APBD Tahunan"},
+            {"nama": "Pelaksanaan Anggaran (SP2D)", "opd_terkait": [6], "output": "SP2D, SPM, LS/GU/TU"},
+            {"nama": "Pengelolaan PAD", "opd_terkait": [6], "output": "Pendapatan Asli Daerah"},
+            {"nama": "Pelaporan Keuangan", "opd_semua": true, "output": "Laporan Keuangan Bulanan/Tahunan"}
+          ]
+        },
+        {
+          "nama": "Monitoring & Evaluasi",
+          "warna": "#6a1b9a",
+          "icon": "📊",
+          "deskripsi": "Pemantauan dan evaluasi pelaksanaan program serta capaian kinerja",
+          "proses": [
+            {"nama": "Monitoring Capaian Kinerja", "opd_semua": true, "output": "Laporan Kinerja Bulanan"},
+            {"nama": "Evaluasi Renstra dan Renja", "opd_semua": true, "output": "Laporan Evaluasi Tahunan"},
+            {"nama": "Cascading Pohon Kinerja", "opd_terkait": [5, 1], "output": "Pohon Kinerja Terintegrasi"},
+            {"nama": "Survei Kepuasan Masyarakat (SKM)", "opd_terkait": [3], "output": "Indeks SKM per OPD"},
+            {"nama": "Evaluasi SPBE/Pemdi", "opd_terkait": [21, 5], "output": "Nilai Indeks SPBE/Pemdi"}
+          ]
+        },
+        {
+          "nama": "Pelayanan Publik",
+          "warna": "#00838f",
+          "icon": "🤝",
+          "deskripsi": "Penyelenggaraan pelayanan publik yang cepat, mudah, transparan, dan akuntabel",
+          "proses": [
+            {"nama": "Standar Pelayanan Publik", "opd_semua": true, "output": "Maklumat pelayanan, SOP pelayanan"},
+            {"nama": "Pengelolaan Pengaduan Masyarakat", "opd_semua": true, "output": "Sistem pengaduan SP4N-LAPOR!"},
+            {"nama": "Pelayanan Adminduk Terpadu", "opd_terkait": [18], "output": "KTP Elektronik, KK, Akta"},
+            {"nama": "PTSP (Perizinan Terpadu Satu Pintu)", "opd_terkait": [23], "output": "Izin berusaha, non-berusaha"},
+            {"nama": "Layanan Kesehatan Publik", "opd_terkait": [9, 35], "output": "BPJS, rawat jalan, rawat inap"},
+            {"nama": "Layanan Pendidikan Publik", "opd_terkait": [8, 32], "output": "PPDB, beasiswa, ijazah"},
+            {"nama": "Layanan Kecamatan", "opd_terkait": [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50], "output": "Surat keterangan, legalisir"}
+          ]
+        },
+        {
+          "nama": "Pengawasan",
+          "warna": "#c62828",
+          "icon": "🔍",
+          "deskripsi": "Pengawasan internal dan eksternal untuk menjamin akuntabilitas dan kepatuhan",
+          "proses": [
+            {"nama": "Audit Internal (Irban)", "opd_terkait": [3], "output": "Laporan Hasil Audit Internal"},
+            {"nama": "Pengawasan Melekat (Waskat)", "opd_semua": true, "output": "Laporan waskat pimpinan OPD"},
+            {"nama": "Audit Laporan Keuangan", "opd_terkait": [3], "output": "Laporan Keuangan Teraudit"},
+            {"nama": "Reviu Kinerja dan Regulasi", "opd_terkait": [3], "output": "Laporan Reviu"},
+            {"nama": "Pengawasan Netralitas ASN", "opd_terkait": [4, 34, 12], "output": "Survei dan pemantauan netralitas"}
+          ]
+        }
       ]
     }
   },
@@ -264,8 +384,8 @@
     "hosting": "Vercel (Fullstack — Next.js)",
     "repositori": "github.com/Niumination/PemdiAcehTengah",
     "tahapan": [
-      "Fase 1 — Fondasi Data & PPB (Juli 2026)",
-      "Fase 2 — PPB Final & Halaman Detail OPD (Q3–Q4 2026)",
+      "Fase 1 — Fondasi Data, DOX Framework, Harmonisasi OPD ✅",
+      "Fase 2 — PPB Final: Data Real & Peta Proses Bisnis Hierarki 🔄",
       "Fase 3 — Fitur Publik, SKM, Kepuasan Pengguna (Q1 2027)",
       "Fase 4 — Pemdi Dashboard & Evaluasi Mandiri (Q2 2027)"
     ]

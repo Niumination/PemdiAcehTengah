@@ -24,7 +24,7 @@ export default function ProbisSection({ data }) {
               className="probis-card"
               style={{ borderLeft: '3px solid var(--primary)', padding: '0.75rem 1rem' }}
             >
-              <h4 style={{ fontSize: '0.8125rem', marginBottom: 0 }}>{misi}</h4>
+              <h4 style={{ fontSize: '0.8125rem', marginBottom: 0 }}>{misi.nama || misi}</h4>
             </div>
           ))}
         </div>
@@ -79,17 +79,19 @@ export default function ProbisSection({ data }) {
               style={{ borderLeft: `3px solid ${k.warna}` }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                <div style={{
-                  width: '12px', height: '12px', borderRadius: '3px',
-                  background: k.warna, flexShrink: 0
-                }} />
+                <span style={{ fontSize: '1.25rem' }}>{k.icon}</span>
                 <h4 style={{ fontSize: '0.9375rem', marginBottom: 0, color: k.warna }}>
                   {k.nama}
                 </h4>
+                <span className="badge" style={{
+                  background: k.warna, color: 'white', fontSize: '0.625rem',
+                  padding: '0.15rem 0.5rem', borderRadius: '100px', marginLeft: 'auto'
+                }}>
+                  {k.proses?.length || 0}
+                </span>
               </div>
-              <p className="mt-1">
-                Proses bisnis kategori {k.nama.toLowerCase()} — mencakup
-                perencanaan, pelaksanaan, dan evaluasi sesuai tugas fungsi OPD terkait.
+              <p className="mt-1" style={{ fontSize: '0.8125rem', color: 'var(--muted)' }}>
+                {k.deskripsi}
               </p>
             </div>
           ))}

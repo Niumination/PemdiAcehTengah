@@ -31,7 +31,7 @@ export default function Home({ data }) {
               SPBE 2025 dan kerangka Permenpan RB 19/2018.
             </p>
             <div className="flex flex-wrap gap-2">
-              <a href="#probis" className="btn btn-white btn-lg">
+              <a href="/probis" className="btn btn-white btn-lg">
                 Jelajahi Peta Proses Bisnis →
               </a>
               <a href="#spbe" className="btn btn-outline btn-lg" style={{ borderColor: 'rgba(255,255,255,0.5)', color: 'white' }}>
