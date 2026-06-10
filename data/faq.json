@@ -1,0 +1,96 @@
+{
+  "metadata": {
+    "pemda": "Kabupaten Aceh Tengah",
+    "update": "2026-06-10"
+  },
+  "kategori": [
+    {
+      "id": "portal",
+      "nama": "Portal Pemdi",
+      "ikon": "🌐",
+      "pertanyaan": [
+        {
+          "tanya": "Apa itu Pemdi Aceh Tengah?",
+          "jawab": "Pemdi (Pemerintah Digital) Aceh Tengah adalah portal resmi Pemerintah Kabupaten Aceh Tengah untuk layanan digital terpadu. Portal ini menyajikan data perangkat daerah, proses bisnis, indeks SPBE/Pemdi, serta direktori layanan publik."
+        },
+        {
+          "tanya": "Bagaimana cara mencari perangkat daerah?",
+          "jawab": "Gunakan fitur pencarian di halaman <a href=\"/\">Beranda</a> pada tabel Perangkat Daerah. Anda bisa mencari berdasarkan nama atau urusan OPD."
+        },
+        {
+          "tanya": "Apakah data di portal ini real-time?",
+          "jawab": "Data diperbarui secara berkala. Sumber data utama adalah Dinas Komunikasi dan Informatika Kabupaten Aceh Tengah (update terakhir: 14 Januari 2026) dan data ASN dari e-Keurani BKPSDM (Mei 2026)."
+        },
+        {
+          "tanya": "Apakah portal ini open source?",
+          "jawab": "Ya! Portal ini dibangun dengan framework DOX (self-documenting system) dan lisensi MIT. Seluruh kode sumber tersedia di <a href=\"https://github.com/Niumination/PemdiAcehTengah\" target=\"_blank\">github.com/Niumination/PemdiAcehTengah</a>."
+        }
+      ]
+    },
+    {
+      "id": "layanan",
+      "nama": "Layanan Publik",
+      "ikon": "📋",
+      "pertanyaan": [
+        {
+          "tanya": "Di mana saya bisa mengurus KTP-el?",
+          "jawab": "KTP-el dapat diurus di Kantor Dinas Kependudukan dan Pencatatan Sipil (Disdukcapil) Kabupaten Aceh Tengah. Beberapa persyaratan sudah bisa dilakukan secara online. Kunjungi halaman <a href=\"/layanan\">Layanan Publik</a> untuk informasi lengkap."
+        },
+        {
+          "tanya": "Apakah layanan perizinan bisa diurus online?",
+          "jawab": "Beberapa layanan perizinan di DPMPTSP sudah bisa diurus secara online, seperti SIUP dan TDP. Untuk IMB dan Izin Lingkungan masih memerlukan verifikasi fisik. Detail lengkap ada di <a href=\"/layanan\">Direktori Layanan</a>."
+        },
+        {
+          "tanya": "Berapa biaya pembuatan KTP?",
+          "jawab": "Pembuatan KTP-el <strong>GRATIS</strong> (tidak dipungut biaya). Jika ada oknum yang meminta biaya, silakan laporkan melalui <a href=\"/skm\">Laporan/Survei</a>."
+        },
+        {
+          "tanya": "Bagaimana cara daftar BPJS Kesehatan?",
+          "jawab": "Pendaftaran BPJS Kesehatan dapat dilakukan secara online melalui aplikasi Mobile JKN atau datang ke Puskesmas/Rumah Sakit terdekat dengan membawa KK dan KTP."
+        }
+      ]
+    },
+    {
+      "id": "spbe",
+      "nama": "SPBE & Pemdi",
+      "ikon": "📊",
+      "pertanyaan": [
+        {
+          "tanya": "Apa perbedaan SPBE dan Pemdi?",
+          "jawab": "SPBE (Sistem Pemerintahan Berbasis Elektronik) adalah kerangka lama berdasarkan Permenpan 59/2020 dengan 4 domain penilaian. Pemdi (Pemerintah Digital) adalah kerangka baru berdasarkan Permenpan 8/2026 dengan 7 aspek dan 20 indikator — lebih fokus pada keterpaduan layanan dan kepuasan pengguna."
+        },
+        {
+          "tanya": "Apa nilai SPBE Aceh Tengah saat ini?",
+          "jawab": "Indeks SPBE Kabupaten Aceh Tengah tahun 2025 adalah <strong>2,59</strong> (kategori Cukup). Detail lengkap ada di dashboard <a href=\"/\">Beranda</a>."
+        },
+        {
+          "tanya": "Apa target Indeks Pemdi 2026?",
+          "jawab": "Target Indeks Pemdi 2026 adalah <strong>2,50</strong> (kategori Baik). Baseline saat ini adalah 1,68 (Cukup). Dashboard lengkap ada di halaman <a href=\"/pemdi\">Indeks Pemdi</a>."
+        },
+        {
+          "tanya": "Apa itu PPB?",
+          "jawab": "PPB (Peta Proses Bisnis) adalah pemetaan alur kerja dan layanan di setiap perangkat daerah. Aceh Tengah memiliki 6 kategori Level 2 dengan 31 proses bisnis spesifik. Lihat di halaman <a href=\"/probis\">Peta Proses Bisnis</a>."
+        }
+      ]
+    },
+    {
+      "id": "teknis",
+      "nama": "Teknis & Pengaduan",
+      "ikon": "🔧",
+      "pertanyaan": [
+        {
+          "tanya": "Website ini tidak bisa diakses, ada masalah?",
+          "jawab": "Jika portal tidak bisa diakses, coba refresh halaman atau gunakan browser lain (Chrome/Firefox/Edge). Jika masalah berlanjut, laporkan melalui halaman <a href=\"/skm\">Survei & Laporan</a> atau hubungi Dinas Kominfo Aceh Tengah."
+        },
+        {
+          "tanya": "Bagaimana cara melaporkan pelayanan yang tidak sesuai?",
+          "jawab": "Anda dapat melaporkan melalui fitur <strong>Lapor</strong> yang tersedia di portal ini. Laporan Anda akan ditindaklanjuti oleh OPD terkait. Status laporan bisa dilacak secara real-time."
+        },
+        {
+          "tanya": "Siapa yang mengelola portal ini?",
+          "jawab": "Portal ini dikelola oleh <strong>Diskominfo Kabupaten Aceh Tengah</strong> bekerja sama dengan <strong>Tim Pengembangan Pemda Digital</strong>."
+        }
+      ]
+    }
+  ]
+}

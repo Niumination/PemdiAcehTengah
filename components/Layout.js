@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import ScrollTop from './ScrollTop';
+import LaporWidget from './LaporWidget';
 
 export default function Layout({ children }) {
   const [loaded, setLoaded] = useState(false);
@@ -16,6 +17,7 @@ export default function Layout({ children }) {
       <main>{children}</main>
       <Footer />
       <ScrollTop />
+      <LaporWidget />
     </div>
   );
 }

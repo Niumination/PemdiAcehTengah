@@ -184,6 +184,45 @@ export default function Home({ data }) {
         </div>
       </section>
 
+      {/* ============ FITUR PUBLIK ============ */}
+      <section className="section" id="fitur">
+        <div className="container">
+          <div className="section-header">
+            <h2>🛠️ Layanan & Fitur Publik</h2>
+            <p>
+              Portal layanan digital terpadu — akses informasi, laporkan masalah, dan
+              bantu kami terus berbenah.
+            </p>
+          </div>
+          <div className="grid grid-4">
+            <a href="/layanan" className="card fitur-card" style={{ textDecoration: 'none' }}>
+              <div className="fitur-icon">📋</div>
+              <h3>Direktori Layanan</h3>
+              <p>27 layanan publik dalam 7 kategori — cek status, biaya, SLA, dan syarat</p>
+              <span className="fitur-link">Jelajahi →</span>
+            </a>
+            <a href="/skm" className="card fitur-card" style={{ textDecoration: 'none' }}>
+              <div className="fitur-icon">📝</div>
+              <h3>Survei Kepuasan</h3>
+              <p>Beri nilai pelayanan publik — 8 dimensi, 2 menit saja. Anonim & aman</p>
+              <span className="fitur-link">Isi Survei →</span>
+            </a>
+            <a href="/faq" className="card fitur-card" style={{ textDecoration: 'none' }}>
+              <div className="fitur-icon">❓</div>
+              <h3>Tanya Jawab</h3>
+              <p>Pertanyaan umum seputar layanan, portal, SPBE, dan Pemdi — jawaban cepat</p>
+              <span className="fitur-link">Lihat FAQ →</span>
+            </a>
+            <div className="card fitur-card" style={{ cursor: 'default' }}>
+              <div className="fitur-icon">💬</div>
+              <h3>Lapor / Saran</h3>
+              <p>Laporkan masalah atau beri saran via tombol <strong>💬</strong> di pojok kanan bawah</p>
+              <span className="fitur-link" style={{ color: 'var(--muted)' }}>Selalu Tersedia</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ============ PERANGKAT DAERAH ============ */}
       <section className="section" id="opd">
         <div className="container">

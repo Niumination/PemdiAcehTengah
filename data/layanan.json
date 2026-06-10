@@ -1,0 +1,119 @@
+{
+  "metadata": {
+    "pemda": "Kabupaten Aceh Tengah",
+    "tahun": 2026,
+    "sumber": "Dinas Komunikasi dan Informatika Kabupaten Aceh Tengah",
+    "update": "2026-06-10"
+  },
+  "kategori": [
+    {
+      "id": "kependudukan",
+      "nama": "Kependudukan & Catatan Sipil",
+      "ikon": "👥",
+      "warna": "#1d70b8",
+      "opd": "Dinas Kependudukan dan Pencatatan Sipil",
+      "opd_slug": "dinas-kependudukan-dan-pencatatan-sipil",
+      "tautan": null,
+      "layanan": [
+        { "nama": "Pembuatan KTP-el", "deskripsi": "Penerbitan Kartu Tanda Penduduk elektronik WNI ≥17 tahun", "waktu": "14 hari", "biaya": "Gratis", "status": "Aktif", "sla": "92%", "online": true, "tautan": null, "persyaratan": "Fotokopi KK, akta kelahian, surat pengantar" },
+        { "nama": "Kartu Keluarga (KK)", "deskripsi": "Penerbitan/perubahan Kartu Keluarga", "waktu": "7 hari", "biaya": "Gratis", "status": "Aktif", "sla": "90%", "online": true, "tautan": null, "persyaratan": "Form KK, dokumen pendukung perubahan" },
+        { "nama": "Akta Kelahiran", "deskripsi": "Pencatatan dan penerbitan akta kelahiran", "waktu": "14 hari", "biaya": "Gratis", "status": "Aktif", "sla": "95%", "online": true, "tautan": null, "persyaratan": "Surat keterangan lahir dari bidan/rumah sakit" },
+        { "nama": "Akta Kematian", "deskripsi": "Pencatatan dan penerbitan akta kematian", "waktu": "7 hari", "biaya": "Gratis", "status": "Aktif", "sla": "88%", "online": false, "tautan": null, "persyaratan": "Surat kematian dari dokter/kelurahan" },
+        { "nama": "Kartu Identitas Anak (KIA)", "deskripsi": "Penerbitan KIA untuk anak <17 tahun", "waktu": "14 hari", "biaya": "Gratis", "status": "Aktif", "sla": "85%", "online": false, "tautan": null, "persyaratan": "KK, akta kelahiran" }
+      ]
+    },
+    {
+      "id": "perizinan",
+      "nama": "Perizinan & Non-Perizinan",
+      "ikon": "📋",
+      "warna": "#6f42c1",
+      "opd": "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu (DPMPTSP)",
+      "opd_slug": "dinas-penanaman-modal-dan-pelayanan-terpadu-satu-pintu",
+      "tautan": null,
+      "layanan": [
+        { "nama": "Surat Izin Usaha Perdagangan (SIUP)", "deskripsi": "Izin usaha bagi perusahaan perdagangan", "waktu": "5 hari", "biaya": "Rp 150.000", "status": "Aktif", "sla": "90%", "online": true, "tautan": null, "persyaratan": "Akta pendirian, NPWP, KTP" },
+        { "nama": "Izin Mendirikan Bangunan (IMB)", "deskripsi": "Izin konstruksi bangunan gedung", "waktu": "30 hari", "biaya": "Bervariasi", "status": "Aktif", "sla": "80%", "online": true, "tautan": null, "persyaratan": "Sertifikat tanah, gambar bangunan" },
+        { "nama": "Tanda Daftar Perusahaan (TDP)", "deskripsi": "Pendaftaran perusahaan wajib bagi pelaku usaha", "waktu": "3 hari", "biaya": "Rp 100.000", "status": "Aktif", "sla": "95%", "online": true, "tautan": null, "persyaratan": "Akta notaris, KTP pengurus" },
+        { "nama": "Izin Lingkungan", "deskripsi": "Izin terkait dampak lingkungan kegiatan usaha", "waktu": "45 hari", "biaya": "Bervariasi", "status": "Aktif", "sla": "75%", "online": false, "tautan": null, "persyaratan": "AMDAL/UKL-UPL" },
+        { "nama": "Sertifikat Halal", "deskripsi": "Sertifikasi halal untuk produk UMKM", "waktu": "30 hari", "biaya": "Gratis (selektif)", "status": "Aktif", "sla": "82%", "online": true, "tautan": null, "persyaratan": "Daftar bahan, proses produksi" }
+      ]
+    },
+    {
+      "id": "kesehatan",
+      "nama": "Kesehatan",
+      "ikon": "🏥",
+      "warna": "#d4351c",
+      "opd": "Dinas Kesehatan",
+      "opd_slug": "dinas-kesehatan",
+      "tautan": null,
+      "layanan": [
+        { "nama": "Jaminan Kesehatan Nasional (JKN)", "deskripsi": "Pendaftaran dan pengelolaan kepesertaan BPJS Kesehatan", "waktu": "1 hari", "biaya": "Gratis (PBI)", "status": "Aktif", "sla": "95%", "online": true, "tautan": null, "persyaratan": "KK, KTP" },
+        { "nama": "Imunisasi Anak", "deskripsi": "Program imunisasi dasar lengkap untuk balita", "waktu": "Sesuai jadwal", "biaya": "Gratis", "status": "Aktif", "sla": "88%", "online": false, "tautan": null, "persyaratan": "Buku KIA, KMS" },
+        { "nama": "Pelayanan KB", "deskripsi": "Keluarga Berencana — kontrasepsi & konseling", "waktu": "1 hari", "biaya": "Gratis", "status": "Aktif", "sla": "85%", "online": false, "tautan": null, "persyaratan": "KTP, surat rujukan" }
+      ]
+    },
+    {
+      "id": "pendidikan",
+      "nama": "Pendidikan",
+      "ikon": "📚",
+      "warna": "#28a197",
+      "opd": "Dinas Pendidikan",
+      "opd_slug": "dinas-pendidikan",
+      "tautan": null,
+      "layanan": [
+        { "nama": "Penerimaan Peserta Didik Baru (PPDB)", "deskripsi": "Pendaftaran siswa baru SD/SMP negeri", "waktu": "Musiman", "biaya": "Gratis", "status": "Aktif", "sla": "95%", "online": true, "tautan": null, "persyaratan": "KK, akta kelahiran, rapor" },
+        { "nama": "Beasiswa Miskin Berprestasi", "deskripsi": "Bantuan pendidikan bagi siswa kurang mampu berprestasi", "waktu": "60 hari", "biaya": "Gratis", "status": "Aktif", "sla": "80%", "online": false, "tautan": null, "persyaratan": "Surat keterangan tidak mampu, rapor" },
+        { "nama": "Ijazah & Legalisir", "deskripsi": "Penerbitan dan legalisir ijazah SD/SMP", "waktu": "3 hari", "biaya": "Gratis", "status": "Aktif", "sla": "90%", "online": false, "tautan": null, "persyaratan": "Fotokopi ijazah asli" }
+      ]
+    },
+    {
+      "id": "sosial",
+      "nama": "Sosial & Bantuan",
+      "ikon": "🤝",
+      "warna": "#e65100",
+      "opd": "Dinas Sosial",
+      "opd_slug": "dinas-sosial",
+      "tautan": null,
+      "layanan": [
+        { "nama": "Bantuan Sosial Tunai (BST)", "deskripsi": "Bantuan langsung tunai untuk masyarakat miskin", "waktu": "30 hari", "biaya": "Gratis", "status": "Aktif", "sla": "85%", "online": false, "tautan": null, "persyaratan": "Terdaftar di DTKS" },
+        { "nama": "Program Keluarga Harapan (PKH)", "deskripsi": "Bantuan bersyarat untuk keluarga miskin", "waktu": "30 hari", "biaya": "Gratis", "status": "Aktif", "sla": "90%", "online": false, "tautan": null, "persyaratan": "Terdaftar di DTKS, memiliki ibu hamil/anak sekolah" },
+        { "nama": "Kartu Aceh Sejahtera", "deskripsi": "Jaminan sosial daerah Aceh", "waktu": "30 hari", "biaya": "Gratis", "status": "Aktif", "sla": "82%", "online": true, "tautan": null, "persyaratan": "KTP Aceh, SKTM" }
+      ]
+    },
+    {
+      "id": "kecamatan",
+      "nama": "Kecamatan & Gampong",
+      "ikon": "🏘️",
+      "warna": "#00838f",
+      "opd": "Semua Kecamatan",
+      "opd_slug": null,
+      "tautan": null,
+      "layanan": [
+        { "nama": "Surat Keterangan Tidak Mampu (SKTM)", "deskripsi": "Surat keterangan untuk mengakses program bantuan", "waktu": "1 hari", "biaya": "Gratis", "status": "Aktif", "sla": "98%", "online": false, "tautan": null, "persyaratan": "KTP, KK" },
+        { "nama": "Pengantar KTP/KK", "deskripsi": "Surat pengantar dari desa/kelurahan untuk pembuatan dokumen", "waktu": "1 hari", "biaya": "Gratis", "status": "Aktif", "sla": "97%", "online": false, "tautan": null, "persyaratan": "KTP" },
+        { "nama": "Surat Izin Keramaian", "deskripsi": "Izin penyelenggaraan acara/hajatan", "waktu": "3 hari", "biaya": "Gratis", "status": "Aktif", "sla": "90%", "online": false, "tautan": null, "persyaratan": "KTP, surat RT/RW" }
+      ]
+    },
+    {
+      "id": "pajak",
+      "nama": "Pajak & Retribusi",
+      "ikon": "💰",
+      "warna": "#859900",
+      "opd": "Badan Pengelola Keuangan (BPKAD)",
+      "opd_slug": "badan-pengelola-keuangan-bpkad",
+      "tautan": null,
+      "layanan": [
+        { "nama": "Pajak Bumi dan Bangunan (PBB)", "deskripsi": "Pembayaran PBB dan cek informasi SPPT", "waktu": "1 hari", "biaya": "Sesuai NJOP", "status": "Aktif", "sla": "92%", "online": true, "tautan": null, "persyaratan": "SPPT PBB" },
+        { "nama": "BPHTB", "deskripsi": "Bea Perolehan Hak atas Tanah dan Bangunan", "waktu": "5 hari", "biaya": "5% dari NJOP", "status": "Aktif", "sla": "85%", "online": false, "tautan": null, "persyaratan": "AJB, KTP, NPWP" },
+        { "nama": "Pajak Daerah Lainnya", "deskripsi": "Pajak hotel, restoran, hiburan, parkir", "waktu": "1 hari", "biaya": "Bervariasi", "status": "Aktif", "sla": "88%", "online": true, "tautan": null, "persyaratan": "NPWP, laporan omzet" }
+      ]
+    }
+  ],
+  "ringkasan": {
+    "total_kategori": 7,
+    "total_layanan": 27,
+    "layanan_online": 14,
+    "layanan_offline": 13,
+    "keterangan": "Data masih partial — akan diperbarui setelah validasi dari masing-masing OPD"
+  }
+}
