@@ -21,7 +21,7 @@ export default function LaporWidget() {
 
       {buka && (
         <div className="lapor-overlay" onClick={() => setBuka(false)}>
-          <div className="lapor-modal" onClick={e => e.stopPropagation()}>
+          <div className="lapor-modal" onClick={e => e.stopPropagation()} role="dialog" aria-modal="true" aria-label="Lapor / Saran">
             <button className="lapor-close" onClick={() => setBuka(false)}>✕</button>
             <div className="lapor-header">
               <span className="lapor-icon">💬</span>

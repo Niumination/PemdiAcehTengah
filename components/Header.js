@@ -29,6 +29,8 @@ export default function Header() {
           <a href="/pemdi">📊 Pemdi</a>
           <a href="/faq">❓ FAQ</a>
           <a href="/skm">📝 Survei</a>
+          <a href="/cari" className="nav-search-link">🔍 Cari</a>
+          <a href="/tanya">💬 Tanya</a>
           <a href="#tentang">Tentang</a>
         </nav>
       </div>

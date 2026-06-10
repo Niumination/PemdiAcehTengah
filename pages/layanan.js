@@ -1,14 +1,15 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import layanan from '@/data/layanan.json';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
+import SlaBadge from '@/components/SlaBadge';
+import layananData from '@/data/layanan.json';
 
 const STATUS_WARNA = { Aktif: 'badge-green', Nonaktif: 'badge-red', Terbatas: 'badge-orange' };
 
 export default function LayananPage() {
   const [kategoriAktif, setKategoriAktif] = useState(null);
   const [cari, setCari] = useState('');
-  const { kategori, ringkasan } = layanan;
+  const { kategori, ringkasan } = layananData;
 
   const semuaLayanan = kategori.flatMap(k =>
     k.layanan.map(l => ({ ...l, kategori: k.nama, kategoriId: k.id, ikon: k.ikon, warna: k.warna }))
@@ -23,6 +24,18 @@ export default function LayananPage() {
       : true;
     return matchKategori && matchCari;
   });
+
+  // SLA aggregates over ALL services (not just filtered)
+  const slaAngka = semuaLayanan
+    .map(l => parseInt(l.sla))
+    .filter(v => !isNaN(v));
+  const slaRata = slaAngka.length
+    ? Math.round(slaAngka.reduce((a, b) => a + b, 0) / slaAngka.length)
+    : 0;
+  const slaTinggi = slaAngka.filter(v => v >= 90).length;
+  function getSlaWarna(pct) {
+    return pct >= 90 ? '#00703c' : pct >= 80 ? '#e65100' : '#c62828';
+  }
 
   return (
     <>
@@ -65,6 +78,7 @@ export default function LayananPage() {
               value={cari}
               onChange={e => setCari(e.target.value)}
               className="search-input"
+              aria-label="Cari layanan publik"
             />
             {cari && <button className="search-clear" onClick={() => setCari('')}>✕</button>}
           </div>
@@ -74,7 +88,7 @@ export default function LayananPage() {
       {/* ============ STATS ============ */}
       <section className="section" style={{ padding: '1.5rem 0' }}>
         <div className="container">
-          <div className="grid grid-3" style={{ gap: '0.75rem' }}>
+          <div className="grid grid-4" style={{ gap: '0.75rem' }}>
             <div className="card" style={{ padding: '1rem', textAlign: 'center' }}>
               <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--primary)' }}>{ringkasan.total_layanan}</div>
               <div style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>Total Layanan</div>
@@ -86,6 +100,13 @@ export default function LayananPage() {
             <div className="card" style={{ padding: '1rem', textAlign: 'center' }}>
               <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#e65100' }}>{ringkasan.layanan_offline}</div>
               <div style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>Datang Langsung</div>
+            </div>
+            <div className="card" style={{ padding: '1rem', textAlign: 'center' }}>
+              <div style={{ fontSize: '1.5rem', fontWeight: 700, color: getSlaWarna(slaRata) }}>{slaRata}%</div>
+              <div style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>Rata-rata SLA</div>
+              <div style={{ fontSize: '0.625rem', marginTop: '0.25rem', color: 'var(--muted)' }}>
+                {slaTinggi} layanan ≥90%
+              </div>
             </div>
           </div>
         </div>
@@ -123,10 +144,7 @@ export default function LayananPage() {
                       <span className="meta-label">💰 {l.biaya}</span>
                     </div>
                     <div className="layanan-meta-item">
-                      <span className="meta-label">SLA</span>
-                      <span className={`sla-badge ${parseInt(l.sla) >= 90 ? 'sla-high' : parseInt(l.sla) >= 80 ? 'sla-mid' : 'sla-low'}`}>
-                        {l.sla}
-                      </span>
+                      <SlaBadge sla={l.sla} compact={true} />
                     </div>
                   </div>
                   <div className="layanan-opd">
@@ -248,10 +266,6 @@ export default function LayananPage() {
         .layanan-meta { display: flex; gap: 1.25rem; margin-top: 0.75rem; flex-wrap: wrap; }
         .layanan-meta-item { font-size: 0.75rem; color: var(--muted); display: flex; align-items: center; gap: 0.375rem; }
         .meta-label { color: var(--gray-600); }
-        .sla-badge { padding: 0.125rem 0.5rem; border-radius: 100px; font-weight: 600; font-size: 0.6875rem; }
-        .sla-high { background: #e8f5e9; color: #2e7d32; }
-        .sla-mid { background: #fff3e0; color: #e65100; }
-        .sla-low { background: #ffebee; color: #c62828; }
         .layanan-opd { font-size: 0.75rem; margin-top: 0.5rem; color: var(--gray-600); }
         .layanan-opd a { font-weight: 500; }
         .layanan-details { margin-top: 0.5rem; font-size: 0.75rem; color: var(--muted); }

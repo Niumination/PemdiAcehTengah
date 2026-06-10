@@ -64,6 +64,40 @@
   --transition-slow: 300ms ease;
 }
 
+/* --- Accessibility & Focus --- */
+.skip-link {
+  position: absolute;
+  top: -999px;
+  left: 0;
+  z-index: 10000;
+  padding: 0.5rem 1rem;
+  background: #1d70b8;
+  color: white;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-decoration: none;
+  border-radius: 0 0 4px 0;
+}
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid #fd0;
+  outline-offset: 0;
+}
+:focus-visible {
+  outline: 2px solid #1d70b8;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #fd0;
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
 /* --- Reset & Base --- */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -238,7 +272,11 @@ small { font-size: 0.875rem; color: var(--gray-600); }
 }
 .gov-nav a.active {
   background: var(--primary);
-  color: var(--white);
+  color: white;
+}
+.gov-nav a.nav-search-link {
+  color: #1d70b8;
+  font-weight: 600;
 }
 
 .mobile-menu-btn {
@@ -421,6 +459,8 @@ small { font-size: 0.875rem; color: var(--gray-600); }
 .badge-green { background: var(--success-light); color: var(--success); }
 .badge-orange { background: var(--warning-light); color: var(--warning); }
 .badge-gray { background: var(--gray-100); color: var(--gray-700); }
+.badge-purple { background: #e8d4f5; color: #6f42c1; }
+.badge-cyan { background: #d1f5f0; color: #0d9488; }
 
 /* --- SPBE Index Gauge --- */
 .spbe-gauge {
