@@ -6,8 +6,9 @@ export default function OPDTable({ data }) {
 
   if (!opd) return null;
 
-  const filtered = opd.instansi.filter((d) =>
-    d.nama.toLowerCase().includes(search.toLowerCase())
+  const filtered = opd.daftar.filter((d) =>
+    d.nama.toLowerCase().includes(search.toLowerCase()) ||
+    d.urusan.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
@@ -36,6 +37,7 @@ export default function OPDTable({ data }) {
               <th>#</th>
               <th>Perangkat Daerah</th>
               <th>Level</th>
+              <th style={{ textAlign: 'right' }}>ASN</th>
               <th>Urusan</th>
             </tr>
           </thead>
@@ -47,6 +49,9 @@ export default function OPDTable({ data }) {
                 <td>
                   <span className="badge badge-blue">{d.level}</span>
                 </td>
+                <td style={{ textAlign: 'right', fontVariantNumeric: 'tabular-nums' }}>
+                  {d.jumlah_asn > 0 ? d.jumlah_asn.toLocaleString() : <span style={{color:'var(--gray-400)'}}>—</span>}
+                </td>
                 <td style={{ color: 'var(--gray-600)', fontSize: '0.8125rem' }}>{d.urusan}</td>
               </tr>
             ))}
@@ -54,8 +59,8 @@ export default function OPDTable({ data }) {
         </table>
       </div>
       <div className="flex items-center justify-between mt-2">
-        <small>{filtered.length} dari {opd.instansi.length} perangkat daerah</small>
-        <small>Total: {opd.total_perangkat_daerah} PD ({opd.total_instansi} instansi + {opd.total_kecamatan} kecamatan)</small>
+        <small>{filtered.length} dari {opd.daftar.length} perangkat daerah</small>
+        <small>Total: {opd.ringkasan.total_opd} PD ({opd.ringkasan.instansi} instansi + {opd.ringkasan.kecamatan} kecamatan, {opd.ringkasan.total_asn.toLocaleString()} ASN)</small>
       </div>
     </div>
   );

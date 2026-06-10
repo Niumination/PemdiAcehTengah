@@ -40,11 +40,11 @@ export default function Home({ data }) {
             </div>
             <div className="hero-stats">
               <div className="hero-stat">
-                <div className="hero-stat-num">{opd.total_instansi}</div>
+                <div className="hero-stat-num">{opd.ringkasan.instansi}</div>
                 <div className="hero-stat-label">Instansi Pemerintah</div>
               </div>
               <div className="hero-stat">
-                <div className="hero-stat-num">{opd.total_kecamatan}</div>
+                <div className="hero-stat-num">{opd.ringkasan.kecamatan}</div>
                 <div className="hero-stat-label">Kecamatan</div>
               </div>
               <div className="hero-stat">
@@ -135,7 +135,7 @@ export default function Home({ data }) {
           <div className="section-header">
             <h2>Perangkat Daerah</h2>
             <p>
-              {opd.total_instansi} instansi dan {opd.total_kecamatan} kecamatan
+              {opd.ringkasan.instansi} instansi dan {opd.ringkasan.kecamatan} kecamatan
               di lingkungan Pemerintah Kabupaten Aceh Tengah.
               Sumber data: Dinas Komunikasi dan Informatika (14 Januari 2026).
             </p>

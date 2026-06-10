@@ -4,16 +4,16 @@ Single source of truth: `data/opd.json`. Struktur data terbagi dalam 5 layer: me
 
 ## Source Data
 
-Data berasal dari 2 sumber yang **belum sepenuhnya harmonized**:
+Data berasal dari **e-Keurani BKPSDM** (sumber tunggal terharmonisasi):
 
 | Sumber | Cakupan | Jumlah | Status |
 |--------|---------|--------|--------|
-| **e-Keurani BKPSDM** | Semua OPD + jumlah ASN | **50 entries** (36 non-kecamatan + 14 kecamatan) | ✅ Data riil Mei 2026 |
-| **SPBE Laporan 2025** | Instansi yang dinilai SPBE | **38 instansi + 14 kecamatan = 52 entries** | ⚠️ Tidak termasuk RSUD, Korpri, dan beberapa OPD |
+| **e-Keurani BKPSDM** | Semua OPD + jumlah ASN | **50 entries** (36 instansi + 14 kecamatan) | ✅ Data riil Mei 2026 — **sumber tunggal** |
 
-**Gap OPD**: 12 OPD di e-Keurani tidak tercatat di data SPBE (RSUD Datu Beru 466 ASN, Korpri 7, MPU 13, MAG 8, Baitul Mal 6, MPD 6, Pertanahan 18, Syariat Islam-Dayah 35, Kesbangpol 15, Transmigrasi-TK 33, dll). `data/opd.json` saat ini pakai sumber SPBE (52 entries).
-
-**Rekomendasi**: Update `data/opd.json` ke 50 OPD + jumlah ASN dari e-Keurani untuk akurasi.
+**Harmonisasi selesai ✅**: Data SPBE (38 instansi + 14 kecamatan) telah digabung dengan e-Keurani. Perbedaan:
+- OPD yang **ditambahkan**: RSUD Datu Beru (466 ASN), Korpri (7), set OP migrated ke 50 entries
+- OPD yang **digabung/direname**: 22 dinas hasil merger (Pariwisata+Pemuda, Perdagangan+Koperasi, Syariat Islam+Pendidikan Dayah)
+- Format baru: `opd.daftar[]` flat array, bukan `instansi[]` + `kecamatan[]` terpisah
 
 ## Struktur opd.json
 
@@ -35,9 +35,19 @@ Data berasal dari 2 sumber yang **belum sepenuhnya harmonized**:
 }
 ```
 
-### OPD (Array)
+### OPD (Array — 50 entries di `opd.daftar`)
 
-50 entries dari e-Keurani, dikelompokkan:
+```json
+{
+  "id": 1,
+  "nama": "Sekretariat Daerah",
+  "level": "Staf|Badan|Dinas|Lembaga|Kecamatan",
+  "singkat": "Setda",
+  "jumlah_asn": 100,
+  "urusan": "Sekretariat Daerah",
+  "jenis": "instansi|kecamatan"
+}
+```
 - **Unsur Staf Pemerintah** (3): Setda, Sekretariat DPRK, Inspektorat
 - **Badan Daerah** (4): BKPSDM, Bappeda, BPKAD, BPBD
 - **Dinas Daerah** (22): Pendidikan (1.974 ASN), Kesehatan (937), PUPR (61), Perkim (24), Satpol PP-WH (67), Sosial (22), Transmigrasi-TK (33), KB-PPPA (30), Pangan (0), LH (43), Disdukcapil (26), DPMK (32), Perhubungan (22), Diskominfo (29), Perdagangan KUKM (47), DPMPTSP (34), Pariwisata-PO (47), Perpustakaan-Arsip (36), Perikanan (56), Pertanian (114), Syariat Islam-Dayah (35), Pertanahan (18)
@@ -106,5 +116,5 @@ Proyeksi dari baseline SPBE 2025: ~2,375 (Cukup). Perlu kerja keras di Kepuasan 
 
 ## File
 
-- `opd.json` — master data (52 entries dari SPBE, perlu harmonisasi ke 50 OPD)
+- `opd.json` — master data (50 OPD dari e-Keurani BKPSDM ✅ harmonized)
 - `AGENTS.md` — **file ini**
