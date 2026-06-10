@@ -1,0 +1,115 @@
+{
+  "tentang": "Indeks Pemerintah Digital (Indeks Pemdi) — Permenpan RB 8/2026",
+  "tahun": 2026,
+  "target_indeks": 2.5,
+  "target_predikat": "Baik",
+  "baseline_spbe": 2.59,
+  "baseline_predikat": "Cukup",
+  "catatan": "Nilai baseline adalah estimasi dari konversi SPBE 2.59 ke framework Pemdi 7 aspek × 20 indikator. Beberapa indikator baru (PDP, Keamanan Siber, AI) belum memiliki baseline di Aceh Tengah.",
+  "aspek": [
+    {
+      "id": 1,
+      "nama": "Tata Kelola & Manajemen",
+      "singkat": "Tata Kelola",
+      "bobot": 10,
+      "warna": "#1d70b8",
+      "deskripsi": "Kesiapan tata kelola Pemerintah Digital dan pengelolaan layanan digital pemerintah",
+      "target": 2.5,
+      "nilai": 1.85,
+      "indikator": [
+        { "id": "I1", "nama": "Tata Kelola Pemdi", "deskripsi": "Kebijakan internal, struktur organisasi, dan mekanisme koordinasi Pemdi", "nilai": 2.0, "target": 2.5, "sumber": "Kebijakan SPBE 2.30", "kontribusi_portal": "Dokumentasi kebijakan di portal" },
+        { "id": "I2", "nama": "Manajemen Layanan Digital", "deskripsi": "Pengelolaan siklus hidup layanan digital — perencanaan, implementasi, monitoring", "nilai": 1.7, "target": 2.5, "sumber": "Manajemen SPBE 1.00 + Layanan 3.75", "kontribusi_portal": "Portal sebagai platform layanan digital" }
+      ]
+    },
+    {
+      "id": 2,
+      "nama": "Penyelenggara / SDM",
+      "singkat": "SDM Digital",
+      "bobot": 10,
+      "warna": "#28a197",
+      "deskripsi": "Kompetensi sumber daya manusia dan kolaborasi dalam penerapan Pemdi",
+      "target": 2.5,
+      "nilai": 1.65,
+      "indikator": [
+        { "id": "I3", "nama": "Kompetensi SDM Digital", "deskripsi": "Tingkat literasi digital ASN, pemanfaatan AI dan teknologi mutakhir", "nilai": 1.5, "target": 2.5, "sumber": "Estimasi — belum ada data spesifik", "kontribusi_portal": "Materi literasi digital di portal" },
+        { "id": "I4", "nama": "Kolaborasi Pemdi", "deskripsi": "Kerja sama antar OPD, dengan pusat, dan dengan pihak lain dalam Pemdi", "nilai": 1.8, "target": 2.5, "sumber": "Estimasi", "kontribusi_portal": "Fitur kolaborasi & publikasi data bersama" }
+      ]
+    },
+    {
+      "id": 3,
+      "nama": "Data",
+      "singkat": "Data",
+      "bobot": 15,
+      "warna": "#d4351c",
+      "deskripsi": "Tata kelola data, informasi geospasial, statistik sektoral, dan perlindungan data pribadi",
+      "target": 2.5,
+      "nilai": 1.5,
+      "indikator": [
+        { "id": "I5", "nama": "Tata Kelola Data", "deskripsi": "Penerapan prinsip Satu Data Indonesia, kualitas data, interoperabilitas data", "nilai": 1.5, "target": 2.5, "sumber": "Tata Kelola SPBE 1.70", "kontribusi_portal": "Publikasi dataset melalui portal" },
+        { "id": "I6", "nama": "Informasi Geospasial", "deskripsi": "Ketersediaan dan pemanfaatan data geospasial dalam layanan Pemdi", "nilai": 1.5, "target": 2.5, "sumber": "Estimasi", "kontribusi_portal": "Peta interaktif OPD & layanan" },
+        { "id": "I7", "nama": "Statistik Sektoral", "deskripsi": "Produksi dan publikasi statistik sektoral yang terstandarisasi", "nilai": 1.5, "target": 2.5, "sumber": "Estimasi", "kontribusi_portal": "Publikasi statistik daerah" },
+        { "id": "I8", "nama": "Pelindungan Data Pribadi (PDP)", "deskripsi": "Penerapan prinsip PDP dalam layanan digital pemerintah", "nilai": 1.0, "target": 2.0, "sumber": "Indikator baru — belum diterapkan", "kontribusi_portal": "Kebijakan privasi, mekanisme consent" }
+      ]
+    },
+    {
+      "id": 4,
+      "nama": "Keamanan Pemerintah Digital",
+      "singkat": "Keamanan",
+      "bobot": 15,
+      "warna": "#859900",
+      "deskripsi": "Audit keamanan, keamanan siber, kriptografi, dan penanganan insiden",
+      "target": 2.5,
+      "nilai": 1.25,
+      "indikator": [
+        { "id": "I9", "nama": "Audit Keamanan", "deskripsi": "Pelaksanaan audit keamanan secara berkala pada sistem Pemdi", "nilai": 1.0, "target": 2.5, "sumber": "Audit TIK 1.00", "kontribusi_portal": "Log audit portal" },
+        { "id": "I10", "nama": "Keamanan Siber", "deskripsi": "Penerapan standar keamanan siber nasional pada sistem Pemdi", "nilai": 1.5, "target": 2.5, "sumber": "Estimasi", "kontribusi_portal": "HTTPS, CSP, OWASP compliance" },
+        { "id": "I11", "nama": "Penerapan Kriptografi", "deskripsi": "Penggunaan enkripsi dan tanda tangan digital dalam layanan Pemdi", "nilai": 1.5, "target": 2.5, "sumber": "Estimasi", "kontribusi_portal": "Enkripsi data pengguna" },
+        { "id": "I12", "nama": "Penanganan Insiden Siber", "deskripsi": "Kesiapan prosedur penanganan insiden keamanan siber", "nilai": 1.0, "target": 2.5, "sumber": "Estimasi — belum ada SOP terdokumentasi", "kontribusi_portal": "Dokumentasi prosedur" }
+      ]
+    },
+    {
+      "id": 5,
+      "nama": "Teknologi Pemerintah Digital",
+      "singkat": "Teknologi",
+      "bobot": 10,
+      "warna": "#6f42c1",
+      "deskripsi": "Kesiapan aplikasi dan infrastruktur teknologi pendukung Pemdi",
+      "target": 2.5,
+      "nilai": 1.85,
+      "indikator": [
+        { "id": "I13", "nama": "Aplikasi Pemdi", "deskripsi": "Ketersediaan dan kualitas aplikasi pendukung Pemdi", "nilai": 2.0, "target": 2.5, "sumber": "Pembangunan Aplikasi 1.00 + Portal existing", "kontribusi_portal": "Portal adalah aplikasi Pemdi utama" },
+        { "id": "I14", "nama": "Infrastruktur Pemdi", "deskripsi": "Infrastruktur TIK yang mendukung penyelenggaraan Pemdi", "nilai": 1.7, "target": 2.5, "sumber": "Estimasi", "kontribusi_portal": "Vercel/cloud hosting dokumentasi" }
+      ]
+    },
+    {
+      "id": 6,
+      "nama": "Keterpaduan Layanan Digital",
+      "singkat": "Keterpaduan",
+      "bobot": 15,
+      "warna": "#e65100",
+      "deskripsi": "Keterpaduan proses bisnis, integrasi aplikasi, portal layanan, dan interoperabilitas data",
+      "target": 2.5,
+      "nilai": 1.88,
+      "indikator": [
+        { "id": "I15", "nama": "Keterpaduan Proses Bisnis", "deskripsi": "Keterpaduan proses bisnis antar OPD dalam pelayanan Pemdi", "nilai": 1.8, "target": 2.5, "sumber": "Inovasi Proses Bisnis 1.00 + PPB Fase 2", "kontribusi_portal": "Halaman /probis — PPB terintegrasi" },
+        { "id": "I16", "nama": "Integrasi Aplikasi", "deskripsi": "Tingkat integrasi antar aplikasi dalam ekosistem Pemdi", "nilai": 1.5, "target": 2.5, "sumber": "Estimasi", "kontribusi_portal": "API endpoint Pemdi" },
+        { "id": "I17", "nama": "Portal Layanan Digital", "deskripsi": "Ketersediaan portal terpadu layanan digital pemerintah daerah", "nilai": 3.5, "target": 3.5, "sumber": "Layanan SPBE 3.75 — portal sudah live", "kontribusi_portal": "✅ INI PORTAL KITA — kontribusi langsung" },
+        { "id": "I18", "nama": "Interoperabilitas Data", "deskripsi": "Kemampuan bertukar data antar sistem secara otomatis dan terstandarisasi", "nilai": 1.5, "target": 2.5, "sumber": "Estimasi", "kontribusi_portal": "API endpoint standar SDI" }
+      ]
+    },
+    {
+      "id": 7,
+      "nama": "Kepuasan Pengguna Layanan Digital",
+      "singkat": "Kepuasan",
+      "bobot": 25,
+      "warna": "#00838f",
+      "deskripsi": "Fasilitas dukungan pengguna dan pengelolaan kepuasan pengguna layanan digital",
+      "target": 2.5,
+      "nilai": 1.0,
+      "indikator": [
+        { "id": "I19", "nama": "Fasilitas Dukungan Pengguna", "deskripsi": "Ketersediaan fasilitas helpdesk, FAQ, pelaporan masalah, panduan pengguna", "nilai": 1.0, "target": 2.5, "sumber": "Belum ada — Fase 3 akan membangun ini", "kontribusi_portal": "Widget lapor, FAQ, panduan" },
+        { "id": "I20", "nama": "Pengelolaan Kepuasan Pengguna", "deskripsi": "Pengukuran dan pengelolaan kepuasan pengguna secara sistematis", "nilai": 1.0, "target": 2.5, "sumber": "Belum ada — Fase 3 akan membangun SKM", "kontribusi_portal": "Survei SKM online, dashboard kepuasan" }
+      ]
+    }
+  ]
+}

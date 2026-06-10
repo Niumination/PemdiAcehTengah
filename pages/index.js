@@ -129,6 +129,61 @@ export default function Home({ data }) {
         </div>
       </section>
 
+      {/* ============ PEMDI ============ */}
+      <section className="section section-alt" id="pemdi">
+        <div className="container">
+          <div className="section-header">
+            <h2>🚀 Indeks Pemerintah Digital (Pemdi)</h2>
+            <p>
+              Transisi dari SPBE ke <strong>Indeks Pemdi</strong> — Permenpan RB 8/2026.
+              7 aspek × 20 indikator. Bobot terbesar: Kepuasan Pengguna (25%).
+            </p>
+          </div>
+          <div className="grid grid-2 align-start" style={{ gap: '1.25rem' }}>
+            <div className="card" style={{ padding: '1.25rem', textAlign: 'center' }}>
+              <div style={{ fontSize: '0.75rem', color: 'var(--muted)', marginBottom: '0.375rem' }}>Indeks Pemdi</div>
+              <div style={{ fontSize: '2rem', fontWeight: 700, color: '#d4351c' }}>1.68</div>
+              <div className="badge badge-sm" style={{ background: '#e6510018', color: '#e65100', border: '1px solid #e6510040' }}>
+                Cukup
+              </div>
+              <div className="progress-bar" style={{ marginTop: '0.75rem', maxWidth: '200px', marginLeft: 'auto', marginRight: 'auto' }}>
+                <div className="progress-fill" style={{ width: '33.6%', background: '#d4351c' }} />
+              </div>
+              <p style={{ fontSize: '0.75rem', color: 'var(--muted)', marginTop: '0.5rem' }}>
+                Target 2026: <strong>2.50</strong> (Baik) · Gap: <strong style={{ color: '#d4351c' }}>0.82</strong>
+              </p>
+            </div>
+            <div className="grid grid-2" style={{ gap: '0.625rem' }}>
+              {[
+                { label: 'Tata Kelola', nilai: '1.85', warna: '#1d70b8', bobot: '10%' },
+                { label: 'SDM Digital', nilai: '1.65', warna: '#28a197', bobot: '10%' },
+                { label: 'Data', nilai: '1.50', warna: '#d4351c', bobot: '15%' },
+                { label: 'Keamanan', nilai: '1.25', warna: '#859900', bobot: '15%' },
+                { label: 'Teknologi', nilai: '1.85', warna: '#6f42c1', bobot: '10%' },
+                { label: 'Keterpaduan', nilai: '1.88', warna: '#e65100', bobot: '15%' },
+                { label: 'Kepuasan', nilai: '1.00', warna: '#00838f', bobot: '25%' },
+              ].map((a) => (
+                <div key={a.label} className="card" style={{ padding: '0.625rem 0.75rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <div>
+                    <div style={{ fontSize: '0.75rem', fontWeight: 500 }}>{a.label}</div>
+                    <div style={{ fontSize: '0.625rem', color: 'var(--muted)' }}>{a.bobot}</div>
+                  </div>
+                  <span style={{ fontSize: '1rem', fontWeight: 700, color: a.warna, minWidth: '2rem', textAlign: 'right' }}>
+                    {a.nilai}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="flex justify-center" style={{ marginTop: '1.5rem', gap: '0.75rem', flexWrap: 'wrap' }}>
+            <a href="/pemdi" className="btn btn-primary">Dashboard Pemdi Lengkap →</a>
+            <a href="https://drive.google.com/file/d/1wh1BChQkn8N9dotSfyXuE1FN3EhrM2ET/view" className="btn btn-outline" target="_blank" rel="noopener noreferrer">
+              Unduh Permenpan 8/2026
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* ============ PERANGKAT DAERAH ============ */}
       <section className="section" id="opd">
         <div className="container">
