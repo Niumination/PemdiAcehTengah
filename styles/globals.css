@@ -972,6 +972,69 @@ tr:hover td { background: var(--gray-50); }
 /* --- Font: Inter (Google Fonts) --- */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400..800&display=swap');
 
+/* --- Modal Component (DetailModal) --- */
+.pm-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1001;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.pm-modal-content {
+  background: white;
+  border-radius: 8px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+.pm-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #e5e5e5;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 1;
+  border-radius: 8px 8px 0 0;
+}
+.pm-modal-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0;
+  color: #0b0c0c;
+}
+.pm-modal-close {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: #505a5f;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  line-height: 1;
+}
+.pm-modal-close:hover {
+  background: #f3f2f1;
+  color: #0b0c0c;
+}
+.pm-modal-body {
+  padding: 1.5rem;
+}
+@media (max-width: 640px) {
+  .pm-modal-overlay { padding: 0; align-items: flex-end; }
+  .pm-modal-content {
+    border-radius: 12px 12px 0 0;
+    max-height: 85vh;
+  }
+  .pm-modal-header { border-radius: 12px 12px 0 0; }
+}
+
 /* --- Font: JetBrains Mono --- */
 @font-face {
   font-family: 'JetBrains Mono';
