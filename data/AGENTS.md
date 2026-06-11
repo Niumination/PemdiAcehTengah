@@ -8,7 +8,7 @@ Data berasal dari **e-Keurani BKPSDM** (sumber tunggal terharmonisasi):
 
 | Sumber | Cakupan | Jumlah | Status |
 |--------|---------|--------|--------|
-| **e-Keurani BKPSDM** | Semua OPD + jumlah ASN | **50 entries** (36 instansi + 14 kecamatan) | ✅ Data riil Mei 2026 — **sumber tunggal** |
+| **e-Keurani BKPSDM** | Semua OPD + jumlah ASN | **52 entries** (38 instansi + 14 kecamatan) | ✅ Data riil Mei 2026 — **sumber tunggal** |
 
 **Harmonisasi selesai ✅**: Data SPBE (38 instansi + 14 kecamatan) telah digabung dengan e-Keurani. Perbedaan:
 - OPD yang **ditambahkan**: RSUD Datu Beru (466 ASN), Korpri (7), set OP migrated ke 50 entries
@@ -35,7 +35,7 @@ Data berasal dari **e-Keurani BKPSDM** (sumber tunggal terharmonisasi):
 }
 ```
 
-### OPD (Array — 50 entries di `opd.daftar`)
+### OPD (Array — 52 entries di `opd.daftar`)
 
 ```json
 {
@@ -70,14 +70,16 @@ Data berasal dari **e-Keurani BKPSDM** (sumber tunggal terharmonisasi):
 
 **Indikator Kuat (Nilai≥3)**: Manajemen Data (4), Tim Koordinasi (3), Jaringan Intra (3), hampir semua Layanan Administrasi & Publik (4).
 
-### Peta Proses Bisnis — Framework Baru Permenpan 8/2026
+### Peta Proses Bisnis — `probis` di opd.json
 
-⚠️ **UPDATE**: Permenpan 8/2026 TIDAK menggantikan Permenpan 19/2018 untuk PPB. Keduanya tetap berlaku:
+⚠️ Data ProBis di `opd.json` saat ini:
+- **Level 0**: 8 misi (+ label, deskripsi, sumber) — **data real Aceh Tengah** ✅
+- **Level 1**: 35 urusan konkuren — **data real** ✅  
+- **Level 2**: 6 kategori template (Perencanaan, Pelaksanaan...) — **masih template generik** — perlu data real Aceh Tengah
 
+Permenpan 8/2026 TIDAK menggantikan Permenpan 19/2018 untuk PPB. Keduanya tetap berlaku:
 - **Permenpan 19/2018** → Cara menyusun PPB: Level 0 (visi-misi), Level 1 (urusan konkuren), Level 2 (proses per OPD), BPMN, SIPOC, 4 jenis peta
-- **Permenpan 8/2026** → Indikator **15. Keterpaduan Proses Bisnis Pemdi Lintas Unit dan Instansi** (bobot 4%) sebagai bagian dari evaluasi Pemdi
-
-Data PPB di opd.json saat ini masih **template generik** — perlu diisi data real Aceh Tengah.
+- **Permenpan 8/2026** → Indikator **15. Keterpaduan Proses Bisnis Pemdi** (bobot 4%) sebagai bagian dari evaluasi Pemdi
 
 ### Rekomendasi (Array)
 
@@ -116,5 +118,5 @@ Proyeksi dari baseline SPBE 2025: ~2,375 (Cukup). Perlu kerja keras di Kepuasan 
 
 ## File
 
-- `opd.json` — master data (50 OPD dari e-Keurani BKPSDM ✅ harmonized)
+- `opd.json` — master data (52 OPD dari e-Keurani BKPSDM ✅ harmonized)
 - `AGENTS.md` — **file ini**

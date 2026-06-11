@@ -709,8 +709,12 @@ Definisi: Pemdi, SPBE, PPB, INA Digital, SDI, API Gateway, dll.
 |2. ⏳ Penerbitan SK Tim Pemdi Daerah oleh Bupati
 |3. ⏳ Sosialisasi ke seluruh OPD
 |4. ⏳ Eksekusi Tahap I — Q3 2026
-
----
-
-*Dokumen ini disusun oleh Tim Pengembangan Pemda Digital Aceh Tengah — 10 Juni 2026*
+|
+|**Dokumen Terkait:**
+|`STRATEGI_PEMDIACEHTENGAH.md` — Breakdown detail implementasi portal (4 fase: data, PPB, publik, dashboard)
+|`docs/plan-v0.md` — Arsip perencanaan awal proyek (out of date — referensi historis)|
+|
+|---|
+|
+|*Dokumen ini disusun oleh Tim Pengembangan Pemda Digital Aceh Tengah — 10 Juni 2026*
 *License: MIT — Seluruh konten terbuka untuk adaptasi oleh Pemda lain*

@@ -343,8 +343,8 @@ Setelah semua data terkumpul, PPB akan disusun dalam format:
 
 | File | Lokasi | Keterangan |
 |------|--------|------------|
-| Riset Framework PPB | `riset-peta-proses-bisnis-permenpan-19-2018.md` | Framework lengkap Permenpan |
-| Riset Data Aceh Tengah | `riset-data-aceh-tengah.md` | Data spesifik daerah |
+| Riset Framework PPB | `docs/riset-peta-proses-bisnis-permenpan-19-2018.md` | Framework lengkap Permenpan |
+| Riset Data Aceh Tengah | `docs/riset-data-aceh-tengah.md` | Data spesifik daerah |
 | Data OPD & SPBE | `data/opd.json` | Data existing di website |
 | Template Simalungun | `~/Documents/Work/.../PROBIS SIMALUNGUN/PETA PROSES BISNIS KAB. SIMALUNGUN.xlsx` | Template Excel PPB lengkap |
 | Dokumen Induk SPBE | `~/Documents/Work/Laporan_Hasil_Pemantauan_-_Pemerintah_Kab_Aceh_Tengah.pdf` | SPBE 2025 |

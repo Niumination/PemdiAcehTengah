@@ -15,6 +15,8 @@
 
 **Strategi**: 4 fase — **Fondasi Data ✅ (Jun 2026) → PPB Final ✅ (Jun 2026) → Fitur Publik ⏳ (Jun 2026) → Pemdi Dashboard ◌ (Mulai lebih awal)**.
 
+> 🔗 **Roadmap Induk**: Lihat `MASTERPLAN.md` untuk visi 3 tahun (2026–2029), arsitektur infrastruktur, integrasi sistem nasional, anggaran, dan tata kelola organisasi.
+
 ---
 
 ## 1. Diagnosa — Posisi Saat Ini
