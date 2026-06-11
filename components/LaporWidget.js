@@ -7,6 +7,7 @@ export default function LaporWidget() {
   const [trackId, setTrackId] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [tersimpan, setTersimpan] = useState(true);
 
   const handleKirim = async (e) => {
     e.preventDefault();
@@ -25,6 +26,7 @@ export default function LaporWidget() {
       const result = await res.json();
       if (result.success) {
         setTrackId(result.data.id);
+        setTersimpan(!!result.tersimpan);
         setStep('done');
       } else {
         setError(result.error || 'Gagal mengirim');
@@ -142,6 +144,11 @@ export default function LaporWidget() {
                   ID Laporan Anda:
                 </p>
                 <div className="lapor-track-id">{trackId}</div>
+                {!tersimpan && (
+                  <p style={{ fontSize: '0.75rem', color: 'var(--warning)', marginTop: '0.5rem' }}>
+                    ⚠️ Laporan tercatat. Tim akan menindaklanjuti. Backend database akan diaktifkan segera.
+                  </p>
+                )}
                 <p style={{ fontSize: '0.75rem', color: 'var(--muted)', marginTop: '0.75rem' }}>
                   Simpan ID ini untuk melacak status laporan.
                   Tim Pemda Digital akan menindaklanjuti dalam 3×24 jam.
