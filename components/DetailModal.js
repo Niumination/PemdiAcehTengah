@@ -42,20 +42,18 @@ export default function DetailModal({ title, open, onClose, children, maxWidth =
           z-index: 1001;
           background: rgba(0, 0, 0, 0.5);
           display: flex;
-          align-items: flex-start;
+          align-items: center;
           justify-content: center;
-          padding: 2rem 1rem;
-          overflow-y: auto;
-          animation: fadeIn 0.2s ease;
+          padding: 1rem;
         }
         .modal-content {
           background: white;
           border-radius: 8px;
           width: 100%;
+          max-width: 640px;
           max-height: 90vh;
           overflow-y: auto;
           box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-          animation: slideUp 0.25s ease;
         }
         .modal-header {
           display: flex;
@@ -91,14 +89,6 @@ export default function DetailModal({ title, open, onClose, children, maxWidth =
         }
         .modal-body {
           padding: 1.5rem;
-        }
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        @keyframes slideUp {
-          from { transform: translateY(20px); opacity: 0; }
-          to { transform: translateY(0); opacity: 1; }
         }
         @media (max-width: 640px) {
           .modal-overlay { padding: 0; align-items: flex-end; }
