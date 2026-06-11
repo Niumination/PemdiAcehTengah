@@ -705,10 +705,10 @@ Definisi: Pemdi, SPBE, PPB, INA Digital, SDI, API Gateway, dll.
 | Risiko | ✅ Final | Mitigasi teridentifikasi |
 
 **Aksi Selanjutnya:**
-|1. ❌ Presentasi ke Sekda / Diskominfo (belum pernah dilakukan)
-|2. ⏳ Penerbitan SK Tim Pemdi Daerah oleh Bupati
-|3. ⏳ Sosialisasi ke seluruh OPD
-|4. ⏳ Eksekusi Tahap I — Q3 2026
+|1. 📋 **Bahan siap** — `docs/paparan-sekda.md` | Jadwalkan presentasi ke Sekda & Diskominfo |
+|2. 📜 **Draft siap** — `docs/draft-sk-tim-pemda.md` | Isi nama pejabat & tanda tangan Bupati |
+|3. ⏳ Sosialisasi ke seluruh OPD | Setelah SK terbit & PIC per OPD ditunjuk |
+|4. ⏳ Eksekusi Tahap I — Q3 2026 | Rakor perdana bersama Tim Pemda Digital |
 |
 |**Dokumen Terkait:**
 |`STRATEGI_PEMDIACEHTENGAH.md` — Breakdown detail implementasi portal (4 fase: data, PPB, publik, dashboard)
