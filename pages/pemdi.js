@@ -74,14 +74,14 @@ function RadarChart({ aspek, size = 380 }) {
   );
 }
 
-/* Aspect modal content — shows sub-indicators */
+/* Aspect modal content — shows sub-indicators with PIC responsibility */
 function AspectModalContent({ aspek }) {
   return (
     <div>
       <p style={{ fontSize: '0.875rem', color: '#505a5f', marginBottom: '1rem', lineHeight: 1.6 }}>
         {aspek.deskripsi}
       </p>
-      <div style={{ display: 'flex', gap: '1rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', gap: '1rem', marginBottom: '1.25rem', flexWrap: 'wrap' }}>
         <DataBadge label="Nilai" value={aspek.nilai} target={aspek.target} warna={aspek.warna} compact />
         <DataBadge label="Bobot" value={aspek.bobot} target={100} warna={aspek.warna} compact />
       </div>
@@ -89,29 +89,93 @@ function AspectModalContent({ aspek }) {
         {aspek.indikator.map((ind) => {
           const gap = ind.target - ind.nilai;
           const pct = Math.min(100, (ind.nilai / ind.target) * 100);
+          const pj = ind.penanggung_jawab;
           return (
-            <div key={ind.id} className="ind-card" style={{
-              border: '1px solid #e5e5e5',
+            <div key={ind.id} style={{
+              border: '1px solid #e0e0e0',
               borderRadius: '6px',
-              padding: '0.75rem',
+              padding: '0.75rem 0.75rem 0.6rem',
+              background: '#fcfcfc',
+              borderLeft: `3px solid ${aspek.warna}`,
             }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.375rem' }}>
-                <span className="badge badge-gray badge-sm">{ind.id}</span>
-                <span style={{ fontWeight: 600, fontSize: '0.875rem' }}>{ind.nama}</span>
-                <span style={{ marginLeft: 'auto', fontWeight: 700, fontSize: '1rem', color: gap > 0 ? '#d4351c' : '#00703c' }}>
-                  {ind.nilai.toFixed(1)} <span style={{ fontWeight: 400, fontSize: '0.75rem', color: '#505a5f' }}>/ {ind.target.toFixed(1)}</span>
+              {/* Baris 1: ID + Nama + Nilai */}
+              <div style={{
+                display: 'flex', alignItems: 'center', gap: '0.5rem',
+                marginBottom: '0.3rem', flexWrap: 'wrap'
+              }}>
+                <span style={{
+                  display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                  minWidth: '28px', padding: '0.1rem 0.4rem',
+                  background: `${aspek.warna}18`, color: aspek.warna,
+                  fontSize: '0.675rem', fontWeight: 700, borderRadius: '4px',
+                }}>{ind.id}</span>
+                <span style={{ fontWeight: 600, fontSize: '0.85rem', color: '#222' }}>
+                  {ind.nama}
+                </span>
+                {ind.bobot && (
+                  <span style={{ fontSize: '0.65rem', color: '#888', background: '#f0f0f0', padding: '0.05rem 0.4rem', borderRadius: '3px' }}>
+                    bobot {ind.bobot}%
+                  </span>
+                )}
+                <span style={{
+                  marginLeft: 'auto', fontWeight: 700, fontSize: '0.95rem',
+                  color: gap > 0 ? '#d4351c' : '#00703c', whiteSpace: 'nowrap',
+                }}>
+                  {ind.nilai.toFixed(1)} <span style={{ fontWeight: 400, fontSize: '0.7rem', color: '#888' }}>/ {ind.target.toFixed(1)}</span>
                 </span>
               </div>
-              <p style={{ fontSize: '0.75rem', color: '#505a5f', margin: '0 0 0.5rem', lineHeight: 1.5 }}>
+
+              {/* Baris 2: Deskripsi */}
+              <p style={{ fontSize: '0.725rem', color: '#555', margin: '0 0 0.35rem 0', lineHeight: 1.5 }}>
                 {ind.deskripsi}
               </p>
-              <div className="progress-bar progress-bar-sm" style={{ marginBottom: '0.25rem' }}>
-                <div className="progress-fill" style={{
-                  width: `${pct}%`,
+
+              {/* Baris 3: Progress bar */}
+              <div style={{
+                height: '5px', background: '#e8e8e8', borderRadius: '3px',
+                marginBottom: '0.3rem', overflow: 'hidden',
+              }}>
+                <div style={{
+                  width: `${pct}%`, height: '100%', borderRadius: '3px',
                   background: pct >= 80 ? '#00703c' : pct >= 50 ? '#e65100' : '#d4351c',
+                  transition: 'width 0.5s ease',
                 }} />
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.6875rem', color: '#505a5f' }}>
+
+              {/* Baris 4: Penanggung Jawab + Sumber */}
+              {pj && (
+                <div style={{
+                  display: 'flex', alignItems: 'center', gap: '0.35rem', flexWrap: 'wrap',
+                  marginBottom: '0.3rem',
+                }}>
+                  <span style={{ fontSize: '0.65rem', color: '#666', fontWeight: 500 }}>👤 PIC:</span>
+                  <span style={{
+                    fontSize: '0.675rem', fontWeight: 600, color: '#1d70b8',
+                    background: '#e8f0fe', padding: '0.05rem 0.45rem', borderRadius: '3px',
+                  }}>
+                    {pj.lead}
+                  </span>
+                  {pj.support && pj.support.length > 0 && (
+                    <>
+                      <span style={{ fontSize: '0.6rem', color: '#999' }}>+</span>
+                      <span style={{ fontSize: '0.625rem', color: '#666' }}>
+                        {pj.support.join(', ')}
+                      </span>
+                    </>
+                  )}
+                  {pj.tim && (
+                    <span style={{ fontSize: '0.625rem', color: '#888', marginLeft: 'auto', fontStyle: 'italic' }}>
+                      {pj.tim}
+                    </span>
+                  )}
+                </div>
+              )}
+
+              {/* Baris 5: Sumber data + Kontribusi portal */}
+              <div style={{
+                display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.25rem',
+                fontSize: '0.65rem', color: '#888',
+              }}>
                 <span>📋 {ind.sumber}</span>
                 <span>🌐 {ind.kontribusi_portal}</span>
               </div>
@@ -119,12 +183,6 @@ function AspectModalContent({ aspek }) {
           );
         })}
       </div>
-      <style jsx>{`
-        @media (max-width: 640px) {
-          :global(.ind-card) > div:first-child { flex-wrap: wrap; }
-          :global(.ind-card) > div:last-child { flex-direction: column; gap: 0.25rem; }
-        }
-      `}</style>
     </div>
   );
 }
