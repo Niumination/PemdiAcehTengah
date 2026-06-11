@@ -4,7 +4,7 @@
 
 React component library — reusable UI building blocks. All components-driven, props untuk data.
 
-## Ownership — 13 Komponen
+## Ownership — 12 Komponen
 
 | Komponen | File | Fungsi | Status |
 |----------|------|--------|--------|
@@ -19,7 +19,6 @@ React component library — reusable UI building blocks. All components-driven, 
 | **Rekomendasi** | `Rekomendasi.js` | Timeline rekomendasi prioritas (Q3 2026 — 2028) | ✅ Active (index.js) |
 | **SlaBadge** | `SlaBadge.js` | Badge SLA visual dengan progress bar | ✅ Active (layanan.js) |
 | **LaporWidget** | `LaporWidget.js` | FAB "Lapor / Saran" — form + tracking ID | ✅ Active (Layout.js) |
-| **ExpandablePanel** | `ExpandablePanel.js` | Accordion/collapse panel | ⚠️ Built, NOT YET USED |
 | **ScrollTop** | `ScrollTop.js` | Tombol scroll-to-top muncul saat scroll | ✅ Active (Layout.js) |
 
 ## Local Contracts
@@ -62,12 +61,6 @@ React component library — reusable UI building blocks. All components-driven, 
 #### DataBadge (`DataBadge.js`)
 - **Props**: `{ label, value, icon }`
 - **Display**: Stat card kecil untuk hero section
-
-### Standby Components
-
-#### ExpandablePanel (`ExpandablePanel.js`)
-- **Props**: `{ title, children, defaultOpen, badge }`
-- **Status**: Built as utility component, belum ada consumer — **dead code candidate**
 
 ## Styling Guidance
 

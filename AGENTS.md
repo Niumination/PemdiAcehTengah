@@ -92,7 +92,7 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 |------|-------|
 | `pages/AGENTS.md` | Halaman Next.js (11 halaman): index, pemdi, probis, layanan, faq, skm, tanya, cari, requirement, opd/[slug], _app — routing, SSR/SSG |
 | `pages/api/AGENTS.md` | REST API routes: GET opd, spbe, requirement (read-only, JSON) |
-| `components/AGENTS.md` | 13 React komponen: Header, Footer, Layout, ScrollTop, OPDTable, ProbisSection, SpbeGauge, Rekomendasi, DataBadge, DetailModal, ExpandablePanel, LaporWidget, SlaBadge |
+| `components/AGENTS.md` | 12 React komponen: Header, Footer, Layout, ScrollTop, OPDTable, ProbisSection, SpbeGauge, Rekomendasi, DataBadge, DetailModal, LaporWidget, SlaBadge |
 | `styles/AGENTS.md` | CSS architecture, design tokens, responsive breakpoints |
 | `data/AGENTS.md` | Struktur data opd.json + pemdi.json |
 | `docs/` | Dokumentasi proyek — file MD, PDF, referensi regulasi |
