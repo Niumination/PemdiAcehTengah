@@ -969,14 +969,10 @@ tr:hover td { background: var(--gray-50); }
 }
 
 /* --- Font Loading --- */
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400 800;
-  font-display: swap;
-  src: url('https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hjpYBkA.woff2') format('woff2');
-}
+/* --- Font: Inter (Google Fonts) --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400..800&display=swap');
 
+/* --- Font: JetBrains Mono --- */
 @font-face {
   font-family: 'JetBrains Mono';
   font-style: normal;
