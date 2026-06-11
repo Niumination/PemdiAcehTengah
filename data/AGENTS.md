@@ -1,6 +1,6 @@
 # Data — DOX
 
-Single source of truth: `data/opd.json`. Struktur data terbagi dalam 5 layer: metadata, OPD, SPBE, Peta Proses Bisnis, dan Rekomendasi.
+Single source of truth: `data/opd.json`. Struktur data mencakup metadata, OPD (52 entries), SPBE (47 indikator), Peta Proses Bisnis (Level 0-2, 78 proses), Rekomendasi (8 item), dan pemdi.json (7 aspek × 20 indikator).
 
 ## Source Data
 
@@ -74,8 +74,8 @@ Data berasal dari **e-Keurani BKPSDM** (sumber tunggal terharmonisasi):
 
 ⚠️ Data ProBis di `opd.json` saat ini:
 - **Level 0**: 8 misi (+ label, deskripsi, sumber) — **data real Aceh Tengah** ✅
-- **Level 1**: 35 urusan konkuren — **data real** ✅  
-- **Level 2**: 6 kategori template (Perencanaan, Pelaksanaan...) — **masih template generik** — perlu data real Aceh Tengah
+- **Level 1**: 35 urusan konkuren — **data real** ✅
+- **Level 2**: 6 kategori × **78 proses** — **47/52 OPD tercakup** ✅ (Perencanaan 7, Pelaksanaan 20, Penganggaran 8, Monev 14, Pelayanan Publik 17, Pengawasan 12)
 
 Permenpan 8/2026 TIDAK menggantikan Permenpan 19/2018 untuk PPB. Keduanya tetap berlaku:
 - **Permenpan 19/2018** → Cara menyusun PPB: Level 0 (visi-misi), Level 1 (urusan konkuren), Level 2 (proses per OPD), BPMN, SIPOC, 4 jenis peta

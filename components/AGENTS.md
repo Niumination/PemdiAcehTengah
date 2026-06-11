@@ -38,7 +38,7 @@ React component library — reusable UI building blocks. All components-driven, 
 #### ProbisSection (`ProbisSection.js`)
 - **Props**: `{ data: { level0, level1, level2 } }`
 - **Display**: Accordion/card untuk setiap level PPB
-- ⚠️ **Data Level 2 masih template generik** — perlu data real Aceh Tengah
+- ⚠️ **Data Level 2 sudah 78 proses real** — 47/52 OPD tercakup ✅
 
 #### SpbeGauge (`SpbeGauge.js`)
 - **Props**: `{ data: { indeks, kategori, domain } }`

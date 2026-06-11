@@ -90,13 +90,11 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 
 | Path | Scope |
 |------|-------|
-| `pages/AGENTS.md` | Halaman Next.js (11 halaman): index, pemdi, probis, layanan, faq, skm, tanya, cari, requirement, opd/[slug], _app — routing, SSR/SSG |
-| `pages/api/AGENTS.md` | REST API routes: GET opd, spbe, requirement (read-only, JSON) |
-| `components/AGENTS.md` | 12 React komponen: Header, Footer, Layout, ScrollTop, OPDTable, ProbisSection, SpbeGauge, Rekomendasi, DataBadge, DetailModal, LaporWidget, SlaBadge |
-| `styles/AGENTS.md` | CSS architecture, design tokens, responsive breakpoints |
-| `data/AGENTS.md` | Struktur data opd.json (78 level_2 proses ✅) + pemdi.json |
-| `pages/AGENTS.md` | Halaman Next.js (11 halaman + 1 API): index, pemdi, probis, layanan, faq, skm (24 pertanyaan ✅), tanya, cari, requirement, opd/[slug], _app + api/lapor — routing, SSR/SSG |
-| `pages/api/AGENTS.md` | REST API route: POST/GET `/api/lapor` — backend LaporWidget |
+| `pages/AGENTS.md` | 12 halaman Next.js + 4 API routes — indexing, routing, data flow |
+| `pages/api/AGENTS.md` | REST API: opd, spbe, requirement, lapor — GET read + POST write |
+| `components/AGENTS.md` | 12 React komponen — Header, Footer, Layout, OPDTable, ProbisSection, SpbeGauge, Rekomendasi, DataBadge, DetailModal, SlaBadge, LaporWidget, ScrollTop |
+| `styles/AGENTS.md` | CSS architecture — GOV.UK-inspired, Inter font, mobile-first |
+| `data/AGENTS.md` | Struktur data: opd.json (52 OPD, 78 PPB ✅), pemdi.json (7 aspek) |
 | `STRATEGI_PEMDIACEHTENGAH.md` | **Dokumen perencanaan strategis (file ini)** — 4 fase, quick wins, risiko, metrik |
 
 ## User Preferences
@@ -107,7 +105,7 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 - Fokus konten: **Peta Proses Bisnis** Level 0-2 (Permenpan 19/2018) + **Indeks Pemdi** (Permenpan 8/2026) sebagai kerangka evaluasi
 - **Permenpan RB 8/2026** di `docs/permenpanrb 8 2026.pdf` — WAJIB dibaca sebelum kerja terkait evaluasi Pemdi
 - **Indeks SPBE 2025 Aceh Tengah**: 2,59 (Cukup) — baseline untuk target Pemdi 2,50+
-- **Data ProBis di `data/opd.json`** → key `probis`: Level 0 (8 misi real Aceh Tengah ✅) + Level 1 (35 urusan ✅) + Level 2 (6 kategori, masih template generik — perlu data real Aceh Tengah)
+- **Data ProBis di `data/opd.json`** → key `probis`: Level 0 (8 misi real Aceh Tengah ✅) + Level 1 (35 urusan ✅) + Level 2 (78 proses, 47/52 OPD ✅)
 
 ## Closeout Checklist
 

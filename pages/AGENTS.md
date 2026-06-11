@@ -4,25 +4,26 @@
 
 Halaman Next.js — entry points untuk user. SSR/SSG hybrid dengan data dari file JSON statis.
 
-## Ownership — 11 Halaman + 3 API
+## Ownership — 12 Halaman + 4 API
 
 | Route | File | Fungsi | Komponen Kunci |
 |-------|------|--------|----------------|
 | `/` | `index.js` | Beranda: Hero, ProBis, SPBE Gauge, OPD Table, Rekomendasi, Tentang | SpbeGauge, ProbisSection, OPDTable, Rekomendasi, DataBadge |
-| `/pemdi` | `pemdi.js` | Dashboard Pemdi — 7 aspek, 20 indikator, RadarChart SVG, modal detail + PIC | DetailModal, DataBadge |
-| `/opd/[slug]` | `opd/[slug].js` | Halaman detail per OPD — 52 halaman statis (SSG) | OPDTable, SlaBadge |
-| `/layanan` | `layanan.js` | Direktori 27 layanan publik per kategori + badge SLA | SlaBadge |
-| `/probis` | `probis.js` | Peta Proses Bisnis Level 0-1-2 interaktif | DetailModal |
-| `/skm` | `skm.js` | Survei Kepuasan Masyarakat (8 dimensi) | — |
+| `/pemdi` | `pemdi.js` | Dashboard Pemdi — 7 aspek, 20 indikator, RadarChart SVG | DetailModal, DataBadge |
+| `/opd/[slug]` | `opd/[slug].js` | Detail per OPD — 52 halaman statis (SSG) | OPDTable, SlaBadge |
+| `/layanan` | `layanan.js` | Direktori 27 layanan publik + badge SLA | SlaBadge |
+| `/probis` | `probis.js` | Peta Proses Bisnis Level 0-1-2 interaktif (78 proses ✅) | DetailModal |
+| `/skm` | `skm.js` | Survei Kepuasan Masyarakat (8 dimensi × 3 pertanyaan = **24 item** ✅) | — |
 | `/faq` | `faq.js` | 15 FAQ dalam 4 kategori, accordion | — |
-| `/tanya` | `tanya.js` | Chatbot asisten virtual — cari jawaban di FAQ | — |
-| `/cari` | `cari.js` | Pencarian global — cari OPD, layanan, FAQ | — |
-| `/requirement` | `requirement.js` | 83 requirements PPB dalam 12 kategori, 3 fase | Header, Footer |
-| `/_app` | `_app.js` | App wrapper — Layout component, global styles | Layout |
-| `/_document` | `_document.js` | Document wrapper — font Inter `<link>`, meta tags | — |
+| `/tanya` | `tanya.js` | Chatbot asisten virtual — cari jawaban | — |
+| `/cari` | `cari.js` | Pencarian global — OPD, layanan, FAQ | — |
+| `/requirement` | `requirement.js` | 83 requirements PPB, 12 kategori, 3 fase | Header, Footer |
+| `/_app` | `_app.js` | App wrapper — Layout, global styles | Layout |
+| `/_document` | `_document.js` | Document wrapper — font Inter, meta tags | — |
 | `/api/opd` | `api/opd.js` | REST API: GET semua OPD (JSON) | — |
 | `/api/spbe` | `api/spbe.js` | REST API: GET data SPBE (JSON) | — |
 | `/api/requirement` | `api/requirement.js` | REST API: GET 83 requirements (JSON) | — |
+| `/api/lapor` | `api/lapor.js` | REST API: POST kirim + GET lihat laporan | — |
 
 ## Data Flow
 
@@ -68,9 +69,10 @@ data/skm.json ────► skm.js
 - **Features**: Kartu layanan per kategori, badge SLA (SlaBadge component)
 - **Note**: Data masih partial — 14 online, 13 offline
 
-### `/skm` — Survei Kepuasan (skm.js)
-- **Data source**: `data/skm.json` (8 dimensi)
-- **⚠️ Critical**: `data/skm.json` has 0 pertanyaan — dimensi kosong, form tidak berfungsi
+| `/skm` — Survei Kepuasan (skm.js)
+- **Data source**: `data/skm.json` (8 dimensi × 3 pertanyaan = **24 item** ✅)
+- **Features**: 44 unit pelayanan, sub-pertanyaan per dimensi, rating 1-5, perhitungan NRR per dimensi
+- **Status**: ✅ Fungsional
 
 ### `/cari` — Pencarian Global (cari.js)
 - **Search scope**: OPD, layanan, FAQ
@@ -98,4 +100,4 @@ data/skm.json ────► skm.js
 ## Child DOX Index
 | Path | Scope |
 |------|-------|
-| `api/AGENTS.md` | REST API routes — opd, spbe, requirement |
+| `api/AGENTS.md` | REST API routes — opd, spbe, requirement, lapor |
