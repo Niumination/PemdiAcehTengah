@@ -3,40 +3,144 @@
     "pemda": "Kabupaten Aceh Tengah",
     "judul": "Survei Kepuasan Masyarakat (SKM) Online",
     "dasar_hukum": "PermenPANRB 8/2026 — Indikator I19 & I20",
-    "update": "2026-06-10",
+    "update": "2026-07-01",
     "periode": "Triwulan II 2026 (April–Juni)",
     "target_respon": 500
   },
   "unit_pelayanan": [
-    "Dinas Kependudukan dan Pencatatan Sipil",
+    "Sekretariat Daerah",
     "DPMPTSP",
+    "Dinas Kependudukan dan Pencatatan Sipil",
     "Dinas Kesehatan",
+    "RSUD Datu Beru",
+    "Puskesmas Takengon",
+    "Puskesmas Pegasing",
+    "Puskesmas Bebesen",
+    "Puskesmas Kebayakan",
     "Dinas Pendidikan",
     "Dinas Sosial",
+    "Dinas PUPR",
+    "Dinas Perkim",
+    "Satpol PP-WH",
+    "Dinas Transmigrasi-TK",
+    "Dinas KB-PPPA",
+    "Dinas Pangan",
+    "Dinas LH",
+    "Dinas Pemberdayaan Masyarakat Desa",
+    "Dinas Perhubungan",
+    "Diskominfo",
+    "Dinas Perdagangan KUKM",
+    "Dinas Pariwisata-PO",
+    "Dinas Perpustakaan-Arsip",
+    "Dinas Perikanan",
+    "Dinas Pertanian",
+    "Dinas Syariat Islam-Dayah",
+    "Dinas Pertanahan",
     "BPKAD",
+    "BPBD",
+    "BKPSDM",
+    "BAPENDA",
     "Kecamatan Bebesen",
     "Kecamatan Kebayakan",
     "Kecamatan Lut Tawar",
     "Kecamatan Pegasing",
-    "Puskesmas Takengon",
-    "RSUD Datu Beru"
+    "Kecamatan Silih Nara",
+    "Kecamatan Ketol",
+    "Kecamatan Atu Lintang",
+    "Kecamatan Bintang",
+    "Kecamatan Celala",
+    "Kecamatan Jagong Jeget",
+    "Kecamatan Linge",
+    "Kecamatan Rusip Antara"
   ],
   "dimensi": [
-    { "id": "U1", "nama": "Persyaratan", "deskripsi": "Persyaratan pelayanan mudah dipahami dan sesuai" },
-    { "id": "U2", "nama": "Prosedur", "deskripsi": "Prosedur/alur pelayanan mudah, cepat, dan sederhana" },
-    { "id": "U3", "nama": "Waktu", "deskripsi": "Waktu penyelesaian pelayanan sesuai standar" },
-    { "id": "U4", "nama": "Biaya", "deskripsi": "Biaya pelayanan wajar, transparan, dan sesuai ketentuan" },
-    { "id": "U5", "nama": "Sarana", "deskripsi": "Ketersediaan sarana dan prasarana yang memadai" },
-    { "id": "U6", "nama": "Kompetensi", "deskripsi": "Petugas memiliki kompetensi dan sopan santun" },
-    { "id": "U7", "nama": "Digital", "deskripsi": "Kemudahan akses layanan digital/online" },
-    { "id": "U8", "nama": "Kepuasan", "deskripsi": "Tingkat kepuasan keseluruhan terhadap pelayanan" }
+    {
+      "id": "U1",
+      "nama": "Persyaratan",
+      "deskripsi": "Persyaratan pelayanan mudah dipahami dan sesuai",
+      "pertanyaan": [
+        "Apakah persyaratan yang diminta mudah dipahami?",
+        "Apakah persyaratan pelayanan sesuai jenis layanan?",
+        "Tidak ada persyaratan tambahan di luar ketentuan?"
+      ]
+    },
+    {
+      "id": "U2",
+      "nama": "Prosedur",
+      "deskripsi": "Prosedur/alur pelayanan mudah, cepat, dan sederhana",
+      "pertanyaan": [
+        "Apakah alur pelayanan mudah diikuti?",
+        "Apakah tidak ada langkah berbelit-belit?",
+        "Apakah prosedur pelayanan sesuai standar?"
+      ]
+    },
+    {
+      "id": "U3",
+      "nama": "Waktu",
+      "deskripsi": "Waktu penyelesaian pelayanan sesuai standar",
+      "pertanyaan": [
+        "Apakah waktu tunggu pelayanan sesuai janji?",
+        "Apakah proses penyelesaian tidak molor?",
+        "Apakah informasi waktu penyelesaian jelas?"
+      ]
+    },
+    {
+      "id": "U4",
+      "nama": "Biaya",
+      "deskripsi": "Biaya pelayanan wajar, transparan, dan sesuai ketentuan",
+      "pertanyaan": [
+        "Apakah biaya pelayanan sesuai tarif resmi?",
+        "Apakah tidak ada pungutan di luar ketentuan?",
+        "Apakah informasi biaya tersedia dan jelas?"
+      ]
+    },
+    {
+      "id": "U5",
+      "nama": "Sarana",
+      "deskripsi": "Ketersediaan sarana dan prasarana yang memadai",
+      "pertanyaan": [
+        "Apakah ruang pelayanan nyaman dan bersih?",
+        "Apakah fasilitas pendukung (toilet, parkir) memadai?",
+        "Apakah tersedia fasilitas bagi penyandang disabilitas?"
+      ]
+    },
+    {
+      "id": "U6",
+      "nama": "Kompetensi",
+      "deskripsi": "Petugas memiliki kompetensi dan sopan santun",
+      "pertanyaan": [
+        "Apakah petugas ramah dan sopan?",
+        "Apakah petugas menguasai layanan yang diberikan?",
+        "Apakah petugas responsif dan membantu?"
+      ]
+    },
+    {
+      "id": "U7",
+      "nama": "Digital",
+      "deskripsi": "Kemudahan akses layanan digital/online",
+      "pertanyaan": [
+        "Apakah layanan online mudah diakses?",
+        "Apakah website/aplikasi mudah digunakan?",
+        "Apakah informasi digital selalu terkini?"
+      ]
+    },
+    {
+      "id": "U8",
+      "nama": "Kepuasan",
+      "deskripsi": "Tingkat kepuasan keseluruhan terhadap pelayanan",
+      "pertanyaan": [
+        "Apakah Anda puas dengan hasil pelayanan?",
+        "Apakah Anda akan merekomendasikan layanan ini ke orang lain?",
+        "Apakah pelayanan memenuhi harapan Anda?"
+      ]
+    }
   ],
   "skala": [
-    { "nilai": 1, "label": "Sangat Tidak Puas" },
-    { "nilai": 2, "label": "Tidak Puas" },
-    { "nilai": 3, "label": "Cukup Puas" },
-    { "nilai": 4, "label": "Puas" },
-    { "nilai": 5, "label": "Sangat Puas" }
+    { "nilai": 1, "label": "Sangat Tidak Puas", "icon": "😤" },
+    { "nilai": 2, "label": "Tidak Puas", "icon": "😟" },
+    { "nilai": 3, "label": "Cukup Puas", "icon": "😐" },
+    { "nilai": 4, "label": "Puas", "icon": "😊" },
+    { "nilai": 5, "label": "Sangat Puas", "icon": "🤩" }
   ],
   "status_pengisian": {
     "total_responden": 0,

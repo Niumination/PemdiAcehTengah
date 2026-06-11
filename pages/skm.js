@@ -22,7 +22,16 @@ export default function SKMPage() {
     setStep(3);
   };
 
-  const semuaTerisi = skmData.dimensi.every(d => skor[d.id] !== undefined) && unit;
+  // Check all questions filled (supports both simple and multi-question format)
+  const semuaPertanyaan = [];
+  skmData.dimensi.forEach(d => {
+    if (d.pertanyaan && d.pertanyaan.length > 0) {
+      d.pertanyaan.forEach((q, qi) => semuaPertanyaan.push(d.id + '_' + qi));
+    } else {
+      semuaPertanyaan.push(d.id);
+    }
+  });
+  const semuaTerisi = semuaPertanyaan.every(qid => skor[qid] !== undefined) && unit;
 
   return (
     <>
@@ -101,19 +110,19 @@ export default function SKMPage() {
                   <span className="badge badge-blue">{unit}</span>
                 </div>
                 <p style={{ fontSize: '0.8125rem', color: 'var(--muted)', marginBottom: '1rem' }}>
-                  Beri nilai 1–5 untuk setiap dimensi berikut:
+                  Beri nilai 1–5 untuk setiap pertanyaan detail berikut:
                 </p>
 
                 <div className="skala-row">
                   {skmData.skala.map(s => (
                     <div key={s.nilai} className="skala-label" style={{ color: SKALA_WARNA[s.nilai] }}>
-                      <strong>{s.nilai}</strong> {s.label}
+                      <strong>{s.nilai}</strong> {s.icon || ''} {s.label}
                     </div>
                   ))}
                 </div>
 
                 {skmData.dimensi.map(d => (
-                  <div key={d.id} className="dimensi-row">
+                  <div key={d.id} className="dimensi-group">
                     <div className="dimensi-header">
                       <span className="dimensi-id">{d.id}</span>
                       <div>
@@ -121,17 +130,37 @@ export default function SKMPage() {
                         <div className="dimensi-desc">{d.deskripsi}</div>
                       </div>
                     </div>
-                    <div className="dimensi-skor">
-                      {[1, 2, 3, 4, 5].map(n => (
-                        <button
-                          key={n}
-                          type="button"
-                          className={`skor-btn ${skor[d.id] === n ? 'selected' : ''}`}
-                          style={skor[d.id] === n ? { background: SKALA_WARNA[n], borderColor: SKALA_WARNA[n], color: 'white' } : {}}
-                          onClick={() => setSkor({ ...skor, [d.id]: n })}
-                        >{n}</button>
-                      ))}
-                    </div>
+                    {d.pertanyaan && d.pertanyaan.length > 0 ? d.pertanyaan.map((q, qi) => {
+                      const qid = d.id + '_' + qi;
+                      return (
+                        <div key={qid} className="pertanyaan-row">
+                          <div className="pertanyaan-teks">{q}</div>
+                          <div className="dimensi-skor">
+                            {[1, 2, 3, 4, 5].map(n => (
+                              <button
+                                key={n}
+                                type="button"
+                                className={`skor-btn ${skor[qid] === n ? 'selected' : ''}`}
+                                style={skor[qid] === n ? { background: SKALA_WARNA[n], borderColor: SKALA_WARNA[n], color: 'white' } : {}}
+                                onClick={() => setSkor({ ...skor, [qid]: n })}
+                              >{n}</button>
+                            ))}
+                          </div>
+                        </div>
+                      );
+                    }) : (
+                      <div className="dimensi-skor" style={{ marginTop: '0.5rem' }}>
+                        {[1, 2, 3, 4, 5].map(n => (
+                          <button
+                            key={n}
+                            type="button"
+                            className={`skor-btn ${skor[d.id] === n ? 'selected' : ''}`}
+                            style={skor[d.id] === n ? { background: SKALA_WARNA[n], borderColor: SKALA_WARNA[n], color: 'white' } : {}}
+                            onClick={() => setSkor({ ...skor, [d.id]: n })}
+                          >{n}</button>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 ))}
 
@@ -155,7 +184,7 @@ export default function SKMPage() {
                 style={{ width: '100%' }}
                 disabled={!semuaTerisi}
               >
-                {semuaTerisi ? 'Kirim Survei ✅' : `Isi semua dimensi dulu (${Object.keys(skor).length}/${skmData.dimensi.length})`}
+                {semuaTerisi ? 'Kirim Survei ✅' : `Isi semua pertanyaan (${Object.keys(skor).length}/${semuaPertanyaan.length})`}
               </button>
               <div className="flex justify-center" style={{ marginTop: '0.75rem' }}>
                 <button type="button" className="btn btn-outline btn-sm" onClick={() => setStep(1)}>← Kembali</button>
@@ -203,6 +232,20 @@ export default function SKMPage() {
         .unit-option.selected { border-color: var(--primary); background: var(--primary-light); font-weight: 600; }
         .skala-row { display: flex; gap: 0.5rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
         .skala-label { font-size: 0.6875rem; background: var(--gray-50); padding: 0.25rem 0.625rem; border-radius: 100px; }
+
+        .dimensi-group {
+          background: var(--gray-50); border-radius: var(--radius); padding: 0.875rem 1rem;
+          margin-bottom: 1rem; border: 1px solid var(--gray-200);
+        }
+        .dimensi-group .dimensi-header { margin-bottom: 0.5rem; }
+        .pertanyaan-row {
+          display: flex; justify-content: space-between; align-items: center;
+          padding: 0.625rem 0.5rem; border-bottom: 1px solid var(--gray-200);
+          background: var(--white); border-radius: 6px; margin-bottom: 0.375rem; gap: 0.5rem;
+        }
+        .pertanyaan-row:last-child { margin-bottom: 0; }
+        .pertanyaan-teks { font-size: 0.8125rem; flex: 1; line-height: 1.4; }
+        .pertanyaan-row .dimensi-skor { gap: 0.25rem; }
 
         .dimensi-row {
           display: flex; justify-content: space-between; align-items: center;

@@ -959,6 +959,23 @@
                 1
               ],
               "output": "Dokumen RPJMD Final"
+            },
+            {
+              "nama": "Musrenbang Kecamatan",
+              "opd_terkait": [
+                1,
+                5,
+                19
+              ],
+              "output": "Prioritas pembangunan kecamatan"
+            },
+            {
+              "nama": "Penyusunan Renstra OPD",
+              "opd_terkait": [
+                1,
+                5
+              ],
+              "output": "Renstra masing-masing OPD"
             }
           ]
         },
@@ -1060,6 +1077,270 @@
                 52
               ],
               "output": "Bibit, produksi, pasca-panen"
+            },
+            {
+              "nama": "Pengelolaan Kepegawaian Daerah",
+              "opd_terkait": [
+                4
+              ],
+              "output": "Data ASN, kenaikan pangkat, pensiun"
+            },
+            {
+              "nama": "Seleksi dan Pengembangan Kompetensi ASN",
+              "opd_terkait": [
+                4
+              ],
+              "output": "ASN terlatih sesuai kompetensi"
+            },
+            {
+              "nama": "Penegakan Disiplin ASN",
+              "opd_terkait": [
+                4,
+                12
+              ],
+              "output": "SK disposisi, absensi, pelanggaran"
+            },
+            {
+              "nama": "Pemeliharaan Jalan dan Jembatan",
+              "opd_terkait": [
+                10
+              ],
+              "output": "Jalan provinsi/kabupaten layak"
+            },
+            {
+              "nama": "Pengelolaan Sumber Daya Air",
+              "opd_terkait": [
+                10
+              ],
+              "output": "Irigasi dan drainase berfungsi"
+            },
+            {
+              "nama": "Penataan Bangunan dan Gedung",
+              "opd_terkait": [
+                10
+              ],
+              "output": "IMB terbit, gedung laik fungsi"
+            },
+            {
+              "nama": "Penyediaan Rumah Layak Huni",
+              "opd_terkait": [
+                11
+              ],
+              "output": "Rumah tidak layak berkurang"
+            },
+            {
+              "nama": "Penataan Perumahan Kumuh",
+              "opd_terkait": [
+                11
+              ],
+              "output": "Luasan kawasan kumuh menurun"
+            },
+            {
+              "nama": "Penyaluran Bansos dan BPNT",
+              "opd_terkait": [
+                13
+              ],
+              "output": "Bantuan tepat sasaran"
+            },
+            {
+              "nama": "Rehabilitasi Sosial",
+              "opd_terkait": [
+                13
+              ],
+              "output": "PMKS mendapat layanan"
+            },
+            {
+              "nama": "Pengembangan Kawasan Transmigrasi",
+              "opd_terkait": [
+                14
+              ],
+              "output": "Lahan transmigrasi produktif"
+            },
+            {
+              "nama": "Penempatan Tenaga Kerja",
+              "opd_terkait": [
+                14
+              ],
+              "output": "Terserapnya pencari kerja"
+            },
+            {
+              "nama": "Program Keluarga Berencana",
+              "opd_terkait": [
+                15
+              ],
+              "output": "Peserta KB aktif meningkat"
+            },
+            {
+              "nama": "Perlindungan Perempuan dan Anak",
+              "opd_terkait": [
+                15
+              ],
+              "output": "Kasus KDRT/anak tertangani"
+            },
+            {
+              "nama": "Pengelolaan Limbah dan Sampah",
+              "opd_terkait": [
+                17
+              ],
+              "output": "TPS/TPA terkelola"
+            },
+            {
+              "nama": "Pengendalian Pencemaran Lingkungan",
+              "opd_terkait": [
+                17
+              ],
+              "output": "Baku mutu lingkungan terpenuhi"
+            },
+            {
+              "nama": "Rehabilitasi Hutan dan Lahan Kritis",
+              "opd_terkait": [
+                17,
+                10
+              ],
+              "output": "Lahan kritis pulih"
+            },
+            {
+              "nama": "Pembinaan Pemerintahan Gampong",
+              "opd_terkait": [
+                19
+              ],
+              "output": "Desa mandiri dan tertib administrasi"
+            },
+            {
+              "nama": "Pengelolaan Dana Desa",
+              "opd_terkait": [
+                19,
+                6
+              ],
+              "output": "ADD/DD tepat sasaran"
+            },
+            {
+              "nama": "Manajemen Lalu Lintas dan Angkutan",
+              "opd_terkait": [
+                20
+              ],
+              "output": "Lalu lintas lancar, angkutan tertib"
+            },
+            {
+              "nama": "Pengujian Kendaraan Bermotor",
+              "opd_terkait": [
+                20
+              ],
+              "output": "KIR terbit tepat waktu"
+            },
+            {
+              "nama": "Layanan Perpustakaan Daerah",
+              "opd_terkait": [
+                25
+              ],
+              "output": "Minat baca meningkat"
+            },
+            {
+              "nama": "Pengelolaan Arsip Daerah",
+              "opd_terkait": [
+                25
+              ],
+              "output": "Arsip tertata digital"
+            },
+            {
+              "nama": "Pembinaan Perikanan Budidaya",
+              "opd_terkait": [
+                26
+              ],
+              "output": "Produksi ikan meningkat"
+            },
+            {
+              "nama": "Bantuan Sarana Perikanan",
+              "opd_terkait": [
+                26
+              ],
+              "output": "Nelayan terbantu"
+            },
+            {
+              "nama": "Pengembangan Kopi Gayo Organik",
+              "opd_terkait": [
+                27,
+                52
+              ],
+              "output": "Produksi dan sertifikasi kopi"
+            },
+            {
+              "nama": "Pembinaan Kelompok Tani",
+              "opd_terkait": [
+                27,
+                16,
+                52
+              ],
+              "output": "Gabungan kelompok tani aktif"
+            },
+            {
+              "nama": "Penanganan Hama dan OPT",
+              "opd_terkait": [
+                27
+              ],
+              "output": "Gangguan OPT minimal"
+            },
+            {
+              "nama": "Pembinaan Syariat Islam",
+              "opd_terkait": [
+                28
+              ],
+              "output": "Qanun syariat diterapkan"
+            },
+            {
+              "nama": "Pembinaan Dayah dan Pendidikan Agama",
+              "opd_terkait": [
+                28
+              ],
+              "output": "Dayah terdata dan terbina"
+            },
+            {
+              "nama": "Program Pendaftaran Tanah Sistematis Lengkap",
+              "opd_terkait": [
+                29,
+                18
+              ],
+              "output": "Sertifikat tanah terbit"
+            },
+            {
+              "nama": "Pemungutan Pajak Daerah",
+              "opd_terkait": [
+                33,
+                6
+              ],
+              "output": "Pajak daerah tertagih"
+            },
+            {
+              "nama": "Pendataan Objek Pajak Baru",
+              "opd_terkait": [
+                33
+              ],
+              "output": "PAD dari pajak meningkat"
+            },
+            {
+              "nama": "Pengelolaan Tanaman Nilam dan Pertanian Lahan Tinggi",
+              "opd_terkait": [
+                27,
+                52,
+                16
+              ],
+              "output": "Komoditas andalan daerah"
+            },
+            {
+              "nama": "Penanganan Bencana Longsor dan Banjir",
+              "opd_terkait": [
+                7,
+                10,
+                17
+              ],
+              "output": "Kesiapsiagaan bencana"
+            },
+            {
+              "nama": "Promosi Pariwisata Danau Laut Tawar dan Bur Telong",
+              "opd_terkait": [
+                24
+              ],
+              "output": "Kunjungan wisata meningkat"
             }
           ]
         },
@@ -1119,6 +1400,14 @@
                 5
               ],
               "output": "Nilai SPBE, rekomendasi"
+            },
+            {
+              "nama": "Monitoring Kinerja OPD (SAKIP)",
+              "opd_terkait": [
+                1,
+                5
+              ],
+              "output": "Laporan kinerja OPD terintegrasi"
             }
           ]
         },
@@ -1176,6 +1465,72 @@
                 50
               ],
               "output": "Pelayanan adm kecamatan"
+            },
+            {
+              "nama": "Layanan Perpustakaan Keliling",
+              "opd_terkait": [
+                25
+              ],
+              "output": "Layanan baca ke seluruh kecamatan"
+            },
+            {
+              "nama": "Layanan Kesehatan Ibu dan Anak",
+              "opd_terkait": [
+                9
+              ],
+              "output": "AKI dan AKB menurun"
+            },
+            {
+              "nama": "Layanan KB dan Alat Kontrasepsi",
+              "opd_terkait": [
+                15
+              ],
+              "output": "Cakupan KB meningkat"
+            },
+            {
+              "nama": "Layanan Pengaduan Masyarakat (Lapor)",
+              "opd_terkait": [
+                3,
+                21
+              ],
+              "output": "Aduan warga tertangani"
+            },
+            {
+              "nama": "Layanan Informasi Publik (PPID)",
+              "opd_terkait": [
+                21
+              ],
+              "output": "Informasi publik tersedia"
+            },
+            {
+              "nama": "Layanan Bencana Alam",
+              "opd_terkait": [
+                7,
+                10,
+                17
+              ],
+              "output": "Bantuan korban bencana tersalur"
+            },
+            {
+              "nama": "Layanan Administrasi Gampong",
+              "opd_terkait": [
+                19
+              ],
+              "output": "Administrasi desa tertib"
+            },
+            {
+              "nama": "Pelayanan Koperasi dan UKM",
+              "opd_terkait": [
+                22
+              ],
+              "output": "Legalitas dan pembinaan UKM"
+            },
+            {
+              "nama": "Layanan Data Statistik Daerah",
+              "opd_terkait": [
+                5
+              ],
+              "output": "Data Satu Data Aceh Tengah"
             }
           ]
         },
@@ -1212,6 +1567,23 @@
                 12
               ],
               "output": "Surat peringatan, rekom sanksi"
+            },
+            {
+              "nama": "Pengawasan Dana Desa",
+              "opd_terkait": [
+                3,
+                19
+              ],
+              "output": "DD/ADD bebas penyimpangan"
+            },
+            {
+              "nama": "Pengawasan Penerapan Syariat Islam",
+              "opd_terkait": [
+                3,
+                28,
+                12
+              ],
+              "output": "Qanun syariat ditegakkan"
             }
           ]
         }

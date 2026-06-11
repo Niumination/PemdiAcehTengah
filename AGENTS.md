@@ -94,8 +94,9 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 | `pages/api/AGENTS.md` | REST API routes: GET opd, spbe, requirement (read-only, JSON) |
 | `components/AGENTS.md` | 12 React komponen: Header, Footer, Layout, ScrollTop, OPDTable, ProbisSection, SpbeGauge, Rekomendasi, DataBadge, DetailModal, LaporWidget, SlaBadge |
 | `styles/AGENTS.md` | CSS architecture, design tokens, responsive breakpoints |
-| `data/AGENTS.md` | Struktur data opd.json + pemdi.json |
-| `docs/` | Dokumentasi proyek — file MD, PDF, referensi regulasi |
+| `data/AGENTS.md` | Struktur data opd.json (78 level_2 proses ✅) + pemdi.json |
+| `pages/AGENTS.md` | Halaman Next.js (11 halaman + 1 API): index, pemdi, probis, layanan, faq, skm (24 pertanyaan ✅), tanya, cari, requirement, opd/[slug], _app + api/lapor — routing, SSR/SSG |
+| `pages/api/AGENTS.md` | REST API route: POST/GET `/api/lapor` — backend LaporWidget |
 | `STRATEGI_PEMDIACEHTENGAH.md` | **Dokumen perencanaan strategis (file ini)** — 4 fase, quick wins, risiko, metrik |
 
 ## User Preferences

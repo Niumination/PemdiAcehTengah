@@ -5,12 +5,34 @@ export default function LaporWidget() {
   const [step, setStep] = useState('form'); // form | tracking | done
   const [laporan, setLaporan] = useState({ kategori: '', pesan: '', kontak: '' });
   const [trackId, setTrackId] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const handleKirim = (e) => {
+  const handleKirim = async (e) => {
     e.preventDefault();
-    const id = `LAPOR-${Date.now().toString(36).toUpperCase()}`;
-    setTrackId(id);
-    setStep('done');
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch('/api/lapor', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          kategori: laporan.kategori,
+          pesan: laporan.pesan,
+          kontak: laporan.kontak,
+        }),
+      });
+      const result = await res.json();
+      if (result.success) {
+        setTrackId(result.data.id);
+        setStep('done');
+      } else {
+        setError(result.error || 'Gagal mengirim');
+      }
+    } catch (err) {
+      setError('Koneksi gagal. Coba lagi.');
+    }
+    setLoading(false);
   };
 
   return (
@@ -84,9 +106,10 @@ export default function LaporWidget() {
                     onChange={e => setLaporan({ ...laporan, kontak: e.target.value })}
                   />
                 </div>
-                <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
-                  Kirim Laporan
+                <button type="submit" className="btn btn-primary" style={{ width: '100%' }} disabled={loading}>
+                  {loading ? 'Mengirim...' : 'Kirim Laporan'}
                 </button>
+                {error && <div className="lapor-error">{error}</div>}
               </form>
             )}
 
@@ -95,13 +118,15 @@ export default function LaporWidget() {
                 <p style={{ fontSize: '0.8125rem', color: 'var(--muted)', marginBottom: '0.75rem' }}>
                   Masukkan ID laporan untuk cek status:
                 </p>
-                <input
-                  type="text"
-                  className="lapor-input"
-                  placeholder="Contoh: LAPOR-XXXXXX"
-                  style={{ marginBottom: '0.75rem' }}
-                />
-                <button className="btn btn-outline btn-sm">Cek Status</button>
+                <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.75rem' }}>
+                  <input
+                    type="text"
+                    className="lapor-input"
+                    style={{ flex: 1 }}
+                    placeholder="Contoh: LAPOR-XXXXXX"
+                  />
+                  <button className="btn btn-outline btn-sm">Cek Status</button>
+                </div>
                 <div style={{ marginTop: '1rem', padding: '0.75rem', background: 'var(--gray-50)', borderRadius: '8px', fontSize: '0.75rem', color: 'var(--muted)' }}>
                   🔧 Fitur tracking real-time sedang dalam pengembangan.
                   Saat ini laporan ditindaklanjuti manual oleh Tim Pemda Digital.
@@ -197,6 +222,11 @@ export default function LaporWidget() {
           font-family: var(--font-mono); font-size: 0.875rem; font-weight: 700;
           color: var(--primary); background: var(--primary-light); padding: 0.5rem 1rem;
           border-radius: var(--radius); display: inline-block;
+        }
+        .lapor-error {
+          margin-top: 0.75rem; padding: 0.5rem 0.75rem; background: #fff0f0;
+          border: 1px solid #e0b3b3; border-radius: 6px; font-size: 0.8125rem;
+          color: #b30000; text-align: center;
         }
       `}</style>
     </>
