@@ -15,10 +15,10 @@ export default async function handler(req, res) {
     return res.status(405).json({ success: false, error: 'Method not allowed' });
   }
 
-  const ip = hashIp(req.headers['x-forwarded-for'] || req.socket.remoteAddress || 'unknown');
+  const ip = hashIp(req);
 
   // Rate limit: max 5 post per menit per IP
-  if (!rateLimit(`lapor:${ip}`, 5, 60)) {
+  if (!rateLimit(`lapor:${ip}`, { max: 5, windowMs: 60000 }).ok) {
     return res.status(429).json({ success: false, error: 'Terlalu banyak permintaan. Coba lagi nanti.' });
   }
 
