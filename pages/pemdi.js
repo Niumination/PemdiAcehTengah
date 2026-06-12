@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { useState } from 'react';
+import { formatAngka, formatDesimal, gabung } from '@/lib/format';
 import pemdiData from '@/data/pemdi.json';
 import DetailModal from '@/components/DetailModal';
 import DataBadge from '@/components/DataBadge';
@@ -114,14 +115,14 @@ function AspectModalContent({ aspek }) {
                 </span>
                 {ind.bobot && (
                   <span style={{ fontSize: '0.65rem', color: '#888', background: '#f0f0f0', padding: '0.05rem 0.4rem', borderRadius: '3px' }}>
-                    bobot {ind.bobot}%
+                    bobot {formatAngka(ind.bobot)}%
                   </span>
                 )}
                 <span style={{
                   marginLeft: 'auto', fontWeight: 700, fontSize: '0.95rem',
                   color: gap > 0 ? '#d4351c' : '#00703c', whiteSpace: 'nowrap',
                 }}>
-                  {ind.nilai.toFixed(1)} <span style={{ fontWeight: 400, fontSize: '0.7rem', color: '#888' }}>/ {ind.target.toFixed(1)}</span>
+                  {formatDesimal(ind.nilai, 1)} <span style={{ fontWeight: 400, fontSize: '0.7rem', color: '#888' }}>/ {formatDesimal(ind.target, 1)}</span>
                 </span>
               </div>
 
@@ -234,7 +235,7 @@ export default function PemdiPage() {
                     style={{ transition: 'stroke-dasharray 0.8s ease' }}
                   />
                   <text x="110" y="100" textAnchor="middle" fill="white" fontSize="32" fontWeight="700">
-                    {indeks.toFixed(2)}
+                    {formatDesimal(indeks)}
                   </text>
                   <text x="110" y="125" textAnchor="middle" fill={predikat.warna} fontSize="14" fontWeight="600">
                     {predikat.label}
@@ -247,19 +248,19 @@ export default function PemdiPage() {
               <div className="score-ring-compare">
                 <div className="compare-row">
                   <span className="compare-label">SPBE 2025</span>
-                  <span className="compare-value" style={{ color: 'rgba(255,255,255,0.9)' }}>{baseline_spbe.toFixed(2)}</span>
+                  <span className="compare-value" style={{ color: 'rgba(255,255,255,0.9)' }}>{formatDesimal(baseline_spbe)}</span>
                 </div>
                 <div className="compare-row">
                   <span className="compare-label">Pemdi Baseline</span>
-                  <span className="compare-value" style={{ color: predikat.warna }}>{indeks.toFixed(2)}</span>
+                  <span className="compare-value" style={{ color: predikat.warna }}>{formatDesimal(indeks)}</span>
                 </div>
                 <div className="compare-row" style={{ borderTop: '1px solid rgba(255,255,255,0.2)', paddingTop: '0.5rem' }}>
                   <span className="compare-label" style={{ fontWeight: 600 }}>Target 2026</span>
-                  <span className="compare-value" style={{ color: '#fff', fontWeight: 700 }}>{target_indeks.toFixed(2)}</span>
+                  <span className="compare-value" style={{ color: '#fff', fontWeight: 700 }}>{formatDesimal(target_indeks)}</span>
                 </div>
                 <div className="compare-gap">
                   Gap: <strong style={{ color: indeks >= target_indeks ? '#28a197' : '#ffb347' }}>
-                    {(target_indeks - indeks).toFixed(2)}
+                    {formatDesimal(target_indeks - indeks)}
                   </strong>
                 </div>
               </div>
@@ -310,7 +311,7 @@ export default function PemdiPage() {
                       {a.bobot}%
                     </span>
                     <span style={{ fontSize: '1.25rem', fontWeight: 700, color: a.warna }}>
-                      {a.nilai.toFixed(2)}
+                      {formatDesimal(a.nilai)}
                     </span>
                   </div>
                   <h3 style={{ fontSize: '0.9375rem', fontWeight: 600, margin: '0.25rem 0' }}>
@@ -323,9 +324,9 @@ export default function PemdiPage() {
                     <div className="progress-fill" style={{ width: `${(a.nilai / 5) * 100}%`, background: a.warna }} />
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.6875rem', color: '#505a5f', marginTop: '0.25rem' }}>
-                    <span>{a.indikator.length} indikator</span>
+                    <span>{formatAngka(a.indikator.length)} indikator</span>
                     <span style={{ color: gap > 0 ? '#d4351c' : '#00703c' }}>
-                      Gap: {gap > 0 ? `+${gap.toFixed(2)}` : '✅ Tercapai'}
+                      Gap: {gap > 0 ? `+${formatDesimal(gap)}` : '✅ Tercapai'}
                     </span>
                   </div>
                   <div style={{ marginTop: '0.5rem', textAlign: 'center' }}>
@@ -358,7 +359,7 @@ export default function PemdiPage() {
           <div className="grid grid-3" style={{ gap: '1rem' }}>
             <div className="card" style={{ textAlign: 'center', padding: '1.5rem' }}>
               <div style={{ fontSize: '0.75rem', color: '#505a5f', marginBottom: '0.5rem' }}>Indeks SPBE 2025</div>
-              <div style={{ fontSize: '2.5rem', fontWeight: 700, color: '#e65100' }}>{baseline_spbe.toFixed(2)}</div>
+              <div style={{ fontSize: '2.5rem', fontWeight: 700, color: '#e65100' }}>{formatDesimal(baseline_spbe)}</div>
               <div className="badge badge-sm" style={{ background: '#e6510018', color: '#e65100' }}>Cukup</div>
               <p style={{ fontSize: '0.75rem', color: '#505a5f', marginTop: '0.75rem' }}>
                 4 domain · 47 indikator
@@ -366,7 +367,7 @@ export default function PemdiPage() {
             </div>
             <div className="card" style={{ textAlign: 'center', padding: '1.5rem', border: '2px solid #1d70b8' }}>
               <div style={{ fontSize: '0.75rem', color: '#505a5f', marginBottom: '0.5rem' }}>Indeks Pemdi Baseline</div>
-              <div style={{ fontSize: '2.5rem', fontWeight: 700, color: predikat.warna }}>{indeks.toFixed(2)}</div>
+              <div style={{ fontSize: '2.5rem', fontWeight: 700, color: predikat.warna }}>{formatDesimal(indeks)}</div>
               <div className="badge badge-sm" style={{ background: `${predikat.warna}18`, color: predikat.warna }}>
                 {predikat.label}
               </div>
@@ -376,10 +377,10 @@ export default function PemdiPage() {
             </div>
             <div className="card" style={{ textAlign: 'center', padding: '1.5rem', background: '#f0f4ff' }}>
               <div style={{ fontSize: '0.75rem', color: '#505a5f', marginBottom: '0.5rem' }}>Target 2026</div>
-              <div style={{ fontSize: '2.5rem', fontWeight: 700, color: '#1d70b8' }}>{target_indeks.toFixed(2)}</div>
+              <div style={{ fontSize: '2.5rem', fontWeight: 700, color: '#1d70b8' }}>{formatDesimal(target_indeks)}</div>
               <div className="badge badge-sm" style={{ background: '#1d70b818', color: '#1d70b8' }}>Baik</div>
               <p style={{ fontSize: '0.75rem', color: '#505a5f', marginTop: '0.75rem' }}>
-                Gap: {(target_indeks - indeks).toFixed(2)} dari baseline
+                Gap: {formatDesimal(target_indeks - indeks)} dari baseline
               </p>
             </div>
           </div>

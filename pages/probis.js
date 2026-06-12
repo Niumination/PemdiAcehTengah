@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useState } from 'react';
 import DetailModal from '@/components/DetailModal';
+import { formatAngka, formatDesimal, gabung } from '@/lib/format';
 import portalData from '@/data/opd.json';
 
 function slugify(text) {
@@ -94,7 +95,7 @@ export default function PetaProsesBisnis({ data }) {
           <div className="misi-grid">
             {probis.level_0.misi.map((m, i) => (
               <div key={i} className="misi-card-compact" onClick={() => setModalMisi(m)}>
-                <div className="misi-number">Misi {i + 1}</div>
+                <div className="misi-number">Misi {formatAngka(i + 1)}</div>
                 <h3 className="misi-nama">{m.nama}</h3>
                 <div className="misi-detail-link">Lihat Detail →</div>
               </div>
@@ -153,7 +154,7 @@ export default function PetaProsesBisnis({ data }) {
             <div className="ppb-level-badge level-1">Level 1</div>
             <div>
               <h2>{probis.level_1.label}</h2>
-              <p className="ppb-section-desc">{probis.level_1.deskripsi} — {probis.level_1.urusan?.length} urusan</p>
+              <p className="ppb-section-desc">{probis.level_1.deskripsi} — {formatAngka(probis.level_1.urusan?.length)} urusan</p>
             </div>
           </div>
 
@@ -162,7 +163,7 @@ export default function PetaProsesBisnis({ data }) {
               <div key={i} className="urusan-card">
                 <div className="urusan-header">
                   <h3>{u.nama}</h3>
-                  <span className="badge badge-blue">{u.opd_terkait?.length} OPD</span>
+                  <span className="badge badge-blue">{formatAngka(u.opd_terkait?.length)} OPD</span>
                 </div>
                 <div className="opd-tags">
                   {u.opd_terkait?.map((id) => {
@@ -183,7 +184,7 @@ export default function PetaProsesBisnis({ data }) {
           <div className="ppb-note">
             <strong>Catatan:</strong> 24 urusan konkuren berdasarkan UU 23/2014 + urusan umum 
             (Sekretariat, Legislatif, Pengawasan, Kepegawaian, Perencanaan, Keuangan, 
-            Kesbangpol, Bencana, Keagamaan, Kecamatan) — total {probis.level_1.urusan?.length} urusan.
+            Kesbangpol, Bencana, Keagamaan, Kecamatan) — total {formatAngka(probis.level_1.urusan?.length)} urusan.
           </div>
         </section>
 

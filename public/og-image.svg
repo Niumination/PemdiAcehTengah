@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c331e"/>
+      <stop offset="100%" stop-color="#1a5c32"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d4a017"/>
+      <stop offset="100%" stop-color="#f0c040"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- Geometric mountain in background -->
+  <polygon points="350,180 600,500 850,180 700,500 500,500" fill="#145226" opacity="0.5"/>
+  <!-- Golden circle 3/4 behind -->
+  <circle cx="600" cy="350" r="160" fill="none" stroke="url(#gold)" stroke-width="6" opacity="0.8" stroke-dasharray="800 100"/>
+  <!-- Main mountain -->
+  <path d="M400,420 L600,200 L800,420 Q700,400 600,400 Q500,400 400,420 Z" fill="#1f6f43" stroke="#2a8f58" stroke-width="2"/>
+  <path d="M450,420 L600,240 L750,420 Q680,410 600,410 Q520,410 450,420 Z" fill="#2a8f58" opacity="0.6"/>
+  <!-- Star -->
+  <polygon points="600,145 607,165 628,165 611,178 617,198 600,186 583,198 589,178 572,165 593,165" fill="#f0c040" opacity="0.9"/>
+  <!-- Crescent moon -->
+  <path d="M615,130 A45,45 0 1,1 565,160 A35,35 0 1,0 615,130 Z" fill="#f0d070" opacity="0.85"/>
+  <!-- Sun rays gradient -->
+  <path d="M600,200 L500,100 L520,95 L600,190 Z" fill="url(#gold)" opacity="0.15"/>
+  <path d="M600,200 L700,100 L680,95 L600,190 Z" fill="url(#gold)" opacity="0.15"/>
+  <path d="M600,200 L550,80 L570,78 L600,190 Z" fill="url(#gold)" opacity="0.1"/>
+  <path d="M600,200 L650,80 L630,78 L600,190 Z" fill="url(#gold)" opacity="0.1"/>
+  <!-- Water -->
+  <path d="M100,550 Q200,530 300,550 Q400,570 500,550 Q600,530 700,550 Q800,570 900,550 Q1000,530 1100,550 L1200,550 L1200,630 L100,630 Z" fill="#1a5276" opacity="0.6"/>
+  <path d="M100,570 Q200,555 300,570 Q400,585 500,570 Q600,555 700,570 Q800,585 900,570 Q1000,555 1100,570 L1200,570 L1200,630 L100,630 Z" fill="#2471a3" opacity="0.5"/>
+  <path d="M100,590 Q200,580 300,590 Q400,600 500,590 Q600,580 700,590 Q800,600 900,590 Q1000,580 1100,590 L1200,590 L1200,630 L100,630 Z" fill="#2e86c1" opacity="0.4"/>
+  <!-- Title -->
+  <text x="600" y="470" text-anchor="middle" font-family="Inter, sans-serif" font-size="62" font-weight="700" fill="#ffffff" letter-spacing="1">Pemdi Aceh Tengah</text>
+  <text x="600" y="520" text-anchor="middle" font-family="Inter, sans-serif" font-size="26" font-weight="400" fill="#a0d0b0" letter-spacing="3">PORTAL PEMERINTAH DIGITAL</text>
+  <!-- Decorative line -->
+  <line x1="400" y1="540" x2="800" y2="540" stroke="url(#gold)" stroke-width="2" opacity="0.5"/>
+  <!-- Bottom tagline -->
+  <text x="600" y="575" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" fill="#709a80" letter-spacing="2">acehtengahkab.go.id  •  Transparan  •  Inovatif  •  Melayani</text>
+</svg>

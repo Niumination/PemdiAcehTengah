@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useState, useMemo } from 'react';
 import SlaBadge from '@/components/SlaBadge';
+import { formatAngka, formatDesimal, gabung } from '@/lib/format';
 import layananData from '@/data/layanan.json';
 
 const STATUS_WARNA = { Aktif: 'badge-green', Nonaktif: 'badge-red', Terbatas: 'badge-orange' };
@@ -50,7 +51,7 @@ export default function LayananPage() {
           <Link href="/" className="back-link">← Beranda</Link>
           <div style={{ marginTop: '1rem' }}>
             <h1>Layanan Publik</h1>
-            <p>Direktori {ringkasan.total_layanan} layanan publik di {ringkasan.total_kategori} kategori — Pemerintah Kabupaten Aceh Tengah</p>
+            <p>Direktori {formatAngka(ringkasan.total_layanan)} layanan publik di {formatAngka(ringkasan.total_kategori)} kategori — Pemerintah Kabupaten Aceh Tengah</p>
           </div>
 
           {/* Filter Pills */}
@@ -90,22 +91,22 @@ export default function LayananPage() {
         <div className="container">
           <div className="grid grid-4" style={{ gap: '0.75rem' }}>
             <div className="card" style={{ padding: '1rem', textAlign: 'center' }}>
-              <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--primary)' }}>{ringkasan.total_layanan}</div>
+              <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--primary)' }}>{formatAngka(ringkasan.total_layanan)}</div>
               <div style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>Total Layanan</div>
             </div>
             <div className="card" style={{ padding: '1rem', textAlign: 'center' }}>
-              <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#28a197' }}>{ringkasan.layanan_online}</div>
+              <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#28a197' }}>{formatAngka(ringkasan.layanan_online)}</div>
               <div style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>Bisa Online</div>
             </div>
             <div className="card" style={{ padding: '1rem', textAlign: 'center' }}>
-              <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#e65100' }}>{ringkasan.layanan_offline}</div>
+              <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#e65100' }}>{formatAngka(ringkasan.layanan_offline)}</div>
               <div style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>Datang Langsung</div>
             </div>
             <div className="card" style={{ padding: '1rem', textAlign: 'center' }}>
-              <div style={{ fontSize: '1.5rem', fontWeight: 700, color: getSlaWarna(slaRata) }}>{slaRata}%</div>
+              <div style={{ fontSize: '1.5rem', fontWeight: 700, color: getSlaWarna(slaRata) }}>{formatAngka(slaRata)}%</div>
               <div style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>Rata-rata SLA</div>
               <div style={{ fontSize: '0.625rem', marginTop: '0.25rem', color: 'var(--muted)' }}>
-                {slaTinggi} layanan ≥90%
+                {formatAngka(slaTinggi)} layanan ≥90%
               </div>
             </div>
           </div>
@@ -170,7 +171,7 @@ export default function LayananPage() {
 
           <div className="flex justify-center" style={{ marginTop: '2rem', gap: '0.75rem', flexWrap: 'wrap' }}>
             <small style={{ color: 'var(--muted)' }}>
-              Menampilkan {filtered.length} dari {semuaLayanan.length} layanan
+              Menampilkan {formatAngka(filtered.length)} dari {formatAngka(semuaLayanan.length)} layanan
             </small>
           </div>
         </div>
@@ -197,7 +198,7 @@ export default function LayananPage() {
               >
                 <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>{k.ikon}</div>
                 <h3 style={{ fontSize: '0.9375rem', marginBottom: '0.25rem' }}>{k.nama}</h3>
-                <p style={{ fontSize: '0.75rem', color: 'var(--muted)', margin: 0 }}>{k.layanan.length} layanan</p>
+                <p style={{ fontSize: '0.75rem', color: 'var(--muted)', margin: 0 }}>{formatAngka(k.layanan.length)} layanan</p>
                 <p style={{ fontSize: '0.6875rem', color: 'var(--gray-500)', marginTop: '0.25rem' }}>{k.opd}</p>
               </Link>
             ))}

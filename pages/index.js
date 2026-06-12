@@ -4,6 +4,7 @@ import ProbisSection from '@/components/ProbisSection';
 import Rekomendasi from '@/components/Rekomendasi';
 import OPDTable from '@/components/OPDTable';
 import DataBadge from '@/components/DataBadge';
+import { formatAngka, formatDesimal, gabung } from '@/lib/format';
 import portalData from '@/data/opd.json';
 import pemdiData from '@/data/pemdi.json';
 
@@ -57,23 +58,23 @@ export default function Home({ data }) {
             </div>
             <div className="hero-stats">
               <div className="hero-stat">
-                <div className="hero-stat-num">{opd.ringkasan.instansi}</div>
+                <div className="hero-stat-num">{formatAngka(opd.ringkasan.instansi)}</div>
                 <div className="hero-stat-label">Instansi Pemerintah</div>
               </div>
               <div className="hero-stat">
-                <div className="hero-stat-num">{opd.ringkasan.kecamatan}</div>
+                <div className="hero-stat-num">{formatAngka(opd.ringkasan.kecamatan)}</div>
                 <div className="hero-stat-label">Kecamatan</div>
               </div>
               <div className="hero-stat">
-                <div className="hero-stat-num">{spbe.indeks.toFixed(2)}</div>
+                <div className="hero-stat-num">{formatDesimal(spbe.indeks)}</div>
                 <div className="hero-stat-label">Indeks SPBE 2025</div>
               </div>
               <div className="hero-stat">
-                <div className="hero-stat-num">{opd.total_asn.toLocaleString()}</div>
+                <div className="hero-stat-num">{formatAngka(opd.total_asn)}</div>
                 <div className="hero-stat-label">ASN</div>
               </div>
               <div className="hero-stat">
-                <div className="hero-stat-num">{startup.tahapan.length}</div>
+                <div className="hero-stat-num">{formatAngka(startup.tahapan.length)}</div>
                 <div className="hero-stat-label">Fase Transformasi</div>
               </div>
             </div>
@@ -160,12 +161,12 @@ export default function Home({ data }) {
             <div className="grid grid-2" style={{ gap: '1.5rem', alignItems: 'center' }}>
               <div style={{ textAlign: 'center' }}>
                 <div style={{ fontSize: '0.75rem', color: 'var(--muted)', marginBottom: '0.375rem' }}>Indeks Pemdi Baseline</div>
-                <div style={{ fontSize: '2.5rem', fontWeight: 700, color: predikat.warna }}>{indeks.toFixed(2)}</div>
+                <div style={{ fontSize: '2.5rem', fontWeight: 700, color: predikat.warna }}>{formatDesimal(indeks)}</div>
                 <div className="badge badge-sm" style={{ background: `${predikat.warna}18`, color: predikat.warna, border: `1px solid ${predikat.warna}40` }}>
                   {predikat.label}
                 </div>
                 <p style={{ fontSize: '0.75rem', color: 'var(--muted)', marginTop: '0.5rem' }}>
-                  Target 2026: <strong>{pemdiData.target_indeks}</strong> ({pemdiData.target_predikat}) · Gap: <strong style={{ color: '#d4351c' }}>{(pemdiData.target_indeks - indeks).toFixed(2)}</strong>
+                  Target 2026: <strong>{pemdiData.target_indeks}</strong> ({pemdiData.target_predikat}) · Gap: <strong style={{ color: '#d4351c' }}>{formatDesimal(pemdiData.target_indeks - indeks)}</strong>
                 </p>
               </div>
               <div>
@@ -177,7 +178,7 @@ export default function Home({ data }) {
                         <div style={{ fontSize: '0.625rem', color: 'var(--muted)' }}>{a.bobot}%</div>
                       </div>
                       <span style={{ fontSize: '1rem', fontWeight: 700, color: a.warna, minWidth: '2rem', textAlign: 'right' }}>
-                        {a.nilai.toFixed(2)}
+                        {formatDesimal(a.nilai)}
                       </span>
                     </div>
                   ))}
@@ -239,7 +240,7 @@ export default function Home({ data }) {
           <div className="section-header">
             <h2>Perangkat Daerah</h2>
             <p>
-              {opd.ringkasan.instansi} instansi dan {opd.ringkasan.kecamatan} kecamatan
+              {formatAngka(opd.ringkasan.instansi)} instansi dan {formatAngka(opd.ringkasan.kecamatan)} kecamatan
               di lingkungan Pemerintah Kabupaten Aceh Tengah.
               Sumber data: Dinas Komunikasi dan Informatika (14 Januari 2026).
             </p>

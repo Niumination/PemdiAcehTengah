@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { formatAngka, formatDesimal, gabung } from '@/lib/format';
 import portalData from '@/data/opd.json';
 
 /* =============================================
@@ -113,7 +114,7 @@ export default function OPDPage({ opd, urusanTerkait, probisMisi, relatedOpd, pr
     <>
       <Head>
         <title>{opd.nama} — Pemdi Aceh Tengah</title>
-        <meta name="description" content={`${opd.nama} (${opd.singkat}) — ${opd.urusan}. ${opd.jumlah_asn > 0 ? `${opd.jumlah_asn.toLocaleString()} ASN` : 'Data ASN belum tersedia'}. Peta Proses Bisnis Level 1–2.`} />
+        <meta name="description" content={`${opd.nama} (${opd.singkat}) — ${opd.urusan}. ${opd.jumlah_asn > 0 ? `${formatAngka(opd.jumlah_asn)} ASN` : 'Data ASN belum tersedia'}. Peta Proses Bisnis Level 1–2.`} />
       </Head>
 
       {/* ============ HERO ============ */}
@@ -145,7 +146,7 @@ export default function OPDPage({ opd, urusanTerkait, probisMisi, relatedOpd, pr
               </span>
               {opd.jumlah_asn > 0 && (
                 <span className="badge badge-gray">
-                  👥 {opd.jumlah_asn.toLocaleString()} ASN
+                  👥 {formatAngka(opd.jumlah_asn)} ASN
                 </span>
               )}
             </div>
@@ -205,7 +206,7 @@ export default function OPDPage({ opd, urusanTerkait, probisMisi, relatedOpd, pr
                     <td className="info-label">Jumlah ASN</td>
                     <td className="info-value">
                       {opd.jumlah_asn > 0 ? (
-                        <span className="stat-number">{opd.jumlah_asn.toLocaleString()}</span>
+                        <span className="stat-number">{formatAngka(opd.jumlah_asn)}</span>
                       ) : (
                         <span style={{ color: 'var(--gray-400)' }}>—</span>
                       )}
@@ -220,7 +221,7 @@ export default function OPDPage({ opd, urusanTerkait, probisMisi, relatedOpd, pr
                     <td className="info-value">
                       {opd.jumlah_asn > 0 ? (
                         <span className="stat-number-sm">
-                          {((opd.jumlah_asn / 4507) * 100).toFixed(1)}%
+                          {formatDesimal((opd.jumlah_asn / 4507) * 100, 1)}%
                         </span>
                       ) : (
                         <span style={{ color: 'var(--gray-400)' }}>—</span>
@@ -340,7 +341,7 @@ export default function OPDPage({ opd, urusanTerkait, probisMisi, relatedOpd, pr
               <div className="ppb-level-badge">Level 2</div>
               <h3>Proses Bisnis OPD</h3>
               <p className="ppb-label">Total Proses Terkait</p>
-              <p className="ppb-value" style={{ fontSize: '2rem' }}>{prosesOPD.length}</p>
+              <p className="ppb-value" style={{ fontSize: '2rem' }}>{formatAngka(prosesOPD.length)}</p>
               <div className="flex flex-wrap gap-1" style={{ marginTop: '0.75rem' }}>
                 {[...new Set(prosesOPD.map(p => p.kategori))].map(k => (
                   <span key={k} className="badge badge-sm" style={{
@@ -389,7 +390,7 @@ export default function OPDPage({ opd, urusanTerkait, probisMisi, relatedOpd, pr
                   ⚙️ Proses Bisnis {opd.singkat}
                 </h3>
                 <p style={{ fontSize: '0.8125rem', color: 'var(--muted)', margin: '0.25rem 0 0' }}>
-                  {prosesOPD.length} proses bisnis spesifik berdasarkan tugas dan fungsi {opd.nama}
+                  {formatAngka(prosesOPD.length)} proses bisnis spesifik berdasarkan tugas dan fungsi {opd.nama}
                 </p>
               </div>
               <div className="grid grid-2" style={{ gap: '0.75rem' }}>
@@ -453,7 +454,7 @@ export default function OPDPage({ opd, urusanTerkait, probisMisi, relatedOpd, pr
                     {r.urusan}
                   </p>
                   <small style={{ color: 'var(--gray-500)' }}>
-                    {r.jumlah_asn > 0 ? `👥 ${r.jumlah_asn.toLocaleString()} ASN` : '—'}
+                    {r.jumlah_asn > 0 ? `👥 ${formatAngka(r.jumlah_asn)} ASN` : '—'}
                   </small>
                 </Link>
               ))}
