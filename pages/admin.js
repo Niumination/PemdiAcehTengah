@@ -93,11 +93,11 @@ export default function AdminPage() {
     setLoginError('');
     try {
       const res = await fetch('/api/admin/laporan', {
-        headers: { 'Authorization': 'Basic ' + btoa('admin:' + password) }
+        headers: { 'Authorization': `Bearer ${password}` }
       });
-      if (res.status === 401) { setLoginError('Password salah!'); return; }
-      // If we get past 401, store the token
-      sessionStorage.setItem('admin_token', 'authenticated');
+      if (res.status === 401) { setLoginError('Token salah!'); return; }
+      // Simpan password sebagai token Bearer
+      sessionStorage.setItem('admin_token', password);
       setLoggedIn(true);
     } catch {
       setLoginError('Gagal terhubung ke server.');
