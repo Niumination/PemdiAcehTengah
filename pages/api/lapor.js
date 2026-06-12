@@ -8,8 +8,25 @@ const KATEGORI_VALID = ['saran', 'keluhan', 'pertanyaan', 'apresiasi', 'bug', 'l
 export default async function handler(req, res) {
   // CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, PATCH, GET, OPTIONS');
   if (req.method === 'OPTIONS') return res.status(200).end();
+
+  if (req.method === 'GET') {
+    return res.status(405).json({ success: false, error: 'Gunakan /api/admin/laporan' });
+  }
+
+  if (req.method === 'PATCH') {
+    const { id, status } = req.body;
+    if (!id || !['baru','diproses','selesai','ditolak'].includes(status)) {
+      return res.status(400).json({ success: false, error: 'Parameter tidak valid' });
+    }
+    if (!isSupabaseReady) {
+      return res.status(503).json({ success: false, error: 'Database belum dikonfigurasi' });
+    }
+    const { error } = await supabaseAdmin.from('laporan').update({ status }).eq('id', id);
+    if (error) return res.status(500).json({ success: false, error: error.message });
+    return res.status(200).json({ success: true, tersimpan: true });
+  }
 
   if (req.method !== 'POST') {
     return res.status(405).json({ success: false, error: 'Method not allowed' });
