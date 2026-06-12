@@ -16,10 +16,27 @@ export default function SKMPage() {
   const [unit, setUnit] = useState('');
   const [skor, setSkor] = useState({});
   const [saran, setSaran] = useState('');
+  const [submitting, setSubmitting] = useState(false);
+  const [errMsg, setErrMsg] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setStep(3);
+    setSubmitting(true);
+    setErrMsg(null);
+    try {
+      const res = await fetch('/api/skm', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...skor, layanan: unit, saran }),
+      });
+      const json = await res.json();
+      if (json.tersimpan) setStep(3);
+      else setErrMsg(json.error || 'Gagal mengirim survei.');
+    } catch {
+      setErrMsg('Gagal terhubung ke server.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const semuaTerisi = skmData.dimensi.every(d => skor[d.id] !== undefined) && unit;
@@ -122,7 +139,7 @@ export default function SKMPage() {
                       </div>
                     </div>
                     <div className="dimensi-skor">
-                      {[1, 2, 3, 4, 5].map(n => (
+                      {[1, 2, 3, 4].map(n => (
                         <button
                           key={n}
                           type="button"
@@ -153,10 +170,11 @@ export default function SKMPage() {
                 type="submit"
                 className="btn btn-primary btn-lg"
                 style={{ width: '100%' }}
-                disabled={!semuaTerisi}
+                disabled={!semuaTerisi || submitting}
               >
-                {semuaTerisi ? 'Kirim Survei ✅' : `Isi semua dimensi dulu (${Object.keys(skor).length}/${skmData.dimensi.length})`}
+                {submitting ? 'Mengirim... ⏳' : semuaTerisi ? 'Kirim Survei ✅' : `Isi semua dimensi dulu (${Object.keys(skor).length}/${skmData.dimensi.length})`}
               </button>
+              {errMsg && <div style={{ marginTop: '0.75rem', padding: '0.75rem', background: '#fef2f2', color: '#dc2626', borderRadius: '8px', fontSize: '0.8125rem' }}>❌ {errMsg}</div>}
               <div className="flex justify-center" style={{ marginTop: '0.75rem' }}>
                 <button type="button" className="btn btn-outline btn-sm" onClick={() => setStep(1)}>← Kembali</button>
               </div>

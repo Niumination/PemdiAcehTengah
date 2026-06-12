@@ -5,12 +5,36 @@ export default function LaporWidget() {
   const [step, setStep] = useState('form'); // form | tracking | done
   const [laporan, setLaporan] = useState({ kategori: '', pesan: '', kontak: '' });
   const [trackId, setTrackId] = useState(null);
+  const [submitting, setSubmitting] = useState(false);
+  const [errMsg, setErrMsg] = useState(null);
 
-  const handleKirim = (e) => {
+  const handleKirim = async (e) => {
     e.preventDefault();
-    const id = `LAPOR-${Date.now().toString(36).toUpperCase()}`;
-    setTrackId(id);
-    setStep('done');
+    setSubmitting(true);
+    setErrMsg(null);
+    try {
+      const res = await fetch('/api/lapor', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          kategori: laporan.kategori,
+          pesan: laporan.pesan,
+          kontak: laporan.kontak,
+          halaman: window.location.pathname,
+        }),
+      });
+      const json = await res.json();
+      if (json.tersimpan) {
+        setTrackId(json.data.id);
+        setStep('done');
+      } else {
+        setErrMsg(json.error || 'Gagal mengirim laporan.');
+      }
+    } catch {
+      setErrMsg('Gagal terhubung ke server.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -67,7 +91,7 @@ export default function LaporWidget() {
                     className="lapor-textarea"
                     rows="3"
                     placeholder="Jelaskan masalah atau saran Anda..."
-                    value={laporan.kontak}
+                    value={laporan.pesan}
                     onChange={e => setLaporan({ ...laporan, pesan: e.target.value })}
                     required
                   />
@@ -84,9 +108,10 @@ export default function LaporWidget() {
                     onChange={e => setLaporan({ ...laporan, kontak: e.target.value })}
                   />
                 </div>
-                <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
-                  Kirim Laporan
+                <button type="submit" className="btn btn-primary" style={{ width: '100%' }} disabled={submitting}>
+                  {submitting ? 'Mengirim... ⏳' : 'Kirim Laporan'}
                 </button>
+                {errMsg && <div style={{ marginTop: '0.75rem', padding: '0.75rem', background: '#fef2f2', color: '#dc2626', borderRadius: '8px', fontSize: '0.8125rem' }}>❌ {errMsg}</div>}
               </form>
             )}
 

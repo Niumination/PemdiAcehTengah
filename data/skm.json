@@ -3,7 +3,7 @@
     "pemda": "Kabupaten Aceh Tengah",
     "judul": "Survei Kepuasan Masyarakat (SKM) Online",
     "dasar_hukum": "PermenPANRB 8/2026 — Indikator I19 & I20",
-    "update": "2026-06-10",
+    "update": "2026-06-12",
     "periode": "Triwulan II 2026 (April–Juni)",
     "target_respon": 500
   },
@@ -22,21 +22,20 @@
     "RSUD Datu Beru"
   ],
   "dimensi": [
-    { "id": "U1", "nama": "Persyaratan", "deskripsi": "Persyaratan pelayanan mudah dipahami dan sesuai" },
-    { "id": "U2", "nama": "Prosedur", "deskripsi": "Prosedur/alur pelayanan mudah, cepat, dan sederhana" },
-    { "id": "U3", "nama": "Waktu", "deskripsi": "Waktu penyelesaian pelayanan sesuai standar" },
-    { "id": "U4", "nama": "Biaya", "deskripsi": "Biaya pelayanan wajar, transparan, dan sesuai ketentuan" },
-    { "id": "U5", "nama": "Sarana", "deskripsi": "Ketersediaan sarana dan prasarana yang memadai" },
-    { "id": "U6", "nama": "Kompetensi", "deskripsi": "Petugas memiliki kompetensi dan sopan santun" },
-    { "id": "U7", "nama": "Digital", "deskripsi": "Kemudahan akses layanan digital/online" },
-    { "id": "U8", "nama": "Kepuasan", "deskripsi": "Tingkat kepuasan keseluruhan terhadap pelayanan" }
+    { "id": "persyaratan", "nama": "Persyaratan", "deskripsi": "Persyaratan pelayanan mudah dipahami dan sesuai" },
+    { "id": "prosedur", "nama": "Prosedur", "deskripsi": "Prosedur/alur pelayanan mudah, cepat, dan sederhana" },
+    { "id": "waktu", "nama": "Waktu", "deskripsi": "Waktu penyelesaian pelayanan sesuai standar" },
+    { "id": "biaya", "nama": "Biaya", "deskripsi": "Biaya pelayanan wajar, transparan, dan sesuai ketentuan" },
+    { "id": "produk", "nama": "Produk Layanan", "deskripsi": "Kualitas hasil layanan sesuai yang dijanjikan" },
+    { "id": "kompetensi", "nama": "Kompetensi Pelaksana", "deskripsi": "Petugas memiliki kompetensi dan sopan santun" },
+    { "id": "perilaku", "nama": "Perilaku Pelaksana", "deskripsi": "Petugas ramah, tanggap, dan membantu" },
+    { "id": "sarana", "nama": "Sarana & Prasarana", "deskripsi": "Ketersediaan sarana dan prasarana yang memadai" }
   ],
   "skala": [
-    { "nilai": 1, "label": "Sangat Tidak Puas" },
-    { "nilai": 2, "label": "Tidak Puas" },
-    { "nilai": 3, "label": "Cukup Puas" },
-    { "nilai": 4, "label": "Puas" },
-    { "nilai": 5, "label": "Sangat Puas" }
+    { "nilai": 1, "label": "Tidak Baik" },
+    { "nilai": 2, "label": "Kurang Baik" },
+    { "nilai": 3, "label": "Baik" },
+    { "nilai": 4, "label": "Sangat Baik" }
   ],
   "status_pengisian": {
     "total_responden": 0,
