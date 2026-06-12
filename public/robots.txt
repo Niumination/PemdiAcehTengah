@@ -1,0 +1,11 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api/
+
+# Host
+Host: https://pemdi-aceh-tengah.vercel.app
+
+# Sitemaps
+Sitemap: https://pemdi-aceh-tengah.vercel.app/sitemap.xml
