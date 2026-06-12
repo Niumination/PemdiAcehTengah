@@ -1,27 +1,65 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#1f6f43"/>
       <stop offset="100%" stop-color="#003d1f"/>
     </linearGradient>
+    <linearGradient id="peakGrad" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#e0f2e9"/>
+    </linearGradient>
+    <linearGradient id="sunGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f5d742"/>
+      <stop offset="100%" stop-color="#d4a017"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#003d1f" flood-opacity="0.3"/>
+    </filter>
   </defs>
-  <!-- Background rounded square -->
-  <rect width="512" height="512" rx="80" fill="url(#bg)"/>
-  <!-- Building icon -->
-  <g fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
-    <!-- Roof -->
-    <polygon points="96,288 256,128 416,288" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="6"/>
-    <!-- Building body -->
-    <rect x="160" y="288" width="192" height="160" fill="rgba(255,255,255,0.1)" stroke="white" stroke-width="6"/>
-    <!-- Door -->
-    <rect x="224" y="368" width="64" height="80" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="4"/>
-    <!-- Windows row 1 -->
-    <rect x="180" y="308" width="36" height="36" rx="4" fill="rgba(255,255,255,0.25)" stroke="white" stroke-width="3"/>
-    <rect x="296" y="308" width="36" height="36" rx="4" fill="rgba(255,255,255,0.25)" stroke="white" stroke-width="3"/>
-    <!-- Windows row 2 -->
-    <rect x="180" y="360" width="36" height="36" rx="4" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="3"/>
-    <rect x="296" y="360" width="36" height="36" rx="4" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="3"/>
+
+  <!-- Circular backdrop -->
+  <circle cx="256" cy="256" r="236" fill="url(#bgGrad)" opacity="0.95"/>
+  <circle cx="256" cy="256" r="236" fill="none" stroke="#d4a017" stroke-width="3" opacity="0.5"/>
+
+  <!-- Outer ring detail -->
+  <circle cx="256" cy="256" r="218" fill="none" stroke="#d4a017" stroke-width="1" opacity="0.3" stroke-dasharray="6,4"/>
+
+  <!-- Mountain range - background peak -->
+  <polygon points="120,340 185,220 250,340" fill="#003d1f" opacity="0.4"/>
+  <polygon points="200,340 270,195 340,340" fill="#003d1f" opacity="0.6"/>
+  <polygon points="280,340 345,230 410,340" fill="#003d1f" opacity="0.4"/>
+
+  <!-- Mountain range - foreground peak (main) -->
+  <polygon points="150,370 256,170 362,370" fill="url(#peakGrad)" filter="url(#shadow)"/>
+
+  <!-- Snow cap on main peak -->
+  <polygon points="240,195 256,170 272,195 264,188 256,200 248,188" fill="#ffffff"/>
+
+  <!-- Sun/Star behind the peak -->
+  <g transform="translate(256,180)">
+    <!-- Sun rays -->
+    <line x1="0" y1="-50" x2="0" y2="-65" stroke="url(#sunGrad)" stroke-width="3" stroke-linecap="round"/>
+    <line x1="35" y1="-35" x2="46" y2="-46" stroke="url(#sunGrad)" stroke-width="3" stroke-linecap="round"/>
+    <line x1="50" y1="0" x2="65" y2="0" stroke="url(#sunGrad)" stroke-width="3" stroke-linecap="round"/>
+    <line x1="35" y1="35" x2="46" y2="46" stroke="url(#sunGrad)" stroke-width="3" stroke-linecap="round"/>
+    <line x1="-35" y1="-35" x2="-46" y2="-46" stroke="url(#sunGrad)" stroke-width="3" stroke-linecap="round"/>
+    <line x1="-50" y1="0" x2="-65" y2="0" stroke="url(#sunGrad)" stroke-width="3" stroke-linecap="round"/>
+    <line x1="-35" y1="35" x2="-46" y2="46" stroke="url(#sunGrad)" stroke-width="3" stroke-linecap="round"/>
+    <line x1="0" y1="50" x2="0" y2="65" stroke="url(#sunGrad)" stroke-width="3" stroke-linecap="round"/>
+    <!-- Sun core -->
+    <circle cx="0" cy="0" r="22" fill="url(#sunGrad)"/>
+    <circle cx="0" cy="0" r="14" fill="#fff8e1" opacity="0.6"/>
   </g>
-  <!-- Text: AT -->
-  <text x="256" y="472" font-family="Georgia, serif" font-size="72" font-weight="bold" fill="white" text-anchor="middle" opacity="0.9">AT</text>
+
+  <!-- Small star (from regional emblem) -->
+  <polygon points="256,130 260,142 273,142 263,149 267,162 256,154 245,162 249,149 239,142 252,142" 
+           fill="url(#sunGrad)" opacity="0.9"/>
+
+  <!-- Three horizontal wavy lines at bottom (river/water symbol) -->
+  <path d="M180,390 Q210,383 240,390 Q270,397 300,390 Q330,383 360,390" fill="none" stroke="#ffffff" stroke-width="2.5" opacity="0.5"/>
+  <path d="M190,405 Q215,399 240,405 Q265,411 290,405 Q315,399 340,405" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.3"/>
+  <path d="M200,418 Q220,413 240,418 Q260,423 280,418 Q300,413 320,418" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.2"/>
+
+  <!-- Ground/base -->
+  <path d="M100,380 Q256,350 412,380" fill="none" stroke="#d4a017" stroke-width="2" opacity="0.4"/>
 </svg>
