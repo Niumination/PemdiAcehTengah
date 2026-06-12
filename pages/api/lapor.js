@@ -1,68 +1,86 @@
-import fs from 'fs';
-import path from 'path';
+import { supabaseAdmin, isSupabaseReady } from '../../lib/supabaseAdmin';
+import {
+  sanitizeText, hashIp, rateLimit, verifyTurnstile, generateLaporId,
+} from '../../lib/security';
 
-const isDev = process.env.VERCEL_ENV !== 'production' && process.env.NODE_ENV !== 'production';
+const KATEGORI_VALID = ['saran', 'keluhan', 'pertanyaan', 'apresiasi', 'bug', 'lainnya', 'layanan', 'portal', 'pungli'];
 
-export default function handler(req, res) {
-  const filePath = path.join(process.cwd(), 'data', 'laporan.json');
+export default async function handler(req, res) {
+  // CORS
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  if (req.method === 'OPTIONS') return res.status(200).end();
 
-  // GET — ambil semua laporan (admin)
-  if (req.method === 'GET') {
-    try {
-      if (fs.existsSync(filePath)) {
-        const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-        return res.status(200).json({ success: true, data });
-      }
-    } catch {}
-    return res.status(200).json({ success: true, data: { laporan: [], total: 0 }, note: 'Filesystem read-only di production' });
+  if (req.method !== 'POST') {
+    return res.status(405).json({ success: false, error: 'Method not allowed' });
   }
 
-  // POST — simpan laporan baru
-  if (req.method === 'POST') {
-    const { kategori, pesan, kontak, halaman } = req.body;
+  const ip = hashIp(req.headers['x-forwarded-for'] || req.socket.remoteAddress || 'unknown');
 
-    // Validasi
-    if (!kategori || !pesan) {
-      return res.status(400).json({ success: false, error: 'kategori dan pesan wajib diisi' });
-    }
+  // Rate limit: max 5 post per menit per IP
+  if (!rateLimit(`lapor:${ip}`, 5, 60)) {
+    return res.status(429).json({ success: false, error: 'Terlalu banyak permintaan. Coba lagi nanti.' });
+  }
 
-    const id = `LAPOR-${Date.now().toString(36).toUpperCase()}`;
-    const laporanBaru = {
-      id,
-      kategori,
-      pesan,
-      kontak: kontak || '',
-      halaman: halaman || '',
-      status: 'baru',
-      dibuat: new Date().toISOString(),
-    };
+  const { kategori, pesan, kontak, halaman, turnstileToken } = req.body;
 
-    // Di development: simpan ke file
-    if (isDev) {
-      try {
-        let db = { laporan: [] };
-        try {
-          db = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-        } catch {}
-        db.laporan.unshift(laporanBaru);
-        db.total = db.laporan.length;
-        fs.writeFileSync(filePath, JSON.stringify(db, null, 2));
-        return res.status(201).json({ success: true, data: laporanBaru, tersimpan: true });
-      } catch (err) {
-        return res.status(500).json({ success: false, error: 'Gagal menyimpan: ' + err.message });
-      }
-    }
+  // Validasi
+  if (!kategori || !KATEGORI_VALID.includes(kategori)) {
+    return res.status(400).json({ success: false, error: 'Kategori tidak valid' });
+  }
+  if (!pesan || typeof pesan !== 'string') {
+    return res.status(400).json({ success: false, error: 'Pesan wajib diisi' });
+  }
 
-    // Di production (Vercel serverless): respons tanpa persist
-    return res.status(201).json({
-      success: true,
-      data: laporanBaru,
-      tersimpan: false,
-      note: 'Laporan tercatat dengan ID ' + id +
-        '. Tim Pemda Digital akan menindaklanjuti. ' +
-        'Penyimpanan permanen akan diaktifkan setelah database terhubung.',
+  // Turnstile anti-bot (opsional)
+  if (turnstileToken && !verifyTurnstile(turnstileToken)) {
+    return res.status(403).json({ success: false, error: 'Verifikasi anti-bot gagal. Muat ulang halaman.' });
+  }
+
+  // Sanitasi
+  const pesanClean = sanitizeText(pesan, 2000);
+  const kontakClean = sanitizeText(kontak || '', 200);
+
+  if (pesanClean.length < 5) {
+    return res.status(400).json({ success: false, error: 'Pesan minimal 5 karakter' });
+  }
+
+  const id = generateLaporId();
+  const laporanData = {
+    id,
+    kategori,
+    pesan: pesanClean,
+    kontak: kontakClean,
+    halaman: sanitizeText(halaman || '', 200),
+    status: 'baru',
+    dibuat: new Date().toISOString(),
+  };
+
+  // Simpan ke Supabase
+  if (isSupabaseReady) {
+    const { error } = await supabaseAdmin.from('laporan').insert({
+      id: laporanData.id,
+      kategori: laporanData.kategori,
+      pesan: laporanData.pesan,
+      kontak: laporanData.kontak || null,
+      halaman: laporanData.halaman || null,
+      status: laporanData.status,
+      ip_hash: ip,
     });
+
+    if (error) {
+      console.error('Supabase insert error:', error);
+      return res.status(500).json({ success: false, error: 'Gagal menyimpan laporan.' });
+    }
+
+    return res.status(201).json({ success: true, data: laporanData, tersimpan: true });
   }
 
-  return res.status(405).json({ success: false, error: 'Method not allowed' });
+  // Fallback tanpa DB
+  return res.status(201).json({
+    success: true,
+    data: laporanData,
+    tersimpan: false,
+    note: `Laporan tercatat dengan ID ${id}. Tim Pemda Digital akan menindaklanjuti. Penyimpanan permanen akan diaktifkan setelah database terhubung.`,
+  });
 }
