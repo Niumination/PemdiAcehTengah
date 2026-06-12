@@ -1,65 +1,156 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
   <defs>
     <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#1f6f43"/>
-      <stop offset="100%" stop-color="#003d1f"/>
+      <stop offset="0%" stop-color="#1a5c38"/>
+      <stop offset="100%" stop-color="#002d15"/>
     </linearGradient>
-    <linearGradient id="peakGrad" x1="0.5" y1="0" x2="0.5" y2="1">
-      <stop offset="0%" stop-color="#ffffff"/>
-      <stop offset="100%" stop-color="#e0f2e9"/>
+    <linearGradient id="mountainGrad" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#2b7a4e"/>
+      <stop offset="100%" stop-color="#1a5c38"/>
     </linearGradient>
-    <linearGradient id="sunGrad" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="mountainGrad2" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#21693f"/>
+      <stop offset="100%" stop-color="#0f4728"/>
+    </linearGradient>
+    <linearGradient id="circleGrad" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#f5d742"/>
-      <stop offset="100%" stop-color="#d4a017"/>
+      <stop offset="50%" stop-color="#d4a017"/>
+      <stop offset="100%" stop-color="#b8860b"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
-      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#003d1f" flood-opacity="0.3"/>
+    <linearGradient id="lightGrad" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="30%" stop-color="#fff8e1" stop-opacity="0.5"/>
+      <stop offset="60%" stop-color="#f5d742" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#d4a017" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="moonGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f5d742"/>
+    </linearGradient>
+    <linearGradient id="starGrad" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f5d742"/>
+    </linearGradient>
+    <linearGradient id="waterGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1a5276"/>
+      <stop offset="50%" stop-color="#2471a3"/>
+      <stop offset="100%" stop-color="#1a5276"/>
+    </linearGradient>
+    <linearGradient id="waterGrad2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#154360"/>
+      <stop offset="50%" stop-color="#1a5276"/>
+      <stop offset="100%" stop-color="#154360"/>
+    </linearGradient>
+    <linearGradient id="waveGrad1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3498db"/>
+      <stop offset="30%" stop-color="#5dade2"/>
+      <stop offset="60%" stop-color="#3498db"/>
+      <stop offset="100%" stop-color="#2980b9"/>
+    </linearGradient>
+    <linearGradient id="waveGrad2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2980b9"/>
+      <stop offset="40%" stop-color="#3498db"/>
+      <stop offset="70%" stop-color="#5dade2"/>
+      <stop offset="100%" stop-color="#2980b9"/>
+    </linearGradient>
+    <linearGradient id="waveGrad3" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2471a3"/>
+      <stop offset="50%" stop-color="#3498db"/>
+      <stop offset="100%" stop-color="#2471a3"/>
+    </linearGradient>
+    <filter id="glowCircle">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
     </filter>
+    <filter id="glowMoon">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <clipPath id="circleClip">
+      <circle cx="256" cy="256" r="236"/>
+    </clipPath>
   </defs>
 
   <!-- Circular backdrop -->
-  <circle cx="256" cy="256" r="236" fill="url(#bgGrad)" opacity="0.95"/>
-  <circle cx="256" cy="256" r="236" fill="none" stroke="#d4a017" stroke-width="3" opacity="0.5"/>
+  <circle cx="256" cy="256" r="236" fill="url(#bgGrad)"/>
+  <circle cx="256" cy="256" r="236" fill="none" stroke="#d4a017" stroke-width="3" opacity="0.6"/>
 
   <!-- Outer ring detail -->
-  <circle cx="256" cy="256" r="218" fill="none" stroke="#d4a017" stroke-width="1" opacity="0.3" stroke-dasharray="6,4"/>
+  <circle cx="256" cy="256" r="225" fill="none" stroke="#d4a017" stroke-width="1" opacity="0.3" stroke-dasharray="5,5"/>
 
-  <!-- Mountain range - background peak -->
-  <polygon points="120,340 185,220 250,340" fill="#003d1f" opacity="0.4"/>
-  <polygon points="200,340 270,195 340,340" fill="#003d1f" opacity="0.6"/>
-  <polygon points="280,340 345,230 410,340" fill="#003d1f" opacity="0.4"/>
+  <g clip-path="url(#circleClip)">
 
-  <!-- Mountain range - foreground peak (main) -->
-  <polygon points="150,370 256,170 362,370" fill="url(#peakGrad)" filter="url(#shadow)"/>
+    <!-- Light beam from top - gradient style -->
+    <polygon points="180,10 256,35 332,10 300,380 212,380" fill="url(#lightGrad)" opacity="0.6"/>
 
-  <!-- Snow cap on main peak -->
-  <polygon points="240,195 256,170 272,195 264,188 256,200 248,188" fill="#ffffff"/>
+    <!-- Golden circle behind mountain - 3/4 visible -->
+    <circle cx="256" cy="270" r="180" fill="url(#circleGrad)" opacity="0.85" filter="url(#glowCircle)"/>
+    <circle cx="256" cy="270" r="180" fill="none" stroke="#fff8e1" stroke-width="1.5" opacity="0.3"/>
 
-  <!-- Sun/Star behind the peak -->
-  <g transform="translate(256,180)">
-    <!-- Sun rays -->
-    <line x1="0" y1="-50" x2="0" y2="-65" stroke="url(#sunGrad)" stroke-width="3" stroke-linecap="round"/>
-    <line x1="35" y1="-35" x2="46" y2="-46" stroke="url(#sunGrad)" stroke-width="3" stroke-linecap="round"/>
-    <line x1="50" y1="0" x2="65" y2="0" stroke="url(#sunGrad)" stroke-width="3" stroke-linecap="round"/>
-    <line x1="35" y1="35" x2="46" y2="46" stroke="url(#sunGrad)" stroke-width="3" stroke-linecap="round"/>
-    <line x1="-35" y1="-35" x2="-46" y2="-46" stroke="url(#sunGrad)" stroke-width="3" stroke-linecap="round"/>
-    <line x1="-50" y1="0" x2="-65" y2="0" stroke="url(#sunGrad)" stroke-width="3" stroke-linecap="round"/>
-    <line x1="-35" y1="35" x2="-46" y2="46" stroke="url(#sunGrad)" stroke-width="3" stroke-linecap="round"/>
-    <line x1="0" y1="50" x2="0" y2="65" stroke="url(#sunGrad)" stroke-width="3" stroke-linecap="round"/>
-    <!-- Sun core -->
-    <circle cx="0" cy="0" r="22" fill="url(#sunGrad)"/>
-    <circle cx="0" cy="0" r="14" fill="#fff8e1" opacity="0.6"/>
+    <!-- Background mountain range (distant) - natural shape -->
+    <path d="M80,380 Q120,280 160,250 Q180,230 200,240 Q220,255 240,300 L240,380 Z" fill="url(#mountainGrad2)" opacity="0.5"/>
+    <path d="M260,300 Q290,230 320,220 Q350,210 370,240 Q400,300 430,380 L260,380 Z" fill="url(#mountainGrad2)" opacity="0.4"/>
+
+    <!-- Main mountain - curved natural shape -->
+    <path d="M120,380 
+             Q150,310 180,260 
+             Q200,230 230,195 
+             Q245,175 256,160 
+             Q267,175 282,195 
+             Q312,230 332,260 
+             Q362,310 392,380 Z" 
+          fill="url(#mountainGrad)" filter="url(#glowCircle)"/>
+
+    <!-- Mountain ridge details -->
+    <path d="M180,260 Q220,250 256,280 Q292,250 332,260" fill="none" stroke="#1a5c38" stroke-width="1.5" opacity="0.4"/>
+    <path d="M210,320 Q240,300 256,310 Q272,300 302,320" fill="none" stroke="#1a5c38" stroke-width="1" opacity="0.3"/>
+
+    <!-- Snow cap on main peak -->
+    <path d="M235,190 
+             Q245,173 256,160 
+             Q267,173 277,190 
+             Q270,185 262,180 
+             Q256,185 250,180 
+             Q242,185 235,190 Z" 
+          fill="#ffffff" opacity="0.8"/>
+
+    <!-- Crescent moon and star above mountain peak -->
+    <g transform="translate(256,115)" filter="url(#glowMoon)">
+      <!-- Crescent moon - outer circle -->
+      <circle cx="0" cy="0" r="26" fill="url(#moonGrad)"/>
+      <!-- Crescent moon - inner circle (cutout) -->
+      <circle cx="10" cy="-5" r="20" fill="#002d15"/>
+      <!-- Star (small, above and to the right of moon) -->
+      <polygon points="30,-28 33,-18 44,-18 35,-11 38,-1 30,-8 22,-1 25,-11 16,-18 27,-18" 
+               fill="url(#starGrad)"/>
+    </g>
+
+    <!-- Water area - blue gradient backdrop -->
+    <rect x="80" y="370" width="352" height="80" fill="url(#waterGrad)" opacity="0.7"/>
+    <rect x="80" y="385" width="352" height="65" fill="url(#waterGrad2)" opacity="0.5"/>
+
+    <!-- Water texture - multiple wavy lines -->
+    <path d="M70,375 Q100,368 130,375 Q160,382 190,375 Q220,368 250,375 Q280,382 310,375 Q340,368 370,375 Q400,382 442,375" 
+          fill="none" stroke="url(#waveGrad1)" stroke-width="2.5" opacity="0.8"/>
+    <path d="M70,385 Q110,378 150,385 Q190,392 230,385 Q270,378 310,385 Q350,392 390,385 Q420,378 442,385" 
+          fill="none" stroke="url(#waveGrad2)" stroke-width="2" opacity="0.6"/>
+    <path d="M70,395 Q115,389 160,395 Q205,401 250,395 Q295,389 340,395 Q385,401 442,395" 
+          fill="none" stroke="url(#waveGrad3)" stroke-width="2.5" opacity="0.5"/>
+    <path d="M70,405 Q100,400 130,405 Q160,410 190,405 Q220,400 250,405 Q280,410 310,405 Q340,400 370,405 Q400,410 442,405" 
+          fill="none" stroke="#5dade2" stroke-width="1.5" opacity="0.35"/>
+    <path d="M70,415 Q120,410 170,415 Q220,420 270,415 Q320,410 370,415 Q410,420 442,415" 
+          fill="none" stroke="#3498db" stroke-width="1" opacity="0.25"/>
+    <path d="M70,425 Q130,421 190,425 Q250,429 310,425 Q370,421 442,425" 
+          fill="none" stroke="#2980b9" stroke-width="1.5" opacity="0.15"/>
+
+    <!-- Water reflection of light beam -->
+    <path d="M200,370 L312,370 L320,420 L192,420 Z" fill="#ffffff" opacity="0.08"/>
+
   </g>
-
-  <!-- Small star (from regional emblem) -->
-  <polygon points="256,130 260,142 273,142 263,149 267,162 256,154 245,162 249,149 239,142 252,142" 
-           fill="url(#sunGrad)" opacity="0.9"/>
-
-  <!-- Three horizontal wavy lines at bottom (river/water symbol) -->
-  <path d="M180,390 Q210,383 240,390 Q270,397 300,390 Q330,383 360,390" fill="none" stroke="#ffffff" stroke-width="2.5" opacity="0.5"/>
-  <path d="M190,405 Q215,399 240,405 Q265,411 290,405 Q315,399 340,405" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.3"/>
-  <path d="M200,418 Q220,413 240,418 Q260,423 280,418 Q300,413 320,418" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.2"/>
-
-  <!-- Ground/base -->
-  <path d="M100,380 Q256,350 412,380" fill="none" stroke="#d4a017" stroke-width="2" opacity="0.4"/>
 </svg>
