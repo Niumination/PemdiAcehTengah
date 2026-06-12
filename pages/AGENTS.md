@@ -4,7 +4,7 @@
 
 Halaman Next.js — entry points untuk user. SSR/SSG hybrid dengan data dari file JSON statis.
 
-## Ownership — 12 Halaman + 4 API
+## Ownership — 13 Halaman + 7 API
 
 | Route | File | Fungsi | Komponen Kunci |
 |-------|------|--------|----------------|
@@ -18,12 +18,16 @@ Halaman Next.js — entry points untuk user. SSR/SSG hybrid dengan data dari fil
 | `/tanya` | `tanya.js` | Chatbot asisten virtual — cari jawaban | — |
 | `/cari` | `cari.js` | Pencarian global — OPD, layanan, FAQ | — |
 | `/requirement` | `requirement.js` | 83 requirements PPB, 12 kategori, 3 fase | Header, Footer |
+| `/admin` | `admin.js` | Admin dashboard — ringkasan IKM, daftar laporan, data SKM | — |
 | `/_app` | `_app.js` | App wrapper — Layout, global styles | Layout |
 | `/_document` | `_document.js` | Document wrapper — font Inter, meta tags | — |
 | `/api/opd` | `api/opd.js` | REST API: GET semua OPD (JSON) | — |
 | `/api/spbe` | `api/spbe.js` | REST API: GET data SPBE (JSON) | — |
 | `/api/requirement` | `api/requirement.js` | REST API: GET 83 requirements (JSON) | — |
-| `/api/lapor` | `api/lapor.js` | REST API: POST kirim + GET lihat laporan | — |
+| `/api/lapor` | `api/lapor.js` | REST API: POST kirim + PATCH status + GET lihat laporan → Supabase | — |
+| `/api/skm` | `api/skm.js` | REST API: GET ringkasan + POST survei SKM → Supabase | — |
+| `/api/admin/laporan` | `api/admin/laporan.js` | REST API: GET daftar laporan (admin-only, Bearer token) → Supabase | — |
+| `/api/admin/skm` | `api/admin/skm.js` | REST API: GET data SKM (admin-only, Bearer token) → Supabase | — |
 
 ## Data Flow
 
@@ -36,6 +40,12 @@ data/pemdi.json ──► pemdi.js (import langsung)
 data/layanan.json ──► layanan.js
 data/faq.json ────► faq.js, tanya.js, cari.js
 data/skm.json ────► skm.js
+
+Supabase ─────────► api/lapor.js (POST/PATCH/GET laporan)
+                   ► api/skm.js (GET/POST survei SKM)
+                   ► api/admin/laporan.js (GET admin laporan)
+                   ► api/admin/skm.js (GET admin SKM)
+                   ► admin.js (frontend via fetch ke /api/admin/*)
 ```
 
 ### Key Rules
@@ -43,6 +53,8 @@ data/skm.json ────► skm.js
 - **Import langsung** untuk data yang kecil (`pemdi.js` baca `data/pemdi.json`)
 - **getStaticProps** untuk data besar (`index.js` baca `data/opd.json`)
 - **API routes** untuk data dari sisi server (`/api/opd`)
+- **Supabase** untuk persist data dinamis — laporan warga & survei SKM (via api routes)
+- **Admin API** memerlukan Bearer token (`ADMIN_TOKEN` env var)
 
 ## Halaman Detail
 
@@ -94,10 +106,11 @@ data/skm.json ────► skm.js
 - **`styled-jsx`** dihindari total (terbukti unreliable di Next.js 14 + Strict Mode + conditional mount)
 
 ## Verification
-- `npm run build` — harus sukses tanpa error (63 pages generated)
+- `npm run build` — harus sukses tanpa error (64 pages generated)
 - `curl -s -o /dev/null -w "%{http_code}" https://pemdi-aceh-tengah.vercel.app/` — HTTP 200
+- `curl -s -o /dev/null -w "%{http_code}" https://pemdi-aceh-tengah.vercel.app/admin` — HTTP 200
 
 ## Child DOX Index
 | Path | Scope |
 |------|-------|
-| `api/AGENTS.md` | REST API routes — opd, spbe, requirement, lapor |
+| `api/AGENTS.md` | REST API routes — opd, spbe, requirement, lapor, skm, admin/laporan, admin/skm |

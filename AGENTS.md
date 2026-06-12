@@ -26,7 +26,7 @@ Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah. Transformasi menuju Peme
 | **Config** | `next.config.js` → standalone output, reactStrictMode, images unoptimized |
 | **Path Alias** | `@/*` (via `jsconfig.json`) — ex: `@/components/Header` |
 | **Font** | Inter (government professional, GOV.UK-inspired) |
-| **Data Source** | `data/opd.json` (OPD, SPBE, ProBis) + `data/pemdi.json` (7 aspek × 20 indikator Pemdi) |
+| **Data Source** | Hybrid: `data/*.json` (OPD, SPBE, ProBis, SKM, Pemdi) + Supabase (SKM responses, admin logs). Client: `lib/supabaseAdmin.js` |
 | **Remote** | `git@github.com:Niumination/PemdiAcehTengah.git` |
 | **Production** | https://pemdi-aceh-tengah.vercel.app |
 | **License** | MIT |
@@ -38,6 +38,11 @@ Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah. Transformasi menuju Peme
 | **Restrukturisasi OPD** | 7 pemisahan OPD, 1 OPD baru (Dinas Perkebunan) — RSUD Datu Beru & KORPRI tidak lagi sebagai OPD |
 | **Jargon** | HAMAS (Haili Yoga + Muchsin Hasan), 17 sasaran prioritas |
 | **Program Unggulan** | Aceh Tengah Satu Data (AWS + Komdigi), MPP, Satu OPD Satu Inovasi |
+| **PWA** | `manifest.json`, icons (192/512 PNG + SVG), `theme_color: #1f6f43`, `display: standalone`, scope root |
+| **Security** | CSP headers (Turnstile, Supabase, Google Fonts), rate limiting, IP hashing (SHA-256), Turnstile CAPTCHA, admin Bearer auth. `lib/security.js` |
+| **Admin Dashboard** | `/admin` — protected by `ADMIN_TOKEN` env (Bearer auth). Admin APIs: `/api/admin/laporan` (PATCH status), `/api/admin/skm` (GET all) |
+| **HEAD** | `c9224f5` — fix: logo v2, admin dashboard L12B, SKM, Supabase integration |
+| **Env Vars** | `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `ADMIN_TOKEN`, `TURNSTILE_SECRET_KEY`, `IP_HASH_SALT` |
 
 ## Framework Regulasi — DUA KERANGKA BERBEDA
 
@@ -74,28 +79,39 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 | `data/` | Data statis JSON |
 | `docs/` | Dokumentasi, PDF, riset |
 | `docs.old/` | Legacy docs — referensi historis (tidak diindex DOX) |
+| `lib/` | Supabase client (`supabaseAdmin.js`), security helpers (`security.js`), admin auth (`adminAuth.js`) |
+| `pages/admin.js` | Admin Dashboard — authenticate via ADMIN_TOKEN (Bearer) |
+| `pages/api/admin/` | Admin API routes: `laporan.js` (PATCH status pengaduan), `skm.js` (GET semua SKM) |
+| `public/manifest.json` | PWA manifest — standalone, theme_color #1f6f43, icons 192+512 |
+| `public/icons/` | PWA icons — `icon-192.png`, `icon-512.png`, `icon.svg`, `icon-192.svg` |
 
 ## Global Rules
 
 1. **Data flow**: `data/opd.json` → `getStaticProps` di pages → props ke components. API routes juga baca dari file yang sama.
-2. **No external database**: Semua data di file JSON statis. Jika butuh database, harus diskusi dulu.
+2. **Hybrid data**: Static JSON (`data/*.json`) untuk konten publik (OPD, SPBE, ProBis, Pemdi, SKM) + Supabase untuk data dinamis (SKM responses, admin logs). Supabase admin client di `lib/supabaseAdmin.js`. Env vars: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`.
 3. **CSS architecture**: Satu file `styles/globals.css` — government theme, Inter font, GOV.UK-inspired. Mobile-first responsive.
 4. **Components**: Semua di `components/` — reusable, props-driven. Layout component wrapping.
 5. **API routes**: RESTful, JSON response, read from `data/opd.json`.
 6. **Deployment**: Vercel production branch `main`. Deploy via Vercel CLI atau push ke GitHub.
 7. **No API keys / secrets** di repo — semua placeholder `YOUR_API_KEY`.
 8. **Bahasa**: Dokumentasi dan konten portal dalam Bahasa Indonesia.
+9. **Admin auth**: Dashboard `/admin` dan API `/api/admin/*` dilindungi Bearer token dari `ADMIN_TOKEN` env var (default: `admin` untuk dev). Lihat `lib/adminAuth.js`.
+10. **PWA**: Progressive Web App via `public/manifest.json` + icons. `_app.js` includes manifest link + theme-color meta + Vercel Analytics.
+11. **Security headers**: Semua route via `next.config.js` — CSP (allow Turnstile, Supabase, Google Fonts), X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy. Rate limiting + IP hashing + Turnstile verify di `lib/security.js`.
 
 ## Child DOX Index
 
 | Path | Scope |
 |------|-------|
 | `pages/AGENTS.md` | 12 halaman Next.js + 4 API routes — indexing, routing, data flow |
-| `pages/api/AGENTS.md` | REST API: opd, spbe, requirement, lapor — GET read + POST write |
+| `pages/api/AGENTS.md` | REST API: opd, spbe, requirement, lapor, skm, admin — GET read + POST write. Admin auth via ADMIN_TOKEN (Bearer). Lihat `lib/adminAuth.js` |
 | `components/AGENTS.md` | 12 React komponen — Header, Footer, Layout, OPDTable, ProbisSection, SpbeGauge, Rekomendasi, DataBadge, DetailModal, SlaBadge, LaporWidget, ScrollTop |
 | `styles/AGENTS.md` | CSS architecture — GOV.UK-inspired, Inter font, mobile-first |
 | `data/AGENTS.md` | Struktur data: opd.json (52 OPD, 78 PPB ✅), pemdi.json (7 aspek) |
 | `STRATEGI_PEMDIACEHTENGAH.md` | **Dokumen perencanaan strategis (file ini)** — 4 fase, quick wins, risiko, metrik |
+| `lib/AGENTS.md` | Supabase client (`supabaseAdmin.js`), security helpers (`security.js` — CSP, rate limiting, IP hashing, Turnstile), admin auth (`adminAuth.js`) |
+| `pages/admin` | Admin Dashboard — laporan (pengaduan), SKM management. Protected by ADMIN_TOKEN (Bearer auth) |
+| `public/AGENTS.md` | PWA assets: manifest.json, icons (192/512 PNG + SVG), favicon |
 
 ## User Preferences
 
