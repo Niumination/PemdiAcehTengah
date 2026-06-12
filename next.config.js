@@ -1,12 +1,37 @@
 /** @type {import('next').NextConfig} */
+const securityHeaders = [
+  {
+    key: 'Content-Security-Policy',
+    value: [
+      "default-src 'self'",
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+      "font-src 'self' https://fonts.gstatic.com",
+      "img-src 'self' data: https:",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com",
+      "frame-src https://challenges.cloudflare.com",
+      "connect-src 'self' https://*.supabase.co https://challenges.cloudflare.com",
+      "base-uri 'self'",
+      "form-action 'self'",
+      "frame-ancestors 'self'",
+    ].join('; '),
+  },
+  { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+  { key: 'X-Content-Type-Options', value: 'nosniff' },
+  { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+  { key: 'Permissions-Policy', value: 'geolocation=(), camera=(), microphone=()' },
+];
+
 const nextConfig = {
   reactStrictMode: true,
+  poweredByHeader: false,
   images: {
     unoptimized: true,
   },
-  // Enable static export for GitHub Pages if needed,
-  // but keep SSR for Vercel fullstack deployment
-  output: 'standalone',
-}
+  async headers() {
+    return [
+      { source: '/:path*', headers: securityHeaders },
+    ];
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

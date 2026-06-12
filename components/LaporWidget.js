@@ -5,12 +5,19 @@ export default function LaporWidget() {
   const [step, setStep] = useState('form'); // form | tracking | done
   const [laporan, setLaporan] = useState({ kategori: '', pesan: '', kontak: '' });
   const [trackId, setTrackId] = useState(null);
+<<<<<<< HEAD
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [tersimpan, setTersimpan] = useState(true);
+||||||| d5e7557
+=======
+  const [submitting, setSubmitting] = useState(false);
+  const [errMsg, setErrMsg] = useState(null);
+>>>>>>> fix/pemdi-l0-l10-jun2026
 
   const handleKirim = async (e) => {
     e.preventDefault();
+<<<<<<< HEAD
     setLoading(true);
     setError(null);
     try {
@@ -35,6 +42,37 @@ export default function LaporWidget() {
       setError('Koneksi gagal. Coba lagi.');
     }
     setLoading(false);
+||||||| d5e7557
+    const id = `LAPOR-${Date.now().toString(36).toUpperCase()}`;
+    setTrackId(id);
+    setStep('done');
+=======
+    setSubmitting(true);
+    setErrMsg(null);
+    try {
+      const res = await fetch('/api/lapor', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          kategori: laporan.kategori,
+          pesan: laporan.pesan,
+          kontak: laporan.kontak,
+          halaman: window.location.pathname,
+        }),
+      });
+      const json = await res.json();
+      if (json.tersimpan) {
+        setTrackId(json.data.id);
+        setStep('done');
+      } else {
+        setErrMsg(json.error || 'Gagal mengirim laporan.');
+      }
+    } catch {
+      setErrMsg('Gagal terhubung ke server.');
+    } finally {
+      setSubmitting(false);
+    }
+>>>>>>> fix/pemdi-l0-l10-jun2026
   };
 
   return (
@@ -91,7 +129,7 @@ export default function LaporWidget() {
                     className="lapor-textarea"
                     rows="3"
                     placeholder="Jelaskan masalah atau saran Anda..."
-                    value={laporan.kontak}
+                    value={laporan.pesan}
                     onChange={e => setLaporan({ ...laporan, pesan: e.target.value })}
                     required
                   />
@@ -108,10 +146,23 @@ export default function LaporWidget() {
                     onChange={e => setLaporan({ ...laporan, kontak: e.target.value })}
                   />
                 </div>
+<<<<<<< HEAD
                 <button type="submit" className="btn btn-primary" style={{ width: '100%' }} disabled={loading}>
                   {loading ? 'Mengirim...' : 'Kirim Laporan'}
+||||||| d5e7557
+                <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
+                  Kirim Laporan
+=======
+                <button type="submit" className="btn btn-primary" style={{ width: '100%' }} disabled={submitting}>
+                  {submitting ? 'Mengirim... ⏳' : 'Kirim Laporan'}
+>>>>>>> fix/pemdi-l0-l10-jun2026
                 </button>
+<<<<<<< HEAD
                 {error && <div className="lapor-error">{error}</div>}
+||||||| d5e7557
+=======
+                {errMsg && <div style={{ marginTop: '0.75rem', padding: '0.75rem', background: '#fef2f2', color: '#dc2626', borderRadius: '8px', fontSize: '0.8125rem' }}>❌ {errMsg}</div>}
+>>>>>>> fix/pemdi-l0-l10-jun2026
               </form>
             )}
 
