@@ -14,7 +14,7 @@ export default function Document() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://pemdi-aceh-tengah.vercel.app" />
         <meta name="twitter:card" content="summary_large_image" />
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>" />
+        <link rel="icon" href="/icons/icon.svg" type="image/svg+xml" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..800&display=swap" />
