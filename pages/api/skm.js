@@ -1,5 +1,5 @@
 import { supabaseAdmin, isSupabaseReady } from '../../lib/supabaseAdmin';
-import { sanitizeText, hashIp, rateLimit, verifyTurnstile } from '../../lib/security';
+import { sanitizeText, hashIp, rateLimit } from '../../lib/security';
 
 const UNSUR = ['persyaratan', 'prosedur', 'waktu', 'biaya', 'produk', 'kompetensi', 'perilaku', 'sarana'];
 
@@ -30,12 +30,6 @@ export default async function handler(req, res) {
 
   const body = req.body || {};
 
-  // Turnstile
-  if (!(await verifyTurnstile(body.turnstileToken, req.headers['x-forwarded-for']))) {
-    return res.status(403).json({ success: false, error: 'Verifikasi anti-bot gagal.' });
-  }
-
-  // Validasi & sanitasi 8 unsur
   const record = {
     layanan: sanitizeText(body.layanan, 120),
     saran: sanitizeText(body.saran, 2000),

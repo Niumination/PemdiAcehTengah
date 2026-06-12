@@ -1,6 +1,6 @@
 import { supabaseAdmin, isSupabaseReady } from '../../lib/supabaseAdmin';
 import {
-  sanitizeText, hashIp, rateLimit, verifyTurnstile, generateLaporId,
+  sanitizeText, hashIp, rateLimit, generateLaporId,
 } from '../../lib/security';
 
 const KATEGORI_VALID = ['saran', 'keluhan', 'pertanyaan', 'apresiasi', 'bug', 'lainnya', 'layanan', 'portal', 'pungli'];
@@ -39,7 +39,7 @@ export default async function handler(req, res) {
     return res.status(429).json({ success: false, error: 'Terlalu banyak permintaan. Coba lagi nanti.' });
   }
 
-  const { kategori, pesan, kontak, halaman, turnstileToken } = req.body;
+  const { kategori, pesan, kontak, halaman } = req.body;
 
   // Validasi
   if (!kategori || !KATEGORI_VALID.includes(kategori)) {
@@ -49,13 +49,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ success: false, error: 'Pesan wajib diisi' });
   }
 
-  // Turnstile anti-bot (opsional)
-  if (turnstileToken && !verifyTurnstile(turnstileToken)) {
-    return res.status(403).json({ success: false, error: 'Verifikasi anti-bot gagal. Muat ulang halaman.' });
-  }
-
-  // Sanitasi
-  const pesanClean = sanitizeText(pesan, 2000);
+  const pesanClean = sanitizeText(pesan, 5000);
   const kontakClean = sanitizeText(kontak || '', 200);
 
   if (pesanClean.length < 5) {
