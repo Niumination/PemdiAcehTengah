@@ -16,6 +16,11 @@ export default async function handler(req, res) {
   }
 
   if (req.method === 'PATCH') {
+    // Admin auth required for status updates
+    const adminAuth = await import('@/lib/adminAuth');
+    if (!adminAuth.requireAdmin(req, res)) {
+      return adminAuth.adminUnauthorized(res);
+    }
     const { id, status } = req.body;
     if (!id || !['baru','diproses','selesai','ditolak'].includes(status)) {
       return res.status(400).json({ success: false, error: 'Parameter tidak valid' });
