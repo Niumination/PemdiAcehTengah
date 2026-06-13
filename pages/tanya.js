@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import faqData from '@/data/faq.json';
+import { sanitizeHtml } from '@/lib/sanitize';
 
 /* ---------- helpers ---------- */
 function normalise(s) {
@@ -77,8 +78,8 @@ export default function TanyaPage() {
       } else {
         setMessages(prev => [...prev, {
           role: 'bot',
-          text: `Maaf, saya belum menemukan jawaban untuk pertanyaan itu. 😅 Coba cek <Link href="/faq">halaman FAQ</Link> atau tanya dengan kata kunci berbeda.`,
-          isHtml: true,
+          text: 'Maaf, saya belum menemukan jawaban untuk pertanyaan itu. 😅 Coba cek halaman FAQ atau tanya dengan kata kunci berbeda.',
+          isHtml: false,
         }]);
       }
     }, 600 + Math.random() * 600);
@@ -118,10 +119,12 @@ export default function TanyaPage() {
                 <div key={i} className={`chat-bubble ${m.role === 'user' ? 'chat-user' : 'chat-bot'}`}>
                   {m.role === 'bot' && <span className="chat-avatar">🤖</span>}
                   <div className="chat-text">
-                    {m.isHtml ? (
-                      <span dangerouslySetInnerHTML={{ __html: m.text }} />
+                    {m.role === 'user' ? (
+                      <span>{m.text}</span>
+                    ) : m.isHtml ? (
+                      <span dangerouslySetInnerHTML={{ __html: sanitizeHtml(m.text) }} />
                     ) : (
-                      <span dangerouslySetInnerHTML={{ __html: m.text }} />
+                      <span>{m.text}</span>
                     )}
                     {m.kategori && <span className="chat-tag">📌 {m.kategori}</span>}
                   </div>

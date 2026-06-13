@@ -7,7 +7,8 @@ const KATEGORI_VALID = ['saran', 'keluhan', 'pertanyaan', 'apresiasi', 'bug', 'l
 
 export default async function handler(req, res) {
   // CORS
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  const origin = process.env.SITE_ORIGIN || '';
+  if (origin) res.setHeader('Access-Control-Allow-Origin', origin);
   res.setHeader('Access-Control-Allow-Methods', 'POST, PATCH, GET, OPTIONS');
   if (req.method === 'OPTIONS') return res.status(200).end();
 

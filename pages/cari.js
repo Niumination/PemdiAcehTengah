@@ -1,4 +1,5 @@
 import { useState, useMemo, useRef, useEffect } from 'react';
+import React from 'react';
 import Head from 'next/head';
 import Fuse from 'fuse.js';
 import buildSearchIndex from '@/lib/search-index';
@@ -173,17 +174,36 @@ export default function Cari({ items }) {
   );
 }
 
-/** Simple highlight — wraps matching text in <mark> */
+/** Simple highlight — wraps matching text in <mark>, returns React nodes */
 function highlight(text = '', query) {
   if (!query.trim()) return text;
   const words = query.trim().split(/\s+/).filter(Boolean);
-  let result = text;
-  for (const w of words) {
-    const escaped = w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  let segments = [{ text, match: false }];
+  for (const word of words) {
+    const escaped = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const re = new RegExp(`(${escaped})`, 'gi');
-    result = result.replace(re, '<mark style="background:#fef08a;border-radius:2px;padding:0 2px;color:#000">$1</mark>');
+    const newSegments = [];
+    for (const seg of segments) {
+      if (seg.match) {
+        newSegments.push(seg);
+        continue;
+      }
+      const parts = seg.text.split(re);
+      for (let i = 0; i < parts.length; i++) {
+        if (!parts[i]) continue;
+        newSegments.push({ text: parts[i], match: i % 2 === 1 });
+      }
+    }
+    segments = newSegments;
   }
-  return <span dangerouslySetInnerHTML={{ __html: result }} />;
+  return segments.map((s, i) =>
+    s.match
+      ? React.createElement('mark', {
+          key: i,
+          style: { background: '#fef08a', borderRadius: 2, padding: '0 2px', color: '#000' },
+        }, s.text)
+      : s.text
+  );
 }
 
 export async function getStaticProps() {

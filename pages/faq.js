@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import faq from '@/data/faq.json';
 import { useState } from 'react';
+import { sanitizeHtml } from '@/lib/sanitize';
 
 export default function FAQPage() {
   const [buka, setBuka] = useState(null);
@@ -79,7 +80,7 @@ export default function FAQPage() {
                     }}
                   >
                     <div className="faq-answer-inner">
-                      <p dangerouslySetInnerHTML={{ __html: q.jawab }} />
+                      <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(q.jawab) }} />
                     </div>
                   </div>
                 </div>

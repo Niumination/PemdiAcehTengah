@@ -4,7 +4,9 @@ import { sanitizeText, hashIp, rateLimit } from '../../lib/security';
 const UNSUR = ['persyaratan', 'prosedur', 'waktu', 'biaya', 'produk', 'kompetensi', 'perilaku', 'sarana'];
 
 export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', process.env.SITE_ORIGIN || '*');
+  const origin = process.env.SITE_ORIGIN || '';
+  if (origin) res.setHeader('Access-Control-Allow-Origin', origin);
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
 
   // GET — ringkasan SKM
   if (req.method === 'GET') {

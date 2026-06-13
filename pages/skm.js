@@ -71,7 +71,7 @@ export default function SKMPage() {
                 </p>
                 <div className="flex items-center gap-2" style={{ marginTop: '1rem', fontSize: '0.8125rem', color: 'var(--muted)' }}>
                   <span>📊 {skmData.dimensi.length} dimensi penilaian</span>
-                  <span>• 5 skala (1–5)</span>
+                  <span>• 4 skala (1–4)</span>
                   <span>• 2 menit</span>
                 </div>
               </div>
@@ -117,7 +117,7 @@ export default function SKMPage() {
                   <span className="badge badge-blue">{unit}</span>
                 </div>
                 <p style={{ fontSize: '0.8125rem', color: 'var(--muted)', marginBottom: '1rem' }}>
-                  Beri nilai 1–5 untuk setiap dimensi berikut:
+                  Beri nilai 1–4 untuk setiap dimensi berikut:
                 </p>
 
                 <div className="skala-row">

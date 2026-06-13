@@ -19,14 +19,10 @@ export default function GlossaryTooltip({ id, children }) {
   const tooltipId = `gt-${uid}-${id}`;
 
   const entry = glosariumMap[id];
-  if (!entry) {
-    // Fallback: render as plain text if term not found
-    return <>{children}</>;
-  }
 
-  // Close on click outside
+  // Close on click outside — must be unconditionally called
   useEffect(() => {
-    if (!open) return;
+    if (!entry || !open) return;
     function handleClick(e) {
       if (
         tooltipRef.current &&
@@ -39,17 +35,22 @@ export default function GlossaryTooltip({ id, children }) {
     }
     document.addEventListener('mousedown', handleClick);
     return () => document.removeEventListener('mousedown', handleClick);
-  }, [open]);
+  }, [open, entry]);
 
-  // Close on Escape
+  // Close on Escape — must be unconditionally called
   useEffect(() => {
-    if (!open) return;
+    if (!entry || !open) return;
     function handleKey(e) {
       if (e.key === 'Escape') setOpen(false);
     }
     document.addEventListener('keydown', handleKey);
     return () => document.removeEventListener('keydown', handleKey);
-  }, [open]);
+  }, [open, entry]);
+
+  if (!entry) {
+    // Fallback: render as plain text if term not found
+    return <>{children}</>;
+  }
 
   return (
     <span style={{ display: 'inline', position: 'relative' }}>
