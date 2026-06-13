@@ -14,6 +14,7 @@ function slugify(text) {
 
 export default function PetaProsesBisnis({ data }) {
   const [modalMisi, setModalMisi] = useState(null);
+  const [showAllUrusan, setShowAllUrusan] = useState(false);
   const probis = data.probis;
   const opdList = data.opd.daftar;
 
@@ -47,23 +48,23 @@ export default function PetaProsesBisnis({ data }) {
 
         {/* ============ HIERARCHY OVERVIEW ============ */}
         <section className="ppb-overview">
-          <div className="ppb-chain-large">
+          <div className="ppb-chain">
             <div className="ppb-chain-item">
-              <div className="ppb-chain-level">Level 0</div>
-              <div className="ppb-chain-label">Visi &amp; Misi</div>
-              <div className="ppb-chain-desc">Arah pembangunan daerah</div>
+              <div className="ppb-chain-circle" style={{ fontSize: '0.75rem', fontWeight: 700 }}>L0</div>
+              <strong style={{ fontSize: '0.875rem' }}>Visi &amp; Misi</strong>
+              <span style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>Arah pembangunan daerah</span>
             </div>
-            <div className="ppb-chain-arrow">⬇</div>
+            <div className="ppb-chain-arrow">→</div>
             <div className="ppb-chain-item">
-              <div className="ppb-chain-level">Level 1</div>
-              <div className="ppb-chain-label">Urusan Pemerintahan</div>
-              <div className="ppb-chain-desc">24 urusan konkuren + urusan umum</div>
+              <div className="ppb-chain-circle" style={{ background: 'var(--ok-bg)', color: 'var(--ok)', fontSize: '0.75rem', fontWeight: 700 }}>L1</div>
+              <strong style={{ fontSize: '0.875rem' }}>Urusan Pemerintahan</strong>
+              <span style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>24 urusan konkuren + urusan umum</span>
             </div>
-            <div className="ppb-chain-arrow">⬇</div>
+            <div className="ppb-chain-arrow">→</div>
             <div className="ppb-chain-item">
-              <div className="ppb-chain-level">Level 2</div>
-              <div className="ppb-chain-label">Proses Bisnis OPD</div>
-              <div className="ppb-chain-desc">6 kategori — 37 proses spesifik</div>
+              <div className="ppb-chain-circle" style={{ background: 'var(--warn-bg)', color: 'var(--warn)', fontSize: '0.75rem', fontWeight: 700 }}>L2</div>
+              <strong style={{ fontSize: '0.875rem' }}>Proses Bisnis OPD</strong>
+              <span style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>6 kategori — 37 proses spesifik</span>
             </div>
           </div>
         </section>
@@ -158,8 +159,8 @@ export default function PetaProsesBisnis({ data }) {
             </div>
           </div>
 
-          <div className="urusan-grid">
-            {probis.level_1.urusan.map((u, i) => (
+          <div className="grid grid-3" style={{ gap: '0.625rem' }}>
+            {probis.level_1.urusan.slice(0, showAllUrusan ? undefined : 12).map((u, i) => (
               <div key={i} className="urusan-card">
                 <div className="urusan-header">
                   <h3>{u.nama}</h3>
@@ -180,6 +181,16 @@ export default function PetaProsesBisnis({ data }) {
               </div>
             ))}
           </div>
+          {probis.level_1.urusan.length > 12 && (
+            <div className="flex justify-center" style={{ marginTop: '1rem' }}>
+              <button
+                onClick={() => setShowAllUrusan(!showAllUrusan)}
+                className="btn btn-outline btn-sm"
+              >
+                {showAllUrusan ? 'Tampilkan lebih sedikit ↑' : `Lihat ${formatAngka(probis.level_1.urusan.length - 12)} urusan lainnya ↓`}
+              </button>
+            </div>
+          )}
 
           <div className="ppb-note">
             <strong>Catatan:</strong> 24 urusan konkuren berdasarkan UU 23/2014 + urusan umum 
@@ -207,7 +218,7 @@ export default function PetaProsesBisnis({ data }) {
                   <p className="kategori-desc">{k.deskripsi}</p>
                 </div>
               </div>
-              <div className="proses-grid">
+              <div className="grid grid-3" style={{ gap: '0.625rem' }}>
                 {k.proses?.map((p, j) => (
                   <div key={j} className="proses-card">
                     <div className="proses-nama">{p.nama}</div>
@@ -281,23 +292,6 @@ export default function PetaProsesBisnis({ data }) {
         .section-hero-probis p { color: rgba(255,255,255,0.85) !important; font-size: 1rem; }
 
         .ppb-overview { margin-bottom: 3rem; }
-        .ppb-chain-large {
-          display: flex; align-items: center; justify-content: center;
-          gap: 0.5rem; background: var(--bg-card); border: 1px solid var(--border);
-          border-radius: 12px; padding: 2rem; flex-wrap: wrap;
-        }
-        .ppb-chain-item {
-          text-align: center; padding: 1rem 1.5rem;
-          background: var(--bg); border: 1px solid var(--border);
-          border-radius: 8px; min-width: 160px;
-        }
-        .ppb-chain-level {
-          font-size: 0.6875rem; font-weight: 700; text-transform: uppercase;
-          letter-spacing: 0.05em; color: var(--primary);
-        }
-        .ppb-chain-label { font-weight: 600; margin: 0.25rem 0; font-size: 0.9375rem; }
-        .ppb-chain-desc { font-size: 0.75rem; color: var(--muted); }
-        .ppb-chain-arrow { font-size: 1.5rem; color: var(--primary); }
 
         .ppb-section { margin-bottom: 3rem; padding-top: 1rem; }
         .ppb-section-header {
@@ -353,10 +347,6 @@ export default function PetaProsesBisnis({ data }) {
           .misi-grid { grid-template-columns: 1fr; }
         }
 
-        .misi-card {
-          background: var(--bg-card); border: 1px solid var(--border);
-          border-radius: 10px; padding: 1.25rem;
-        }
         .misi-card-compact {
           background: var(--bg-card); border: 1px solid var(--border);
           border-radius: 10px; padding: 1.25rem;
@@ -389,16 +379,6 @@ export default function PetaProsesBisnis({ data }) {
         }
         .misi-opd-links { margin-top: 0.5rem; }
 
-        .urusan-grid {
-          display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem;
-        }
-        @media (max-width: 768px) {
-          .urusan-grid { grid-template-columns: 1fr; }
-        }
-        @media (min-width: 769px) and (max-width: 1024px) {
-          .urusan-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-
         .urusan-card {
           background: var(--bg-card); border: 1px solid var(--border);
           border-radius: 8px; padding: 0.875rem;
@@ -423,16 +403,6 @@ export default function PetaProsesBisnis({ data }) {
         .kategori-icon { font-size: 1.5rem; }
         .kategori-header h3 { font-size: 1.125rem; font-weight: 600; margin: 0; }
         .kategori-desc { font-size: 0.8125rem; color: var(--muted); margin: 0.25rem 0 0; }
-
-        .proses-grid {
-          display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.625rem;
-        }
-        @media (max-width: 768px) {
-          .proses-grid { grid-template-columns: 1fr; }
-        }
-        @media (min-width: 769px) and (max-width: 1024px) {
-          .proses-grid { grid-template-columns: repeat(2, 1fr); }
-        }
 
         .proses-card {
           background: var(--bg-card); border: 1px solid var(--border);

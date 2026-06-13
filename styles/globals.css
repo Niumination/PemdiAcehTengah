@@ -491,7 +491,217 @@ section.blk{margin-bottom:30px;scroll-margin-top:80px}
 .link-more{font-size:13.5px;font-weight:700;color:var(--primary);white-space:nowrap}
 .link-more:hover{text-decoration:underline}
 
-/* ============ 26. RESPONSIVE ============ */
+/* ============ 26. RESTORED v1 CLASSES (pm-modal, ppb, opd, badge, btn, grid, spacing) ============ */
+
+/* ---------- pm-modal overlay ---------- */
+.pm-modal-overlay{
+  position:fixed;inset:0;z-index:1001;
+  background:rgba(0,0,0,.55);
+  display:flex;align-items:center;justify-content:center;padding:1rem
+}
+.pm-modal-content{
+  background:var(--surface);border-radius:var(--radius);
+  width:100%;max-width:540px;max-height:90vh;overflow-y:auto;
+  box-shadow:var(--sh-lg);color:var(--ink)
+}
+.pm-modal-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 1.5rem;border-bottom:1px solid var(--line);
+  position:sticky;top:0;background:var(--surface);z-index:1;
+  border-radius:var(--radius) var(--radius) 0 0
+}
+.pm-modal-title{font-size:1.125rem;font-weight:600;margin:0;color:var(--ink)}
+.pm-modal-close{
+  background:none;border:none;font-size:1.25rem;cursor:pointer;
+  color:var(--ink-secondary);padding:.25rem .5rem;border-radius:var(--r-xs);line-height:1
+}
+.pm-modal-close:hover{background:var(--surface-hover);color:var(--ink)}
+.pm-modal-body{padding:1.5rem}
+@media(max-width:640px){
+  .pm-modal-overlay{padding:0;align-items:flex-end}
+  .pm-modal-content{border-radius:var(--r) var(--r) 0 0;max-height:85vh}
+  .pm-modal-header{border-radius:var(--r) var(--r) 0 0}
+}
+
+/* ---------- Grid ---------- */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+@media(max-width:992px){.grid-3,.grid-4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:576px){.grid-3,.grid-4{grid-template-columns:1fr}}
+
+/* ---------- Card extras ---------- */
+.card-header{
+  display:flex;align-items:center;gap:.75rem;margin-bottom:1rem
+}
+.card-icon{
+  width:48px;height:48px;border-radius:var(--r-xs);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.25rem;flex-shrink:0
+}
+
+/* ---------- Badges ---------- */
+.badge{
+  display:inline-flex;align-items:center;
+  padding:.25rem .75rem;border-radius:100px;
+  font-size:.75rem;font-weight:600;letter-spacing:.3px;text-transform:uppercase
+}
+.badge-blue{background:var(--primary-50);color:var(--primary)}
+.badge-green{background:var(--ok-bg);color:var(--ok)}
+.badge-gray{background:var(--bg);color:var(--ink-secondary)}
+.badge-sm{font-size:.6875rem;padding:.125rem .5rem}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.625rem 1.25rem;font-family:var(--font-body);
+  font-size:.9375rem;font-weight:600;line-height:1;
+  border:none;border-radius:var(--radius);cursor:pointer;
+  transition:var(--transition);text-decoration:none
+}
+.btn:hover{text-decoration:none}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-primary:hover{background:var(--primary-700);color:#fff}
+.btn-outline{
+  background:transparent;border:2px solid var(--primary);color:var(--primary)
+}
+.btn-outline:hover{background:var(--primary);color:#fff}
+.btn-sm{padding:.375rem .75rem;font-size:.8125rem}
+.btn-lg{padding:.875rem 1.75rem;font-size:1.0625rem}
+
+/* ---------- PPB — Proses Bisnis ---------- */
+.ppb-hierarchy{align-items:stretch}
+.ppb-card{
+  display:flex;flex-direction:column;gap:.5rem;
+  border-top:4px solid var(--line);position:relative;overflow:hidden
+}
+.ppb-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.ppb-card h3{font-size:1.125rem;margin-bottom:.25rem}
+.ppb-level-0{border-top-color:var(--primary)}
+.ppb-level-1{border-top-color:var(--ok)}
+.ppb-level-2{border-top-color:var(--warn)}
+.ppb-level-badge{
+  display:inline-flex;align-items:center;gap:.375rem;
+  font-size:.6875rem;font-weight:700;letter-spacing:.5px;
+  text-transform:uppercase;color:#fff;
+  padding:.25rem .625rem;border-radius:var(--radius-sm);width:fit-content;margin-bottom:.25rem
+}
+.ppb-level-0 .ppb-level-badge{background:var(--primary)}
+.ppb-level-1 .ppb-level-badge{background:var(--ok)}
+.ppb-level-2 .ppb-level-badge{background:var(--warn)}
+.ppb-label{
+  font-size:.75rem;font-weight:600;text-transform:uppercase;
+  letter-spacing:.5px;color:var(--muted);margin-bottom:.125rem
+}
+.ppb-value{
+  font-size:.9375rem;font-weight:500;color:var(--ink);
+  line-height:1.5;margin-bottom:0
+}
+.ppb-misi-badge{
+  display:inline-block;background:var(--ok-bg);color:var(--ok);
+  font-size:.8125rem;font-weight:600;padding:.25rem .75rem;border-radius:var(--radius-sm)
+}
+.ppb-footnote{
+  font-size:.75rem;color:var(--muted);margin-top:auto;padding-top:.75rem;margin-bottom:0
+}
+
+/* ---------- PPB Chain Visual ---------- */
+.ppb-chain{
+  display:flex;align-items:center;justify-content:center;
+  gap:.5rem;margin-top:2rem;padding:1.5rem;
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r);flex-wrap:wrap
+}
+.ppb-chain-item{
+  display:flex;flex-direction:column;align-items:center;
+  gap:.375rem;font-size:.8125rem;color:var(--ink-secondary);text-align:center
+}
+.ppb-chain-circle{
+  width:44px;height:44px;border-radius:50%;
+  background:var(--primary-50);color:var(--primary);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.25rem;font-weight:700;font-family:var(--font-mono)
+}
+.ppb-chain-circle-active{
+  background:var(--primary)!important;color:#fff!important;
+  box-shadow:0 0 0 4px var(--primary-50)
+}
+.ppb-chain-arrow{font-size:1.5rem;color:var(--muted);font-weight:300}
+
+@media(max-width:768px){
+  .ppb-chain{gap:.25rem;padding:1rem}
+  .ppb-chain-circle{width:36px;height:36px;font-size:1rem}
+  .ppb-chain-arrow{font-size:1rem}
+}
+
+/* ---------- OPD Detail ---------- */
+.opd-hero{padding:3.5rem 0 3rem}
+.opd-hero .hero-content{max-width:100%}
+.opd-hero h1{font-size:2.5rem;margin-bottom:.5rem}
+.hero-back-link{
+  display:inline-block;color:rgba(255,255,255,.7);
+  font-size:.875rem;margin-bottom:1rem;transition:var(--transition)
+}
+.hero-back-link:hover{color:#fff;text-decoration:none}
+.hero-badge{
+  display:inline-block;background:rgba(255,255,255,.15);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  padding:.375rem 1rem;border-radius:100px;
+  font-size:.8125rem;font-weight:600;letter-spacing:.5px;
+  margin-bottom:1.5rem;border:1px solid rgba(255,255,255,.2)
+}
+.hero-subtitle{font-size:1.125rem;opacity:.85;max-width:700px}
+.hero-tags{margin-top:1.5rem}
+
+@media(max-width:768px){
+  .opd-hero{padding:2.5rem 0 2rem}
+  .opd-hero h1{font-size:1.75rem}
+}
+
+/* --- OPD tags --- */
+.opd-tags{display:flex;flex-wrap:wrap;gap:.375rem}
+.opd-tag{
+  font-size:.6875rem;padding:.125rem .5rem;border-radius:100px;
+  background:var(--bg);color:var(--ink-secondary);font-weight:500
+}
+
+/* ---------- Info Table ---------- */
+.info-table{width:100%;border-collapse:collapse;font-size:.875rem}
+.info-table td{padding:.5rem 0;border-bottom:1px solid var(--line-2)}
+.info-table tr:last-child td{border-bottom:none}
+.info-label{width:40%;font-weight:600;color:var(--ink-secondary);vertical-align:top}
+.info-value{width:60%;color:var(--ink)}
+.info-value code{
+  font-family:var(--font-mono);font-size:.8125rem;
+  background:var(--bg);padding:.125rem .375rem;border-radius:var(--radius-sm)
+}
+
+/* ---------- Stat Numbers ---------- */
+.stat-number{
+  font-size:1.5rem;font-weight:800;font-family:var(--font-mono);color:var(--primary)
+}
+.stat-number-sm{
+  font-size:1.125rem;font-weight:700;font-family:var(--font-mono);color:var(--ink-secondary)
+}
+
+/* ---------- Section extras ---------- */
+.section-alt{background:var(--surface-2)}
+.section-header{text-align:center;max-width:800px;margin:0 auto 3rem}
+.section-header h2{margin-bottom:.75rem}
+.section-header p{color:var(--ink-secondary);font-size:1.125rem}
+
+/* ---------- Related card ---------- */
+.related-card{text-decoration:none;cursor:pointer;transition:var(--transition)}
+.related-card:hover{
+  border-color:var(--primary);box-shadow:var(--sh);transform:translateY(-2px);text-decoration:none
+}
+
+/* ---------- Spacing utilities ---------- */
+.gap-1{gap:.5rem}
+.mb-1{margin-bottom:.5rem}
+.mb-2{margin-bottom:1rem}
+.mt-3{margin-top:1.5rem}
+
+/* ============ 27. RESPONSIVE ============ */
 
 /* ≤1100px */
 @media(max-width:1100px){
@@ -536,7 +746,7 @@ section.blk{margin-bottom:30px;scroll-margin-top:80px}
   .modal-scrim{padding:0;align-items:flex-end}
 }
 
-/* ============ 27. PREFERS-REDUCED-MOTION ============ */
+/* ============ 28. PREFERS-REDUCED-MOTION ============ */
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{
     animation:none!important;transition:none!important;scroll-behavior:auto!important
@@ -547,7 +757,7 @@ section.blk{margin-bottom:30px;scroll-margin-top:80px}
   .hero::after{animation:none}
 }
 
-/* ============ 28. PRINT STYLES ============ */
+/* ============ 29. PRINT STYLES ============ */
 @media print{
   .sidebar,.topbar,.fab,.scrim,.modal-scrim,.skip-link{display:none!important}
   .shell{display:block}

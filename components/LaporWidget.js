@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-export default function LaporWidget() {
+export default function LaporWidget({ externalOpen, onExternalClose, hideFab }) {
   const [buka, setBuka] = useState(false);
   const [step, setStep] = useState('form'); // form | tracking | done
   const [laporan, setLaporan] = useState({ kategori: '', pesan: '', kontak: '' });
@@ -8,6 +8,21 @@ export default function LaporWidget() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [tersimpan, setTersimpan] = useState(true);
+
+  /* Sync external open control */
+  useEffect(() => {
+    if (externalOpen) {
+      setBuka(true);
+      setStep('form');
+      setLaporan({ kategori: '', pesan: '', kontak: '' });
+      setError(null);
+    }
+  }, [externalOpen]);
+
+  const tutup = () => {
+    setBuka(false);
+    onExternalClose?.();
+  };
 
   const handleKirim = async (e) => {
     e.preventDefault();
@@ -21,7 +36,7 @@ export default function LaporWidget() {
           kategori: laporan.kategori,
           pesan: laporan.pesan,
           kontak: laporan.kontak,
-          halaman: window.location.pathname,
+          halaman: typeof window !== 'undefined' ? window.location.pathname : '',
         }),
       });
       const result = await res.json();
@@ -40,14 +55,17 @@ export default function LaporWidget() {
 
   return (
     <>
-      <button className="lapor-fab" onClick={() => { setBuka(true); setStep('form'); setLaporan({ kategori: '', pesan: '', kontak: '' }); }}>
-        💬
-      </button>
+      {/* FAB — hanya muncul saat tidak dikontrol eksternal dan tidak disembunyikan */}
+      {!externalOpen && !hideFab && (
+        <button className="lapor-fab" onClick={() => { setBuka(true); setStep('form'); setLaporan({ kategori: '', pesan: '', kontak: '' }); }}>
+          💬
+        </button>
+      )}
 
       {buka && (
-        <div className="lapor-overlay" onClick={() => setBuka(false)}>
+        <div className="lapor-overlay" onClick={tutup}>
           <div className="lapor-modal" onClick={e => e.stopPropagation()} role="dialog" aria-modal="true" aria-label="Lapor / Saran">
-            <button className="lapor-close" onClick={() => setBuka(false)}>✕</button>
+            <button className="lapor-close" onClick={tutup}>✕</button>
             <div className="lapor-header">
               <span className="lapor-icon">💬</span>
               <h3>Lapor / Saran</h3>
@@ -155,7 +173,7 @@ export default function LaporWidget() {
                   Simpan ID ini untuk melacak status laporan.
                   Tim Pemda Digital akan menindaklanjuti dalam 3×24 jam.
                 </p>
-                <button className="btn btn-outline btn-sm" style={{ marginTop: '0.75rem' }} onClick={() => { setBuka(false); }}>
+                <button className="btn btn-outline btn-sm" style={{ marginTop: '0.75rem' }} onClick={tutup}>
                   Tutup
                 </button>
               </div>

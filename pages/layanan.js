@@ -123,32 +123,26 @@ export default function LayananPage() {
               <p style={{ fontSize: '0.875rem', color: 'var(--muted)' }}>Coba kata kunci lain atau reset filter</p>
             </div>
           ) : (
-            <div className="layanan-grid">
+            <div className="grid grid-3" style={{ gap: '0.75rem' }}>
               {filtered.map((l, i) => (
-                <div key={i} className="card layanan-card" style={{ borderLeft: `4px solid ${l.warna}` }}>
-                  <div className="layanan-card-top">
-                    <span className="layanan-ikon">{l.ikon}</span>
-                    <div className="layanan-card-header">
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <h3>{l.nama}</h3>
+                <div key={i} className="card" style={{ display: 'flex', flexDirection: 'column', borderLeft: `4px solid ${l.warna}`, padding: '1rem 1.25rem' }}>
+                  <div style={{ display: 'flex', gap: '0.875rem', alignItems: 'flex-start' }}>
+                    <span style={{ fontSize: '1.5rem', flexShrink: 0, marginTop: '0.125rem' }}>{l.ikon}</span>
+                    <div style={{ flex: 1 }}>
+                      <div className="flex items-center gap-2 flex-wrap" style={{ marginBottom: '0.25rem' }}>
+                        <h3 style={{ fontSize: '0.9375rem', margin: 0 }}>{l.nama}</h3>
                         <span className={`badge badge-sm ${STATUS_WARNA[l.status] || 'badge-gray'}`}>{l.status}</span>
                         {l.online && <span className="badge badge-sm badge-green">Online</span>}
                       </div>
-                      <p className="layanan-deskripsi">{l.deskripsi}</p>
+                      <p style={{ fontSize: '0.8125rem', color: 'var(--muted)', margin: 0 }}>{l.deskripsi}</p>
                     </div>
                   </div>
-                  <div className="layanan-meta">
-                    <div className="layanan-meta-item">
-                      <span className="meta-label">⏱ {l.waktu}</span>
-                    </div>
-                    <div className="layanan-meta-item">
-                      <span className="meta-label">💰 {l.biaya}</span>
-                    </div>
-                    <div className="layanan-meta-item">
-                      <SlaBadge sla={l.sla} compact={true} />
-                    </div>
+                  <div className="flex" style={{ gap: '1.25rem', marginTop: '0.75rem', flexWrap: 'wrap', fontSize: '0.75rem', color: 'var(--muted)' }}>
+                    <span>⏱ {l.waktu}</span>
+                    <span>💰 {l.biaya}</span>
+                    <SlaBadge sla={l.sla} compact={true} />
                   </div>
-                  <div className="layanan-opd">
+                  <div style={{ fontSize: '0.75rem', marginTop: '0.5rem', color: 'var(--gray-600)' }}>
                     <span>📌 </span>
                     {l.kategoriId === 'kecamatan' ? (
                       <span>{l.kategori}</span>
@@ -159,9 +153,9 @@ export default function LayananPage() {
                     )}
                   </div>
                   {l.persyaratan && (
-                    <details className="layanan-details">
-                      <summary>📄 Persyaratan</summary>
-                      <p>{l.persyaratan}</p>
+                    <details style={{ marginTop: '0.5rem', fontSize: '0.75rem', color: 'var(--muted)' }}>
+                      <summary style={{ cursor: 'pointer', fontWeight: 500, color: 'var(--primary)' }}>📄 Persyaratan</summary>
+                      <p style={{ marginTop: '0.375rem', padding: '0.5rem 0.75rem', background: 'var(--gray-50)', borderRadius: '6px' }}>{l.persyaratan}</p>
                     </details>
                   )}
                 </div>
@@ -256,28 +250,8 @@ export default function LayananPage() {
           background: none; border: none; color: white; cursor: pointer; font-size: 0.875rem; opacity: 0.7;
         }
 
-        .layanan-grid { display: grid; gap: 0.75rem; }
-        .layanan-card { padding: 1rem 1.25rem; }
-        .layanan-card:hover { box-shadow: var(--shadow-md); }
-        .layanan-card-top { display: flex; gap: 0.875rem; align-items: flex-start; }
-        .layanan-ikon { font-size: 1.5rem; flex-shrink: 0; margin-top: 0.125rem; }
-        .layanan-card-header { flex: 1; }
-        .layanan-card-header h3 { font-size: 0.9375rem; margin: 0; }
-        .layanan-deskripsi { font-size: 0.8125rem; color: var(--muted); margin: 0.25rem 0 0; }
-        .layanan-meta { display: flex; gap: 1.25rem; margin-top: 0.75rem; flex-wrap: wrap; }
-        .layanan-meta-item { font-size: 0.75rem; color: var(--muted); display: flex; align-items: center; gap: 0.375rem; }
-        .meta-label { color: var(--gray-600); }
-        .layanan-opd { font-size: 0.75rem; margin-top: 0.5rem; color: var(--gray-600); }
-        .layanan-opd a { font-weight: 500; }
-        .layanan-details { margin-top: 0.5rem; font-size: 0.75rem; color: var(--muted); }
-        .layanan-details summary { cursor: pointer; font-weight: 500; color: var(--primary); }
-        .layanan-details p { margin-top: 0.375rem; padding: 0.5rem 0.75rem; background: var(--gray-50); border-radius: 6px; }
-
         .kategori-card { text-decoration: none !important; }
         .kategori-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
-        @media (min-width: 640px) {
-          .layanan-grid { grid-template-columns: repeat(2, 1fr); }
-        }
       `}</style>
     </>
   );

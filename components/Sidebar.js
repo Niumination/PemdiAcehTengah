@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import LaporWidget from './LaporWidget';
 
 /* ── Data Menu ── */
 const menuGroups = [
@@ -18,13 +19,13 @@ const menuGroups = [
       { label: 'Indeks SPBE', href: '/spbe', icon: '📊' },
       { label: 'Indeks Pemdi', href: '/pemdi', icon: '📈' },
       { label: 'Peta Proses Bisnis', href: '/probis', icon: '🗺️' },
-      { label: 'Roadmap', href: '/roadmap', icon: '🛤️' },
+      { label: 'Roadmap', href: '/#roadmap', icon: '🛤️' },
     ],
   },
   {
     label: 'Partisipasi',
     items: [
-      { label: 'Lapor / Saran', href: '/lapor', icon: '📢' },
+      { label: 'Lapor / Saran', href: '#', icon: '📢', isModal: true },
       { label: 'Survei Kepuasan', href: '/skm', icon: '📝' },
       { label: 'Tanya & FAQ', href: '/faq', icon: '💬' },
       { label: 'Glosarium', href: '/glosarium', icon: '📖' },
@@ -191,8 +192,31 @@ const styles = {
 };
 
 /* ── Menu Item ── */
-function MenuItem({ item, isActive }) {
+function MenuItem({ item, isActive, onModalClick }) {
   const [hover, setHover] = useState(false);
+
+  if (item.isModal) {
+    return (
+      <a
+        href="#"
+        role="button"
+        onClick={(e) => {
+          e.preventDefault();
+          onModalClick?.();
+        }}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+        style={{
+          ...styles.itemLink,
+          cursor: 'pointer',
+          ...(hover ? styles.itemHover : {}),
+        }}
+      >
+        <span style={styles.itemIcon}>{item.icon}</span>
+        <span style={styles.itemLabel}>{item.label}</span>
+      </a>
+    );
+  }
 
   return (
     <Link
@@ -220,6 +244,7 @@ export default function Sidebar({ isOpen, onClose }) {
   /* Hydration-safe: detect desktop on client */
   const [isDesktop, setIsDesktop] = useState(false);
   const [hydrated, setHydrated] = useState(false);
+  const [showLapor, setShowLapor] = useState(false);
 
   useEffect(() => {
     const mq = window.matchMedia(`(min-width: ${MOBILE_BP + 1}px)`);
@@ -303,7 +328,8 @@ export default function Sidebar({ isOpen, onClose }) {
                   <MenuItem
                     key={item.href}
                     item={item}
-                    isActive={isActive(item.href)}
+                    isActive={item.isModal ? false : isActive(item.href)}
+                    onModalClick={item.isModal ? () => setShowLapor(true) : undefined}
                   />
                 ))}
               </div>
@@ -316,6 +342,13 @@ export default function Sidebar({ isOpen, onClose }) {
           </div>
         </div>
       </aside>
+
+      {/* LaporWidget modal — dikontrol dari menu sidebar (FAB disembunyikan) */}
+      <LaporWidget
+        externalOpen={showLapor}
+        onExternalClose={() => setShowLapor(false)}
+        hideFab
+      />
     </>
   );
 }

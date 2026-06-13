@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Sidebar from './Sidebar';
 import ThemeToggle from './ThemeToggle';
+import LaporWidget from './LaporWidget';
 
 /* ── Constants ── */
 const SIDEBAR_W = 262;
@@ -168,6 +169,9 @@ const styles = {
     transition: 'background 0.15s ease, opacity 0.15s ease',
     lineHeight: 1,
     whiteSpace: 'nowrap',
+    border: 'none',
+    cursor: 'pointer',
+    fontFamily: 'inherit',
   },
   /* Content area */
   content: {
@@ -192,6 +196,7 @@ export default function AppShell({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [hydrated, setHydrated] = useState(false);
+  const [showLapor, setShowLapor] = useState(false);
 
   /* Hydration-safe responsive detection */
   useEffect(() => {
@@ -282,8 +287,8 @@ export default function AppShell({ children }) {
           <div style={styles.actions}>
             <ThemeToggle />
 
-            <Link
-              href="/lapor"
+            <button
+              onClick={() => setShowLapor(true)}
               style={styles.laporLink}
               onMouseEnter={(e) => {
                 e.currentTarget.style.opacity = '0.9';
@@ -294,7 +299,7 @@ export default function AppShell({ children }) {
             >
               <span>📢</span>
               <span>Lapor</span>
-            </Link>
+            </button>
           </div>
         </header>
 
@@ -310,6 +315,12 @@ export default function AppShell({ children }) {
           {children}
         </main>
       </div>
+
+      {/* LaporWidget modal — dikontrol dari topbar */}
+      <LaporWidget
+        externalOpen={showLapor}
+        onExternalClose={() => setShowLapor(false)}
+      />
     </div>
   );
 }
