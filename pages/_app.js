@@ -1,5 +1,5 @@
 import '@/styles/globals.css';
-import Layout from '@/components/Layout';
+import AppShell from '@/components/AppShell';
 import Head from 'next/head';
 import { Analytics } from '@vercel/analytics/react';
 
@@ -30,9 +30,9 @@ export default function App({ Component, pageProps }) {
           }) }}
         />
       </Head>
-      <Layout>
+      <AppShell>
         <Component {...pageProps} />
-      </Layout>
+      </AppShell>
       <Analytics />
     </>
   );

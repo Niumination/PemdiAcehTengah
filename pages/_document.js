@@ -21,6 +21,19 @@ export default function Document() {
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..800&display=swap" />
       </Head>
       <body>
+        {/* Inline script for theme FOUC prevention — runs before any paint */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(){
+                var t;
+                try { t = localStorage.getItem('theme'); } catch(e){}
+                if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', t);
+              })();
+            `,
+          }}
+        />
         <Main />
         <NextScript />
       </body>
