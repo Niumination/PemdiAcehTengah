@@ -82,14 +82,14 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 | `lib/` | Supabase client (`supabaseAdmin.js`), security helpers (`security.js`), admin auth (`adminAuth.js`) |
 | `pages/admin.js` | Admin Dashboard — authenticate via ADMIN_TOKEN (Bearer) |
 | `pages/api/admin/` | Admin API routes: `laporan.js` (PATCH status pengaduan), `skm.js` (GET semua SKM) |
-| `public/manifest.json` | PWA manifest — standalone, theme_color #1f6f43, icons 192+512 |
-| `public/icons/` | PWA icons — `icon-192.png`, `icon-512.png`, `icon.svg`, `icon-192.svg` |
+| `public/manifest.json` | PWA manifest — standalone, theme_color #004098, icons 192+512+maskable+apple-touch |
+| `public/icons/` | PWA icons — `icon-192.png`, `icon-512.png`, `icon-maskable-512.png`, `apple-touch-icon.png`, `icon.svg`, `192.svg` |
 
 ## Global Rules
 
 1. **Data flow**: `data/opd.json` → `getStaticProps` di pages → props ke components. API routes juga baca dari file yang sama.
 2. **Hybrid data**: Static JSON (`data/*.json`) untuk konten publik (OPD, SPBE, ProBis, Pemdi, SKM) + Supabase untuk data dinamis (SKM responses, admin logs). Supabase admin client di `lib/supabaseAdmin.js`. Env vars: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`.
-3. **CSS architecture**: Satu file `styles/globals.css` — government theme, Inter font, GOV.UK-inspired. Mobile-first responsive.
+3. **CSS architecture**: Satu file `styles/globals.css` — GOV.UK-inspired redesign, theme #004098, Inter font, mobile-first responsive, JetBrains Mono. Komponen: gov-header, hero, SPBE gauge, PPB hierarchy, accordion, timeline, cards, badges, buttons, modal, breadcrumb, OPD detail, scroll-top, print styles.
 4. **Components**: Semua di `components/` — reusable, props-driven. Layout component wrapping.
 5. **API routes**: RESTful, JSON response, read from `data/opd.json`.
 6. **Deployment**: Vercel production branch `main`. Deploy via Vercel CLI atau push ke GitHub.
@@ -97,7 +97,7 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 8. **Bahasa**: Dokumentasi dan konten portal dalam Bahasa Indonesia.
 9. **Admin auth**: Dashboard `/admin` dan API `/api/admin/*` dilindungi Bearer token dari `ADMIN_TOKEN` env var (default: `admin` untuk dev). Lihat `lib/adminAuth.js`.
 10. **PWA**: Progressive Web App via `public/manifest.json` + icons. `_app.js` includes manifest link + theme-color meta + Vercel Analytics.
-11. **Security headers**: Semua route via `next.config.js` — CSP (allow Turnstile, Supabase, Google Fonts), X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy. Rate limiting + IP hashing + Turnstile verify di `lib/security.js`.
+11. **Security headers**: Semua route via `next.config.js` — CSP (allow Supabase, Google Fonts), X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy. Rate limiting + IP hashing di `lib/security.js`.
 
 ## Child DOX Index
 
