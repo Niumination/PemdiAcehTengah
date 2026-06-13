@@ -38,11 +38,11 @@ Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah. Transformasi menuju Peme
 | **Restrukturisasi OPD** | 7 pemisahan OPD, 1 OPD baru (Dinas Perkebunan) — RSUD Datu Beru & KORPRI tidak lagi sebagai OPD |
 | **Jargon** | HAMAS (Haili Yoga + Muchsin Hasan), 17 sasaran prioritas |
 | **Program Unggulan** | Aceh Tengah Satu Data (AWS + Komdigi), MPP, Satu OPD Satu Inovasi |
-| **PWA** | `manifest.json`, icons (192/512 PNG + SVG), `theme_color: #1f6f43`, `display: standalone`, scope root |
-| **Security** | CSP headers (Turnstile, Supabase, Google Fonts), rate limiting, IP hashing (SHA-256), Turnstile CAPTCHA, admin Bearer auth. `lib/security.js` |
-| **Admin Dashboard** | `/admin` — protected by `ADMIN_TOKEN` env (Bearer auth). Admin APIs: `/api/admin/laporan` (PATCH status), `/api/admin/skm` (GET all) |
-| **HEAD** | `c9224f5` — fix: logo v2, admin dashboard L12B, SKM, Supabase integration |
-| **Env Vars** | `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `ADMIN_TOKEN`, `TURNSTILE_SECRET_KEY`, `IP_HASH_SALT` |
+|| **PWA** | `manifest.json`, icons (192/512 PNG + maskable-512 + apple-touch + SVG), `theme_color: #004098`, `display: standalone`, scope root, +orientation portrait |
+|| **Security** | CSP headers (Supabase, Google Fonts), rate limiting, IP hashing (SHA-256), admin Bearer auth. `lib/security.js` |
+|| **Admin Dashboard** | `/admin` — protected by `ADMIN_TOKEN` env (Bearer auth). Admin APIs: `/api/admin/laporan` (PATCH status), `/api/admin/skm` (GET all) |
+|| **HEAD** | `69bec36` — docs: update AGENTS.md for CSS redesign, new manifest/icons |
+|| **Env Vars** | `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `ADMIN_TOKEN`, `IP_HASH_SALT` |
 
 ## Framework Regulasi — DUA KERANGKA BERBEDA
 
@@ -75,8 +75,8 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 | `package-lock.json` | Lock file — jangan edit manual |
 | `pages/` | Source code halaman dan API Next.js |
 | `components/` | React komponen |
-| `styles/` | CSS globals |
-| `data/` | Data statis JSON |
+| `styles/` | CSS globals — redesign GOV.UK theme (#004098), 21KB |
+| `data/` | Data statis JSON (OPD, SPBE, ProBis, SKM, Pemdi) + glosarium |
 | `docs/` | Dokumentasi, PDF, riset |
 | `docs.old/` | Legacy docs — referensi historis (tidak diindex DOX) |
 | `lib/` | Supabase client (`supabaseAdmin.js`), security helpers (`security.js`), admin auth (`adminAuth.js`) |
@@ -84,6 +84,9 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 | `pages/api/admin/` | Admin API routes: `laporan.js` (PATCH status pengaduan), `skm.js` (GET semua SKM) |
 | `public/manifest.json` | PWA manifest — standalone, theme_color #004098, icons 192+512+maskable+apple-touch |
 | `public/icons/` | PWA icons — `icon-192.png`, `icon-512.png`, `icon-maskable-512.png`, `apple-touch-icon.png`, `icon.svg`, `192.svg` |
+| `public/crest-pemdi.svg` | Lambang daerah Aceh Tengah (crest) |
+| `desain/` | UI/UX redesign assets — prototype HTML, panduan desain, glosarium istilah, design guide |
+| `audit/` | Audit reports — hasil verifikasi perbaikan v2, laporan audit |
 
 ## Global Rules
 
@@ -106,12 +109,12 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 | `pages/AGENTS.md` | 12 halaman Next.js + 4 API routes — indexing, routing, data flow |
 | `pages/api/AGENTS.md` | REST API: opd, spbe, requirement, lapor, skm, admin — GET read + POST write. Admin auth via ADMIN_TOKEN (Bearer). Lihat `lib/adminAuth.js` |
 | `components/AGENTS.md` | 12 React komponen — Header, Footer, Layout, OPDTable, ProbisSection, SpbeGauge, Rekomendasi, DataBadge, DetailModal, SlaBadge, LaporWidget, ScrollTop |
-| `styles/AGENTS.md` | CSS architecture — GOV.UK-inspired, Inter font, mobile-first |
-| `data/AGENTS.md` | Struktur data: opd.json (52 OPD, 78 PPB ✅), pemdi.json (7 aspek) |
+| `styles/AGENTS.md` | CSS architecture — GOV.UK-inspired redesign (#004098), 21KB, mobile-first responsive, JetBrains Mono. Komponen: gov-header, hero, SPBE gauge, PPB hierarchy, accordion, timeline, modal, print styles |
+| `data/AGENTS.md` | Struktur data: opd.json (52 OPD, 78 PPB ✅), pemdi.json (7 aspek), glosarium.json (istilah) |
 | `STRATEGI_PEMDIACEHTENGAH.md` | **Dokumen perencanaan strategis (file ini)** — 4 fase, quick wins, risiko, metrik |
-| `lib/AGENTS.md` | Supabase client (`supabaseAdmin.js`), security helpers (`security.js` — CSP, rate limiting, IP hashing, Turnstile), admin auth (`adminAuth.js`) |
+| `lib/AGENTS.md` | Supabase client (`supabaseAdmin.js`), security helpers (`security.js` — CSP, rate limiting, IP hashing), admin auth (`adminAuth.js`) |
 | `pages/admin` | Admin Dashboard — laporan (pengaduan), SKM management. Protected by ADMIN_TOKEN (Bearer auth) |
-| `public/AGENTS.md` | PWA assets: manifest.json, icons (192/512 PNG + SVG), favicon |
+| `public/AGENTS.md` | PWA assets: manifest.json, icons (192/512 PNG + maskable-512 + apple-touch + SVG), favicon, crest-pemdi |
 
 ## User Preferences
 
