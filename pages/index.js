@@ -92,7 +92,11 @@ export default function Home({ data }) {
       <a href="#main-content" className="skip-link">Lompat ke konten utama</a>
 
       {/* ===== 1. HERO ===== */}
-      <section className="hero reveal" id="main-content">
+      <section
+        className="hero reveal"
+        id="main-content"
+        style={{ background: 'var(--hero-award-gradient)' }}
+      >
         <span className="pill">🏛️ Portal Resmi Pemerintah Kabupaten Aceh Tengah</span>
         <h1>Pelayanan publik yang transparan, cepat, dan mudah diakses</h1>
         <p>

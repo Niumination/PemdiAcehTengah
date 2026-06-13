@@ -1,24 +1,37 @@
 /* ===================================================================
-   Pemdi Aceh Tengah — Global Styles v2
+   Pemdi Aceh Tengah — Global Styles v3 (Gayo Civic Digital)
    Design tokens + dark mode + animations + responsive
    =================================================================== */
 
 /* ============ 1. THEME TOKENS ============ */
 :root{
-  /* Primary palette */
-  --primary:#0a4d8c; --primary-700:#073b6e; --primary-50:#eef5fc;
+  /* Gayo Civic Digital palette */
+  --gov-blue-900:#052a52; --gov-blue-800:#073b6e; --gov-blue-700:#004098;
+  --gov-blue-600:#0a66c2; --primary:#004098;
+  --lake-cyan:#0ea5a4; --gayo-gold:#c79a3a; --coffee-brown:#6b4423;
+  --forest-green:#15803d; --warning-amber:#b45309; --danger-red:#b91c1c;
+
+  /* Legacy aliases */
+  --primary-700:#073b6e; --primary-50:#eef5fc;
   --accent:#0ea5a4; --accent-2:#3b82f6; --gold:#c79a3a;
 
   /* Neutral palette */
   --ink:#0f172a; --ink-secondary:#475569; --muted:#94a3b8;
   --line:#e7ecf3; --line-2:#eef2f7; --bg:#f4f7fb; --bg-2:#eef2f8;
   --surface:#ffffff; --surface-2:#fbfdff; --surface-hover:#f1f5f9;
+  --paper:#f7fafc;
 
   /* Semantic tokens */
   --ok:#15803d; --ok-bg:#e9f7ee;
   --warn:#b45309; --warn-bg:#fdf3e7;
   --bad:#b91c1c; --bad-bg:#fdecec;
   --info:#0369a1; --info-bg:#e0f2fe;
+
+  /* Hero gradient — Gayo Civic Digital premium */
+  --hero-award-gradient:
+    radial-gradient(900px 420px at 88% -10%,rgba(14,165,164,.35),transparent 65%),
+    radial-gradient(620px 360px at 8% 8%,rgba(199,154,58,.18),transparent 60%),
+    linear-gradient(135deg,#052a52 0%,#073b6e 48%,#004098 100%);
 
   /* Special gradients */
   --sidebar-grad:linear-gradient(180deg,#073b6e,#052a52);
@@ -28,7 +41,7 @@
   --glow:rgba(14,165,164,.16);
 
   /* Radii */
-  --r:16px; --r-sm:11px; --r-xs:8px; --radius:8px; --radius-sm:4px; --radius-lg:12px;
+  --r:16px; --r-sm:11px; --r-xs:8px; --radius:8px; --radius-sm:4px; --radius-md:8px; --radius-lg:12px;
 
   /* Shadows */
   --sh-sm:0 1px 2px rgba(15,23,42,.05);
@@ -41,6 +54,17 @@
 
   /* Layout */
   --sbw:262px; --max-width:1180px;
+  --content-max:1180px;
+
+  /* Spacing scale */
+  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px;
+  --space-5:20px; --space-6:24px; --space-8:32px; --space-10:40px;
+  --space-12:48px; --space-16:64px; --space-20:80px; --space-24:96px;
+
+  /* Typography scale */
+  --text-xs:0.75rem; --text-sm:0.875rem; --text-base:1rem;
+  --text-lg:1.125rem; --text-xl:1.25rem; --text-2xl:1.5rem;
+  --text-3xl:2rem; --text-4xl:2.5rem; --text-5xl:3.5rem;
 
   /* Typography */
   --font:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
