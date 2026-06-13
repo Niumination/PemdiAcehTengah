@@ -4,7 +4,12 @@ export default function LaporWidget({ externalOpen, onExternalClose, hideFab }) 
   const [buka, setBuka] = useState(false);
   const [step, setStep] = useState('form'); // form | tracking | done
   const [laporan, setLaporan] = useState({ kategori: '', pesan: '', kontak: '' });
-  const [trackId, setTrackId] = useState(null);
+  const [tracking, setTracking] = useState({
+    input: '',
+    hasil: null,
+    loading: false,
+    error: null,
+  });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [tersimpan, setTersimpan] = useState(true);
@@ -145,13 +150,62 @@ export default function LaporWidget({ externalOpen, onExternalClose, hideFab }) 
                     type="text"
                     className="lapor-input"
                     style={{ flex: 1 }}
-                    placeholder="Contoh: LAPOR-XXXXXX"
+                    placeholder="Contoh: LAPOR-20260614-XXXXXX"
+                    value={tracking.input}
+                    onChange={e => setTracking(s => ({ ...s, input: e.target.value, hasil: null, error: null }))}
+                    disabled={tracking.loading}
                   />
-                  <button className="btn btn-outline btn-sm">Cek Status</button>
+                  <button
+                    className="btn btn-outline btn-sm"
+                    disabled={tracking.loading || !tracking.input.trim()}
+                    onClick={async () => {
+                      const id = tracking.input.trim();
+                      if (!id) return;
+                      setTracking(s => ({ ...s, loading: true, error: null, hasil: null }));
+                      try {
+                        const res = await fetch(`/api/lapor/status?id=${encodeURIComponent(id)}`);
+                        const json = await res.json();
+                        if (json.success) {
+                          setTracking(s => ({ ...s, hasil: json.data, loading: false }));
+                        } else {
+                          setTracking(s => ({ ...s, error: json.error, loading: false }));
+                        }
+                      } catch (e) {
+                        setTracking(s => ({ ...s, error: 'Gagal menghubungi server.', loading: false }));
+                      }
+                    }}
+                  >{tracking.loading ? '⏳' : '🔍 Cek Status'}</button>
                 </div>
+                {tracking.hasil && (
+                  <div style={{ marginTop: '0.75rem', padding: '1rem', background: 'var(--gray-50)', borderRadius: '8px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+                      <span style={{ fontWeight: 600, fontSize: '0.875rem' }}>{tracking.hasil.id}</span>
+                      <span className={`badge ${
+                        { baru: 'badge-blue', diproses: 'badge-orange', selesai: 'badge-green', ditolak: 'badge-red' }[tracking.hasil.status] || 'badge-gray'
+                      }`}>
+                        {{
+                          baru: '🔵 Baru',
+                          diproses: '🟡 Diproses',
+                          selesai: '🟢 Selesai',
+                          ditolak: '🔴 Ditolak',
+                        }[tracking.hasil.status] || tracking.hasil.status}
+                      </span>
+                    </div>
+                    <div style={{ fontSize: '0.75rem', color: 'var(--muted)', display: 'flex', gap: '0.75rem' }}>
+                      <span>📅 Dikirim: {new Date(tracking.hasil.dibuat).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</span>
+                      {tracking.hasil.diperbarui && (
+                        <span>🔄 Diperbarui: {new Date(tracking.hasil.diperbarui).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</span>
+                      )}
+                    </div>
+                  </div>
+                )}
+                {tracking.error && (
+                  <div style={{ marginTop: '0.5rem', padding: '0.75rem', background: '#fef2f2', borderRadius: '8px', fontSize: '0.8125rem', color: '#dc2626' }}>
+                    ❌ {tracking.error}
+                  </div>
+                )}
                 <div style={{ marginTop: '1rem', padding: '0.75rem', background: 'var(--gray-50)', borderRadius: '8px', fontSize: '0.75rem', color: 'var(--muted)' }}>
-                  🔧 Fitur tracking real-time sedang dalam pengembangan.
-                  Saat ini laporan ditindaklanjuti manual oleh Tim Pemda Digital.
+                  📝 Simpan ID laporan Anda setelah mengirim. Gunakan ID tersebut untuk melacak status tindak lanjut.
                 </div>
               </div>
             )}
