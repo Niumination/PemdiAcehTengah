@@ -1,8 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import Head from 'next/head';
 
-const ADMIN_API_TOKEN = 'admin-token-pemdi-2026';
-
 function hash(str) {
   let h = 0;
   for (let i = 0; i < str.length; i++) {

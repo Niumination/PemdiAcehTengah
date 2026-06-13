@@ -186,7 +186,7 @@ const requirementData = {
 }
 
 export default function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Access-Control-Allow-Origin', process.env.SITE_ORIGIN || '')
   res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate=600')
   res.status(200).json(requirementData)
 }

@@ -20,10 +20,11 @@ export default function Footer() {
             <h5>Navigasi</h5>
             <ul>
               <li><a href="/">Beranda</a></li>
-              <li><a href="#probis">Peta Proses Bisnis</a></li>
-              <li><a href="#spbe">Indeks SPBE</a></li>
+              <li><a href="/layanan">Layanan Publik</a></li>
+              <li><a href="/pemdi">Indeks Pemdi</a></li>
+              <li><a href="/probis">Peta Proses Bisnis</a></li>
+              <li><a href="/glosarium">Glosarium</a></li>
               <li><a href="#opd">Perangkat Daerah</a></li>
-              <li><a href="#rekomendasi">Rekomendasi</a></li>
             </ul>
           </div>
           <div className="footer-col">

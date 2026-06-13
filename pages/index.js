@@ -1,380 +1,264 @@
+import { useState, useMemo } from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
+import Section from '@/components/Section';
+import Explainer from '@/components/Explainer';
+import Accordion from '@/components/Accordion';
+import Stepper from '@/components/Stepper';
+import GlossaryTooltip from '@/components/GlossaryTooltip';
 import SpbeGauge from '@/components/SpbeGauge';
-import ProbisSection from '@/components/ProbisSection';
-import Rekomendasi from '@/components/Rekomendasi';
 import OPDTable from '@/components/OPDTable';
+import ProbisSection from '@/components/ProbisSection';
 import DataBadge from '@/components/DataBadge';
-import { formatAngka, formatDesimal, gabung } from '@/lib/format';
+import { formatAngka, formatDesimal } from '@/lib/format';
 import portalData from '@/data/opd.json';
-import pemdiData from '@/data/pemdi.json';
-
-function hitungIndeks(aspek) {
-  const totalBobot = aspek.reduce((s, a) => s + a.bobot, 0);
-  const tertimbang = aspek.reduce((s, a) => s + a.nilai * (a.bobot / totalBobot), 0);
-  return Math.round(tertimbang * 100) / 100;
-}
-function getPredikat(nilai) {
-  if (nilai >= 4.2) return { label: 'Memuaskan', warna: '#00703c' };
-  if (nilai >= 3.5) return { label: 'Sangat Baik', warna: '#28a197' };
-  if (nilai >= 2.5) return { label: 'Baik', warna: '#1d70b8' };
-  if (nilai >= 1.5) return { label: 'Cukup', warna: '#e65100' };
-  return { label: 'Kurang', warna: '#d4351c' };
-}
+import layananData from '@/data/layanan.json';
 
 export default function Home({ data }) {
   const opd = data.opd;
   const spbe = data.spbe;
-  const startup = data.startup;
-  const indeks = hitungIndeks(pemdiData.aspek);
-  const predikat = getPredikat(indeks);
+  const ringkasan = opd.ringkasan;
+  const totalLayanan = layananData.ringkasan?.total_layanan || 27;
 
   return (
     <>
       <Head>
-        <title>Pemdi Aceh Tengah — Portal Pemerintah Digital Kabupaten Aceh Tengah</title>
+        <title>Portal Digital Kabupaten Aceh Tengah — Pemdi Aceh Tengah</title>
+        <meta name="description" content="Portal Pemerintah Digital Kabupaten Aceh Tengah. Informasi layanan publik, indeks SPBE & Pemdi, dan partisipasi warga dalam satu portal." />
       </Head>
 
-      {/* ============ HERO ============ */}
-      <section className="hero">
+      {/* ============ SKIP LINK ============ */}
+      <a href="#main-content" className="skip-link">Lompat ke konten utama</a>
+
+      {/* ============ 1. HERO ============ */}
+      <section className="hero" id="main-content" style={{
+        background: 'linear-gradient(135deg, #004098 0%, #002060 100%)',
+        color: 'white',
+        padding: '3.5rem 0',
+        textAlign: 'center',
+      }}>
         <div className="container">
-          <div className="hero-content">
-            <div className="hero-badge">
-              🏛️ Pemerintah Digital — Kabupaten Aceh Tengah
-            </div>
-            <h1>Pemdi Aceh Tengah</h1>
+          <h1 style={{ fontSize: 'clamp(1.5rem, 4vw, 2.25rem)', fontWeight: 700, marginBottom: '0.75rem', lineHeight: 1.2 }}>
+            Portal Digital Kabupaten Aceh Tengah
+          </h1>
+          <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.85)', maxWidth: '640px', margin: '0 auto 1.5rem', lineHeight: 1.6 }}>
+            Informasi layanan publik, indeks <GlossaryTooltip id="spbe">SPBE</GlossaryTooltip> & <GlossaryTooltip id="pemdi">Pemdi</GlossaryTooltip>, dan partisipasi warga dalam satu portal.
+          </p>
+          <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <Link href="/layanan" className="btn btn-white btn-lg" style={{ background: 'white', color: '#004098', fontWeight: 600, padding: '0.625rem 1.5rem', borderRadius: '8px', textDecoration: 'none', fontSize: '0.9375rem' }}>
+              📋 Lihat Layanan
+            </Link>
+            <Link href="/skm" className="btn btn-outline btn-lg" style={{ border: '2px solid rgba(255,255,255,0.5)', color: 'white', fontWeight: 600, padding: '0.625rem 1.5rem', borderRadius: '8px', textDecoration: 'none', fontSize: '0.9375rem' }}>
+              📝 Isi Survei
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ 2. EXPLAINER PEMDI ============ */}
+      <section className="section" style={{ paddingTop: '1.5rem', paddingBottom: '0.5rem' }}>
+        <div className="container" style={{ maxWidth: '720px' }}>
+          <Explainer term="Pemerintah Digital (Pemdi)?">
             <p>
-              Portal transformasi digital tata kelola pemerintahan menuju
-              <strong> Pemerintah Digital (Pemdi)</strong> yang transparan,
-              efisien, dan berorientasi pada masyarakat. Berdasarkan data
-              SPBE 2025 dan kerangka Permenpan RB 19/2018.
+              Pemerintah Digital (Pemdi) adalah upaya pemerintah daerah memindahkan layanan dan urusan internal ke sistem digital — supaya pelayanan lebih cepat, hemat, dan transparan. Kab. Aceh Tengah menerapkannya lewat portal ini.
             </p>
-            <div className="flex flex-wrap gap-2">
-              <a href="/probis" className="btn btn-white btn-lg">
-                Jelajahi Peta Proses Bisnis →
-              </a>
-              <a href="#spbe" className="btn btn-outline btn-lg" style={{ borderColor: 'rgba(255,255,255,0.5)', color: 'white' }}>
-                Lihat Indeks SPBE
-              </a>
+          </Explainer>
+        </div>
+      </section>
+
+      {/* ============ 3. STATISTIK KUNCI ============ */}
+      <section className="section" style={{ paddingTop: '0.5rem', paddingBottom: '1.5rem' }}>
+        <div className="container">
+          <div className="grid grid-5" style={{ gap: '0.75rem' }}>
+            <div className="card" style={{ textAlign: 'center', padding: '1.25rem 0.75rem' }}>
+              <div style={{ fontSize: '1.75rem', fontWeight: 700, color: '#004098' }}>{formatAngka(ringkasan.total_opd)}</div>
+              <div style={{ fontSize: '0.8125rem', color: '#6b7280', marginTop: '0.25rem' }}>Perangkat Daerah</div>
             </div>
-            <div className="hero-stats">
-              <div className="hero-stat">
-                <div className="hero-stat-num">{formatAngka(opd.ringkasan.instansi)}</div>
-                <div className="hero-stat-label">Instansi Pemerintah</div>
-              </div>
-              <div className="hero-stat">
-                <div className="hero-stat-num">{formatAngka(opd.ringkasan.kecamatan)}</div>
-                <div className="hero-stat-label">Kecamatan</div>
-              </div>
-              <div className="hero-stat">
-                <div className="hero-stat-num">{formatDesimal(spbe.indeks)}</div>
-                <div className="hero-stat-label">Indeks SPBE 2025</div>
-              </div>
-              <div className="hero-stat">
-                <div className="hero-stat-num">{formatAngka(opd.total_asn)}</div>
-                <div className="hero-stat-label">ASN</div>
-              </div>
-              <div className="hero-stat">
-                <div className="hero-stat-num">{formatAngka(startup.tahapan.length)}</div>
-                <div className="hero-stat-label">Fase Transformasi</div>
-              </div>
+            <div className="card" style={{ textAlign: 'center', padding: '1.25rem 0.75rem' }}>
+              <div style={{ fontSize: '1.75rem', fontWeight: 700, color: '#004098' }}>{formatAngka(ringkasan.kecamatan)}</div>
+              <div style={{ fontSize: '0.8125rem', color: '#6b7280', marginTop: '0.25rem' }}>Kecamatan</div>
+            </div>
+            <div className="card" style={{ textAlign: 'center', padding: '1.25rem 0.75rem' }}>
+              <div style={{ fontSize: '1.75rem', fontWeight: 700, color: '#004098' }}>{formatAngka(totalLayanan)}</div>
+              <div style={{ fontSize: '0.8125rem', color: '#6b7280', marginTop: '0.25rem' }}>Layanan Publik</div>
+            </div>
+            <div className="card" style={{ textAlign: 'center', padding: '1.25rem 0.75rem' }}>
+              <div style={{ fontSize: '1.75rem', fontWeight: 700, color: '#e65100' }}>{formatDesimal(spbe.indeks)}</div>
+              <div style={{ fontSize: '0.8125rem', color: '#6b7280', marginTop: '0.25rem' }}>Indeks SPBE</div>
+            </div>
+            <div className="card" style={{ textAlign: 'center', padding: '1.25rem 0.75rem' }}>
+              <div style={{ fontSize: '1.75rem', fontWeight: 700, color: '#004098' }}>{formatAngka(ringkasan.total_asn)}</div>
+              <div style={{ fontSize: '0.8125rem', color: '#6b7280', marginTop: '0.25rem' }}>ASN</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ============ PETA PROSES BISNIS ============ */}
-      <section className="section" id="probis">
+      {/* ============ 4. APA YANG INGIN ANDA LAKUKAN HARI INI? ============ */}
+      <section className="section section-alt" style={{ padding: '2.5rem 0' }}>
         <div className="container">
-          <div className="section-header">
-            <span className="badge badge-blue mb-2">FOKUS UTAMA</span>
-            <h2>Peta Proses Bisnis</h2>
-            <p>
-              Berdasarkan Peraturan Menteri PANRB Nomor 19 Tahun 2018 tentang
-              Penyusunan Peta Proses Bisnis Instansi Pemerintah. Diagram
-              hubungan kerja yang efektif dan efisien antar unit organisasi
-              untuk menghasilkan kinerja sesuai tujuan pemerintahan.
-            </p>
+          <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+            <h2 style={{ fontSize: '1.375rem', fontWeight: 700 }}>Apa yang ingin Anda lakukan hari ini?</h2>
           </div>
+          <div className="grid grid-3" style={{ gap: '1rem' }}>
+            <Link href="/layanan" className="card" style={{ textDecoration: 'none', padding: '1.5rem', display: 'block', transition: 'transform 0.15s, box-shadow 0.15s' }}>
+              <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>📋</div>
+              <h3 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '0.375rem', color: '#111' }}>Direktori Layanan</h3>
+              <p style={{ fontSize: '0.8125rem', color: '#6b7280', margin: 0, lineHeight: 1.5 }}>Cari layanan publik, cek biaya & SLA</p>
+            </Link>
+            <Link href="/skm" className="card" style={{ textDecoration: 'none', padding: '1.5rem', display: 'block', transition: 'transform 0.15s, box-shadow 0.15s' }}>
+              <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>📝</div>
+              <h3 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '0.375rem', color: '#111' }}>Survei Kepuasan</h3>
+              <p style={{ fontSize: '0.8125rem', color: '#6b7280', margin: 0, lineHeight: 1.5 }}>Beri penilaian atas pelayanan yang Anda terima</p>
+            </Link>
+            <Link href="/tanya" className="card" style={{ textDecoration: 'none', padding: '1.5rem', display: 'block', transition: 'transform 0.15s, box-shadow 0.15s' }}>
+              <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>💬</div>
+              <h3 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '0.375rem', color: '#111' }}>Lapor atau Tanya</h3>
+              <p style={{ fontSize: '0.8125rem', color: '#6b7280', margin: 0, lineHeight: 1.5 }}>Sampaikan aspirasi, keluhan, atau pertanyaan</p>
+            </Link>
+          </div>
+        </div>
+      </section>
 
+      {/* ============ 5. INDEKS SPBE ============ */}
+      <Section
+        id="spbe"
+        title="Indeks SPBE 2025"
+        subtitle="Hasil Pemantauan Sistem Pemerintahan Berbasis Elektronik (SPBE) Kabupaten Aceh Tengah oleh Kementerian PANRB."
+      >
+        <SpbeGauge data={data} />
+        <p style={{ fontSize: '0.8125rem', color: '#6b7280', marginTop: '0.75rem', textAlign: 'center' }}>
+          💡 Cara baca: makin tinggi makin baik. Hijau=baik, kuning=cukup, merah=perlu perbaikan.
+        </p>
+      </Section>
+
+      {/* ============ 6. PETA PROSES BISNIS ============ */}
+      <Section
+        id="probis"
+        title="Peta Proses Bisnis"
+        subtitle="Berdasarkan Peraturan Menteri PANRB Nomor 19 Tahun 2018. Diagram hubungan kerja yang efektif dan efisien antar unit organisasi."
+        className="section-alt"
+      >
+        <Accordion title="💡 Ringkasan — 34 urusan pemerintahan, 78 proses bisnis" open={false}>
+          <p style={{ fontSize: '0.875rem', color: '#333', lineHeight: 1.6, marginBottom: '0.75rem' }}>
+            Peta Proses Bisnis (<GlossaryTooltip id="ppb">PPB</GlossaryTooltip>) Kabupaten Aceh Tengah disusun dalam 3 level sesuai Permenpan 19/2018:
+          </p>
+          <ul style={{ paddingLeft: '1.25rem', fontSize: '0.875rem', color: '#333', lineHeight: 1.8 }}>
+            <li><strong>Level 0</strong> — Visi & 8 Misi Pembangunan Daerah</li>
+            <li><strong>Level 1</strong> — 34 Urusan Konkuren Pemerintahan</li>
+            <li><strong>Level 2</strong> — 78 Proses Bisnis (6 kategori) dari 47 OPD</li>
+          </ul>
+        </Accordion>
+        <div style={{ marginTop: '1rem' }}>
           <ProbisSection data={data} />
-
-          <div className="text-center mt-4">
-            <a href="#rekomendasi" className="btn btn-primary btn-lg">
-              Lihat Rekomendasi Transformasi →
-            </a>
-          </div>
         </div>
-      </section>
+      </Section>
 
-      {/* ============ INDEKS SPBE ============ */}
-      <section className="section section-alt" id="spbe">
-        <div className="container">
-          <div className="section-header">
-            <h2>Indeks SPBE 2025</h2>
-            <p>
-              Hasil Pemantauan Sistem Pemerintahan Berbasis Elektronik (SPBE)
-              Kabupaten Aceh Tengah oleh Kementerian PANRB. Target minimal
-              setiap indikator adalah tingkat kematangan Level 3.
-            </p>
+      {/* ============ 7. PERANGKAT DAERAH ============ */}
+      <Section
+        id="opd"
+        title="Perangkat Daerah"
+        subtitle={`${formatAngka(ringkasan.instansi)} instansi dan ${formatAngka(ringkasan.kecamatan)} kecamatan di lingkungan Pemerintah Kabupaten Aceh Tengah.`}
+      >
+        <OPDTable data={data} />
+      </Section>
+
+      {/* ============ 8. REKOMENDASI / ROADMAP ============ */}
+      <Section
+        id="roadmap"
+        title="Roadmap Pemerintah Digital"
+        subtitle="Langkah strategis menuju Indeks Pemdi ≥ 2,50 (Baik) berdasarkan analisis baseline SPBE 2025 dan kerangka Permenpan 8/2026."
+        className="section-alt"
+      >
+        <div className="grid grid-2" style={{ gap: '2rem', alignItems: 'start' }}>
+          <div>
+            <Stepper
+              steps={[
+                { title: 'Q3 2026 — Audit & Baseline Pemdi', desc: 'Audit kesenjangan, baseline seluruh 20 indikator, pembentukan tim Pemdi', status: 'aktif' },
+                { title: 'Q4 2026–Q1 2027 — Keterpaduan Proses', desc: 'Integrasi aplikasi, API Gateway, penyelarasan PPB lintas OPD', status: 'berikutnya' },
+                { title: '2027 — Data & Keamanan', desc: 'Penerapan PDP, keamanan siber, kriptografi, interoperabilitas data', status: 'berikutnya' },
+                { title: '2028 — Pemdi Baik (2,50+)', desc: 'Target seluruh aspek ≥ Level 3, indeks Pemdi minimal 2,50 (Baik)', status: 'berikutnya' },
+              ]}
+            />
           </div>
-
-          <SpbeGauge data={data} />
-
-          <div className="grid grid-3 mt-4">
-            {spbe.kekuatan.map((k, i) => (
-              <div className="card" key={i}>
-                <div className="card-header">
-                  <div className="card-icon" style={{ background: 'var(--success-light)', color: 'var(--success)' }}>
-                    ✓
-                  </div>
-                  <h3>Kekuatan</h3>
-                </div>
-                <p>{k}</p>
-              </div>
-            ))}
-            {spbe.rekomendasi_prioritas.slice(0, 3).map((r, i) => (
-              <div className="card" key={i}>
-                <div className="card-header">
-                  <div className="card-icon" style={{ background: 'var(--danger-light)', color: 'var(--danger)' }}>
-                    !
-                  </div>
-                  <h3>Prioritas Perbaikan</h3>
-                </div>
-                <p>{r}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============ PEMDI ============ */}
-      <section className="section section-alt" id="pemdi">
-        <div className="container">
-          <div className="section-header">
-            <h2>🚀 Indeks Pemerintah Digital (Pemdi)</h2>
-            <p>
-              Transisi dari SPBE ke <strong>Indeks Pemdi</strong> — Permenpan RB 8/2026.
-              7 aspek × 20 indikator. Bobot terbesar: Kepuasan Pengguna (25%).
-            </p>
-          </div>
-          <div className="card" style={{ padding: '1.5rem' }}>
-            <div className="grid grid-2" style={{ gap: '1.5rem', alignItems: 'center' }}>
-              <div style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: '0.75rem', color: 'var(--muted)', marginBottom: '0.375rem' }}>Indeks Pemdi Baseline</div>
-                <div style={{ fontSize: '2.5rem', fontWeight: 700, color: predikat.warna }}>{formatDesimal(indeks)}</div>
-                <div className="badge badge-sm" style={{ background: `${predikat.warna}18`, color: predikat.warna, border: `1px solid ${predikat.warna}40` }}>
-                  {predikat.label}
-                </div>
-                <p style={{ fontSize: '0.75rem', color: 'var(--muted)', marginTop: '0.5rem' }}>
-                  Target 2026: <strong>{pemdiData.target_indeks}</strong> ({pemdiData.target_predikat}) · Gap: <strong style={{ color: '#d4351c' }}>{formatDesimal(pemdiData.target_indeks - indeks)}</strong>
-                </p>
-              </div>
-              <div>
-                <div className="grid grid-2" style={{ gap: '0.625rem' }}>
-                  {pemdiData.aspek.map((a) => (
-                    <div key={a.id} className="card" style={{ padding: '0.5rem 0.75rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <div>
-                        <div style={{ fontSize: '0.75rem', fontWeight: 500 }}>{a.nama}</div>
-                        <div style={{ fontSize: '0.625rem', color: 'var(--muted)' }}>{a.bobot}%</div>
-                      </div>
-                      <span style={{ fontSize: '1rem', fontWeight: 700, color: a.warna, minWidth: '2rem', textAlign: 'right' }}>
-                        {formatDesimal(a.nilai)}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="flex justify-center" style={{ marginTop: '1.25rem', gap: '0.75rem', flexWrap: 'wrap' }}>
-            <a href="/pemdi" className="btn btn-primary">Dashboard Pemdi Lengkap →</a>
-            <a href="https://drive.google.com/file/d/1wh1BChQkn8N9dotSfyXuE1FN3EhrM2ET/view" className="btn btn-outline" target="_blank" rel="noopener noreferrer">
-              Unduh Permenpan 8/2026
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* ============ FITUR PUBLIK ============ */}
-      <section className="section" id="fitur">
-        <div className="container">
-          <div className="section-header">
-            <h2>🛠️ Layanan & Fitur Publik</h2>
-            <p>
-              Portal layanan digital terpadu — akses informasi, laporkan masalah, dan
-              bantu kami terus berbenah.
-            </p>
-          </div>
-          <div className="grid grid-4">
-            <a href="/layanan" className="card fitur-card" style={{ textDecoration: 'none' }}>
-              <div className="fitur-icon">📋</div>
-              <h3>Direktori Layanan</h3>
-              <p>27 layanan publik dalam 7 kategori — cek status, biaya, SLA, dan syarat</p>
-              <span className="fitur-link">Jelajahi →</span>
-            </a>
-            <a href="/skm" className="card fitur-card" style={{ textDecoration: 'none' }}>
-              <div className="fitur-icon">📝</div>
-              <h3>Survei Kepuasan</h3>
-              <p>Beri nilai pelayanan publik — 8 dimensi, 2 menit saja. Anonim & aman</p>
-              <span className="fitur-link">Isi Survei →</span>
-            </a>
-            <a href="/faq" className="card fitur-card" style={{ textDecoration: 'none' }}>
-              <div className="fitur-icon">❓</div>
-              <h3>Tanya Jawab</h3>
-              <p>Pertanyaan umum seputar layanan, portal, SPBE, dan Pemdi — jawaban cepat</p>
-              <span className="fitur-link">Lihat FAQ →</span>
-            </a>
-            <div className="card fitur-card" style={{ cursor: 'default' }}>
-              <div className="fitur-icon">💬</div>
-              <h3>Lapor / Saran</h3>
-              <p>Laporkan masalah atau beri saran via tombol <strong>💬</strong> di pojok kanan bawah</p>
-              <span className="fitur-link" style={{ color: 'var(--muted)' }}>Selalu Tersedia</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ============ PERANGKAT DAERAH ============ */}
-      <section className="section" id="opd">
-        <div className="container">
-          <div className="section-header">
-            <h2>Perangkat Daerah</h2>
-            <p>
-              {formatAngka(opd.ringkasan.instansi)} instansi dan {formatAngka(opd.ringkasan.kecamatan)} kecamatan
-              di lingkungan Pemerintah Kabupaten Aceh Tengah.
-              Sumber data: Dinas Komunikasi dan Informatika (14 Januari 2026).
-            </p>
-          </div>
-
-          <OPDTable data={data} />
-        </div>
-      </section>
-
-      {/* ============ REKOMENDASI ============ */}
-      <section className="section section-alt" id="rekomendasi">
-        <div className="container">
-          <div className="section-header">
-            <h2>Rekomendasi Transformasi</h2>
-            <p>
-              7 rekomendasi prioritas berdasarkan hasil Pemantauan SPBE 2025
-              dan kesenjangan (gap) terhadap target Pemerintah Digital.
-              Disusun berdasarkan dampak dan tingkat kesulitan implementasi.
-            </p>
-          </div>
-
-          <div className="grid grid-2" style={{ gap: '3rem' }}>
-            <div>
-              <Rekomendasi data={data} />
-            </div>
-            <div>
-              <div className="card mb-3">
-                <h3 className="mb-2">📊 Ringkasan</h3>
-                <div style={{ display: 'grid', gap: '0.75rem' }}>
-                  <div className="flex justify-between items-center" style={{ padding: '0.5rem 0', borderBottom: '1px solid var(--gray-100)' }}>
-                    <span>Total Rekomendasi</span>
-                    <strong>{data.rekomendasi.length}</strong>
-                  </div>
-                  <div className="flex justify-between items-center" style={{ padding: '0.5rem 0', borderBottom: '1px solid var(--gray-100)' }}>
-                    <span>Dampak Tinggi</span>
-                    <strong>{data.rekomendasi.filter(r => r.dampak === 'Tinggi').length}</strong>
-                  </div>
-                  <div className="flex justify-between items-center" style={{ padding: '0.5rem 0', borderBottom: '1px solid var(--gray-100)' }}>
-                    <span>Kesulitan Tinggi</span>
-                    <strong>{data.rekomendasi.filter(r => r.kesulitan === 'Tinggi').length}</strong>
-                  </div>
-                  <div className="flex justify-between items-center" style={{ padding: '0.5rem 0' }}>
-                    <span>Timeline Tercepat</span>
-                    <strong>Q3 2026</strong>
-                  </div>
-                </div>
-              </div>
-
-              <div className="card" style={{ background: 'var(--primary)', color: 'white', border: 'none' }}>
-                <h3 style={{ color: 'white', marginBottom: '1rem' }}>🎯 Target Nasional</h3>
-                <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '0.9375rem' }}>
-                  Perpres 12/2025 tentang Rencana Pembangunan Jangka Menengah
-                  2025-2029 mendorong transformasi dari Indeks SPBE menjadi
-                  <strong> Indeks Pemerintah Digital (Pemdi)</strong>.
-                  Aceh Tengah perlu mencapai minimal Level 3 di seluruh
-                  indikator untuk menyongsong Indonesia Emas.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ============ TENTANG ============ */}
-      <section className="section" id="tentang">
-        <div className="container">
-          <div className="section-header">
-            <h2>Tentang Startup Ini</h2>
-            <p>
-              <strong>{startup.nama}</strong> adalah inisiatif open source
-              government technology untuk transformasi digital tata kelola
-              Pemerintah Kabupaten Aceh Tengah.
-            </p>
-          </div>
-
-          <div className="grid grid-3">
-            <div className="card">
-              <div className="card-header">
-                <div className="card-icon" style={{ background: 'var(--primary-light)', color: 'var(--primary)' }}>
-                  🎯
-                </div>
-                <h3>Target</h3>
-              </div>
-              <p>
-                Publik & Internal Pemerintah. Transparansi tata kelola untuk
-                masyarakat, dan alat bantu transformasi digital bagi ASN.
-              </p>
-            </div>
-            <div className="card">
-              <div className="card-header">
-                <div className="card-icon" style={{ background: 'var(--primary-light)', color: 'var(--primary)' }}>
-                  📋
-                </div>
-                <h3>Narasumber Data</h3>
-              </div>
-              <p>
-                <strong>Diskominfo Kab. Aceh Tengah</strong> — sebagai Walidata.
-                Data perangkat daerah berdasarkan surat resmi 14 Januari 2026.
-              </p>
-            </div>
-            <div className="card">
-              <div className="card-header">
-                <div className="card-icon" style={{ background: 'var(--primary-light)', color: 'var(--primary)' }}>
-                  🌐
-                </div>
-                <h3>Model & Lisensi</h3>
-              </div>
-              <p>
-                Open Source Government Technology ({startup.model}).
-                Lisensi <strong>{startup.lisensi}</strong> — bebas digunakan,
-                dimodifikasi, dan didistribusikan.
+          <div>
+            <div className="card" style={{ padding: '1.25rem', background: '#004098', color: 'white', border: 'none' }}>
+              <h3 style={{ color: 'white', marginBottom: '0.75rem', fontSize: '1rem' }}>🎯 Target Pemdi 2028</h3>
+              <p style={{ fontSize: '0.875rem', color: 'rgba(255,255,255,0.9)', lineHeight: 1.6, margin: 0 }}>
+                Berdasarkan Perpres 12/2025 tentang RPJMN 2025–2029, transformasi SPBE ke <GlossaryTooltip id="pemdi">Pemdi</GlossaryTooltip> menjadi prioritas nasional. Kab. Aceh Tengah menargetkan Indeks Pemdi ≥ <strong>2,50 (Baik)</strong> pada tahun 2028.
               </p>
             </div>
           </div>
+        </div>
+      </Section>
 
-          <div className="mt-4">
-            <h3 className="text-center mb-3">Tahapan Pengembangan</h3>
-            <div className="grid grid-2">
-              {startup.tahapan.map((t, i) => (
-                <div className="card" key={i} style={{
-                  borderLeft: `3px solid ${i === 0 ? 'var(--primary)' : 'var(--gray-300)'}`,
-                  opacity: i === 0 ? 1 : 0.7
-                }}>
-                  <div className="flex items-center gap-2" style={{ marginBottom: '0.5rem' }}>
-                    <span className="badge badge-blue">Fase {i + 1}</span>
-                    {i === 0 && <span className="badge badge-green">Sedang Berjalan</span>}
-                  </div>
-                  <p style={{ marginBottom: 0 }}>{t}</p>
-                </div>
-              ))}
-            </div>
+      {/* ============ 9. TENTANG PORTAL INI ============ */}
+      <Section id="tentang" title="Tentang Portal Ini">
+        <div className="grid grid-3" style={{ gap: '1rem' }}>
+          <div className="card" style={{ padding: '1.25rem' }}>
+            <div style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>🎯</div>
+            <h3 style={{ fontSize: '0.9375rem', fontWeight: 600, marginBottom: '0.5rem' }}>Target Pengguna</h3>
+            <p style={{ fontSize: '0.8125rem', color: '#6b7280', lineHeight: 1.5, margin: 0 }}>
+              Publik & Internal Pemerintah. Transparansi tata kelola untuk masyarakat, dan alat bantu transformasi digital bagi ASN.
+            </p>
+          </div>
+          <div className="card" style={{ padding: '1.25rem' }}>
+            <div style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>📋</div>
+            <h3 style={{ fontSize: '0.9375rem', fontWeight: 600, marginBottom: '0.5rem' }}>Narasumber Data</h3>
+            <p style={{ fontSize: '0.8125rem', color: '#6b7280', lineHeight: 1.5, margin: 0 }}>
+              <strong>Diskominfo Kab. Aceh Tengah</strong> — sebagai Walidata. Data perangkat daerah berdasarkan surat resmi 14 Januari 2026.
+            </p>
+          </div>
+          <div className="card" style={{ padding: '1.25rem' }}>
+            <div style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>🌐</div>
+            <h3 style={{ fontSize: '0.9375rem', fontWeight: 600, marginBottom: '0.5rem' }}>Model & Lisensi</h3>
+            <p style={{ fontSize: '0.8125rem', color: '#6b7280', lineHeight: 1.5, margin: 0 }}>
+              Open Source Government Technology. Lisensi <strong>MIT</strong> — bebas digunakan, dimodifikasi, dan didistribusikan.
+            </p>
           </div>
         </div>
-      </section>
+      </Section>
+
+      <style jsx>{`
+        .grid-5 {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        }
+        .grid-3 {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        }
+        .grid-2 {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+        }
+        .card {
+          background: white;
+          border: 1px solid #e5e5e5;
+          border-radius: 8px;
+          transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .card:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+        .section-alt {
+          background: var(--bg, #f0f3f5);
+        }
+        @media (max-width: 768px) {
+          .grid-2 {
+            grid-template-columns: 1fr;
+          }
+          .grid-5 {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+        @media (max-width: 480px) {
+          .grid-3 {
+            grid-template-columns: 1fr;
+          }
+        }
+      `}</style>
     </>
   );
 }
