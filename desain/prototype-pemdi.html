@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prototype — Indeks Pemerintah Digital (Pemdi)</title>
+<style>
+  :root{
+    --primary:#004098;--primary-dark:#002d6b;--primary-light:#e8f0fe;--primary-50:#f0f5ff;
+    --accent:#c8102e;--gold:#b8860b;
+    --ink:#1a1f29;--ink-soft:#48505e;--muted:#6c757d;--line:#e4e8ee;--bg:#f6f8fb;--white:#fff;
+    --success:#1f7a3d;--success-bg:#e8f5ec;--warning:#b25e00;--warning-bg:#fff4e5;--danger:#c8102e;--danger-bg:#fdeaec;
+    --radius:14px;--shadow-sm:0 1px 2px rgba(16,32,64,.06);--shadow:0 6px 20px -8px rgba(16,32,64,.18);
+    --maxw:1140px;--font:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--font);color:var(--ink);background:var(--bg);line-height:1.6}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+  a{color:var(--primary);text-decoration:none}
+  h1,h2,h3,h4{line-height:1.25;letter-spacing:-.01em}
+  .demo-tag{background:var(--gold);color:#fff;text-align:center;font-size:13px;font-weight:700;padding:7px}
+  .gov-strip{background:var(--primary-dark);color:#cfe0ff;font-size:13px}
+  .gov-strip .wrap{display:flex;justify-content:space-between;align-items:center;height:34px}
+  .flag-dot{width:18px;height:12px;border-radius:2px;background:linear-gradient(#c8102e 50%,#fff 50%);display:inline-block;border:1px solid rgba(255,255,255,.3);vertical-align:middle;margin-right:6px}
+  header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .hd{display:flex;align-items:center;gap:14px;height:64px}
+  .logo{display:flex;align-items:center;gap:11px;font-weight:800;color:var(--ink)}
+  .logo .crest{width:40px;height:40px;border-radius:11px;background:linear-gradient(135deg,#0a52b8,#002d6b);border:1.5px solid var(--gold);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:800}
+  .logo small{display:block;font-weight:500;color:var(--muted);font-size:11px}
+  nav.main{margin-left:auto;display:flex;gap:4px}
+  nav.main a{padding:8px 12px;border-radius:9px;font-weight:600;font-size:14px;color:var(--ink-soft)}
+  nav.main a.active{background:var(--primary-50);color:var(--primary)}
+
+  .crumb{font-size:13px;color:var(--muted);padding:16px 0 0}
+  .crumb a{color:var(--muted)} .crumb b{color:var(--ink)}
+  .phead{padding:14px 0 24px}
+  .eyebrow{font-size:12px;font-weight:800;letter-spacing:.08em;color:var(--accent);text-transform:uppercase}
+  .phead h1{font-size:clamp(24px,3.4vw,34px);margin:8px 0 8px}
+  .phead p{color:var(--ink-soft);max-width:720px;font-size:15.5px}
+  .plain{display:inline-flex;gap:7px;align-items:center;background:var(--success-bg);color:var(--success);border-radius:9px;padding:8px 13px;font-size:13.5px;font-weight:600;margin-top:12px}
+
+  /* hero score with target gauge */
+  .topcard{display:grid;grid-template-columns:300px 1fr;gap:24px;align-items:center;background:linear-gradient(160deg,var(--primary),var(--primary-dark));color:#fff;border-radius:18px;padding:28px;box-shadow:var(--shadow);margin-bottom:14px}
+  .gauge{position:relative;width:230px;height:230px;margin:0 auto}
+  .gauge .c{position:absolute;inset:0;display:grid;place-content:center;text-align:center}
+  .gauge .c .v{font-size:48px;font-weight:800;line-height:1}
+  .gauge .c .m{font-size:14px;color:#bcd3f5}
+  .gauge .c .tag{margin-top:8px;font-size:12px;font-weight:700;background:var(--warning);color:#fff;padding:3px 12px;border-radius:999px;display:inline-block}
+  .topcard .info h2{font-size:22px;margin-bottom:8px}
+  .topcard .info p{color:#cfe0ff;font-size:14.5px;margin-bottom:14px}
+  .targetbox{display:flex;gap:22px;flex-wrap:wrap}
+  .targetbox .t{background:rgba(255,255,255,.1);border-radius:11px;padding:12px 18px}
+  .targetbox .t .lab{font-size:12px;color:#bcd3f5}
+  .targetbox .t .val{font-size:22px;font-weight:800}
+
+  /* 7 aspects grid */
+  .section-head{margin:34px 0 18px}
+  .section-head h2{font-size:24px}
+  .section-head p{color:var(--ink-soft);font-size:15px;max-width:680px}
+  .aspects{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .aspect{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
+  .aspect .bar-top{position:absolute;left:0;top:0;height:4px;width:100%}
+  .aspect .head{display:flex;align-items:flex-start;gap:13px}
+  .aspect .ic{width:46px;height:46px;border-radius:12px;background:var(--primary-light);display:grid;place-items:center;font-size:22px;flex:none}
+  .aspect .ttl{flex:1}
+  .aspect .ttl h3{font-size:16px}
+  .aspect .ttl .weight{font-size:11.5px;font-weight:700;color:var(--muted);background:var(--bg);padding:2px 9px;border-radius:999px;display:inline-block;margin-top:3px}
+  .aspect .score{text-align:right;flex:none}
+  .aspect .score .n{font-size:26px;font-weight:800}
+  .aspect .score .lvl{font-size:11px;font-weight:700}
+  .aspect .plain-line{font-size:13.5px;color:var(--ink-soft);margin:13px 0 11px}
+  .track{height:9px;background:#eaeff6;border-radius:999px;overflow:hidden}
+  .track i{display:block;height:100%;border-radius:999px}
+  .tnote{font-size:11.5px;color:var(--muted);margin-top:6px;display:flex;justify-content:space-between}
+  .g .n,.g .lvl{color:var(--success)} .g i{background:var(--success)} .g .ic{background:var(--success-bg)} .g .bar-top{background:var(--success)}
+  .m .n,.m .lvl{color:var(--warning)} .m i{background:var(--warning)} .m .ic{background:var(--warning-bg)} .m .bar-top{background:var(--warning)}
+  .l .n,.l .lvl{color:var(--danger)} .l i{background:var(--danger)} .l .ic{background:var(--danger-bg)} .l .bar-top{background:var(--danger)}
+
+  /* legend / how to read */
+  .howto{background:#fff;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:12px;padding:16px 18px;font-size:14px;color:var(--ink-soft);margin-bottom:8px}
+  .howto b{color:var(--ink)}
+  .keys{display:flex;gap:18px;flex-wrap:wrap;margin-top:8px;font-size:13px}
+  .keys span{display:inline-flex;align-items:center;gap:7px;font-weight:600}
+  .sw{width:12px;height:12px;border-radius:3px}
+
+  footer{background:var(--primary-dark);color:#c9d8f2;padding:30px 0;margin-top:34px;font-size:14px}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+  @media(max-width:860px){.topcard{grid-template-columns:1fr}.aspects{grid-template-columns:1fr}nav.main{display:none}}
+</style>
+</head>
+<body>
+
+<div class="demo-tag">🎨 PROTOTYPE — Halaman Indeks Pemerintah Digital (Pemdi) · 7 aspek disederhanakan</div>
+
+<div class="gov-strip"><div class="wrap">
+  <span><span class="flag-dot"></span>Situs Resmi Pemerintah Kabupaten Aceh Tengah</span>
+  <span>🌐 acehtengahkab.go.id</span>
+</div></div>
+
+<header class="site"><div class="wrap hd">
+  <a class="logo" href="#"><span class="crest">AT</span><span>Pemdi Aceh Tengah<small>Pemerintah Digital · Kab. Aceh Tengah</small></span></a>
+  <nav class="main"><a href="#">Beranda</a><a href="#">Layanan</a><a class="active" href="#">Pemdi</a><a href="#">Perangkat Daerah</a></nav>
+</div></header>
+
+<div class="wrap">
+  <div class="crumb"><a href="#">Beranda</a> › <b>Indeks Pemerintah Digital</b></div>
+  <div class="phead">
+    <div class="eyebrow">Transparansi Kinerja Digital</div>
+    <h1>Indeks Pemerintah Digital (Pemdi)</h1>
+    <p>Penilaian baru pengganti SPBE sesuai Permenpan RB 8/2026. Mengukur 7 aspek dengan bobot berbeda — yang terbesar adalah <b>kepuasan pengguna</b>. Skala 1–5; target minimal Level 3.</p>
+    <span class="plain">💡 Cara baca: makin tinggi makin baik. Hijau = baik, kuning = cukup, merah = perlu perbaikan.</span>
+  </div>
+
+  <!-- TOP SCORE -->
+  <div class="topcard">
+    <div>
+      <div class="gauge">
+        <svg width="230" height="230" viewBox="0 0 230 230">
+          <circle cx="115" cy="115" r="96" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="20"/>
+          <!-- 2.11/5 = 42.2%; 2*pi*96=603; dash=255 -->
+          <circle cx="115" cy="115" r="96" fill="none" stroke="#f1b24a" stroke-width="20" stroke-linecap="round"
+            stroke-dasharray="255 603" transform="rotate(-90 115 115)"/>
+        </svg>
+        <div class="c"><div class="v">2,11</div><div class="m">dari 5,00</div><div class="tag">Baseline · Cukup</div></div>
+      </div>
+    </div>
+    <div class="info">
+      <h2>Nilai dasar (baseline) kita: 2,11</h2>
+      <p>Ini titik awal pengukuran. Pemerintah Kabupaten Aceh Tengah menargetkan kenaikan ke predikat "Baik" pada akhir 2026.</p>
+      <div class="targetbox">
+        <div class="t"><div class="lab">Target 2026</div><div class="val">2,50</div></div>
+        <div class="t"><div class="lab">Selisih (gap)</div><div class="val">+0,39</div></div>
+        <div class="t"><div class="lab">Predikat target</div><div class="val">Baik</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="howto">
+    <b>Apa arti "bobot"?</b> Tiap aspek punya pengaruh berbeda terhadap nilai akhir. Misalnya <b>Kepuasan Pengguna berbobot 25%</b> — artinya suara warga paling menentukan. Karena itu, mengisi survei kepuasan sangat berarti.
+    <div class="keys">
+      <span><span class="sw" style="background:var(--success)"></span> Baik (≥3)</span>
+      <span><span class="sw" style="background:var(--warning)"></span> Cukup (2–3)</span>
+      <span><span class="sw" style="background:var(--danger)"></span> Perlu perbaikan (&lt;2)</span>
+    </div>
+  </div>
+
+  <!-- 7 ASPECTS -->
+  <div class="section-head">
+    <h2>7 Aspek Penilaian</h2>
+    <p>Setiap aspek dijelaskan dengan bahasa sederhana di bawah judulnya.</p>
+  </div>
+
+  <div class="aspects">
+
+    <div class="aspect g">
+      <div class="bar-top"></div>
+      <div class="head">
+        <div class="ic">😊</div>
+        <div class="ttl"><h3>Kepuasan Pengguna Layanan</h3><span class="weight">Bobot 25% · terbesar</span></div>
+        <div class="score"><div class="n">3,50</div><div class="lvl">BAIK</div></div>
+      </div>
+      <div class="plain-line">Seberapa puas warga terhadap layanan digital. Diukur dari survei kepuasan (SKM).</div>
+      <div class="track"><i style="width:70%"></i></div>
+      <div class="tnote"><span>Nilai 3,50 / 5</span><span>✓ Di atas target</span></div>
+    </div>
+
+    <div class="aspect m">
+      <div class="bar-top"></div>
+      <div class="head">
+        <div class="ic">🔗</div>
+        <div class="ttl"><h3>Keterpaduan Layanan Digital</h3><span class="weight">Bobot 15%</span></div>
+        <div class="score"><div class="n">2,50</div><div class="lvl">CUKUP</div></div>
+      </div>
+      <div class="plain-line">Seberapa nyambung antar-sistem/aplikasi pemerintah, supaya data tidak terpisah-pisah.</div>
+      <div class="track"><i style="width:50%"></i></div>
+      <div class="tnote"><span>Nilai 2,50 / 5</span><span>Mendekati target</span></div>
+    </div>
+
+    <div class="aspect l">
+      <div class="bar-top"></div>
+      <div class="head">
+        <div class="ic">💾</div>
+        <div class="ttl"><h3>Data</h3><span class="weight">Bobot 15%</span></div>
+        <div class="score"><div class="n">1,75</div><div class="lvl">PERLU PERBAIKAN</div></div>
+      </div>
+      <div class="plain-line">Bagaimana data dikelola: akurat, terbuka, dan bisa dipakai bersama antar-instansi.</div>
+      <div class="track"><i style="width:35%"></i></div>
+      <div class="tnote"><span>Nilai 1,75 / 5</span><span>Prioritas</span></div>
+    </div>
+
+    <div class="aspect l">
+      <div class="bar-top"></div>
+      <div class="head">
+        <div class="ic">🔒</div>
+        <div class="ttl"><h3>Keamanan Pemerintah Digital</h3><span class="weight">Bobot 15%</span></div>
+        <div class="score"><div class="n">1,00</div><div class="lvl">PERLU PERBAIKAN</div></div>
+      </div>
+      <div class="plain-line">Perlindungan sistem & data dari serangan/kebocoran (keamanan siber).</div>
+      <div class="track"><i style="width:20%"></i></div>
+      <div class="tnote"><span>Nilai 1,00 / 5</span><span>Prioritas utama</span></div>
+    </div>
+
+    <div class="aspect m">
+      <div class="bar-top"></div>
+      <div class="head">
+        <div class="ic">🏛️</div>
+        <div class="ttl"><h3>Tata Kelola & Manajemen</h3><span class="weight">Bobot 10%</span></div>
+        <div class="score"><div class="n">1,50</div><div class="lvl">CUKUP</div></div>
+      </div>
+      <div class="plain-line">Aturan, struktur, dan cara mengelola transformasi digital secara terencana.</div>
+      <div class="track"><i style="width:30%"></i></div>
+      <div class="tnote"><span>Nilai 1,50 / 5</span><span>Perlu penguatan</span></div>
+    </div>
+
+    <div class="aspect m">
+      <div class="bar-top"></div>
+      <div class="head">
+        <div class="ic">👩‍💻</div>
+        <div class="ttl"><h3>Penyelenggara / SDM Digital</h3><span class="weight">Bobot 10%</span></div>
+        <div class="score"><div class="n">2,00</div><div class="lvl">CUKUP</div></div>
+      </div>
+      <div class="plain-line">Kesiapan & keterampilan pegawai (ASN) dalam menjalankan layanan digital.</div>
+      <div class="track"><i style="width:40%"></i></div>
+      <div class="tnote"><span>Nilai 2,00 / 5</span><span>Perlu pelatihan</span></div>
+    </div>
+
+    <div class="aspect l">
+      <div class="bar-top"></div>
+      <div class="head">
+        <div class="ic">🖥️</div>
+        <div class="ttl"><h3>Teknologi Pemerintah Digital</h3><span class="weight">Bobot 10%</span></div>
+        <div class="score"><div class="n">1,00</div><div class="lvl">PERLU PERBAIKAN</div></div>
+      </div>
+      <div class="plain-line">Infrastruktur teknologi: jaringan, server, dan aplikasi pendukung layanan.</div>
+      <div class="track"><i style="width:20%"></i></div>
+      <div class="tnote"><span>Nilai 1,00 / 5</span><span>Prioritas</span></div>
+    </div>
+
+  </div>
+</div>
+
+<footer><div class="wrap">
+  <span>© 2026 Pemdi Aceh Tengah · Lisensi MIT</span>
+  <span>Sumber: Permenpan RB 8/2026 · Baseline internal</span>
+</div></footer>
+
+</body>
+</html>

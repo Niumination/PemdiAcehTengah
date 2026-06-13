@@ -1,0 +1,96 @@
+[
+  {
+    "id": "pemdi",
+    "istilah": "Pemerintah Digital (Pemdi)",
+    "singkat": "Upaya pemerintah memindahkan layanan dan cara kerjanya ke sistem digital, supaya pelayanan lebih cepat, hemat, dan terbuka.",
+    "lengkap": "Konsep tata kelola pemerintahan berbasis teknologi digital yang menyempurnakan SPBE, diatur dalam Permenpan RB 8/2026. Diukur lewat Indeks Pemdi (7 aspek, 20 indikator).",
+    "kategori": "Konsep"
+  },
+  {
+    "id": "spbe",
+    "istilah": "SPBE",
+    "kepanjangan": "Sistem Pemerintahan Berbasis Elektronik",
+    "singkat": "Istilah resmi untuk pemerintahan yang menggunakan komputer/internet dalam memberi layanan.",
+    "lengkap": "Penyelenggaraan pemerintahan yang memanfaatkan TIK untuk layanan masyarakat dan internal pemerintah. Dasar: Perpres 95/2018. Dinilai tahunan oleh Kementerian PANRB.",
+    "kategori": "Konsep"
+  },
+  {
+    "id": "indeks-spbe",
+    "istilah": "Indeks SPBE",
+    "singkat": "Nilai rapor (skala 1–5) yang menunjukkan seberapa matang layanan digital sebuah pemerintah daerah. Makin tinggi makin baik.",
+    "lengkap": "Hasil pemantauan tahunan PANRB atas 4 domain (Kebijakan, Tata Kelola, Manajemen, Layanan). Target minimal tiap indikator Level 3. Aceh Tengah 2025 = 2,59 (Cukup).",
+    "kategori": "Penilaian"
+  },
+  {
+    "id": "level",
+    "istilah": "Tingkat Kematangan / Level (1–5)",
+    "singkat": "Seperti level di game — angka 1 paling dasar, angka 5 paling matang.",
+    "lengkap": "Skala SPBE: 1 Rintisan, 2 Terkelola, 3 Terstandardisasi, 4 Terintegrasi, 5 Optimum. Target nasional minimal Level 3.",
+    "kategori": "Penilaian"
+  },
+  {
+    "id": "ppb",
+    "istilah": "Peta Proses Bisnis (PPB)",
+    "singkat": "Gambaran siapa mengerjakan apa dan bagaimana alurnya di pemerintahan, agar tidak tumpang tindih.",
+    "lengkap": "Diagram hubungan kerja antar-unit organisasi untuk menghasilkan layanan secara efisien. Wajib disusun sesuai Permenpan 19/2018.",
+    "kategori": "Tata Kelola"
+  },
+  {
+    "id": "urusan",
+    "istilah": "Urusan Pemerintahan (Konkuren)",
+    "singkat": "Bidang-bidang tugas pemerintah daerah, seperti pendidikan, kesehatan, jalan, dan sebagainya.",
+    "lengkap": "Urusan yang dibagi antara pusat dan daerah. Di Aceh Tengah ada 34 urusan yang menjadi dasar layanan & proses bisnis.",
+    "kategori": "Tata Kelola"
+  },
+  {
+    "id": "opd",
+    "istilah": "Perangkat Daerah (OPD)",
+    "singkat": "Kantor-kantor pemerintah daerah — dinas, badan, sekretariat, dan kecamatan.",
+    "lengkap": "Organisasi Perangkat Daerah pelaksana urusan pemerintahan. Aceh Tengah punya 52 perangkat daerah (38 instansi + 14 kecamatan), total 4.507 ASN.",
+    "kategori": "Tata Kelola"
+  },
+  {
+    "id": "asn",
+    "istilah": "ASN",
+    "kepanjangan": "Aparatur Sipil Negara",
+    "singkat": "Pegawai pemerintah — PNS dan PPPK.",
+    "lengkap": "Profesi pegawai pada instansi pemerintah, terdiri dari PNS dan PPPK.",
+    "kategori": "Umum"
+  },
+  {
+    "id": "skm-ikm",
+    "istilah": "SKM / IKM",
+    "kepanjangan": "Survei & Indeks Kepuasan Masyarakat",
+    "singkat": "Cara warga memberi nilai atas pelayanan; hasilnya jadi nilai kepuasan pemerintah.",
+    "lengkap": "SKM = survei 8–9 unsur layanan (skala 1–4) sesuai Permenpan 14/2017. IKM = rata-ratanya dikonversi ke skala 0–100. Dipakai untuk memperbaiki layanan.",
+    "kategori": "Penilaian"
+  },
+  {
+    "id": "sla",
+    "istilah": "SLA (Standar Waktu Layanan)",
+    "singkat": "Janji berapa lama sebuah layanan selesai (mis. KTP ± 7 hari).",
+    "lengkap": "Service Level Agreement — batas waktu maksimal penyelesaian layanan yang dijanjikan kepada publik.",
+    "kategori": "Layanan"
+  },
+  {
+    "id": "nib-oss",
+    "istilah": "NIB / OSS",
+    "singkat": "KTP-nya usaha — nomor izin berusaha yang diurus lewat sistem online OSS.",
+    "lengkap": "Nomor Induk Berusaha yang diterbitkan melalui sistem Online Single Submission, sebagai identitas & izin dasar pelaku usaha.",
+    "kategori": "Layanan"
+  },
+  {
+    "id": "walidata",
+    "istilah": "Walidata",
+    "singkat": "Instansi yang bertanggung jawab atas kebenaran data — di sini Diskominfo.",
+    "lengkap": "Unit yang mengumpulkan, memeriksa, dan menyebarluaskan data resmi. Untuk portal ini: Diskominfo Kab. Aceh Tengah.",
+    "kategori": "Tata Kelola"
+  },
+  {
+    "id": "regulasi",
+    "istilah": "Permenpan RB / Perpres",
+    "singkat": "Aturan resmi dari pemerintah pusat yang jadi pedoman.",
+    "lengkap": "Peraturan Menteri PANRB / Peraturan Presiden. Relevan: Perpres 95/2018 (SPBE), Permenpan 19/2018 (PPB), Permenpan 59/2020 (Pemantauan SPBE), Permenpan 8/2026 (Pemdi).",
+    "kategori": "Regulasi"
+  }
+]

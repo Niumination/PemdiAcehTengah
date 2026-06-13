@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prototype — Dashboard Admin Pemdi Aceh Tengah</title>
+<style>
+  :root{
+    --primary:#004098;--primary-dark:#002d6b;--primary-light:#e8f0fe;--primary-50:#f0f5ff;
+    --accent:#c8102e;--gold:#b8860b;
+    --ink:#1a1f29;--ink-soft:#48505e;--muted:#6c757d;--line:#e4e8ee;--bg:#eef2f7;--white:#fff;
+    --success:#1f7a3d;--success-bg:#e8f5ec;--warning:#b25e00;--warning-bg:#fff4e5;--danger:#c8102e;--danger-bg:#fdeaec;
+    --radius:14px;--shadow-sm:0 1px 2px rgba(16,32,64,.06);--shadow:0 6px 20px -8px rgba(16,32,64,.18);
+    --font:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--font);color:var(--ink);background:var(--bg);line-height:1.55}
+  a{color:var(--primary);text-decoration:none}
+  h1,h2,h3,h4{line-height:1.25}
+  .demo-tag{background:var(--gold);color:#fff;text-align:center;font-size:13px;font-weight:700;padding:7px}
+
+  .app{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
+  /* sidebar */
+  aside.side{background:var(--primary-dark);color:#cfe0ff;padding:20px 14px;display:flex;flex-direction:column;gap:6px}
+  .brand{display:flex;align-items:center;gap:10px;color:#fff;font-weight:800;padding:6px 8px 16px;border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:8px}
+  .brand .crest{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#0a52b8,#002d6b);border:1.5px solid var(--gold);display:grid;place-items:center;font-size:11px;font-weight:800;color:#fff}
+  .brand small{display:block;font-weight:500;font-size:10.5px;color:#9db8e6}
+  .navi a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:9px;color:#cfe0ff;font-weight:600;font-size:14px}
+  .navi a:hover{background:rgba(255,255,255,.08);color:#fff}
+  .navi a.active{background:#fff;color:var(--primary)}
+  .side .foot{margin-top:auto;font-size:12px;color:#9db8e6;padding:10px 8px;border-top:1px solid rgba(255,255,255,.12)}
+
+  /* main */
+  main{padding:0}
+  .topbar{background:#fff;border-bottom:1px solid var(--line);padding:14px 26px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:10}
+  .topbar h1{font-size:19px}
+  .topbar .user{margin-left:auto;display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--ink-soft)}
+  .avatar{width:34px;height:34px;border-radius:50%;background:var(--primary);color:#fff;display:grid;place-items:center;font-weight:800;font-size:13px}
+  .content{padding:24px 26px}
+
+  /* KPI cards */
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:22px}
+  .kpi{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow-sm)}
+  .kpi .top{display:flex;justify-content:space-between;align-items:center}
+  .kpi .ic{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;font-size:19px}
+  .kpi .n{font-size:30px;font-weight:800;margin-top:8px}
+  .kpi .l{font-size:13px;color:var(--muted);font-weight:600}
+  .kpi .d{font-size:12px;font-weight:700;margin-top:4px}
+  .up{color:var(--success)} .down{color:var(--danger)}
+  .ic-blue{background:var(--primary-light)} .ic-green{background:var(--success-bg)} .ic-amber{background:var(--warning-bg)} .ic-red{background:var(--danger-bg)}
+
+  /* layout 2col */
+  .row{display:grid;grid-template-columns:1.6fr 1fr;gap:18px;margin-bottom:22px}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow-sm)}
+  .panel h3{font-size:15px;margin-bottom:4px}
+  .panel .sub{font-size:12.5px;color:var(--muted);margin-bottom:14px}
+
+  /* table */
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  th{text-align:left;color:var(--muted);font-weight:700;font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;padding:8px 10px;border-bottom:2px solid var(--line)}
+  td{padding:11px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  tr:hover td{background:var(--primary-50)}
+  .id{font-family:"JetBrains Mono",monospace;font-weight:700;color:var(--primary);font-size:12.5px}
+  .badge{font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
+  .b-new{background:var(--primary-light);color:var(--primary)}
+  .b-proc{background:var(--warning-bg);color:var(--warning)}
+  .b-done{background:var(--success-bg);color:var(--success)}
+  .b-rej{background:var(--danger-bg);color:var(--danger)}
+  .kat{font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;background:var(--bg);color:var(--ink-soft)}
+  .act{display:inline-flex;gap:6px}
+  .mini{font-size:11.5px;font-weight:700;padding:5px 10px;border-radius:7px;border:1px solid var(--line);background:#fff;cursor:pointer;color:var(--ink-soft)}
+  .mini.go{border-color:var(--success);color:var(--success)}
+  .toolbar{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+  .search{flex:1;min-width:180px;display:flex;align-items:center;gap:8px;border:1.5px solid var(--line);border-radius:9px;padding:8px 12px}
+  .search input{border:0;outline:0;font:inherit;width:100%}
+  .seg{display:flex;border:1px solid var(--line);border-radius:9px;overflow:hidden}
+  .seg span{padding:8px 12px;font-size:12.5px;font-weight:600;cursor:pointer;color:var(--ink-soft);border-right:1px solid var(--line)}
+  .seg span:last-child{border:0}
+  .seg span.active{background:var(--primary);color:#fff}
+
+  /* IKM donut + bars */
+  .ikm-wrap{display:flex;align-items:center;gap:18px}
+  .donut{position:relative;width:140px;height:140px;flex:none}
+  .donut .c{position:absolute;inset:0;display:grid;place-content:center;text-align:center}
+  .donut .c .v{font-size:30px;font-weight:800;color:var(--primary);line-height:1}
+  .donut .c .s{font-size:11px;color:var(--muted)}
+  .legend{font-size:13px;display:flex;flex-direction:column;gap:7px}
+  .legend div{display:flex;align-items:center;gap:8px}
+  .sw{width:11px;height:11px;border-radius:3px}
+
+  .ubar{margin-bottom:11px}
+  .ubar .t{display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px}
+  .ubar .t b{font-weight:700}
+  .track{height:8px;background:#eaeff6;border-radius:999px;overflow:hidden}
+  .track i{display:block;height:100%;border-radius:999px;background:var(--primary)}
+
+  /* trend bars */
+  .trend{display:flex;align-items:flex-end;gap:10px;height:130px;padding-top:10px}
+  .trend .col{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;justify-content:flex-end;height:100%}
+  .trend .bar{width:100%;max-width:34px;background:linear-gradient(var(--primary),#0a52b8);border-radius:6px 6px 0 0}
+  .trend .lab{font-size:11px;color:var(--muted)}
+  .trend .val{font-size:11px;font-weight:700;color:var(--ink)}
+
+  /* login overlay */
+  .login{position:fixed;inset:0;background:linear-gradient(135deg,var(--primary),var(--primary-dark));display:grid;place-items:center;padding:20px;z-index:100}
+  .login.hidden{display:none}
+  .login .box{background:#fff;border-radius:18px;padding:30px;width:100%;max-width:380px;box-shadow:var(--shadow)}
+  .login .crest{width:54px;height:54px;border-radius:14px;background:linear-gradient(135deg,#0a52b8,#002d6b);border:2px solid var(--gold);display:grid;place-items:center;font-weight:800;color:#fff;margin:0 auto 14px}
+  .login h2{text-align:center;font-size:19px}
+  .login p{text-align:center;font-size:13px;color:var(--muted);margin-bottom:18px}
+  .field{margin-bottom:12px}
+  .field label{font-size:12.5px;font-weight:600;display:block;margin-bottom:5px}
+  .field input{width:100%;padding:11px 13px;border:1.5px solid var(--line);border-radius:9px;font:inherit}
+  .login .btn{width:100%;padding:12px;border-radius:10px;background:var(--primary);color:#fff;font-weight:700;border:0;cursor:pointer;font-size:15px}
+  .note{font-size:11.5px;color:var(--warning);background:var(--warning-bg);border-radius:8px;padding:8px 10px;margin-top:12px;text-align:center}
+
+  @media(max-width:900px){.app{grid-template-columns:1fr}aside.side{display:none}.kpis{grid-template-columns:1fr 1fr}.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="demo-tag">🎨 PROTOTYPE — Dashboard Admin (kelola laporan + grafik IKM). Login hanya tampilan.</div>
+
+<!-- LOGIN (klik tombol untuk lihat dashboard) -->
+<div class="login" id="login">
+  <div class="box">
+    <div class="crest">AT</div>
+    <h2>Masuk Dashboard Admin</h2>
+    <p>Pemdi Aceh Tengah · Area Terbatas</p>
+    <div class="field"><label>Kata sandi admin</label><input type="password" placeholder="••••••••" value="••••••••"></div>
+    <button class="btn" onclick="document.getElementById('login').classList.add('hidden')">Masuk →</button>
+    <div class="note">🔒 Kata sandi diverifikasi di server (env var), bukan di kode front-end.</div>
+  </div>
+</div>
+
+<div class="app">
+  <!-- SIDEBAR -->
+  <aside class="side">
+    <div class="brand"><span class="crest">AT</span><span>Pemdi Admin<small>Aceh Tengah</small></span></div>
+    <div class="navi">
+      <a class="active" href="#">📊 Ringkasan</a>
+      <a href="#">💬 Laporan Warga <span style="margin-left:auto;background:var(--accent);color:#fff;font-size:10px;padding:1px 7px;border-radius:999px">12</span></a>
+      <a href="#">📝 Hasil Survei (SKM)</a>
+      <a href="#">📋 Direktori Layanan</a>
+      <a href="#">🏛️ Perangkat Daerah</a>
+      <a href="#">⚙️ Pengaturan</a>
+    </div>
+    <div class="foot">Masuk sebagai<br><b style="color:#fff">Administrator</b> · Keluar</div>
+  </aside>
+
+  <!-- MAIN -->
+  <main>
+    <div class="topbar">
+      <h1>Ringkasan</h1>
+      <div class="user"><span>Administrator</span><span class="avatar">A</span></div>
+    </div>
+
+    <div class="content">
+      <!-- KPI -->
+      <div class="kpis">
+        <div class="kpi"><div class="top"><span class="l">Laporan Baru</span><span class="ic ic-blue">💬</span></div><div class="n">12</div><div class="d up">▲ 4 hari ini</div></div>
+        <div class="kpi"><div class="top"><span class="l">Sedang Diproses</span><span class="ic ic-amber">⏳</span></div><div class="n">7</div><div class="d">rata-rata 2 hari</div></div>
+        <div class="kpi"><div class="top"><span class="l">Selesai (bulan ini)</span><span class="ic ic-green">✓</span></div><div class="n">38</div><div class="d up">▲ 18%</div></div>
+        <div class="kpi"><div class="top"><span class="l">Nilai IKM</span><span class="ic ic-blue">⭐</span></div><div class="n">81,5</div><div class="d up">Baik · ▲ 3,2</div></div>
+      </div>
+
+      <!-- ROW 1: tabel laporan + IKM donut -->
+      <div class="row">
+        <div class="panel">
+          <h3>Laporan Warga Terbaru</h3>
+          <div class="sub">Tindak lanjuti laporan & ubah statusnya</div>
+          <div class="toolbar">
+            <div class="search">🔍 <input placeholder="Cari ID / isi laporan…"></div>
+            <div class="seg"><span class="active">Semua</span><span>Baru</span><span>Proses</span><span>Selesai</span></div>
+          </div>
+          <table>
+            <thead><tr><th>ID</th><th>Kategori</th><th>Isi</th><th>Status</th><th>Aksi</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><span class="id">LAPOR-38A4</span><br><span style="font-size:11px;color:var(--muted)">12 Jun</span></td>
+                <td><span class="kat">Keluhan</span></td>
+                <td>Lampu jalan di Jl. Lebe Kader mati sejak 3 hari…</td>
+                <td><span class="badge b-new">Baru</span></td>
+                <td><span class="act"><button class="mini go">Proses</button><button class="mini">Detail</button></span></td>
+              </tr>
+              <tr>
+                <td><span class="id">LAPOR-1C98</span><br><span style="font-size:11px;color:var(--muted)">12 Jun</span></td>
+                <td><span class="kat">Saran</span></td>
+                <td>Mohon tambahkan layanan antrean online untuk Disdukcapil…</td>
+                <td><span class="badge b-proc">Diproses</span></td>
+                <td><span class="act"><button class="mini go">Selesai</button><button class="mini">Detail</button></span></td>
+              </tr>
+              <tr>
+                <td><span class="id">LAPOR-9F2D</span><br><span style="font-size:11px;color:var(--muted)">11 Jun</span></td>
+                <td><span class="kat">Apresiasi</span></td>
+                <td>Pelayanan akta kelahiran cepat, terima kasih!</td>
+                <td><span class="badge b-done">Selesai</span></td>
+                <td><span class="act"><button class="mini">Detail</button></span></td>
+              </tr>
+              <tr>
+                <td><span class="id">LAPOR-7B11</span><br><span style="font-size:11px;color:var(--muted)">10 Jun</span></td>
+                <td><span class="kat">Bug</span></td>
+                <td>Tombol unduh dokумen di halaman SPBE tidak berfungsi…</td>
+                <td><span class="badge b-proc">Diproses</span></td>
+                <td><span class="act"><button class="mini go">Selesai</button><button class="mini">Detail</button></span></td>
+              </tr>
+              <tr>
+                <td><span class="id">LAPOR-3E55</span><br><span style="font-size:11px;color:var(--muted)">9 Jun</span></td>
+                <td><span class="kat">Keluhan</span></td>
+                <td>Spam / tidak relevan</td>
+                <td><span class="badge b-rej">Ditolak</span></td>
+                <td><span class="act"><button class="mini">Detail</button></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="panel">
+          <h3>Indeks Kepuasan (IKM)</h3>
+          <div class="sub">Dari 124 responden survei</div>
+          <div class="ikm-wrap">
+            <div class="donut">
+              <svg width="140" height="140" viewBox="0 0 140 140">
+                <circle cx="70" cy="70" r="58" fill="none" stroke="#eaeff6" stroke-width="16"/>
+                <circle cx="70" cy="70" r="58" fill="none" stroke="#1f7a3d" stroke-width="16" stroke-linecap="round"
+                  stroke-dasharray="297 364" transform="rotate(-90 70 70)"/>
+              </svg>
+              <div class="c"><div class="v">81,5</div><div class="s">dari 100</div></div>
+            </div>
+            <div class="legend">
+              <div><span class="sw" style="background:#1f7a3d"></span> Predikat: <b>Baik</b></div>
+              <div><span class="sw" style="background:var(--primary)"></span> 124 responden</div>
+              <div><span class="sw" style="background:var(--gold)"></span> Mutu pelayanan: <b>B</b></div>
+            </div>
+          </div>
+          <hr style="border:0;border-top:1px solid var(--line);margin:16px 0">
+          <h4 style="font-size:13px;margin-bottom:10px">Per unsur layanan</h4>
+          <div class="ubar"><div class="t"><span>Persyaratan</span><b>3,4</b></div><div class="track"><i style="width:85%"></i></div></div>
+          <div class="ubar"><div class="t"><span>Prosedur</span><b>3,2</b></div><div class="track"><i style="width:80%"></i></div></div>
+          <div class="ubar"><div class="t"><span>Waktu layanan</span><b>2,9</b></div><div class="track"><i style="width:72%;background:var(--warning)"></i></div></div>
+          <div class="ubar"><div class="t"><span>Biaya/tarif</span><b>3,6</b></div><div class="track"><i style="width:90%"></i></div></div>
+          <div class="ubar"><div class="t"><span>Perilaku petugas</span><b>3,5</b></div><div class="track"><i style="width:88%"></i></div></div>
+        </div>
+      </div>
+
+      <!-- ROW 2: tren laporan + tren IKM -->
+      <div class="row" style="grid-template-columns:1fr 1fr">
+        <div class="panel">
+          <h3>Laporan Masuk — 6 Bulan</h3>
+          <div class="sub">Jumlah laporan per bulan</div>
+          <div class="trend">
+            <div class="col"><span class="val">22</span><div class="bar" style="height:40%"></div><span class="lab">Jan</span></div>
+            <div class="col"><span class="val">31</span><div class="bar" style="height:56%"></div><span class="lab">Feb</span></div>
+            <div class="col"><span class="val">28</span><div class="bar" style="height:50%"></div><span class="lab">Mar</span></div>
+            <div class="col"><span class="val">44</span><div class="bar" style="height:80%"></div><span class="lab">Apr</span></div>
+            <div class="col"><span class="val">39</span><div class="bar" style="height:70%"></div><span class="lab">Mei</span></div>
+            <div class="col"><span class="val">52</span><div class="bar" style="height:95%"></div><span class="lab">Jun</span></div>
+          </div>
+        </div>
+        <div class="panel">
+          <h3>Tren Nilai IKM</h3>
+          <div class="sub">Rata-rata kepuasan (0–100) per bulan</div>
+          <div class="trend">
+            <div class="col"><span class="val">74</span><div class="bar" style="height:74%;background:linear-gradient(#1f7a3d,#2e9e54)"></div><span class="lab">Jan</span></div>
+            <div class="col"><span class="val">76</span><div class="bar" style="height:76%;background:linear-gradient(#1f7a3d,#2e9e54)"></div><span class="lab">Feb</span></div>
+            <div class="col"><span class="val">75</span><div class="bar" style="height:75%;background:linear-gradient(#1f7a3d,#2e9e54)"></div><span class="lab">Mar</span></div>
+            <div class="col"><span class="val">79</span><div class="bar" style="height:79%;background:linear-gradient(#1f7a3d,#2e9e54)"></div><span class="lab">Apr</span></div>
+            <div class="col"><span class="val">80</span><div class="bar" style="height:80%;background:linear-gradient(#1f7a3d,#2e9e54)"></div><span class="lab">Mei</span></div>
+            <div class="col"><span class="val">82</span><div class="bar" style="height:82%;background:linear-gradient(#1f7a3d,#2e9e54)"></div><span class="lab">Jun</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+</body>
+</html>

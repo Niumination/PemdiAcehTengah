@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prototype — Direktori & Detail Layanan</title>
+<style>
+  :root{
+    --primary:#004098;--primary-dark:#002d6b;--primary-light:#e8f0fe;--primary-50:#f0f5ff;
+    --accent:#c8102e;--gold:#b8860b;
+    --ink:#1a1f29;--ink-soft:#48505e;--muted:#6c757d;--line:#e4e8ee;--bg:#f6f8fb;--white:#fff;
+    --success:#1f7a3d;--success-bg:#e8f5ec;--warning:#b25e00;--warning-bg:#fff4e5;--danger:#c8102e;--danger-bg:#fdeaec;
+    --radius:14px;--radius-sm:9px;--shadow-sm:0 1px 2px rgba(16,32,64,.06);--shadow:0 6px 20px -8px rgba(16,32,64,.18);
+    --maxw:1140px;--font:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--font);color:var(--ink);background:var(--bg);line-height:1.6}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+  a{color:var(--primary);text-decoration:none}
+  h1,h2,h3,h4{line-height:1.25;letter-spacing:-.01em}
+  .demo-tag{background:var(--gold);color:#fff;text-align:center;font-size:13px;font-weight:700;padding:7px}
+  .gov-strip{background:var(--primary-dark);color:#cfe0ff;font-size:13px}
+  .gov-strip .wrap{display:flex;justify-content:space-between;align-items:center;height:34px}
+  .flag-dot{width:18px;height:12px;border-radius:2px;background:linear-gradient(#c8102e 50%,#fff 50%);display:inline-block;border:1px solid rgba(255,255,255,.3);vertical-align:middle;margin-right:6px}
+  header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .hd{display:flex;align-items:center;gap:14px;height:64px}
+  .logo{display:flex;align-items:center;gap:11px;font-weight:800;color:var(--ink)}
+  .logo .crest{width:40px;height:40px;border-radius:11px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;display:grid;place-items:center;font-size:12px;font-weight:800}
+  .logo small{display:block;font-weight:500;color:var(--muted);font-size:11px}
+  nav.main{margin-left:auto;display:flex;gap:4px}
+  nav.main a{padding:8px 12px;border-radius:9px;font-weight:600;font-size:14px;color:var(--ink-soft)}
+  nav.main a.cta{background:var(--primary);color:#fff}
+
+  /* breadcrumb */
+  .crumb{font-size:13px;color:var(--muted);padding:16px 0 0}
+  .crumb a{color:var(--muted)} .crumb b{color:var(--ink)}
+
+  /* page head */
+  .phead{padding:14px 0 26px}
+  .eyebrow{font-size:12px;font-weight:800;letter-spacing:.08em;color:var(--accent);text-transform:uppercase}
+  .phead h1{font-size:clamp(24px,3.4vw,34px);margin:8px 0 8px}
+  .phead p{color:var(--ink-soft);max-width:680px;font-size:15.5px}
+
+  /* search + filter bar */
+  .toolbar{display:flex;gap:12px;flex-wrap:wrap;margin:8px 0 22px}
+  .search{flex:1;min-width:240px;display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:12px 16px}
+  .search input{border:0;outline:0;font:inherit;width:100%;background:transparent}
+  .chips{display:flex;gap:8px;flex-wrap:wrap}
+  .chip{padding:9px 15px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font-size:13.5px;font-weight:600;color:var(--ink-soft);cursor:pointer}
+  .chip.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+
+  /* category groups */
+  .catlabel{display:flex;align-items:center;gap:10px;margin:24px 0 12px;font-weight:800;font-size:16px}
+  .catlabel .dot{width:10px;height:10px;border-radius:3px;background:var(--primary)}
+  .catlabel .count{font-size:12px;font-weight:700;color:var(--muted);background:var(--primary-50);padding:2px 9px;border-radius:999px}
+
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .svc{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:7px;transition:transform .15s,box-shadow .15s}
+  .svc:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  .svc .ic{width:42px;height:42px;border-radius:11px;background:var(--primary-light);display:grid;place-items:center;font-size:20px}
+  .svc h3{font-size:16px}
+  .svc p{font-size:13.5px;color:var(--ink-soft)}
+  .svc .meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+  .tag{font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:999px}
+  .tag.free{background:var(--success-bg);color:var(--success)}
+  .tag.sla{background:var(--primary-50);color:var(--primary)}
+  .tag.online{background:var(--warning-bg);color:var(--warning)}
+  .svc .go{margin-top:auto;padding-top:8px;font-weight:700;color:var(--primary);font-size:13.5px}
+
+  /* ---------- DETAIL VIEW ---------- */
+  .divider{height:1px;background:var(--line);margin:46px 0}
+  .detail-grid{display:grid;grid-template-columns:1fr 320px;gap:24px;align-items:start}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow-sm);margin-bottom:16px}
+  .panel h3{font-size:16px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  /* plain explainer */
+  .explain{background:var(--warning-bg);border-left:5px solid var(--gold);border-radius:11px;padding:14px 16px;font-size:14px;color:var(--ink);margin-bottom:16px}
+  /* requirement checklist */
+  .reqs{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .reqs li{display:flex;gap:11px;align-items:flex-start;font-size:14.5px}
+  .reqs .bx{width:22px;height:22px;border-radius:6px;border:2px solid var(--primary);flex:none;display:grid;place-items:center;color:var(--primary);font-weight:800;font-size:12px}
+  /* steps flow */
+  .flow{list-style:none;counter-reset:f;display:flex;flex-direction:column;gap:0}
+  .flow li{position:relative;padding:0 0 22px 40px;counter-increment:f}
+  .flow li::before{content:counter(f);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:8px;background:var(--primary);color:#fff;font-weight:800;font-size:13px;display:grid;place-items:center}
+  .flow li::after{content:"";position:absolute;left:13px;top:30px;bottom:-2px;width:2px;background:var(--line)}
+  .flow li:last-child::after{display:none}
+  .flow li h4{font-size:14.5px;margin-bottom:2px}
+  .flow li p{font-size:13.5px;color:var(--ink-soft)}
+  /* sidebar info */
+  .infocard{background:linear-gradient(160deg,var(--primary),var(--primary-dark));color:#fff;border-radius:var(--radius);padding:20px}
+  .infocard .row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.15);font-size:14px}
+  .infocard .row:last-child{border:0}
+  .infocard .row span:first-child{color:#bcd3f5}
+  .infocard .row b{font-weight:700}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:13px;border-radius:11px;font-weight:700;font-size:15px;border:0;cursor:pointer;margin-top:14px}
+  .btn-light{background:#fff;color:var(--primary)}
+  .miniqa{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow-sm)}
+  .miniqa details{border-bottom:1px solid var(--line);padding:10px 0}
+  .miniqa details:last-child{border:0}
+  .miniqa summary{cursor:pointer;font-weight:600;font-size:14px;list-style:none}
+  .miniqa summary::-webkit-details-marker{display:none}
+  .miniqa p{font-size:13.5px;color:var(--ink-soft);padding-top:6px}
+
+  @media(max-width:860px){
+    .grid{grid-template-columns:1fr}
+    .detail-grid{grid-template-columns:1fr}
+    nav.main{display:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-tag">🎨 PROTOTYPE — Direktori Layanan & Halaman Detail Layanan</div>
+
+<div class="gov-strip"><div class="wrap">
+  <span><span class="flag-dot"></span>Situs Resmi Pemerintah Kabupaten Aceh Tengah</span>
+  <span>🌐 acehtengahkab.go.id</span>
+</div></div>
+
+<header class="site"><div class="wrap hd">
+  <a class="logo" href="#"><span class="crest">AT</span><span>Pemdi Aceh Tengah<small>Pemerintah Digital · Kab. Aceh Tengah</small></span></a>
+  <nav class="main"><a href="#">Beranda</a><a href="#">Indeks</a><a href="#">Perangkat Daerah</a><a class="cta" href="#">🔍 Cari</a></nav>
+</div></header>
+
+<!-- ================= DIREKTORI ================= -->
+<div class="wrap">
+  <div class="crumb"><a href="#">Beranda</a> › <b>Direktori Layanan</b></div>
+  <div class="phead">
+    <div class="eyebrow">Untuk Warga</div>
+    <h1>Direktori Layanan Publik</h1>
+    <p>27 layanan dalam 7 kategori. Cari layanan yang Anda butuhkan, lihat syarat, biaya, dan perkiraan waktu prosesnya — semua transparan.</p>
+  </div>
+
+  <div class="toolbar">
+    <div class="search">🔍 <input placeholder="Cari layanan… mis. 'KTP', 'izin usaha', 'akta lahir'"></div>
+  </div>
+  <div class="chips">
+    <span class="chip active">Semua</span>
+    <span class="chip">Kependudukan</span>
+    <span class="chip">Perizinan</span>
+    <span class="chip">Kesehatan</span>
+    <span class="chip">Pendidikan</span>
+    <span class="chip">Sosial</span>
+    <span class="chip">Pertanahan</span>
+  </div>
+
+  <div class="catlabel"><span class="dot"></span> Kependudukan <span class="count">5 layanan</span></div>
+  <div class="grid">
+    <a class="svc" href="#detail">
+      <div class="ic">🪪</div><h3>Pembuatan KTP Elektronik</h3>
+      <p>Perekaman & pencetakan KTP-el bagi penduduk wajib KTP.</p>
+      <div class="meta"><span class="tag free">Gratis</span><span class="tag sla">± 7 hari</span><span class="tag online">Online & Loket</span></div>
+      <span class="go">Lihat detail →</span>
+    </a>
+    <a class="svc" href="#detail">
+      <div class="ic">📜</div><h3>Akta Kelahiran</h3>
+      <p>Penerbitan akta kelahiran untuk pencatatan resmi.</p>
+      <div class="meta"><span class="tag free">Gratis</span><span class="tag sla">± 5 hari</span><span class="tag online">Online</span></div>
+      <span class="go">Lihat detail →</span>
+    </a>
+    <a class="svc" href="#detail">
+      <div class="ic">👪</div><h3>Kartu Keluarga (KK)</h3>
+      <p>Penerbitan/perubahan KK karena pindah, lahir, atau nikah.</p>
+      <div class="meta"><span class="tag free">Gratis</span><span class="tag sla">± 4 hari</span><span class="tag online">Online & Loket</span></div>
+      <span class="go">Lihat detail →</span>
+    </a>
+  </div>
+
+  <div class="catlabel"><span class="dot"></span> Perizinan <span class="count">4 layanan</span></div>
+  <div class="grid">
+    <a class="svc" href="#detail">
+      <div class="ic">🏪</div><h3>Izin Usaha (NIB/OSS)</h3>
+      <p>Pendaftaran Nomor Induk Berusaha melalui sistem OSS.</p>
+      <div class="meta"><span class="tag free">Gratis</span><span class="tag sla">± 3 hari</span><span class="tag online">Online</span></div>
+      <span class="go">Lihat detail →</span>
+    </a>
+    <a class="svc" href="#detail">
+      <div class="ic">🏗️</div><h3>Izin Mendirikan Bangunan (PBG)</h3>
+      <p>Persetujuan bangunan gedung sesuai tata ruang.</p>
+      <div class="meta"><span class="tag sla">± 14 hari</span><span class="tag online">Online</span></div>
+      <span class="go">Lihat detail →</span>
+    </a>
+    <a class="svc" href="#detail">
+      <div class="ic">🩺</div><h3>Izin Praktik Tenaga Kesehatan</h3>
+      <p>Penerbitan izin praktik bagi tenaga medis.</p>
+      <div class="meta"><span class="tag sla">± 10 hari</span><span class="tag online">Online & Loket</span></div>
+      <span class="go">Lihat detail →</span>
+    </a>
+  </div>
+</div>
+
+<!-- ================= DETAIL ================= -->
+<div class="wrap" id="detail">
+  <div class="divider"></div>
+  <div class="crumb"><a href="#">Beranda</a> › <a href="#">Direktori Layanan</a> › <a href="#">Kependudukan</a> › <b>KTP Elektronik</b></div>
+  <div class="phead">
+    <div class="eyebrow">Layanan Kependudukan</div>
+    <h1>Pembuatan KTP Elektronik (KTP-el)</h1>
+    <p>Halaman detail satu layanan — disusun agar warga langsung tahu: apa syaratnya, berapa biayanya, berapa lama, dan bagaimana caranya.</p>
+  </div>
+
+  <div class="detail-grid">
+    <!-- main -->
+    <div>
+      <div class="explain">💡 <b>Singkatnya:</b> KTP-el wajib dimiliki setiap penduduk berusia 17 tahun ke atas atau sudah menikah. Layanan ini <b>gratis</b> dan bisa diurus online maupun di loket Disdukcapil.</div>
+
+      <div class="panel">
+        <h3>📋 Persyaratan yang harus disiapkan</h3>
+        <ul class="reqs">
+          <li><span class="bx">✓</span> Kartu Keluarga (KK) asli & fotokopi</li>
+          <li><span class="bx">✓</span> Berusia 17 tahun, atau sudah/pernah menikah</li>
+          <li><span class="bx">✓</span> Surat pengantar dari desa/kelurahan (untuk loket)</li>
+          <li><span class="bx">✓</span> Datang sendiri untuk perekaman biometrik (foto, sidik jari, iris)</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h3>🔄 Alur & cara mengurus</h3>
+        <ol class="flow">
+          <li><h4>Siapkan dokumen</h4><p>Lengkapi syarat di atas sebelum datang/mendaftar.</p></li>
+          <li><h4>Daftar online atau ambil antrean</h4><p>Lewat portal/aplikasi, atau ambil nomor antrean di loket Disdukcapil.</p></li>
+          <li><h4>Perekaman biometrik</h4><p>Foto, sidik jari, dan iris mata direkam petugas.</p></li>
+          <li><h4>Verifikasi & pencetakan</h4><p>Data diverifikasi, kartu dicetak.</p></li>
+          <li><h4>Pengambilan</h4><p>Ambil di loket atau dikirim, sesuai pemberitahuan.</p></li>
+        </ol>
+      </div>
+
+      <div class="panel">
+        <h3>📑 Dasar hukum</h3>
+        <p style="font-size:14px;color:var(--ink-soft)">UU No. 24/2013 tentang Administrasi Kependudukan · Permendagri terkait penerbitan KTP-el. <a href="#">Lihat dokumen →</a></p>
+      </div>
+
+      <div class="miniqa">
+        <h3 style="font-size:16px;margin-bottom:6px">❓ Pertanyaan umum</h3>
+        <details open><summary>Apakah berbayar?</summary><p>Tidak. Seluruh layanan penerbitan KTP-el <b>gratis</b>. Waspada pungutan liar.</p></details>
+        <details><summary>KTP hilang/rusak, bagaimana?</summary><p>Bawa surat kehilangan dari kepolisian (jika hilang) atau KTP lama (jika rusak) beserta KK.</p></details>
+        <details><summary>Bisa diwakilkan?</summary><p>Perekaman biometrik tidak bisa diwakilkan — wajib datang sendiri.</p></details>
+      </div>
+    </div>
+
+    <!-- sidebar -->
+    <aside>
+      <div class="infocard">
+        <div class="row"><span>Biaya</span><b>Gratis</b></div>
+        <div class="row"><span>Waktu proses</span><b>± 7 hari kerja</b></div>
+        <div class="row"><span>Metode</span><b>Online & Loket</b></div>
+        <div class="row"><span>Pengelola</span><b>Disdukcapil</b></div>
+        <div class="row"><span>Jam layanan</span><b>08.00–15.00 WIB</b></div>
+        <button class="btn btn-light">🚀 Ajukan / Daftar Online</button>
+        <button class="btn" style="background:rgba(255,255,255,.15);color:#fff">📍 Lihat Lokasi Loket</button>
+      </div>
+      <div class="panel" style="margin-top:16px">
+        <h3>🆘 Butuh bantuan?</h3>
+        <p style="font-size:14px;color:var(--ink-soft)">Hubungi Disdukcapil atau gunakan tombol <b>💬 Lapor/Tanya</b> di pojok layar bila menemui kendala.</p>
+      </div>
+    </aside>
+  </div>
+  <div style="height:40px"></div>
+</div>
+
+</body>
+</html>

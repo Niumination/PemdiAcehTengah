@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prototype UI/UX — Pemdi Aceh Tengah</title>
+<style>
+  :root{
+    --primary:#004098; --primary-dark:#002d6b; --primary-light:#e8f0fe; --primary-50:#f0f5ff;
+    --accent:#c8102e; --gold:#b8860b;
+    --ink:#1a1f29; --ink-soft:#48505e; --muted:#6c757d;
+    --line:#e4e8ee; --bg:#f6f8fb; --white:#fff;
+    --success:#1f7a3d; --success-bg:#e8f5ec;
+    --warning:#b25e00; --warning-bg:#fff4e5;
+    --danger:#c8102e; --danger-bg:#fdeaec;
+    --radius:14px; --radius-sm:9px;
+    --shadow-sm:0 1px 2px rgba(16,32,64,.06);
+    --shadow:0 6px 20px -8px rgba(16,32,64,.18);
+    --maxw:1140px;
+    --font:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--font);color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+  h1,h2,h3,h4{line-height:1.25;letter-spacing:-.01em}
+  a{color:var(--primary);text-decoration:none}
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+
+  /* ---------- TOP STRIP (official gov bar) ---------- */
+  .gov-strip{background:var(--primary-dark);color:#cfe0ff;font-size:13px}
+  .gov-strip .wrap{display:flex;justify-content:space-between;align-items:center;height:34px;flex-wrap:wrap;gap:8px}
+  .gov-strip a{color:#fff}
+  .gov-strip .flag{display:inline-flex;gap:8px;align-items:center}
+  .flag-dot{width:18px;height:12px;border-radius:2px;background:linear-gradient(#c8102e 50%,#fff 50%);display:inline-block;border:1px solid rgba(255,255,255,.3)}
+
+  /* ---------- HEADER ---------- */
+  header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .hd{display:flex;align-items:center;gap:14px;height:68px}
+  .logo{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--ink)}
+  .logo .crest{width:42px;height:42px;border-radius:11px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;display:grid;place-items:center;font-size:13px;font-weight:800;box-shadow:var(--shadow-sm)}
+  .logo small{display:block;font-weight:500;color:var(--muted);font-size:11.5px;letter-spacing:.02em}
+  nav.main{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+  nav.main a{padding:8px 13px;border-radius:9px;font-weight:600;font-size:14px;color:var(--ink-soft)}
+  nav.main a:hover{background:var(--primary-50);color:var(--primary)}
+  nav.main a.cta{background:var(--primary);color:#fff}
+
+  /* ---------- HERO ---------- */
+  .hero{background:
+      radial-gradient(1200px 400px at 80% -10%,rgba(0,64,152,.10),transparent),
+      linear-gradient(180deg,#fff,var(--bg));
+    padding:54px 0 30px;border-bottom:1px solid var(--line)}
+  .badge{display:inline-flex;gap:8px;align-items:center;background:var(--primary-light);color:var(--primary-dark);
+    padding:6px 14px;border-radius:999px;font-size:13px;font-weight:700}
+  .hero h1{font-size:clamp(28px,4vw,44px);margin:16px 0 12px;font-weight:800}
+  .hero p.lead{font-size:18px;color:var(--ink-soft);max-width:680px}
+  .hero .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:11px;font-weight:700;font-size:15px;border:1.5px solid transparent;cursor:pointer}
+  .btn-primary{background:var(--primary);color:#fff}
+  .btn-primary:hover{background:var(--primary-dark)}
+  .btn-ghost{background:#fff;color:var(--primary);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--primary)}
+
+  /* What-is explainer */
+  .explain{margin-top:26px;background:#fff;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:var(--radius);padding:18px 20px;max-width:760px;box-shadow:var(--shadow-sm)}
+  .explain b{color:var(--ink)}
+  .explain .q{font-weight:700;color:var(--primary);font-size:14px;display:flex;gap:8px;align-items:center;margin-bottom:4px}
+
+  /* ---------- STAT STRIP ---------- */
+  .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:30px}
+  .stat{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px 16px;text-align:center;box-shadow:var(--shadow-sm)}
+  .stat .n{font-size:26px;font-weight:800;color:var(--primary)}
+  .stat .l{font-size:12.5px;color:var(--muted);font-weight:600;margin-top:2px}
+
+  /* ---------- SECTION ---------- */
+  section.block{padding:46px 0}
+  .eyebrow{font-size:12.5px;font-weight:800;letter-spacing:.08em;color:var(--accent);text-transform:uppercase}
+  .h2{font-size:clamp(22px,3vw,30px);font-weight:800;margin:8px 0 8px}
+  .sub{color:var(--ink-soft);max-width:720px;font-size:15.5px}
+  .section-head{margin-bottom:26px}
+
+  /* Plain-language helper chip */
+  .plain{display:inline-flex;gap:7px;align-items:center;background:var(--success-bg);color:var(--success);
+    border-radius:9px;padding:7px 12px;font-size:13.5px;font-weight:600;margin-top:12px}
+
+  /* ---------- INDEX SCORE CARDS ---------- */
+  .score-hero{display:grid;grid-template-columns:260px 1fr;gap:22px;align-items:center;
+    background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px;box-shadow:var(--shadow)}
+  .gauge{position:relative;width:200px;height:200px;margin:0 auto}
+  .gauge svg{transform:rotate(-90deg)}
+  .gauge .center{position:absolute;inset:0;display:grid;place-content:center;text-align:center}
+  .gauge .center .v{font-size:42px;font-weight:800;color:var(--primary);line-height:1}
+  .gauge .center .max{font-size:14px;color:var(--muted)}
+  .gauge .center .tag{margin-top:6px;font-size:12px;font-weight:700;color:var(--warning);background:var(--warning-bg);padding:3px 10px;border-radius:999px}
+  .domains{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .domain{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .domain .top{display:flex;justify-content:space-between;align-items:baseline}
+  .domain .name{font-weight:700;font-size:14px}
+  .domain .val{font-weight:800;font-size:18px}
+  .bar{height:8px;border-radius:999px;background:#e9eef5;margin-top:9px;overflow:hidden}
+  .bar > i{display:block;height:100%;border-radius:999px}
+  .lv-good{color:var(--success)} .fill-good{background:var(--success)}
+  .lv-mid{color:var(--warning)} .fill-mid{background:var(--warning)}
+  .lv-low{color:var(--danger)} .fill-low{background:var(--danger)}
+  .target-note{font-size:12.5px;color:var(--muted);margin-top:6px}
+
+  /* ---------- SERVICE CARDS ---------- */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow-sm);transition:transform .15s,box-shadow .15s;display:flex;flex-direction:column;gap:8px}
+  .card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  .card .ic{width:46px;height:46px;border-radius:12px;background:var(--primary-light);display:grid;place-items:center;font-size:22px}
+  .card h3{font-size:17px}
+  .card p{font-size:14px;color:var(--ink-soft)}
+  .card .go{margin-top:auto;font-weight:700;color:var(--primary);font-size:14px}
+
+  /* ---------- ACCORDION (manage density) ---------- */
+  .acc{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden}
+  .acc summary{list-style:none;cursor:pointer;padding:16px 18px;font-weight:700;display:flex;justify-content:space-between;align-items:center;font-size:15.5px}
+  .acc summary::-webkit-details-marker{display:none}
+  .acc summary .chev{transition:transform .2s;color:var(--primary)}
+  .acc[open] summary .chev{transform:rotate(180deg)}
+  .acc .body{padding:0 18px 18px;color:var(--ink-soft);font-size:14.5px}
+
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:s}
+  .step{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;position:relative}
+  .step .num{width:30px;height:30px;border-radius:8px;background:var(--primary);color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px;margin-bottom:8px}
+  .step h4{font-size:15px;margin-bottom:3px}
+  .step p{font-size:13.5px;color:var(--ink-soft)}
+  .step.active{border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-light)}
+  .pill{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;margin-top:8px}
+  .pill.now{background:var(--success-bg);color:var(--success)}
+  .pill.next{background:var(--bg);color:var(--muted)}
+
+  footer{background:var(--primary-dark);color:#c9d8f2;padding:40px 0 26px;margin-top:30px}
+  footer h4{color:#fff;margin-bottom:10px}
+  footer a{color:#c9d8f2}
+  .fnote{border-top:1px solid rgba(255,255,255,.15);margin-top:24px;padding-top:16px;font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+  .demo-tag{background:var(--gold);color:#fff;text-align:center;font-size:13px;font-weight:700;padding:7px}
+
+  @media(max-width:860px){
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .score-hero{grid-template-columns:1fr}
+    .domains{grid-template-columns:1fr}
+    .cards{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr 1fr}
+    nav.main{display:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-tag">🎨 PROTOTYPE UI/UX — pratinjau desain usulan (bukan situs live). Untuk Pemdi Aceh Tengah.</div>
+
+<!-- Official strip -->
+<div class="gov-strip"><div class="wrap">
+  <span class="flag"><span class="flag-dot"></span> Situs Resmi Pemerintah Kabupaten Aceh Tengah</span>
+  <span>📞 Kontak · 🌐 acehtengahkab.go.id</span>
+</div></div>
+
+<!-- Header -->
+<header class="site"><div class="wrap hd">
+  <a class="logo" href="#"><span class="crest">AT</span><span>Pemdi Aceh Tengah<small>Pemerintah Digital · Kab. Aceh Tengah</small></span></a>
+  <nav class="main">
+    <a href="#">Beranda</a>
+    <a href="#layanan">Layanan</a>
+    <a href="#spbe">Indeks</a>
+    <a href="#opd">Perangkat Daerah</a>
+    <a href="#">Tanya</a>
+    <a class="cta" href="#">🔍 Cari Layanan</a>
+  </nav>
+</div></header>
+
+<!-- HERO -->
+<div class="hero"><div class="wrap">
+  <span class="badge">🏛️ Portal Pemerintah Digital</span>
+  <h1>Layanan pemerintah yang transparan & mudah diakses</h1>
+  <p class="lead">Satu pintu untuk mengenal layanan publik, memantau kemajuan transformasi digital, dan menyampaikan laporan Anda di Kabupaten Aceh Tengah.</p>
+
+  <div class="btns">
+    <a class="btn btn-primary" href="#layanan">📋 Cari Layanan Publik →</a>
+    <a class="btn btn-ghost" href="#spbe">Lihat Kemajuan Digital</a>
+  </div>
+
+  <!-- Plain-language explainer: kunci memudahkan publik -->
+  <div class="explain">
+    <div class="q">❓ Apa itu "Pemerintah Digital (Pemdi)"?</div>
+    <span>Singkatnya: upaya pemerintah daerah <b>memindahkan layanan dan tata kelola ke sistem digital</b> supaya pelayanan lebih cepat, hemat, dan terbuka untuk warga. Halaman ini menampilkan layanannya, nilainya, dan rencananya — dalam bahasa sederhana.</span>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat"><div class="n">52</div><div class="l">Perangkat Daerah</div></div>
+    <div class="stat"><div class="n">14</div><div class="l">Kecamatan</div></div>
+    <div class="stat"><div class="n">27</div><div class="l">Layanan Publik</div></div>
+    <div class="stat"><div class="n">2,59</div><div class="l">Indeks SPBE 2025</div></div>
+    <div class="stat"><div class="n">4.507</div><div class="l">Jumlah ASN</div></div>
+  </div>
+</div></div>
+
+<!-- LAYANAN (paling dicari warga -> taruh dulu) -->
+<section class="block" id="layanan"><div class="wrap">
+  <div class="section-head">
+    <div class="eyebrow">Untuk Warga</div>
+    <h2 class="h2">Apa yang ingin Anda lakukan hari ini?</h2>
+    <p class="sub">Akses cepat ke hal yang paling sering dibutuhkan masyarakat. Pilih salah satu.</p>
+  </div>
+  <div class="cards">
+    <a class="card" href="#"><div class="ic">📋</div><h3>Direktori Layanan</h3><p>27 layanan dalam 7 kategori. Lihat syarat, biaya, waktu proses (SLA), dan alurnya.</p><span class="go">Jelajahi layanan →</span></a>
+    <a class="card" href="#"><div class="ic">📝</div><h3>Survei Kepuasan</h3><p>Beri nilai pelayanan publik dalam 2 menit. Anonim & aman. Suara Anda memperbaiki layanan.</p><span class="go">Isi survei →</span></a>
+    <a class="card" href="#"><div class="ic">💬</div><h3>Lapor / Tanya</h3><p>Sampaikan keluhan, saran, atau pertanyaan. Dapat nomor tiket untuk dipantau.</p><span class="go">Buat laporan →</span></a>
+  </div>
+</div></section>
+
+<!-- INDEKS SPBE — disederhanakan & visual -->
+<section class="block" id="spbe" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><div class="wrap">
+  <div class="section-head">
+    <div class="eyebrow">Transparansi Kinerja</div>
+    <h2 class="h2">Seberapa digital pemerintah kita?</h2>
+    <p class="sub">Indeks SPBE adalah nilai resmi dari Kementerian PANRB yang mengukur kematangan layanan digital pemerintah. Skala 1–5; target minimal Level 3.</p>
+    <span class="plain">💡 Cara baca: makin tinggi makin baik. Hijau = sudah baik, kuning = cukup, merah = perlu perbaikan.</span>
+  </div>
+
+  <div class="score-hero">
+    <div>
+      <div class="gauge">
+        <svg width="200" height="200" viewBox="0 0 200 200">
+          <circle cx="100" cy="100" r="86" fill="none" stroke="#e9eef5" stroke-width="18"/>
+          <!-- 2.59/5 = 51.8% of circumference (2*pi*86=540.4) -> 280 dash -->
+          <circle cx="100" cy="100" r="86" fill="none" stroke="#f57c00" stroke-width="18"
+            stroke-linecap="round" stroke-dasharray="280 540" />
+        </svg>
+        <div class="center"><div class="v">2,59</div><div class="max">dari 5,00</div><div class="tag">Predikat: Cukup</div></div>
+      </div>
+    </div>
+    <div class="domains">
+      <div class="domain"><div class="top"><span class="name">Kebijakan SPBE</span><span class="val lv-mid">2,30</span></div><div class="bar"><i class="fill-mid" style="width:46%"></i></div><div class="target-note">Target Level 3 (60%)</div></div>
+      <div class="domain"><div class="top"><span class="name">Tata Kelola</span><span class="val lv-low">1,70</span></div><div class="bar"><i class="fill-low" style="width:34%"></i></div><div class="target-note">Perlu perbaikan</div></div>
+      <div class="domain"><div class="top"><span class="name">Manajemen</span><span class="val lv-low">1,00</span></div><div class="bar"><i class="fill-low" style="width:20%"></i></div><div class="target-note">Prioritas utama</div></div>
+      <div class="domain"><div class="top"><span class="name">Layanan SPBE</span><span class="val lv-good">3,75</span></div><div class="bar"><i class="fill-good" style="width:75%"></i></div><div class="target-note">Sudah di atas target ✓</div></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- PETA PROSES BISNIS — pakai accordion utk meredam kepadatan -->
+<section class="block"><div class="wrap">
+  <div class="section-head">
+    <div class="eyebrow">Tata Kelola</div>
+    <h2 class="h2">Peta Proses Bisnis & Urusan Pemerintahan</h2>
+    <p class="sub">Informasi rinci dikelompokkan & disembunyikan dalam panel agar tidak membanjiri layar. Buka hanya yang Anda butuhkan.</p>
+  </div>
+
+  <details class="acc" open>
+    <summary>🗺️ Apa itu Peta Proses Bisnis? <span class="chev">▾</span></summary>
+    <div class="body">Peta yang menunjukkan <b>bagaimana antar-unit pemerintah bekerja sama</b> untuk menghasilkan layanan, sesuai Permenpan 19/2018. Tujuannya: kerja lebih efisien, tidak tumpang tindih, dan jelas siapa bertanggung jawab.</div>
+  </details>
+  <details class="acc">
+    <summary>📚 34 Urusan Pemerintahan (konkuren) <span class="chev">▾</span></summary>
+    <div class="body">Pendidikan, Kesehatan, Pekerjaan Umum, Sosial, Pangan, Lingkungan Hidup, Adminduk, Pertanian, Perdagangan, Perhubungan, Pariwisata, dan lainnya — total 34 urusan yang jadi dasar layanan. <a href="#">Lihat daftar lengkap →</a></div>
+  </details>
+  <details class="acc">
+    <summary>⚙️ Level Proses Bisnis (Perencanaan → Pengawasan) <span class="chev">▾</span></summary>
+    <div class="body">Perencanaan (4), Pelaksanaan (47), Penganggaran (3), Monitoring & Evaluasi (4), Pelayanan Publik (14), Pengawasan (6).</div>
+  </details>
+</div></section>
+
+<!-- ROADMAP -->
+<section class="block" style="background:#fff;border-top:1px solid var(--line)"><div class="wrap">
+  <div class="section-head">
+    <div class="eyebrow">Rencana</div>
+    <h2 class="h2">Tahapan Transformasi</h2>
+    <p class="sub">Empat fase menuju pemerintahan digital yang matang.</p>
+  </div>
+  <div class="steps">
+    <div class="step active"><div class="num">1</div><h4>Fondasi Data</h4><p>Harmonisasi data 52 perangkat daerah & kerangka kerja.</p><span class="pill now">● Sedang berjalan</span></div>
+    <div class="step"><div class="num">2</div><h4>Peta Proses Bisnis</h4><p>Data nyata & hierarki proses bisnis final.</p><span class="pill next">Berikutnya</span></div>
+    <div class="step"><div class="num">3</div><h4>Fitur Publik</h4><p>Layanan, survei kepuasan, kanal pengguna. Q1 2027.</p><span class="pill next">Direncanakan</span></div>
+    <div class="step"><div class="num">4</div><h4>Dashboard Pemdi</h4><p>Evaluasi mandiri & pemantauan. Q2 2027.</p><span class="pill next">Direncanakan</span></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:24px">
+    <div>
+      <h4>Pemdi Aceh Tengah</h4>
+      <p style="font-size:14px">Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah — tata kelola yang transparan, efisien, dan berorientasi masyarakat.</p>
+    </div>
+    <div><h4>Navigasi</h4><p style="font-size:14px;line-height:2"><a href="#">Layanan</a><br><a href="#">Indeks SPBE</a><br><a href="#">Perangkat Daerah</a></p></div>
+    <div><h4>Kontak</h4><p style="font-size:14px;line-height:2">acehtengahkab.go.id<br>Diskominfo Aceh Tengah</p></div>
+  </div>
+  <div class="fnote"><span>© 2026 Pemdi Aceh Tengah · Lisensi MIT</span><span>Dibangun dengan Next.js · Deploy di Vercel</span></div>
+</div></footer>
+
+</body>
+</html>

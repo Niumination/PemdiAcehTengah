@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="Lambang Pemdi Aceh Tengah">
+  <defs>
+    <linearGradient id="blue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a52b8"/>
+      <stop offset="1" stop-color="#002d6b"/>
+    </linearGradient>
+    <linearGradient id="mtn" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a52b8"/>
+      <stop offset="1" stop-color="#002d6b"/>
+    </linearGradient>
+    <radialGradient id="inner" cx="50%" cy="42%" r="60%">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#eef4ff"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Outer ring -->
+  <circle cx="100" cy="100" r="98" fill="url(#blue)"/>
+  <circle cx="100" cy="100" r="90" fill="none" stroke="#b8860b" stroke-width="3"/>
+  <circle cx="100" cy="100" r="86" fill="none" stroke="#0a52b8" stroke-width="2" opacity=".5"/>
+
+  <!-- Inner disc -->
+  <circle cx="100" cy="100" r="72" fill="url(#inner)"/>
+
+  <!-- Digital network arc (gold) -->
+  <g stroke="#b8860b" stroke-width="2" fill="#b8860b">
+    <path d="M52 96 q48 -58 96 0" fill="none" opacity=".85"/>
+    <circle cx="52" cy="96" r="3.2"/>
+    <circle cx="76" cy="66" r="3.2"/>
+    <circle cx="100" cy="56" r="3.6"/>
+    <circle cx="124" cy="66" r="3.2"/>
+    <circle cx="148" cy="96" r="3.2"/>
+    <line x1="100" y1="56" x2="100" y2="78"/>
+    <circle cx="100" cy="78" r="3"/>
+    <line x1="76" y1="66" x2="88" y2="84"/>
+    <circle cx="88" cy="84" r="2.6"/>
+    <line x1="124" y1="66" x2="112" y2="84"/>
+    <circle cx="112" cy="84" r="2.6"/>
+  </g>
+
+  <!-- Gayo highland mountains -->
+  <path d="M40 138 L72 96 L92 122 L116 84 L140 118 L160 138 Z" fill="url(#mtn)"/>
+  <!-- snow/gold caps -->
+  <path d="M116 84 L108 96 L116 100 L124 96 Z" fill="#b8860b"/>
+  <path d="M72 96 L66 106 L72 110 L78 106 Z" fill="#b8860b"/>
+
+  <!-- Base ground line -->
+  <rect x="40" y="138" width="120" height="4" fill="#b8860b" opacity=".7"/>
+
+  <!-- Monogram AT -->
+  <text x="100" y="160" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif" font-weight="800" font-size="30" fill="#b8860b" letter-spacing="1">AT</text>
+</svg>

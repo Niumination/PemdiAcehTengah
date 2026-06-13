@@ -1,11 +1,13 @@
 {
   "name": "Pemdi Aceh Tengah — Portal Pemerintah Digital",
   "short_name": "Pemdi Aceh Tengah",
+  "description": "Portal transformasi digital tata kelola Pemerintah Kabupaten Aceh Tengah.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#ffffff",
-  "theme_color": "#1f6f43",
+  "theme_color": "#004098",
   "lang": "id",
   "icons": [
     {
@@ -19,6 +21,12 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }
