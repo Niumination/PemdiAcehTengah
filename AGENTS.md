@@ -106,7 +106,7 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 
 | Path | Scope |
 |------|-------|
-| `pages/AGENTS.md` | 13 halaman Next.js (index, glosarium, layanan, pemdi, probis, skm, faq, cari, tanya, opd/[slug], admin, requirement, 404) + 4 API routes — indexing, routing, data flow |
+| `pages/AGENTS.md` | 15 halaman Next.js (index, glosarium, layanan, pemdi, spbe, probis, skm, faq, cari, tanya, opd/index, opd/[slug], admin, requirement, 404) + 6 API routes — indexing, routing, data flow |
 | `pages/api/AGENTS.md` | REST API: opd, spbe, requirement, lapor, skm, admin — GET read + POST write. Admin auth via ADMIN_TOKEN (Bearer). Lihat `lib/adminAuth.js` |
 | `components/AGENTS.md` | 20 React komponen — 12 core (OPDTable, ProbisSection, SpbeGauge, Rekomendasi, DataBadge, DetailModal, SlaBadge, LaporWidget, ScrollTop, Section, Explainer, Accordion) + 5 Fase4 (Accordion, Stepper, GlossaryTooltip) + 4 V2 (Sidebar, AppShell, Modal, ThemeToggle) + Header+Footer+Layout |
 | `styles/AGENTS.md` | CSS architecture — GOV.UK-inspired redesign (#004098), 21KB, mobile-first responsive, JetBrains Mono. Komponen: gov-header, hero, SPBE gauge, PPB hierarchy, accordion, timeline, modal, print styles |
