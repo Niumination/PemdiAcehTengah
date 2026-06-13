@@ -319,6 +319,7 @@ export default function AppShell({ children }) {
       {/* LaporWidget modal — dikontrol dari topbar */}
       <LaporWidget
         externalOpen={showLapor}
+        hideFab
         onExternalClose={() => setShowLapor(false)}
       />
     </div>
