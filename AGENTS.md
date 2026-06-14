@@ -44,7 +44,7 @@ Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah. Transformasi menuju Peme
 || **PWA** | `manifest.json`, icons (192/512 PNG + maskable-512 + apple-touch + SVG), `theme_color: #004098`, `display: standalone`, scope root, +orientation portrait |
 || **Security** | CSP headers (Supabase, Google Fonts), rate limiting, IP hashing (SHA-256), admin Bearer auth. `lib/security.js` |
 || **Admin Dashboard** | `/admin` — protected by `ADMIN_TOKEN` env (Bearer auth). Admin APIs: `/api/admin/laporan` (PATCH status), `/api/admin/skm` (GET all) |
-|| **HEAD** | `6849aaa` — P0-P3: security + tracking + Gayo Civic Digital CSS v3 |
+|| **HEAD** | `f815bc5` — Sprint Redesign Award Level + trust infrastructure + link kebijakan-privasi di navigasi. Merge ke main + deploy Vercel ✅ |
 || **Env Vars** | `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `ADMIN_TOKEN`, `IP_HASH_SALT` |
 
 ## Framework Regulasi — DUA KERANGKA BERBEDA

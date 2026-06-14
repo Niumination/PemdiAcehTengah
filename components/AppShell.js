@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Sidebar from './Sidebar';
 import ThemeToggle from './ThemeToggle';
 import LaporWidget from './LaporWidget';
+import Footer from './Footer';
 
 /* ── Constants ── */
 const SIDEBAR_W = 262;
@@ -315,6 +316,9 @@ export default function AppShell({ children }) {
         >
           {children}
         </main>
+
+        <Footer />
+
       </div>
 
       {/* LaporWidget modal — dikontrol dari topbar */}

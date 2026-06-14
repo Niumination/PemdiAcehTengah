@@ -60,6 +60,7 @@ export default function Home({ data }) {
   const ringkasan = opd.ringkasan;
   const rekomendasi = data.rekomendasi || [];
   const aspek = pemdiData.aspek || [];
+  const totalLayananOpd = 27;
   const [laporId, setLaporId] = useState('');
 
   // Scroll reveal — progressive enhancement
@@ -99,6 +100,37 @@ export default function Home({ data }) {
       <section id="main-content" style={{ position: 'relative', overflow: 'hidden' }}>
         <TopographicBackdrop opacity={0.04} />
         <AwardHero opdData={portalData.opd.daftar} pemdiData={pemdiData} />
+      </section>
+
+      {/* ===== STATS ROW (restored) ===== */}
+      <section className="blk" id="statistik">
+        <div className="stats">
+          <div className="stat glow-card reveal">
+            <div className="ic">🏛️</div>
+            <div className="n">{formatAngka(ringkasan.total_opd)}</div>
+            <div className="l">Perangkat Daerah</div>
+          </div>
+          <div className="stat glow-card reveal d1">
+            <div className="ic">📍</div>
+            <div className="n">{formatAngka(ringkasan.kecamatan)}</div>
+            <div className="l">Kecamatan</div>
+          </div>
+          <div className="stat glow-card reveal d2">
+            <div className="ic">📋</div>
+            <div className="n">{formatAngka(totalLayananOpd)}</div>
+            <div className="l">Layanan Publik</div>
+          </div>
+          <div className="stat glow-card reveal d3">
+            <div className="ic">📊</div>
+            <div className="n">{formatDesimal(spbe.indeks)}</div>
+            <div className="l">Indeks <GlossaryTooltip id="spbe">SPBE</GlossaryTooltip> 2025</div>
+          </div>
+          <div className="stat glow-card reveal d4">
+            <div className="ic">👥</div>
+            <div className="n">{formatAngka(ringkasan.total_asn)}</div>
+            <div className="l">Jumlah ASN</div>
+          </div>
+        </div>
       </section>
 
       {/* ===== 2. QUICK ACTIONS ===== */}
@@ -481,11 +513,6 @@ export default function Home({ data }) {
           </div>
         </div>
       </section>
-
-      <footer className="ft">
-        <span>© 2026 Pemdi Aceh Tengah · Lisensi MIT</span>
-        <span>Dibangun dengan Next.js · Deploy di Vercel</span>
-      </footer>
     </>
   );
 }
