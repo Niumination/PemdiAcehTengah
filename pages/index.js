@@ -4,6 +4,8 @@ import ProbisSection from '@/components/ProbisSection';
 import Rekomendasi from '@/components/Rekomendasi';
 import OPDTable from '@/components/OPDTable';
 import DataBadge from '@/components/DataBadge';
+import AwardHero from '@/components/AwardHero';
+import QuickActions from '@/components/QuickActions';
 import { formatAngka, formatDesimal, gabung } from '@/lib/format';
 import portalData from '@/data/opd.json';
 import pemdiData from '@/data/pemdi.json';
@@ -32,7 +34,35 @@ export default function Home({ data }) {
     <>
       <Head>
         <title>Pemdi Aceh Tengah — Portal Pemerintah Digital Kabupaten Aceh Tengah</title>
+        <meta name="description" content="Portal transformasi digital tata kelola pemerintahan Kabupaten Aceh Tengah menuju Pemerintah Digital (Pemdi) yang transparan, efisien, dan berorientasi pada masyarakat." />
+        <meta property="og:title" content="Pemdi Aceh Tengah — Portal Pemerintah Digital Kabupaten Aceh Tengah" />
+        <meta property="og:description" content="Portal transformasi digital tata kelola pemerintahan Kabupaten Aceh Tengah menuju Pemerintah Digital (Pemdi) yang transparan, efisien, dan berorientasi pada masyarakat." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://pemdi-aceh-tengah.vercel.app/" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Pemdi Aceh Tengah — Portal Pemerintah Digital" />
+        <meta name="twitter:description" content="Portal transformasi digital tata kelola pemerintahan menuju Pemerintah Digital (Pemdi)." />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: 'Pemdi Aceh Tengah',
+              url: 'https://pemdi-aceh-tengah.vercel.app',
+              description: 'Portal transformasi digital tata kelola pemerintahan Kabupaten Aceh Tengah menuju Pemerintah Digital (Pemdi).',
+              potentialAction: {
+                '@type': 'SearchAction',
+                target: 'https://pemdi-aceh-tengah.vercel.app/cari?q={search_term_string}',
+                'query-input': 'required name=search_term_string',
+              },
+            }),
+          }}
+        />
       </Head>
+
+      <AwardHero data={data} />
+      <QuickActions />
 
       {/* ============ HERO ============ */}
       <section className="hero">

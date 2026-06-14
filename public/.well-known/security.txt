@@ -1,0 +1,31 @@
+# Security Policy — Pemdi Aceh Tengah
+# ================================
+
+# Contact information for security reports
+Contact: mailto:diskominfoacehtengah@gmail.com
+Contact: https://github.com/Niumination/PemdiAcehTengah/security/advisories/new
+
+# Encryption key (optional — GPG key if available)
+# Encryption: https://keyserver.ubuntu.com/pks/lookup?op=get&search=...
+
+# Preferred languages
+Preferred-Languages: id, en
+
+# Security disclosure policy
+Policy: https://pemdi-aceh-tengah.vercel.app/.well-known/security.txt
+Policy: https://github.com/Niumination/PemdiAcehTengah/blob/main/SECURITY.md
+
+# Canonical URL
+Canonical: https://pemdi-aceh-tengah.vercel.app/.well-known/security.txt
+
+# Acknowledgments (coming soon)
+# Acknowledgments: https://pemdi-aceh-tengah.vercel.app/.well-known/security-acknowledgments.html
+
+# Expiry date (max 1 year recommended)
+Expires: 2027-06-14T00:00:00.000Z
+
+# HackerOne / Bug bounty (if applicable)
+# Hiring: https://...
+
+# ISO 29147 compliance
+# This document follows the security.txt standard (RFC 9116)

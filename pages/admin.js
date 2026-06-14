@@ -83,6 +83,11 @@ export default function AdminPage() {
 
   useEffect(() => {
     if (loggedIn) {
+      const savedToken = sessionStorage.getItem('admin_token');
+      if (!savedToken) {
+        setLoggedIn(false);
+        return;
+      }
       setLoading(true);
       Promise.all([fetchLaporan(), fetchSkm()]).finally(() => setLoading(false));
     }
@@ -96,6 +101,7 @@ export default function AdminPage() {
         headers: { 'Authorization': `Bearer ${password}` }
       });
       if (res.status === 401) { setLoginError('Token salah!'); return; }
+      if (!res.ok) { setLoginError('Gagal autentikasi: ' + res.status); return; }
       // Simpan password sebagai token Bearer
       sessionStorage.setItem('admin_token', password);
       setLoggedIn(true);
@@ -146,7 +152,7 @@ export default function AdminPage() {
         {/* Header */}
         <header style={{ background: '#1f6f43', color: 'white', padding: '0.75rem 1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <h1 style={{ fontSize: '1.125rem', fontWeight: 600, margin: 0 }}>📊 Admin — Pemdi Aceh Tengah</h1>
-          <button onClick={() => { setLoggedIn(false); sessionStorage.removeItem('admin_token'); }}
+          <button onClick={() => { setLoggedIn(false); sessionStorage.removeItem('admin_token'); setLaporan([]); setSkm([]); setLaporanCount(0); setSkmCount(0); setError(null); }}
             style={{ background: 'rgba(255,255,255,0.2)', border: 'none', color: 'white', padding: '0.5rem 1rem', borderRadius: 6, cursor: 'pointer', fontSize: '0.8125rem' }}>Keluar</button>
         </header>
 

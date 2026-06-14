@@ -68,6 +68,32 @@ export default function Cari({ items }) {
     <>
       <Head>
         <title>{query ? `Pencarian: ${query}` : 'Pencarian'} — Pemdi Aceh Tengah</title>
+        <meta name="description" content="Pencarian portal Pemdi Aceh Tengah — cari OPD, layanan publik, FAQ, dan indikator Pemdi. {statistik} item tersedia." />
+        <meta property="og:title" content={query ? `Pencarian: ${query} — Pemdi Aceh Tengah` : 'Pencarian — Pemdi Aceh Tengah'} />
+        <meta property="og:description" content="Pencarian portal Pemdi Aceh Tengah — cari OPD, layanan publik, FAQ, dan indikator Pemdi." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://pemdi-aceh-tengah.vercel.app/cari" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={query ? `Pencarian: ${query}` : 'Pencarian'} />
+        <meta name="twitter:description" content="Pencarian portal Pemdi Aceh Tengah — cari OPD, layanan publik, FAQ, dan indikator Pemdi." />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebPage',
+              name: 'Pencarian Pemdi Aceh Tengah',
+              description: 'Pencarian portal Pemdi Aceh Tengah — cari OPD, layanan publik, FAQ, dan indikator Pemdi.',
+              url: 'https://pemdi-aceh-tengah.vercel.app/cari',
+              isPartOf: { '@type': 'WebSite', name: 'Pemdi Aceh Tengah', url: 'https://pemdi-aceh-tengah.vercel.app' },
+              potentialAction: {
+                '@type': 'SearchAction',
+                target: 'https://pemdi-aceh-tengah.vercel.app/cari?q={search_term_string}',
+                'query-input': 'required name=search_term_string',
+              },
+            }),
+          }}
+        />
       </Head>
 
       <section style={{ padding: '3rem 0 1.5rem', background: 'linear-gradient(135deg, #1d70b8, #003078)', color: '#fff' }}>
@@ -173,17 +199,23 @@ export default function Cari({ items }) {
   );
 }
 
-/** Simple highlight — wraps matching text in <mark> */
+/**
+ * Safe highlight — React-based, no dangerouslySetInnerHTML.
+ * Returns array of text/mark fragments that JSX renders natively.
+ */
 function highlight(text = '', query) {
   if (!query.trim()) return text;
   const words = query.trim().split(/\s+/).filter(Boolean);
-  let result = text;
-  for (const w of words) {
-    const escaped = w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const re = new RegExp(`(${escaped})`, 'gi');
-    result = result.replace(re, '<mark style="background:#fef08a;border-radius:2px;padding:0 2px;color:#000">$1</mark>');
-  }
-  return <span dangerouslySetInnerHTML={{ __html: result }} />;
+  const escaped = words.map(w => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
+  if (!escaped) return text;
+  const re = new RegExp(`(${escaped})`, 'gi');
+  const parts = text.split(re);
+  return parts.map((part, i) => {
+    if (words.some(w => part.toLowerCase() === w.toLowerCase())) {
+      return <mark key={i} style={{ background: '#fef08a', borderRadius: 2, padding: '0 2px', color: '#000' }}>{part}</mark>;
+    }
+    return part;
+  });
 }
 
 export async function getStaticProps() {

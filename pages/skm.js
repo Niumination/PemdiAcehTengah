@@ -45,6 +45,27 @@ export default function SKMPage() {
       <Head>
         <title>Survei Kepuasan Masyarakat — Pemdi Aceh Tengah</title>
         <meta name="description" content="Survei Kepuasan Masyarakat (SKM) online — Pemerintah Kabupaten Aceh Tengah. PermenPANRB 8/2026 Indikator I19 & I20." />
+        <meta property="og:title" content="Survei Kepuasan Masyarakat — Pemdi Aceh Tengah" />
+        <meta property="og:description" content="Survei Kepuasan Masyarakat (SKM) online — Pemerintah Kabupaten Aceh Tengah. PermenPANRB 8/2026 Indikator I19 & I20." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://pemdi-aceh-tengah.vercel.app/skm" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Survei Kepuasan Masyarakat — Pemdi Aceh Tengah" />
+        <meta name="twitter:description" content="Survei Kepuasan Masyarakat (SKM) online — Pemerintah Kabupaten Aceh Tengah." />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebPage',
+              name: 'Survei Kepuasan Masyarakat Aceh Tengah',
+              description: 'Survei Kepuasan Masyarakat (SKM) online — Pemerintah Kabupaten Aceh Tengah.',
+              url: 'https://pemdi-aceh-tengah.vercel.app/skm',
+              isPartOf: { '@type': 'WebSite', name: 'Pemdi Aceh Tengah', url: 'https://pemdi-aceh-tengah.vercel.app' },
+              about: { '@type': 'GovernmentService', name: 'Survei Kepuasan Masyarakat' },
+            }),
+          }}
+        />
       </Head>
 
       <section className="section-hero-skm">
@@ -71,7 +92,7 @@ export default function SKMPage() {
                 </p>
                 <div className="flex items-center gap-2" style={{ marginTop: '1rem', fontSize: '0.8125rem', color: 'var(--muted)' }}>
                   <span>📊 {skmData.dimensi.length} dimensi penilaian</span>
-                  <span>• 5 skala (1–5)</span>
+                  <span>• 4 skala (1–4)</span>
                   <span>• 2 menit</span>
                 </div>
               </div>

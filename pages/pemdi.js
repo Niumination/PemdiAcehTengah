@@ -188,17 +188,100 @@ function AspectModalContent({ aspek }) {
   );
 }
 
+function ProgressBarVisual({ aspek }) {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginTop: '1rem' }}>
+      {aspek.map((a) => {
+        const pctCurrent = (a.nilai / 5) * 100;
+        const pctTarget = (a.target / 5) * 100;
+        return (
+          <div key={a.id}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', marginBottom: '0.25rem' }}>
+              <span style={{ fontWeight: 600, color: '#333' }}>{a.nama}</span>
+              <span style={{ color: '#505a5f' }}>
+                <span style={{ color: a.warna, fontWeight: 700 }}>{a.nilai}</span>
+                <span style={{ color: '#999' }}> / {a.target}</span>
+              </span>
+            </div>
+            <div style={{ position: 'relative', height: '18px', background: '#e8e8e8', borderRadius: '10px', overflow: 'hidden' }}>
+              {/* Target line */}
+              <div style={{ position: 'absolute', left: `${pctTarget}%`, top: 0, bottom: 0, width: '2px', background: '#1d70b8', zIndex: 2 }} />
+              {/* Current value bar */}
+              <div style={{ width: `${pctCurrent}%`, height: '100%', borderRadius: '10px', background: a.warna, transition: 'width 0.6s ease' }} />
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.625rem', color: '#888', marginTop: '0.15rem' }}>
+              <span>Baseline</span>
+              <span style={{ color: '#1d70b8' }}>🎯 Target {a.target}</span>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function TimelineRoadmap() {
+  const milestones = [
+    { tahun: '2026', label: 'Baseline', indeks: '2.37', predikat: 'Cukup', warna: '#e65100', desc: 'Konversi dari SPBE 2025 — baseline Pemdi pertamà. Penguatan tata kelola, keamanan, dan data.', status: 'Saat Ini' },
+    { tahun: '2027', label: 'Target 2.50', indeks: '2.50+', predikat: 'Baik', warna: '#1d70b8', desc: 'Peningkatan di Tata Kelola (I1-I2), Data (I5-I8), dan Keamanan (I9-I12) via program prioritas.', status: 'Tahap 1' },
+    { tahun: '2028', label: 'Target 3.50+', indeks: '3.50+', predikat: 'Sangat Baik', warna: '#28a197', desc: 'Keterpaduan penuh — interoperabilitas data, GovTech, AI untuk layanan publik, dan kepuasan pengguna tinggi.', status: 'Tahap 2' },
+  ];
+  return (
+    <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center', marginTop: '1.25rem' }}>
+      {milestones.map((m, i) => (
+        <div key={i} style={{
+          flex: '1 1 200px', background: '#fff', border: `2px solid ${m.warna}40`,
+          borderRadius: '10px', padding: '1.25rem', textAlign: 'center',
+          borderTop: `4px solid ${m.warna}`, position: 'relative',
+        }}>
+          <div style={{
+            position: 'absolute', top: '-10px', left: '50%', transform: 'translateX(-50%)',
+            background: m.warna, color: '#fff', fontSize: '0.625rem', fontWeight: 700,
+            padding: '0.15rem 0.75rem', borderRadius: '100px', textTransform: 'uppercase',
+          }}>{m.status}</div>
+          <div style={{ fontSize: '1.75rem', fontWeight: 700, color: m.warna, marginTop: '0.25rem' }}>{m.tahun}</div>
+          <div style={{ fontSize: '2.5rem', fontWeight: 800, color: m.warna, margin: '0.25rem 0' }}>{m.indeks}</div>
+          <div className="badge badge-sm" style={{ background: `${m.warna}18`, color: m.warna, border: `1px solid ${m.warna}40` }}>{m.predikat}</div>
+          <p style={{ fontSize: '0.75rem', color: '#505a5f', marginTop: '0.75rem', lineHeight: 1.5 }}>{m.desc}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function PemdiPage() {
   const { aspek, tentang, target_indeks, target_predikat, baseline_spbe } = pemdiData;
   const indeks = hitungIndeks(aspek);
   const predikat = getPredikat(indeks);
   const [modalAspek, setModalAspek] = useState(null);
 
+  const totalIndikator = aspek.reduce((s, a) => s + a.indikator.length, 0);
+
   return (
     <>
       <Head>
         <title>Indeks Pemdi — Evaluasi Pemerintah Digital Aceh Tengah</title>
         <meta name="description" content="Dashboard Indeks Pemerintah Digital (Pemdi) Aceh Tengah — 7 Aspek × 20 Indikator berdasarkan Permenpan RB 8/2026" />
+        <meta property="og:title" content="Indeks Pemdi — Evaluasi Pemerintah Digital Aceh Tengah" />
+        <meta property="og:description" content="Dashboard Indeks Pemerintah Digital (Pemdi) Aceh Tengah — 7 Aspek × 20 Indikator berdasarkan Permenpan RB 8/2026" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://pemdi-aceh-tengah.vercel.app/pemdi" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Indeks Pemdi — Evaluasi Pemerintah Digital Aceh Tengah" />
+        <meta name="twitter:description" content="Dashboard Indeks Pemerintah Digital (Pemdi) Aceh Tengah — 7 Aspek × 20 Indikator berdasarkan Permenpan RB 8/2026" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebPage',
+              name: 'Indeks Pemdi Aceh Tengah',
+              description: 'Dashboard Indeks Pemerintah Digital (Pemdi) Aceh Tengah — 7 Aspek × 20 Indikator berdasarkan Permenpan RB 8/2026',
+              url: 'https://pemdi-aceh-tengah.vercel.app/pemdi',
+              isPartOf: { '@type': 'WebSite', name: 'Pemdi Aceh Tengah', url: 'https://pemdi-aceh-tengah.vercel.app' },
+            }),
+          }}
+        />
       </Head>
 
       {/* ============ HERO ============ */}
@@ -269,11 +352,81 @@ export default function PemdiPage() {
         </div>
       </section>
 
-      {/* ============ RADAR CHART ============ */}
+      {/* ============ APA ITU PEMDI — STORY SECTION ============ */}
+      <section className="section">
+        <div className="container">
+          <div className="section-header">
+            <h2>📖 Apa itu Pemdi?</h2>
+          </div>
+          <div className="story-section">
+            <div className="card" style={{ padding: '1.5rem', borderLeft: '4px solid #1d70b8', background: '#f8fbff', marginBottom: '1.25rem' }}>
+              <p style={{ fontSize: '0.9375rem', lineHeight: 1.7, color: '#333', margin: 0 }}>
+                <strong>Indeks Pemerintah Digital (Pemdi)</strong> adalah kerangka evaluasi baru pengganti SPBE yang 
+                diatur dalam <strong>PermenPANRB 8/2026</strong>. Pemdi mengukur kematangan transformasi digital 
+                pemerintah daerah melalui <strong>7 aspek</strong> dengan <strong>{totalIndikator} indikator</strong>, 
+                masing-masing memiliki bobot berbeda berdasarkan tingkat kepentingannya.
+              </p>
+            </div>
+            <div className="grid grid-4" style={{ gap: '0.75rem', marginBottom: '1.25rem' }}>
+              <div className="card" style={{ padding: '1rem', textAlign: 'center' }}>
+                <div style={{ fontSize: '1.75rem', fontWeight: 700, color: '#1d70b8' }}>7</div>
+                <div style={{ fontSize: '0.75rem', color: '#505a5f' }}>Aspek Penilaian</div>
+              </div>
+              <div className="card" style={{ padding: '1rem', textAlign: 'center' }}>
+                <div style={{ fontSize: '1.75rem', fontWeight: 700, color: '#1d70b8' }}>{totalIndikator}</div>
+                <div style={{ fontSize: '0.75rem', color: '#505a5f' }}>Indikator</div>
+              </div>
+              <div className="card" style={{ padding: '1rem', textAlign: 'center' }}>
+                <div style={{ fontSize: '1.75rem', fontWeight: 700, color: '#1d70b8' }}>100%</div>
+                <div style={{ fontSize: '0.75rem', color: '#505a5f' }}>Bobot Total</div>
+              </div>
+              <div className="card" style={{ padding: '1rem', textAlign: 'center', border: '1px solid #1d70b8' }}>
+                <div style={{ fontSize: '1.75rem', fontWeight: 700, color: '#1d70b8' }}>2.50</div>
+                <div style={{ fontSize: '0.75rem', color: '#505a5f' }}>🎯 Target 2027</div>
+              </div>
+            </div>
+            <div className="card" style={{ padding: '1.25rem', background: '#fafafa' }}>
+              <h3 style={{ fontSize: '0.9375rem', fontWeight: 600, margin: '0 0 0.75rem' }}>🎯 Bobot Strategis per Aspek</h3>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                {aspek.slice().sort((a, b) => b.bobot - a.bobot).map((a) => (
+                  <div key={a.id} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                    <div style={{ minWidth: '28px', height: '28px', borderRadius: '6px', background: `${a.warna}20`, color: a.warna, fontWeight: 700, fontSize: '0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>{a.bobot}%</div>
+                    <div style={{ flex: 1, fontSize: '0.8125rem', color: '#333' }}>{a.nama}</div>
+                    <div style={{ width: '80px', height: '8px', background: '#e8e8e8', borderRadius: '4px', overflow: 'hidden', flexShrink: 0 }}>
+                      <div style={{ width: `${a.bobot}%`, height: '100%', borderRadius: '4px', background: a.warna }} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <p style={{ fontSize: '0.75rem', color: '#888', marginTop: '0.75rem', marginBottom: 0 }}>
+                💡 Aspek <strong>Kepuasan Pengguna</strong> memiliki bobot terbesar (25%) — fokus pada dampak langsung ke masyarakat.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ PROGRESS BAR PER ASPEK ============ */}
       <section className="section section-alt">
         <div className="container">
           <div className="section-header">
-            <h2>Peta 7 Aspek Pemdi</h2>
+            <h2>📊 Progress per Aspek</h2>
+            <p>Nilai baseline saat ini vs target — garis biru (🎯) adalah target 2027</p>
+          </div>
+          <div className="card" style={{ padding: '1.5rem' }}>
+            <ProgressBarVisual aspek={aspek} />
+          </div>
+          <div style={{ marginTop: '1rem', fontSize: '0.75rem', color: '#888', textAlign: 'center' }}>
+            Skala 1–5 · Baseline rata-rata: {formatDesimal(indeks)} · Gap ke target 2.50: <strong style={{ color: indeks >= 2.5 ? '#00703c' : '#d4351c' }}>{formatDesimal(2.5 - indeks)}</strong>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ RADAR CHART ============ */}
+      <section className="section section-alt" id="radar-chart">
+        <div className="container">
+          <div className="section-header">
+            <h2>📊 Indeks Pemdi Aceh Tengah — Radar Chart</h2>
             <p>Radar — garis merah (nilai baseline), garis biru putus-putus (target 2026)</p>
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', padding: '1rem 0' }}>
@@ -286,6 +439,25 @@ export default function PemdiPage() {
                 <div style={{ fontSize: '0.625rem', color: '#505a5f' }}>{a.bobot}%</div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ TARGET & ROADMAP ============ */}
+      <section className="section" id="target-roadmap">
+        <div className="container">
+          <div className="section-header">
+            <h2>🎯 Target & Roadmap</h2>
+            <p>Jalur peningkatan Indeks Pemdi Aceh Tengah — 2026 hingga 2028</p>
+          </div>
+          <TimelineRoadmap />
+          <div className="card" style={{ marginTop: '1.25rem', padding: '1.25rem', borderLeft: '4px solid #00703c', background: '#f5faf5' }}>
+            <h3 style={{ fontSize: '0.9375rem', fontWeight: 600, margin: '0 0 0.5rem' }}>✅ Strategi Pencapaian</h3>
+            <ul style={{ fontSize: '0.8125rem', lineHeight: 1.7, color: '#333', margin: 0, paddingLeft: '1.25rem' }}>
+              <li><strong>2026 (Baseline):</strong> Dokumentasi baseline, penguatan struktur tata kelola, sertifikasi keamanan dasar</li>
+              <li><strong>2027 (Target 2.50):</strong> Implementasi tata kelola data (I5-I8), peningkatan keamanan (I9-I12), pengembangan aplikasi (I13-I14)</li>
+              <li><strong>2028 (Target 3.50+):</strong> GovTech & API Gateway, interoperabilitas penuh, AI untuk layanan publik, indeks kepuasan &gt; 4.0</li>
+            </ul>
           </div>
         </div>
       </section>

@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import faq from '@/data/faq.json';
+import faqData from '@/data/faq.json';
+import { sanitizeHtml } from '@/lib/safeRichText';
 import { useState } from 'react';
 
 export default function FAQPage() {
@@ -9,7 +10,7 @@ export default function FAQPage() {
 
   const toggle = (id) => setBuka(buka === id ? null : id);
 
-  const semuaQA = faq.kategori.flatMap(k =>
+  const semuaQA = faqData.kategori.flatMap(k =>
     k.pertanyaan.map((q, i) => ({ ...q, kategori: k.nama, kategoriId: k.id, ikon: k.ikon, uid: `${k.id}-${i}` }))
   );
 
@@ -26,8 +27,34 @@ export default function FAQPage() {
       <Head>
         <title>FAQ — Pemdi Aceh Tengah</title>
         <meta name="description" content="Pertanyaan umum seputar Pemerintah Digital Aceh Tengah — portal, layanan, SPBE, Pemdi, dan teknis." />
+        <meta property="og:title" content="FAQ — Pemdi Aceh Tengah" />
+        <meta property="og:description" content="Pertanyaan umum seputar Pemerintah Digital Aceh Tengah — portal, layanan, SPBE, Pemdi, dan teknis." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://pemdi-aceh-tengah.vercel.app/faq" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="FAQ — Pemdi Aceh Tengah" />
+        <meta name="twitter:description" content="Pertanyaan umum seputar Pemerintah Digital Aceh Tengah — portal, layanan, SPBE, Pemdi." />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              name: 'FAQ Pemdi Aceh Tengah',
+              description: 'Pertanyaan umum seputar Pemerintah Digital Aceh Tengah',
+              url: 'https://pemdi-aceh-tengah.vercel.app/faq',
+              isPartOf: { '@type': 'WebSite', name: 'Pemdi Aceh Tengah', url: 'https://pemdi-aceh-tengah.vercel.app' },
+              mainEntity: faqData.kategori.flatMap(k =>
+                k.pertanyaan.map(q => ({
+                  '@type': 'Question',
+                  name: q.tanya,
+                  acceptedAnswer: { '@type': 'Answer', text: q.jawab.replace(/<[^>]*>/g, '') },
+                }))
+              ),
+            }),
+          }}
+        />
       </Head>
-
       <section className="section-hero-faq">
         <div className="container">
           <Link href="/" className="back-link">← Beranda</Link>
@@ -79,7 +106,7 @@ export default function FAQPage() {
                     }}
                   >
                     <div className="faq-answer-inner">
-                      <p dangerouslySetInnerHTML={{ __html: q.jawab }} />
+                      <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(q.jawab) }} />
                     </div>
                   </div>
                 </div>

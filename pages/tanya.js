@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import faqData from '@/data/faq.json';
+import { sanitizeHtml, escapeHtml } from '@/lib/safeRichText';
 
 /* ---------- helpers ---------- */
 function normalise(s) {
@@ -96,6 +97,26 @@ export default function TanyaPage() {
       <Head>
         <title>Tanya Jawab — Pemdi Aceh Tengah</title>
         <meta name="description" content="Asisten virtual portal Pemdi Aceh Tengah. Tanya jawab tentang layanan publik, SPBE, perangkat daerah, dan informasi lainnya." />
+        <meta property="og:title" content="Tanya Jawab — Pemdi Aceh Tengah" />
+        <meta property="og:description" content="Asisten virtual portal Pemdi Aceh Tengah. Tanya jawab tentang layanan publik, SPBE, perangkat daerah, dan informasi lainnya." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://pemdi-aceh-tengah.vercel.app/tanya" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Tanya Jawab — Pemdi Aceh Tengah" />
+        <meta name="twitter:description" content="Asisten virtual portal Pemdi Aceh Tengah. Tanya jawab tentang layanan publik, SPBE, dan informasi lainnya." />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebPage',
+              name: 'Tanya Jawab Pemdi Aceh Tengah',
+              description: 'Asisten virtual portal Pemdi Aceh Tengah. Tanya jawab tentang layanan publik, SPBE, perangkat daerah.',
+              url: 'https://pemdi-aceh-tengah.vercel.app/tanya',
+              isPartOf: { '@type': 'WebSite', name: 'Pemdi Aceh Tengah', url: 'https://pemdi-aceh-tengah.vercel.app' },
+            }),
+          }}
+        />
       </Head>
 
       {/* ====== HERO ====== */}

@@ -183,10 +183,13 @@ const requirementData = {
     { title: 'Diagram Peta Proses Bisnis Level 0 Interaktif', description: 'Online interactive tree di website + PDF untuk cetak/dokumentasi' },
     { title: 'Sistem Informasi PPB (Dashboard Publik)', description: 'Di https://pemdi-aceh-tengah.vercel.app — mode publik: ringkasan per level; mode internal: detail CFM, SOP' },
   ],
-}
+} // end requirementData
+
+import { setCors } from '../../lib/cors';
 
 export default function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*')
-  res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate=600')
-  res.status(200).json(requirementData)
+  setCors(req, res);
+  if (res.headersSent) return;
+  res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate=600');
+  res.status(200).json(requirementData);
 }

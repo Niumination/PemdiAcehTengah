@@ -25,6 +25,26 @@ export default function PetaProsesBisnis({ data }) {
       <Head>
         <title>Peta Proses Bisnis (PPB) — Pemdi Aceh Tengah</title>
         <meta name="description" content="Peta Proses Bisnis Pemkab Aceh Tengah 3 level — Visi-Misi, Urusan, Proses Bisnis OPD. Berdasarkan Permenpan 19/2018 dan RPJMD 2025-2030." />
+        <meta property="og:title" content="Peta Proses Bisnis (PPB) — Pemdi Aceh Tengah" />
+        <meta property="og:description" content="Peta Proses Bisnis Pemkab Aceh Tengah 3 level — Visi-Misi, Urusan, Proses Bisnis OPD. Berdasarkan Permenpan 19/2018." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://pemdi-aceh-tengah.vercel.app/probis" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Peta Proses Bisnis (PPB) — Pemdi Aceh Tengah" />
+        <meta name="twitter:description" content="Peta Proses Bisnis Pemkab Aceh Tengah 3 level — Berdasarkan Permenpan 19/2018." />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebPage',
+              name: 'Peta Proses Bisnis Aceh Tengah',
+              description: 'Peta Proses Bisnis Pemkab Aceh Tengah 3 level — Visi-Misi, Urusan, Proses Bisnis OPD.',
+              url: 'https://pemdi-aceh-tengah.vercel.app/probis',
+              isPartOf: { '@type': 'WebSite', name: 'Pemdi Aceh Tengah', url: 'https://pemdi-aceh-tengah.vercel.app' },
+            }),
+          }}
+        />
       </Head>
 
       {/* ============ HERO ============ */}

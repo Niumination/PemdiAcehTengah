@@ -1,33 +1,27 @@
+import { requireAdmin } from '../../../lib/adminAuth';
 import { supabaseAdmin, isSupabaseReady } from '../../../lib/supabaseAdmin';
-import { requireAdmin, adminUnauthorized } from '../../../lib/adminAuth';
+import { setCors } from '../../../lib/cors';
 
 export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  if (req.method === 'OPTIONS') return res.status(200).end();
+  setCors(req, res);
+  if (res.headersSent) return;
 
-  if (!requireAdmin(req)) {
-    return adminUnauthorized(res);
+  const auth = requireAdmin(req);
+  if (auth) return res.status(401).json(auth);
+
+  if (!isSupabaseReady) {
+    return res.status(503).json({ success: false, error: 'DB belum dikonfigurasi' });
   }
 
-  if (req.method === 'GET') {
-    if (!isSupabaseReady) {
-      return res.status(200).json({ data: [], total: 0, note: 'Supabase belum dikonfigurasi' });
-    }
+  const { limit = 100, offset = 0 } = req.query;
 
-    const { limit = 100, offset = 0 } = req.query;
+  const { data, error, count } = await supabaseAdmin
+    .from('skm')
+    .select('*', { count: 'exact' })
+    .order('dibuat', { ascending: false })
+    .range(Number(offset), Number(offset) + Number(limit) - 1);
 
-    const { data, error, count } = await supabaseAdmin
-      .from('skm')
-      .select('*', { count: 'exact' })
-      .order('dibuat', { ascending: false })
-      .range(Number(offset), Number(offset) + Number(limit) - 1);
+  if (error) return res.status(500).json({ success: false, error: error.message });
 
-    if (error) {
-      return res.status(500).json({ error: error.message });
-    }
-
-    return res.status(200).json({ data, total: count || 0 });
-  }
-
-  return res.status(405).json({ error: 'Method not allowed' });
+  res.status(200).json({ success: true, data, total: count });
 }

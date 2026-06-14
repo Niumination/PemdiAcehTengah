@@ -1,15 +1,12 @@
 import { supabaseAdmin, isSupabaseReady } from '../../lib/supabaseAdmin';
-import {
-  sanitizeText, hashIp, rateLimit, generateLaporId,
-} from '../../lib/security';
+import { sanitizeText, hashIp, rateLimit, generateLaporId } from '../../lib/security';
+import { setCors } from '../../lib/cors';
 
 const KATEGORI_VALID = ['saran', 'keluhan', 'pertanyaan', 'apresiasi', 'bug', 'lainnya', 'layanan', 'portal', 'pungli'];
 
 export default async function handler(req, res) {
-  // CORS
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, PATCH, GET, OPTIONS');
-  if (req.method === 'OPTIONS') return res.status(200).end();
+  setCors(req, res);
+  if (res.headersSent) return;
 
   if (req.method === 'GET') {
     return res.status(405).json({ success: false, error: 'Gunakan /api/admin/laporan' });
@@ -41,8 +38,9 @@ export default async function handler(req, res) {
 
   const { kategori, pesan, kontak, halaman } = req.body;
 
-  // Validasi
-  if (!kategori || !KATEGORI_VALID.includes(kategori)) {
+  // Validasi — accept both 'lain' and 'lainnya'
+  const normalizedKategori = kategori === 'lain' ? 'lainnya' : kategori;
+  if (!normalizedKategori || !KATEGORI_VALID.includes(normalizedKategori)) {
     return res.status(400).json({ success: false, error: 'Kategori tidak valid' });
   }
   if (!pesan || typeof pesan !== 'string') {

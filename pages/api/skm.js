@@ -1,10 +1,12 @@
 import { supabaseAdmin, isSupabaseReady } from '../../lib/supabaseAdmin';
 import { sanitizeText, hashIp, rateLimit } from '../../lib/security';
+import { setCors } from '../../lib/cors';
 
 const UNSUR = ['persyaratan', 'prosedur', 'waktu', 'biaya', 'produk', 'kompetensi', 'perilaku', 'sarana'];
 
 export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', process.env.SITE_ORIGIN || '*');
+  setCors(req, res);
+  if (res.headersSent) return;
 
   // GET — ringkasan SKM
   if (req.method === 'GET') {

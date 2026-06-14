@@ -83,7 +83,7 @@ export default function LaporWidget() {
                     <option value="portal">Masalah Portal/Website</option>
                     <option value="saran">Saran/Masukan</option>
                     <option value="pungli">Indikasi Pungli</option>
-                    <option value="lain">Lainnya</option>
+                    <option value="lainnya">Lainnya</option>
                   </select>
                 </div>
                 <div style={{ marginBottom: '0.75rem' }}>
