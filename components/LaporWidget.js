@@ -1,5 +1,91 @@
 import { useState } from 'react';
 
+const STATUS_MAP = {
+  baru: { label: 'Diterima', icon: '📩' },
+  diproses: { label: 'Diproses', icon: '⚙️' },
+  selesai: { label: 'Selesai', icon: '✅' },
+  ditolak: { label: 'Ditolak', icon: '❌' },
+};
+const STATUS_ORDER = ['baru', 'diproses', 'selesai'];
+
+function LaporanStatusInWidget() {
+  const [trackId, setTrackId] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState(null);
+  const [error, setError] = useState('');
+
+  const cari = async (e) => {
+    e.preventDefault();
+    const id = trackId.trim();
+    if (!id) return;
+    setLoading(true); setError(''); setResult(null);
+    try {
+      const res = await fetch(`/api/lapor?id=${encodeURIComponent(id)}`);
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Laporan tidak ditemukan');
+      setResult(data);
+    } catch (err) { setError(err.message); }
+    finally { setLoading(false); }
+  };
+
+  const statusIndex = (s) => STATUS_ORDER.indexOf(s);
+  const currentIdx = result ? statusIndex(result.status) : -1;
+
+  return (
+    <div style={{ padding: '0.5rem 0' }}>
+      <form onSubmit={cari} style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.75rem' }}>
+        <input type="text" className="lapor-input" style={{ flex: 1 }}
+          placeholder="ID laporan (cth: LAP-XXXXX)"
+          value={trackId} onChange={e => setTrackId(e.target.value)}
+        />
+        <button type="submit" className="btn btn-primary btn-sm" disabled={loading || !trackId.trim()}>
+          {loading ? '⏳' : 'Cek'}
+        </button>
+      </form>
+
+      {error && <div className="lapor-error">{error}</div>}
+
+      {result && (
+        <div>
+          <div style={{ fontWeight: 600, fontSize: '0.875rem', marginBottom: '0.5rem' }}>
+            {result.kategori} <span className={`status-badge ${result.status}`}>{STATUS_MAP[result.status]?.label}</span>
+          </div>
+          <div style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>ID: {result.id}</div>
+          <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.75rem' }}>
+            {STATUS_ORDER.map((s, i) => {
+              const done = i < currentIdx || (result.status === 'selesai' && s === 'selesai');
+              const active = i === currentIdx && result.status !== 'selesai' && result.status !== 'ditolak';
+              const rejected = result.status === 'ditolak' && s === 'diproses';
+              return (
+                <div key={s} style={{
+                  flex: 1, textAlign: 'center', padding: '0.375rem',
+                  borderRadius: '6px', fontSize: '0.75rem',
+                  background: active ? 'var(--primary-light)' : done ? '#e8f5e9' : rejected ? '#ffebee' : 'var(--gray-50)',
+                  color: active ? 'var(--primary)' : done ? '#2e7d32' : rejected ? '#c62828' : 'var(--gray-500)',
+                  fontWeight: active || done || rejected ? 600 : 400,
+                }}>
+                  {STATUS_MAP[s]?.icon} {STATUS_MAP[s]?.label}
+                </div>
+              );
+            })}
+          </div>
+          {result.tanggapan && (
+            <div style={{ marginTop: '0.75rem', padding: '0.5rem', background: 'var(--gray-50)', borderRadius: '6px', fontSize: '0.75rem' }}>
+              <strong>Tanggapan:</strong> {result.tanggapan}
+            </div>
+          )}
+        </div>
+      )}
+
+      {!result && !error && (
+        <p style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>
+          Masukkan ID laporan untuk cek status terkini.
+        </p>
+      )}
+    </div>
+  );
+}
+
 export default function LaporWidget() {
   const [buka, setBuka] = useState(false);
   const [step, setStep] = useState('form'); // form | tracking | done
@@ -117,26 +203,7 @@ export default function LaporWidget() {
               </form>
             )}
 
-            {step === 'tracking' && (
-              <div style={{ padding: '1rem 0' }}>
-                <p style={{ fontSize: '0.8125rem', color: 'var(--muted)', marginBottom: '0.75rem' }}>
-                  Masukkan ID laporan untuk cek status:
-                </p>
-                <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.75rem' }}>
-                  <input
-                    type="text"
-                    className="lapor-input"
-                    style={{ flex: 1 }}
-                    placeholder="Contoh: LAPOR-XXXXXX"
-                  />
-                  <button className="btn btn-outline btn-sm">Cek Status</button>
-                </div>
-                <div style={{ marginTop: '1rem', padding: '0.75rem', background: 'var(--gray-50)', borderRadius: '8px', fontSize: '0.75rem', color: 'var(--muted)' }}>
-                  🔧 Fitur tracking real-time sedang dalam pengembangan.
-                  Saat ini laporan ditindaklanjuti manual oleh Tim Pemda Digital.
-                </div>
-              </div>
-            )}
+            {step === 'tracking' && <LaporanStatusInWidget />}
 
             {step === 'done' && (
               <div style={{ textAlign: 'center', padding: '1rem 0' }}>

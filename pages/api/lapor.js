@@ -8,10 +8,31 @@ export default async function handler(req, res) {
   setCors(req, res);
   if (res.headersSent) return;
 
+  // --- GET: Public tracking by ID ---
   if (req.method === 'GET') {
-    return res.status(405).json({ success: false, error: 'Gunakan /api/admin/laporan' });
+    const { id } = req.query;
+    if (!id || typeof id !== 'string') {
+      return res.status(400).json({ success: false, error: 'Parameter id diperlukan' });
+    }
+
+    if (!isSupabaseReady) {
+      return res.status(503).json({ success: false, error: 'Database belum dikonfigurasi' });
+    }
+
+    const { data, error } = await supabaseAdmin
+      .from('laporan')
+      .select('id, kategori, status, dibuat, updated_at, tanggapan')
+      .eq('id', id)
+      .single();
+
+    if (error || !data) {
+      return res.status(404).json({ success: false, error: 'Laporan tidak ditemukan' });
+    }
+
+    return res.status(200).json({ success: true, ...data });
   }
 
+  // --- PATCH: Update status (admin) ---
   if (req.method === 'PATCH') {
     const { id, status } = req.body;
     if (!id || !['baru','diproses','selesai','ditolak'].includes(status)) {
@@ -25,6 +46,7 @@ export default async function handler(req, res) {
     return res.status(200).json({ success: true, tersimpan: true });
   }
 
+  // --- POST: Submit new laporan ---
   if (req.method !== 'POST') {
     return res.status(405).json({ success: false, error: 'Method not allowed' });
   }
@@ -85,11 +107,12 @@ export default async function handler(req, res) {
     return res.status(201).json({ success: true, data: laporanData, tersimpan: true });
   }
 
-  // Fallback tanpa DB
+  // Fallback tanpa DB — return ID for tracking
   return res.status(201).json({
     success: true,
     data: laporanData,
     tersimpan: false,
-    note: `Laporan tercatat dengan ID ${id}. Tim Pemda Digital akan menindaklanjuti. Penyimpanan permanen akan diaktifkan setelah database terhubung.`,
+    id: laporanData.id,
+    note: `Laporan tercatat dengan ID ${id}. Simpan ID ini untuk lacak status.`,
   });
 }

@@ -83,7 +83,7 @@ export default function LaporanStatus({ onClose }) {
               <div className="tracking-result-header">
                 <div>
                   <div style={{ fontWeight: 600, fontSize: '0.9375rem' }}>
-                    {result.judul || 'Laporan'}
+                    {result.kategori || 'Laporan'}
                   </div>
                   <div className="tracking-id">ID: {result.id}</div>
                 </div>
