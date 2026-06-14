@@ -31,6 +31,12 @@ const menuGroups = [
       { label: 'Glosarium', href: '/glosarium', icon: '📖' },
     ],
   },
+  {
+    label: 'Lainnya',
+    items: [
+      { label: 'Kebijakan Privasi', href: '/kebijakan-privasi', icon: '🔒' },
+    ],
+  },
 ];
 
 /* ── Constants ── */

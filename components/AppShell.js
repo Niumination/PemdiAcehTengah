@@ -25,6 +25,7 @@ const breadcrumbLabels = {
   '/glosarium': 'Glosarium',
   '/cari': 'Cari',
   '/tanya': 'Tanya',
+  '/kebijakan-privasi': 'Kebijakan Privasi',
   '/admin': 'Admin',
   '/requirement': 'Requirements',
 };

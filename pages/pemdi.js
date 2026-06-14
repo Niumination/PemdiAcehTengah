@@ -5,6 +5,9 @@ import Section from '@/components/Section';
 import DetailModal from '@/components/DetailModal';
 import { formatAngka, formatDesimal } from '@/lib/format';
 import pemdiData from '@/data/pemdi.json';
+import ProgressBarVisual from '@/components/ProgressBarVisual';
+import TimelineRoadmap from '@/components/TimelineRoadmap';
+import TopographicBackdrop from '@/components/TopographicBackdrop';
 
 /* ============ HELPERS ============ */
 function hitungIndeks(aspek) {
@@ -132,6 +135,27 @@ export default function PemdiPage() {
   const gap = Math.max(0, target_indeks - indeks);
   const [modalAspek, setModalAspek] = useState(null);
 
+  const milestones = [
+    {
+      tahun: '2026',
+      title: 'Target Indeks Pemdi ≥ 2.50',
+      desc: `Mencapai predikat "${target_predikat}" dalam evaluasi Pemdi pertama. Estimasi saat ini: ${formatDesimal(indeks)}. Gap: ${formatDesimal(gap)}.`,
+      status: 'berjalan',
+    },
+    {
+      tahun: '2027',
+      title: 'Peningkatan ke 3.00',
+      desc: 'Memperkuat aspek Keamanan, Teknologi, dan Data yang masih rendah. Target agar seluruh aspek mencapai ≥ 3.00.',
+      status: 'direncanakan',
+    },
+    {
+      tahun: '2028',
+      title: 'Menuju Predikat Sangat Baik',
+      desc: 'Target nilai ≥ 4.20 (Sangat Baik) dengan penguatan tata kelola Pemdi, perlindungan data pribadi, dan kepuasan pengguna.',
+      status: 'direncanakan',
+    },
+  ];
+
   return (
     <>
       <Head>
@@ -147,8 +171,11 @@ export default function PemdiPage() {
           background: 'linear-gradient(135deg, #004098 0%, #002060 100%)',
           color: 'white',
           padding: '2.5rem 0',
+          position: 'relative',
+          overflow: 'hidden',
         }}
       >
+        <TopographicBackdrop opacity={0.08} />
         <div className="container">
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem', flexWrap: 'wrap' }}>
             <Link href="/" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none', fontSize: '0.875rem' }}>
@@ -329,9 +356,12 @@ export default function PemdiPage() {
                 </p>
 
                 {/* Progress bar */}
-                <div style={{ height: '6px', background: '#e5e5e5', borderRadius: '3px', overflow: 'hidden', marginBottom: '0.5rem' }}>
-                  <div style={{ width: `${(a.nilai / 5) * 100}%`, height: '100%', borderRadius: '3px', background: a.warna, transition: 'width 0.5s ease' }} />
-                </div>
+                <ProgressBarVisual
+                  value={(a.nilai / 5) * 100}
+                  color={a.warna}
+                  height={6}
+                  showLabel={false}
+                />
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <span style={{ fontSize: '0.6875rem', color: '#6b7280' }}>
@@ -399,6 +429,18 @@ export default function PemdiPage() {
                 </div>
               </div>
             ))}
+        </div>
+      </Section>
+
+      {/* ============ TIMELINE ROADMAP ============ */}
+      <Section
+        id="roadmap"
+        title="🗺️ Roadmap Pemdi 2026→2028"
+        subtitle="Langkah strategis menuju Pemerintah Digital yang matang dan berkelanjutan."
+        className="section-alt"
+      >
+        <div className="container" style={{ maxWidth: 720, margin: '0 auto' }}>
+          <TimelineRoadmap milestones={milestones} />
         </div>
       </Section>
 

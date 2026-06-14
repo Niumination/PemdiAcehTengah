@@ -25,6 +25,7 @@ export default function Footer() {
               <li><a href="/probis">Peta Proses Bisnis</a></li>
               <li><a href="/glosarium">Glosarium</a></li>
               <li><a href="#opd">Perangkat Daerah</a></li>
+              <li><a href="/kebijakan-privasi">Kebijakan Privasi</a></li>
             </ul>
           </div>
           <div className="footer-col">

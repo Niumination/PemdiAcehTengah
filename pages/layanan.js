@@ -4,6 +4,8 @@ import { useState, useMemo } from 'react';
 import SlaBadge from '@/components/SlaBadge';
 import { formatAngka, formatDesimal, gabung } from '@/lib/format';
 import layananData from '@/data/layanan.json';
+import ServiceCard from '@/components/ServiceCard';
+import ServiceFinder from '@/components/ServiceFinder';
 
 const STATUS_WARNA = { Aktif: 'badge-green', Nonaktif: 'badge-red', Terbatas: 'badge-orange' };
 
@@ -116,58 +118,7 @@ export default function LayananPage() {
       {/* ============ DAFTAR LAYANAN ============ */}
       <section className="section section-alt" id="daftar">
         <div className="container">
-          {filtered.length === 0 ? (
-            <div className="card" style={{ textAlign: 'center', padding: '3rem 1.5rem' }}>
-              <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🔍</div>
-              <p style={{ fontWeight: 500 }}>Tidak ada layanan ditemukan</p>
-              <p style={{ fontSize: '0.875rem', color: 'var(--muted)' }}>Coba kata kunci lain atau reset filter</p>
-            </div>
-          ) : (
-            <div className="grid grid-3" style={{ gap: '0.75rem' }}>
-              {filtered.map((l, i) => (
-                <div key={i} className="card" style={{ display: 'flex', flexDirection: 'column', borderLeft: `4px solid ${l.warna}`, padding: '1rem 1.25rem' }}>
-                  <div style={{ display: 'flex', gap: '0.875rem', alignItems: 'flex-start' }}>
-                    <span style={{ fontSize: '1.5rem', flexShrink: 0, marginTop: '0.125rem' }}>{l.ikon}</span>
-                    <div style={{ flex: 1 }}>
-                      <div className="flex items-center gap-2 flex-wrap" style={{ marginBottom: '0.25rem' }}>
-                        <h3 style={{ fontSize: '0.9375rem', margin: 0 }}>{l.nama}</h3>
-                        <span className={`badge badge-sm ${STATUS_WARNA[l.status] || 'badge-gray'}`}>{l.status}</span>
-                        {l.online && <span className="badge badge-sm badge-green">Online</span>}
-                      </div>
-                      <p style={{ fontSize: '0.8125rem', color: 'var(--muted)', margin: 0 }}>{l.deskripsi}</p>
-                    </div>
-                  </div>
-                  <div className="flex" style={{ gap: '1.25rem', marginTop: '0.75rem', flexWrap: 'wrap', fontSize: '0.75rem', color: 'var(--muted)' }}>
-                    <span>⏱ {l.waktu}</span>
-                    <span>💰 {l.biaya}</span>
-                    <SlaBadge sla={l.sla} compact={true} />
-                  </div>
-                  <div style={{ fontSize: '0.75rem', marginTop: '0.5rem', color: 'var(--gray-600)' }}>
-                    <span>📌 </span>
-                    {l.kategoriId === 'kecamatan' ? (
-                      <span>{l.kategori}</span>
-                    ) : (
-                      <Link href={`/opd/${kategori.find(k => k.id === l.kategoriId)?.opd_slug || '#'}`}>
-                        {kategori.find(k => k.id === l.kategoriId)?.opd}
-                      </Link>
-                    )}
-                  </div>
-                  {l.persyaratan && (
-                    <details style={{ marginTop: '0.5rem', fontSize: '0.75rem', color: 'var(--muted)' }}>
-                      <summary style={{ cursor: 'pointer', fontWeight: 500, color: 'var(--primary)' }}>📄 Persyaratan</summary>
-                      <p style={{ marginTop: '0.375rem', padding: '0.5rem 0.75rem', background: 'var(--gray-50)', borderRadius: '6px' }}>{l.persyaratan}</p>
-                    </details>
-                  )}
-                </div>
-              ))}
-            </div>
-          )}
-
-          <div className="flex justify-center" style={{ marginTop: '2rem', gap: '0.75rem', flexWrap: 'wrap' }}>
-            <small style={{ color: 'var(--muted)' }}>
-              Menampilkan {formatAngka(filtered.length)} dari {formatAngka(semuaLayanan.length)} layanan
-            </small>
-          </div>
+          <ServiceFinder layanan={filtered} />
         </div>
       </section>
 

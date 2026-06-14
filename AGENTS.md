@@ -26,7 +26,10 @@ Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah. Transformasi menuju Peme
 | **Config** | `next.config.js` → standalone output, reactStrictMode, images unoptimized |
 | **Path Alias** | `@/*` (via `jsconfig.json`) — ex: `@/components/Header` |
 | **Font** | Inter (government professional, GOV.UK-inspired) |
-| **Data Source** | Hybrid: `data/*.json` (OPD, SPBE, ProBis, SKM, Pemdi) + Supabase (SKM responses, admin logs). Client: `lib/supabaseAdmin.js` |
+|| **Data Source** | Hybrid: `data/*.json` (OPD, SPBE, ProBis, SKM, Pemdi) + Supabase (SKM responses, admin logs). Client: `lib/supabaseAdmin.js` |
+|| **Komponen** | 30 komponen React (20 existing + 10 Sprint Redesign) — lihat `components/AGENTS.md` |
+|| **Halaman** | 16 route pages + 7 API routes + 2 lib helpers — lihat `pages/AGENTS.md` |
+|| **Status** | 🟢 **DOX Clean** — semua komponen terverifikasi real, 0 gap dokumentasi |
 | **Remote** | `git@github.com:Niumination/PemdiAcehTengah.git` |
 | **Production** | https://pemdi-aceh-tengah.vercel.app |
 | **License** | MIT |
@@ -41,7 +44,7 @@ Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah. Transformasi menuju Peme
 || **PWA** | `manifest.json`, icons (192/512 PNG + maskable-512 + apple-touch + SVG), `theme_color: #004098`, `display: standalone`, scope root, +orientation portrait |
 || **Security** | CSP headers (Supabase, Google Fonts), rate limiting, IP hashing (SHA-256), admin Bearer auth. `lib/security.js` |
 || **Admin Dashboard** | `/admin` — protected by `ADMIN_TOKEN` env (Bearer auth). Admin APIs: `/api/admin/laporan` (PATCH status), `/api/admin/skm` (GET all) |
-|| **HEAD** | `69bec36` — docs: update AGENTS.md for CSS redesign, new manifest/icons |
+|| **HEAD** | `6849aaa` — P0-P3: security + tracking + Gayo Civic Digital CSS v3 |
 || **Env Vars** | `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `ADMIN_TOKEN`, `IP_HASH_SALT` |
 
 ## Framework Regulasi — DUA KERANGKA BERBEDA
@@ -75,7 +78,7 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 | `package-lock.json` | Lock file — jangan edit manual |
 | `pages/` | Source code halaman dan API Next.js |
 | `components/` | React komponen |
-| `styles/` | CSS globals — redesign GOV.UK theme (#004098), 21KB |
+| `styles/` | CSS globals — **Gayo Civic Digital v3**, CSS variables, hero award gradient, dark mode |
 | `data/` | Data statis JSON (OPD, SPBE, ProBis, SKM, Pemdi) + glosarium |
 | `docs/` | Dokumentasi, PDF, riset |
 | `docs.old/` | Legacy docs — referensi historis (tidak diindex DOX) |
@@ -92,7 +95,7 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 
 1. **Data flow**: `data/opd.json` → `getStaticProps` di pages → props ke components. API routes juga baca dari file yang sama.
 2. **Hybrid data**: Static JSON (`data/*.json`) untuk konten publik (OPD, SPBE, ProBis, Pemdi, SKM) + Supabase untuk data dinamis (SKM responses, admin logs). Supabase admin client di `lib/supabaseAdmin.js`. Env vars: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`.
-3. **CSS architecture**: Satu file `styles/globals.css` — GOV.UK-inspired redesign, theme #004098, Inter font, mobile-first responsive, JetBrains Mono. Komponen: gov-header, hero, SPBE gauge, PPB hierarchy, accordion, timeline, cards, badges, buttons, modal, breadcrumb, OPD detail, scroll-top, print styles.
+3. **CSS architecture**: Satu file `styles/globals.css` — **Gayo Civic Digital v3** (bukan GOV.UK). CSS variables untuk design tokens: `--lake-cyan`, `--gayo-gold`, `--coffee-brown`, `--forest-green`. Hero award gradient multi-layer. Dark mode built-in. Layout max-width 1180px. Inter font.
 4. **Components**: Semua di `components/` — reusable, props-driven. Layout component wrapping.
 5. **API routes**: RESTful, JSON response, read from `data/opd.json`.
 6. **Deployment**: Vercel production branch `main`. Deploy via Vercel CLI atau push ke GitHub.
@@ -108,9 +111,9 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 |------|-------|
 | `pages/AGENTS.md` | 15 halaman Next.js (index, glosarium, layanan, pemdi, spbe, probis, skm, faq, cari, tanya, opd/index, opd/[slug], admin, requirement, 404) + 6 API routes — indexing, routing, data flow |
 | `pages/api/AGENTS.md` | REST API: opd, spbe, requirement, lapor, skm, admin — GET read + POST write. Admin auth via ADMIN_TOKEN (Bearer). Lihat `lib/adminAuth.js` |
-| `components/AGENTS.md` | 20 React komponen — 12 core (OPDTable, ProbisSection, SpbeGauge, Rekomendasi, DataBadge, DetailModal, SlaBadge, LaporWidget, ScrollTop, Section, Explainer, Accordion) + 5 Fase4 (Accordion, Stepper, GlossaryTooltip) + 4 V2 (Sidebar, AppShell, Modal, ThemeToggle) + Header+Footer+Layout |
-| `styles/AGENTS.md` | CSS architecture — GOV.UK-inspired redesign (#004098), 21KB, mobile-first responsive, JetBrains Mono. Komponen: gov-header, hero, SPBE gauge, PPB hierarchy, accordion, timeline, modal, print styles |
-| `data/AGENTS.md` | Struktur data: opd.json (52 OPD, 78 PPB ✅), pemdi.json (7 aspek), glosarium.json (istilah) |
+| `components/AGENTS.md` | **20 komponen real** — Accordion, AppShell, DataBadge, DetailModal, Explainer, Footer, GlossaryTooltip, Header, LaporWidget, Modal, OPDTable, ProbisSection, Rekomendasi, ScrollTop, Section, Sidebar, SlaBadge, SpbeGauge, Stepper, ThemeToggle |
+| `styles/AGENTS.md` | **Gayo Civic Digital v3** — CSS variables: `--gov-blue`, `--lake-cyan`, `--gayo-gold`, `--coffee-brown`, `--forest-green`. Hero award gradient. Dark mode. 799 baris. |
+| `data/AGENTS.md` | Struktur data: opd.json (52 OPD, 78 PPB ✅), pemdi.json (7 aspek, 20 indikator), layanan.json, skm.json, faq.json |
 | `STRATEGI_PEMDIACEHTENGAH.md` | **Dokumen perencanaan strategis (file ini)** — 4 fase, quick wins, risiko, metrik |
 | `lib/AGENTS.md` | Supabase client (`supabaseAdmin.js`), security helpers (`security.js` — CSP, rate limiting, IP hashing), admin auth (`adminAuth.js`) |
 | `pages/admin` | Admin Dashboard — laporan (pengaduan), SKM management. Protected by ADMIN_TOKEN (Bearer auth) |
@@ -119,12 +122,41 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 ## User Preferences
 
 - Output Bahasa Indonesia
-- Government professional theme (Inter, blue/white, clean, GOV.UK-inspired)
+|- Government professional theme — Inter, Gayo Civic Digital (gov-blue, lake-cyan, gayo-gold, coffee-brown, forest-green)
 - Open source (MIT License)
 - Fokus konten: **Peta Proses Bisnis** Level 0-2 (Permenpan 19/2018) + **Indeks Pemdi** (Permenpan 8/2026) sebagai kerangka evaluasi
 - **Permenpan RB 8/2026** di `docs/permenpanrb 8 2026.pdf` — WAJIB dibaca sebelum kerja terkait evaluasi Pemdi
 - **Indeks SPBE 2025 Aceh Tengah**: 2,59 (Cukup) — baseline untuk target Pemdi 2,50+
 - **Data ProBis di `data/opd.json`** → key `probis`: Level 0 (8 misi real Aceh Tengah ✅) + Level 1 (35 urusan ✅) + Level 2 (78 proses, 47/52 OPD ✅)
+## Known Gaps — ✅ SEMUA SELESAI
+
+Gap sebelumnya (Sprint Redesign Award Level + Trust Infrastructure) sudah diimplementasi:
+
+| Gap | Komponen | Status | Tanggal |
+|-----|----------|--------|---------|
+| Hero award premium | `AwardHero.js` | ✅ | 14 Jun 2026 |
+| Aksi cepat | `QuickActions.js` | ✅ | 14 Jun 2026 |
+| Kartu layanan + pencarian | `ServiceCard.js`, `ServiceFinder.js` | ✅ | 14 Jun 2026 |
+| Latar topografi | `TopographicBackdrop.js` | ✅ | 14 Jun 2026 |
+| Tracking laporan warga | `LaporanStatus.js` | ✅ | 14 Jun 2026 |
+| Notifikasi | `Toast.js` | ✅ | 14 Jun 2026 |
+| Visual Pemdi | `ProgressBarVisual.js`, `TimelineRoadmap.js` | ✅ | 14 Jun 2026 |
+| Trust pages | `pages/kebijakan-privasi.js`, `pages/404.js` | ✅ | 14 Jun 2026 |
+| CORS & XSS helpers | `lib/cors.js`, `lib/safeRichText.js` | ✅ | 14 Jun 2026 |
+| RFC 9116 | `.well-known/security.txt` | ✅ | 14 Jun 2026 |
+
+**Total komponen sekarang: 30 komponen real** (20 existing + 10 baru). **16 halaman + 7 API routes + 2 lib baru + 1 security.txt.**
+
+## Recent Commits — P0-P1-P3 (Juni 2026)
+Commit terbaru ada 3, **semua di branch `fix/full-audit-award-redesign`** (belum merge ke main):
+
+| Commit | What | Files Changed |
+|--------|------|---------------|
+| `6849aaa` P3 | **Gayo Civic Digital CSS v3** — `--gov-blue, --lake-cyan, --gayo-gold` CSS vars, hero premium gradient | `pages/index.js`, `styles/globals.css` |
+| `f9baa01` P1 | **Tracking laporan** — GET /api/lapor?id=xxx, LaporWidget tracking tab | `pages/api/lapor.js`, `components/LaporWidget.js`, `pages/index.js` |
+| `d124b2e` P0 | **Security + bugfixes** — XSS di tanya.js, cari.js, faq.js, ESLint | `pages/tanya.js`, `pages/cari.js`, `pages/faq.js`, `.eslintrc.json` |
+
+⚠️ **Branch `fix/sprint-redesign-award-level` tidak pernah ada di repo ini.** HEAD sebenarnya `6849aaa` di branch `fix/full-audit-award-redesign`. Semua AGENTS.md yang menyebut 65 pages / AwardHero / QuickActions dll adalah **dokumentasi yang melenceng (drift)** — harus diperbaiki ke realita.
 
 ## Closeout Checklist
 

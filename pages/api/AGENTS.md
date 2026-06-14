@@ -53,8 +53,24 @@ Digunakan oleh admin untuk mengubah status laporan.
 **Response (200):** `{ "success": true, "tersimpan": true }`
 **Keamanan:** memerlukan Bearer token admin — dicek via `requireAdmin()` dari `lib/adminAuth.js`.
 
-### `GET /api/lapor` — (Redirect)
-Saat ini mengembalikan 405 dengan pesan "Gunakan /api/admin/laporan". Dukungan GET untuk publik akan ditambahkan kemudian.
+### `GET /api/lapor?id=LAPOR-xxx` — Lacak status laporan (BARU)
+**Query params:** `id` (string, required) — ID laporan (format: `LAPOR-xxx`)
+**Response (200):**
+```json
+{
+  "success": true,
+  "data": {
+    "id": "LAPOR-xxx",
+    "kategori": "keluhan",
+    "pesan": "...",
+    "status": "baru|diproses|selesai|ditolak",
+    "dibuat": "2026-06-14T10:00:00.000Z",
+    "diupdate": "2026-06-14T12:00:00.000Z",
+    "respon_admin": "Terima kasih, sedang diproses"
+  }
+}
+```
+**Error (404):** `{ "success": false, "error": "Laporan tidak ditemukan" }`
 
 ### `POST /api/skm` — Kirim survei
 **Request:**
