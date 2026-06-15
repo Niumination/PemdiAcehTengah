@@ -725,7 +725,88 @@ section.blk{margin-bottom:30px;scroll-margin-top:80px}
 .mb-2{margin-bottom:1rem}
 .mt-3{margin-top:1.5rem}
 
-/* ============ 27. RESPONSIVE ============ */
+/* ============ 27. FOOTER ============ */
+/* Footer grid layout — 4 column, compact, gov style */
+.gov-footer{
+  border-top:1px solid var(--line);
+  background:var(--surface);
+  padding:2.5rem 0 1.5rem;
+  margin-top:2rem;
+  color:var(--ink-secondary);
+  font-size:0.82rem;
+}
+.gov-footer .container{
+  max-width:var(--max-width, 1180px);
+  margin:0 auto;
+  padding:0 26px;
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:2rem;
+}
+.footer-brand h4{
+  font-size:1.05rem;
+  margin-bottom:0.4rem;
+  color:var(--ink);
+}
+.footer-brand p{
+  font-size:0.78rem;
+  line-height:1.6;
+  color:var(--ink-secondary);
+  max-width:300px;
+}
+.footer-col h5{
+  font-size:0.78rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  color:var(--muted);
+  margin-bottom:0.75rem;
+}
+.footer-col ul{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+.footer-col li+li{margin-top:0.4rem}
+.footer-col a{
+  color:var(--ink-secondary);
+  text-decoration:none;
+  font-size:0.82rem;
+  transition:color .15s;
+}
+.footer-col a:hover{color:var(--primary);text-decoration:underline}
+.footer-bottom{
+  border-top:1px solid var(--line);
+  margin-top:1.5rem;
+  padding-top:1rem;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:8px;
+  font-size:0.75rem;
+  color:var(--muted);
+}
+
+/* Footer responsive */
+@media(max-width:900px){
+  .footer-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:1.5rem;
+  }
+  .footer-brand{grid-column:1/-1}
+  .footer-brand p{max-width:none}
+}
+@media(max-width:560px){
+  .footer-grid{
+    grid-template-columns:1fr;
+    gap:1.25rem;
+  }
+  .footer-bottom{flex-direction:column;text-align:center}
+}
+
+/* ============ 28. RESPONSIVE ============ */
 
 /* ≤1100px */
 @media(max-width:1100px){
