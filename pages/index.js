@@ -63,6 +63,23 @@ export default function Home({ data }) {
   const totalLayananOpd = 27;
   const [laporId, setLaporId] = useState('');
 
+  // Metadata untuk hero info card
+  const meta = data.metadata || {};
+  const pimpinanStr = meta.pimpinan || '';
+  const parts = pimpinanStr.split('&');
+  const bupati = parts[0]?.replace(/\(Bupati\)/g, '').trim() || 'Drs. Haili Yoga, M.Si.';
+  const wakil = parts[1]?.replace(/\(Wakil Bupati\)/g, '').trim() || 'Muchsin Hasan';
+  const periode = meta.periode || '2025\u20132030';
+
+  // Hitung indeks Pemdi dari 7 aspek × bobot
+  const indeksPemdi = pemdiData?.aspek?.length
+    ? parseFloat(
+        pemdiData.aspek
+          .reduce((sum, a) => sum + (a.nilai || 0) * (a.bobot || 0) / 100, 0)
+          .toFixed(2)
+      )
+    : null;
+
   // Scroll reveal — progressive enhancement
   useEffect(() => {
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -99,7 +116,7 @@ export default function Home({ data }) {
       {/* ===== 1. AWARD HERO ===== */}
       <section id="main-content" style={{ position: 'relative', overflow: 'hidden' }}>
         <TopographicBackdrop opacity={0.04} />
-        <AwardHero opdData={portalData.opd.daftar} pemdiData={pemdiData} />
+        <AwardHero bupati={bupati} wakil={wakil} periode={periode} />
       </section>
 
       {/* ===== STATS ROW (restored) ===== */}
@@ -139,14 +156,132 @@ export default function Home({ data }) {
         <QuickActions />
       </section>
 
-      {/* ===== 3. EXPLAINER ===== */}
+      {/* ===== 3. EXPLAINER — SPBE vs Pemdi ===== */}
       <section className="blk" id="tentang-pemdi">
-        <div className="explainer reveal">
-          <span className="qmark">?</span>
+        <div className="sec-head reveal">
           <div>
-            <b>Apa itu Pemerintah Digital (<GlossaryTooltip id="pemdi">Pemdi</GlossaryTooltip>)?</b>
+            <div className="eyebrow">Ikhtisar Transformasi</div>
+            <h2>Dari SPBE ke Pemerintah Digital</h2>
             <p>
-              Singkatnya: upaya pemerintah daerah <b>memindahkan layanan & tata kelola ke sistem digital</b> agar pelayanan lebih cepat, hemat, dan terbuka untuk warga.
+              SPBE (Sistem Pemerintahan Berbasis Elektronik) bertransisi ke{' '}
+              <GlossaryTooltip id="pemdi">Pemdi</GlossaryTooltip> (Pemerintah Digital){' '}
+              berdasarkan Permenpan RB 8/2026.
+            </p>
+          </div>
+          <Link href="/pemdi" className="link-more">
+            Detail dashboard →
+          </Link>
+        </div>
+        <div className="grid-2">
+          {/* SPBE Card */}
+          <div className="card" style={{ padding: '1.5rem' }}>
+            <div
+              style={{
+                width: 48,
+                height: 48,
+                borderRadius: 13,
+                background: 'rgba(0,64,152,.08)',
+                display: 'grid',
+                placeItems: 'center',
+                fontSize: 24,
+                color: 'var(--primary)',
+                marginBottom: 12,
+              }}
+            >
+              📊
+            </div>
+            <h3 style={{ margin: '0 0 4px', fontSize: 18 }}>Indeks SPBE 2025</h3>
+            <div
+              style={{
+                fontSize: 32,
+                fontWeight: 800,
+                color: 'var(--primary)',
+                letterSpacing: '-.02em',
+                lineHeight: 1.1,
+              }}
+            >
+              {formatDesimal(spbe.indeks)}
+            </div>
+            <div style={{ fontSize: 13, color: 'var(--ink-secondary)', marginBottom: 8 }}>
+              dari 5,00
+            </div>
+            <span className="chip-status" style={{ alignSelf: 'flex-start', marginTop: 0 }}>
+              {spbe.kategori}
+            </span>
+            <p
+              style={{
+                fontSize: 13,
+                color: 'var(--ink-secondary)',
+                margin: '10px 0 0',
+                lineHeight: 1.6,
+              }}
+            >
+              Baseline resmi KemenPANRB — 4 domain, 47 indikator.{' '}
+              Kekuatan di <b>Layanan (3.75)</b>; kelemahan di Manajemen & Tata Kelola.
+            </p>
+          </div>
+
+          {/* Pemdi Card */}
+          <div className="card" style={{ padding: '1.5rem' }}>
+            <div
+              style={{
+                width: 48,
+                height: 48,
+                borderRadius: 13,
+                background: 'rgba(199,154,58,.1)',
+                display: 'grid',
+                placeItems: 'center',
+                fontSize: 24,
+                color: 'var(--gayo-gold)',
+                marginBottom: 12,
+              }}
+            >
+              🚀
+            </div>
+            <h3 style={{ margin: '0 0 4px', fontSize: 18 }}>Indeks Pemdi 2026</h3>
+            <div
+              style={{
+                fontSize: 32,
+                fontWeight: 800,
+                color: 'var(--gayo-gold)',
+                letterSpacing: '-.02em',
+                lineHeight: 1.1,
+              }}
+            >
+              {indeksPemdi !== null ? formatDesimal(indeksPemdi) : '—'}
+            </div>
+            <div style={{ fontSize: 13, color: 'var(--ink-secondary)', marginBottom: 8 }}>
+              dari 5,00
+            </div>
+            <span
+              className="chip-status"
+              style={{
+                alignSelf: 'flex-start',
+                marginTop: 0,
+                background: 'var(--warn-bg)',
+                color: 'var(--warn)',
+              }}
+            >
+              {indeksPemdi !== null && indeksPemdi >= 2.5
+                ? 'Baik'
+                : indeksPemdi !== null && indeksPemdi >= 1.0
+                  ? 'Cukup'
+                  : 'Perlu perbaikan'}
+            </span>
+            <p
+              style={{
+                fontSize: 13,
+                color: 'var(--ink-secondary)',
+                margin: '10px 0 0',
+                lineHeight: 1.6,
+              }}
+            >
+              Framework baru Permenpan 8/2026 — 7 aspek, 20 indikator.{' '}
+              Target{' '}
+              <b>
+                ≥ {formatDesimal(pemdiData.target_indeks)} (Baik)
+              </b>{' '}
+              pada 2028.
             </p>
           </div>
         </div>
