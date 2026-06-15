@@ -215,7 +215,7 @@ export default function AppShell({ children }) {
   /* Close sidebar on route change (mobile) */
   useEffect(() => {
     if (isMobile) setSidebarOpen(false);
-  }, [pathname]);
+  }, [pathname, isMobile]);
 
   const breadcrumbs = getBreadcrumbs(pathname);
 

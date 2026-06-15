@@ -1,3 +1,5 @@
+import Sp4nBanner from './Sp4nBanner';
+
 export default function Footer() {
   return (
     <footer className="gov-footer">
@@ -29,6 +31,7 @@ export default function Footer() {
               <li><a href="https://cekprestasi.acehtengahkab.go.id/spbe/" target="_blank" rel="noopener">SPBE 2025</a></li>
               <li><a href="https://peraturan.bpk.go.id/Details/180164/permen-pan-rb-no-59-tahun-2020" target="_blank" rel="noopener">Permenpan 59/2020</a></li>
               <li><a href="https://peraturan.bpk.go.id/Details/104930/perpres-no-95-tahun-2018" target="_blank" rel="noopener">Perpres 95/2018</a></li>
+              <li><Sp4nBanner variant="footer" /></li>
             </ul>
           </div>
           <div className="footer-col">

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import LaporWidget from './LaporWidget';
 
@@ -265,7 +266,7 @@ export default function Sidebar({ isOpen, onClose }) {
   /* Close drawer on route change (mobile) */
   useEffect(() => {
     if (!isDesktop) onClose?.();
-  }, [pathname]);
+  }, [pathname, isDesktop, onClose]);
 
   /* Determine if a menu item is active */
   const isActive = (href) => {
@@ -307,9 +308,11 @@ export default function Sidebar({ isOpen, onClose }) {
         <div style={styles.inner}>
           {/* Brand */}
           <Link href="/" style={styles.brand} aria-label="Beranda Pemdi Aceh Tengah">
-            <img
+            <Image
               src="/crest-pemdi.svg"
               alt="Lambang Aceh Tengah"
+              width={36}
+              height={36}
               style={styles.crest}
               onError={(e) => { e.target.style.display = 'none'; }}
             />

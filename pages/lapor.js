@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useState } from 'react';
 import TrackerStatus from '@/components/TrackerStatus';
+import Sp4nBanner from '@/components/Sp4nBanner';
 
 const KATEGORI = [
   { value: 'saran', label: '💡 Saran', desc: 'Ide atau usulan perbaikan' },
@@ -37,6 +38,8 @@ export default function LaporPage() {
 
       <section className="section">
         <div className="container" style={{ maxWidth: '700px', margin: '0 auto' }}>
+          <Sp4nBanner />
+
           {/* Tab nav */}
           <div className="lapor-tabs" role="tablist">
             <button
