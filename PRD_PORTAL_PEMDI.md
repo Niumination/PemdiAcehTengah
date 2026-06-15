@@ -561,12 +561,12 @@ Client-side (runtime)
 | F-06 | OPD Detail Pages (52) | 1 | `data/opd.json` |
 
 **Checklist penyelesaian Quick Win:**
-- [ ] Widget rating muncul di semua halaman
-- [ ] Dashboard SKM menampilkan data real-time dari Supabase
-- [ ] Pengguna bisa cek status laporan dengan ID
-- [ ] Banner SP4N LAPOR terpasang
-- [ ] Halaman `/pemdi` menampilkan 20 indikator
-- [ ] 52 halaman OPD bisa diakses di `/opd/{slug}`
+- [x] Widget rating muncul di semua halaman (QW1)
+- [x] Dashboard SKM menampilkan data real-time dari Supabase (QW2)
+- [x] Pengguna bisa cek status laporan dengan ID (QW3)
+- [x] Banner SP4N LAPOR terpasang (QW4)
+- [x] Halaman `/pemdi` menampilkan 20 indikator
+- [x] 52 halaman OPD bisa diakses di `/opd/{slug}`
 
 ### Fase 🛠️ Fondasi (Hari 3-7)
 
