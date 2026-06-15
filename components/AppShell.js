@@ -4,7 +4,6 @@ import Link from 'next/link';
 import Sidebar from './Sidebar';
 import ThemeToggle from './ThemeToggle';
 import LaporWidget from './LaporWidget';
-import RatingWidget from './RatingWidget';
 import Footer from './Footer';
 
 /* ── Constants ── */
@@ -319,9 +318,6 @@ export default function AppShell({ children }) {
         </main>
 
         <Footer />
-
-        {/* Rating Widget — floating di pojok kanan bawah */}
-        <RatingWidget />
 
       </div>
 

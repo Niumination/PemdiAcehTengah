@@ -41,15 +41,3 @@ from public.skm;
 
 alter table public.laporan enable row level security;
 alter table public.skm enable row level security;
-
--- Rating feedback untuk Quick Win #1 (I-20)
-create table if not exists public.rating_feedback (
-  id uuid primary key default gen_random_uuid(),
-  halaman text not null,
-  rating smallint not null check (rating between 1 and 5),
-  komentar text check (char_length(komentar) <= 1000),
-  ip_hash text,
-  dibuat timestamptz not null default now()
-);
-create index if not exists idx_rating_halaman on public.rating_feedback (halaman);
-alter table public.rating_feedback enable row level security;
