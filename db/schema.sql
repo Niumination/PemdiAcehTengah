@@ -53,3 +53,27 @@ create table if not exists public.rating_feedback (
 );
 create index if not exists idx_rating_halaman on public.rating_feedback (halaman);
 alter table public.rating_feedback enable row level security;
+
+-- Fungsi untuk Quick Win #2 — Dashboard SKM
+create or replace function public.skm_per_unit_stats()
+returns table (unit text, rata_rata numeric, jumlah bigint) language sql stable as $$
+  select
+    coalesce(layanan, 'Tidak disebut') as unit,
+    round(avg((persyaratan+prosedur+waktu+biaya+produk+kompetensi+perilaku+sarana)/8.0)::numeric, 2) as rata_rata,
+    count(*)::bigint as jumlah
+  from public.skm
+  group by layanan
+  order by rata_rata desc
+$$;
+
+create or replace function public.skm_tren_bulanan(bulan_terakhir int default 6)
+returns table (bulan text, rata_rata numeric, jumlah bigint) language sql stable as $$
+  select
+    to_char(date_trunc('month', dibuat), 'YYYY-MM') as bulan,
+    round(avg((persyaratan+prosedur+waktu+biaya+produk+kompetensi+perilaku+sarana)/8.0)::numeric, 2) as rata_rata,
+    count(*)::bigint as jumlah
+  from public.skm
+  where dibuat >= date_trunc('month', now()) - (bulan_terakhir || ' months')::interval
+  group by date_trunc('month', dibuat)
+  order by bulan
+$$;
