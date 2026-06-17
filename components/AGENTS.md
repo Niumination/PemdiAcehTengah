@@ -37,7 +37,7 @@ React component library — reusable UI building blocks. All components-driven, 
 |----------|------|--------|--------|-------------|
 | **AwardHero** | `AwardHero.js` | Hero premium award-level dengan Gayo Civic Digital gradient, badge award, CTA buttons, motif Gayo separator | ✅ | `pages/index.js` |
 | **QuickActions** | `QuickActions.js` | 4 action cards (SKM, Lapor, Cari, Tutorial) dengan ikon, deskripsi, navigasi | ✅ | `pages/index.js` |
-| **ServiceCard** | `ServiceCard.js` | Kartu layanan publik — nama, kategori badge, deskripsi truncate, waktu, SLA badge, expand on click | ✅ | `pages/layanan.js` (via ServiceFinder) |
+| **ServiceCard** | `ServiceCard.js` | Kartu layanan publik — nama, kategori badge, deskripsi truncate, **waktu, biaya, persyaratan**, SLA badge, expand on click | ✅ | `pages/layanan.js` (via ServiceFinder) |
 | **ServiceFinder** | `ServiceFinder.js` | Pencarian & filter layanan interaktif — search bar, tag filter kategori, hasil real-time via ServiceCard, empty state | ✅ | `pages/layanan.js` |
 | **TopographicBackdrop** | `TopographicBackdrop.js` | SVG background topografi dekoratif — multi-frequency sine/cosine waves, gradient stroke, IA-7 hidden | ✅ | `pages/index.js`, `pages/pemdi.js` |
 | **LaporanStatus** | `LaporanStatus.js` | Tracking status laporan warga — fetch `/api/lapor?id=xxx`, 3-step timeline, admin response, loading/error states | ✅ | `pages/index.js` |

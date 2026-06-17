@@ -1,7 +1,7 @@
 /**
  * ServiceCard — Kartu layanan publik
  * Props:
- *   layanan — { nama, kategori, deskripsi, slug, waktu, biaya, status, sla }
+ *   layanan — { nama, kategori, deskripsi, slug, waktu, biaya, persyaratan, status, sla }
  *   onClick  — callback saat kartu diklik (opsional)
  */
 import { useState } from 'react';
@@ -16,6 +16,7 @@ export default function ServiceCard({ layanan = {}, onClick }) {
     biaya = '-',
     status = 'Aktif',
     sla = '',
+    persyaratan = '',
   } = layanan;
 
   const truncated = deskripsi.length > 100 ? deskripsi.slice(0, 100) + '…' : deskripsi;
@@ -127,6 +128,11 @@ export default function ServiceCard({ layanan = {}, onClick }) {
           {biaya && (
             <div style={{ fontSize: '0.75rem', color: 'var(--ink-secondary)', marginBottom: '0.25rem' }}>
               💰 Biaya: <strong>{biaya}</strong>
+            </div>
+          )}
+          {persyaratan && (
+            <div style={{ fontSize: '0.75rem', color: 'var(--ink-secondary)', marginBottom: '0.25rem' }}>
+              📋 Syarat: <strong>{persyaratan}</strong>
             </div>
           )}
         </div>
