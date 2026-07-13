@@ -26,7 +26,7 @@ export default async function handler(req, res) {
 
   // Rate limit
   const ipHash = hashIp(req);
-  if (!rateLimit(`skm:${ipHash}`, { max: 3, windowMs: 300000 }).ok) {
+  if (!(await rateLimit(`skm:${ipHash}`, { max: 3, windowMs: 300000 })).ok) {
     return res.status(429).json({ success: false, error: 'Terlalu banyak pengiriman. Coba lagi nanti.' });
   }
 

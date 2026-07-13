@@ -19,7 +19,7 @@ export default async function handler(req, res) {
   if (req.method === 'PATCH') {
     // Admin auth required for status updates
     const adminAuth = await import('@/lib/adminAuth');
-    if (!adminAuth.requireAdmin(req, res)) {
+    if (!(await adminAuth.requireAdmin(req, res))) {
       return adminAuth.adminUnauthorized(res);
     }
     const { id, status } = req.body;
@@ -41,7 +41,7 @@ export default async function handler(req, res) {
   const ip = hashIp(req);
 
   // Rate limit: max 5 post per menit per IP
-  if (!rateLimit(`lapor:${ip}`, { max: 5, windowMs: 60000 }).ok) {
+  if (!(await rateLimit(`lapor:${ip}`, { max: 5, windowMs: 60000 })).ok) {
     return res.status(429).json({ success: false, error: 'Terlalu banyak permintaan. Coba lagi nanti.' });
   }
 

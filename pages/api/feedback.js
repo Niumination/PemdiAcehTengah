@@ -40,7 +40,7 @@ export default async function handler(req, res) {
 
   // Rate limit
   const ipHash = hashIp(req);
-  if (!rateLimit(`feedback:${ipHash}`, { max: 10, windowMs: 300000 }).ok) {
+  if (!(await rateLimit(`feedback:${ipHash}`, { max: 10, windowMs: 300000 })).ok) {
     return res.status(429).json({ success: false, error: 'Terlalu banyak. Coba lagi nanti.' });
   }
 
