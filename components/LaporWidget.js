@@ -58,7 +58,7 @@ export default function LaporWidget({ externalOpen, onExternalClose, hideFab }) 
       document.removeEventListener('keydown', onKey);
       document.body.style.overflow = '';
     };
-  }, [buka, onExternalClose]);
+  }, [buka, onExternalClose, tutup]);
 
   const handleKirim = async (e) => {
     e.preventDefault();

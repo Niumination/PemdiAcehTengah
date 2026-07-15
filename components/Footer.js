@@ -1,3 +1,5 @@
+import Sp4nBanner from './Sp4nBanner';
+
 export default function Footer() {
   return (
     <footer className="gov-footer">

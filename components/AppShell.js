@@ -7,7 +7,6 @@ import Footer from './Footer';
 import ScrollTop from './ScrollTop';
 import LaporWidget from './LaporWidget';
 import RatingWidget from './RatingWidget';
-import Footer from './Footer';
 
 /* ── Constants ── */
 const SIDEBAR_W = 262;
