@@ -251,7 +251,7 @@ export default function PemdiPage() {
                 {predikat.label}
               </span>
               <p style={{ fontSize: '0.6875rem', color: '#9ca3af', marginTop: '0.5rem' }}>
-                7 aspek · 20 indikator
+                7 aspek · 20 indikator · {formatAngka(pemdiData.total_item_bukti)} bukti dukung
               </p>
             </div>
 
@@ -418,7 +418,8 @@ export default function PemdiPage() {
                 </p>
                 <p style={{ fontSize: '0.875rem', color: '#333', lineHeight: 1.6, marginBottom: '1rem' }}>
                   Nilai estimasi: <strong style={{ color: a.warna }}>{formatDesimal(a.nilai)}</strong> / {formatDesimal(a.target)} (target).
-                  Dengan nilai sudah di atas target, portal ini sudah berkontribusi langsung. Bantu kami meningkatkannya dengan mengisi survei.
+                  Belum ada bukti dukung terkumpul — seluruh nilai masih di level Initiate (1.0).
+                  Bantu kami meningkatkannya dengan mengisi survei.
                 </p>
                 <div style={{ textAlign: 'center' }}>
                   <Link
@@ -440,6 +441,136 @@ export default function PemdiPage() {
                 </div>
               </div>
             ))}
+        </div>
+      </Section>
+
+      {/* ============ DASAR HUKUM & DOKUMEN ============ */}
+      <Section
+        id="dasar-hukum"
+        title="📜 Dasar Hukum & Dokumen Pemdi 2026"
+        subtitle="Landasan regulasi dan perangkat kerja Evaluasi Kinerja Pemerintah Digital Kabupaten Aceh Tengah."
+      >
+        <div className="container" style={{ maxWidth: 720, margin: '0 auto' }}>
+          {/* Dasar Hukum */}
+          <h4 style={{ fontSize: '0.9rem', fontWeight: 600, color: '#1d70b8', marginBottom: '0.75rem' }}>
+            Regulasi
+          </h4>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '1.5rem' }}>
+            {pemdiData.dasar_hukum.map((h, i) => (
+              <div key={i} style={{
+                display: 'flex', alignItems: 'flex-start', gap: '0.5rem',
+                fontSize: '0.8rem', color: '#333', lineHeight: 1.5,
+                background: '#f8f9fb', padding: '0.5rem 0.75rem', borderRadius: '6px',
+              }}>
+                <span style={{ color: '#1d70b8', fontWeight: 700, minWidth: '18px' }}>{i + 1}.</span>
+                <span>{h.nama}</span>
+                <span style={{
+                  display: 'inline-block', fontSize: '0.65rem', fontWeight: 600,
+                  background: '#e8f0fe', color: '#1d70b8',
+                  padding: '0.05rem 0.4rem', borderRadius: '3px', whiteSpace: 'nowrap',
+                }}>
+                  {h.singkat}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* Tim Koordinasi */}
+          <h4 style={{ fontSize: '0.9rem', fontWeight: 600, color: '#1d70b8', marginBottom: '0.75rem' }}>
+            Tim Koordinasi Pemdi
+          </h4>
+          <div className="card" style={{ padding: '0.75rem 1rem', marginBottom: '1.5rem' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', fontSize: '0.775rem', color: '#333' }}>
+              <span style={{ minWidth: '110px', fontWeight: 500, color: '#555' }}>Pembina:</span>
+              <span style={{ fontWeight: 600 }}>{pemdiData.tim_koordinasi.pembina}</span>
+            </div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', fontSize: '0.775rem', color: '#333', marginTop: '0.25rem' }}>
+              <span style={{ minWidth: '110px', fontWeight: 500, color: '#555' }}>Ketua:</span>
+              <span style={{ fontWeight: 600 }}>{pemdiData.tim_koordinasi.ketua}</span>
+            </div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', fontSize: '0.775rem', color: '#333', marginTop: '0.25rem' }}>
+              <span style={{ minWidth: '110px', fontWeight: 500, color: '#555' }}>Wakil Ketua:</span>
+              <span style={{ fontWeight: 600 }}>{pemdiData.tim_koordinasi.wakil_ketua}</span>
+            </div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', fontSize: '0.775rem', color: '#333', marginTop: '0.25rem' }}>
+              <span style={{ minWidth: '110px', fontWeight: 500, color: '#555' }}>7 Pokja:</span>
+              <span style={{ fontWeight: 600 }}>
+                {pemdiData.tim_koordinasi.pokja.map(p => p.nama).join(', ')}
+              </span>
+            </div>
+          </div>
+
+          {/* Dokumen Pendukung */}
+          <h4 style={{ fontSize: '0.9rem', fontWeight: 600, color: '#1d70b8', marginBottom: '0.75rem' }}>
+            📁 Dokumen Pendukung Evaluasi
+          </h4>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '1.5rem' }}>
+            {[
+              { nama: 'Daftar Lengkap 177 Bukti Dukung Evaluasi Pemdi (Excel)', file: 'Daftar_Lengkap_Bukti_Dukung_PEMDI_Aceh_Tengah.xlsx' },
+              { nama: 'SK Tim Koordinasi Pemerintah Digital Aceh Tengah 2026', file: 'SK_Tim_Koordinasi_Pemdi_Aceh_Tengah.docx' },
+              { nama: 'SK Sekda tentang Tim Asesor Internal Evaluasi Pemdi 2026', file: 'Draft_SK_Tim_Asesor_Internal_Pemdi.docx' },
+              { nama: 'Nota Dinas Pengantar SK Tim Koordinasi Pemdi', file: 'Nota_Dinas_Pengantar_SK_Pemdi.docx' },
+              { nama: 'Telaahan Staf — Pengesahan SK Tim Koordinasi Pemdi', file: 'Telaahan_Staf_Pengesahan_SK_Pemdi.docx' },
+            ].map((d, i) => (
+              <a
+                key={i}
+                href={`/docs/pemdi-evaluasi-2026/${encodeURIComponent(d.file)}`}
+                style={{
+                  display: 'flex', alignItems: 'center', gap: '0.5rem',
+                  fontSize: '0.8rem', color: '#1d70b8', lineHeight: 1.5,
+                  background: '#e8f0fe', padding: '0.5rem 0.75rem', borderRadius: '6px',
+                  textDecoration: 'none', transition: 'background 0.15s',
+                }}
+                onMouseOver={(e) => e.currentTarget.style.background = '#d0e2f9'}
+                onMouseOut={(e) => e.currentTarget.style.background = '#e8f0fe'}
+                target="_blank"
+                rel="noopener"
+              >
+                <span>📄</span>
+                <span style={{ flex: 1 }}>{d.nama}</span>
+                <span style={{ fontSize: '0.65rem', color: '#6b7280', whiteSpace: 'nowrap' }}>
+                  {i === 0 ? '.xlsx' : '.docx'}
+                </span>
+              </a>
+            ))}
+          </div>
+
+          {/* Statistik Bukti Dukung per Aspek */}
+          <h4 style={{ fontSize: '0.9rem', fontWeight: 600, color: '#1d70b8', marginBottom: '0.75rem' }}>
+            📊 Sebaran Bukti Dukung per Aspek
+          </h4>
+          <div className="card" style={{ padding: '0.75rem 1rem', marginBottom: '0.5rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.4rem', fontSize: '0.725rem', color: '#6b7280', fontWeight: 600 }}>
+              <span>Aspek</span>
+              <span>Item</span>
+            </div>
+            {pemdiData.aspek.map((a) => {
+              const pct = a.total_item ? (a.total_item / pemdiData.total_item_bukti * 100).toFixed(0) : 0;
+              return (
+                <div key={a.id} style={{ marginBottom: '0.3rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <span style={{ fontSize: '0.7rem', color: a.warna, fontWeight: 600, minWidth: '5px' }}>{iconMap[a.id]}</span>
+                    <span style={{ fontSize: '0.75rem', color: '#333', flex: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                      {a.nama}
+                    </span>
+                    <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#1d70b8', minWidth: '28px', textAlign: 'right' }}>
+                      {a.total_item ?? '-'}
+                    </span>
+                  </div>
+                  <div style={{ height: '4px', background: '#e5e7eb', borderRadius: '2px', overflow: 'hidden', marginTop: '0.15rem' }}>
+                    <div style={{ width: `${pct}%`, height: '100%', borderRadius: '2px', background: a.warna }} />
+                  </div>
+                </div>
+              );
+            })}
+            <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid #e5e7eb', paddingTop: '0.4rem', marginTop: '0.3rem', fontSize: '0.75rem', fontWeight: 700, color: '#333' }}>
+              <span>Total</span>
+              <span>{formatAngka(pemdiData.total_item_bukti)} ({formatAngka(pemdiData.total_item_manual)} manual + {formatAngka(pemdiData.total_item_eksternal)} eksternal)</span>
+            </div>
+          </div>
+          <p style={{ fontSize: '0.65rem', color: '#9ca3af', textAlign: 'right', marginTop: '0.25rem', marginBottom: 0 }}>
+            Berdasarkan PermenPANRB 8/2026 — {formatAngka(pemdiData.total_item_bukti)} item bukti dukung ({formatAngka(pemdiData.total_item_manual)} unggah manual, {formatAngka(pemdiData.total_item_eksternal)} nilai eksternal)
+          </p>
         </div>
       </Section>
 
@@ -472,6 +603,7 @@ export default function PemdiPage() {
             Berdasarkan <strong>PermenPANRB 8/2026</strong> tentang Evaluasi Kinerja Pemerintah Digital dan
             Laporan SPBE 2025 Kab. Aceh Tengah (Indeks {formatDesimal(baseline_spbe)} — {baseline_predikat}). Nilai baseline adalah estimasi
             dari konversi data SPBE 2025 ke framework Pemdi 7 aspek × 20 indikator.
+            Dokumen pendukung tersedia di <a href="/pemdi#dasar-hukum" style={{ color: '#1d70b8', textDecoration: 'underline' }}>Dasar Hukum & Dokumen</a>.
             Sumber: Diskominfo Aceh Tengah, Panduan Peningkatan Indeks Pemdi (Juni 2026).
           </p>
         </div>

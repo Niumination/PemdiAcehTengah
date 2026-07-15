@@ -33,3 +33,9 @@ yarn-error.log*
 *.old
 .env*.local
 .env.supabase
+
+# Apple Double
+._*
+
+# Supabase
+.env.supabase

@@ -3,15 +3,10 @@ import Head from 'next/head';
 import Link from 'next/link';
 import GlossaryTooltip from '@/components/GlossaryTooltip';
 import OPDTable from '@/components/OPDTable';
-import AwardHero from '@/components/AwardHero';
-import QuickActions from '@/components/QuickActions';
-import TopographicBackdrop from '@/components/TopographicBackdrop';
-import LaporanStatus from '@/components/LaporanStatus';
-import PPBChain from '@/components/PPBChain';
-import RekomendasiTracker from '@/components/RekomendasiTracker';
 import { formatAngka, formatDesimal } from '@/lib/format';
 import portalData from '@/data/opd.json';
 import pemdiData from '@/data/pemdi.json';
+import layananData from '@/data/layanan.json';
 
 function getLevel(value) {
   if (value >= 3.0) return { color: 'var(--ok)', cls: 'st-ok', label: 'Baik' };
@@ -20,33 +15,33 @@ function getLevel(value) {
 }
 
 const aspekIcons = {
-  'Tata Kelola & Manajemen': '🏛️',
-  'Penyelenggara / SDM Digital': '👩‍💻',
+  'Tata Kelola dan Manajemen': '🏛️',
+  'Penyelenggara': '👩‍💻',
   'Data': '💾',
-  'Keamanan Pemerintah Digital': '🔒',
-  'Teknologi Pemerintah Digital': '⚙️',
-  'Keterpaduan Layanan Digital': '🔗',
-  'Kepuasan Pengguna Layanan Digital': '😊',
+  'Keamanan Pemerintah Digital Siber': '🔒',
+  'Teknologi Digital': '⚙️',
+  'Keterpaduan': '🔗',
+  'Kepuasan Pengguna Layanan Digital Pemerintah': '😊',
 };
 
 const aspekDesk = {
-  'Tata Kelola & Manajemen': 'Aturan & cara mengelola transformasi secara terencana.',
-  'Penyelenggara / SDM Digital': 'Kesiapan & keterampilan ASN menjalankan layanan digital.',
+  'Tata Kelola dan Manajemen': 'Aturan & cara mengelola transformasi secara terencana.',
+  'Penyelenggara': 'Kesiapan ASN & kolaborasi antar OPD dalam layanan digital.',
   'Data': 'Pengelolaan data: akurat, terbuka, dapat dipakai bersama.',
-  'Keamanan Pemerintah Digital': 'Perlindungan sistem & data dari serangan/kebocoran.',
-  'Teknologi Pemerintah Digital': 'Kesiapan aplikasi & infrastruktur pendukung Pemdi.',
-  'Keterpaduan Layanan Digital': 'Seberapa nyambung antar-sistem agar data tak terpisah.',
-  'Kepuasan Pengguna Layanan Digital': 'Seberapa puas warga pada layanan digital (dari survei SKM).',
+  'Keamanan Pemerintah Digital Siber': 'Perlindungan sistem & data dari serangan/kebocoran.',
+  'Teknologi Digital': 'Kesiapan aplikasi & infrastruktur pendukung Pemdi.',
+  'Keterpaduan': 'Seberapa nyambung antar-sistem agar data tak terpisah.',
+  'Kepuasan Pengguna Layanan Digital Pemerintah': 'Seberapa puas warga pada layanan digital (dari survei SKM).',
 };
 
 const aspekSingkat = {
-  'Tata Kelola & Manajemen': 'Tata Kelola',
-  'Penyelenggara / SDM Digital': 'SDM Digital',
+  'Tata Kelola dan Manajemen': 'Tata Kelola',
+  'Penyelenggara': 'Penyelenggara',
   'Data': 'Data',
-  'Keamanan Pemerintah Digital': 'Keamanan',
-  'Teknologi Pemerintah Digital': 'Teknologi',
-  'Keterpaduan Layanan Digital': 'Keterpaduan',
-  'Kepuasan Pengguna Layanan Digital': 'Kepuasan',
+  'Keamanan Pemerintah Digital Siber': 'Keamanan Siber',
+  'Teknologi Digital': 'Teknologi',
+  'Keterpaduan': 'Keterpaduan',
+  'Kepuasan Pengguna Layanan Digital Pemerintah': 'Kepuasan',
 };
 
 const domainNames = {
@@ -60,27 +55,11 @@ export default function Home({ data }) {
   const opd = data.opd;
   const spbe = data.spbe;
   const ringkasan = opd.ringkasan;
+  const layananRingkasan = layananData.ringkasan;
+  const totalLayanan = layananRingkasan?.total_layanan ?? 25;
+  const totalKategoriLayanan = layananRingkasan?.total_kategori ?? 7;
   const rekomendasi = data.rekomendasi || [];
   const aspek = pemdiData.aspek || [];
-  const totalLayananOpd = 27;
-  const [laporId, setLaporId] = useState('');
-
-  // Metadata untuk hero info card
-  const meta = data.metadata || {};
-  const pimpinanStr = meta.pimpinan || '';
-  const parts = pimpinanStr.split('&');
-  const bupati = parts[0]?.replace(/\(Bupati\)/g, '').trim() || 'Drs. Haili Yoga, M.Si.';
-  const wakil = parts[1]?.replace(/\(Wakil Bupati\)/g, '').trim() || 'Muchsin Hasan';
-  const periode = meta.periode || '2025\u20132030';
-
-  // Hitung indeks Pemdi dari 7 aspek × bobot
-  const indeksPemdi = pemdiData?.aspek?.length
-    ? parseFloat(
-        pemdiData.aspek
-          .reduce((sum, a) => sum + (a.nilai || 0) * (a.bobot || 0) / 100, 0)
-          .toFixed(2)
-      )
-    : null;
 
   // Scroll reveal — progressive enhancement
   useEffect(() => {
@@ -113,185 +92,107 @@ export default function Home({ data }) {
         <meta name="description" content="Portal Pemerintah Digital Kabupaten Aceh Tengah. Informasi layanan publik, indeks SPBE & Pemdi, dan partisipasi warga dalam satu portal." />
       </Head>
 
-      <a href="#main-content" className="skip-link">Lompat ke konten utama</a>
-
-      {/* ===== 1. AWARD HERO ===== */}
-      <section id="main-content" style={{ position: 'relative', overflow: 'hidden' }}>
-        <TopographicBackdrop opacity={0.04} />
-        <AwardHero bupati={bupati} wakil={wakil} periode={periode} />
+      {/* ===== 1. HERO ===== */}
+      <section className="hero reveal" id="hero">
+        <span className="pill">🏛️ Portal Resmi Pemerintah Kabupaten Aceh Tengah</span>
+        <h1>Pelayanan publik yang transparan, cepat, dan mudah diakses</h1>
+        <p>
+          Informasi layanan publik, indeks <GlossaryTooltip id="spbe">SPBE</GlossaryTooltip> &{' '}
+          <GlossaryTooltip id="pemdi">Pemdi</GlossaryTooltip>, dan partisipasi warga dalam satu portal.
+        </p>
+        <div className="cta">
+          <Link href="/layanan" className="hbtn solid">📋 Cari Layanan Publik</Link>
+          <Link href="/tanya" className="hbtn ghost">📝 Sampaikan Laporan →</Link>
+        </div>
       </section>
 
-      {/* ===== STATS ROW (restored) ===== */}
+      {/* ===== 2. EXPLAINER ===== */}
+      <section className="blk" id="tentang-pemdi">
+        <div className="explainer reveal">
+          <span className="qmark">?</span>
+          <div>
+            <b>Apa itu Pemerintah Digital (<GlossaryTooltip id="pemdi">Pemdi</GlossaryTooltip>)?</b>
+            <p>
+              Singkatnya: upaya pemerintah daerah <b>memindahkan layanan & tata kelola ke sistem digital</b> agar pelayanan lebih cepat, hemat, dan terbuka untuk warga.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== 3. STAT STRIP ===== */}
       <section className="blk" id="statistik">
         <div className="stats">
-          <div className="stat glow-card reveal">
-            <div className="ic">🏛️</div>
-            <div className="n">{formatAngka(ringkasan.total_opd)}</div>
-            <div className="l">Perangkat Daerah</div>
-          </div>
-          <div className="stat glow-card reveal d1">
-            <div className="ic">📍</div>
-            <div className="n">{formatAngka(ringkasan.kecamatan)}</div>
-            <div className="l">Kecamatan</div>
-          </div>
-          <div className="stat glow-card reveal d2">
-            <div className="ic">📋</div>
-            <div className="n">{formatAngka(totalLayananOpd)}</div>
-            <div className="l">Layanan Publik</div>
-          </div>
-          <div className="stat glow-card reveal d3">
-            <div className="ic">📊</div>
-            <div className="n">{formatDesimal(spbe.indeks)}</div>
-            <div className="l">Indeks <GlossaryTooltip id="spbe">SPBE</GlossaryTooltip> 2025</div>
-          </div>
-          <div className="stat glow-card reveal d4">
-            <div className="ic">👥</div>
-            <div className="n">{formatAngka(ringkasan.total_asn)}</div>
-            <div className="l">Jumlah ASN</div>
-          </div>
+        <div className="stat glow-card reveal">
+          <div className="ic">🏛️</div>
+          <div className="n">{formatAngka(ringkasan.total_opd)}</div>
+          <div className="l">Perangkat Daerah</div>
         </div>
-      </section>
+        <div className="stat glow-card reveal d1">
+          <div className="ic">📍</div>
+          <div className="n">{formatAngka(ringkasan.kecamatan)}</div>
+          <div className="l">Kecamatan</div>
+        </div>
+        <div className="stat glow-card reveal d2">
+          <div className="ic">📋</div>
+          <div className="n">{formatAngka(totalLayanan)}</div>
+          <div className="l">Layanan Publik</div>
+        </div>
+        <div className="stat glow-card reveal d3">
+          <div className="ic">📊</div>
+          <div className="n">{formatDesimal(spbe.indeks)}</div>
+          <div className="l">Indeks <GlossaryTooltip id="spbe">SPBE</GlossaryTooltip> 2025</div>
+        </div>
+        <div className="stat glow-card reveal d4">
+          <div className="ic">👥</div>
+          <div className="n">{formatAngka(ringkasan.total_asn)}</div>
+          <div className="l">Jumlah ASN</div>
+        </div>
+      </div></section>
 
-      {/* ===== 2. QUICK ACTIONS ===== */}
-      <section className="blk reveal" id="quick-actions" style={{ position: 'relative', overflow: 'hidden' }}>
-        <TopographicBackdrop opacity={0.025} />
-        <QuickActions />
-      </section>
-
-      {/* ===== 3. EXPLAINER — SPBE vs Pemdi ===== */}
-      <section className="blk" id="tentang-pemdi">
+      {/* ===== 4. APA YANG INGIN ANDA LAKUKAN? ===== */}
+      <section className="blk" id="layanan">
         <div className="sec-head reveal">
           <div>
-            <div className="eyebrow">Ikhtisar Transformasi</div>
-            <h2>Dari SPBE ke Pemerintah Digital</h2>
-            <p>
-              SPBE (Sistem Pemerintahan Berbasis Elektronik) bertransisi ke{' '}
-              <GlossaryTooltip id="pemdi">Pemdi</GlossaryTooltip> (Pemerintah Digital){' '}
-              berdasarkan Permenpan RB 8/2026.
-            </p>
+            <div className="eyebrow">Untuk Warga</div>
+            <h2>Apa yang ingin Anda lakukan hari ini?</h2>
+            <p>Akses cepat ke hal yang paling sering dibutuhkan masyarakat.</p>
           </div>
-          <Link href="/pemdi" className="link-more">
-            Detail dashboard →
-          </Link>
         </div>
-        <div className="grid-2">
-          {/* SPBE Card */}
-          <div className="card" style={{ padding: '1.5rem' }}>
-            <div
-              style={{
-                width: 48,
-                height: 48,
-                borderRadius: 13,
-                background: 'rgba(0,64,152,.08)',
-                display: 'grid',
-                placeItems: 'center',
-                fontSize: 24,
-                color: 'var(--primary)',
-                marginBottom: 12,
-              }}
-            >
-              📊
-            </div>
-            <h3 style={{ margin: '0 0 4px', fontSize: 18 }}>Indeks SPBE 2025</h3>
-            <div
-              style={{
-                fontSize: 32,
-                fontWeight: 800,
-                color: 'var(--primary)',
-                letterSpacing: '-.02em',
-                lineHeight: 1.1,
-              }}
-            >
-              {formatDesimal(spbe.indeks)}
-            </div>
-            <div style={{ fontSize: 13, color: 'var(--ink-secondary)', marginBottom: 8 }}>
-              dari 5,00
-            </div>
-            <span className="chip-status" style={{ alignSelf: 'flex-start', marginTop: 0 }}>
-              {spbe.kategori}
-            </span>
-            <p
-              style={{
-                fontSize: 13,
-                color: 'var(--ink-secondary)',
-                margin: '10px 0 0',
-                lineHeight: 1.6,
-              }}
-            >
-              Baseline resmi KemenPANRB — 4 domain, 47 indikator.{' '}
-              Kekuatan di <b>Layanan (3.75)</b>; kelemahan di Manajemen & Tata Kelola.
-            </p>
-          </div>
-
-          {/* Pemdi Card */}
-          <div className="card" style={{ padding: '1.5rem' }}>
-            <div
-              style={{
-                width: 48,
-                height: 48,
-                borderRadius: 13,
-                background: 'rgba(199,154,58,.1)',
-                display: 'grid',
-                placeItems: 'center',
-                fontSize: 24,
-                color: 'var(--gayo-gold)',
-                marginBottom: 12,
-              }}
-            >
-              🚀
-            </div>
-            <h3 style={{ margin: '0 0 4px', fontSize: 18 }}>Indeks Pemdi 2026</h3>
-            <div
-              style={{
-                fontSize: 32,
-                fontWeight: 800,
-                color: 'var(--gayo-gold)',
-                letterSpacing: '-.02em',
-                lineHeight: 1.1,
-              }}
-            >
-              {indeksPemdi !== null ? formatDesimal(indeksPemdi) : '—'}
-            </div>
-            <div style={{ fontSize: 13, color: 'var(--ink-secondary)', marginBottom: 8 }}>
-              dari 5,00
-            </div>
-            <span
-              className="chip-status"
-              style={{
-                alignSelf: 'flex-start',
-                marginTop: 0,
-                background: 'var(--warn-bg)',
-                color: 'var(--warn)',
-              }}
-            >
-              {indeksPemdi !== null && indeksPemdi >= 2.5
-                ? 'Baik'
-                : indeksPemdi !== null && indeksPemdi >= 1.0
-                  ? 'Cukup'
-                  : 'Perlu perbaikan'}
-            </span>
-            <p
-              style={{
-                fontSize: 13,
-                color: 'var(--ink-secondary)',
-                margin: '10px 0 0',
-                lineHeight: 1.6,
-              }}
-            >
-              Framework baru Permenpan 8/2026 — 7 aspek, 20 indikator.{' '}
-              Target{' '}
-              <b>
-                ≥ {formatDesimal(pemdiData.target_indeks)} (Baik)
-              </b>{' '}
-              pada 2028.
-            </p>
-          </div>
+        <div className="qa-grid">
+          <Link href="/layanan" className="qa-card glow-card reveal" style={{ textDecoration: 'none' }}>
+            <div className="ic" style={{ background: 'var(--primary-50)', color: 'var(--primary)' }}>📋</div>
+            <h3>Direktori Layanan</h3>
+            <p>{totalLayanan} layanan, {totalKategoriLayanan} kategori — syarat, biaya, & waktu proses.</p>
+            <span className="go">Jelajahi →</span>
+          </Link>
+          <Link href="/skm" className="qa-card glow-card reveal d1" style={{ textDecoration: 'none' }}>
+            <div className="ic" style={{ background: 'var(--ok-bg)', color: 'var(--ok)' }}>📝</div>
+            <h3>Survei Kepuasan</h3>
+            <p>Beri nilai pelayanan (2 menit, anonim).</p>
+            <span className="go">Isi survei →</span>
+          </Link>
+          <button
+            type="button"
+            className="qa-card glow-card reveal d2"
+            onClick={() => window.dispatchEvent(new CustomEvent('pemdi:open-lapor'))}
+            style={{ textDecoration: 'none', border: 'none', textAlign: 'left', width: '100%', font: 'inherit' }}
+          >
+            <div className="ic" style={{ background: 'color-mix(in srgb, #8b5cf6 16%, var(--surface))', color: '#8b5cf6' }}>💬</div>
+            <h3>Lapor / Saran</h3>
+            <p>Sampaikan keluhan atau saran, dapat nomor tiket.</p>
+            <span className="go">Buat laporan →</span>
+          </button>
+          <Link href="/faq" className="qa-card glow-card reveal d3" style={{ textDecoration: 'none' }}>
+            <div className="ic" style={{ background: 'var(--warn-bg)', color: 'var(--warn)' }}>❓</div>
+            <h3>Tanya & FAQ</h3>
+            <p>Jawaban cepat seputar layanan & portal.</p>
+            <span className="go">Lihat FAQ →</span>
+          </Link>
         </div>
       </section>
 
-      {/* ===== 4. INDEKS SPBE ===== */}
-      <section className="blk" id="spbe" style={{ position: 'relative', overflow: 'hidden' }}>
-        <TopographicBackdrop opacity={0.03} />
+      {/* ===== 5. INDEKS SPBE ===== */}
+      <section className="blk" id="spbe">
         <div className="sec-head reveal">
           <div>
             <div className="eyebrow">Transparansi Kinerja</div>
@@ -409,7 +310,62 @@ export default function Home({ data }) {
           <Link href="/probis" className="link-more">Lihat detail →</Link>
         </div>
 
-        <PPBChain />
+        <details className="acc reveal" open>
+          <summary>
+            <span className="ico">🗺️</span>
+            Apa itu <GlossaryTooltip id="ppb">Peta Proses Bisnis (PPB)</GlossaryTooltip>?
+            <span className="chev">▾</span>
+          </summary>
+          <div className="body">
+            Peta yang menunjukkan <b>bagaimana antar-unit pemerintah bekerja sama</b> menghasilkan layanan — agar efisien, tidak tumpang tindih, dan jelas penanggung jawabnya. Tersusun dalam 3 level sesuai Permenpan 19/2018.
+          </div>
+        </details>
+
+        <details className="acc reveal d1">
+          <summary>
+            <span className="ico">📚</span>
+            34 Urusan Pemerintahan (konkuren)
+            <span className="chev">▾</span>
+          </summary>
+          <div className="body">
+            Dasar dari seluruh layanan pemerintah daerah. 34 urusan konkuren + 6 fungsi penunjang.
+            <div className="tags">
+              {['Pendidikan', 'Kesehatan', 'Pekerjaan Umum', 'Sosial', 'Pangan', 'Lingkungan Hidup', 'Adminduk', 'Pertanian', 'Perdagangan', 'Pariwisata', 'Perhubungan', 'Koperasi', 'Perikanan', '+21 lainnya'].map((t) => (
+                <span className="tag" key={t}>{t}</span>
+              ))}
+            </div>
+          </div>
+        </details>
+
+        <details className="acc reveal d2">
+          <summary>
+            <span className="ico">⚙️</span>
+            Level Proses (Perencanaan → Pengawasan)
+            <span className="chev">▾</span>
+          </summary>
+          <div className="body">
+            <b>6 kategori proses bisnis</b> yang mencakup seluruh siklus tata kelola:
+            Perencanaan (4) · Pelaksanaan (47) · Penganggaran (3) · Monitoring & Evaluasi (4) · Pelayanan Publik (14) · Pengawasan (6).
+          </div>
+        </details>
+
+        <details className="acc reveal d3">
+          <summary>
+            <span className="ico">💡</span>
+            Ringkasan — 34 urusan, 78 proses bisnis
+            <span className="chev">▾</span>
+          </summary>
+          <div className="body">
+            <p style={{ marginBottom: '0.5rem' }}>
+              Peta Proses Bisnis Kabupaten Aceh Tengah disusun dengan 3 level:
+            </p>
+            <ul style={{ paddingLeft: '1.25rem', lineHeight: 1.8 }}>
+              <li><strong>Level 0</strong> — Visi & 8 Misi Pembangunan Daerah</li>
+              <li><strong>Level 1</strong> — 34 Urusan Konkuren Pemerintahan</li>
+              <li><strong>Level 2</strong> — 78 Proses Bisnis (6 kategori) dari 52 OPD</li>
+            </ul>
+          </div>
+        </details>
       </section>
 
       {/* ===== 8. PERANGKAT DAERAH ===== */}
@@ -484,66 +440,8 @@ export default function Home({ data }) {
         </div>
       </section>
 
-      {/* ===== REKOMENDASI PRIORITAS ===== */}
-      <section className="blk" id="rekomendasi" style={{ background: 'var(--bg-2)' }}>
-        <div className="sec-head reveal">
-          <div>
-            <div className="eyebrow">Prioritas Strategis</div>
-            <h2>Rekomendasi Prioritas Pemdi</h2>
-            <p>7 rekomendasi utama untuk mencapai Indeks Pemdi ≥ {formatDesimal(pemdiData.target_indeks)}. Klik item untuk update status.</p>
-          </div>
-        </div>
-        <div style={{ maxWidth: 600, margin: '0 auto' }}>
-          <RekomendasiTracker />
-        </div>
-      </section>
-
-      {/* ===== 8. LAPORAN STATUS ===== */}
-      <section className="blk" id="laporan" style={{ position: 'relative', overflow: 'hidden' }}>
-        <TopographicBackdrop opacity={0.03} />
-        <div className="sec-head reveal">
-          <div>
-            <div className="eyebrow">Tracking Laporan</div>
-            <h2>Status Laporan Warga</h2>
-            <p>Pantau perkembangan laporan atau saran yang sudah Anda sampaikan ke pemerintah.</p>
-          </div>
-        </div>
-        <div className="lapor-track" style={{ maxWidth: 640, margin: '0 auto' }}>
-          <div
-            className="lapor-input-group"
-            style={{
-              display: 'flex',
-              gap: 10,
-              marginBottom: 20,
-              flexWrap: 'wrap',
-            }}
-          >
-            <input
-              type="text"
-              placeholder="Masukkan ID laporan (contoh: LAPOR-xxx)"
-              value={laporId}
-              onChange={(e) => setLaporId(e.target.value)}
-              style={{
-                flex: 1,
-                minWidth: 200,
-                padding: '0.75rem 1rem',
-                borderRadius: 'var(--r)',
-                border: '1px solid var(--line)',
-                background: 'var(--surface)',
-                color: 'var(--ink)',
-                fontFamily: 'var(--font)',
-                fontSize: '0.875rem',
-              }}
-              aria-label="ID Laporan"
-            />
-          </div>
-          <LaporanStatus id={laporId} />
-        </div>
-      </section>
-
-      {/* ===== 9. REKOMENDASI TRANSFORMASI ===== */}
-      <section className="blk" id="rekomendasi" style={{ position: 'relative', overflow: 'hidden' }}>
-        <TopographicBackdrop opacity={0.025} />
+      {/* ===== 10. REKOMENDASI TRANSFORMASI ===== */}
+      <section className="blk" id="rekomendasi">
         <div className="sec-head reveal">
           <div>
             <div className="eyebrow">Prioritas</div>
@@ -609,6 +507,11 @@ export default function Home({ data }) {
           </div>
         </div>
       </section>
+
+      <footer className="ft">
+        <span>© 2026 Pemdi Aceh Tengah · Lisensi MIT</span>
+        <span>Dibangun dengan Next.js · Deploy di Vercel</span>
+      </footer>
     </>
   );
 }

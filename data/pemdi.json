@@ -5,45 +5,91 @@
   "target_predikat": "Baik",
   "baseline_spbe": 2.59,
   "baseline_predikat": "Cukup",
-  "catatan": "Nilai baseline Pemdi merupakan estimasi berbasis konversi dari 47 indikator SPBE 2025 (Laporan Resmi KemenPANRB Jan 2026) dan analisis Panduan Peningkatan Indeks Pemdi Aceh Tengah (Diskominfo, Juni 2026). Beberapa indikator baru Pemdi (PDP, Keamanan Siber, Kriptografi, AI) belum memiliki baseline riil — diberi nilai 1.0 (belum diterapkan). Sumber: SPBE 2025 indeks=2.59, Layanan=3.75, Tata Kelola=1.70, Manajemen=1.00, Kebijakan=2.30.",
+  "total_item_bukti": 177,
+  "total_item_manual": 173,
+  "total_item_eksternal": 4,
+  "dasar_hukum": [
+    {
+      "nama": "Undang-Undang Nomor 11 Tahun 2008 tentang Informasi dan Transaksi Elektronik",
+      "singkat": "UU ITE"
+    },
+    {
+      "nama": "Peraturan Presiden Nomor 95 Tahun 2018 tentang Sistem Pemerintahan Berbasis Elektronik",
+      "singkat": "Perpres 95/2018 (SPBE)"
+    },
+    {
+      "nama": "Peraturan Presiden Nomor 82 Tahun 2023 tentang Percepatan Transformasi Digital dan Keterpaduan Layanan Digital Nasional",
+      "singkat": "Perpres 82/2023"
+    },
+    {
+      "nama": "Peraturan Menteri PANRB Nomor 8 Tahun 2026 tentang Evaluasi Kinerja Pemerintah Digital",
+      "singkat": "PermenPANRB 8/2026 (Pemdi)"
+    },
+    {
+      "nama": "Keputusan Bupati Aceh Tengah Nomor 555/…/DISKOMINFO/2026 tentang Tim Koordinasi Pemerintah Digital (Pemdi)",
+      "singkat": "SK Tim Koordinasi Pemdi 2026"
+    },
+    {
+      "nama": "Keputusan Sekretaris Daerah Kabupaten Aceh Tengah tentang Tim Asesor Internal Evaluasi Kinerja Pemerintah Digital",
+      "singkat": "SK Tim Asesor Internal 2026"
+    }
+  ],
+  "tim_koordinasi": {
+    "pembina": "Bupati Aceh Tengah",
+    "ketua": "Sekretaris Daerah",
+    "wakil_ketua": "Kepala Diskominfo",
+    "sekretaris": "Kabid Layanan E-Government – Diskominfo",
+    "pokja": [
+      { "id": 1, "nama": "Tata Kelola dan Manajemen", "koordinator": "Kepala BAPPEDA" },
+      { "id": 2, "nama": "Penyelenggara", "koordinator": "Kepala BKPSDM; Kepala Bag. Organisasi; Kepala Bag. Hukum" },
+      { "id": 3, "nama": "Data", "koordinator": "Kabid Statistik dan Persandian – Diskominfo" },
+      { "id": 4, "nama": "Keamanan Pemerintah Digital Siber", "koordinator": "Inspektorat; Diskominfo – Bid. Statistik & Persandian" },
+      { "id": 5, "nama": "Teknologi Digital", "koordinator": "Kabid TIK; Kabid Layanan E-Government – Diskominfo" },
+      { "id": 6, "nama": "Keterpaduan", "koordinator": "Kepala Bag. Organisasi; Kepala BAPPEDA; Kabid Layanan E-Government; Kabid TIK; Kabid Statistik & Persandian" },
+      { "id": 7, "nama": "Kepuasan Pengguna Layanan Digital Pemerintah", "koordinator": "Kepala DPMPTSP; Kabid Layanan E-Government – Diskominfo" }
+    ]
+  },
+  "catatan": "⚠️ STATUS: Saat ini BELUM ADA satupun dari 177 item bukti dukung yang terkumpul. Seluruh nilai indikator diset 1.0 (Initiate/Kurang) sebagai kondisi awal. Baseline SPBE 2025 = 2.59 (Cukup) dicantumkan sebagai referensi historis, bukan nilai terkini. Dokumen pendukung Evaluasi Pemdi 2026 telah tersedia di repositori: SK Tim Koordinasi, SK Tim Asesor Internal, Nota Dinas Pengantar, Telaahan Staf, dan Daftar Lengkap 177 Bukti Dukung. Tim sedang dalam proses pengumpulan dan produksi bukti dukung untuk mencapai target indeks ≥ 2.50 (Baik).",
   "aspek": [
     {
       "id": 1,
-      "nama": "Tata Kelola & Manajemen",
+      "nama": "Tata Kelola dan Manajemen",
       "singkat": "Tata Kelola",
       "bobot": 10,
       "warna": "#1d70b8",
-      "deskripsi": "Kesiapan tata kelola Pemerintah Digital dan pengelolaan layanan digital pemerintah",
+      "deskripsi": "Kesiapan tata kelola Pemerintah Digital dan pengelolaan layanan digital pemerintah — mencakup perencanaan, penganggaran, arsitektur, dan manajemen risiko",
       "target": 2.5,
-      "nilai": 1.5,
+      "nilai": 1.0,
+      "total_item": 20,
+      "koordinator": "BAPPEDA",
       "indikator": [
         {
           "id": "I1",
-          "nama": "Tata Kelola Pemdi",
+          "nama": "Tingkat Kematangan Tata Kelola Pemerintah Digital",
           "deskripsi": "Kebijakan internal, struktur organisasi, mekanisme koordinasi Pemdi — termasuk Rencana Aksi Pemdi dan Arsitektur Pemdi",
-          "nilai": 1.5,
+          "nilai": 1.0,
           "target": 2.5,
           "bobot": 5,
           "sumber": "Arsitektur SPBE 1.00 + Peta Rencana 1.00 + Kebijakan Tim Koord 3.00 (SPBE 2025)",
-          "kontribusi_portal": "Dokumentasi kebijakan, rencana aksi, arsitektur di publikasikan melalui portal",
+          "kontribusi_portal": "Dokumentasi kebijakan, rencana aksi, arsitektur dipublikasikan melalui portal",
           "penanggung_jawab": {
-            "lead": "Diskominfo",
-            "support": ["Bappeda", "BPKD", "Bagian Organisasi Setda"],
-            "tim": "Tim Arsitektur & Tata Kelola Pemdi"
+            "lead": "BAPPEDA (Koordinator Pokja Tata Kelola & Manajemen)",
+            "support": ["Diskominfo (Kabid Layanan E-Gov)", "Bag. Organisasi", "Tim Koordinasi Pemdi", "seluruh PD"],
+            "tim": "Tim Tata Kelola & Manajemen Pemdi"
           }
         },
         {
           "id": "I2",
-          "nama": "Manajemen Layanan Digital",
-          "deskripsi": "Pengelolaan siklus hidup layanan digital — perencanaan, implementasi, monitoring, dan evaluasi",
-          "nilai": 1.5,
+          "nama": "Tingkat Kematangan Manajemen Layanan Digital Pemerintah",
+          "deskripsi": "Pengelolaan siklus hidup layanan digital — perencanaan, implementasi, monitoring, dan evaluasi layanan",
+          "nilai": 1.0,
           "target": 2.5,
           "bobot": 5,
           "sumber": "Manajemen Risiko 1.00 + Manajemen Layanan 1.00 + Manajemen Perubahan 1.00 (SPBE 2025)",
           "kontribusi_portal": "Portal sebagai platform manajemen layanan digital terpadu",
           "penanggung_jawab": {
-            "lead": "Diskominfo",
-            "support": ["Bappeda", "BPKD", "Bagian Organisasi Setda"],
+            "lead": "BAPPEDA (Koordinator Pokja Tata Kelola & Manajemen)",
+            "support": ["Diskominfo", "BPKD", "Bagian Organisasi"],
             "tim": "Tim Manajemen Layanan Digital"
           }
         }
@@ -51,41 +97,43 @@
     },
     {
       "id": 2,
-      "nama": "Penyelenggara / SDM Digital",
-      "singkat": "SDM Digital",
+      "nama": "Penyelenggara",
+      "singkat": "Penyelenggara",
       "bobot": 10,
       "warna": "#28a197",
-      "deskripsi": "Kompetensi sumber daya manusia dan kolaborasi dalam penerapan Pemdi",
+      "deskripsi": "Kompetensi sumber daya manusia dan kolaborasi lintas OPD dalam penyelenggaraan Pemerintah Digital",
       "target": 2.5,
-      "nilai": 2.0,
+      "nilai": 1.0,
+      "total_item": 32,
+      "koordinator": "BKPSDM; Bag. Organisasi; Bag. Hukum",
       "indikator": [
         {
           "id": "I3",
-          "nama": "Sumber Daya Manusia Pemdi",
+          "nama": "Tingkat Kematangan Sumber Daya Manusia Pemerintah Digital",
           "deskripsi": "Tingkat literasi digital ASN, pemanfaatan AI dan teknologi mutakhir, kompetensi TIK",
-          "nilai": 1.5,
+          "nilai": 1.0,
           "target": 2.5,
           "bobot": 5,
           "sumber": "Kompetensi SDM SPBE 1.00 (SPBE 2025) — masih rendah, perlu program literasi",
           "kontribusi_portal": "Materi literasi digital, panduan penggunaan layanan digital",
           "penanggung_jawab": {
-            "lead": "BKPSDM",
-            "support": ["Bagian Organisasi Setda", "Diskominfo"],
+            "lead": "BKPSDM (Koordinator Pokja Penyelenggara – SDM)",
+            "support": ["Bagian Organisasi", "Diskominfo"],
             "tim": "Tim Pengembangan SDM Digital"
           }
         },
         {
           "id": "I4",
-          "nama": "Kolaborasi Pemdi",
+          "nama": "Tingkat Kematangan Kolaborasi Pemerintah Digital",
           "deskripsi": "Kerja sama antar OPD, dengan instansi pusat, dan pihak lain dalam penyelenggaraan Pemdi",
-          "nilai": 2.5,
+          "nilai": 1.0,
           "target": 2.5,
           "bobot": 5,
           "sumber": "Tim Koordinasi SPBE 3.00 + Kolaborasi SPBE 3.00 (SPBE 2025) — modal baik",
           "kontribusi_portal": "Publikasi data bersama, fitur kolaborasi lintas OPD",
           "penanggung_jawab": {
-            "lead": "Diskominfo",
-            "support": ["Bagian Organisasi Setda", "Bappeda"],
+            "lead": "Bag. Organisasi (Koordinator Pokja Penyelenggara – Kolaborasi)",
+            "support": ["BKPSDM", "Bag. Hukum", "Diskominfo"],
             "tim": "Tim Kolaborasi & Kemitraan Pemdi"
           }
         }
@@ -97,67 +145,69 @@
       "singkat": "Data",
       "bobot": 15,
       "warna": "#d4351c",
-      "deskripsi": "Tata kelola data, informasi geospasial, statistik sektoral, dan perlindungan data pribadi",
+      "deskripsi": "Tata kelola data, informasi geospasial, statistik sektoral, dan perlindungan data pribadi — termasuk indeks SDI, SJIG, EPSS, dan kepatuhan UU PDP",
       "target": 2.5,
-      "nilai": 1.75,
+      "nilai": 1.0,
+      "total_item": 38,
+      "koordinator": "Diskominfo – Bid. Statistik & Persandian",
       "indikator": [
         {
           "id": "I5",
-          "nama": "Tata Kelola Data",
-          "deskripsi": "Penerapan prinsip Satu Data Indonesia, kualitas data, interoperabilitas data",
-          "nilai": 2.0,
+          "nama": "Tingkat Kematangan Tata Kelola Data (Indeks Satu Data Indonesia)",
+          "deskripsi": "Penerapan prinsip Satu Data Indonesia, kualitas data, interoperabilitas data — nilai eksternal dari SDI",
+          "nilai": 1.0,
           "target": 2.5,
           "bobot": 5,
           "sumber": "Kebijakan Manajemen Data 4.00 (SPBE 2025) — kebijakan kuat, implementasi perlu diperkuat",
           "kontribusi_portal": "Publikasi dataset melalui portal, standar SDI",
           "penanggung_jawab": {
-            "lead": "Diskominfo (Walidata)",
-            "support": ["Bappeda", "BPS"],
+            "lead": "Diskominfo – Bid. Statistik & Persandian (Koordinator Pokja Data)",
+            "support": ["Bappeda", "BPS", "seluruh PD"],
             "tim": "Tim Satu Data Indonesia"
           }
         },
         {
           "id": "I6",
-          "nama": "Informasi Geospasial",
-          "deskripsi": "Ketersediaan dan pemanfaatan data geospasial dalam layanan Pemdi",
-          "nilai": 1.5,
+          "nama": "Tingkat Kematangan Penyelenggaraan Informasi Geospasial (Indeks SJIG)",
+          "deskripsi": "Ketersediaan dan pemanfaatan data geospasial dalam layanan Pemdi — nilai eksternal dari BIG",
+          "nilai": 1.0,
           "target": 2.0,
           "bobot": 3,
           "sumber": "Estimasi — dataset BIG belum aktif terintegrasi",
           "kontribusi_portal": "Peta interaktif OPD dan sebaran layanan",
           "penanggung_jawab": {
-            "lead": "Dinas PUPR",
-            "support": ["BIG (Badan Informasi Geospasial)", "Diskominfo"],
+            "lead": "Diskominfo – Bid. Statistik & Persandian",
+            "support": ["BIG (Badan Informasi Geospasial)", "Dinas PUPR"],
             "tim": "Tim Informasi Geospasial"
           }
         },
         {
           "id": "I7",
-          "nama": "Statistik Sektoral",
-          "deskripsi": "Produksi dan publikasi statistik sektoral yang terstandarisasi",
-          "nilai": 1.5,
+          "nama": "Tingkat Kematangan Pembangunan Statistik (Indeks Pembangunan Statistik / EPSS)",
+          "deskripsi": "Produksi dan publikasi statistik sektoral yang terstandarisasi — nilai eksternal dari BPS",
+          "nilai": 1.0,
           "target": 2.0,
           "bobot": 3,
-          "sumber": "Estimasi — perlu koordinasi BPS untuk EPSS (Evaluasi Penyelenggaraan Statistik Sektoral)",
+          "sumber": "Estimasi — perlu koordinasi BPS untuk EPSS",
           "kontribusi_portal": "Publikasi statistik daerah, dashboard data",
           "penanggung_jawab": {
-            "lead": "Diskominfo (Fungsi Statistik)",
+            "lead": "Diskominfo – Bid. Statistik & Persandian",
             "support": ["BPS", "Bappeda"],
             "tim": "Tim Statistik Sektoral"
           }
         },
         {
           "id": "I8",
-          "nama": "Pelindungan Data Pribadi (PDP)",
-          "deskripsi": "Penerapan prinsip PDP dalam layanan digital pemerintah — consent, rights, breach notification",
+          "nama": "Tingkat Kematangan Pelindungan Data Pribadi",
+          "deskripsi": "Penerapan prinsip PDP dalam layanan digital pemerintah — consent, hak subjek data, breach notification, DPIA",
           "nilai": 1.0,
           "target": 2.0,
           "bobot": 4,
-          "sumber": "Indikator baru Pemdi — belum diterapkan di Aceh Tengah. Wajib UU PDP 27/2022",
+          "sumber": "Indikator baru Pemdi — 35 item bukti dukung. Wajib UU PDP 27/2022",
           "kontribusi_portal": "Kebijakan privasi, mekanisme consent, form PDP compliant",
           "penanggung_jawab": {
-            "lead": "Inspektorat",
-            "support": ["Bagian Hukum Setda", "Diskominfo"],
+            "lead": "Diskominfo – Bid. Statistik & Persandian",
+            "support": ["Bagian Hukum", "Inspektorat", "seluruh PD"],
             "tim": "Tim Pelindungan Data Pribadi"
           }
         }
@@ -165,17 +215,19 @@
     },
     {
       "id": 4,
-      "nama": "Keamanan Pemerintah Digital",
-      "singkat": "Keamanan",
+      "nama": "Keamanan Pemerintah Digital Siber",
+      "singkat": "Keamanan Siber",
       "bobot": 15,
       "warna": "#859900",
-      "deskripsi": "Audit keamanan, keamanan siber, kriptografi, dan penanganan insiden",
+      "deskripsi": "Audit keamanan, keamanan siber (IKASANDI), kriptografi, dan penanganan insiden siber",
       "target": 2.5,
       "nilai": 1.0,
+      "total_item": 25,
+      "koordinator": "Inspektorat; Diskominfo – Bid. Statistik & Persandian",
       "indikator": [
         {
           "id": "I9",
-          "nama": "Audit Keamanan Pemdi",
+          "nama": "Tingkat Kematangan Pelaksanaan Audit Keamanan Pemdi & Teknologi Pemdi",
           "deskripsi": "Pelaksanaan audit keamanan secara berkala pada sistem dan infrastruktur Pemdi",
           "nilai": 1.0,
           "target": 2.5,
@@ -183,29 +235,29 @@
           "sumber": "Audit TIK 1.00 — Audit Infrastruktur, Aplikasi, Keamanan semua 1.00 (SPBE 2025)",
           "kontribusi_portal": "Log audit, rekomendasi keamanan",
           "penanggung_jawab": {
-            "lead": "Inspektorat",
+            "lead": "Inspektorat (Koordinator Pokja Keamanan – Audit)",
             "support": ["Diskominfo (Fungsi Persandian)"],
             "tim": "Tim Audit Keamanan TIK"
           }
         },
         {
           "id": "I10",
-          "nama": "Keamanan Siber",
-          "deskripsi": "Penerapan standar keamanan siber nasional pada sistem Pemdi",
+          "nama": "Tingkat Kematangan Keamanan Siber (IKASANDI)",
+          "deskripsi": "Penerapan standar keamanan siber nasional pada sistem Pemdi — indeks IKASANDI",
           "nilai": 1.0,
           "target": 2.5,
           "bobot": 4,
           "sumber": "Estimasi — perlu koordinasi BSSN untuk standardisasi",
           "kontribusi_portal": "HTTPS, CSP, OWASP compliance, security headers",
           "penanggung_jawab": {
-            "lead": "Diskominfo (Fungsi Persandian)",
+            "lead": "Diskominfo – Bid. Statistik & Persandian",
             "support": ["BSSN", "Inspektorat"],
             "tim": "Tim Keamanan Siber"
           }
         },
         {
           "id": "I11",
-          "nama": "Penerapan Kriptografi",
+          "nama": "Tingkat Kematangan Penerapan Kriptografi untuk Keamanan Data (IKASANDI)",
           "deskripsi": "Penggunaan enkripsi dan tanda tangan digital dalam layanan Pemdi",
           "nilai": 1.0,
           "target": 2.5,
@@ -213,22 +265,22 @@
           "sumber": "Estimasi — implementasi TTE (Tanda Tangan Elektronik) belum merata",
           "kontribusi_portal": "HTTPS, enkripsi data pengguna",
           "penanggung_jawab": {
-            "lead": "Diskominfo (Fungsi Persandian)",
+            "lead": "Diskominfo – Bid. Statistik & Persandian",
             "support": ["BSSN"],
             "tim": "Tim Kriptografi & TTE"
           }
         },
         {
           "id": "I12",
-          "nama": "Penanganan Insiden Siber",
+          "nama": "Tingkat Kematangan Kapabilitas Penanganan Insiden Siber (IKASANDI)",
           "deskripsi": "Kesiapan prosedur penanganan insiden keamanan siber — CSIRT, SOP, reporting",
           "nilai": 1.0,
           "target": 2.5,
           "bobot": 4,
-          "sumber": "Estimasi — SOP insiden siber belum terdokumentasi",
+          "sumber": "Estimasi — SOP insiden siber belum terdokumentasi; 7 item bukti dukung",
           "kontribusi_portal": "Dokumentasi prosedur, contact person",
           "penanggung_jawab": {
-            "lead": "Diskominfo (Fungsi Persandian)",
+            "lead": "Diskominfo – Bid. Statistik & Persandian",
             "support": ["BSSN", "Inspektorat"],
             "tim": "Tim CSIRT/TTIS Kabupaten"
           }
@@ -237,32 +289,34 @@
     },
     {
       "id": 5,
-      "nama": "Teknologi Pemerintah Digital",
+      "nama": "Teknologi Digital",
       "singkat": "Teknologi",
       "bobot": 10,
       "warna": "#6f42c1",
-      "deskripsi": "Kesiapan aplikasi dan infrastruktur teknologi pendukung Pemdi",
+      "deskripsi": "Kesiapan aplikasi dan infrastruktur teknologi digital pendukung Pemdi",
       "target": 2.5,
       "nilai": 1.0,
+      "total_item": 18,
+      "koordinator": "Kabid TIK; Kabid Layanan E-Government – Diskominfo",
       "indikator": [
         {
           "id": "I13",
-          "nama": "Aplikasi Pemdi",
+          "nama": "Tingkat Kematangan Aplikasi Pemerintah Digital",
           "deskripsi": "Ketersediaan, kualitas, dan keterpaduan aplikasi pendukung Pemdi",
-          "nilai": 1.5,
+          "nilai": 1.0,
           "target": 2.5,
           "bobot": 5,
           "sumber": "Pembangunan Aplikasi 1.00 (SPBE 2025) + Portal existing sebagai aplikasi utama",
           "kontribusi_portal": "✅ Portal PemdiAcehTengah adalah aplikasi Pemdi utama yang sudah live",
           "penanggung_jawab": {
-            "lead": "Diskominfo",
+            "lead": "Diskominfo – Bid. Layanan E-Government (Koordinator Pokja Teknologi Digital)",
             "support": ["Semua OPD"],
             "tim": "Tim Aplikasi & Sistem Informasi"
           }
         },
         {
           "id": "I14",
-          "nama": "Infrastruktur Pemdi",
+          "nama": "Tingkat Kematangan Infrastruktur Pemerintah Digital",
           "deskripsi": "Infrastruktur TIK — pusat data, jaringan, cloud — yang mendukung Pemdi",
           "nilai": 1.0,
           "target": 2.5,
@@ -270,7 +324,7 @@
           "sumber": "Layanan Pusat Data 2.00, Jaringan Intra 3.00 (SPBE 2025) — perlu peningkatan",
           "kontribusi_portal": "Dokumentasi infrastruktur, SLA layanan",
           "penanggung_jawab": {
-            "lead": "Diskominfo",
+            "lead": "Diskominfo – Bid. Layanan E-Government",
             "support": ["Kemendigi", "BAPPEDA"],
             "tim": "Tim Infrastruktur TIK"
           }
@@ -279,71 +333,73 @@
     },
     {
       "id": 6,
-      "nama": "Keterpaduan Layanan Digital",
+      "nama": "Keterpaduan",
       "singkat": "Keterpaduan",
       "bobot": 15,
       "warna": "#e65100",
-      "deskripsi": "Keterpaduan proses bisnis, integrasi aplikasi, portal layanan, dan interoperabilitas data",
+      "deskripsi": "Keterpaduan proses bisnis, integrasi aplikasi, portal layanan, dan interoperabilitas data lintas sektor",
       "target": 2.5,
-      "nilai": 2.5,
+      "nilai": 1.0,
+      "total_item": 26,
+      "koordinator": "Bag. Organisasi; BAPPEDA; Diskominfo (E-Gov, TIK, Statistik & Persandian)",
       "indikator": [
         {
           "id": "I15",
-          "nama": "Keterpaduan Proses Bisnis",
+          "nama": "Tingkat Kematangan Keterpaduan Proses Bisnis Lintas Sektor",
           "deskripsi": "Keterpaduan proses bisnis lintas unit dan instansi dalam pelayanan Pemdi",
-          "nilai": 2.0,
+          "nilai": 1.0,
           "target": 2.5,
           "bobot": 4,
           "sumber": "Inovasi Proses Bisnis 1.00 (baseline) + PPB Fase 2 yang sudah dikerjakan",
           "kontribusi_portal": "✅ Halaman /probis — PPB 3 level terintegrasi",
           "penanggung_jawab": {
-            "lead": "Bagian Organisasi Setda",
+            "lead": "Bag. Organisasi (Koordinator Pokja Keterpaduan)",
             "support": ["Diskominfo", "Bappeda", "Dinas Perpustakaan & Arsip", "Semua OPD"],
             "tim": "Tim Proses Bisnis & Tata Laksana"
           }
         },
         {
           "id": "I16",
-          "nama": "Integrasi Aplikasi",
+          "nama": "Tingkat Kematangan Integrasi Aplikasi",
           "deskripsi": "Tingkat integrasi antar aplikasi dalam ekosistem Pemdi — API, interoperabilitas",
-          "nilai": 1.5,
+          "nilai": 1.0,
           "target": 2.5,
           "bobot": 4,
           "sumber": "Penghubung Layanan 2.00 (SPBE 2025) — implementasi parsial",
           "kontribusi_portal": "API endpoint Pemdi untuk integrasi data",
           "penanggung_jawab": {
-            "lead": "Diskominfo",
-            "support": ["Semua OPD (Pemilik Aplikasi)"],
+            "lead": "Bag. Organisasi",
+            "support": ["Diskominfo", "Semua OPD (Pemilik Aplikasi)"],
             "tim": "Tim Integrasi Sistem & API"
           }
         },
         {
           "id": "I17",
-          "nama": "Portal Layanan Digital Pemerintah",
+          "nama": "Tingkat Kematangan Portal Layanan Digital Pemerintah",
           "deskripsi": "Ketersediaan portal terpadu yang menjadi titik akses utama layanan digital pemerintah daerah",
-          "nilai": 3.5,
+          "nilai": 1.0,
           "target": 3.5,
           "bobot": 4,
           "sumber": "✅ Layanan SPBE 3.75 (rata-rata layanan administrasi 3.80, publik 3.67). Portal sudah live dan berfungsi",
           "kontribusi_portal": "✅ INI PORTAL KITA — kontribusi langsung dan terukur",
           "penanggung_jawab": {
-            "lead": "Diskominfo",
-            "support": ["Semua OPD (Penyedia Layanan)"],
+            "lead": "Bag. Organisasi",
+            "support": ["Diskominfo", "Semua OPD (Penyedia Layanan)"],
             "tim": "Tim Portal & Layanan Digital"
           }
         },
         {
           "id": "I18",
-          "nama": "Interoperabilitas Data",
+          "nama": "Tingkat Kematangan Interoperabilitas Data",
           "deskripsi": "Kemampuan bertukar data antar sistem secara otomatis dan terstandarisasi",
-          "nilai": 1.5,
+          "nilai": 1.0,
           "target": 2.5,
           "bobot": 3,
           "sumber": "Estimasi — perlu implementasi GovTech/API Gateway",
           "kontribusi_portal": "API endpoint standar SDI, format data terbuka",
           "penanggung_jawab": {
-            "lead": "Diskominfo",
-            "support": ["Bappeda", "Kemendigi"],
+            "lead": "Bag. Organisasi",
+            "support": ["Diskominfo", "Bappeda", "Kemendigi"],
             "tim": "Tim Interoperabilitas & Open Data"
           }
         }
@@ -351,41 +407,43 @@
     },
     {
       "id": 7,
-      "nama": "Kepuasan Pengguna Layanan Digital",
+      "nama": "Kepuasan Pengguna Layanan Digital Pemerintah",
       "singkat": "Kepuasan",
       "bobot": 25,
       "warna": "#00838f",
-      "deskripsi": "Fasilitas dukungan pengguna dan pengelolaan kepuasan pengguna layanan digital",
+      "deskripsi": "Fasilitas dukungan pengguna dan pengelolaan kepuasan pengguna layanan digital pemerintah",
       "target": 3.0,
-      "nilai": 3.5,
+      "nilai": 1.0,
+      "total_item": 19,
+      "koordinator": "DPMPTSP; Diskominfo – Bid. Layanan E-Government",
       "indikator": [
         {
           "id": "I19",
-          "nama": "Fasilitas Dukungan Pengguna",
+          "nama": "Tingkat Kematangan Fasilitas Dukungan Pengguna Layanan Digital Pemerintah",
           "deskripsi": "Ketersediaan helpdesk, FAQ, pelaporan masalah, panduan pengguna, kanal dukungan digital",
-          "nilai": 3.0,
+          "nilai": 1.0,
           "target": 3.0,
           "bobot": 10,
           "sumber": "Layanan Pengaduan 4.00 + Layanan Publik 3.67 (SPBE 2025) — Sp4 Lapor, FAQ, widget sudah ada",
           "kontribusi_portal": "✅ Widget Lapor, halaman FAQ, form SKM, informasi layanan",
           "penanggung_jawab": {
-            "lead": "Diskominfo",
-            "support": ["Semua OPD (Penyedia Layanan)"],
+            "lead": "DPMPTSP (Koordinator Pokja Kepuasan – Fasilitas Dukungan Pengguna)",
+            "support": ["Diskominfo", "Semua OPD (Penyedia Layanan)"],
             "tim": "Tim Dukungan Pengguna & Helpdesk"
           }
         },
         {
           "id": "I20",
-          "nama": "Pengelolaan Kepuasan Pengguna",
+          "nama": "Tingkat Kematangan Pengelolaan Kepuasan Pengguna Layanan Digital Pemerintah",
           "deskripsi": "Pengukuran dan pengelolaan kepuasan pengguna secara sistematis — survei, analisis, tindak lanjut",
-          "nilai": 3.5,
+          "nilai": 1.0,
           "target": 3.0,
           "bobot": 15,
           "sumber": "✅ Layanan Publik 3.67 + 4.00 (SPBE 2025). SKM sudah berjalan. SKM digital via portal bisa jadi nilai tambah",
           "kontribusi_portal": "✅ Survei SKM online, dashboard kepuasan, laporan real-time",
           "penanggung_jawab": {
-            "lead": "Diskominfo",
-            "support": ["Semua OPD", "Masyarakat (responden survei)"],
+            "lead": "DPMPTSP (Koordinator Pokja Kepuasan – Pengelolaan Kepuasan Pengguna)",
+            "support": ["Diskominfo", "Bag. Organisasi", "seluruh PD penyelenggara layanan"],
             "tim": "Tim Kepuasan Pengguna & SKM"
           }
         }

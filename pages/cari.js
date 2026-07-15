@@ -69,9 +69,10 @@ export default function Cari({ items }) {
     <>
       <Head>
         <title>{query ? `Pencarian: ${query}` : 'Pencarian'} — Pemdi Aceh Tengah</title>
+        <meta name="description" content="Pencarian global portal Pemdi Aceh Tengah — cari OPD, layanan publik, FAQ, dan indikator Pemdi." />
       </Head>
 
-      <section style={{ padding: '3rem 0 1.5rem', background: 'linear-gradient(135deg, #1d70b8, #003078)', color: '#fff' }}>
+      <section style={{ padding: '3rem 0 1.5rem', background: 'var(--hero-grad)', color: '#fff' }}>
         <div className="container">
           <h1 style={{ margin: '0 0 0.75rem', fontSize: '1.75rem' }}>🔍 Pencarian</h1>
           <p style={{ opacity: 0.85, marginBottom: '1.25rem', fontSize: '0.9375rem' }}>

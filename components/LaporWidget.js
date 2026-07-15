@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function LaporWidget({ externalOpen, onExternalClose, hideFab }) {
   const [buka, setBuka] = useState(false);
@@ -12,7 +12,10 @@ export default function LaporWidget({ externalOpen, onExternalClose, hideFab }) 
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [trackId, setTrackId] = useState(null);
   const [tersimpan, setTersimpan] = useState(true);
+  const modalRef = useRef(null);
+  const closeRef = useRef(null);
 
   /* Sync external open control */
   useEffect(() => {
@@ -21,6 +24,7 @@ export default function LaporWidget({ externalOpen, onExternalClose, hideFab }) 
       setStep('form');
       setLaporan({ kategori: '', pesan: '', kontak: '' });
       setError(null);
+      setTrackId(null);
     }
   }, [externalOpen]);
 
@@ -28,6 +32,35 @@ export default function LaporWidget({ externalOpen, onExternalClose, hideFab }) 
     setBuka(false);
     onExternalClose?.();
   };
+
+  useEffect(() => {
+    if (!buka) return;
+    closeRef.current?.focus();
+    const onKey = (e) => {
+      if (e.key === 'Escape') tutup();
+      if (e.key === 'Tab' && modalRef.current) {
+        const focusable = modalRef.current.querySelectorAll(
+          'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        );
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    };
+    document.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
+  }, [buka, onExternalClose, tutup]);
 
   const handleKirim = async (e) => {
     e.preventDefault();
@@ -62,18 +95,30 @@ export default function LaporWidget({ externalOpen, onExternalClose, hideFab }) 
     <>
       {/* FAB — hanya muncul saat tidak dikontrol eksternal dan tidak disembunyikan */}
       {!externalOpen && !hideFab && (
-        <button className="lapor-fab" onClick={() => { setBuka(true); setStep('form'); setLaporan({ kategori: '', pesan: '', kontak: '' }); }}>
+        <button
+          type="button"
+          className="lapor-fab"
+          aria-label="Buka formulir Lapor / Saran"
+          onClick={() => { setBuka(true); setStep('form'); setLaporan({ kategori: '', pesan: '', kontak: '' }); setTrackId(null); setTersimpan(true); }}
+        >
           💬
         </button>
       )}
 
       {buka && (
         <div className="lapor-overlay" onClick={tutup}>
-          <div className="lapor-modal" onClick={e => e.stopPropagation()} role="dialog" aria-modal="true" aria-label="Lapor / Saran">
-            <button className="lapor-close" onClick={tutup}>✕</button>
+          <div
+            ref={modalRef}
+            className="lapor-modal"
+            onClick={e => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="lapor-modal-title"
+          >
+            <button ref={closeRef} type="button" className="lapor-close" onClick={tutup} aria-label="Tutup formulir lapor">✕</button>
             <div className="lapor-header">
               <span className="lapor-icon">💬</span>
-              <h3>Lapor / Saran</h3>
+              <h3 id="lapor-modal-title">Lapor / Saran</h3>
             </div>
             <p style={{ fontSize: '0.8125rem', color: 'var(--muted)', marginBottom: '1rem' }}>
               Laporkan masalah, beri saran, atau sampaikan aspirasi Anda terkait layanan publik Aceh Tengah.
@@ -177,7 +222,7 @@ export default function LaporWidget({ externalOpen, onExternalClose, hideFab }) 
                   >{tracking.loading ? '⏳' : '🔍 Cek Status'}</button>
                 </div>
                 {tracking.hasil && (
-                  <div style={{ marginTop: '0.75rem', padding: '1rem', background: 'var(--gray-50)', borderRadius: '8px' }}>
+                  <div style={{ marginTop: '0.75rem', padding: '1rem', background: 'var(--surface-2)', borderRadius: '8px' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
                       <span style={{ fontWeight: 600, fontSize: '0.875rem' }}>{tracking.hasil.id}</span>
                       <span className={`badge ${
@@ -204,7 +249,7 @@ export default function LaporWidget({ externalOpen, onExternalClose, hideFab }) 
                     ❌ {tracking.error}
                   </div>
                 )}
-                <div style={{ marginTop: '1rem', padding: '0.75rem', background: 'var(--gray-50)', borderRadius: '8px', fontSize: '0.75rem', color: 'var(--muted)' }}>
+                <div style={{ marginTop: '1rem', padding: '0.75rem', background: 'var(--surface-2)', borderRadius: '8px', fontSize: '0.75rem', color: 'var(--muted)' }}>
                   📝 Simpan ID laporan Anda setelah mengirim. Gunakan ID tersebut untuk melacak status tindak lanjut.
                 </div>
               </div>
@@ -219,7 +264,7 @@ export default function LaporWidget({ externalOpen, onExternalClose, hideFab }) 
                 </p>
                 <div className="lapor-track-id">{trackId}</div>
                 {!tersimpan && (
-                  <p style={{ fontSize: '0.75rem', color: 'var(--warning)', marginTop: '0.5rem' }}>
+                  <p style={{ fontSize: '0.75rem', color: 'var(--warn)', marginTop: '0.5rem' }}>
                     ⚠️ Laporan tercatat. Tim akan menindaklanjuti. Backend database akan diaktifkan segera.
                   </p>
                 )}
@@ -263,45 +308,45 @@ export default function LaporWidget({ externalOpen, onExternalClose, hideFab }) 
           padding: 1rem; backdrop-filter: blur(2px);
         }
         .lapor-modal {
-          background: var(--white); border-radius: var(--radius-lg);
+          background: var(--surface); border-radius: var(--radius-lg);
           padding: 1.5rem; max-width: 440px; width: 100%;
           position: relative; max-height: 90vh; overflow-y: auto;
           box-shadow: var(--shadow-xl);
         }
         .lapor-close {
           position: absolute; top: 0.75rem; right: 0.75rem;
-          background: var(--gray-100); border: none; border-radius: 50%;
+          background: var(--bg-2); border: none; border-radius: 50%;
           width: 32px; height: 32px; cursor: pointer; font-size: 0.875rem;
           display: flex; align-items: center; justify-content: center;
-          color: var(--gray-600);
+          color: var(--muted);
         }
-        .lapor-close:hover { background: var(--gray-200); }
+        .lapor-close:hover { background: var(--line); }
         .lapor-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
         .lapor-icon { font-size: 1.25rem; }
         .lapor-header h3 { font-size: 1.125rem; margin: 0; }
         .lapor-tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
         .lapor-tab {
-          padding: 0.5rem 1rem; border-radius: var(--radius); border: 1px solid var(--gray-200);
-          background: var(--white); cursor: pointer; font-family: var(--font-body);
+          padding: 0.5rem 1rem; border-radius: var(--radius); border: 1px solid var(--line);
+          background: var(--surface); cursor: pointer; font-family: var(--font-body);
           font-size: 0.8125rem; font-weight: 500; transition: all 0.15s ease;
         }
-        .lapor-tab.active { background: var(--primary-light); border-color: var(--primary); color: var(--primary); }
+        .lapor-tab.active { background: var(--primary-50); border-color: var(--primary); color: var(--primary); }
         .lapor-label { display: block; font-size: 0.8125rem; font-weight: 500; margin-bottom: 0.375rem; }
         .lapor-select, .lapor-input {
-          width: 100%; padding: 0.625rem 0.75rem; border: 1px solid var(--gray-300);
+          width: 100%; padding: 0.625rem 0.75rem; border: 1px solid var(--line);
           border-radius: var(--radius); font-family: var(--font-body); font-size: 0.875rem;
         }
         .lapor-textarea {
-          width: 100%; padding: 0.625rem 0.75rem; border: 1px solid var(--gray-300);
+          width: 100%; padding: 0.625rem 0.75rem; border: 1px solid var(--line);
           border-radius: var(--radius); font-family: var(--font-body); font-size: 0.875rem;
           resize: vertical; line-height: 1.5;
         }
         .lapor-select:focus, .lapor-input:focus, .lapor-textarea:focus {
-          outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-light);
+          outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-50);
         }
         .lapor-track-id {
           font-family: var(--font-mono); font-size: 0.875rem; font-weight: 700;
-          color: var(--primary); background: var(--primary-light); padding: 0.5rem 1rem;
+          color: var(--primary); background: var(--primary-50); padding: 0.5rem 1rem;
           border-radius: var(--radius); display: inline-block;
         }
         .lapor-error {
