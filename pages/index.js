@@ -92,8 +92,6 @@ export default function Home({ data }) {
         <meta name="description" content="Portal Pemerintah Digital Kabupaten Aceh Tengah. Informasi layanan publik, indeks SPBE & Pemdi, dan partisipasi warga dalam satu portal." />
       </Head>
 
-      <a href="#main-content" className="skip-link">Lompat ke konten utama</a>
-
       {/* ===== 1. HERO ===== */}
       <section className="hero reveal" id="hero">
         <span className="pill">🏛️ Portal Resmi Pemerintah Kabupaten Aceh Tengah</span>

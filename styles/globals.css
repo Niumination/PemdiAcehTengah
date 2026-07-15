@@ -102,9 +102,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 }
 .skip-link:focus{top:0;outline:3px solid #fd0;outline-offset:0}
 
-/* Smooth theme transitions */
-html,html *{transition:background-color .2s ease,border-color .2s ease,color .2s ease,box-shadow .2s ease}
-html{transition:background .25s ease,color .25s ease}
+/* Smooth theme transitions — scoped via .theme-tg, body etc. */
 
 /* ============ 3. SCROLL REVEAL (progressive enhancement) ============
    Content always visible by default. Hide+animate ONLY when JS + IntersectionObserver ready.
@@ -116,9 +114,6 @@ html.anim-ready .reveal.d2{transition-delay:.12s}
 html.anim-ready .reveal.d3{transition-delay:.18s}
 html.anim-ready .reveal.d4{transition-delay:.24s}
 html.anim-ready .reveal.d5{transition-delay:.3s}
-
-/* ============ 4. LAYOUT SHELL ============ */
-.shell{display:grid;grid-template-columns:var(--sbw) 1fr;min-height:100vh}
 
 /* ============ 5. SIDEBAR ============ */
 .sidebar{
@@ -163,6 +158,9 @@ html.anim-ready .reveal.d5{transition-delay:.3s}
   z-index:55;opacity:0;visibility:hidden;transition:.25s
 }
 .scrim.show{opacity:1;visibility:visible}
+
+/* Sidebar spacer — offset content from fixed sidebar, hidden at mobile */
+.sb-spacer{flex-shrink:0;width:var(--sbw)}
 
 /* ============ 6. MAIN + TOPBAR ============ */
 .main{grid-column:2;display:flex;flex-direction:column;min-width:0}

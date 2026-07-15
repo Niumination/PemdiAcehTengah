@@ -322,11 +322,11 @@ export default function Sidebar({ isOpen, onClose }) {
             </div>
           </Link>
 
-          {/* Search box (static — navigasi visual) */}
-          <div style={styles.searchBox}>
+          {/* Search box — link to /cari */}
+          <Link href="/cari" style={styles.searchBox} aria-label="Cari layanan, OPD, info…">
             <span style={styles.searchIcon}>🔍</span>
             <span>Cari layanan, OPD, info…</span>
-          </div>
+          </Link>
 
           {/* Menu groups */}
           <nav style={styles.menu}>

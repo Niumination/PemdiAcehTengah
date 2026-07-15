@@ -248,10 +248,8 @@ export default function AppShell({ children }) {
         onClose={() => setSidebarOpen(false)}
       />
 
-      {/* Spacer column on desktop to offset fixed sidebar */}
-      {hydrated && !isMobile && (
-        <div style={styles.sidebarCol} aria-hidden="true" />
-      )}
+      {/* Spacer column on desktop to offset fixed sidebar — always rendered, CSS hides on mobile */}
+      <div style={styles.sidebarCol} className="sb-spacer" aria-hidden="true" />
 
       {/* Right column */}
       <div style={styles.rightCol}>
@@ -329,14 +327,13 @@ export default function AppShell({ children }) {
           </div>
         </header>
 
+        {/* Skip link — accessible from every page */}
+        <a href="#main-content" className="skip-link">Lompat ke konten utama</a>
+
         {/* Main content */}
         <main
           id="main-content"
-          style={{
-            ...styles.content,
-            paddingLeft: hydrated && !isMobile ? 26 : 26,
-            paddingRight: 26,
-          }}
+          style={styles.content}
         >
           {children}
         </main>
