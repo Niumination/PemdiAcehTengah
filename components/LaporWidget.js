@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function LaporWidget({ externalOpen, onExternalClose, hideFab }) {
   const [buka, setBuka] = useState(false);
@@ -13,6 +13,8 @@ export default function LaporWidget({ externalOpen, onExternalClose, hideFab }) 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [tersimpan, setTersimpan] = useState(true);
+  const modalRef = useRef(null);
+  const closeRef = useRef(null);
 
   /* Sync external open control */
   useEffect(() => {
@@ -28,6 +30,35 @@ export default function LaporWidget({ externalOpen, onExternalClose, hideFab }) 
     setBuka(false);
     onExternalClose?.();
   };
+
+  useEffect(() => {
+    if (!buka) return;
+    closeRef.current?.focus();
+    const onKey = (e) => {
+      if (e.key === 'Escape') tutup();
+      if (e.key === 'Tab' && modalRef.current) {
+        const focusable = modalRef.current.querySelectorAll(
+          'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        );
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    };
+    document.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
+  }, [buka, onExternalClose]);
 
   const handleKirim = async (e) => {
     e.preventDefault();
@@ -62,18 +93,30 @@ export default function LaporWidget({ externalOpen, onExternalClose, hideFab }) 
     <>
       {/* FAB — hanya muncul saat tidak dikontrol eksternal dan tidak disembunyikan */}
       {!externalOpen && !hideFab && (
-        <button className="lapor-fab" onClick={() => { setBuka(true); setStep('form'); setLaporan({ kategori: '', pesan: '', kontak: '' }); }}>
+        <button
+          type="button"
+          className="lapor-fab"
+          aria-label="Buka formulir Lapor / Saran"
+          onClick={() => { setBuka(true); setStep('form'); setLaporan({ kategori: '', pesan: '', kontak: '' }); }}
+        >
           💬
         </button>
       )}
 
       {buka && (
         <div className="lapor-overlay" onClick={tutup}>
-          <div className="lapor-modal" onClick={e => e.stopPropagation()} role="dialog" aria-modal="true" aria-label="Lapor / Saran">
-            <button className="lapor-close" onClick={tutup}>✕</button>
+          <div
+            ref={modalRef}
+            className="lapor-modal"
+            onClick={e => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="lapor-modal-title"
+          >
+            <button ref={closeRef} type="button" className="lapor-close" onClick={tutup} aria-label="Tutup formulir lapor">✕</button>
             <div className="lapor-header">
               <span className="lapor-icon">💬</span>
-              <h3>Lapor / Saran</h3>
+              <h3 id="lapor-modal-title">Lapor / Saran</h3>
             </div>
             <p style={{ fontSize: '0.8125rem', color: 'var(--muted)', marginBottom: '1rem' }}>
               Laporkan masalah, beri saran, atau sampaikan aspirasi Anda terkait layanan publik Aceh Tengah.

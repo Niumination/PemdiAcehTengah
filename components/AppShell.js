@@ -3,6 +3,8 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Sidebar from './Sidebar';
 import ThemeToggle from './ThemeToggle';
+import Footer from './Footer';
+import ScrollTop from './ScrollTop';
 import LaporWidget from './LaporWidget';
 import RatingWidget from './RatingWidget';
 import Footer from './Footer';
@@ -63,13 +65,21 @@ function getBreadcrumbs(pathname) {
 
 /* ── Styles ── */
 const styles = {
-  /* Main wrapper — full viewport */
-  shell: {
+  /* Outer wrapper — gov strip + body */
+  outer: {
     display: 'flex',
+    flexDirection: 'column',
     minHeight: '100vh',
+    paddingTop: 'var(--gov-strip-h, 36px)',
     background: 'var(--bg)',
     color: 'var(--ink)',
     fontFamily: 'var(--font-body)',
+  },
+  /* Main wrapper — sidebar + content row */
+  shell: {
+    display: 'flex',
+    flex: 1,
+    minHeight: 0,
     transition: 'background 0.3s ease, color 0.3s ease',
   },
   /* Sidebar column */
@@ -217,9 +227,21 @@ export default function AppShell({ children }) {
     if (isMobile) setSidebarOpen(false);
   }, [pathname, isMobile]);
 
+  /* Global event: buka modal Lapor dari kartu beranda / CTA */
+  useEffect(() => {
+    const openLapor = () => setShowLapor(true);
+    window.addEventListener('pemdi:open-lapor', openLapor);
+    return () => window.removeEventListener('pemdi:open-lapor', openLapor);
+  }, []);
+
   const breadcrumbs = getBreadcrumbs(pathname);
 
   return (
+    <div style={styles.outer}>
+      <div className="gov-strip" role="banner">
+        <span className="gov-strip-flag" aria-hidden="true">🇮🇩</span>
+        Situs Resmi Pemerintah Kabupaten Aceh Tengah
+      </div>
     <div style={styles.shell}>
       {/* Sidebar — fixed via the component */}
       <Sidebar
@@ -291,7 +313,9 @@ export default function AppShell({ children }) {
             <ThemeToggle />
 
             <button
+              type="button"
               onClick={() => setShowLapor(true)}
+              aria-label="Buka formulir Lapor / Saran"
               style={styles.laporLink}
               onMouseEnter={(e) => {
                 e.currentTarget.style.opacity = '0.9';
@@ -316,6 +340,7 @@ export default function AppShell({ children }) {
           }}
         >
           {children}
+          <Footer />
         </main>
 
         <Footer />
@@ -325,12 +350,15 @@ export default function AppShell({ children }) {
 
       </div>
 
+      <ScrollTop />
+
       {/* LaporWidget modal — dikontrol dari topbar */}
       <LaporWidget
         externalOpen={showLapor}
         hideFab
         onExternalClose={() => setShowLapor(false)}
       />
+    </div>
     </div>
   );
 }
