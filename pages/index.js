@@ -7,6 +7,8 @@ import AwardHero from '@/components/AwardHero';
 import QuickActions from '@/components/QuickActions';
 import TopographicBackdrop from '@/components/TopographicBackdrop';
 import LaporanStatus from '@/components/LaporanStatus';
+import PPBChain from '@/components/PPBChain';
+import RekomendasiTracker from '@/components/RekomendasiTracker';
 import { formatAngka, formatDesimal } from '@/lib/format';
 import portalData from '@/data/opd.json';
 import pemdiData from '@/data/pemdi.json';
@@ -407,62 +409,7 @@ export default function Home({ data }) {
           <Link href="/probis" className="link-more">Lihat detail →</Link>
         </div>
 
-        <details className="acc reveal" open>
-          <summary>
-            <span className="ico">🗺️</span>
-            Apa itu <GlossaryTooltip id="ppb">Peta Proses Bisnis (PPB)</GlossaryTooltip>?
-            <span className="chev">▾</span>
-          </summary>
-          <div className="body">
-            Peta yang menunjukkan <b>bagaimana antar-unit pemerintah bekerja sama</b> menghasilkan layanan — agar efisien, tidak tumpang tindih, dan jelas penanggung jawabnya. Tersusun dalam 3 level sesuai Permenpan 19/2018.
-          </div>
-        </details>
-
-        <details className="acc reveal d1">
-          <summary>
-            <span className="ico">📚</span>
-            34 Urusan Pemerintahan (konkuren)
-            <span className="chev">▾</span>
-          </summary>
-          <div className="body">
-            Dasar dari seluruh layanan pemerintah daerah. 34 urusan konkuren + 6 fungsi penunjang.
-            <div className="tags">
-              {['Pendidikan', 'Kesehatan', 'Pekerjaan Umum', 'Sosial', 'Pangan', 'Lingkungan Hidup', 'Adminduk', 'Pertanian', 'Perdagangan', 'Pariwisata', 'Perhubungan', 'Koperasi', 'Perikanan', '+21 lainnya'].map((t) => (
-                <span className="tag" key={t}>{t}</span>
-              ))}
-            </div>
-          </div>
-        </details>
-
-        <details className="acc reveal d2">
-          <summary>
-            <span className="ico">⚙️</span>
-            Level Proses (Perencanaan → Pengawasan)
-            <span className="chev">▾</span>
-          </summary>
-          <div className="body">
-            <b>6 kategori proses bisnis</b> yang mencakup seluruh siklus tata kelola:
-            Perencanaan (4) · Pelaksanaan (47) · Penganggaran (3) · Monitoring & Evaluasi (4) · Pelayanan Publik (14) · Pengawasan (6).
-          </div>
-        </details>
-
-        <details className="acc reveal d3">
-          <summary>
-            <span className="ico">💡</span>
-            Ringkasan — 34 urusan, 78 proses bisnis
-            <span className="chev">▾</span>
-          </summary>
-          <div className="body">
-            <p style={{ marginBottom: '0.5rem' }}>
-              Peta Proses Bisnis Kabupaten Aceh Tengah disusun dengan 3 level:
-            </p>
-            <ul style={{ paddingLeft: '1.25rem', lineHeight: 1.8 }}>
-              <li><strong>Level 0</strong> — Visi & 8 Misi Pembangunan Daerah</li>
-              <li><strong>Level 1</strong> — 34 Urusan Konkuren Pemerintahan</li>
-              <li><strong>Level 2</strong> — 78 Proses Bisnis (6 kategori) dari 52 OPD</li>
-            </ul>
-          </div>
-        </details>
+        <PPBChain />
       </section>
 
       {/* ===== 8. PERANGKAT DAERAH ===== */}
@@ -534,6 +481,20 @@ export default function Home({ data }) {
             menjadi prioritas nasional. Kab. Aceh Tengah menargetkan Indeks Pemdi ≥{' '}
             <strong>{formatDesimal(pemdiData.target_indeks)} (Baik)</strong> pada tahun 2028.
           </p>
+        </div>
+      </section>
+
+      {/* ===== REKOMENDASI PRIORITAS ===== */}
+      <section className="blk" id="rekomendasi" style={{ background: 'var(--bg-2)' }}>
+        <div className="sec-head reveal">
+          <div>
+            <div className="eyebrow">Prioritas Strategis</div>
+            <h2>Rekomendasi Prioritas Pemdi</h2>
+            <p>7 rekomendasi utama untuk mencapai Indeks Pemdi ≥ {formatDesimal(pemdiData.target_indeks)}. Klik item untuk update status.</p>
+          </div>
+        </div>
+        <div style={{ maxWidth: 600, margin: '0 auto' }}>
+          <RekomendasiTracker />
         </div>
       </section>
 

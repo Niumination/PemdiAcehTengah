@@ -1,14 +1,29 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import faq from '@/data/faq.json';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { sanitizeHtml } from '@/lib/sanitize';
+
+const FEEDBACK_KEY = 'pemdi_faq_fb';
 
 export default function FAQPage() {
   const [buka, setBuka] = useState(null);
   const [cari, setCari] = useState('');
+  const [kategoriAktif, setKategoriAktif] = useState(null);
+  const [feedback, setFeedback] = useState({});
 
-  const toggle = (id) => setBuka(buka === id ? null : id);
+  useEffect(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem(FEEDBACK_KEY) || '{}');
+      setFeedback(saved);
+    } catch {}
+  }, []);
+
+  const recordFeedback = (uid, type) => {
+    const next = { ...feedback, [uid]: type };
+    setFeedback(next);
+    try { localStorage.setItem(FEEDBACK_KEY, JSON.stringify(next)); } catch {}
+  };
 
   const semuaQA = faq.kategori.flatMap(k =>
     k.pertanyaan.map((q, i) => ({ ...q, kategori: k.nama, kategoriId: k.id, ikon: k.ikon, uid: `${k.id}-${i}` }))
@@ -20,7 +35,9 @@ export default function FAQPage() {
         q.jawab.toLowerCase().includes(cari.toLowerCase()) ||
         q.kategori.toLowerCase().includes(cari.toLowerCase())
       )
-    : semuaQA;
+    : kategoriAktif
+      ? semuaQA.filter(q => q.kategoriId === kategoriAktif)
+      : semuaQA;
 
   return (
     <>
@@ -52,6 +69,30 @@ export default function FAQPage() {
 
       <section className="section">
         <div className="container">
+          {/* ── Kategori Tabs ── */}
+          <div className="faq-tabs" role="tablist">
+            <button
+              className={`faq-tab ${!kategoriAktif ? 'active' : ''}`}
+              onClick={() => { setKategoriAktif(null); setCari(''); }}
+              role="tab"
+              aria-selected={!kategoriAktif}
+            >
+              Semua
+            </button>
+            {faq.kategori.map(k => (
+              <button
+                key={k.id}
+                className={`faq-tab ${kategoriAktif === k.id ? 'active' : ''}`}
+                onClick={() => { setKategoriAktif(k.id); setCari(''); }}
+                role="tab"
+                aria-selected={kategoriAktif === k.id}
+              >
+                {k.ikon} {k.nama}
+              </button>
+            ))}
+          </div>
+
+          {/* ── Daftar QA ── */}
           {filtered.length === 0 ? (
             <div className="card" style={{ textAlign: 'center', padding: '3rem' }}>
               <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🔍</div>
@@ -64,8 +105,8 @@ export default function FAQPage() {
           ) : (
             <div className="faq-list">
               {filtered.map((q) => (
-                <div key={q.uid} className={`faq-item ${buka === q.uid ? 'open' : ''}`}>
-                  <button className="faq-question" onClick={() => toggle(q.uid)}>
+                <div key={q.uid} id={q.kategoriId === kategoriAktif ? undefined : q.kategoriId} className={`faq-item ${buka === q.uid ? 'open' : ''}`}>
+                  <button className="faq-question" onClick={() => toggle(buka, q.uid, setBuka)}>
                     <span className="faq-kategori-badge">{q.ikon}</span>
                     <span className="faq-text">{q.tanya}</span>
                     <span className={`faq-chevron ${buka === q.uid ? 'rotated' : ''}`}>▼</span>
@@ -81,6 +122,23 @@ export default function FAQPage() {
                   >
                     <div className="faq-answer-inner">
                       <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(q.jawab) }} />
+                      {/* ── Feedback 👍/👎 ── */}
+                      <div className="faq-feedback">
+                        <span className="faq-feedback-label">Apakah ini membantu?</span>
+                        <button
+                          className={`faq-fb-btn ${feedback[q.uid] === 'y' ? 'on' : ''}`}
+                          onClick={() => recordFeedback(q.uid, 'y')}
+                          disabled={!!feedback[q.uid]}
+                          aria-label="Ya, membantu"
+                        >👍</button>
+                        <button
+                          className={`faq-fb-btn ${feedback[q.uid] === 'n' ? 'on' : ''}`}
+                          onClick={() => recordFeedback(q.uid, 'n')}
+                          disabled={!!feedback[q.uid]}
+                          aria-label="Tidak membantu"
+                        >👎</button>
+                        {feedback[q.uid] && <span className="faq-fb-done">Terima kasih!</span>}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -117,34 +175,57 @@ export default function FAQPage() {
         .search-input::placeholder { color: rgba(255,255,255,0.6); }
         .search-clear { position: absolute; right: 0.75rem; top: 50%; transform: translateY(-50%); background: none; border: none; color: white; cursor: pointer; font-size: 0.875rem; opacity: 0.7; }
 
+        .faq-tabs {
+          display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;
+        }
+        .faq-tab {
+          padding: 0.45rem 1rem; border-radius: 999px; border: 1px solid var(--line);
+          background: var(--surface); font-family: var(--font-body); font-size: 0.8125rem;
+          cursor: pointer; color: var(--ink-secondary); transition: all 0.15s ease;
+        }
+        .faq-tab:hover { border-color: var(--primary); color: var(--primary); }
+        .faq-tab.active { background: var(--primary); color: white; border-color: var(--primary); }
+
         .faq-list { max-width: 800px; margin: 0 auto; }
         .faq-item {
-          border: 1px solid var(--gray-200);
-          border-radius: var(--radius);
+          border: 1px solid var(--line);
+          border-radius: var(--r, 16px);
           margin-bottom: 0.5rem;
           overflow: hidden;
-          background: var(--white);
+          background: var(--surface);
           transition: box-shadow 0.2s ease;
         }
-        .faq-item:hover { box-shadow: var(--shadow-sm); }
-        .faq-item.open { border-color: var(--primary); box-shadow: 0 0 0 1px var(--primary-light); }
+        .faq-item:hover { box-shadow: var(--sh-sm); }
+        .faq-item.open { border-color: var(--primary); box-shadow: 0 0 0 1px var(--primary-50); }
         .faq-question {
           width: 100%; display: flex; align-items: center; gap: 0.75rem;
           padding: 1rem 1.25rem; background: none; border: none; cursor: pointer;
           font-family: var(--font-body); font-size: 0.9375rem; font-weight: 500;
-          color: var(--gray-900); text-align: left; line-height: 1.4;
+          color: var(--ink); text-align: left; line-height: 1.4;
         }
-        .faq-question:hover { background: var(--gray-50); }
+        .faq-question:hover { background: var(--surface-hover); }
         .faq-kategori-badge { font-size: 1.25rem; flex-shrink: 0; }
         .faq-text { flex: 1; }
         .faq-chevron {
-          font-size: 0.6875rem; color: var(--gray-400); transition: transform 0.2s ease; flex-shrink: 0;
+          font-size: 0.6875rem; color: var(--muted); transition: transform 0.2s ease; flex-shrink: 0;
         }
         .faq-chevron.rotated { transform: rotate(180deg); color: var(--primary); }
-        .faq-answer-inner { padding: 0 1.25rem 1rem; font-size: 0.875rem; color: var(--gray-700); line-height: 1.7; }
+        .faq-answer-inner { padding: 0 1.25rem 1rem; font-size: 0.875rem; color: var(--ink-secondary); line-height: 1.7; }
         .faq-answer-inner p { margin: 0; }
         .faq-answer-inner :global(a) { font-weight: 500; }
+
+        .faq-feedback { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--line-2); }
+        .faq-feedback-label { font-size: 0.75rem; color: var(--muted); }
+        .faq-fb-btn { background: none; border: 1px solid var(--line); border-radius: 999px; padding: 0.2rem 0.6rem; cursor: pointer; font-size: 0.875rem; transition: all 0.15s ease; }
+        .faq-fb-btn:hover:not(:disabled) { border-color: var(--primary); }
+        .faq-fb-btn.on { background: var(--primary-50); border-color: var(--primary); }
+        .faq-fb-btn:disabled { opacity: 0.5; cursor: default; }
+        .faq-fb-done { font-size: 0.75rem; color: var(--ok); }
       `}</style>
     </>
   );
+}
+
+function toggle(buka, uid, setBuka) {
+  setBuka(buka === uid ? null : uid);
 }

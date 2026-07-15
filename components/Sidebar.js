@@ -29,6 +29,7 @@ const menuGroups = [
       { label: 'Lapor / Saran', href: '#', icon: '📢', isModal: true },
       { label: 'Survei Kepuasan', href: '/skm', icon: '📝' },
       { label: 'Tanya & FAQ', href: '/faq', icon: '💬' },
+      { label: 'Pusat Bantuan', href: '/bantuan', icon: '🆘' },
       { label: 'Glosarium', href: '/glosarium', icon: '📖' },
     ],
   },

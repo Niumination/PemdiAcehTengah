@@ -1,5 +1,6 @@
 import '@/styles/globals.css';
 import AppShell from '@/components/AppShell';
+import SkmPrompt from '@/components/SkmPrompt';
 import Head from 'next/head';
 import { Analytics } from '@vercel/analytics/react';
 
@@ -33,6 +34,7 @@ export default function App({ Component, pageProps }) {
       <AppShell>
         <Component {...pageProps} />
       </AppShell>
+      <SkmPrompt />
       <Analytics />
     </>
   );

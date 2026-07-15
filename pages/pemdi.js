@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Section from '@/components/Section';
 import DetailModal from '@/components/DetailModal';
+import PemdiCalculator from '@/components/PemdiCalculator';
 import { formatAngka, formatDesimal } from '@/lib/format';
 import pemdiData from '@/data/pemdi.json';
 import ProgressBarVisual from '@/components/ProgressBarVisual';
@@ -384,6 +385,16 @@ export default function PemdiPage() {
             );
           })}
         </div>
+      </Section>
+
+      {/* ============ KALKULATOR PROYEKSI ============ */}
+      <Section
+        id="kalkulator"
+        title="🧮 Simulasi Proyeksi Pemdi"
+        subtitle="Atur slider untuk mensimulasikan dampak kenaikan per aspek terhadap indeks Pemdi akhir."
+        className="section-alt"
+      >
+        <PemdiCalculator />
       </Section>
 
       {/* ============ KEPUASAN PENGGUNA (25%) HIGHLIGHT ============ */}
