@@ -339,7 +339,6 @@ export default function AppShell({ children }) {
           }}
         >
           {children}
-          <Footer />
         </main>
 
         <Footer />

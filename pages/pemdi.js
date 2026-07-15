@@ -407,7 +407,8 @@ export default function PemdiPage() {
                 </p>
                 <p style={{ fontSize: '0.875rem', color: '#333', lineHeight: 1.6, marginBottom: '1rem' }}>
                   Nilai estimasi: <strong style={{ color: a.warna }}>{formatDesimal(a.nilai)}</strong> / {formatDesimal(a.target)} (target).
-                  Dengan nilai sudah di atas target, portal ini sudah berkontribusi langsung. Bantu kami meningkatkannya dengan mengisi survei.
+                  Belum ada bukti dukung terkumpul — seluruh nilai masih di level Initiate (1.0).
+                  Bantu kami meningkatkannya dengan mengisi survei.
                 </p>
                 <div style={{ textAlign: 'center' }}>
                   <Link
