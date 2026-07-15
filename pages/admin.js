@@ -117,17 +117,30 @@ export default function AdminPage() {
 
   if (!loggedIn) {
     return (
-      <div style={{ maxWidth: 400, margin: '80px auto', padding: '2rem', fontFamily: 'Inter, system-ui, sans-serif' }}>
-        <h1 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>🔐 Admin — Pemdi Aceh Tengah</h1>
-        <p style={{ color: '#6b7280', marginBottom: '1.5rem', fontSize: '0.875rem' }}>Masukkan password admin untuk mengakses dashboard.</p>
-        <form onSubmit={handleLogin}>
-          <input type="password" placeholder="Password admin" value={password}
-            onChange={e => setPassword(e.target.value)}
-            style={{ width: '100%', padding: '0.75rem', border: '1px solid #d1d5db', borderRadius: 8, marginBottom: '0.75rem', fontSize: '1rem' }}
-            autoFocus />
-          {loginError && <p style={{ color: '#dc2626', fontSize: '0.875rem', marginBottom: '0.5rem' }}>❌ {loginError}</p>}
-          <button type="submit" style={{ width: '100%', padding: '0.75rem', background: '#1f6f43', color: 'white', border: 'none', borderRadius: 8, fontWeight: 600, cursor: 'pointer', fontSize: '1rem' }}>Masuk</button>
-        </form>
+      <div style={{
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '2rem',
+        background: 'var(--surface, #f5f7fa)',
+      }}>
+        <div className="card glow-card" style={{ maxWidth: 400, padding: '2rem', width: '100%' }}>
+          <h1 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: 'var(--ink)' }}>🔐 Admin — Pemdi Aceh Tengah</h1>
+          <p style={{ color: 'var(--muted)', marginBottom: '1.5rem', fontSize: '0.875rem' }}>Masukkan password admin untuk mengakses dashboard.</p>
+          <form onSubmit={handleLogin}>
+            <input type="password" placeholder="Password admin" value={password}
+              onChange={e => setPassword(e.target.value)}
+              style={{
+                width: '100%', padding: '0.75rem', border: '1px solid var(--gray-300, #d1d5db)',
+                borderRadius: 'var(--radius, 8px)', marginBottom: '0.75rem', fontSize: '1rem',
+                fontFamily: 'var(--font-body)',
+              }}
+              autoFocus />
+            {loginError && <p style={{ color: 'var(--bad)', fontSize: '0.875rem', marginBottom: '0.5rem' }}>❌ {loginError}</p>}
+            <button type="submit" className="btn btn-primary btn-lg" style={{ width: '100%' }}>Masuk</button>
+          </form>
+        </div>
       </div>
     );
   }
@@ -140,62 +153,85 @@ export default function AdminPage() {
         <title>Admin Dashboard — Pemdi Aceh Tengah</title>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
-      <div style={{ fontFamily: 'Inter, system-ui, sans-serif', background: '#f3f4f6', minHeight: '100vh' }}>
-        {/* Header */}
-        <header style={{ background: '#1f6f43', color: 'white', padding: '0.75rem 1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <h1 style={{ fontSize: '1.125rem', fontWeight: 600, margin: 0 }}>📊 Admin — Pemdi Aceh Tengah</h1>
-          <button onClick={() => { setLoggedIn(false); sessionStorage.removeItem('admin_token'); }}
-            style={{ background: 'rgba(255,255,255,0.2)', border: 'none', color: 'white', padding: '0.5rem 1rem', borderRadius: 6, cursor: 'pointer', fontSize: '0.8125rem' }}>Keluar</button>
-        </header>
 
+      {/* HERO */}
+      <section style={{
+        background: 'var(--hero-grad)',
+        borderRadius: 'var(--r)',
+        padding: '1.5rem 2rem',
+        marginBottom: '1.5rem',
+        color: '#fff',
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'relative', zIndex: 1 }}>
+          <div>
+            <h1 style={{ color: '#fff', fontSize: '1.25rem', fontWeight: 700, margin: 0 }}>📊 Admin — Pemdi Aceh Tengah</h1>
+          </div>
+          <button onClick={() => { setLoggedIn(false); sessionStorage.removeItem('admin_token'); }}
+            className="btn btn-outline btn-sm"
+            style={{ color: '#fff', borderColor: 'rgba(255,255,255,0.4)', background: 'rgba(255,255,255,0.1)' }}>
+            Keluar
+          </button>
+        </div>
+      </section>
+
+      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 1.5rem 2rem' }}>
         {/* Tab bar */}
-        <div style={{ maxWidth: 1100, margin: '0 auto', padding: '1rem 1.5rem', display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
           {[
-            { key: 'ringkasan', label: `📈 Ringkasan`, badge: '' },
-            { key: 'laporan', label: `📋 Laporan`, badge: laporanCount },
-            { key: 'skm', label: `📝 SKM`, badge: skmCount },
+            { key: 'ringkasan', label: '📈 Ringkasan', badge: '' },
+            { key: 'laporan', label: '📋 Laporan', badge: laporanCount },
+            { key: 'skm', label: '📝 SKM', badge: skmCount },
           ].map(t => (
             <button key={t.key} onClick={() => setTab(t.key)}
-              style={{ padding: '0.5rem 1rem', borderRadius: 8, border: tab === t.key ? '2px solid #1f6f43' : '1px solid #d1d5db', background: tab === t.key ? '#e8f5e9' : 'white', cursor: 'pointer', fontWeight: 500, fontSize: '0.875rem', display: 'flex', alignItems: 'center', gap: '0.375rem' }}>
+              className={`btn ${tab === t.key ? 'btn-primary' : 'btn-outline'}`}
+              style={{ display: 'flex', alignItems: 'center', gap: '0.375rem', fontSize: '0.875rem' }}>
               {t.label}
-              {t.badge > 0 && <span style={{ background: '#1f6f43', color: 'white', borderRadius: 999, padding: '0.0625rem 0.5rem', fontSize: '0.75rem', fontWeight: 600 }}>{t.badge}</span>}
+              {t.badge > 0 && <span className="badge badge-blue">{t.badge}</span>}
             </button>
           ))}
         </div>
 
         {/* Content */}
-        <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 1.5rem 2rem' }}>
-          {error && <div style={{ background: '#fef2f2', color: '#dc2626', padding: '0.75rem', borderRadius: 8, marginBottom: '1rem', fontSize: '0.875rem' }}>❌ {error}
-            <button onClick={() => setError(null)} style={{ float: 'right', background: 'none', border: 'none', cursor: 'pointer', color: '#dc2626' }}>✕</button>
-          </div>}
+        <div>
+          {error && (
+            <div className="card" style={{
+              padding: '0.75rem', marginBottom: '1rem', fontSize: '0.875rem',
+              background: '#fef2f2', border: '1px solid #fecaca', color: '#dc2626',
+            }}>
+              ❌ {error}
+              <button onClick={() => setError(null)} style={{ float: 'right', background: 'none', border: 'none', cursor: 'pointer', color: '#dc2626' }}>✕</button>
+            </div>
+          )}
 
-          {loading && <div style={{ textAlign: 'center', padding: '2rem', color: '#6b7280' }}>⏳ Memuat data...</div>}
+          {loading && <div style={{ textAlign: 'center', padding: '2rem', color: 'var(--muted)' }}>⏳ Memuat data...</div>}
 
           {!loading && tab === 'ringkasan' && (
             <div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
-                <div style={{ background: 'white', padding: '1.25rem', borderRadius: 12, boxShadow: '0 1px 3px rgba(0,0,0,0.08)' }}>
-                  <div style={{ fontSize: '0.75rem', color: '#6b7280', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Total Laporan</div>
-                  <div style={{ fontSize: '2rem', fontWeight: 700, color: '#1f6f43', marginTop: '0.25rem' }}>{laporanCount}</div>
-                  <div style={{ fontSize: '0.75rem', color: '#9ca3af', marginTop: '0.25rem' }}>Semua waktu</div>
+              <div className="grid grid-4" style={{ gap: '1rem', marginBottom: '1.5rem' }}>
+                <div className="card" style={{ padding: '1.25rem' }}>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--muted)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Total Laporan</div>
+                  <div style={{ fontSize: '2rem', fontWeight: 700, color: 'var(--primary)', marginTop: '0.25rem' }}>{laporanCount}</div>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--muted)', marginTop: '0.25rem' }}>Semua waktu</div>
                 </div>
-                <div style={{ background: 'white', padding: '1.25rem', borderRadius: 12, boxShadow: '0 1px 3px rgba(0,0,0,0.08)' }}>
-                  <div style={{ fontSize: '0.75rem', color: '#6b7280', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Total SKM</div>
-                  <div style={{ fontSize: '2rem', fontWeight: 700, color: '#1f6f43', marginTop: '0.25rem' }}>{skmCount}</div>
-                  <div style={{ fontSize: '0.75rem', color: '#9ca3af', marginTop: '0.25rem' }}>Responden survei</div>
+                <div className="card" style={{ padding: '1.25rem' }}>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--muted)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Total SKM</div>
+                  <div style={{ fontSize: '2rem', fontWeight: 700, color: 'var(--primary)', marginTop: '0.25rem' }}>{skmCount}</div>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--muted)', marginTop: '0.25rem' }}>Responden survei</div>
                 </div>
-                <div style={{ background: 'white', padding: '1.25rem', borderRadius: 12, boxShadow: '0 1px 3px rgba(0,0,0,0.08)' }}>
-                  <div style={{ fontSize: '0.75rem', color: '#6b7280', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.05em' }}>IKM (0-100)</div>
-                  <div style={{ fontSize: '2rem', fontWeight: 700, color: ikm.ikm >= 80 ? '#1f6f43' : ikm.ikm >= 60 ? '#e65100' : '#dc2626', marginTop: '0.25rem' }}>{ikm.responden > 0 ? ikm.ikm : '—'}</div>
-                  <div style={{ fontSize: '0.75rem', color: '#9ca3af', marginTop: '0.25rem' }}>{ikm.responden > 0 ? `Rataan ${ikm.rataan}/4 dari ${ikm.responden} responden` : 'Belum ada data'}</div>
+                <div className="card" style={{ padding: '1.25rem' }}>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--muted)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>IKM (0-100)</div>
+                  <div style={{ fontSize: '2rem', fontWeight: 700, color: ikm.ikm >= 80 ? 'var(--ok)' : ikm.ikm >= 60 ? 'var(--warn)' : 'var(--bad)', marginTop: '0.25rem' }}>{ikm.responden > 0 ? ikm.ikm : '—'}</div>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--muted)', marginTop: '0.25rem' }}>{ikm.responden > 0 ? `Rataan ${ikm.rataan}/4 dari ${ikm.responden} responden` : 'Belum ada data'}</div>
                 </div>
-                <div style={{ background: 'white', padding: '1.25rem', borderRadius: 12, boxShadow: '0 1px 3px rgba(0,0,0,0.08)' }}>
-                  <div style={{ fontSize: '0.75rem', color: '#6b7280', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Kategori Laporan</div>
+                <div className="card" style={{ padding: '1.25rem' }}>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--muted)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Kategori Laporan</div>
                   {['saran','keluhan','layanan','portal','pungli'].map(k => {
                     const count = laporan.filter(l => l.kategori === k).length;
                     return count > 0 ? <div key={k} style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.375rem', fontSize: '0.8125rem' }}>
-                      <span style={{ color: '#374151' }}>{k}</span>
-                      <span style={{ fontWeight: 600 }}>{count}</span>
+                      <span style={{ color: 'var(--ink-secondary)' }}>{k}</span>
+                      <span style={{ fontWeight: 600, color: 'var(--ink)' }}>{count}</span>
                     </div> : null;
                   })}
                 </div>
@@ -204,47 +240,52 @@ export default function AdminPage() {
           )}
 
           {!loading && tab === 'laporan' && (
-            <div style={{ background: 'white', borderRadius: 12, boxShadow: '0 1px 3px rgba(0,0,0,0.08)', overflow: 'hidden' }}>
-              <div style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <h2 style={{ fontSize: '1rem', fontWeight: 600, margin: 0 }}>📋 Laporan Masuk ({laporanCount})</h2>
-                <button onClick={fetchLaporan} style={{ background: '#f3f4f6', border: '1px solid #d1d5db', padding: '0.375rem 0.75rem', borderRadius: 6, cursor: 'pointer', fontSize: '0.75rem' }}>🔄 Refresh</button>
+            <div className="card glow-card" style={{ padding: 0, overflow: 'hidden' }}>
+              <div style={{ padding: '1rem', borderBottom: '1px solid var(--line)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <h2 style={{ fontSize: '1rem', fontWeight: 600, margin: 0, color: 'var(--ink)' }}>📋 Laporan Masuk ({laporanCount})</h2>
+                <button onClick={fetchLaporan} className="btn btn-outline btn-sm">🔄 Refresh</button>
               </div>
               {laporan.length === 0 ? (
-                <div style={{ padding: '2rem', textAlign: 'center', color: '#9ca3af', fontSize: '0.875rem' }}>Belum ada laporan masuk.</div>
+                <div style={{ padding: '2rem', textAlign: 'center', color: 'var(--muted)', fontSize: '0.875rem' }}>Belum ada laporan masuk.</div>
               ) : (
-                <div style={{ overflowX: 'auto' }}>
-                  <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.8125rem' }}>
+                <div className="tbl-wrap">
+                  <table>
                     <thead>
-                      <tr style={{ background: '#f9fafb', borderBottom: '2px solid #e5e7eb' }}>
-                        <th style={{ padding: '0.625rem 0.75rem', textAlign: 'left', fontWeight: 600 }}>ID</th>
-                        <th style={{ padding: '0.625rem 0.75rem', textAlign: 'left', fontWeight: 600 }}>Kategori</th>
-                        <th style={{ padding: '0.625rem 0.75rem', textAlign: 'left', fontWeight: 600 }}>Pesan</th>
-                        <th style={{ padding: '0.625rem 0.75rem', textAlign: 'left', fontWeight: 600 }}>Kontak</th>
-                        <th style={{ padding: '0.625rem 0.75rem', textAlign: 'left', fontWeight: 600 }}>Status</th>
-                        <th style={{ padding: '0.625rem 0.75rem', textAlign: 'left', fontWeight: 600 }}>Tanggal</th>
-                        <th style={{ padding: '0.625rem 0.75rem', textAlign: 'left', fontWeight: 600 }}>Aksi</th>
+                      <tr>
+                        <th>ID</th>
+                        <th>Kategori</th>
+                        <th>Pesan</th>
+                        <th>Kontak</th>
+                        <th>Status</th>
+                        <th>Tanggal</th>
+                        <th>Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
                       {laporan.map((l, i) => (
-                        <tr key={l.id} style={{ borderBottom: '1px solid #f3f4f6', background: i % 2 === 0 ? 'white' : '#fafafa' }}>
-                          <td style={{ padding: '0.625rem 0.75rem', fontFamily: 'monospace', fontSize: '0.75rem' }}>{l.id}</td>
-                          <td style={{ padding: '0.625rem 0.75rem' }}><span style={{ background: '#e8f5e9', padding: '0.125rem 0.5rem', borderRadius: 4, fontSize: '0.75rem' }}>{l.kategori}</span></td>
-                          <td style={{ padding: '0.625rem 0.75rem', maxWidth: 250, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} title={l.pesan}>{l.pesan}</td>
-                          <td style={{ padding: '0.625rem 0.75rem', color: '#6b7280' }}>{l.kontak || '—'}</td>
-                          <td style={{ padding: '0.625rem 0.75rem' }}>
+                        <tr key={l.id}>
+                          <td style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem' }}>{l.id}</td>
+                          <td><span className="badge badge-blue">{l.kategori}</span></td>
+                          <td style={{ maxWidth: 250, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} title={l.pesan}>{l.pesan}</td>
+                          <td style={{ color: 'var(--muted)' }}>{l.kontak || '—'}</td>
+                          <td>
                             <select value={l.status || 'baru'} onChange={e => handleUpdateStatus(l.id, e.target.value)} disabled={updating === l.id}
-                              style={{ padding: '0.25rem 0.5rem', borderRadius: 4, border: '1px solid #d1d5db', fontSize: '0.75rem', background: l.status === 'baru' ? '#fff3cd' : l.status === 'diproses' ? '#cce5ff' : l.status === 'selesai' ? '#d4edda' : 'white' }}>
+                              style={{
+                                padding: '0.25rem 0.5rem', borderRadius: 'var(--r-sm)', border: '1px solid var(--line)',
+                                fontSize: '0.75rem', fontFamily: 'var(--font-body)',
+                                background: l.status === 'baru' ? '#fff3cd' : l.status === 'diproses' ? '#cce5ff' : l.status === 'selesai' ? '#d4edda' : 'white',
+                              }}>
                               <option value="baru">🟡 Baru</option>
                               <option value="diproses">🔵 Diproses</option>
                               <option value="selesai">🟢 Selesai</option>
                               <option value="ditolak">🔴 Ditolak</option>
                             </select>
                           </td>
-                          <td style={{ padding: '0.625rem 0.75rem', fontSize: '0.75rem', color: '#6b7280' }}>{formatDate(l.dibuat)}</td>
-                          <td style={{ padding: '0.625rem 0.75rem' }}>
+                          <td style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>{formatDate(l.dibuat)}</td>
+                          <td>
                             <button onClick={() => handleUpdateStatus(l.id, l.status === 'baru' ? 'diproses' : l.status === 'diproses' ? 'selesai' : 'baru')} disabled={updating === l.id}
-                              style={{ background: 'none', border: '1px solid #d1d5db', padding: '0.25rem 0.5rem', borderRadius: 4, cursor: 'pointer', fontSize: '0.75rem' }}>
+                              className="btn btn-outline btn-sm"
+                              style={{ fontSize: '0.75rem' }}>
                               {updating === l.id ? '⏳' : '⏭'}
                             </button>
                           </td>
@@ -258,47 +299,46 @@ export default function AdminPage() {
           )}
 
           {!loading && tab === 'skm' && (
-            <div style={{ background: 'white', borderRadius: 12, boxShadow: '0 1px 3px rgba(0,0,0,0.08)', overflow: 'hidden' }}>
-              <div style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <h2 style={{ fontSize: '1rem', fontWeight: 600, margin: 0 }}>📝 Hasil SKM ({skmCount} responden)</h2>
+            <div className="card glow-card" style={{ padding: 0, overflow: 'hidden' }}>
+              <div style={{ padding: '1rem', borderBottom: '1px solid var(--line)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <h2 style={{ fontSize: '1rem', fontWeight: 600, margin: 0, color: 'var(--ink)' }}>📝 Hasil SKM ({skmCount} responden)</h2>
                 <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                  <span style={{ fontSize: '0.8125rem', color: '#374151' }}>IKM: <strong style={{ color: '#1f6f43' }}>{ikm.ikm || '—'}</strong> (0-100)</span>
-                  <button onClick={fetchSkm} style={{ background: '#f3f4f6', border: '1px solid #d1d5db', padding: '0.375rem 0.75rem', borderRadius: 6, cursor: 'pointer', fontSize: '0.75rem' }}>🔄 Refresh</button>
+                  <span style={{ fontSize: '0.8125rem', color: 'var(--ink-secondary)' }}>IKM: <strong style={{ color: 'var(--primary)' }}>{ikm.ikm || '—'}</strong> (0-100)</span>
+                  <button onClick={fetchSkm} className="btn btn-outline btn-sm">🔄 Refresh</button>
                 </div>
               </div>
               {skm.length === 0 ? (
-                <div style={{ padding: '2rem', textAlign: 'center', color: '#9ca3af', fontSize: '0.875rem' }}>Belum ada data SKM.</div>
+                <div style={{ padding: '2rem', textAlign: 'center', color: 'var(--muted)', fontSize: '0.875rem' }}>Belum ada data SKM.</div>
               ) : (
-                <div style={{ overflowX: 'auto' }}>
-                  <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.8125rem' }}>
+                <div className="tbl-wrap">
+                  <table>
                     <thead>
-                      <tr style={{ background: '#f9fafb', borderBottom: '2px solid #e5e7eb' }}>
-                        <th style={{ padding: '0.5rem', textAlign: 'left', fontWeight: 600 }}>#</th>
-                        <th style={{ padding: '0.5rem', textAlign: 'left', fontWeight: 600 }}>Layanan</th>
-                        <th style={{ padding: '0.5rem', textAlign: 'center', fontWeight: 600 }}>Persyaratan</th>
-                        <th style={{ padding: '0.5rem', textAlign: 'center', fontWeight: 600 }}>Prosedur</th>
-                        <th style={{ padding: '0.5rem', textAlign: 'center', fontWeight: 600 }}>Waktu</th>
-                        <th style={{ padding: '0.5rem', textAlign: 'center', fontWeight: 600 }}>Biaya</th>
-                        <th style={{ padding: '0.5rem', textAlign: 'center', fontWeight: 600 }}>Produk</th>
-                        <th style={{ padding: '0.5rem', textAlign: 'center', fontWeight: 600 }}>Kompetensi</th>
-                        <th style={{ padding: '0.5rem', textAlign: 'center', fontWeight: 600 }}>Perilaku</th>
-                        <th style={{ padding: '0.5rem', textAlign: 'center', fontWeight: 600 }}>Sarana</th>
-                        <th style={{ padding: '0.5rem', textAlign: 'left', fontWeight: 600 }}>Saran</th>
-                        <th style={{ padding: '0.5rem', textAlign: 'left', fontWeight: 600 }}>Tanggal</th>
+                      <tr>
+                        <th>#</th>
+                        <th>Layanan</th>
+                        {['Persyaratan','Prosedur','Waktu','Biaya','Produk','Kompetensi','Perilaku','Sarana'].map(u => (
+                          <th key={u} style={{ textAlign: 'center' }}>{u}</th>
+                        ))}
+                        <th>Saran</th>
+                        <th>Tanggal</th>
                       </tr>
                     </thead>
                     <tbody>
                       {skm.map((s, i) => (
-                        <tr key={s.id} style={{ borderBottom: '1px solid #f3f4f6' }}>
-                          <td style={{ padding: '0.5rem', fontFamily: 'monospace', fontSize: '0.75rem' }}>{skmCount - i}</td>
-                          <td style={{ padding: '0.5rem' }}>{s.layanan || '-'}</td>
+                        <tr key={s.id}>
+                          <td style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem' }}>{skmCount - i}</td>
+                          <td>{s.layanan || '-'}</td>
                           {['persyaratan','prosedur','waktu','biaya','produk','kompetensi','perilaku','sarana'].map(u => (
-                            <td key={u} style={{ padding: '0.5rem', textAlign: 'center' }}>
-                              <span style={{ display: 'inline-block', width: 28, height: 28, lineHeight: '28px', borderRadius: '50%', background: s[u] >= 4 ? '#e8f5e9' : s[u] >= 3 ? '#fff3cd' : '#fef2f2', fontWeight: 600, fontSize: '0.75rem' }}>{s[u] || '-'}</span>
+                            <td key={u} style={{ textAlign: 'center' }}>
+                              <span style={{
+                                display: 'inline-block', width: 28, height: 28, lineHeight: '28px', borderRadius: '50%',
+                                background: s[u] >= 4 ? 'var(--ok-bg)' : s[u] >= 3 ? 'var(--warn-bg)' : 'var(--bad-bg)',
+                                fontWeight: 600, fontSize: '0.75rem', color: s[u] >= 4 ? 'var(--ok)' : s[u] >= 3 ? 'var(--warn)' : 'var(--bad)',
+                              }}>{s[u] || '-'}</span>
                             </td>
                           ))}
-                          <td style={{ padding: '0.5rem', maxWidth: 150, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', fontSize: '0.75rem', color: '#6b7280' }} title={s.saran}>{s.saran || '—'}</td>
-                          <td style={{ padding: '0.5rem', fontSize: '0.75rem', color: '#6b7280', whiteSpace: 'nowrap' }}>{formatDate(s.dibuat)}</td>
+                          <td style={{ maxWidth: 150, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', fontSize: '0.75rem', color: 'var(--muted)' }} title={s.saran}>{s.saran || '—'}</td>
+                          <td style={{ fontSize: '0.75rem', color: 'var(--muted)', whiteSpace: 'nowrap' }}>{formatDate(s.dibuat)}</td>
                         </tr>
                       ))}
                     </tbody>

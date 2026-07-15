@@ -75,7 +75,7 @@ export default function OPDIndex({ data }) {
 
       {/* OPD TABLE */}
       <section style={{ marginBottom: '2rem' }}>
-        <OPDTable data={data} />
+        <OPDTable list={data.opd.daftar} />
       </section>
 
       {/* QUICK LINKS */}

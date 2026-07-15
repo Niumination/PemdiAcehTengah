@@ -29,12 +29,24 @@ export default function PetaProsesBisnis({ data }) {
       </Head>
 
       {/* ============ HERO ============ */}
-      <section className="section-hero-probis">
-        <div className="container">
-          <Link href="/" className="back-link">← Beranda</Link>
+      <section style={{
+        background: 'var(--hero-grad)',
+        borderRadius: 'var(--r)',
+        padding: '2.5rem 2rem',
+        marginBottom: '2rem',
+        color: '#fff',
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
+        <div style={{ position: 'relative', zIndex: 1 }}>
+          <Link href="/" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none', fontSize: '0.875rem' }}
+            onMouseEnter={e => e.target.style.color = '#fff'}
+            onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.8)'}>
+            ← Beranda
+          </Link>
           <div style={{ marginTop: '1rem' }}>
-            <h1>Peta Proses Bisnis (PPB)</h1>
-            <p>
+            <h1 style={{ color: '#fff', fontSize: '2rem', marginBottom: '0.5rem' }}>Peta Proses Bisnis (PPB)</h1>
+            <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1rem' }}>
               Hierarki proses bisnis Pemerintah Kabupaten Aceh Tengah — 3 level sesuai
               Permenpan RB 19/2018 tentang Penyusunan Peta Proses Bisnis Instansi Pemerintah.
             </p>
@@ -281,16 +293,6 @@ export default function PetaProsesBisnis({ data }) {
       </section>
 
       <style jsx>{`
-        .section-hero-probis {
-          background: linear-gradient(135deg, #1d70b8 0%, #003078 100%);
-          color: white;
-          padding: 3rem 0;
-        }
-        .section-hero-probis .back-link { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.875rem; }
-        .section-hero-probis .back-link:hover { color: white; text-decoration: underline; }
-        .section-hero-probis h1 { color: white; font-size: 2rem; margin-bottom: 0.5rem; }
-        .section-hero-probis p { color: rgba(255,255,255,0.85) !important; font-size: 1rem; }
-
         .ppb-overview { margin-bottom: 3rem; }
 
         .ppb-section { margin-bottom: 3rem; padding-top: 1rem; }

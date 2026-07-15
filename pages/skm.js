@@ -47,12 +47,24 @@ export default function SKMPage() {
         <meta name="description" content="Survei Kepuasan Masyarakat (SKM) online — Pemerintah Kabupaten Aceh Tengah. PermenPANRB 8/2026 Indikator I19 & I20." />
       </Head>
 
-      <section className="section-hero-skm">
-        <div className="container">
-          <Link href="/" className="back-link">← Beranda</Link>
+      <section style={{
+        background: 'var(--hero-grad)',
+        borderRadius: 'var(--r)',
+        padding: '2.5rem 2rem',
+        marginBottom: '2rem',
+        color: '#fff',
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
+        <div style={{ position: 'relative', zIndex: 1 }}>
+          <Link href="/" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none', fontSize: '0.875rem' }}
+            onMouseEnter={e => e.target.style.color = '#fff'}
+            onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.8)'}>
+            ← Beranda
+          </Link>
           <div style={{ marginTop: '1rem' }}>
-            <h1>Survei Kepuasan Masyarakat</h1>
-            <p>Bantu kami meningkatkan kualitas layanan digital — isi survei kepuasan Anda</p>
+            <h1 style={{ color: '#fff', fontSize: '2rem', marginBottom: '0.5rem' }}>Survei Kepuasan Masyarakat</h1>
+            <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1rem' }}>Bantu kami meningkatkan kualitas layanan digital — isi survei kepuasan Anda</p>
           </div>
         </div>
       </section>
@@ -201,16 +213,6 @@ export default function SKMPage() {
       </section>
 
       <style jsx>{`
-        .section-hero-skm {
-          background: linear-gradient(135deg, #004098 0%, #002060 100%);
-          color: white;
-          padding: 2.5rem 0 2rem;
-        }
-        .section-hero-skm .back-link { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.875rem; }
-        .section-hero-skm .back-link:hover { color: white; text-decoration: underline; }
-        .section-hero-skm h1 { color: white; font-size: 2rem; margin-bottom: 0.5rem; }
-        .section-hero-skm p { color: rgba(255,255,255,0.85) !important; font-size: 1rem; }
-
         .unit-option {
           display: flex; align-items: center; padding: 0.625rem 1rem;
           border: 1px solid var(--gray-200); border-radius: var(--radius);

@@ -48,42 +48,81 @@ export default function LayananPage() {
       </Head>
 
       {/* ============ HERO ============ */}
-      <section className="section-hero-layanan">
-        <div className="container">
-          <Link href="/" className="back-link">← Beranda</Link>
+      <section style={{
+        background: 'var(--hero-grad)',
+        borderRadius: 'var(--r)',
+        padding: '2.5rem 2rem',
+        marginBottom: '2rem',
+        color: '#fff',
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
+        <div style={{ position: 'relative', zIndex: 1 }}>
+          <Link href="/" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none', fontSize: '0.875rem' }}
+            onMouseEnter={e => e.target.style.color = '#fff'}
+            onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.8)'}>
+            ← Beranda
+          </Link>
           <div style={{ marginTop: '1rem' }}>
-            <h1>Layanan Publik</h1>
-            <p>Direktori {formatAngka(ringkasan.total_layanan)} layanan publik di {formatAngka(ringkasan.total_kategori)} kategori — Pemerintah Kabupaten Aceh Tengah</p>
+            <h1 style={{ color: '#fff', fontSize: '2rem', marginBottom: '0.5rem' }}>Layanan Publik</h1>
+            <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1rem' }}>
+              Direktori {formatAngka(ringkasan.total_layanan)} layanan publik di {formatAngka(ringkasan.total_kategori)} kategori — Pemerintah Kabupaten Aceh Tengah
+            </p>
           </div>
 
           {/* Filter Pills */}
-          <div className="filter-row">
+          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', margin: '1.25rem 0 1rem' }}>
             <button
-              className={`filter-pill ${kategoriAktif === null ? 'active' : ''}`}
               onClick={() => setKategoriAktif(null)}
+              style={{
+                padding: '0.375rem 0.875rem', borderRadius: '100px', fontSize: '0.75rem', fontWeight: kategoriAktif === null ? 600 : 500,
+                background: kategoriAktif === null ? '#fff' : 'rgba(255,255,255,0.1)',
+                border: `1px solid ${kategoriAktif === null ? '#fff' : 'rgba(255,255,255,0.25)'}`,
+                color: kategoriAktif === null ? '#004098' : 'rgba(255,255,255,0.9)',
+                cursor: 'pointer', transition: 'all 0.15s ease', fontFamily: 'var(--font-body)',
+              }}
             >Semua</button>
             {kategori.map(k => (
               <button
                 key={k.id}
-                className={`filter-pill ${kategoriAktif === k.id ? 'active' : ''}`}
-                style={kategoriAktif === k.id ? { background: k.warna, borderColor: k.warna } : {}}
+                style={{
+                  padding: '0.375rem 0.875rem', borderRadius: '100px', fontSize: '0.75rem', fontWeight: kategoriAktif === k.id ? 600 : 500,
+                  background: kategoriAktif === k.id ? k.warna : 'rgba(255,255,255,0.1)',
+                  border: `1px solid ${kategoriAktif === k.id ? k.warna : 'rgba(255,255,255,0.25)'}`,
+                  color: kategoriAktif === k.id ? '#fff' : 'rgba(255,255,255,0.9)',
+                  cursor: 'pointer', transition: 'all 0.15s ease', fontFamily: 'var(--font-body)',
+                }}
+                onMouseEnter={e => { if (kategoriAktif !== k.id) { e.target.style.background = 'rgba(255,255,255,0.2)'; }}}
+                onMouseLeave={e => { if (kategoriAktif !== k.id) { e.target.style.background = 'rgba(255,255,255,0.1)'; }}}
                 onClick={() => setKategoriAktif(k.id)}
               >{k.ikon} {k.nama}</button>
             ))}
           </div>
 
           {/* Search */}
-          <div className="search-wrap">
-            <span className="search-icon">🔍</span>
+          <div style={{ position: 'relative', maxWidth: '480px' }}>
+            <span style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', fontSize: '0.875rem' }}>🔍</span>
             <input
               type="text"
               placeholder="Cari layanan, kategori, atau OPD..."
               value={cari}
               onChange={e => setCari(e.target.value)}
-              className="search-input"
+              style={{
+                width: '100%', padding: '0.75rem 1rem 0.75rem 2.5rem', borderRadius: '8px', border: 'none',
+                fontFamily: 'var(--font-body)', fontSize: '0.875rem', background: 'rgba(255,255,255,0.15)',
+                color: '#fff', outline: 'none', backdropFilter: 'blur(4px)',
+              }}
               aria-label="Cari layanan publik"
             />
-            {cari && <button className="search-clear" onClick={() => setCari('')}>✕</button>}
+            {cari && (
+              <button
+                onClick={() => setCari('')}
+                style={{
+                  position: 'absolute', right: '0.75rem', top: '50%', transform: 'translateY(-50%)',
+                  background: 'none', border: 'none', color: '#fff', cursor: 'pointer', fontSize: '0.875rem', opacity: 0.7,
+                }}
+              >✕</button>
+            )}
           </div>
         </div>
       </section>
@@ -132,14 +171,16 @@ export default function LayananPage() {
           <div className="grid grid-3">
             {kategori.map(k => (
               <Link key={k.id} href={`/layanan?kategori=${k.id}`}
-                className="card kategori-card"
-                style={{ textDecoration: 'none', borderTop: `3px solid ${k.warna}` }}
+                className="card"
+                style={{ textDecoration: 'none', borderTop: `3px solid ${k.warna}`, transition: 'transform 0.15s, box-shadow 0.15s' }}
                 onClick={e => {
                   e.preventDefault();
                   setKategoriAktif(k.id);
                   setCari('');
                   document.getElementById('daftar')?.scrollIntoView({ behavior: 'smooth' });
                 }}
+                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = 'var(--shadow-md)'; }}
+                onMouseLeave={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = 'none'; }}
               >
                 <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>{k.ikon}</div>
                 <h3 style={{ fontSize: '0.9375rem', marginBottom: '0.25rem' }}>{k.nama}</h3>
@@ -150,60 +191,6 @@ export default function LayananPage() {
           </div>
         </div>
       </section>
-
-      <style jsx>{`
-        .section-hero-layanan {
-          background: linear-gradient(135deg, #004098 0%, #002060 100%);
-          color: white;
-          padding: 2.5rem 0 2rem;
-        }
-        .section-hero-layanan .back-link { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.875rem; }
-        .section-hero-layanan .back-link:hover { color: white; }
-        .section-hero-layanan h1 { color: white; font-size: 2rem; margin-bottom: 0.5rem; }
-        .section-hero-layanan p { color: rgba(255,255,255,0.85) !important; font-size: 1rem; }
-
-        .filter-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.25rem 0 1rem; }
-        .filter-pill {
-          padding: 0.375rem 0.875rem;
-          border-radius: 100px;
-          font-size: 0.75rem;
-          font-weight: 500;
-          background: rgba(255,255,255,0.1);
-          border: 1px solid rgba(255,255,255,0.25);
-          color: rgba(255,255,255,0.9);
-          cursor: pointer;
-          transition: all 0.15s ease;
-          font-family: var(--font-body);
-        }
-        .filter-pill:hover { background: rgba(255,255,255,0.2); }
-        .filter-pill.active { background: white; color: #004098; border-color: white; font-weight: 600; }
-
-        .search-wrap {
-          position: relative;
-          max-width: 480px;
-        }
-        .search-icon { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); font-size: 0.875rem; }
-        .search-input {
-          width: 100%;
-          padding: 0.75rem 1rem 0.75rem 2.5rem;
-          border-radius: 8px;
-          border: none;
-          font-family: var(--font-body);
-          font-size: 0.875rem;
-          background: rgba(255,255,255,0.15);
-          color: white;
-          outline: none;
-          backdrop-filter: blur(4px);
-        }
-        .search-input::placeholder { color: rgba(255,255,255,0.6); }
-        .search-clear {
-          position: absolute; right: 0.75rem; top: 50%; transform: translateY(-50%);
-          background: none; border: none; color: white; cursor: pointer; font-size: 0.875rem; opacity: 0.7;
-        }
-
-        .kategori-card { text-decoration: none !important; }
-        .kategori-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
-      `}</style>
     </>
   );
 }

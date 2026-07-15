@@ -46,23 +46,40 @@ export default function FAQPage() {
         <meta name="description" content="Pertanyaan umum seputar Pemerintah Digital Aceh Tengah — portal, layanan, SPBE, Pemdi, dan teknis." />
       </Head>
 
-      <section className="section-hero-faq">
-        <div className="container">
-          <Link href="/" className="back-link">← Beranda</Link>
+      <section style={{
+        background: 'var(--hero-grad)',
+        borderRadius: 'var(--r)',
+        padding: '2.5rem 2rem',
+        marginBottom: '2rem',
+        color: '#fff',
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
+        <div style={{ position: 'relative', zIndex: 1 }}>
+          <Link href="/" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none', fontSize: '0.875rem' }}
+            onMouseEnter={e => e.target.style.color = '#fff'}
+            onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.8)'}>
+            ← Beranda
+          </Link>
           <div style={{ marginTop: '1rem' }}>
-            <h1>Pertanyaan Umum (FAQ)</h1>
-            <p>Jawaban cepat untuk pertanyaan yang sering diajukan tentang portal dan layanan Pemda Aceh Tengah</p>
+            <h1 style={{ color: '#fff', fontSize: '2rem', marginBottom: '0.5rem' }}>Pertanyaan Umum (FAQ)</h1>
+            <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1rem' }}>Jawaban cepat untuk pertanyaan yang sering diajukan tentang portal dan layanan Pemda Aceh Tengah</p>
           </div>
-          <div className="search-wrap">
-            <span className="search-icon">🔍</span>
+          <div style={{ position: 'relative', maxWidth: '480px', marginTop: '1.25rem' }}>
+            <span style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', fontSize: '0.875rem' }}>🔍</span>
             <input
               type="text"
               placeholder="Cari pertanyaan..."
               value={cari}
               onChange={e => setCari(e.target.value)}
-              className="search-input"
+              style={{
+                width: '100%', padding: '0.75rem 1rem 0.75rem 2.5rem', borderRadius: '8px', border: 'none',
+                fontFamily: 'var(--font-body)', fontSize: '0.875rem', background: 'rgba(255,255,255,0.15)',
+                color: '#fff', outline: 'none', backdropFilter: 'blur(4px)',
+              }}
             />
-            {cari && <button className="search-clear" onClick={() => setCari('')}>✕</button>}
+            {cari && <button onClick={() => setCari('')}
+              style={{ position: 'absolute', right: '0.75rem', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', color: '#fff', cursor: 'pointer', fontSize: '0.875rem', opacity: 0.7 }}>✕</button>}
           </div>
         </div>
       </section>
@@ -156,25 +173,6 @@ export default function FAQPage() {
       </section>
 
       <style jsx>{`
-        .section-hero-faq {
-          background: linear-gradient(135deg, #004098 0%, #1565c0 100%);
-          color: white;
-          padding: 2.5rem 0 2rem;
-        }
-        .section-hero-faq .back-link { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.875rem; }
-        .section-hero-faq .back-link:hover { color: white; text-decoration: underline; }
-        .section-hero-faq h1 { color: white; font-size: 2rem; margin-bottom: 0.5rem; }
-        .section-hero-faq p { color: rgba(255,255,255,0.85) !important; font-size: 1rem; }
-        .search-wrap { position: relative; max-width: 480px; margin-top: 1.25rem; }
-        .search-icon { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); font-size: 0.875rem; }
-        .search-input {
-          width: 100%; padding: 0.75rem 1rem 0.75rem 2.5rem; border-radius: 8px; border: none;
-          font-family: var(--font-body); font-size: 0.875rem; background: rgba(255,255,255,0.15);
-          color: white; outline: none; backdrop-filter: blur(4px);
-        }
-        .search-input::placeholder { color: rgba(255,255,255,0.6); }
-        .search-clear { position: absolute; right: 0.75rem; top: 50%; transform: translateY(-50%); background: none; border: none; color: white; cursor: pointer; font-size: 0.875rem; opacity: 0.7; }
-
         .faq-tabs {
           display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;
         }

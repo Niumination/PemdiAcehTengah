@@ -32,21 +32,41 @@ export default function Requirement() {
         <meta name="description" content="Daftar kebutuhan data, API, dan akses untuk penyusunan Peta Proses Bisnis Aceh Tengah berdasarkan Permenpan RB 19/2018" />
       </Head>
 
-      <div className="page-container">
-        {/* Header */}
-        <div className="req-header">
-          <div className="req-header-badge">DOKUMEN PERENCANAAN</div>
-          <h1 className="req-title">Requirement Peta Proses Bisnis</h1>
-          <p className="req-subtitle">
+      {/* HERO */}
+      <section style={{
+        background: 'var(--hero-grad)',
+        borderRadius: 'var(--r)',
+        padding: '2.5rem 2rem',
+        marginBottom: '2rem',
+        color: '#fff',
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
+        <div style={{ position: 'relative', zIndex: 1 }}>
+          <div className="pill" style={{ marginBottom: '0.75rem', background: 'rgba(255,255,255,0.15)', color: '#fff', border: '1px solid rgba(255,255,255,0.3)' }}>
+            DOKUMEN PERENCANAAN
+          </div>
+          <h1 style={{ color: '#fff', fontSize: '2rem', marginBottom: '0.5rem' }}>
+            Requirement Peta Proses Bisnis
+          </h1>
+          <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1rem', maxWidth: '600px' }}>
             Kabupaten Aceh Tengah — Berdasarkan Permenpan RB No. 19 Tahun 2018
           </p>
-          <div className="req-meta">
-            <span className="req-meta-item">📅 Juni 2026</span>
-            <span className="req-meta-item">📋 83 Item Kebutuhan</span>
-            <span className="req-meta-item">🏛️ 12 Kategori</span>
+          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginTop: '1rem' }}>
+            <span className="card" style={{ padding: '0.5rem 0.75rem', background: 'rgba(255,255,255,0.12)', border: 'none', fontSize: '0.8rem' }}>
+              📅 Juni 2026
+            </span>
+            <span className="card" style={{ padding: '0.5rem 0.75rem', background: 'rgba(255,255,255,0.12)', border: 'none', fontSize: '0.8rem' }}>
+              📋 {requirements.summary?.reduce((s, c) => s + c.count, 0) || '-'} Item Kebutuhan
+            </span>
+            <span className="card" style={{ padding: '0.5rem 0.75rem', background: 'rgba(255,255,255,0.12)', border: 'none', fontSize: '0.8rem' }}>
+              🏛️ {requirements.summary?.length || '-'} Kategori
+            </span>
           </div>
         </div>
+      </section>
 
+      <div className="page-container">
         {/* Summary Cards */}
         <div className="req-summary">
           <h2 className="section-title">Ringkasan Kebutuhan</h2>
@@ -202,7 +222,7 @@ export default function Requirement() {
         .page-container {
           max-width: 1000px;
           margin: 0 auto;
-          padding: 40px 20px 80px;
+          padding: 0 20px 80px;
           font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
         .section-title {
@@ -212,47 +232,6 @@ export default function Requirement() {
           border-left: 4px solid #004098;
           padding-left: 12px;
           margin: 0 0 20px;
-        }
-        /* Header */
-        .req-header {
-          text-align: center;
-          margin-bottom: 40px;
-        }
-        .req-header-badge {
-          display: inline-block;
-          background: #004098;
-          color: white;
-          padding: 4px 14px;
-          border-radius: 12px;
-          font-size: 0.75rem;
-          font-weight: 600;
-          letter-spacing: 1px;
-          text-transform: uppercase;
-          margin-bottom: 12px;
-        }
-        .req-title {
-          font-size: 2rem;
-          font-weight: 700;
-          color: #1a1a2e;
-          margin: 0 0 8px;
-        }
-        .req-subtitle {
-          font-size: 1rem;
-          color: #666;
-          margin: 0 0 16px;
-        }
-        .req-meta {
-          display: flex;
-          gap: 16px;
-          justify-content: center;
-          flex-wrap: wrap;
-        }
-        .req-meta-item {
-          background: #f5f7fa;
-          padding: 4px 12px;
-          border-radius: 6px;
-          font-size: 0.85rem;
-          color: #555;
         }
         /* Summary Cards */
         .req-summary {
@@ -478,7 +457,6 @@ export default function Requirement() {
         .req-footer a:hover { text-decoration: underline; }
 
         @media (max-width: 640px) {
-          .req-title { font-size: 1.5rem; }
           .req-cards { grid-template-columns: 1fr; }
         }
       `}</style>

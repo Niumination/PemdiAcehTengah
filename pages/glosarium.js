@@ -52,16 +52,17 @@ export default function GlosariumPage() {
       <a href="#glosarium-content" className="skip-link">Lompat ke daftar istilah</a>
 
       {/* ============ HERO ============ */}
-      <section
-        style={{
-          background: 'linear-gradient(135deg, #004098 0%, #002060 100%)',
-          color: 'white',
-          padding: '3rem 0',
-          textAlign: 'center',
-        }}
-      >
-        <div className="container">
-          <h1 style={{ fontSize: 'clamp(1.25rem, 3.5vw, 1.75rem)', fontWeight: 700, marginBottom: '0.5rem' }}>
+      <section style={{
+        background: 'var(--hero-grad)',
+        borderRadius: 'var(--r)',
+        padding: '2.5rem 2rem',
+        marginBottom: '2rem',
+        color: '#fff',
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+          <h1 style={{ fontSize: 'clamp(1.25rem, 3.5vw, 1.75rem)', fontWeight: 700, marginBottom: '0.5rem', color: '#fff' }}>
             📖 Glosarium — Istilah Pemerintah Digital
           </h1>
           <p style={{ fontSize: '0.9375rem', color: 'rgba(255,255,255,0.85)', maxWidth: '560px', margin: '0 auto', lineHeight: 1.6 }}>
