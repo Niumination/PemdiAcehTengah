@@ -8,32 +8,23 @@ import ScrollTop from './ScrollTop';
 import LaporWidget from './LaporWidget';
 import RatingWidget from './RatingWidget';
 
-/* ── Constants ── */
-const SIDEBAR_W = 262;
-const MOBILE_BP = 900;
-const CONTENT_MAX_W = 1180;
-
-/* ── Breadcrumb label map ── */
 const breadcrumbLabels = {
-  '/': 'Beranda',
-  '/layanan': 'Layanan Publik',
-  '/opd': 'Perangkat Daerah',
-  '/spbe': 'Indeks SPBE',
-  '/pemdi': 'Indeks Pemdi',
-  '/probis': 'Peta Proses Bisnis',
-  '/roadmap': 'Roadmap',
-  '/lapor': 'Lapor / Saran',
-  '/skm': 'Survei Kepuasan',
-  '/faq': 'Tanya & FAQ',
-  '/glosarium': 'Glosarium',
-  '/cari': 'Cari',
-  '/tanya': 'Tanya',
-  '/kebijakan-privasi': 'Kebijakan Privasi',
-  '/admin': 'Admin',
-  '/requirement': 'Requirements',
+  '/': 'Beranda Portal',
+  '/layanan': 'Direktori Layanan Publik',
+  '/opd': '52 Perangkat Daerah',
+  '/spbe': 'Evaluasi Indeks SPBE 2025',
+  '/pemdi': 'Indeks Pemdi (PermenPANRB 8/2026)',
+  '/probis': 'Peta Proses Bisnis (PPB Level 0-2)',
+  '/lapor': 'Lapor & Pengaduan Warga',
+  '/skm': 'Survei Kepuasan Masyarakat',
+  '/dashboard-kepuasan': 'Dashboard Kepuasan Publik',
+  '/faq': 'FAQ & Asisten Virtual',
+  '/glosarium': 'Kamus Glosarium Digital',
+  '/cari': 'Konsol Pencarian Portal',
+  '/requirement': 'Requirements Inventaris Data',
+  '/admin': 'Panel Admin Pengelola',
 };
 
-/* ── Generate breadcrumb trail from pathname ── */
 function getBreadcrumbs(pathname) {
   if (!pathname || pathname === '/') {
     return [{ href: '/', label: 'Beranda' }];
@@ -45,10 +36,8 @@ function getBreadcrumbs(pathname) {
 
   segments.forEach((seg, idx) => {
     accumulated += `/${seg}`;
-    /* Try direct label first */
     let label = breadcrumbLabels[accumulated];
 
-    /* Fallback: format segment as title */
     if (!label) {
       label = seg
         .replace(/[-_]/g, ' ')
@@ -62,145 +51,6 @@ function getBreadcrumbs(pathname) {
   return crumbs;
 }
 
-/* ── Styles ── */
-const styles = {
-  /* Outer wrapper — gov strip + body */
-  outer: {
-    display: 'flex',
-    flexDirection: 'column',
-    minHeight: '100vh',
-    paddingTop: 'var(--gov-strip-h, 36px)',
-    background: 'var(--bg)',
-    color: 'var(--ink)',
-    fontFamily: 'var(--font-body)',
-  },
-  /* Main wrapper — sidebar + content row */
-  shell: {
-    display: 'flex',
-    flex: 1,
-    minHeight: 0,
-    transition: 'background 0.3s ease, color 0.3s ease',
-  },
-  /* Sidebar column */
-  sidebarCol: {
-    flexShrink: 0,
-    width: SIDEBAR_W,
-  },
-  /* Right column: topbar + content */
-  rightCol: {
-    flex: 1,
-    display: 'flex',
-    flexDirection: 'column',
-    minWidth: 0,
-  },
-  /* Topbar */
-  topbar: {
-    position: 'sticky',
-    top: 0,
-    zIndex: 100,
-    display: 'flex',
-    alignItems: 'center',
-    gap: 12,
-    padding: '10px 26px',
-    background: 'var(--surface)',
-    borderBottom: '1px solid var(--line)',
-    backdropFilter: 'blur(8px)',
-    WebkitBackdropFilter: 'blur(8px)',
-    minHeight: 52,
-    transition: 'background 0.3s ease',
-  },
-  /* Hamburger (mobile only) */
-  hamburger: {
-    background: 'none',
-    border: 'none',
-    cursor: 'pointer',
-    fontSize: '1.3rem',
-    padding: '4px 6px',
-    borderRadius: 'var(--radius-sm, 4px)',
-    color: 'var(--ink)',
-    lineHeight: 1,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    transition: 'background 0.15s ease',
-  },
-  /* Breadcrumbs */
-  breadcrumbList: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: 6,
-    flex: 1,
-    minWidth: 0,
-    overflow: 'hidden',
-    listStyle: 'none',
-    margin: 0,
-    padding: 0,
-  },
-  crumbItem: {
-    fontSize: '0.82rem',
-    whiteSpace: 'nowrap',
-  },
-  crumbLink: {
-    color: 'var(--primary)',
-    textDecoration: 'none',
-    transition: 'color 0.15s ease',
-  },
-  crumbCurrent: {
-    color: 'var(--ink)',
-    fontWeight: 600,
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-    maxWidth: 240,
-    display: 'inline-block',
-    verticalAlign: 'middle',
-  },
-  separator: {
-    color: 'var(--line)',
-    fontSize: '0.7rem',
-    margin: '0 2px',
-    userSelect: 'none',
-  },
-  /* Actions in topbar */
-  actions: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: 10,
-    flexShrink: 0,
-  },
-  laporLink: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: 5,
-    padding: '6px 14px',
-    borderRadius: 'var(--radius, 8px)',
-    background: 'var(--primary)',
-    color: '#fff',
-    textDecoration: 'none',
-    fontSize: '0.78rem',
-    fontWeight: 600,
-    transition: 'background 0.15s ease, opacity 0.15s ease',
-    lineHeight: 1,
-    whiteSpace: 'nowrap',
-    border: 'none',
-    cursor: 'pointer',
-    fontFamily: 'inherit',
-  },
-  /* Content area */
-  content: {
-    flex: 1,
-    maxWidth: CONTENT_MAX_W,
-    width: '100%',
-    margin: '0 auto',
-    padding: '26px 26px 48px',
-    transition: 'padding 0.2s ease',
-  },
-  /* Empty sidebar block on mobile */
-  sidebarSpacer: {
-    width: 0,
-  },
-};
-
-/* ── AppShell Component ── */
 export default function AppShell({ children }) {
   const router = useRouter();
   const pathname = router.pathname;
@@ -210,9 +60,8 @@ export default function AppShell({ children }) {
   const [hydrated, setHydrated] = useState(false);
   const [showLapor, setShowLapor] = useState(false);
 
-  /* Hydration-safe responsive detection */
   useEffect(() => {
-    const mq = window.matchMedia(`(max-width: ${MOBILE_BP}px)`);
+    const mq = window.matchMedia('(max-width: 900px)');
     setIsMobile(mq.matches);
     setHydrated(true);
 
@@ -221,12 +70,10 @@ export default function AppShell({ children }) {
     return () => mq.removeEventListener('change', handler);
   }, []);
 
-  /* Close sidebar on route change (mobile) */
   useEffect(() => {
     if (isMobile) setSidebarOpen(false);
   }, [pathname, isMobile]);
 
-  /* Global event: buka modal Lapor dari kartu beranda / CTA */
   useEffect(() => {
     const openLapor = () => setShowLapor(true);
     window.addEventListener('pemdi:open-lapor', openLapor);
@@ -236,124 +83,92 @@ export default function AppShell({ children }) {
   const breadcrumbs = getBreadcrumbs(pathname);
 
   return (
-    <div style={styles.outer}>
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', paddingTop: 'var(--gov-strip-h)' }}>
+      {/* Official Government Strip */}
       <div className="gov-strip" role="banner">
         <span className="gov-strip-flag" aria-hidden="true">🇮🇩</span>
-        Situs Resmi Pemerintah Kabupaten Aceh Tengah
-      </div>
-    <div style={styles.shell}>
-      {/* Sidebar — fixed via the component */}
-      <Sidebar
-        isOpen={sidebarOpen}
-        onClose={() => setSidebarOpen(false)}
-      />
-
-      {/* Spacer column on desktop to offset fixed sidebar — always rendered, CSS hides on mobile */}
-      <div style={styles.sidebarCol} className="sb-spacer" aria-hidden="true" />
-
-      {/* Right column */}
-      <div style={styles.rightCol}>
-        {/* Topbar */}
-        <header style={styles.topbar}>
-          {/* Hamburger (mobile only) */}
-          {hydrated && isMobile && (
-            <button
-              onClick={() => setSidebarOpen((prev) => !prev)}
-              aria-label={sidebarOpen ? 'Tutup menu' : 'Buka menu'}
-              style={styles.hamburger}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'var(--surface-hover)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'none';
-              }}
-            >
-              {sidebarOpen ? '✕' : '☰'}
-            </button>
-          )}
-
-          {/* Breadcrumbs */}
-          <nav aria-label="Breadcrumb">
-            <ol style={styles.breadcrumbList}>
-              {breadcrumbs.map((crumb, idx) => (
-                <li key={crumb.href} style={styles.crumbItem}>
-                  {idx > 0 && (
-                    <span style={styles.separator} aria-hidden="true">
-                      /
-                    </span>
-                  )}
-                  {crumb.isLast ? (
-                    <span style={styles.crumbCurrent} title={crumb.label}>
-                      {crumb.label}
-                    </span>
-                  ) : (
-                    <Link
-                      href={crumb.href}
-                      style={styles.crumbLink}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.textDecoration = 'underline';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.textDecoration = 'none';
-                      }}
-                    >
-                      {crumb.label}
-                    </Link>
-                  )}
-                </li>
-              ))}
-            </ol>
-          </nav>
-
-          {/* Actions */}
-          <div style={styles.actions}>
-            <ThemeToggle />
-
-            <button
-              type="button"
-              onClick={() => setShowLapor(true)}
-              aria-label="Buka formulir Lapor / Saran"
-              style={styles.laporLink}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.opacity = '0.9';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.opacity = '1';
-              }}
-            >
-              <span>📢</span>
-              <span>Lapor</span>
-            </button>
-          </div>
-        </header>
-
-        {/* Skip link — accessible from every page */}
-        <a href="#main-content" className="skip-link">Lompat ke konten utama</a>
-
-        {/* Main content */}
-        <main
-          id="main-content"
-          style={styles.content}
-        >
-          {children}
-        </main>
-
-        <Footer />
-
-        {/* Rating Widget — floating di pojok kanan bawah */}
-        <RatingWidget />
-
+        Portal Resmi Pemerintah Kabupaten Aceh Tengah — Menuju Pemerintah Digital (Pemdi)
       </div>
 
-      <ScrollTop />
+      <div style={{ display: 'flex', flex: 1, minHeight: 0 }}>
+        {/* Sidebar Navigation */}
+        <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
-      {/* LaporWidget modal — dikontrol dari topbar */}
-      <LaporWidget
-        externalOpen={showLapor}
-        hideFab
-        onExternalClose={() => setShowLapor(false)}
-      />
-    </div>
+        {/* Spacer on Desktop */}
+        <div className="sb-spacer" aria-hidden="true" />
+
+        {/* Right Content Space */}
+        <div className="main">
+          {/* Topbar sticky header */}
+          <header className="topbar">
+            {hydrated && isMobile && (
+              <button
+                type="button"
+                className="btn btn-secondary btn-sm"
+                onClick={() => setSidebarOpen((prev) => !prev)}
+                aria-label={sidebarOpen ? 'Tutup menu' : 'Buka menu'}
+              >
+                {sidebarOpen ? '✕' : '☰ Menu'}
+              </button>
+            )}
+
+            {/* Breadcrumb Navigation Trail */}
+            <nav aria-label="Breadcrumb" style={{ flex: 1, minWidth: 0 }}>
+              <ol style={{ display: 'flex', alignItems: 'center', gap: '6px', listStyle: 'none', margin: 0, padding: 0 }}>
+                {breadcrumbs.map((crumb, idx) => (
+                  <li key={crumb.href} style={{ fontSize: '0.82rem', whiteSpace: 'nowrap' }}>
+                    {idx > 0 && <span style={{ color: 'var(--muted)', margin: '0 4px', fontSize: '0.7rem' }}>/</span>}
+                    {crumb.isLast ? (
+                      <span style={{ color: 'var(--ink)', fontWeight: 700 }}>{crumb.label}</span>
+                    ) : (
+                      <Link href={crumb.href} style={{ color: 'var(--primary)', textDecoration: 'none', fontWeight: 500 }}>
+                        {crumb.label}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ol>
+            </nav>
+
+            {/* Actions Bar */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <ThemeToggle />
+
+              <button
+                type="button"
+                className="btn btn-primary btn-sm"
+                onClick={() => setShowLapor(true)}
+                aria-label="Buka formulir pengaduan Lapor"
+              >
+                <span>📢</span>
+                <span>Lapor Warga</span>
+              </button>
+            </div>
+          </header>
+
+          {/* Accessible Skip Link */}
+          <a href="#main-content" className="skip-link">Lompat ke konten utama</a>
+
+          {/* Main Content Area */}
+          <main id="main-content" className="content">
+            {children}
+          </main>
+
+          <Footer />
+
+          {/* Floating Citizen Rating Widget */}
+          <RatingWidget />
+        </div>
+
+        <ScrollTop />
+
+        {/* Lapor Modal */}
+        <LaporWidget
+          externalOpen={showLapor}
+          hideFab
+          onExternalClose={() => setShowLapor(false)}
+        />
+      </div>
     </div>
   );
 }

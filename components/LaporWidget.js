@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 
 export default function LaporWidget({ externalOpen, onExternalClose, hideFab }) {
   const [buka, setBuka] = useState(false);
@@ -28,10 +28,10 @@ export default function LaporWidget({ externalOpen, onExternalClose, hideFab }) 
     }
   }, [externalOpen]);
 
-  const tutup = () => {
+  const tutup = useCallback(() => {
     setBuka(false);
     onExternalClose?.();
-  };
+  }, [onExternalClose]);
 
   useEffect(() => {
     if (!buka) return;

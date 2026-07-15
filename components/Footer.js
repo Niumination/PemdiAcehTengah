@@ -1,64 +1,112 @@
 import Sp4nBanner from './Sp4nBanner';
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="gov-footer">
       <div className="container">
         <div className="footer-grid">
+          {/* Column 1: Brand & Executive Authority */}
           <div className="footer-brand">
             <h4>Pemdi Aceh Tengah</h4>
             <p>
-              Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah.
-              Transformasi menuju Pemerintah Digital (Pemdi) — open source
-              government technology untuk tata kelola yang transparan,
-              efisien, dan berorientasi pada masyarakat.
+              Portal Digital Resmi Pemerintah Kabupaten Aceh Tengah.
+              Transformasi menuju Pemerintah Digital (Pemdi) berdasarkan 
+              <strong> PermenPANRB No. 8 Tahun 2026</strong> &amp; <strong>PermenPANRB No. 19 Tahun 2018</strong>.
             </p>
-            <p className="mt-2">
-              <strong>Narasumber Data:</strong> Diskominfo Kab. Aceh Tengah
-              — sebagai Walidata.
+            <p style={{ marginTop: '12px', fontSize: '0.8125rem' }}>
+              <strong>Walidata Resmi Data Sektoral:</strong> Dinas Komunikasi dan Informatika (Diskominfo) Kab. Aceh Tengah.
             </p>
           </div>
+
+          {/* Column 2: Navigation Hub */}
           <div className="footer-col">
-            <h5>Navigasi</h5>
+            <h5>Navigasi Utama</h5>
             <ul>
-              <li><a href="/">Beranda</a></li>
-              <li><a href="/layanan">Layanan Publik</a></li>
-              <li><a href="/pemdi">Indeks Pemdi</a></li>
-              <li><a href="/probis">Peta Proses Bisnis</a></li>
-              <li><a href="/glosarium">Glosarium</a></li>
-              <li><a href="#opd">Perangkat Daerah</a></li>
+              <li><a href="/">Beranda Portal</a></li>
+              <li><a href="/layanan">Direktori Layanan Publik (25 SLA)</a></li>
+              <li><a href="/pemdi">Indeks Pemdi (PermenPANRB 8/2026)</a></li>
+              <li><a href="/spbe">Evaluasi Indeks SPBE 2025 (2,59)</a></li>
+              <li><a href="/probis">Peta Proses Bisnis (PPB Level 0–2)</a></li>
+              <li><a href="/skm">Survei Kepuasan Masyarakat (SKM)</a></li>
+              <li><a href="/dashboard-kepuasan">Live Dashboard IKM Publik</a></li>
             </ul>
           </div>
+
+          {/* Column 3: Regulations & Official Documents */}
           <div className="footer-col">
-            <h5>Dokumen</h5>
+            <h5>Regulasi &amp; Dokumen</h5>
             <ul>
-              <li><a href="https://cekprestasi.acehtengahkab.go.id/spbe/" target="_blank" rel="noopener">Laporan SPBE 2025</a></li>
-              <li><a href="/docs/permenpanrb%208%202026.pdf" target="_blank" rel="noopener">Permenpan 8/2026 (Pemdi)</a></li>
-              <li><a href="/pemdi#dasar-hukum" rel="noopener">SK Tim Koordinasi Pemdi 2026</a></li>
-              <li><a href="https://peraturan.bpk.go.id/Details/132523/permen-pan-rb-no-19-tahun-2018" target="_blank" rel="noopener">Permenpan 19/2018</a></li>
-              <li><a href="https://peraturan.bpk.go.id/Details/180164/permen-pan-rb-no-59-tahun-2020" target="_blank" rel="noopener">Permenpan 59/2020 (arsip)</a></li>
-              <li><a href="https://peraturan.bpk.go.id/Details/104930/perpres-no-95-tahun-2018" target="_blank" rel="noopener">Perpres 95/2018</a></li>
-              <li><Sp4nBanner variant="footer" /></li>
+              <li>
+                <a href="https://cekprestasi.acehtengahkab.go.id/spbe/" target="_blank" rel="noopener noreferrer">
+                  📄 Laporan Resmi SPBE 2025
+                </a>
+              </li>
+              <li>
+                <a href="/docs/permenpanrb%208%202026.pdf" target="_blank" rel="noopener noreferrer">
+                  📄 PermenPANRB No. 8/2026 (Pemdi)
+                </a>
+              </li>
+              <li>
+                <a href="https://peraturan.bpk.go.id/Details/132523/permen-pan-rb-no-19-tahun-2018" target="_blank" rel="noopener noreferrer">
+                  📜 PermenPANRB No. 19/2018 (PPB)
+                </a>
+              </li>
+              <li>
+                <a href="https://peraturan.bpk.go.id/Details/104930/perpres-no-95-tahun-2018" target="_blank" rel="noopener noreferrer">
+                  📜 Perpres No. 95/2018 (SPBE)
+                </a>
+              </li>
+              <li>
+                <a href="/pemdi#dasar-hukum">
+                  ⚖️ SK Tim Koordinasi Pemdi 2026
+                </a>
+              </li>
+              <li>
+                <a href="/kebijakan-privasi">
+                  🔒 Kebijakan Privasi Portal
+                </a>
+              </li>
             </ul>
           </div>
+
+          {/* Column 4: Contact & Channels */}
           <div className="footer-col">
-            <h5>Kontak</h5>
+            <h5>Kontak &amp; Integrasi</h5>
             <ul>
-              <li><a href="https://acehtengahkab.go.id">acehtengahkab.go.id</a></li>
-              <li><a href="mailto:diskominfoacehtengah@gmail.com">diskominfoacehtengah@gmail.com</a></li>
-              <li><a href="https://github.com/Niumination/PemdiAcehTengah" target="_blank">GitHub Repo</a></li>
+              <li>
+                <a href="https://acehtengahkab.go.id" target="_blank" rel="noopener noreferrer">
+                  🌐 Portal Pemkab acehtengahkab.go.id
+                </a>
+              </li>
+              <li>
+                <a href="mailto:diskominfoacehtengah@gmail.com">
+                  ✉️ diskominfoacehtengah@gmail.com
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/Niumination/PemdiAcehTengah" target="_blank" rel="noopener noreferrer">
+                  💻 Repositori Open Source GitHub
+                </a>
+              </li>
+              <li style={{ marginTop: '10px' }}>
+                <Sp4nBanner variant="footer" />
+              </li>
             </ul>
           </div>
         </div>
+
+        {/* Footer Bottom Bar */}
         <div className="footer-bottom">
           <span>
-            &copy; {new Date().getFullYear()} Pemdi Aceh Tengah.
-            Open source under{' '}
-            <a href="https://github.com/Niumination/PemdiAcehTengah/blob/main/LICENSE" target="_blank">
+            &copy; {currentYear} Pemerintah Kabupaten Aceh Tengah.
+            Open Source Government Technology berlisensi{' '}
+            <a href="https://github.com/Niumination/PemdiAcehTengah/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">
               MIT License
             </a>.
           </span>
-          <span>Dibangun dengan Next.js — Deploy di Vercel</span>
+          <span>Next.js 14 Pages Router · Deployed on Vercel</span>
         </div>
       </div>
     </footer>
