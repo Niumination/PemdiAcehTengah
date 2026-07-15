@@ -15,33 +15,33 @@ function getLevel(value) {
 }
 
 const aspekIcons = {
-  'Tata Kelola & Manajemen': '🏛️',
-  'Penyelenggara / SDM Digital': '👩‍💻',
+  'Tata Kelola dan Manajemen': '🏛️',
+  'Penyelenggara': '👩‍💻',
   'Data': '💾',
-  'Keamanan Pemerintah Digital': '🔒',
-  'Teknologi Pemerintah Digital': '⚙️',
-  'Keterpaduan Layanan Digital': '🔗',
-  'Kepuasan Pengguna Layanan Digital': '😊',
+  'Keamanan Pemerintah Digital Siber': '🔒',
+  'Teknologi Digital': '⚙️',
+  'Keterpaduan': '🔗',
+  'Kepuasan Pengguna Layanan Digital Pemerintah': '😊',
 };
 
 const aspekDesk = {
-  'Tata Kelola & Manajemen': 'Aturan & cara mengelola transformasi secara terencana.',
-  'Penyelenggara / SDM Digital': 'Kesiapan & keterampilan ASN menjalankan layanan digital.',
+  'Tata Kelola dan Manajemen': 'Aturan & cara mengelola transformasi secara terencana.',
+  'Penyelenggara': 'Kesiapan ASN & kolaborasi antar OPD dalam layanan digital.',
   'Data': 'Pengelolaan data: akurat, terbuka, dapat dipakai bersama.',
-  'Keamanan Pemerintah Digital': 'Perlindungan sistem & data dari serangan/kebocoran.',
-  'Teknologi Pemerintah Digital': 'Kesiapan aplikasi & infrastruktur pendukung Pemdi.',
-  'Keterpaduan Layanan Digital': 'Seberapa nyambung antar-sistem agar data tak terpisah.',
-  'Kepuasan Pengguna Layanan Digital': 'Seberapa puas warga pada layanan digital (dari survei SKM).',
+  'Keamanan Pemerintah Digital Siber': 'Perlindungan sistem & data dari serangan/kebocoran.',
+  'Teknologi Digital': 'Kesiapan aplikasi & infrastruktur pendukung Pemdi.',
+  'Keterpaduan': 'Seberapa nyambung antar-sistem agar data tak terpisah.',
+  'Kepuasan Pengguna Layanan Digital Pemerintah': 'Seberapa puas warga pada layanan digital (dari survei SKM).',
 };
 
 const aspekSingkat = {
-  'Tata Kelola & Manajemen': 'Tata Kelola',
-  'Penyelenggara / SDM Digital': 'SDM Digital',
+  'Tata Kelola dan Manajemen': 'Tata Kelola',
+  'Penyelenggara': 'Penyelenggara',
   'Data': 'Data',
-  'Keamanan Pemerintah Digital': 'Keamanan',
-  'Teknologi Pemerintah Digital': 'Teknologi',
-  'Keterpaduan Layanan Digital': 'Keterpaduan',
-  'Kepuasan Pengguna Layanan Digital': 'Kepuasan',
+  'Keamanan Pemerintah Digital Siber': 'Keamanan Siber',
+  'Teknologi Digital': 'Teknologi',
+  'Keterpaduan': 'Keterpaduan',
+  'Kepuasan Pengguna Layanan Digital Pemerintah': 'Kepuasan',
 };
 
 const domainNames = {
