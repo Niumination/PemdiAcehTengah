@@ -2,11 +2,59 @@ import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import slugify from '@/lib/slugify';
 
-export default function OPDTable({ list = [] }) {
+export default function OPDTable({ list = [], layananCountMap = {} }) {
   const [search, setSearch] = useState('');
   const [kategoriFilter, setKategoriFilter] = useState('');
   const [page, setPage] = useState(1);
   const pageSize = 12;
+
+  /* Get service count for an OPD — fuzzy match via normalized name */
+  function getLayananCount(opd) {
+    const normalized = opd.nama
+      .toLowerCase()
+      .replace(/\(.*?\)/g, '')
+      .replace(/[^a-z0-9 ]/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+    
+    // 1) Exact match
+    if (layananCountMap[normalized]) return layananCountMap[normalized];
+    
+    // 2) Partial containment — one contains the other
+    for (const [key, count] of Object.entries(layananCountMap)) {
+      if (key === '__kecamatan__') continue;
+      if (normalized.includes(key) || key.includes(normalized)) {
+        return count;
+      }
+    }
+    
+    // 3) Token overlap — split into words, find the key with most shared words
+    const tokens = normalized.split(' ').filter(Boolean);
+    let bestScore = 0;
+    let bestCount = 0;
+    for (const [key, count] of Object.entries(layananCountMap)) {
+      if (key === '__kecamatan__') continue;
+      const keyTokens = key.split(' ').filter(Boolean);
+      const shared = tokens.filter(t => keyTokens.includes(t)).length;
+      if (shared > bestScore) {
+        bestScore = shared;
+        bestCount = count;
+      }
+    }
+    if (bestScore >= Math.min(tokens.length, 3)) return bestCount;
+
+    // 4) Singkatan fallback
+    const bySingkat = Object.entries(layananCountMap).find(([key]) =>
+      opd.singkat && key.includes(opd.singkat.toLowerCase())
+    );
+    if (bySingkat) return bySingkat[1];
+    
+    // 5) Kecamatan → share "Semua Kecamatan" service count
+    if (opd.jenis === 'kecamatan' && layananCountMap.__kecamatan__) {
+      return layananCountMap.__kecamatan__;
+    }
+    return 0;
+  }
 
   // Unique OPD Categories
   const kategoriOptions = useMemo(() => {
@@ -137,7 +185,7 @@ export default function OPDTable({ list = [] }) {
                     <span className="badge badge-blue">{opd.kategori || 'OPD'}</span>
                   </td>
                   <td style={{ textAlign: 'center', fontWeight: 800, color: 'var(--primary)', fontSize: '0.95rem' }}>
-                    {opd.jumlah_layanan ?? opd.layanan?.length ?? 0}
+                    {getLayananCount(opd)}
                   </td>
                   <td style={{ textAlign: 'right' }}>
                     <Link href={`/opd/${slugify(opd.nama)}`} className="btn btn-outline btn-sm">

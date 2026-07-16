@@ -3,8 +3,40 @@ import Link from 'next/link';
 import OPDTable from '@/components/OPDTable';
 import { formatAngka } from '@/lib/format';
 import portalData from '@/data/opd.json';
+import layananData from '@/data/layanan.json';
 
-export default function OPDIndex({ data }) {
+/* Normalize OPD name for fuzzy matching */
+function normalizeNama(nama) {
+  return nama
+    .toLowerCase()
+    .replace(/\(.*?\)/g, '')    // hapus parenthetical: "(DPMPTSP)" → ""
+    .replace(/[^a-z0-9 ]/g, '') // hapus karakter non-alfanumerik
+    .replace(/\s+/g, ' ')       // normalize whitespace
+    .trim();
+}
+
+function buildLayananCountMap(layanan) {
+  const map = {};
+  for (const kat of layanan.kategori) {
+    const raw = kat.opd;
+    const count = kat.layanan?.length || 0;
+    if (count === 0) continue;
+
+    if (raw === 'Semua Kecamatan') {
+      map['__kecamatan__'] = (map['__kecamatan__'] || 0) + count;
+    } else {
+      const key = normalizeNama(raw);
+      map[key] = (map[key] || 0) + count;
+      // Add aliases for common naming mismatches
+      if (key.includes('pengelola keuangan')) {
+        map[key.replace('pengelola keuangan', 'pengelolaan keuangan')] = count;
+      }
+    }
+  }
+  return map;
+}
+
+export default function OPDIndex({ data, layananCountMap }) {
   const opd = data.opd;
   const meta = data;
 
@@ -75,7 +107,7 @@ export default function OPDIndex({ data }) {
 
       {/* OPD TABLE */}
       <section style={{ marginBottom: '2rem' }}>
-        <OPDTable list={data.opd.daftar} />
+        <OPDTable list={data.opd.daftar} layananCountMap={layananCountMap} />
       </section>
 
       {/* QUICK LINKS */}
@@ -130,5 +162,6 @@ export default function OPDIndex({ data }) {
 
 export function getStaticProps() {
   const data = JSON.parse(JSON.stringify(portalData));
-  return { props: { data } };
+  const layananCountMap = buildLayananCountMap(layananData);
+  return { props: { data, layananCountMap } };
 }
