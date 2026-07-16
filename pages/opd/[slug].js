@@ -108,7 +108,7 @@ export default function OPDPage({ opd, urusanTerkait, probisMisi, relatedOpd, pr
   return (
     <>
       <Head>
-        <title>{opd.nama} — Pemdi Aceh Tengah</title>
+        <title>{`${opd.nama} — Pemdi Aceh Tengah`}</title>
         <meta name="description" content={`${opd.nama} (${opd.singkat}) — ${opd.urusan}. ${opd.jumlah_asn > 0 ? `${formatAngka(opd.jumlah_asn)} ASN` : 'Data ASN belum tersedia'}. Peta Proses Bisnis Level 1–2.`} />
       </Head>
 
