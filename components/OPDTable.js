@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
+import slugify from '@/lib/slugify';
 
 export default function OPDTable({ list = [] }) {
   const [search, setSearch] = useState('');
@@ -118,7 +119,7 @@ export default function OPDTable({ list = [] }) {
           <tbody>
             {paginatedList.length > 0 ? (
               paginatedList.map((opd) => (
-                <tr key={opd.slug || opd.kode}>
+                <tr key={opd.id || opd.nama}>
                   <td style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 800, color: 'var(--primary)' }}>
                     {opd.kode || '—'}
                   </td>
@@ -139,7 +140,7 @@ export default function OPDTable({ list = [] }) {
                     {opd.jumlah_layanan ?? opd.layanan?.length ?? 0}
                   </td>
                   <td style={{ textAlign: 'right' }}>
-                    <Link href={`/opd/${opd.slug || opd.kode}`} className="btn btn-outline btn-sm">
+                    <Link href={`/opd/${slugify(opd.nama)}`} className="btn btn-outline btn-sm">
                       Detail Profil →
                     </Link>
                   </td>

@@ -35,7 +35,7 @@ const menuGroups = [
   },
 ];
 
-export default function Sidebar({ isOpen, onClose }) {
+export default function Sidebar({ isOpen, onClose, collapsed }) {
   const router = useRouter();
   const pathname = router.pathname;
 
@@ -64,6 +64,7 @@ export default function Sidebar({ isOpen, onClose }) {
   };
 
   const showAsDrawer = hydrated && !isDesktop;
+  const isCollapsed = hydrated && isDesktop && collapsed;
 
   return (
     <>
@@ -88,11 +89,11 @@ export default function Sidebar({ isOpen, onClose }) {
 
       {/* Main Sidebar */}
       <aside
-        className={`sidebar ${showAsDrawer && isOpen ? 'open' : ''}`}
+        className={`sidebar ${showAsDrawer && isOpen ? 'open' : ''} ${isCollapsed ? 'collapsed' : ''}`}
         role="navigation"
         aria-label="Navigasi Utama Pemdi Aceh Tengah"
       >
-        {/* Brand Header */}
+        {/* Brand Header — selalu tampil meski collapsed, minimal */}
         <div className="sb-header">
           <Link href="/" className="sb-brand" aria-label="Beranda Pemdi Aceh Tengah">
             <div className="sb-crest">
@@ -191,7 +192,7 @@ export default function Sidebar({ isOpen, onClose }) {
         </div>
       </aside>
 
-      {/* Lapor Modal */}
+      {/* Lapor Modal — tetap pop-up, bukan side panel */}
       <LaporWidget
         externalOpen={showLapor}
         onExternalClose={() => setShowLapor(false)}

@@ -2,17 +2,12 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { formatAngka, formatDesimal, gabung } from '@/lib/format';
 import portalData from '@/data/opd.json';
+import slugify from '@/lib/slugify';
 
 /* =============================================
    Slug helper — konsisten untuk getStaticPaths
    dan getStaticProps lookup
    ============================================= */
-function slugify(text) {
-  return text
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/(^-|-$)/g, '');
-}
 
 /* Mapping urusan → Misi (Level 0 PPB) */
 const URUSAN_TO_MISI = {

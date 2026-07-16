@@ -23,6 +23,8 @@ const breadcrumbLabels = {
   '/cari': 'Konsol Pencarian Portal',
   '/requirement': 'Requirements Inventaris Data',
   '/admin': 'Panel Admin Pengelola',
+  '/bantuan': 'Pusat Bantuan',
+  '/kebijakan-privasi': 'Kebijakan Privasi',
 };
 
 function getBreadcrumbs(pathname) {
@@ -56,6 +58,7 @@ export default function AppShell({ children }) {
   const pathname = router.pathname;
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarHidden, setSidebarHidden] = useState(false); // desktop hide/show
   const [isMobile, setIsMobile] = useState(false);
   const [hydrated, setHydrated] = useState(false);
   const [showLapor, setShowLapor] = useState(false);
@@ -82,25 +85,38 @@ export default function AppShell({ children }) {
 
   const breadcrumbs = getBreadcrumbs(pathname);
 
+  /* ── Marquee teks ── */
+  const marqueeText = 'Portal Resmi Pemerintah Kabupaten Aceh Tengah — Menuju Pemerintah Digital (Pemdi)';
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', paddingTop: 'var(--gov-strip-h)' }}>
-      {/* Official Government Strip */}
+      {/* Official Government Strip — Marquee Running Text */}
       <div className="gov-strip" role="banner">
         <span className="gov-strip-flag" aria-hidden="true">🇮🇩</span>
-        Portal Resmi Pemerintah Kabupaten Aceh Tengah — Menuju Pemerintah Digital (Pemdi)
+        <div className="gov-strip-marquee">
+          <div className="gov-strip-marquee-track" aria-label={marqueeText}>
+            <span>{marqueeText}</span>
+            <span>{marqueeText}</span>
+          </div>
+        </div>
       </div>
 
       <div style={{ display: 'flex', flex: 1, minHeight: 0 }}>
         {/* Sidebar Navigation */}
-        <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+        <Sidebar
+          isOpen={sidebarOpen}
+          onClose={() => setSidebarOpen(false)}
+          collapsed={hydrated && !isMobile && sidebarHidden}
+        />
 
         {/* Spacer on Desktop */}
-        <div className="sb-spacer" aria-hidden="true" />
+        <div className={`sb-spacer ${sidebarHidden ? 'hidden' : ''}`} aria-hidden="true" />
 
         {/* Right Content Space */}
         <div className="main">
           {/* Topbar sticky header */}
           <header className="topbar">
+            {/* Sidebar toggle (desktop) + hamburger (mobile) */}
             {hydrated && isMobile && (
               <button
                 type="button"
@@ -109,6 +125,17 @@ export default function AppShell({ children }) {
                 aria-label={sidebarOpen ? 'Tutup menu' : 'Buka menu'}
               >
                 {sidebarOpen ? '✕' : '☰ Menu'}
+              </button>
+            )}
+            {hydrated && !isMobile && (
+              <button
+                type="button"
+                className="sb-toggle-btn"
+                onClick={() => setSidebarHidden((prev) => !prev)}
+                aria-label={sidebarHidden ? 'Tampilkan sidebar' : 'Sembunyikan sidebar'}
+                title={sidebarHidden ? 'Tampilkan sidebar' : 'Sembunyikan sidebar'}
+              >
+                {sidebarHidden ? '☰' : '✕'}
               </button>
             )}
 
@@ -162,7 +189,7 @@ export default function AppShell({ children }) {
 
         <ScrollTop />
 
-        {/* Lapor Modal */}
+        {/* Lapor Modal — tetap sebagai pop-up (sesuai Task 3) */}
         <LaporWidget
           externalOpen={showLapor}
           hideFab

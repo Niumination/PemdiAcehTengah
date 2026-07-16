@@ -3,14 +3,8 @@ import Link from 'next/link';
 import { useState } from 'react';
 import DetailModal from '@/components/DetailModal';
 import { formatAngka, formatDesimal, gabung } from '@/lib/format';
+import slugify from '@/lib/slugify';
 import portalData from '@/data/opd.json';
-
-function slugify(text) {
-  return text
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/(^-|-$)/g, '');
-}
 
 export default function PetaProsesBisnis({ data }) {
   const [modalMisi, setModalMisi] = useState(null);
@@ -116,7 +110,7 @@ export default function PetaProsesBisnis({ data }) {
           </div>
         </section>
 
-        {/* ============ MODAL MISI DETAIL ============ */}
+        {/* ============ SIDE PANEL MISI DETAIL ============ */}
         <DetailModal
           title={modalMisi ? modalMisi.nama : ''}
           open={!!modalMisi}

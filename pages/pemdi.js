@@ -161,12 +161,12 @@ export default function PemdiPage() {
         </div>
       </section>
 
-      {/* Modal Detail Aspek & Indikator */}
+      {/* Side Panel Detail Aspek & Indikator */}
       <DetailModal
         title={modalAspek ? `Aspek ${modalAspek.id}: ${modalAspek.nama}` : ''}
         open={!!modalAspek}
         onClose={() => setModalAspek(null)}
-        maxWidth={720}
+        maxWidth={640}
       >
         {modalAspek && (
           <div>

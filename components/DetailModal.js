@@ -1,13 +1,24 @@
 import { useEffect, useCallback, useRef } from 'react';
 
-export default function DetailModal({ title, open, onClose, children, maxWidth = 640 }) {
-  const modalRef = useRef(null);
+/**
+ * SidePanel — Menggantikan DetailModal (pop-up centered → side panel dari kanan).
+ * KECUALI komponen LaporWidget tetap sebagai pop-up.
+ *
+ * Props:
+ * - title: judul panel
+ * - open: boolean visibility
+ * - onClose: callback tutup
+ * - children: konten panel
+ * - maxWidth: maksimal lebar panel (default 480)
+ */
+export default function DetailModal({ title, open, onClose, children, maxWidth = 480 }) {
+  const panelRef = useRef(null);
   const closeRef = useRef(null);
 
   const handleKeyDown = useCallback((e) => {
     if (e.key === 'Escape') onClose();
-    if (e.key === 'Tab' && modalRef.current) {
-      const focusable = modalRef.current.querySelectorAll(
+    if (e.key === 'Tab' && panelRef.current) {
+      const focusable = panelRef.current.querySelectorAll(
         'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
       );
       if (!focusable.length) return;
@@ -35,31 +46,43 @@ export default function DetailModal({ title, open, onClose, children, maxWidth =
     };
   }, [open, handleKeyDown]);
 
-  if (!open) return null;
-
-  const titleId = 'pm-modal-title';
+  const titleId = 'sp-panel-title';
 
   return (
-    <div className="pm-modal-overlay" onClick={onClose} role="presentation">
+    <>
+      {/* Overlay */}
       <div
-        ref={modalRef}
-        className="pm-modal-content"
+        className={`sp-overlay ${open ? 'open' : ''}`}
+        onClick={onClose}
+        role="presentation"
+        aria-hidden={!open}
+      />
+      {/* Panel */}
+      <div
+        ref={panelRef}
+        className={`sp-panel ${open ? 'open' : ''}`}
         style={{ maxWidth }}
-        onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
+        aria-hidden={!open}
       >
-        <div className="pm-modal-header">
-          <h2 id={titleId} className="pm-modal-title">{title}</h2>
-          <button ref={closeRef} type="button" className="pm-modal-close" onClick={onClose} aria-label="Tutup">
+        <div className="sp-header">
+          <h2 id={titleId} className="sp-title">{title}</h2>
+          <button
+            ref={closeRef}
+            type="button"
+            className="sp-close"
+            onClick={onClose}
+            aria-label="Tutup panel"
+          >
             ✕
           </button>
         </div>
-        <div className="pm-modal-body">
+        <div className="sp-body">
           {children}
         </div>
       </div>
-    </div>
+    </>
   );
 }
