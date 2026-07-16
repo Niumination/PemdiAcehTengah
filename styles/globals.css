@@ -1046,6 +1046,72 @@ input:focus, select:focus, textarea:focus {
   display:flex;align-items:center;gap:.75rem;margin-bottom:1rem
 }
 
+/* ---------- OPD Slug Page — Info Table Cards ---------- */
+.info-table{width:100%;border-collapse:collapse}
+.info-table tr:last-child td{padding-bottom:0}
+.info-table td{padding:.5rem 0;border:none;vertical-align:top}
+.info-label{
+  width:35%;font-size:.8125rem;font-weight:600;
+  color:var(--muted);padding-right:.75rem!important;white-space:nowrap
+}
+.info-value{font-size:.875rem;color:var(--ink)}
+.stat-number{font-size:1.25rem;font-weight:700;color:var(--primary)}
+.stat-number-sm{font-size:1rem;font-weight:600;color:var(--primary)}
+
+/* ---------- OPD Slug Page — PPB Hierarchy Cards ---------- */
+.ppb-hierarchy{align-items:stretch}
+.ppb-card{display:flex;flex-direction:column}
+.ppb-level-badge{
+  display:inline-flex;align-items:center;font-size:.65rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.05em;padding:.2rem .625rem;
+  border-radius:100px;background:var(--surface-2);color:var(--muted);
+  margin-bottom:.75rem;width:-moz-fit-content;width:fit-content
+}
+.ppb-card h3{font-size:1rem;font-weight:700;margin:0 0 .5rem;color:var(--ink)}
+.ppb-label{font-size:.75rem;color:var(--muted);margin:0 0 .25rem;text-transform:uppercase;letter-spacing:.03em}
+.ppb-value{font-size:.875rem;color:var(--ink);font-weight:500;line-height:1.5;margin:0}
+.ppb-footnote{font-size:.6875rem;color:var(--muted);margin-top:auto;padding-top:1rem;font-style:italic}
+.ppb-misi-badge{
+  display:inline-flex;font-size:.75rem;font-weight:600;padding:.3rem .75rem;
+  border-radius:100px;background:var(--primary-50);color:var(--primary)
+}
+.ppb-chain{display:flex;align-items:center;justify-content:center;gap:.5rem;margin-top:2rem;flex-wrap:wrap}
+.ppb-chain-item{display:flex;flex-direction:column;align-items:center;gap:.375rem;text-align:center}
+.ppb-chain-circle{
+  width:44px;height:44px;border-radius:50%;background:var(--primary-50);
+  color:var(--primary);display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;font-weight:700
+}
+.ppb-chain-circle-active{background:var(--primary);color:#fff}
+.ppb-chain-arrow{font-size:1.25rem;color:var(--muted);margin:0 .25rem;margin-bottom:1.75rem}
+
+/* ---------- OPD Slug Page — Sections ---------- */
+.section-header{margin-bottom:1.25rem}
+.section-header h2{font-size:1.25rem;font-weight:700;margin:0 0 .25rem;color:var(--ink)}
+.section-header p{font-size:.875rem;color:var(--muted);margin:0;line-height:1.5}
+.section-alt{background:var(--surface-2)}
+.section-subheader h3{font-size:1.125rem;font-weight:600;margin:0}
+.section-subheader p{font-size:.8125rem;color:var(--muted);margin:.25rem 0 0}
+
+/* ---------- OPD Slug Page — Hero ---------- */
+.hero-back-link{
+  display:inline-flex;align-items:center;gap:.375rem;
+  font-size:.8125rem;color:var(--primary);text-decoration:none;margin-bottom:.75rem
+}
+.hero-back-link:hover{text-decoration:underline}
+.hero-badge{
+  display:inline-flex;font-size:.75rem;font-weight:600;padding:.3rem .75rem;
+  border-radius:100px;background:var(--primary-50);color:var(--primary);margin-bottom:.75rem
+}
+.hero-subtitle{font-size:1rem;color:var(--muted);margin:.5rem 0 0;line-height:1.5}
+
+/* ---------- Badge Variants ---------- */
+.badge-sm{font-size:.6875rem!important;padding:.15rem .5rem!important}
+
+/* ---------- Related OPD Cards ---------- */
+.related-card{text-decoration:none;color:inherit;transition:box-shadow .15s,transform .15s}
+.related-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+
 /* ---------- OPD tags ---------- */
 .opd-tags{display:flex;flex-wrap:wrap;gap:.375rem}
 .opd-tag{
@@ -1064,6 +1130,7 @@ input:focus, select:focus, textarea:focus {
   .stats { grid-template-columns: repeat(3, 1fr); }
   .qa-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 900px) {
