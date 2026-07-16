@@ -66,8 +66,8 @@ export default function Sp4nBanner({ variant = 'banner' }) {
           display: flex; align-items: center; justify-content: center;
         }
         .sp4n-banner-icon { font-size: 1.5rem; filter: brightness(0) invert(1); }
-        .sp4n-banner-title { font-size: 1rem; font-weight: 600; color: #166534; margin-bottom: 0.25rem; }
-        .sp4n-banner-desc { font-size: 0.8125rem; color: #15803d; line-height: 1.5; margin-bottom: 0.75rem; }
+        .sp4n-banner-title { font-size: 1rem; font-weight: 600; color: var(--ok); margin-bottom: 0.25rem; }
+        .sp4n-banner-desc { font-size: 0.8125rem; color: var(--ok); line-height: 1.5; margin-bottom: 0.75rem; }
         .sp4n-banner-btn {
           display: inline-flex; align-items: center; gap: 0.375rem;
           padding: 0.5rem 1rem;

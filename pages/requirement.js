@@ -228,8 +228,8 @@ export default function Requirement() {
         .section-title {
           font-size: 1.3rem;
           font-weight: 600;
-          color: #004098;
-          border-left: 4px solid #004098;
+          color: var(--primary);
+          border-left: 4px solid var(--primary);
           padding-left: 12px;
           margin: 0 0 20px;
         }
@@ -243,15 +243,15 @@ export default function Requirement() {
           gap: 12px;
         }
         .req-card {
-          background: white;
-          border: 1px solid #e5e7eb;
+          background: var(--surface);
+          border: 1px solid var(--line);
           border-radius: 10px;
           padding: 16px;
           cursor: pointer;
           transition: all 0.2s;
         }
         .req-card:hover {
-          border-color: #004098;
+          border-color: var(--primary);
           box-shadow: 0 4px 12px rgba(0,64,152,0.1);
           transform: translateY(-2px);
         }
@@ -269,75 +269,75 @@ export default function Requirement() {
           border-radius: 10px;
           text-transform: uppercase;
         }
-        .req-card.wajib .req-card-priority { background: #dc2626; color: white; }
-        .req-card.sangat .req-card-priority { background: #ea580c; color: white; }
+        .req-card.wajib .req-card-priority { background: var(--bad); color: white; }
+        .req-card.sangat .req-card-priority { background: var(--warn); color: white; }
         .req-card.penting .req-card-priority { background: #ca8a04; color: white; }
-        .req-card.pendukung .req-card-priority { background: #6b7280; color: white; }
+        .req-card.pendukung .req-card-priority { background: var(--muted); color: white; }
         .req-card-title {
           font-size: 0.95rem;
           font-weight: 600;
           margin: 0 0 6px;
-          color: #1a1a2e;
+          color: var(--ink);
         }
         .req-card-stats {
           display: flex;
           gap: 8px;
           font-size: 0.8rem;
-          color: #888;
+          color: var(--muted);
           margin-bottom: 6px;
         }
         .req-card-desc {
           font-size: 0.78rem;
-          color: #777;
+          color: var(--ink-secondary);
           line-height: 1.4;
         }
         /* Detail Accordion */
         .req-detail {
-          border: 1px solid #e5e7eb;
+          border: 1px solid var(--line);
           border-radius: 10px;
           margin-bottom: 8px;
           overflow: hidden;
         }
-        .req-detail.open { border-color: #004098; }
+        .req-detail.open { border-color: var(--primary); }
         .req-detail-header {
           display: flex;
           justify-content: space-between;
           align-items: center;
           padding: 14px 18px;
           cursor: pointer;
-          background: #fafbfc;
+          background: var(--bg);
           transition: background 0.2s;
         }
-        .req-detail-header:hover { background: #f0f4ff; }
+        .req-detail-header:hover { background: var(--primary-50); }
         .req-detail-icon { margin-right: 8px; font-size: 1.1rem; }
         .req-detail-code {
           font-family: 'SF Mono', 'Fira Code', monospace;
           font-size: 0.8rem;
-          color: #004098;
-          background: #e8edf5;
+          color: var(--primary);
+          background: var(--primary-50);
           padding: 2px 8px;
           border-radius: 4px;
           margin-right: 10px;
         }
-        .req-detail-name { font-weight: 600; color: #1a1a2e; font-size: 0.95rem; }
+        .req-detail-name { font-weight: 600; color: var(--ink); font-size: 0.95rem; }
         .req-detail-count {
           font-size: 0.78rem;
-          color: #888;
+          color: var(--muted);
           margin-left: 10px;
         }
         .req-detail-arrow {
           font-size: 0.8rem;
-          color: #999;
+          color: var(--muted-light);
           transition: transform 0.3s;
         }
         .req-detail-arrow.up { transform: rotate(180deg); }
         .req-detail-body {
           padding: 0 18px 18px;
-          background: white;
+          background: var(--surface);
         }
         .req-detail-desc {
           font-size: 0.9rem;
-          color: #555;
+          color: var(--ink-secondary);
           margin: 12px 0;
           line-height: 1.5;
         }
@@ -350,23 +350,23 @@ export default function Requirement() {
           font-size: 0.85rem;
         }
         .req-table th {
-          background: #f0f4ff;
-          color: #004098;
+          background: var(--primary-50);
+          color: var(--primary);
           padding: 8px 10px;
           text-align: left;
           font-weight: 600;
-          border-bottom: 2px solid #004098;
+          border-bottom: 2px solid var(--primary);
         }
         .req-table td {
           padding: 8px 10px;
-          border-bottom: 1px solid #eef0f2;
+          border-bottom: 1px solid var(--line-2);
           vertical-align: top;
         }
-        .req-table tr:hover td { background: #fafbfc; }
+        .req-table tr:hover td { background: var(--bg); }
         .req-format-tag {
           display: inline-block;
-          background: #f0f4ff;
-          color: #004098;
+          background: var(--primary-50);
+          color: var(--primary);
           padding: 2px 6px;
           border-radius: 3px;
           font-size: 0.75rem;
@@ -376,7 +376,7 @@ export default function Requirement() {
         /* Timeline */
         .req-timeline {
           margin: 40px 0;
-          background: #f8faff;
+          background: var(--bg);
           padding: 24px;
           border-radius: 12px;
         }
@@ -387,8 +387,8 @@ export default function Requirement() {
           margin-bottom: 20px;
         }
         .req-timeline-phase {
-          background: white;
-          border: 1px solid #e5e7eb;
+          background: var(--surface);
+          border: 1px solid var(--line);
           border-radius: 10px;
           padding: 20px;
         }
@@ -401,20 +401,20 @@ export default function Requirement() {
           letter-spacing: 1px;
           margin-bottom: 8px;
         }
-        .req-timeline-badge.fase1 { background: #dc2626; color: white; }
-        .req-timeline-badge.fase2 { background: #ea580c; color: white; }
-        .req-timeline-badge.fase3 { background: #166534; color: white; }
-        .req-timeline-phase h3 { margin: 0 0 4px; font-size: 1rem; color: #1a1a2e; }
-        .req-timeline-waktu { font-size: 0.8rem; color: #888; margin: 0 0 10px; }
-        .req-timeline-phase ul { margin: 0; padding-left: 18px; font-size: 0.85rem; color: #555; }
+        .req-timeline-badge.fase1 { background: var(--bad); color: white; }
+        .req-timeline-badge.fase2 { background: var(--warn); color: white; }
+        .req-timeline-badge.fase3 { background: var(--ok); color: white; }
+        .req-timeline-phase h3 { margin: 0 0 4px; font-size: 1rem; color: var(--ink); }
+        .req-timeline-waktu { font-size: 0.8rem; color: var(--muted); margin: 0 0 10px; }
+        .req-timeline-phase ul { margin: 0; padding-left: 18px; font-size: 0.85rem; color: var(--ink-secondary); }
         .req-timeline-phase li { margin-bottom: 4px; }
         .req-timeline-total {
-          background: white;
+          background: var(--surface);
           padding: 12px 18px;
           border-radius: 8px;
           font-size: 0.9rem;
-          color: #333;
-          border: 1px solid #e5e7eb;
+          color: var(--ink-secondary);
+          border: 1px solid var(--line);
         }
         /* Outputs */
         .req-outputs {
@@ -428,8 +428,8 @@ export default function Requirement() {
           display: flex;
           gap: 16px;
           align-items: flex-start;
-          background: white;
-          border: 1px solid #e5e7eb;
+          background: var(--surface);
+          border: 1px solid var(--line);
           border-radius: 10px;
           padding: 16px;
         }
@@ -437,23 +437,23 @@ export default function Requirement() {
           font-family: 'SF Mono', monospace;
           font-size: 1.5rem;
           font-weight: 700;
-          color: #004098;
+          color: var(--primary);
           opacity: 0.3;
           min-width: 36px;
           line-height: 1;
         }
-        .req-output-item h4 { margin: 0 0 4px; font-size: 0.95rem; color: #1a1a2e; }
-        .req-output-item p { margin: 0; font-size: 0.85rem; color: #666; line-height: 1.4; }
+        .req-output-item h4 { margin: 0 0 4px; font-size: 0.95rem; color: var(--ink); }
+        .req-output-item p { margin: 0; font-size: 0.85rem; color: var(--ink-secondary); line-height: 1.4; }
         /* Footer */
         .req-footer {
           text-align: center;
           padding: 24px 0;
-          border-top: 1px solid #e5e7eb;
+          border-top: 1px solid var(--line);
           margin-top: 40px;
         }
-        .req-footer p { margin: 0 0 6px; font-size: 0.85rem; color: #888; }
-        .req-footer code { background: #f0f0f0; padding: 2px 6px; border-radius: 3px; font-size: 0.8rem; }
-        .req-footer a { color: #004098; text-decoration: none; }
+        .req-footer p { margin: 0 0 6px; font-size: 0.85rem; color: var(--muted); }
+        .req-footer code { background: var(--bg-subtle); padding: 2px 6px; border-radius: 3px; font-size: 0.8rem; }
+        .req-footer a { color: var(--primary); text-decoration: none; }
         .req-footer a:hover { text-decoration: underline; }
 
         @media (max-width: 640px) {

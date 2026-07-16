@@ -74,18 +74,18 @@ export default function DashboardKepuasan() {
       <style jsx>{`
         .dash-info-banner {
           display: flex; gap: 0.75rem; align-items: flex-start;
-          background: #eff6ff; border: 1px solid #bfdbfe;
+          background: var(--primary-50); border: 1px solid var(--primary-200);
           border-radius: var(--radius); padding: 1rem;
           margin-bottom: 0;
-          font-size: 0.8125rem; color: #1e40af; line-height: 1.5;
+          font-size: 0.8125rem; color: var(--primary); line-height: 1.5;
         }
         .dash-info-icon { font-size: 1.125rem; flex-shrink: 0; margin-top: 1px; }
         .dash-info-text { }
 
         .dash-footer-info {
           margin-top: 2rem; padding: 1.25rem;
-          background: var(--gray-50); border-radius: var(--radius);
-          font-size: 0.75rem; color: var(--gray-500); line-height: 1.8;
+          background: var(--bg-subtle); border-radius: var(--radius);
+          font-size: 0.75rem; color: var(--muted); line-height: 1.8;
         }
         .dash-footer-info p { margin: 0; }
         .dash-footer-info p + p { margin-top: 0.5rem; }

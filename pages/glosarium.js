@@ -238,7 +238,7 @@ export default function GlosariumPage() {
           box-shadow: 0 2px 12px rgba(0,0,0,0.06);
         }
         .glossary-card:target {
-          border-color: #004098;
+          border-color: var(--primary);
           box-shadow: 0 0 0 3px rgba(0,64,152,0.15);
         }
       `}</style>

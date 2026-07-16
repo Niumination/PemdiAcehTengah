@@ -20,11 +20,11 @@ export default function Accordion({ title, children, open: defaultOpen = false, 
       </div>
       <style jsx>{`
         .accordion {
-          border: 1px solid var(--border, #d1d5db);
+          border: 1px solid var(--line);
           border-radius: 8px;
           margin: 0.5rem 0;
           overflow: hidden;
-          background: white;
+          background: var(--surface);
         }
         .accordion-summary {
           display: flex;
@@ -34,7 +34,7 @@ export default function Accordion({ title, children, open: defaultOpen = false, 
           cursor: pointer;
           font-weight: 600;
           font-size: 0.9375rem;
-          color: var(--primary, #004098);
+          color: var(--primary);
           user-select: none;
           list-style: none;
         }
@@ -42,12 +42,12 @@ export default function Accordion({ title, children, open: defaultOpen = false, 
           display: none;
         }
         .accordion-summary:hover {
-          background: #f0f4ff;
+          background: var(--primary-50);
         }
         .accordion-arrow {
           transition: transform 0.2s ease;
           font-size: 0.75rem;
-          color: var(--muted, #6b7280);
+          color: var(--muted);
         }
         .accordion-arrow.open {
           transform: rotate(180deg);
@@ -56,7 +56,7 @@ export default function Accordion({ title, children, open: defaultOpen = false, 
           padding: 0 1rem 1rem;
           font-size: 0.875rem;
           line-height: 1.6;
-          color: #333;
+          color: var(--ink-secondary);
         }
       `}</style>
     </details>

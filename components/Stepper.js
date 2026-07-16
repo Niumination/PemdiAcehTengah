@@ -55,29 +55,29 @@ export default function Stepper({ steps = [] }) {
           justify-content: center;
           font-size: 0.8125rem;
           font-weight: 700;
-          background: #e5e7eb;
-          color: #6b7280;
+          background: var(--line);
+          color: var(--muted);
           flex-shrink: 0;
           transition: all 0.2s;
         }
         .stepper-circle.done {
-          background: #00703c;
+          background: var(--ok);
           color: white;
         }
         .stepper-circle.active {
-          background: var(--primary, #004098);
+          background: var(--primary);
           color: white;
-          box-shadow: 0 0 0 4px rgba(0,64,152,0.15);
+          box-shadow: 0 0 0 4px var(--primary-50);
         }
         .stepper-line {
           width: 2px;
           flex: 1;
           min-height: 20px;
-          background: #e5e7eb;
+          background: var(--line);
           margin: 4px 0;
         }
         .stepper-line.done {
-          background: #00703c;
+          background: var(--ok);
         }
         .stepper-content {
           padding-bottom: 1.5rem;
@@ -86,17 +86,17 @@ export default function Stepper({ steps = [] }) {
         .stepper-title {
           font-weight: 600;
           font-size: 0.9375rem;
-          color: #111;
+          color: var(--ink);
           margin-top: 0.375rem;
         }
         .stepper-desc {
           font-size: 0.8125rem;
-          color: var(--muted, #6b7280);
+          color: var(--muted);
           margin-top: 0.25rem;
           line-height: 1.5;
         }
         .stepper-step.next .stepper-title {
-          color: #9ca3af;
+          color: var(--muted-light);
         }
         .stepper-step:last-child .stepper-content {
           padding-bottom: 0;

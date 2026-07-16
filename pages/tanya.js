@@ -232,13 +232,13 @@ export default function TanyaPage() {
         }
         .user-avatar { background: #dbeafe; }
         .chat-text {
-          background: white;
+          background: var(--surface);
           padding: 0.625rem 0.875rem;
           border-radius: 12px;
           font-size: 0.875rem;
           line-height: 1.6;
           box-shadow: 0 1px 2px rgba(0,0,0,0.06);
-          color: #1a1a1a;
+          color: var(--ink);
         }
         .chat-user .chat-text {
           background: #1d70b8;
@@ -249,11 +249,11 @@ export default function TanyaPage() {
         .chat-tag {
           display: inline-block;
           font-size: 0.625rem;
-          background: var(--gray-100);
+          background: var(--bg-subtle);
           padding: 0.125rem 0.5rem;
           border-radius: 100px;
           margin-top: 0.375rem;
-          color: var(--gray-600);
+          color: var(--muted);
         }
         .chat-typing { color: var(--muted); font-style: italic; }
         .dot-1 { animation: dot 1.4s infinite; }

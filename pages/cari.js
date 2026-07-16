@@ -168,7 +168,7 @@ export default function Cari({ items }) {
 
       <style jsx>{`
         section.container :global(a:hover) {
-          border-color: #1d70b8;
+          border-color: var(--primary);
         }
       `}</style>
     </>
