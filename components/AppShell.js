@@ -58,7 +58,7 @@ export default function AppShell({ children }) {
   const pathname = router.pathname;
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [sidebarHidden, setSidebarHidden] = useState(false); // desktop hide/show
+  const [sidebarHidden, setSidebarHidden] = useState(true); // desktop hide/show — default hidden
   const [isMobile, setIsMobile] = useState(false);
   const [hydrated, setHydrated] = useState(false);
   const [showLapor, setShowLapor] = useState(false);
