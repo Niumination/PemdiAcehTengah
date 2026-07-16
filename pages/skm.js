@@ -185,7 +185,7 @@ export default function SKMPage() {
               >
                 {submitting ? 'Mengirim... ⏳' : semuaTerisi ? 'Kirim Survei ✅' : `Isi semua dimensi dulu (${Object.keys(skor).length}/${skmData.dimensi.length})`}
               </button>
-              {errMsg && <div style={{ marginTop: '0.75rem', padding: '0.75rem', background: '#fef2f2', color: '#dc2626', borderRadius: '8px', fontSize: '0.8125rem' }}>❌ {errMsg}</div>}
+              {errMsg && <div style={{ marginTop: '0.75rem', padding: '0.75rem', background: 'var(--bad-bg)', color: 'var(--bad)', borderRadius: '8px', fontSize: '0.8125rem' }}>❌ {errMsg}</div>}
               <div className="flex justify-center" style={{ marginTop: '0.75rem' }}>
                 <button type="button" className="btn btn-outline btn-sm" onClick={() => setStep(1)}>← Kembali</button>
               </div>

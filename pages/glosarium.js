@@ -85,15 +85,15 @@ export default function GlosariumPage() {
               style={{
                 width: '100%',
                 padding: '0.75rem 1rem 0.75rem 2.75rem',
-                border: '2px solid #d1d5db',
+                border: '2px solid var(--line)',
                 borderRadius: '10px',
                 fontFamily: 'Inter, system-ui, sans-serif',
                 fontSize: '0.9375rem',
                 transition: 'border-color 0.2s',
                 outline: 'none',
               }}
-              onFocus={(e) => { e.target.style.borderColor = '#004098'; }}
-              onBlur={(e) => { e.target.style.borderColor = '#d1d5db'; }}
+              onFocus={(e) => { e.target.style.borderColor = 'var(--primary)'; }}
+              onBlur={(e) => { e.target.style.borderColor = 'var(--line)'; }}
             />
             <span
               style={{
@@ -110,7 +110,7 @@ export default function GlosariumPage() {
               🔍
             </span>
           </div>
-          <p style={{ fontSize: '0.75rem', color: '#6b7280', marginTop: '0.5rem', textAlign: 'center' }}>
+          <p style={{ fontSize: '0.75rem', color: 'var(--muted)', marginTop: '0.5rem', textAlign: 'center' }}>
             {filtered.length} dari {glosariumData.length} istilah ditemukan
           </p>
         </div>
@@ -122,7 +122,7 @@ export default function GlosariumPage() {
           {Object.keys(grouped).length === 0 && (
             <div style={{ textAlign: 'center', padding: '2rem 0' }}>
               <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>❌</div>
-              <p style={{ fontSize: '0.9375rem', color: '#6b7280' }}>
+              <p style={{ fontSize: '0.9375rem', color: 'var(--muted)' }}>
                 Tidak ada istilah ditemukan untuk &ldquo;{query}&rdquo;
               </p>
             </div>
@@ -152,8 +152,8 @@ export default function GlosariumPage() {
                     id={`glossary-${entry.id}`}
                     className="glossary-card"
                     style={{
-                      background: 'white',
-                      border: '1px solid #e5e5e5',
+                      background: 'var(--surface)',
+                      border: '1px solid var(--line)',
                       borderRadius: '10px',
                       padding: '1.25rem',
                       scrollMarginTop: '80px',
@@ -165,7 +165,7 @@ export default function GlosariumPage() {
                         style={{
                           fontSize: '1rem',
                           fontWeight: 700,
-                          color: '#111',
+                          color: 'var(--ink)',
                           margin: 0,
                         }}
                       >
@@ -176,7 +176,7 @@ export default function GlosariumPage() {
                         aria-label={`Link langsung ke ${entry.istilah}`}
                         style={{
                           fontSize: '0.75rem',
-                          color: '#9ca3af',
+                          color: 'var(--muted)',
                           textDecoration: 'none',
                           flexShrink: 0,
                           marginTop: '2px',
@@ -191,7 +191,7 @@ export default function GlosariumPage() {
                       <p
                         style={{
                           fontSize: '0.8125rem',
-                          color: '#6b7280',
+                          color: 'var(--muted)',
                           margin: '0 0 0.5rem',
                           fontWeight: 500,
                         }}
@@ -203,7 +203,7 @@ export default function GlosariumPage() {
                     <p
                       style={{
                         fontSize: '0.8125rem',
-                        color: '#b8860b',
+                        color: 'var(--gold)',
                         fontStyle: 'italic',
                         margin: '0 0 0.5rem',
                         lineHeight: 1.5,
@@ -215,7 +215,7 @@ export default function GlosariumPage() {
                     <p
                       style={{
                         fontSize: '0.875rem',
-                        color: '#333',
+                        color: 'var(--ink-secondary)',
                         lineHeight: 1.6,
                         margin: 0,
                       }}

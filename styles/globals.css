@@ -6,6 +6,26 @@
 /* ============ 1. DESIGN TOKENS ============ */
 :root {
   /* Brand Primary — #004098 Pemkab Aceh Tengah */
+
+  /* Legacy aliases — mapped from existing V4 tokens */
+  --gray-50: var(--line-2);
+  --gray-100: var(--line-2);
+  --gray-200: var(--line);
+  --gray-300: var(--line);
+  --gray-400: var(--muted);
+  --gray-500: var(--muted-light);
+  --gray-600: var(--ink-secondary);
+  --gray-700: var(--ink);
+  --gray-800: var(--ink);
+  --gray-900: var(--ink);
+  --white: var(--surface);
+  --radius: var(--r);
+  --primary-light: var(--primary-50);
+
+  /* Search / highlight — visible in both light & dark */
+  --mark-bg: #fef08a;
+  --mark-color: #000;
+
   --primary: #004098;
   --primary-hover: #003078;
   --primary-deep: #001f4d;
@@ -129,6 +149,10 @@
   --sh-sm: 0 2px 6px rgba(0,0,0,0.6);
   --sh: 0 4px 20px -4px rgba(0, 0, 0, 0.55);
   --sh-lg: 0 20px 50px -12px rgba(0, 0, 0, 0.75);
+
+  /* Search / highlight */
+  --mark-bg: #f59e0b;
+  --mark-color: #000;
 }
 
 /* ============ 2. RESET & BASE ============ */

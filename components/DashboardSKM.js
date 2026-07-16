@@ -405,7 +405,7 @@ function EmptyState() {
         Dashboard akan otomatis menampilkan data setelah warga mulai mengisi Survei Kepuasan Masyarakat
         dan memberikan rating di website.
       </p>
-      <div style={{ marginTop: '1.5rem', padding: '0.75rem 1rem', background: '#fef9c3', borderRadius: 'var(--radius)', fontSize: '0.75rem', color: '#92400e', display: 'inline-block' }}>
+      <div style={{ marginTop: '1.5rem', padding: '0.75rem 1rem', background: 'var(--warn-bg)', borderRadius: 'var(--radius)', fontSize: '0.75rem', color: 'var(--warn)', display: 'inline-block' }}>
         💡 Pastikan tabel <code>skm</code>, <code>rating_feedback</code> sudah dibuat di Supabase
       </div>
     </div>

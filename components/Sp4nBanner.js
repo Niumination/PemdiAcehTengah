@@ -54,28 +54,28 @@ export default function Sp4nBanner({ variant = 'banner' }) {
         .sp4n-banner {
           display: flex; gap: 1rem; align-items: flex-start;
           padding: 1.25rem 1.5rem;
-          background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
-          border: 1px solid #bbf7d0;
+          background: var(--ok-bg);
+          border: 1px solid var(--ok-border);
           border-radius: var(--radius-lg);
           margin-bottom: 1.5rem;
         }
         .sp4n-banner-icon-wrap {
           flex-shrink: 0;
           width: 48px; height: 48px;
-          background: #22c55e; border-radius: 12px;
+          background: var(--ok); border-radius: 12px;
           display: flex; align-items: center; justify-content: center;
         }
         .sp4n-banner-icon { font-size: 1.5rem; filter: brightness(0) invert(1); }
         .sp4n-banner-title { font-size: 1rem; font-weight: 600; color: var(--ok); margin-bottom: 0.25rem; }
-        .sp4n-banner-desc { font-size: 0.8125rem; color: var(--ok); line-height: 1.5; margin-bottom: 0.75rem; }
+        .sp4n-banner-desc { font-size: 0.8125rem; color: var(--ink-secondary); line-height: 1.5; margin-bottom: 0.75rem; }
         .sp4n-banner-btn {
           display: inline-flex; align-items: center; gap: 0.375rem;
           padding: 0.5rem 1rem;
-          background: #22c55e; color: white;
+          background: var(--ok); color: white;
           border-radius: var(--radius); font-size: 0.8125rem; font-weight: 600;
           text-decoration: none; transition: background 0.15s;
         }
-        .sp4n-banner-btn:hover { background: #16a34a; }
+        .sp4n-banner-btn:hover { opacity: 0.85; }
 
         @media (max-width: 576px) {
           .sp4n-banner { flex-direction: column; align-items: stretch; }

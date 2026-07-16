@@ -176,12 +176,12 @@ function FormLapor({ onSwitchToCek }) {
         </div>
         <style jsx>{`
           .lapor-id-card {
-            background: #eff6ff; border: 1px solid #bfdbfe; border-radius: var(--radius);
+            background: var(--ok-bg); border: 1px solid var(--ok-border); border-radius: var(--radius);
             padding: 1rem 1.5rem; display: inline-block; text-align: center;
           }
-          .lapor-id-label { font-size: 0.6875rem; color: #1e40af; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem; }
-          .lapor-id-value { font-size: 1.125rem; font-weight: 700; color: #1e40af; font-family: monospace; }
-          .lapor-id-hint { font-size: 0.6875rem; color: #60a5fa; margin-top: 0.375rem; }
+          .lapor-id-label { font-size: 0.6875rem; color: var(--ok); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem; }
+          .lapor-id-value { font-size: 1.125rem; font-weight: 700; color: var(--ok); font-family: monospace; }
+          .lapor-id-hint { font-size: 0.6875rem; color: var(--muted); margin-top: 0.375rem; }
         `}</style>
       </div>
     );
@@ -251,7 +251,7 @@ function FormLapor({ onSwitchToCek }) {
 
       <style jsx>{`
         .lapor-label { display: block; font-size: 0.8125rem; font-weight: 600; color: var(--gray-700); margin-bottom: 0.625rem; }
-        .lapor-req { color: #dc2626; }
+        .lapor-req { color: var(--bad); }
         .lapor-optional { font-weight: 400; color: var(--gray-400); }
 
         .lapor-kategori-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
@@ -261,7 +261,7 @@ function FormLapor({ onSwitchToCek }) {
           cursor: pointer; transition: all 0.12s; font-size: 0.8125rem;
         }
         .lapor-kategori-opt:hover { border-color: var(--primary); background: var(--primary-light); }
-        .lapor-kategori-opt.selected { border-color: var(--primary); background: #eff6ff; }
+        .lapor-kategori-opt.selected { border-color: var(--primary); background: var(--primary-50); }
         .lapor-kat-label { font-weight: 500; color: var(--gray-800); }
         .lapor-kat-desc { font-size: 0.6875rem; color: var(--gray-400); }
 
@@ -281,7 +281,7 @@ function FormLapor({ onSwitchToCek }) {
         .lapor-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-light); }
 
         .lapor-error {
-          padding: 0.75rem 1rem; background: #fef2f2; color: #dc2626;
+          padding: 0.75rem 1rem; background: var(--bad-bg); color: var(--bad);
           border-radius: var(--radius); font-size: 0.8125rem; margin-bottom: 1rem;
         }
 
@@ -377,14 +377,14 @@ function CekStatus() {
 
         .cek-error {
           display: flex; gap: 0.75rem; align-items: flex-start;
-          padding: 1.25rem; background: #fef2f2; border: 1px solid #fecaca;
+          padding: 1.25rem; background: var(--bad-bg); border: 1px solid var(--bad-border);
           border-radius: var(--radius); margin-bottom: 1.25rem;
         }
         .cek-error-icon { font-size: 1.5rem; }
-        .cek-error-title { font-weight: 600; color: #991b1b; font-size: 0.875rem; }
-        .cek-error-desc { font-size: 0.8125rem; color: #b91c1c; margin-top: 0.125rem; }
-        .cek-error-tip { font-size: 0.75rem; color: #dc2626; margin-top: 0.5rem; }
-        .cek-error-tip code { background: #fecaca; padding: 0.125rem 0.375rem; border-radius: 4px; }
+        .cek-error-title { font-weight: 600; color: var(--bad); font-size: 0.875rem; }
+        .cek-error-desc { font-size: 0.8125rem; color: var(--bad); margin-top: 0.125rem; }
+        .cek-error-tip { font-size: 0.75rem; color: var(--bad); margin-top: 0.5rem; }
+        .cek-error-tip code { background: var(--bad-border); padding: 0.125rem 0.375rem; border-radius: 4px; }
       `}</style>
     </div>
   );

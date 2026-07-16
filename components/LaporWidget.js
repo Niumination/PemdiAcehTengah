@@ -245,7 +245,7 @@ export default function LaporWidget({ externalOpen, onExternalClose, hideFab }) 
                   </div>
                 )}
                 {tracking.error && (
-                  <div style={{ marginTop: '0.5rem', padding: '0.75rem', background: '#fef2f2', borderRadius: '8px', fontSize: '0.8125rem', color: '#dc2626' }}>
+                  <div style={{ marginTop: '0.5rem', padding: '0.75rem', background: 'var(--bad-bg)', borderRadius: '8px', fontSize: '0.8125rem', color: 'var(--bad)' }}>
                     ❌ {tracking.error}
                   </div>
                 )}
@@ -350,9 +350,9 @@ export default function LaporWidget({ externalOpen, onExternalClose, hideFab }) 
           border-radius: var(--radius); display: inline-block;
         }
         .lapor-error {
-          margin-top: 0.75rem; padding: 0.5rem 0.75rem; background: #fff0f0;
-          border: 1px solid #e0b3b3; border-radius: 6px; font-size: 0.8125rem;
-          color: #b30000; text-align: center;
+          margin-top: 0.75rem; padding: 0.5rem 0.75rem; background: var(--bad-bg);
+          border: 1px solid var(--bad-border); border-radius: var(--r-xs); font-size: 0.8125rem;
+          color: var(--bad); text-align: center;
         }
       `}</style>
     </>

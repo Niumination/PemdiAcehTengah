@@ -198,10 +198,10 @@ export default function AdminPage() {
           {error && (
             <div className="card" style={{
               padding: '0.75rem', marginBottom: '1rem', fontSize: '0.875rem',
-              background: '#fef2f2', border: '1px solid #fecaca', color: '#dc2626',
+              background: 'var(--bad-bg)', border: '1px solid var(--bad-border)', color: 'var(--bad)',
             }}>
               ❌ {error}
-              <button onClick={() => setError(null)} style={{ float: 'right', background: 'none', border: 'none', cursor: 'pointer', color: '#dc2626' }}>✕</button>
+              <button onClick={() => setError(null)} style={{ float: 'right', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--bad)' }}>✕</button>
             </div>
           )}
 
@@ -273,7 +273,7 @@ export default function AdminPage() {
                               style={{
                                 padding: '0.25rem 0.5rem', borderRadius: 'var(--r-sm)', border: '1px solid var(--line)',
                                 fontSize: '0.75rem', fontFamily: 'var(--font-body)',
-                                background: l.status === 'baru' ? '#fff3cd' : l.status === 'diproses' ? '#cce5ff' : l.status === 'selesai' ? '#d4edda' : 'white',
+                                background: l.status === 'baru' ? 'var(--warn-bg)' : l.status === 'diproses' ? 'var(--info-bg)' : l.status === 'selesai' ? 'var(--ok-bg)' : 'var(--surface)',
                               }}>
                               <option value="baru">🟡 Baru</option>
                               <option value="diproses">🔵 Diproses</option>

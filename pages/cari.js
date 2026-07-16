@@ -94,8 +94,8 @@ export default function Cari({ items }) {
                 borderRadius: '8px',
                 border: 'none',
                 fontSize: '1.1rem',
-                color: '#1a1a2e',
-                background: '#fff',
+                color: 'var(--ink)',
+                background: 'var(--surface)',
                 boxShadow: '0 2px 12px rgba(0,0,0,0.15)',
               }}
             />
@@ -109,7 +109,7 @@ export default function Cari({ items }) {
 
       <section className="container" style={{ padding: '2rem 0' }}>
         {!searched && !query && (
-          <div style={{ textAlign: 'center', padding: '4rem 1rem', color: '#6b7280' }}>
+          <div style={{ textAlign: 'center', padding: '4rem 1rem', color: 'var(--muted)' }}>
             <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🔍</div>
             <p style={{ fontSize: '1.125rem' }}>Ketik kata kunci untuk memulai pencarian</p>
             <p style={{ fontSize: '0.875rem', marginTop: '0.5rem' }}>
@@ -119,7 +119,7 @@ export default function Cari({ items }) {
         )}
 
         {searched && hasil.length === 0 && (
-          <div style={{ textAlign: 'center', padding: '3rem 1rem', color: '#6b7280' }}>
+          <div style={{ textAlign: 'center', padding: '3rem 1rem', color: 'var(--muted)' }}>
             <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>😕</div>
             <p style={{ fontSize: '1.125rem' }}>Tidak ditemukan untuk "{query}"</p>
             <p style={{ fontSize: '0.875rem', marginTop: '0.25rem' }}>Coba kata kunci lain</p>
@@ -128,7 +128,7 @@ export default function Cari({ items }) {
 
         {hasil.length > 0 && (
           <>
-            <p style={{ fontSize: '0.875rem', color: '#6b7280', marginBottom: '1rem' }}>
+            <p style={{ fontSize: '0.875rem', color: 'var(--muted)', marginBottom: '1rem' }}>
               {hasil.length} hasil untuk "{query}"
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
@@ -138,8 +138,8 @@ export default function Cari({ items }) {
                   href={item.url}
                   style={{
                     display: 'flex', alignItems: 'flex-start', gap: '0.75rem',
-                    padding: '1rem', borderRadius: '8px', background: '#fff',
-                    border: '1px solid #e5e7eb', textDecoration: 'none',
+                    padding: '1rem', borderRadius: '8px', background: 'var(--surface)',
+                    border: '1px solid var(--line)', textDecoration: 'none',
                     color: 'inherit', transition: 'box-shadow 0.15s, transform 0.15s',
                   }}
                   onMouseOver={e => { e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.08)'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
@@ -152,7 +152,7 @@ export default function Cari({ items }) {
                     <div style={{ fontWeight: 600, fontSize: '1rem', marginBottom: '0.125rem' }}>
                       {highlight(item.label, query)}
                     </div>
-                    <div style={{ fontSize: '0.825rem', color: '#6b7280', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    <div style={{ fontSize: '0.825rem', color: 'var(--muted)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                       {item.sublabel}
                     </div>
                   </div>
@@ -201,7 +201,7 @@ function highlight(text = '', query) {
     s.match
       ? React.createElement('mark', {
           key: i,
-          style: { background: '#fef08a', borderRadius: 2, padding: '0 2px', color: '#000' },
+          style: { background: 'var(--mark-bg)', borderRadius: 2, padding: '0 2px', color: 'var(--mark-color)' },
         }, s.text)
       : s.text
   );

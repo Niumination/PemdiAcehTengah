@@ -6,10 +6,10 @@ export default function TrackerStatus({ status, dibuat, diperbarui, compact }) {
   ];
 
   const statusConfig = {
-    baru: { color: '#2563eb', bg: '#eff6ff', dot: '#2563eb', label: 'Baru', icon: '📥' },
-    diproses: { color: '#d97706', bg: '#fffbeb', dot: '#d97706', label: 'Diproses', icon: '🔧' },
-    selesai: { color: '#059669', bg: '#ecfdf5', dot: '#059669', label: 'Selesai', icon: '✅' },
-    ditolak: { color: '#dc2626', bg: '#fef2f2', dot: '#dc2626', label: 'Ditolak', icon: '❌' },
+    baru: { color: '#2563eb', bg: 'var(--info-bg)', dot: '#2563eb', label: 'Baru', icon: '📥' },
+    diproses: { color: '#d97706', bg: 'var(--warn-bg)', dot: '#d97706', label: 'Diproses', icon: '🔧' },
+    selesai: { color: '#059669', bg: 'var(--ok-bg)', dot: '#059669', label: 'Selesai', icon: '✅' },
+    ditolak: { color: '#dc2626', bg: 'var(--bad-bg)', dot: '#dc2626', label: 'Ditolak', icon: '❌' },
   };
 
   const cfg = statusConfig[status] || statusConfig.baru;
@@ -55,8 +55,8 @@ export default function TrackerStatus({ status, dibuat, diperbarui, compact }) {
           const isFuture = i > currentIdx;
 
           let dotColor = cfg.color;
-          if (isFuture) dotColor = '#d1d5db';
-          if (isPast && isDitolak) dotColor = '#fca5a5';
+          if (isFuture) dotColor = 'var(--muted-light)';
+          if (isPast && isDitolak) dotColor = 'var(--bad-border)';
 
           return (
             <div key={step.key} className="tracker-step">
@@ -64,8 +64,8 @@ export default function TrackerStatus({ status, dibuat, diperbarui, compact }) {
                 <div
                   className="tracker-dot"
                   style={{
-                    background: isCurrent ? cfg.color : isPast ? cfg.color : '#d1d5db',
-                    borderColor: isCurrent ? cfg.color : isPast ? cfg.color : '#d1d5db',
+                    background: isCurrent ? cfg.color : isPast ? cfg.color : 'var(--muted-light)',
+                    borderColor: isCurrent ? cfg.color : isPast ? cfg.color : 'var(--muted-light)',
                     width: isCurrent ? '16px' : '12px',
                     height: isCurrent ? '16px' : '12px',
                   }}
@@ -73,7 +73,7 @@ export default function TrackerStatus({ status, dibuat, diperbarui, compact }) {
                 {i < steps.length - 1 && (
                   <div
                     className="tracker-line"
-                    style={{ background: isPast || isCurrent ? cfg.color : '#e5e7eb' }}
+                    style={{ background: isPast || isCurrent ? cfg.color : 'var(--line)' }}
                   />
                 )}
               </div>
