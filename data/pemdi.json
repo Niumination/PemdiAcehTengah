@@ -5,9 +5,9 @@
   "target_predikat": "Baik",
   "baseline_spbe": 2.59,
   "baseline_predikat": "Cukup",
-  "total_item_bukti": 177,
-  "total_item_manual": 173,
-  "total_item_eksternal": 4,
+  "total_item_bukti": 57,
+  "total_item_manual": 57,
+  "total_item_eksternal": 0,
   "dasar_hukum": [
     {
       "nama": "Undang-Undang Nomor 11 Tahun 2008 tentang Informasi dan Transaksi Elektronik",
@@ -40,16 +40,44 @@
     "wakil_ketua": "Kepala Diskominfo",
     "sekretaris": "Kabid Layanan E-Government – Diskominfo",
     "pokja": [
-      { "id": 1, "nama": "Tata Kelola dan Manajemen", "koordinator": "Kepala BAPPEDA" },
-      { "id": 2, "nama": "Penyelenggara", "koordinator": "Kepala BKPSDM; Kepala Bag. Organisasi; Kepala Bag. Hukum" },
-      { "id": 3, "nama": "Data", "koordinator": "Kabid Statistik dan Persandian – Diskominfo" },
-      { "id": 4, "nama": "Keamanan Pemerintah Digital Siber", "koordinator": "Inspektorat; Diskominfo – Bid. Statistik & Persandian" },
-      { "id": 5, "nama": "Teknologi Digital", "koordinator": "Kabid TIK; Kabid Layanan E-Government – Diskominfo" },
-      { "id": 6, "nama": "Keterpaduan", "koordinator": "Kepala Bag. Organisasi; Kepala BAPPEDA; Kabid Layanan E-Government; Kabid TIK; Kabid Statistik & Persandian" },
-      { "id": 7, "nama": "Kepuasan Pengguna Layanan Digital Pemerintah", "koordinator": "Kepala DPMPTSP; Kabid Layanan E-Government – Diskominfo" }
+      {
+        "id": 1,
+        "nama": "Tata Kelola dan Manajemen",
+        "koordinator": "Kepala BAPPEDA"
+      },
+      {
+        "id": 2,
+        "nama": "Penyelenggara",
+        "koordinator": "Kepala BKPSDM; Kepala Bag. Organisasi; Kepala Bag. Hukum"
+      },
+      {
+        "id": 3,
+        "nama": "Data",
+        "koordinator": "Kabid Statistik dan Persandian – Diskominfo"
+      },
+      {
+        "id": 4,
+        "nama": "Keamanan Pemerintah Digital Siber",
+        "koordinator": "Inspektorat; Diskominfo – Bid. Statistik & Persandian"
+      },
+      {
+        "id": 5,
+        "nama": "Teknologi Digital",
+        "koordinator": "Kabid TIK; Kabid Layanan E-Government – Diskominfo"
+      },
+      {
+        "id": 6,
+        "nama": "Keterpaduan",
+        "koordinator": "Kepala Bag. Organisasi; Kepala BAPPEDA; Kabid Layanan E-Government; Kabid TIK; Kabid Statistik & Persandian"
+      },
+      {
+        "id": 7,
+        "nama": "Kepuasan Pengguna Layanan Digital Pemerintah",
+        "koordinator": "Kepala DPMPTSP; Kabid Layanan E-Government – Diskominfo"
+      }
     ]
   },
-  "catatan": "⚠️ STATUS: Saat ini BELUM ADA satupun dari 177 item bukti dukung yang terkumpul. Seluruh nilai indikator diset 1.0 (Initiate/Kurang) sebagai kondisi awal. Baseline SPBE 2025 = 2.59 (Cukup) dicantumkan sebagai referensi historis, bukan nilai terkini. Dokumen pendukung Evaluasi Pemdi 2026 telah tersedia di repositori: SK Tim Koordinasi, SK Tim Asesor Internal, Nota Dinas Pengantar, Telaahan Staf, dan Daftar Lengkap 177 Bukti Dukung. Tim sedang dalam proses pengumpulan dan produksi bukti dukung untuk mencapai target indeks ≥ 2.50 (Baik).",
+  "catatan": "STATUS: 57 item bukti dukung telah teridentifikasi dan terstruktur dalam field bukti_dukung per indikator. Level 1 (Initiate): 28 item, Level 2 (Emerging): 29 item. Seluruh status masih 'belum' — menunggu pengumpulan dokumen nyata dari OPD terkait. Baseline SPBE 2025 = 2.59 (Cukup) sebagai referensi historis. Target indeks >= 2.50 (Baik).",
   "aspek": [
     {
       "id": 1,
@@ -74,9 +102,61 @@
           "kontribusi_portal": "Dokumentasi kebijakan, rencana aksi, arsitektur dipublikasikan melalui portal",
           "penanggung_jawab": {
             "lead": "BAPPEDA (Koordinator Pokja Tata Kelola & Manajemen)",
-            "support": ["Diskominfo (Kabid Layanan E-Gov)", "Bag. Organisasi", "Tim Koordinasi Pemdi", "seluruh PD"],
+            "support": [
+              "Diskominfo (Kabid Layanan E-Gov)",
+              "Bag. Organisasi",
+              "Tim Koordinasi Pemdi",
+              "seluruh PD"
+            ],
             "tim": "Tim Tata Kelola & Manajemen Pemdi"
-          }
+          },
+          "bukti_dukung": [
+            {
+              "id": "B1.1",
+              "level": 1,
+              "nama": "Draf RPJMD / Renstra Diskominfo / Renja OPD",
+              "detail": "Draf harus memuat bab khusus 'Rencana Aksi SPBE' — RPJMD Kabupaten, Renstra Diskominfo, atau Renja OPD yang sedang disusun",
+              "opd": [
+                "Bappeda",
+                "Diskominfo",
+                "OPD Terkait"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B1.2",
+              "level": 2,
+              "nama": "Dokumen DPA/RKA memuat anggaran program SPBE",
+              "detail": "DPA/RKA tahun anggaran berjalan yang memuat program SPBE beserta alokasi anggarannya",
+              "opd": [
+                "Diskominfo",
+                "BPKD",
+                "OPD Terkait"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B1.3",
+              "level": 2,
+              "nama": "Screenshot pengisian Arsitektur SPBE pada SIAP Digital",
+              "detail": "Tangkapan layar dari SIAP Digital KemenpanRB yang menunjukkan Pemkab Aceh Tengah sudah mulai mengisi Arsitektur SPBE",
+              "opd": [
+                "Diskominfo"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B1.4",
+              "level": 2,
+              "nama": "Notulensi & Berita Acara Rapat Tim Koordinasi SPBE Daerah",
+              "detail": "Dokumentasi rapat koordinasi rutin Tim Koordinasi SPBE Daerah dengan daftar hadir dan keputusan",
+              "opd": [
+                "Diskominfo",
+                "Bagian Organisasi"
+              ],
+              "status": "belum"
+            }
+          ]
         },
         {
           "id": "I2",
@@ -89,9 +169,36 @@
           "kontribusi_portal": "Portal sebagai platform manajemen layanan digital terpadu",
           "penanggung_jawab": {
             "lead": "BAPPEDA (Koordinator Pokja Tata Kelola & Manajemen)",
-            "support": ["Diskominfo", "BPKD", "Bagian Organisasi"],
+            "support": [
+              "Diskominfo",
+              "BPKD",
+              "Bagian Organisasi"
+            ],
             "tim": "Tim Manajemen Layanan Digital"
-          }
+          },
+          "bukti_dukung": [
+            {
+              "id": "B2.1",
+              "level": 1,
+              "nama": "Notulensi rapat internal Diskominfo mengenai SOP/Helpdesk IT",
+              "detail": "Catatan rapat internal Diskominfo tentang SOP layanan atau Helpdesk IT, termasuk daftar hadir",
+              "opd": [
+                "Diskominfo"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B2.2",
+              "level": 2,
+              "nama": "Logbook penanganan kendala aplikasi / Analisis Risiko Aplikasi",
+              "detail": "Logbook penanganan kendala aplikasi, lembar reviu keluhan, atau Analisis Risiko Aplikasi",
+              "opd": [
+                "Diskominfo",
+                "OPD Pemilik Layanan"
+              ],
+              "status": "belum"
+            }
+          ]
         }
       ]
     },
@@ -118,9 +225,67 @@
           "kontribusi_portal": "Materi literasi digital, panduan penggunaan layanan digital",
           "penanggung_jawab": {
             "lead": "BKPSDM (Koordinator Pokja Penyelenggara – SDM)",
-            "support": ["Bagian Organisasi", "Diskominfo"],
+            "support": [
+              "Bagian Organisasi",
+              "Diskominfo"
+            ],
             "tim": "Tim Pengembangan SDM Digital"
-          }
+          },
+          "bukti_dukung": [
+            {
+              "id": "B3.1",
+              "level": 1,
+              "nama": "Dokumen Peta Kompetensi ASN",
+              "detail": "Peta Kompetensi ASN dari BKPSDM yang mendokumentasikan tingkat kompetensi digital seluruh ASN",
+              "opd": [
+                "BKPSDM"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B3.2",
+              "level": 1,
+              "nama": "Screenshot presensi online / penggunaan Srikandi/e-Kinerja",
+              "detail": "Tangkapan layar yang menunjukkan ASN Pemkab Aceh Tengah sudah menggunakan Srikandi atau e-Kinerja",
+              "opd": [
+                "Seluruh OPD",
+                "BKPSDM"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B3.3",
+              "level": 1,
+              "nama": "Dokumentasi (Foto/Absensi) Bimtek IT/Srikandi",
+              "detail": "Dokumentasi kegiatan Bimtek IT atau Srikandi berupa foto dan daftar hadir peserta",
+              "opd": [
+                "BKPSDM",
+                "Diskominfo"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B3.4",
+              "level": 2,
+              "nama": "Laporan Asesmen BKN (MyASN) terkait literasi digital ASN",
+              "detail": "Laporan MyASN yang menunjukkan persentase kelulusan literasi digital ASN",
+              "opd": [
+                "BKPSDM"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B3.5",
+              "level": 2,
+              "nama": "Sertifikat diklat IT pegawai",
+              "detail": "Sertifikat pelatihan IT pegawai (contoh: GTA Kominfo, BPSDMD, atau pelatihan digital lainnya)",
+              "opd": [
+                "BKPSDM",
+                "Pegawai Terkait"
+              ],
+              "status": "belum"
+            }
+          ]
         },
         {
           "id": "I4",
@@ -133,9 +298,49 @@
           "kontribusi_portal": "Publikasi data bersama, fitur kolaborasi lintas OPD",
           "penanggung_jawab": {
             "lead": "Bag. Organisasi (Koordinator Pokja Penyelenggara – Kolaborasi)",
-            "support": ["BKPSDM", "Bag. Hukum", "Diskominfo"],
+            "support": [
+              "BKPSDM",
+              "Bag. Hukum",
+              "Diskominfo"
+            ],
             "tim": "Tim Kolaborasi & Kemitraan Pemdi"
-          }
+          },
+          "bukti_dukung": [
+            {
+              "id": "B4.1",
+              "level": 1,
+              "nama": "SK Bupati tentang Tim Koordinasi SPBE Daerah",
+              "detail": "SK Bupati Aceh Tengah yang menetapkan pembentukan Tim Koordinasi SPBE Daerah",
+              "opd": [
+                "Diskominfo",
+                "Bagian Hukum"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B4.2",
+              "level": 1,
+              "nama": "Dokumen Renja memuat agenda rapat koordinasi digital",
+              "detail": "Renja Diskominfo/Bappeda yang mencantumkan agenda rapat koordinasi rutin antar OPD terkait digital",
+              "opd": [
+                "Bappeda",
+                "Diskominfo"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B4.3",
+              "level": 2,
+              "nama": "Perjanjian Kerja Sama (PKS)/MoU integrasi sistem lintas instansi",
+              "detail": "MoU/PKS kolaborasi lintas instansi (contoh: MoU dengan BSSN terkait TTE, atau Bank Aceh Syariah terkait pajak)",
+              "opd": [
+                "Bagian Kerja Sama",
+                "Diskominfo",
+                "OPD Terkait"
+              ],
+              "status": "belum"
+            }
+          ]
         }
       ]
     },
@@ -162,9 +367,50 @@
           "kontribusi_portal": "Publikasi dataset melalui portal, standar SDI",
           "penanggung_jawab": {
             "lead": "Diskominfo – Bid. Statistik & Persandian (Koordinator Pokja Data)",
-            "support": ["Bappeda", "BPS", "seluruh PD"],
+            "support": [
+              "Bappeda",
+              "BPS",
+              "seluruh PD"
+            ],
             "tim": "Tim Satu Data Indonesia"
-          }
+          },
+          "bukti_dukung": [
+            {
+              "id": "B5.1",
+              "level": 1,
+              "nama": "SK Bupati tentang Forum SDI & SK Wali Data",
+              "detail": "SK Bupati Aceh Tengah tentang Forum Satu Data Indonesia tingkat Kabupaten beserta SK Penetapan Wali Data OPD",
+              "opd": [
+                "Bappeda",
+                "Diskominfo",
+                "Bagian Hukum"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B5.2",
+              "level": 1,
+              "nama": "Notulensi rapat awal persiapan portal Open Data",
+              "detail": "Dokumentasi rapat persiapan portal Open Data dengan daftar hadir dan keputusan",
+              "opd": [
+                "Diskominfo",
+                "Bappeda",
+                "BPS"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B5.3",
+              "level": 2,
+              "nama": "Draf Metadata Sektoral dari OPD terkait",
+              "detail": "Draft struktur data sektoral (contoh: data stunting dari Dinkes, data luas lahan kopi dari Distan) yang sudah dikomunikasikan dengan BPS",
+              "opd": [
+                "OPD Produsen Data",
+                "Diskominfo"
+              ],
+              "status": "belum"
+            }
+          ]
         },
         {
           "id": "I6",
@@ -177,9 +423,58 @@
           "kontribusi_portal": "Peta interaktif OPD dan sebaran layanan",
           "penanggung_jawab": {
             "lead": "Diskominfo – Bid. Statistik & Persandian",
-            "support": ["BIG (Badan Informasi Geospasial)", "Dinas PUPR"],
+            "support": [
+              "BIG (Badan Informasi Geospasial)",
+              "Dinas PUPR"
+            ],
             "tim": "Tim Informasi Geospasial"
-          }
+          },
+          "bukti_dukung": [
+            {
+              "id": "B6.1",
+              "level": 1,
+              "nama": "SK Bupati/Sekda tentang Tim Jaringan Informasi Geospasial",
+              "detail": "SK Bupati atau Sekda tentang pembentukan Tim Jaringan Informasi Geospasial Aceh Tengah",
+              "opd": [
+                "Bappeda",
+                "Dinas PUPR"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B6.2",
+              "level": 1,
+              "nama": "Screenshot persiapan Web GIS / Geoportal",
+              "detail": "Tangkapan layar persiapan atau tampilan sementara Web GIS/Geoportal (jika masih offline)",
+              "opd": [
+                "Bappeda",
+                "Diskominfo"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B6.3",
+              "level": 2,
+              "nama": "Peraturan Bupati tentang Penyelenggaraan Simpul Jaringan IG",
+              "detail": "Perbup tentang Penyelenggaraan Simpul Jaringan Informasi Geospasial Daerah",
+              "opd": [
+                "Bappeda",
+                "Bagian Hukum"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B6.4",
+              "level": 2,
+              "nama": "Screenshot peta RTRW/Peta Desa di Portal Geospasial",
+              "detail": "Screenshot ketersediaan peta digital dasar (RTRW/Desa) yang memiliki metadata di portal Geospasial",
+              "opd": [
+                "Bappeda",
+                "Dinas PUPR"
+              ],
+              "status": "belum"
+            }
+          ]
         },
         {
           "id": "I7",
@@ -192,9 +487,36 @@
           "kontribusi_portal": "Publikasi statistik daerah, dashboard data",
           "penanggung_jawab": {
             "lead": "Diskominfo – Bid. Statistik & Persandian",
-            "support": ["BPS", "Bappeda"],
+            "support": [
+              "BPS",
+              "Bappeda"
+            ],
             "tim": "Tim Statistik Sektoral"
-          }
+          },
+          "bukti_dukung": [
+            {
+              "id": "B7.1",
+              "level": 1,
+              "nama": "Publikasi 'Aceh Tengah Dalam Angka' / Data Sektoral ad-hoc",
+              "detail": "Buku publikasi 'Aceh Tengah Dalam Angka' tahun berjalan atau laporan pengumpulan data manual",
+              "opd": [
+                "BPS",
+                "Diskominfo"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B7.2",
+              "level": 2,
+              "nama": "SOP / Dokumen Metodologi Perencanaan Survei Sektoral OPD",
+              "detail": "Metodologi Survei Kepuasan Pasien (RSUD Datu Beru) atau Survei Produksi Kopi yang dikonsultasikan ke BPS",
+              "opd": [
+                "OPD Pelaksana",
+                "BPS"
+              ],
+              "status": "belum"
+            }
+          ]
         },
         {
           "id": "I8",
@@ -207,9 +529,49 @@
           "kontribusi_portal": "Kebijakan privasi, mekanisme consent, form PDP compliant",
           "penanggung_jawab": {
             "lead": "Diskominfo – Bid. Statistik & Persandian",
-            "support": ["Bagian Hukum", "Inspektorat", "seluruh PD"],
+            "support": [
+              "Bagian Hukum",
+              "Inspektorat",
+              "seluruh PD"
+            ],
             "tim": "Tim Pelindungan Data Pribadi"
-          }
+          },
+          "bukti_dukung": [
+            {
+              "id": "B8.1",
+              "level": 1,
+              "nama": "Draf Nota Dinas/SE Bupati himbauan kerahasiaan NIK/data masyarakat",
+              "detail": "Draf surat edaran atau nota dinas Bupati tentang himbauan kerahasiaan NIK, KK, atau rekam medis masyarakat",
+              "opd": [
+                "Diskominfo",
+                "Bagian Hukum"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B8.2",
+              "level": 2,
+              "nama": "SOP Pengamanan Data Pribadi di instansi pelayanan",
+              "detail": "SOP di instansi pelayanan tentang pengamanan data pribadi (contoh: SOP Dukcapil tentang larangan memfoto layar NIK)",
+              "opd": [
+                "Dukcapil",
+                "RSUD",
+                "OPD Pemilik Layanan"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B8.3",
+              "level": 2,
+              "nama": "Laporan/Dokumentasi sosialisasi pengamanan password",
+              "detail": "Bukti foto/absensi sosialisasi pengamanan password ke perangkat kampung atau pegawai",
+              "opd": [
+                "Diskominfo",
+                "OPD Pemilik Layanan"
+              ],
+              "status": "belum"
+            }
+          ]
         }
       ]
     },
@@ -236,9 +598,34 @@
           "kontribusi_portal": "Log audit, rekomendasi keamanan",
           "penanggung_jawab": {
             "lead": "Inspektorat (Koordinator Pokja Keamanan – Audit)",
-            "support": ["Diskominfo (Fungsi Persandian)"],
+            "support": [
+              "Diskominfo (Fungsi Persandian)"
+            ],
             "tim": "Tim Audit Keamanan TIK"
-          }
+          },
+          "bukti_dukung": [
+            {
+              "id": "B9.1",
+              "level": 1,
+              "nama": "SK Tim Audit Internal TIK & Dokumen PKPT Inspektorat",
+              "detail": "SK Sekda untuk tim gabungan Inspektorat & IT Diskominfo. Dokumen PKPT yang memuat agenda 'Audit Keamanan TIK/Aplikasi'",
+              "opd": [
+                "Inspektorat",
+                "Diskominfo"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B9.2",
+              "level": 2,
+              "nama": "Laporan Hasil Audit (LHA) Keamanan Internal",
+              "detail": "Dokumen LHA Inspektorat yang mengaudit Data Center Diskominfo atau kerentanan aplikasi DPMPTSP",
+              "opd": [
+                "Inspektorat"
+              ],
+              "status": "belum"
+            }
+          ]
         },
         {
           "id": "I10",
@@ -251,9 +638,34 @@
           "kontribusi_portal": "HTTPS, CSP, OWASP compliance, security headers",
           "penanggung_jawab": {
             "lead": "Diskominfo – Bid. Statistik & Persandian",
-            "support": ["BSSN", "Inspektorat"],
+            "support": [
+              "BSSN",
+              "Inspektorat"
+            ],
             "tim": "Tim Keamanan Siber"
-          }
+          },
+          "bukti_dukung": [
+            {
+              "id": "B10.1",
+              "level": 1,
+              "nama": "Bukti screenshot pengisian kuesioner IKASANDI ke BSSN",
+              "detail": "Bukti admin Diskominfo telah mengisi kuesioner Indeks Keamanan Siber (Self-Assessment) BSSN",
+              "opd": [
+                "Diskominfo (Bidang Persandian)"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B10.2",
+              "level": 2,
+              "nama": "Surat/Dokumen Identifikasi Infrastruktur Informasi Vital (IIV)",
+              "detail": "Surat resmi ke BSSN berisi daftar server krusial (SIPD, SIAK, LPSE) untuk didaftarkan sebagai objek vital",
+              "opd": [
+                "Diskominfo (Bidang Persandian)"
+              ],
+              "status": "belum"
+            }
+          ]
         },
         {
           "id": "I11",
@@ -266,9 +678,35 @@
           "kontribusi_portal": "HTTPS, enkripsi data pengguna",
           "penanggung_jawab": {
             "lead": "Diskominfo – Bid. Statistik & Persandian",
-            "support": ["BSSN"],
+            "support": [
+              "BSSN"
+            ],
             "tim": "Tim Kriptografi & TTE"
-          }
+          },
+          "bukti_dukung": [
+            {
+              "id": "B11.1",
+              "level": 1,
+              "nama": "Dokumen usulan pengadaan sertifikat elektronik (TTE) ke BSrE BSSN",
+              "detail": "Telaahan staf terkait inisiasi penggunaan TTE untuk pejabat Setdakab",
+              "opd": [
+                "Diskominfo",
+                "Setdakab"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B11.2",
+              "level": 2,
+              "nama": "Dokumen PDF ber-barcode TTE & Screenshot gembok SSL (HTTPS)",
+              "detail": "Screenshot dokumen ber-TTE (barcode BSrE) dan address bar web acehtengahkab.go.id menunjukkan HTTPS (gembok tertutup)",
+              "opd": [
+                "Diskominfo",
+                "OPD Terkait"
+              ],
+              "status": "belum"
+            }
+          ]
         },
         {
           "id": "I12",
@@ -281,9 +719,45 @@
           "kontribusi_portal": "Dokumentasi prosedur, contact person",
           "penanggung_jawab": {
             "lead": "Diskominfo – Bid. Statistik & Persandian",
-            "support": ["BSSN", "Inspektorat"],
+            "support": [
+              "BSSN",
+              "Inspektorat"
+            ],
             "tim": "Tim CSIRT/TTIS Kabupaten"
-          }
+          },
+          "bukti_dukung": [
+            {
+              "id": "B12.1",
+              "level": 1,
+              "nama": "SK Pembentukan/Inisiasi Tim Aceh Tengah-CSIRT",
+              "detail": "SK Bupati tentang pembentukan CSIRT yang masih dalam tahap persiapan",
+              "opd": [
+                "Diskominfo",
+                "Bagian Hukum"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B12.2",
+              "level": 2,
+              "nama": "Surat Tanda Registrasi (STR) CSIRT dari BSSN",
+              "detail": "Sertifikat STR Aceh Tengah-CSIRT dari BSSN",
+              "opd": [
+                "Diskominfo (Bidang Persandian)"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B12.3",
+              "level": 2,
+              "nama": "Dokumen Log/Berita Acara Penanganan Insiden Siber",
+              "detail": "Dokumen Laporan Penanganan Insiden saat web diretas (deface) dan pemulihannya",
+              "opd": [
+                "Diskominfo (Tim CSIRT)"
+              ],
+              "status": "belum"
+            }
+          ]
         }
       ]
     },
@@ -310,9 +784,56 @@
           "kontribusi_portal": "✅ Portal PemdiAcehTengah adalah aplikasi Pemdi utama yang sudah live",
           "penanggung_jawab": {
             "lead": "Diskominfo – Bid. Layanan E-Government (Koordinator Pokja Teknologi Digital)",
-            "support": ["Semua OPD"],
+            "support": [
+              "Semua OPD"
+            ],
             "tim": "Tim Aplikasi & Sistem Informasi"
-          }
+          },
+          "bukti_dukung": [
+            {
+              "id": "B13.1",
+              "level": 1,
+              "nama": "Matriks Excel Inventarisasi SELURUH Aplikasi Pemkab",
+              "detail": "Matriks yang mendata semua aset software: Web utama, Web OPD, JDIH, LPSE, SIPD, SIMRS, dll",
+              "opd": [
+                "Diskominfo"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B13.2",
+              "level": 1,
+              "nama": "Dokumen Kajian Kebutuhan pembuatan aplikasi OPD",
+              "detail": "Kajian kebutuhan saat OPD mengusulkan aplikasi baru",
+              "opd": [
+                "OPD Pengusul",
+                "Diskominfo"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B13.3",
+              "level": 2,
+              "nama": "Screenshot pendaftaran daftar aplikasi di SIAP Digital",
+              "detail": "Screenshot Diskominfo mendaftarkan aplikasi di portal SIAP Digital",
+              "opd": [
+                "Diskominfo"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B13.4",
+              "level": 2,
+              "nama": "Dokumen Blueprint / User Manual aplikasi (bukti SDLC)",
+              "detail": "Dokumen Blueprint/User Manual aplikasi lokal yang membuktikan perancangan siklus (SDLC)",
+              "opd": [
+                "Diskominfo",
+                "OPD Pemilik Aplikasi",
+                "Vendor"
+              ],
+              "status": "belum"
+            }
+          ]
         },
         {
           "id": "I14",
@@ -325,9 +846,35 @@
           "kontribusi_portal": "Dokumentasi infrastruktur, SLA layanan",
           "penanggung_jawab": {
             "lead": "Diskominfo – Bid. Layanan E-Government",
-            "support": ["Kemendigi", "BAPPEDA"],
+            "support": [
+              "Kemendigi",
+              "BAPPEDA"
+            ],
             "tim": "Tim Infrastruktur TIK"
-          }
+          },
+          "bukti_dukung": [
+            {
+              "id": "B14.1",
+              "level": 1,
+              "nama": "Matriks KIB Inventaris Perangkat Keras Jaringan/Server",
+              "detail": "Merinci jumlah server di Data Center, router, dan topologi jaringan FO",
+              "opd": [
+                "Diskominfo",
+                "BPKD"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B14.2",
+              "level": 2,
+              "nama": "Tangkapan layar Dasbor Network Monitoring System",
+              "detail": "Screenshot aplikasi pemantau jaringan (MikroTik/PRTG) yang menunjukkan status UP/DOWN server atau grafik koneksi",
+              "opd": [
+                "Diskominfo"
+              ],
+              "status": "belum"
+            }
+          ]
         }
       ]
     },
@@ -354,9 +901,39 @@
           "kontribusi_portal": "✅ Halaman /probis — PPB 3 level terintegrasi",
           "penanggung_jawab": {
             "lead": "Bag. Organisasi (Koordinator Pokja Keterpaduan)",
-            "support": ["Diskominfo", "Bappeda", "Dinas Perpustakaan & Arsip", "Semua OPD"],
+            "support": [
+              "Diskominfo",
+              "Bappeda",
+              "Dinas Perpustakaan & Arsip",
+              "Semua OPD"
+            ],
             "tim": "Tim Proses Bisnis & Tata Laksana"
-          }
+          },
+          "bukti_dukung": [
+            {
+              "id": "B15.1",
+              "level": 1,
+              "nama": "Bagan Flowchart Proses Bisnis As-Is terunggah di SIAP",
+              "detail": "Bagan eksisting (misal 'Alur Izin Usaha') yang telah di-upload ke menu Proses Bisnis SIAP Digital",
+              "opd": [
+                "Bagian Organisasi",
+                "Diskominfo",
+                "OPD Terkait"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B15.2",
+              "level": 2,
+              "nama": "Kajian/Rancangan Proses Bisnis Terpadu To-Be terunggah di SIAP",
+              "detail": "Bagan rancangan integrasi (misal izin usaha terhubung dengan Dukcapil) yang diunggah di SIAP Digital",
+              "opd": [
+                "Bagian Organisasi",
+                "Diskominfo"
+              ],
+              "status": "belum"
+            }
+          ]
         },
         {
           "id": "I16",
@@ -369,9 +946,35 @@
           "kontribusi_portal": "API endpoint Pemdi untuk integrasi data",
           "penanggung_jawab": {
             "lead": "Bag. Organisasi",
-            "support": ["Diskominfo", "Semua OPD (Pemilik Aplikasi)"],
+            "support": [
+              "Diskominfo",
+              "Semua OPD (Pemilik Aplikasi)"
+            ],
             "tim": "Tim Integrasi Sistem & API"
-          }
+          },
+          "bukti_dukung": [
+            {
+              "id": "B16.1",
+              "level": 1,
+              "nama": "Notulensi Rapat Koordinasi API & Dokumen UAT",
+              "detail": "Berita Acara Rapat Diskominfo, Dukcapil, RSUD terkait sinkronisasi NIK. Laporan Uji Coba dari programmer",
+              "opd": [
+                "Diskominfo",
+                "OPD Terkait"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B16.2",
+              "level": 2,
+              "nama": "Matriks Integrasi Aplikasi & Screenshot kode API/Sinkronisasi",
+              "detail": "Tangkapan layar kode API (Web Service) yang membuktikan dua sistem sinkron",
+              "opd": [
+                "Diskominfo"
+              ],
+              "status": "belum"
+            }
+          ]
         },
         {
           "id": "I17",
@@ -384,9 +987,35 @@
           "kontribusi_portal": "✅ INI PORTAL KITA — kontribusi langsung dan terukur",
           "penanggung_jawab": {
             "lead": "Bag. Organisasi",
-            "support": ["Diskominfo", "Semua OPD (Penyedia Layanan)"],
+            "support": [
+              "Diskominfo",
+              "Semua OPD (Penyedia Layanan)"
+            ],
             "tim": "Tim Portal & Layanan Digital"
-          }
+          },
+          "bukti_dukung": [
+            {
+              "id": "B17.1",
+              "level": 1,
+              "nama": "Screenshot penuh antarmuka portal utama acehtengahkab.go.id",
+              "detail": "Screenshot portal web resmi acehtengahkab.go.id yang menunjukkan portal sudah aktif dan berfungsi",
+              "opd": [
+                "Diskominfo"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B17.2",
+              "level": 2,
+              "nama": "Peraturan Bupati tentang Portal Layanan Publik Daerah",
+              "detail": "Perbup yang mewajibkan seluruh layanan aplikasi harus bermuara pada portal tunggal acehtengahkab.go.id",
+              "opd": [
+                "Diskominfo",
+                "Bagian Hukum"
+              ],
+              "status": "belum"
+            }
+          ]
         },
         {
           "id": "I18",
@@ -399,9 +1028,37 @@
           "kontribusi_portal": "API endpoint standar SDI, format data terbuka",
           "penanggung_jawab": {
             "lead": "Bag. Organisasi",
-            "support": ["Diskominfo", "Bappeda", "Kemendigi"],
+            "support": [
+              "Diskominfo",
+              "Bappeda",
+              "Kemendigi"
+            ],
             "tim": "Tim Interoperabilitas & Open Data"
-          }
+          },
+          "bukti_dukung": [
+            {
+              "id": "B18.1",
+              "level": 1,
+              "nama": "Screenshot Arsitektur Data dari portal SIAP Digital & Daftar Struktur DB",
+              "detail": "Screenshot portal SIAP Digital domain Arsitektur Data dan daftar database tiap OPD",
+              "opd": [
+                "Diskominfo",
+                "Bappeda"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B18.2",
+              "level": 2,
+              "nama": "Berita Acara/Screenshot pemanfaatan API data lintas OPD",
+              "detail": "Bukti Dinas Sosial menarik data spasial Bappeda dan data Dukcapil via API tanpa bertukar flashdisk",
+              "opd": [
+                "Diskominfo",
+                "OPD Produsen Data"
+              ],
+              "status": "belum"
+            }
+          ]
         }
       ]
     },
@@ -428,9 +1085,56 @@
           "kontribusi_portal": "✅ Widget Lapor, halaman FAQ, form SKM, informasi layanan",
           "penanggung_jawab": {
             "lead": "DPMPTSP (Koordinator Pokja Kepuasan – Fasilitas Dukungan Pengguna)",
-            "support": ["Diskominfo", "Semua OPD (Penyedia Layanan)"],
+            "support": [
+              "Diskominfo",
+              "Semua OPD (Penyedia Layanan)"
+            ],
             "tim": "Tim Dukungan Pengguna & Helpdesk"
-          }
+          },
+          "bukti_dukung": [
+            {
+              "id": "B19.1",
+              "level": 1,
+              "nama": "Draf Dokumen SLA IT penanganan jaringan/sistem",
+              "detail": "Draf dokumen standar waktu penanganan aduan jaringan dan sistem",
+              "opd": [
+                "Diskominfo"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B19.2",
+              "level": 1,
+              "nama": "Screenshot Grup WA IT/Google Form aduan dasar",
+              "detail": "Screenshot WA Grup IT atau Google Form pengaduan sederhana",
+              "opd": [
+                "Diskominfo",
+                "Humas Setdakab"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B19.3",
+              "level": 2,
+              "nama": "SOP Resmi Pengaduan Layanan IT",
+              "detail": "SOP resmi pengaduan layanan IT yang sudah ditetapkan",
+              "opd": [
+                "Diskominfo",
+                "Bagian Organisasi"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B19.4",
+              "level": 2,
+              "nama": "Screenshot Dasbor Aplikasi Ticketing/Helpdesk",
+              "detail": "Screenshot antarmuka aplikasi Helpdesk memuat nomor tiket, waktu keluhan, dan status penanganan",
+              "opd": [
+                "Diskominfo"
+              ],
+              "status": "belum"
+            }
+          ]
         },
         {
           "id": "I20",
@@ -443,9 +1147,59 @@
           "kontribusi_portal": "✅ Survei SKM online, dashboard kepuasan, laporan real-time",
           "penanggung_jawab": {
             "lead": "DPMPTSP (Koordinator Pokja Kepuasan – Pengelolaan Kepuasan Pengguna)",
-            "support": ["Diskominfo", "Bag. Organisasi", "seluruh PD penyelenggara layanan"],
+            "support": [
+              "Diskominfo",
+              "Bag. Organisasi",
+              "seluruh PD penyelenggara layanan"
+            ],
             "tim": "Tim Kepuasan Pengguna & SKM"
-          }
+          },
+          "bukti_dukung": [
+            {
+              "id": "B20.1",
+              "level": 1,
+              "nama": "Laporan Survei Kepuasan Masyarakat (e-SKM) Online",
+              "detail": "Laporan SKM elektronik dari DPMPTSP/RSUD/Dukcapil",
+              "opd": [
+                "DPMPTSP",
+                "RSUD",
+                "Dukcapil",
+                "OPD Pelayanan"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B20.2",
+              "level": 1,
+              "nama": "Notulensi Rapat Evaluasi layanan (minimal 1 kelompok rentan)",
+              "detail": "Notulensi rapat evaluasi hasil SKM yang mengundang minimal 1 kelompok rentan (Disabilitas/Lansia/Perempuan di Takengon)",
+              "opd": [
+                "OPD Pelayanan Terkait"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B20.3",
+              "level": 2,
+              "nama": "Screenshot fitur Widget Rating/Kepuasan pada portal aplikasi",
+              "detail": "Screenshot tombol rating 1-5 di aplikasi atau portal",
+              "opd": [
+                "Diskominfo",
+                "OPD Pelayanan"
+              ],
+              "status": "belum"
+            },
+            {
+              "id": "B20.4",
+              "level": 2,
+              "nama": "Notulensi Rapat Evaluasi Triwulanan (minimal 3 kelompok rentan/CSO)",
+              "detail": "Notulensi rapat evaluasi 3 bulanan yang mengundang minimal 3 kelompok rentan/CSO",
+              "opd": [
+                "OPD Pelayanan Terkait"
+              ],
+              "status": "belum"
+            }
+          ]
         }
       ]
     }
