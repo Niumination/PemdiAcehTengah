@@ -22,30 +22,8 @@
           "kriteria": "- 2. Perubahan Substansi Rencana Aksi Nasional Pemerintah Digital pada perencanaan Instansi Pemerintah - 1. Berupa perbaikan/perubahan Arsitektur - 2. Perubahan Substansi Perencanaan Instansi"
         }
       ],
-      "data_dukung_modul": [
-        "Rancangan dokumen",
-        "perencanaan Instansi",
-        "Pemerintah yang berisi",
-        "substansi Rencana Aksi",
-        "Nasional Pemerintah Digital",
-        "pada perencanaan Instansi",
-        "Pemerintah dalam tahap",
-        "- *Perpres Pemerintah Digital"
-      ],
-      "rekomendasi": [
-        "Agenda Prioritas Nasional",
-        "|![]()Arsitektur Pemerintah Digital Lintas Instansi (Meso),untuk Layanan Digital Prioritas dan Layanan Tematik|![]()Arsitektur Pemerintah Digital IPPD (Mikro),untuk Layanan Digital IPPD|",
-        "merupakan layanan digital prioritas, generik",
-        "Digital Pemerintah prioritas dan/atau Layanan Digital Pemerintah",
-        "Pemerintah Digital pada sebagian Layanan Digital Pemerintah prioritas",
-        "kegiatan sesuai dengan RAN Pemdi untuk layanan digital prioritas dan",
-        "- 2. Telah memanfaatkan Arsitektur Pemdi, pada seluruh Layanan Digital Pemerintah prioritas dan/atau Layanan Digital Pemerintah tematik, untuk",
-        "Digital Pemerintah prioritas",
-        "penyelarasan kegiatan sesuai dengan RAN Pemdi untuk layanan digital prioritas",
-        "- 2. Telah memanfaatkan Arsitektur Pemdi, pada seluruh Layanan Digital Pemerintah prioritas dan/atau Layanan Digital Pemerintah tematik, serta telah",
-        "- 2. Rekomendasi Tindak Lanjut",
-        "- 2. Telah memanfaatkan reviu Arsitektur Pemdi, pada seluruh Layanan Digital Pemerintah prioritas dan/atau Layanan Digital Pemerintah tematik, untuk"
-      ]
+      "data_dukung_modul": [],
+      "rekomendasi": []
     },
     {
       "nomor": 2,
@@ -77,23 +55,10 @@
         }
       ],
       "data_dukung_modul": [
-        "Substansi Rencana Aksi Nasional Pemdi pada",
-        "perencanaan Instansi Pemerintah masih dalam",
-        "penyusunan dan Manajemen Layanan Digital",
-        "Pemerintah dilaksanakan tingkat Instansi Pemerintah",
-        "sesuai dengan kebutuhan.",
-        "Substansi sebagian",
-        "Rencana Aksi Nasional",
-        "Pemerintah Digital pada"
+        "Substansi Rencana Aksi Nasional Pemdi pada perencanaan Instansi Pemerintah masih dalam penyusunan dan Manajemen Layanan Digital Pemerintah dilaksanakan tingkat Instansi Pemerintah sesuai dengan kebutuhan. Substansi sebagian Rencana Aksi Nasional Pemerintah Digital pada perencanaan Instansi Pemerintah 1 Kondisi Manajemen Layanan Digital Pemerintah dalam tahap persiapan pelaksanaan mengacu pada Substansi Rencana Aksi Nasional Pemerintah Digital pada perencanaan Instansi Pem",
+        "Bukti optimalisasi Pelaksanaan Manajemen Layanan Digital Pemerintah. Sesuai dengan hasil reviu"
       ],
-      "rekomendasi": [
-        "- • Mengoordinasikan sinergi risiko antar sektor dan program prioritas nasional",
-        "- ● Tindak lanjut atas rekomendasi dengan data",
-        "berkala untuk menghasilkan rekomendasi perbaikan?",
-        "Pemerintah prioritas dan/atau Layanan Digital",
-        "Digital Pemerintah prioritas dan/atau Layanan Digital",
-        "Layanan Digital Pemerintah prioritas dan/atau"
-      ]
+      "rekomendasi": []
     },
     {
       "nomor": 3,
@@ -121,19 +86,13 @@
         }
       ],
       "data_dukung_modul": [
-        "memiliki kompetensi digital",
-        "optimal, yang didapatkan",
-        "melalui Asesmen Kompetensi",
-        "Digital ASN ataupun",
-        "pengakuan pembelajaran",
-        "terstandarisasi.• Telah menyusun peta",
-        "kompetensi untuk",
-        "perencanaan, pengembangan"
+        "didapatkan melalui Asesmen Kompetensi Digital ASN ataupun pengakuan pembelajaran terstandarisasi.<br>",
+        "Telah memanfaatkan peta kompetensi digital untuk pengembangan SDM Pemerintah Digital.<br>",
+        "Lebih dari 90% ASN pengelola maupun pengguna layanan digital mulai menggunakan aplikasi dasar dan sistem kerja digital internal.<br>",
+        "Pemanfaatan komunitas belajar informal telah terbentuk (grup diskusi, kelas berbagi) kepada lebih dari 90% ASN.<br>",
+        "Pemanfaatan forum internasional dal"
       ],
-      "rekomendasi": [
-        "- ● rekomendasi berbasis data",
-        "- ● rekomendasi berbasis data"
-      ]
+      "rekomendasi": []
     },
     {
       "nomor": 4,
@@ -172,7 +131,10 @@
           "kriteria": "## Simulasi ## Kondisi ###### Contoh kasus: Indeks Range Memuaskan Pemerintah Kabupaten X telah melaksanakan Evaluasi SDI pada tahun 2024 dengan hasil Indeks SDI 68.75. # 4.0 - 5.0 Berapa hasil konversi Indeks Indikator 5 Evaluasi Kinerja Pemdi Pemerintah Kabupaten X? Range SDI # 75.0 – 100.0 # 62.5 – 75.0 Nilai Indeks Indikator 5 Evaluasi Kinerja Pemdi Pemerintah Kabupaten X adalah = = = = ## 3.75 Formula konversi Dengan ketentuan sebagai berikut Nilai konversi ini secara otomatis akan masuk ke"
         }
       ],
-      "data_dukung_modul": [],
+      "data_dukung_modul": [
+        "kasus: Pemerintah Kabupaten X telah melaksanakan Evaluasi SDI pada tahun 2024 dengan hasil Indeks SDI 25. Berapa hasil konversi Indeks Indikator 5 Evaluasi Kinerja Pemdi Pemerintah Kabupaten X? = Nilai Indeks Indikator 5 Evaluasi Kinerja Pemdi Pemerintah Kabupaten X adalah =",
+        "kasus: Pemerintah Kabupaten X telah melaksanakan Evaluasi SDI pada tahun 2024 dengan hasil Indeks SDI 68.75. Berapa hasil konversi Indeks Indikator 5 Evaluasi Kinerja Pemdi Pemerintah Kabupaten X? Nilai Indeks Indikator 5 Evaluasi Kinerja Pemdi Pemerintah Kabupaten X adalah = = = ="
+      ],
       "rekomendasi": []
     },
     {
@@ -201,9 +163,7 @@
         }
       ],
       "data_dukung_modul": [],
-      "rekomendasi": [
-        "Digital Pemerintah prioritas dan/atau Layanan Digital Pemerintah tematik."
-      ]
+      "rekomendasi": []
     },
     {
       "nomor": 7,
@@ -250,23 +210,8 @@
           "kriteria": "Uraian implementasi PDP saat ini terhadap 7 kondisi penerapan PDP."
         }
       ],
-      "data_dukung_modul": [
-        "Uraian implementasi PDP saat ini terhadap 7 kondisi penerapan PDP.",
-        "- 1.Penerapan tata kelola PDP dilaksanakan sesuai dengan rencana aksi implementasi PDP pada Layanan Digital",
-        "Pemerintah yang diselenggarakan oleh Instansi Pemerintah.",
-        "- 2.Penerapan teknis PDP dilaksanakan sesuai perencanaan pada sebagian Layanan Digital Pemerintah.",
-        "- 1.Telah memiliki Tata Kelola Pelindungan Data Pribadi secara menyeluruh sesuai dengan ketentuan peraturan",
-        "perundang-undangan pelindungan data pribadi",
-        "- 2.Telah melaksanakan program awareness dan kompetensi Pelindungan Data Pribadi bagi pegawai",
-        "- 3.Telah menunjuk Pejabat/Petugas PDP (DPO)"
-      ],
-      "rekomendasi": [
-        "|fungsi Pejabat/Petugas PDP (DPO)PPDP/DPO telah menjalankan tugas dan fungsi PDP dalam organisasi.Dokumen yang Dipersyaratkan:Dokumen pelaksanaan tugas danfungsi PPDP/DPO.Dokumen hasil pelaksanaanpengawasan atau rekomendasiPPDP/DPO.Program kerja PPDP/DPO.Laporan pelaksanaan tugas PPDP/DPO.Telaahan atau rekomendasi PPDP/DPO.Contoh:|",
-        "|evaluasi Tata Kelola PelindunganData PribadiPerbaikan tata kelola PDP digunakan sebagai dasar peningkatan dan penyempurnaan tata kelola secara berkelanjutanDokumen yang Dipersyaratkan:Rencana aksi atau hasil perbaikan tata kelola PDP.Pembaruan kebijakan PDP.Pembaruan prosedur PDP.Implementasi rekomendasi hasilevaluasi.Laporan penyelesaian tindak lanjut.Contoh:|",
-        "|evaluasi pada pelaksanaan tugas danfungsi Pejabat/Petugas PDP (DPO)Perbaikan pelaksanaan tugas danfungsi PPDP/DPO digunakan untukmeningkatkan efektivitaspengawasan PDP.Dokumen yang Dipersyaratkan:Rencana tindak lanjut hasil evaluasipelaksanaan tugas dan fungsiPPDP/DPO.Laporan pelaksanaan tindak lanjuthasil evaluasi PPDP/DPO.Implementasi rekomendasi hasilevaluasi.Pembaruan tugas atau mekanisme kerjaPPDP/DPO.Laporan penyelesaian tindak lanjut.Contoh:|",
-        "|pada pelaksanaan program awarenessdan kompetensi PDP bagi pegawaiDokumen yang Dipersyaratkan:Perbaikan program kompetensi PDP.Laporan pelaksanaan tindak lanjuthasil evaluasi program awareness dankompetensi.Perbaikan program awareness dan kompetensi digunakan untuk meningkatkan efektivitas pengembangan kompetensi pegawai.Pembaruan materi pelatihan.Penyesuaian program pelatihan.Implementasi rekomendasi hasilevaluasi pelatihan.Contoh:|",
-        "|evaluasi pada mekanismepemenuhan Hak Subjek DataPerbaikan pemenuhan hak SubjekData digunakan untukmeningkatkan kualitas layanan danrespons organisasi.Dokumen yang Dipersyaratkan:Rencana perbaikan mekanismepemenuhan hak Subjek Data.Laporan pelaksanaan tindak lanjuthasil evaluasi pemenuhan hakSubjek Data.Penyempurnaan prosedur atau formulirpermohonan.Implementasi rekomendasi hasilevaluasi.Laporan penyelesaian tindak lanjut.Contoh:|"
-      ]
+      "data_dukung_modul": [],
+      "rekomendasi": []
     },
     {
       "nomor": 9,
@@ -294,17 +239,11 @@
         }
       ],
       "data_dukung_modul": [
-        "- 1. Penetapan Tim Audit yang",
-        "ditetapkan oleh Koordinator",
-        "Pemerintah Digital di setiap IPPD.",
-        "- 2. Dokumen Perencanaan Audit IPPD.",
-        "Cukup/Emerging (1,5 < nilai < 2,5)"
+        "Laporan Hasil Audit Internal Keamanan Pemerintah Digital dan Teknologi Pemerintah Digital Internal.",
+        "Laporan Hasil Audit Eksternal Keamanan Pemerintah",
+        "1. Laporan Hasil Tindak Lanjut Audit Eksternal Keamanan Pemerintah Digital dan Teknologi Pemerintah Digital."
       ],
-      "rekomendasi": [
-        "- ● Layanan Digital Prioritas & Tematik:",
-        "Audit Eksternal Keamanan Pemerintah Digital dan Teknologi Pemerintah Digital untuk layanan digital prioritas IPPD",
-        "|IPPD telah melakukan Audit EksternalKeamanan Pemerintah Digital dan TeknologiPemerintah Digital untuk layanan prioritasberupa aplikasi dan/atau infrastruktur.|"
-      ]
+      "rekomendasi": []
     },
     {
       "nomor": 10,
@@ -336,14 +275,13 @@
         }
       ],
       "data_dukung_modul": [
-        "1. Nilai IKASANDI pada",
-        "area Keamanan Siber.",
-        "0 < IKASANDI < 1,5",
-        "Cukup/Emerging (1,5 < nilai < 2,5)"
+        "1. Nilai IKASANDI pada area Keamanan Siber. 0 < IKASANDI < 1,5",
+        "* Dokumentasi Identifikasi IIV dapat berupa surat dari Instansi Pemerintah ke BSSN terkait pelaksanaan identifikasi IIV, laporan ha",
+        "1. Nilai IKASANDI pada area Keamanan Siber. 2,50 < IKASANDI < 3,50",
+        "1. Instrumen IKASANDI pada area Keamanan Siber 4,00 < IKASANDI < 5,00",
+        "1. Instrumen IKASANDI pada area Keamanan Siber. 3,50 < IKASANDI < 4,00"
       ],
-      "rekomendasi": [
-        "|Hasil pengukuran Tingkat KematanganKeamanan Pemerintah Digital telah diverifikasioleh lembaga yang melaksanakan tugaspemerintahan di bidang keamanan PemerintahDigital dan sandi dan/atau pemerintah daerahyang diberikan kewenangan sesuai denganperaturan perundang-undangan.Rekomendasi hasil penilaian telah ditindaklanjutimelalui perbaikan berkelanjutan.Perbaikan berkelanjutan Keamanan PemerintahDigital telah menjadi bagian budaya organisasi.Kondisi|"
-      ]
+      "rekomendasi": []
     },
     {
       "nomor": 11,
@@ -371,14 +309,19 @@
         }
       ],
       "data_dukung_modul": [
-        "Laporan pelaksanaan",
-        "penerapan teknologi",
-        "Cukup/Emerging (1,5 < nilai < 2,5)"
+        "Laporan pelaksanaan penerapan teknologi kriptografi.",
+        "siklus data (at",
+        "transit, dan/atau in",
+        "use) terhadap ≤ 50% dari total Layanan Digital Pemerintah dengan minimal kategorisasi Sistem Elektronik (SE)/Layanan Digital Pemerintah pada tingkat tinggi.<br>2. Algoritma kriptografi yang digunakan sesuai dengan peraturan perundang",
+        "undangan pada sebagian Layanan Digital Pemerintah.<br><br><br>Kondis",
+        "(dua) siklus data (at",
+        "transit; atau at",
+        "use) pada 100% Sistem Elektronik dengan minimal kategorisasi Sistem Elektronik (SE)/Layanan Digital Pemerintah pada tingkat tinggi.<br>2. Ev",
+        "teknologi kriptografi telah dilaksanakan secara menyeluruh.<br>2. Penerapan teknologi kriptografi telah menjadi budaya kerja untuk mendukung kualitas Layanan Digital Pemerintah.<br>3. Penyelenggaraan persandian telah terorganisir dan terkelola dengan baik<br>|",
+        "1. Laporan tindak lanjut hasil evaluasi penerapan teknologi kriptografi.",
+        "2. Nilai IKASANDI pada Area Kematangan P"
       ],
-      "rekomendasi": [
-        "- 1. Teknologi kriptografi telah diterapkan pada seluruh Layanan Digital Pemerintah prioritas dan/atau Layanan Digital",
-        "Pemerintah prioritas dan/atau Layanan Digital"
-      ]
+      "rekomendasi": []
     },
     {
       "nomor": 12,
@@ -406,18 +349,13 @@
         }
       ],
       "data_dukung_modul": [
-        "- 1. Dokumentasi pelaksanaan",
-        "penanganan insiden.",
-        "- 2. Nilai IKASANDI pada area",
-        "Penanganan Insiden Siber.",
-        "0 < IKASANDI < 1,50",
-        "Cukup/Emerging (1,5 < nilai < 2,5)"
+        "1. Dokumentasi pelaksanaan penanganan insiden.",
+        "2. Nilai IKASANDI pada area Penanganan Insiden Siber. 0 < IKASANDI < 1,50",
+        "1. Penetapan TTIS.",
+        "2. Nilai IKASANDI pada area Penanganan Insiden Siber. 1,50 < I",
+        "Instrumen IKASANDI area Penanganan Insiden Siber. 3,50 < IKASANDI < 4,00"
       ],
-      "rekomendasi": [
-        "### Tahapan Registrasi",
-        "- 2. Penanganan insiden siber telah dilakukan oleh TTIS pada seluruh Layanan Digital Pemerintah prioritas dan/atau",
-        "perundang-undangan.2. Rekomendasi hasil penilaian telah"
-      ]
+      "rekomendasi": []
     },
     {
       "nomor": 13,
@@ -448,20 +386,8 @@
           "kriteria": "Pemerintah sesuai dengan substansi Rencana Aksi Nasional Pemerintah Digital pada perencanaan Instansi Pemerintah.<br><br><br>Kondisi| Laporan reviu pelaksanaan pembangunan/pengembangan aplikasi. Laporan reviu pelaksanaan pembangunan/pengembang an aplikasi. ## 1 ###### Bukti implementasi perbaikan Dokumen tindak lanjut hasil reviu - ● Perubahan desain atau arsitektur aplikasi - ● Peningkatan fitur atau integrasi sistem - ● Penyempurnaan proses pengembangan - ● Daftar rekomendasi dari laporan revi"
         }
       ],
-      "data_dukung_modul": [
-        "- 1. Bukti Pelaksanaan Pengembangan Aplikasi.",
-        "- 2. Substansi Rencana Aksi Pemerintah Digital pada Perencanaan",
-        "Instansi Pemerintah.",
-        "- 3. Aplikasi Pemerintah Digital pada Arsitektur Teknologi",
-        "Pemerintah Digital dari SIAP Digital.",
-        "Substansi Rencana Aksi",
-        "Pemerintah Digital pada",
-        "Perencanaan Instansi"
-      ],
-      "rekomendasi": [
-        "arah pembangunan/pengembangan aplikasi instansi pada seluruh Layanan Digital Pemerintah prioritas dan/atau Layanan Digital",
-        "- ● Daftar rekomendasi dari laporan reviu"
-      ]
+      "data_dukung_modul": [],
+      "rekomendasi": []
     },
     {
       "nomor": 14,
@@ -485,19 +411,10 @@
         }
       ],
       "data_dukung_modul": [
-        "###### atau PusatekosistemDataPemdiyang digunakandengan JaringandenganIntraterhubungPemerintahke",
-        "Dasbor Ekosistem Pusat Data yang",
-        "dimanfaatkan oleh IPPD.",
-        "Screenshot Pemakaian Jaringan Intra",
-        "Screenshot Tes PING",
-        "Screenshot Topologi Jaringan Intra IPPD"
+        "1 pemanfaatan Infrastruktur Pemerintah Digital pada sebagian Layanan Digital Pemerintah yang dimuat pada Substansi Rencana Aksi Nasional Pemerintah Digital pada perencana",
+        "pemanfaatan Infrastruktur Pemerintah Digital pada seluruh Layanan Digital Pemerintah prioritas dan/atau Layanan Digital Pemerintah tematik yang dimuat pada S"
       ],
-      "rekomendasi": [
-        "dalam tahapan penyusunan, sebagai referensi pemanfaatan Infrastruktur Pemerintah Digital.",
-        "telah menjadi referensi penyediaan Infrastruktur Digital Instansi serta seluruh Layanan Digital Pemerintah prioritas",
-        "prioritas dan/atau Layanan Digital Pemerintah",
-        "- 2. Rekomendasi Tindak Lanjut"
-      ]
+      "rekomendasi": []
     },
     {
       "nomor": 15,
@@ -513,12 +430,7 @@
         }
       ],
       "data_dukung_modul": [],
-      "rekomendasi": [
-        "seluruh Layanan Digital Pemerintah prioritas dan/atau Layanan Digital Pemerintah tematik.",
-        "seluruh Layanan Digital Pemerintah prioritas dan/atau Layanan Digital Pemerintah tematik.",
-        "Digital Pemerintah prioritas dan/atau Layanan Digital Pemerintah tematik.",
-        "- 2. Rekomendasi Tindak Lanjut"
-      ]
+      "rekomendasi": []
     },
     {
       "nomor": 16,
@@ -533,21 +445,8 @@
           "kriteria": "pelayanan publik dan pembangunan, dalam memberikan layanan kepada masyarakat di setiap aspek kehidupan (Human-Based) yang berorientasi pada kemudahan pengguna. ### Laporan Matriks pemantauan hasil tindak lanjut Integrasi Aplikasi. Dokumentasi dapat berupa - 1. Tindaklanjut perbaikan dari hasil reviu - 2. Laporan koordinasi atas tindaklanjut. - 3. Dokumen screenshot perbaikan. - 4. Dokumen naskah dinas lainnya"
         }
       ],
-      "data_dukung_modul": [
-        "Laporan Pelaksanaan Integrasi Aplikasi yang berisikan matriks integrasi",
-        "#### Matriks pemantauan integrasi aplikasi",
-        "Matriks pengintegrasian aplikasi",
-        "- 1. Dokumentasi rapat",
-        "- 2. Dokumentasi bukti pemanfaatan",
-        "dan pertukaran data",
-        "- 3. Dokumen UAT, Stress test, Pen test",
-        "- 4. Dokumen integration test"
-      ],
-      "rekomendasi": [
-        "Arsitektur Teknologi Pemdi pada tingkat mikro dalam tahapan penyusunan, sebagai",
-        "Pemdi telah menjadi referensi integrasi aplikasi pada seluruh Layanan Digital Pemerintah prioritas dan/atau",
-        "- 3. Pelaksanaan Integrasi Aplikasi dilakukan pada seluruh Layanan Digital Pemerintah prioritas"
-      ]
+      "data_dukung_modul": [],
+      "rekomendasi": []
     },
     {
       "nomor": 17,
@@ -567,18 +466,9 @@
         }
       ],
       "data_dukung_modul": [
-        "Portal Layanan Digital",
-        "Pemerintah pada Instansi"
+        "Portal Layanan Digital Pemerintah pada IPPD. Portal Layana"
       ],
-      "rekomendasi": [
-        "Agenda Prioritas Nasional",
-        "menyusun rekomendasi perbaikan",
-        "pelaksanaan program prioritas pembangunan",
-        "nasional dan agenda prioritas Presiden secara",
-        "Pemerintah prioritas dan/atau Layanan Digital",
-        "prioritas dan/atau Layanan Digital Pemerintah",
-        "prioritas dan/atau Layanan Digital Pemerintah"
-      ]
+      "rekomendasi": []
     },
     {
       "nomor": 18,
@@ -606,20 +496,11 @@
         }
       ],
       "data_dukung_modul": [
-        "1.Arsitektur Data Pemerintah",
-        "Digital dari SIAP Digital.",
-        "(disesuaikan dengan kondisi)",
-        "1.Indeks SDI pada Aspek",
-        "Interoperabilitas Data.",
-        "Contoh Kasus Indikator NilaiSDI BobotPEMDI IndeksPEMDI",
-        "Indikator 14 5 9% 0,45",
-        "- Indikator 18 7 17% 1,19"
+        "terintegrasi telah direplikasi atau menjadi rujukan nasional.<br>",
+        "Seluruh data administratif telah terintegrasi secara end",
+        "end dalam sistem digital yang konsisten dengan Arsitektur Data Pemerintah Digital nasional.<br><br"
       ],
-      "rekomendasi": [
-        "Prioritas yang disimpan",
-        "referensi penerapan interoperabilitas data pada seluruh Layanan Digital Pemerintah prioritas dan/atau Layanan Digital",
-        "- • Penerapan interoperabilitas data telah diterapkan pada seluruh Layanan Digital Pemerintah prioritas dan/atau Layanan Digital"
-      ]
+      "rekomendasi": []
     },
     {
       "nomor": 19,
@@ -647,19 +528,13 @@
         }
       ],
       "data_dukung_modul": [
-        "dimaksud.• Terdapat Sistem",
-        "Fasilitas Dukungan",
-        "Pengguna• Terdapat dasbor",
-        "pada tiap Layanan",
-        "Digital Pemerintah|",
-        "Cukup/Emerging (1,5 < nilai < 2,5)"
+        "SLA yang ditetapkan oleh Unit Kerja/Perangkat Daerah pengampu Layanan Digital dimaksud.<br>",
+        "Terdapat Sistem Fasi",
+        "dukungan secara pasif/reaktif, proaktif, dan bersifat personal (contact center, service desk, customer service).<br>",
+        "Terdapat fitur tracking pada layanan dukungan pengguna unt",
+        "Pemerintah dilakukan evaluasi secara menyeluruh untuk mendukung pencapaian SLA di tingkat nasional.<br>"
       ],
-      "rekomendasi": [
-        "- • Prioritas: Menentukan urgensi berdasarkan level dampak",
-        "setiap tahapan layanan per-pengguna.• Standar SLA berdasarkan SOP yang ditetapkan",
-        "setiap tahapan layanan per-pengguna yang telah",
-        "###### Laporan Reviu dan/atau Evaluasi memuat setidaknya informasi kendala dan rekomendasi tindak lanjut"
-      ]
+      "rekomendasi": []
     },
     {
       "nomor": 20,
@@ -687,17 +562,10 @@
         }
       ],
       "data_dukung_modul": [
-        "Hasil kepuasan pengguna layanan digital yang dilihat melalui",
-        "Bukti pelibatan perwakilan kelompok rentan dalam upaya",
-        "pengelolaan kepuasan pengguna layanan digital",
-        "Bukti tindak lanjut pengelolaan",
-        "kepuasan pengguna layanan digital",
-        "Laporan Tindak Lanjut"
+        "Hasil kepuasan pengguna layanan digital yang dilihat melalui portal instansi Bukti tindak lanjut pengelolaan kepuasan pengguna layanan digital Bentuk: Laporan Tindak Lanjut Data jumlah Berita Acara",
+        "Hasil kepuasan pengguna layanan digital Data jumlah"
       ],
-      "rekomendasi": [
-        "Merumuskan rekomendasi perbaikan",
-        "###### menentukan Layanan Digital Prioritas"
-      ]
+      "rekomendasi": []
     }
   ]
 }
