@@ -80,7 +80,7 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 | `components/` | React komponen |
 | `styles/` | CSS globals — **Gayo Civic Digital v3**, CSS variables, hero award gradient, dark mode |
 | `data/` | Data statis JSON (OPD, SPBE, ProBis, SKM, Pemdi) + glosarium |
-| `docs/` | Dokumentasi, PDF, riset |
+| `docs/` | Dokumentasi, PDF, riset. **Baru:** `docs/modul-indikator/` — 20 modul indikator Pemdi (Permenpan 8/2026) terekstrak ke Markdown dari PPT via ODL-PDF |
 | `docs.old/` | Legacy docs — referensi historis (tidak diindex DOX) |
 | `lib/` | Supabase client (`supabaseAdmin.js`), security helpers (`security.js`), admin auth (`adminAuth.js`) |
 | `pages/admin.js` | Admin Dashboard — authenticate via ADMIN_TOKEN (Bearer) |

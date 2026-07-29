@@ -1,5 +1,6 @@
 import { useState, useMemo, useEffect, useCallback } from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 import DetailModal from '@/components/DetailModal';
 import TopographicBackdrop from '@/components/TopographicBackdrop';
 import { formatDesimal } from '@/lib/format';
@@ -461,12 +462,24 @@ export default function PemdiPage() {
                     </div>
                     <p style={{ fontSize: '0.82rem', color: 'var(--ink-secondary)', marginBottom: '10px', lineHeight: 1.5 }}>{ind.deskripsi}</p>
                     {ind.penanggung_jawab && (
-                      <div style={{ fontSize: '0.78rem', color: 'var(--muted)', display: 'flex', gap: '6px', alignItems: 'center', flexWrap: 'wrap', marginBottom: buktiItems.length > 0 ? '10px' : 0 }}>
+                      <div style={{ fontSize: '0.78rem', color: 'var(--muted)', display: 'flex', gap: '6px', alignItems: 'center', flexWrap: 'wrap', marginBottom: '8px' }}>
                         <span>👤 PIC Lead:</span>
                         <strong style={{ color: 'var(--primary)' }}>{ind.penanggung_jawab.lead}</strong>
                         {ind.penanggung_jawab.support?.length > 0 && <span>(Pendukung: {ind.penanggung_jawab.support.join(', ')})</span>}
                       </div>
                     )}
+                    {/* Link to Modul Indikator for detailed evidence planning */}
+                    <div style={{ marginBottom: buktiItems.length > 0 ? '10px' : 0 }}>
+                      <Link href={`/modul-indikator?modul=${ind.id.replace('I','')}`}
+                        style={{
+                          fontSize: '0.75rem', fontWeight: 600, color: 'var(--primary)',
+                          textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px',
+                          padding: '4px 10px', borderRadius: '6px',
+                          background: 'var(--primary-bg)', border: '1px solid var(--primary-line)',
+                        }}>
+                        📋 Lihat Modul Indikator →
+                      </Link>
+                    </div>
                     {buktiItems.length > 0 && (
                       <div style={{ marginTop: '8px', padding: '10px', borderRadius: 'var(--r-xs)', background: 'var(--bg)', border: '1px solid var(--line)' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>

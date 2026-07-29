@@ -39,3 +39,6 @@ yarn-error.log*
 
 # Supabase
 .env.supabase
+
+# Modul Indikator — raw PNG extracts (502MB), content already in data/modul-indikator.json
+/docs/modul-indikator/
