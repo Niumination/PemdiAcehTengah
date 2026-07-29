@@ -19,6 +19,7 @@ const menuGroups = [
     label: 'II. Kinerja & Transparansi',
     items: [
       { label: 'Indeks Pemdi 2026', href: '/pemdi', icon: '🚀', badge: '8/2026' },
+      { label: 'Modul Indikator', href: '/modul-indikator', icon: '📋', badge: '20' },
       { label: 'Indeks SPBE 2025', href: '/spbe', icon: '📊', badge: '2.59' },
       { label: 'Peta Proses Bisnis', href: '/probis', icon: '🗺️', badge: 'Level 3' },
       { label: '52 Perangkat Daerah', href: '/opd', icon: '🏬' },

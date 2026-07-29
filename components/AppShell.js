@@ -25,6 +25,7 @@ const breadcrumbLabels = {
   '/admin': 'Panel Admin Pengelola',
   '/bantuan': 'Pusat Bantuan',
   '/kebijakan-privasi': 'Kebijakan Privasi',
+  '/modul-indikator': 'Modul Indikator Pemdi',
 };
 
 function getBreadcrumbs(pathname) {
