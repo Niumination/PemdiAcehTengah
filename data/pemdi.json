@@ -121,30 +121,8 @@
                 "Diskominfo",
                 "OPD Terkait"
               ],
-              "status": "proses",
-              "catatan": "Renstra Diskominfo, LAKIP 2021, RPD 2023-2026 ditemukan publik. Perlu verifikasi ada/frasa aksi SPBE",
-              "lampiran": [
-                {
-                  "file": "/bukti-dukung/01-tata-kelola/renstra_diskominfo.pdf",
-                  "label": "Renstra Diskominfo",
-                  "type": "pdf"
-                },
-                {
-                  "file": "/bukti-dukung/01-tata-kelola/renaksi_diskominfo_2021.pdf",
-                  "label": "Renaksi Diskominfo 2021",
-                  "type": "pdf"
-                },
-                {
-                  "file": "/bukti-dukung/01-tata-kelola/lakip_diskominfo_2021.pdf",
-                  "label": "LAKIP Diskominfo 2021",
-                  "type": "pdf"
-                },
-                {
-                  "file": "/bukti-dukung/01-tata-kelola/rpd_2023_2026.pdf",
-                  "label": "RPD 2023-2026",
-                  "type": "pdf"
-                }
-              ]
+              "status": "belum",
+              "catatan": "Renstra Diskominfo, LAKIP 2021, RPD 2023-2026 ditemukan publik. Perlu verifikasi ada/frasa aksi SPBE"
             },
             {
               "id": "B1.2",
@@ -220,15 +198,8 @@
                 "Diskominfo",
                 "OPD Pemilik Layanan"
               ],
-              "status": "proses",
-              "catatan": "Pedoman Pengaduan RSUD ditemukan (PDF). Perlu bukti penerapan digital",
-              "lampiran": [
-                {
-                  "file": "/bukti-dukung/04-layanan/pedoman_pengaduan_rsud.pdf",
-                  "label": "Pedoman Pengaduan RSUD Datu Beru",
-                  "type": "pdf"
-                }
-              ]
+              "status": "belum",
+              "catatan": "Pedoman Pengaduan RSUD ditemukan (PDF). Perlu bukti penerapan digital"
             }
           ]
         }
@@ -283,15 +254,8 @@
                 "Seluruh OPD",
                 "BKPSDM"
               ],
-              "status": "proses",
-              "catatan": "Portal e-Kinerja aktif (e-Absensi tersinkron, TTE BSrE). Perlu screenshot individual",
-              "lampiran": [
-                {
-                  "file": "/bukti-dukung/01-tata-kelola/e_kinerja.html",
-                  "label": "Portal e-Kinerja Pemkab Aceh Tengah",
-                  "type": "html"
-                }
-              ]
+              "status": "belum",
+              "catatan": "Portal e-Kinerja aktif (e-Absensi tersinkron, TTE BSrE). Perlu screenshot individual"
             },
             {
               "id": "B3.3",
@@ -302,15 +266,8 @@
                 "BKPSDM",
                 "Diskominfo"
               ],
-              "status": "proses",
-              "catatan": "Pelatihan VSGA 75 peserta (Operator Komputer, Video Editor, Junior Graphic Designer) via BBPSDMP Kominfo Medan — Juni 2023",
-              "lampiran": [
-                {
-                  "file": "/bukti-dukung/01-tata-kelola/pelatihan_sdm_digital_2023.html",
-                  "label": "Pelatihan VSGA 75 Peserta (2023)",
-                  "type": "html"
-                }
-              ]
+              "status": "belum",
+              "catatan": "Pelatihan VSGA 75 peserta (Operator Komputer, Video Editor, Junior Graphic Designer) via BBPSDMP Kominfo Medan — Juni 2023"
             },
             {
               "id": "B3.4",
@@ -387,15 +344,8 @@
                 "Diskominfo",
                 "OPD Terkait"
               ],
-              "status": "proses",
-              "catatan": "PKS E-Keurani Pemkab-Pemprov (integrasi data ASN) ditemukan. Salinan PKS resmi perlu diminta",
-              "lampiran": [
-                {
-                  "file": "/bukti-dukung/01-tata-kelola/pks_e_keurani_2023.html",
-                  "label": "PKS E-Keurani Pemkab-Pemprov",
-                  "type": "html"
-                }
-              ]
+              "status": "belum",
+              "catatan": "PKS E-Keurani Pemkab-Pemprov (integrasi data ASN) ditemukan. Salinan PKS resmi perlu diminta"
             }
           ]
         }
@@ -454,30 +404,8 @@
                 "Bappeda",
                 "BPS"
               ],
-              "status": "proses",
-              "catatan": "FGD Aceh Tengah Dalam Angka 2021 (Humas) + Portal Open Data + Penguatan Satu Data 2025 ditemukan. Perlu SK Forum SDI/Wali Data resmi",
-              "lampiran": [
-                {
-                  "file": "/bukti-dukung/01-tata-kelola/satu_data_fgd.html",
-                  "label": "FGD Aceh Tengah Dalam Angka 2021",
-                  "type": "html"
-                },
-                {
-                  "file": "/bukti-dukung/01-tata-kelola/open_data_satu_data.html",
-                  "label": "Portal Open Data / Satu Data",
-                  "type": "html"
-                },
-                {
-                  "file": "/bukti-dukung/01-tata-kelola/penguatan_satu_data_2025.html",
-                  "label": "Penguatan Satu Data 2025",
-                  "type": "html"
-                },
-                {
-                  "file": "/bukti-dukung/01-tata-kelola/desk_satu_data_2026.html",
-                  "label": "Desk Satu Data 2026",
-                  "type": "html"
-                }
-              ]
+              "status": "belum",
+              "catatan": "FGD Aceh Tengah Dalam Angka 2021 (Humas) + Portal Open Data + Penguatan Satu Data 2025 ditemukan. Perlu SK Forum SDI/Wali Data resmi"
             },
             {
               "id": "B5.3",
@@ -488,20 +416,8 @@
                 "OPD Produsen Data",
                 "Diskominfo"
               ],
-              "status": "proses",
-              "catatan": "Portal Open Data aktif (852 datasets, 61 organisasi) + Desk Satu Data 2026 + PERKIM MENDATA. Metadata sektoral perlu verifikasi",
-              "lampiran": [
-                {
-                  "file": "/bukti-dukung/03-infrastruktur/opendata.html",
-                  "label": "Portal Open Data (852 datasets)",
-                  "type": "html"
-                },
-                {
-                  "file": "/bukti-dukung/01-tata-kelola/perkim_mendata.html",
-                  "label": "PERKIM MENDATA",
-                  "type": "html"
-                }
-              ]
+              "status": "belum",
+              "catatan": "Portal Open Data aktif (852 datasets, 61 organisasi) + Desk Satu Data 2026 + PERKIM MENDATA. Metadata sektoral perlu verifikasi"
             }
           ]
         },
@@ -596,15 +512,8 @@
                 "BPS",
                 "Diskominfo"
               ],
-              "status": "proses",
-              "catatan": "Portal Statistik Sektoral aktif di portal. Publikasi Aceh Tengah Dalam Angka perlu diunduh tahun berjalan",
-              "lampiran": [
-                {
-                  "file": "/bukti-dukung/03-infrastruktur/satu_data_statistik_sektoral.html",
-                  "label": "Portal Statistik Sektoral",
-                  "type": "html"
-                }
-              ]
+              "status": "belum",
+              "catatan": "Portal Statistik Sektoral aktif di portal. Publikasi Aceh Tengah Dalam Angka perlu diunduh tahun berjalan"
             },
             {
               "id": "B7.2",
@@ -794,20 +703,8 @@
                 "Diskominfo",
                 "Setdakab"
               ],
-              "status": "proses",
-              "catatan": "50 ASN dilatih TTE + berita sosialisasi TTE ditemukan. Usulan BSrE perlu dokumen resmi",
-              "lampiran": [
-                {
-                  "file": "/bukti-dukung/02-keamanan/pelatihan_tte_50_asn.html",
-                  "label": "Pelatihan TTE 50 ASN",
-                  "type": "html"
-                },
-                {
-                  "file": "/bukti-dukung/02-keamanan/berita_tte_2024.html",
-                  "label": "Berita Sosialisasi TTE 2024",
-                  "type": "html"
-                }
-              ]
+              "status": "belum",
+              "catatan": "50 ASN dilatih TTE + berita sosialisasi TTE ditemukan. Usulan BSrE perlu dokumen resmi"
             },
             {
               "id": "B11.2",
@@ -818,15 +715,8 @@
                 "Diskominfo",
                 "OPD Terkait"
               ],
-              "status": "proses",
-              "catatan": "Berita Dukcapil gunakan TTE ditemukan + e-Kinerja punya TTE BSrE. Screenshot HTTPS perlu diverifikasi",
-              "lampiran": [
-                {
-                  "file": "/bukti-dukung/02-keamanan/berita_tte_dukcapil.html",
-                  "label": "Dukcapil Gunakan TTE",
-                  "type": "html"
-                }
-              ]
+              "status": "belum",
+              "catatan": "Berita Dukcapil gunakan TTE ditemukan + e-Kinerja punya TTE BSrE. Screenshot HTTPS perlu diverifikasi"
             }
           ]
         },
@@ -857,15 +747,8 @@
                 "Diskominfo",
                 "Bagian Hukum"
               ],
-              "status": "proses",
-              "catatan": "Situs csirt.acehtengahkab.go.id aktif, ada fungsi 'Lapor Insiden'. SK pembentukan perlu diminta resmi",
-              "lampiran": [
-                {
-                  "file": "/bukti-dukung/02-keamanan/aceh_tengah_csirt.html",
-                  "label": "Situs Aceh Tengah-CSIRT",
-                  "type": "html"
-                }
-              ]
+              "status": "belum",
+              "catatan": "Situs csirt.acehtengahkab.go.id aktif, ada fungsi 'Lapor Insiden'. SK pembentukan perlu diminta resmi"
             },
             {
               "id": "B12.2",
@@ -885,15 +768,8 @@
               "opd": [
                 "Diskominfo (Tim CSIRT)"
               ],
-              "status": "proses",
-              "catatan": "Situs CSIRT menyediakan kanal pelaporan insiden. Log/BA insiden perlu dokumen resmi",
-              "lampiran": [
-                {
-                  "file": "/bukti-dukung/02-keamanan/aceh_tengah_csirt.html",
-                  "label": "Situs Aceh Tengah-CSIRT (Lapor Insiden)",
-                  "type": "html"
-                }
-              ]
+              "status": "belum",
+              "catatan": "Situs CSIRT menyediakan kanal pelaporan insiden. Log/BA insiden perlu dokumen resmi"
             }
           ]
         }
@@ -936,20 +812,8 @@
               "opd": [
                 "Diskominfo"
               ],
-              "status": "proses",
-              "catatan": "siCantik (perizinan), e-Kinerja, Open Data, Satu Data teridentifikasi. Matriks lengkap perlu dari Diskominfo",
-              "lampiran": [
-                {
-                  "file": "/bukti-dukung/01-tata-kelola/sicantik.html",
-                  "label": "siCantik - Aplikasi Perizinan",
-                  "type": "html"
-                },
-                {
-                  "file": "/bukti-dukung/00-manifest/DPA_Tahun_2024_Dinas_Pertanahan.pdf",
-                  "label": "DPA Dinas Pertanahan 2024",
-                  "type": "pdf"
-                }
-              ]
+              "status": "belum",
+              "catatan": "siCantik (perizinan), e-Kinerja, Open Data, Satu Data teridentifikasi. Matriks lengkap perlu dari Diskominfo"
             },
             {
               "id": "B13.2",
@@ -970,15 +834,8 @@
               "opd": [
                 "Diskominfo"
               ],
-              "status": "proses",
-              "catatan": "siCantik dan portal lain sudah live. SIAP Digital perlu screenshot",
-              "lampiran": [
-                {
-                  "file": "/bukti-dukung/01-tata-kelola/sicantik.html",
-                  "label": "siCantik - Portal Perizinan",
-                  "type": "html"
-                }
-              ]
+              "status": "belum",
+              "catatan": "siCantik dan portal lain sudah live. SIAP Digital perlu screenshot"
             },
             {
               "id": "B13.4",
@@ -1021,30 +878,8 @@
                 "Diskominfo",
                 "BPKD"
               ],
-              "status": "proses",
-              "catatan": "Command Center, fiber optic, jaringan intra-pemerintah (APJII) ditemukan. KIB B/E perlu dari BPKD",
-              "lampiran": [
-                {
-                  "file": "/bukti-dukung/03-infrastruktur/command_center.html",
-                  "label": "Aceh Tengah Command Center",
-                  "type": "html"
-                },
-                {
-                  "file": "/bukti-dukung/03-infrastruktur/fiber_optik.html",
-                  "label": "Pemasangan Fiber Optik Instansi",
-                  "type": "html"
-                },
-                {
-                  "file": "/bukti-dukung/03-infrastruktur/jaringan_intra_pemerintah.html",
-                  "label": "Jaringan Intra-Pemerintah (APJII)",
-                  "type": "html"
-                },
-                {
-                  "file": "/bukti-dukung/03-infrastruktur/workshop_infrastruktur_spbe.html",
-                  "label": "Workshop Infrastruktur SPBE",
-                  "type": "html"
-                }
-              ]
+              "status": "belum",
+              "catatan": "Command Center, fiber optic, jaringan intra-pemerintah (APJII) ditemukan. KIB B/E perlu dari BPKD"
             },
             {
               "id": "B14.2",
@@ -1054,7 +889,7 @@
               "opd": [
                 "Diskominfo"
               ],
-              "status": "proses",
+              "status": "belum",
               "catatan": "Workshop infrastruktur SPBE dilaksanakan. Dashboard NMS perlu screenshot MikroTik/PRTG"
             }
           ]
@@ -1145,15 +980,8 @@
                 "Diskominfo",
                 "OPD Terkait"
               ],
-              "status": "proses",
-              "catatan": "PKS E-Keurani menunjukkan inisiatif integrasi. BA rapat/API perlu dokumen teknis",
-              "lampiran": [
-                {
-                  "file": "/bukti-dukung/01-tata-kelola/pks_e_keurani_2023.html",
-                  "label": "PKS E-Keurani (Integrasi Data ASN)",
-                  "type": "html"
-                }
-              ]
+              "status": "belum",
+              "catatan": "PKS E-Keurani menunjukkan inisiatif integrasi. BA rapat/API perlu dokumen teknis"
             },
             {
               "id": "B16.2",
@@ -1193,20 +1021,8 @@
               "opd": [
                 "Diskominfo"
               ],
-              "status": "proses",
-              "catatan": "Portal utama acehtengahkab.go.id + siCantik + Open Data aktif. Perlu screenshot bertanggal",
-              "lampiran": [
-                {
-                  "file": "/bukti-dukung/01-tata-kelola/sicantik.html",
-                  "label": "siCantik - Portal Perizinan",
-                  "type": "html"
-                },
-                {
-                  "file": "/bukti-dukung/03-infrastruktur/opendata.html",
-                  "label": "Portal Open Data",
-                  "type": "html"
-                }
-              ]
+              "status": "belum",
+              "catatan": "Portal utama acehtengahkab.go.id + siCantik + Open Data aktif. Perlu screenshot bertanggal"
             },
             {
               "id": "B17.2",
@@ -1250,15 +1066,8 @@
                 "Diskominfo",
                 "Bappeda"
               ],
-              "status": "proses",
-              "catatan": "Portal Open Data 852 datasets, 61 organisasi aktif. Arsitektur data SIAP perlu screenshot",
-              "lampiran": [
-                {
-                  "file": "/bukti-dukung/03-infrastruktur/opendata.html",
-                  "label": "Open Data (852 datasets, 61 organisasi)",
-                  "type": "html"
-                }
-              ]
+              "status": "belum",
+              "catatan": "Portal Open Data 852 datasets, 61 organisasi aktif. Arsitektur data SIAP perlu screenshot"
             },
             {
               "id": "B18.2",
@@ -1324,30 +1133,8 @@
                 "Diskominfo",
                 "Humas Setdakab"
               ],
-              "status": "lengkap",
-              "catatan": "SP4N-LAPOR: pendampingan ke seluruh kecamatan, pelatihan OPD/puskesmas/BUMD 2024, penghargaan KemenPANRB 2023",
-              "lampiran": [
-                {
-                  "file": "/bukti-dukung/04-layanan/sp4n_lapor_pendampingan.html",
-                  "label": "Pendampingan SP4N-LAPOR ke Kecamatan",
-                  "type": "html"
-                },
-                {
-                  "file": "/bukti-dukung/04-layanan/pelatihan_sp4n_2024.html",
-                  "label": "Pelatihan SP4N-LAPOR 2024",
-                  "type": "html"
-                },
-                {
-                  "file": "/bukti-dukung/04-layanan/pendampingan_admin_sp4n_2024.html",
-                  "label": "Pendampingan Admin SP4N-LAPOR 2024",
-                  "type": "html"
-                },
-                {
-                  "file": "/bukti-dukung/04-layanan/sp4n_penghargaan.html",
-                  "label": "Penghargaan KemenPANRB SP4N-LAPOR 2023",
-                  "type": "html"
-                }
-              ]
+              "status": "belum",
+              "catatan": "SP4N-LAPOR: pendampingan ke seluruh kecamatan, pelatihan OPD/puskesmas/BUMD 2024, penghargaan KemenPANRB 2023"
             },
             {
               "id": "B19.3",
@@ -1358,15 +1145,8 @@
                 "Diskominfo",
                 "Bagian Organisasi"
               ],
-              "status": "proses",
-              "catatan": "Pedoman Pengaduan RSUD (PDF) + sistem SP4N-LAPOR aktif. SOP resmi perlu dari Diskominfo/Bag. Organisasi",
-              "lampiran": [
-                {
-                  "file": "/bukti-dukung/04-layanan/pedoman_pengaduan_rsud.pdf",
-                  "label": "Pedoman Pengaduan RSUD",
-                  "type": "pdf"
-                }
-              ]
+              "status": "belum",
+              "catatan": "Pedoman Pengaduan RSUD (PDF) + sistem SP4N-LAPOR aktif. SOP resmi perlu dari Diskominfo/Bag. Organisasi"
             },
             {
               "id": "B19.4",
@@ -1376,7 +1156,7 @@
               "opd": [
                 "Diskominfo"
               ],
-              "status": "proses",
+              "status": "belum",
               "catatan": "SP4N-LAPOR punya dashboard tiket. Ticketing internal Pemkab perlu screenshot"
             }
           ]
@@ -1411,25 +1191,8 @@
                 "Dukcapil",
                 "OPD Pelayanan"
               ],
-              "status": "lengkap",
-              "catatan": "SKM Dukcapil 2024: nilai 96,17, 100 responden, 9 unsur. SKM Kebayakan 2025 (periode Jan-Jun). Sosialisasi SKM 2024 dilaksanakan",
-              "lampiran": [
-                {
-                  "file": "/bukti-dukung/04-layanan/skm_dukcapil_2024.html",
-                  "label": "SKM Dukcapil 2024 (Nilai 96,17)",
-                  "type": "html"
-                },
-                {
-                  "file": "/bukti-dukung/04-layanan/skm_kebayakan_2025.pdf",
-                  "label": "SKM Kebayakan 2025",
-                  "type": "pdf"
-                },
-                {
-                  "file": "/bukti-dukung/04-layanan/sosialisasi_skm_2024.html",
-                  "label": "Sosialisasi SKM 2024",
-                  "type": "html"
-                }
-              ]
+              "status": "belum",
+              "catatan": "SKM Dukcapil 2024: nilai 96,17, 100 responden, 9 unsur. SKM Kebayakan 2025 (periode Jan-Jun). Sosialisasi SKM 2024 dilaksanakan"
             },
             {
               "id": "B20.2",
@@ -1439,7 +1202,7 @@
               "opd": [
                 "OPD Pelayanan Terkait"
               ],
-              "status": "proses",
+              "status": "belum",
               "catatan": "Sosialisasi SKM 2024 dilakukan. Notulensi dengan kelompok rentan perlu verifikasi"
             },
             {

@@ -339,9 +339,17 @@ export default function ModulIndikatorPage() {
                         </div>
                       )}
 
-                      {/* ════ Current Evidence Status ════ */}
+                      {/* ════ Current Evidence Status — semua belum divalidasi ════ */}
                       {modul.ind?.bukti_dukung?.length > 0 && (
                         <div style={{ marginTop: '1rem' }}>
+                          <div style={{
+                            padding: '0.75rem', borderRadius: '8px',
+                            background: '#fef3c7', border: '1px solid #f59e0b40',
+                            fontSize: '0.8rem', color: '#92400e',
+                          }}>
+                            ⚠️ <strong>Semua status bukti dukung saat ini <strong>Belum</strong> —</strong>
+                            perlu diverifikasi ulang sesuai kriteria level masing-masing indikator.
+                          </div>
                           <h4 style={{ fontSize: '0.85rem', fontWeight: 700, marginBottom: '0.5rem', color: 'var(--text)' }}>
                             📋 Bukti Dukung — Kondisi Existing Pemkab Aceh Tengah
                           </h4>
