@@ -44,7 +44,13 @@ export default function ModulIndikatorPage() {
   const [levelFilter, setLevelFilter] = useState(0); // 0 = all
   const [buka, setBuka] = useState(null);
   const [tabFilter, setTabFilter] = useState('semua'); // 'semua' | 'perlu' | 'selesai'
-  const openPdf = (url, title) => window.open(url, '_blank', 'noopener,noreferrer');
+  const [previewDoc, setPreviewDoc] = useState(null); // { url, title } | null
+
+  // Convert JDIH URL to proxy URL for same-origin iframe
+  const toProxyUrl = (url) => {
+    if (!url) return '';
+    return `/api/proxy-pdf?url=${encodeURIComponent(url)}`;
+  };
 
   // Auto-open modul from query param ?modul=N
   useEffect(() => {
@@ -412,16 +418,14 @@ export default function ModulIndikatorPage() {
                                     </td>
                                     <td style={{...tdStyle, textAlign:'center'}}>
                                       {canPreview ? (
-                                        <a href={url} target="_blank" rel="noopener noreferrer"
-                                          onClick={e => { e.preventDefault(); openPdf(url, bd.nama); }}
+                                        <button onClick={() => setPreviewDoc({url: toProxyUrl(url), title: bd.nama})}
                                           style={{
                                             padding: '0.25rem 0.5rem', borderRadius: '4px', border: 'none',
                                             background: 'var(--primary)', color: '#fff', cursor: 'pointer',
                                             fontSize: '0.7rem', fontWeight: 600, whiteSpace: 'nowrap',
-                                            textDecoration: 'none', display: 'inline-block',
                                           }}>
                                           👁️ Lihat
-                                        </a>
+                                        </button>
                                       ) : (
                                         <span style={{ fontSize: '0.65rem', color: 'var(--muted)' }}>—</span>
                                       )}
@@ -464,7 +468,50 @@ export default function ModulIndikatorPage() {
         </div>
       </section>
 
-
+      {/* ════════ PREVIEW MODAL ════════ */}
+      {previewDoc && (
+        <div onClick={() => setPreviewDoc(null)} style={{
+          position: 'fixed', inset: 0, zIndex: 9999,
+          background: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(4px)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          padding: '2rem',
+        }}>
+          <div onClick={e => e.stopPropagation()} style={{
+            background: 'var(--card-bg)', borderRadius: '12px',
+            width: '100%', maxWidth: '1000px', height: '90vh',
+            display: 'flex', flexDirection: 'column',
+            overflow: 'hidden', boxShadow: '0 20px 60px rgba(0,0,0,0.3)',
+          }}>
+            {/* Header */}
+            <div style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+              padding: '1rem 1.25rem', borderBottom: '1px solid var(--border)',
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <span style={{ fontSize: '1.1rem' }}>📄</span>
+                <span style={{ fontWeight: 600, fontSize: '0.9rem', color: 'var(--text)' }}>
+                  {previewDoc.title}
+                </span>
+              </div>
+              <button onClick={() => setPreviewDoc(null)} style={{
+                background: 'var(--surface-2)', border: 'none', borderRadius: '8px',
+                width: '36px', height: '36px', cursor: 'pointer',
+                fontSize: '1.2rem', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                color: 'var(--muted)', transition: 'all 0.15s',
+              }} onMouseOver={e => e.target.style.background = 'var(--surface-hover)'}
+              onMouseOut={e => e.target.style.background = 'var(--surface-2)'}>✕</button>
+            </div>
+            {/* PDF preview via proxy (same-origin, no XFO issues) */}
+            <div style={{ flex: 1, position: 'relative', background: 'var(--surface-2)' }}>
+              <iframe
+                src={previewDoc.url}
+                style={{ width: '100%', height: '100%', border: 'none' }}
+                title={previewDoc.title}
+              />
+            </div>
+          </div>
+        </div>
+      )}
 
       <style jsx>{`
         .stat-row {
