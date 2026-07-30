@@ -18,9 +18,9 @@ function cariIndikator(id) {
 }
 
 const STATUS_META = {
-  belum:   { icon: '⬜', label: 'Belum',     color: '#6b7280', bg: '#f3f4f6' },
-  proses:  { icon: '🔄', label: 'Proses',    color: '#d97706', bg: '#fef3c7' },
-  lengkap: { icon: '✅', label: 'Lengkap',    color: '#059669', bg: '#d1fae5' },
+  belum:   { icon: '⬜', label: 'Belum',     color: 'var(--muted)', bg: 'var(--surface-2)' },
+  proses:  { icon: '🔄', label: 'Proses',    color: 'var(--warn)', bg: 'var(--warn-bg)' },
+  lengkap: { icon: '✅', label: 'Lengkap',    color: 'var(--ok)', bg: 'var(--ok-bg)' },
 };
 
 const LEVEL_LABEL = { 0: 'Baseline', 1: 'Initiate', 2: 'Emerging', 3: 'Established', 4: 'Leading', 5: 'Transformative' };
@@ -44,7 +44,7 @@ export default function ModulIndikatorPage() {
   const [levelFilter, setLevelFilter] = useState(0); // 0 = all
   const [buka, setBuka] = useState(null);
   const [tabFilter, setTabFilter] = useState('semua'); // 'semua' | 'perlu' | 'selesai'
-  const [previewDoc, setPreviewDoc] = useState(null); // { url, title, isPdf } | null
+  const openPdf = (url, title) => window.open(url, '_blank', 'noopener,noreferrer');
 
   // Auto-open modul from query param ?modul=N
   useEffect(() => {
@@ -134,10 +134,10 @@ export default function ModulIndikatorPage() {
             <span className="stat-badge">
               {merged.reduce((s, m) => s + m.status.count, 0)} total bukti dukung
             </span>
-            <span className="stat-badge" style={{ background: '#fef3c7', color: '#92400e' }}>
+            <span className="stat-badge" style={{ background: 'var(--warn-bg)', color: 'var(--warn)' }}>
               {merged.reduce((s, m) => s + m.status.belum, 0)} perlu dikerjakan
             </span>
-            <span className="stat-badge" style={{ background: '#d1fae5', color: '#065f46' }}>
+            <span className="stat-badge" style={{ background: 'var(--ok-bg)', color: 'var(--ok)' }}>
               {merged.reduce((s, m) => s + m.status.lengkap, 0)} selesai
             </span>
           </div>
@@ -237,7 +237,7 @@ export default function ModulIndikatorPage() {
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.3rem' }}>
                           <div style={{
                             flex: 1, height: '4px', borderRadius: '2px',
-                            background: '#e5e7eb', overflow: 'hidden', maxWidth: '200px',
+                            background: 'var(--line)', overflow: 'hidden', maxWidth: '200px',
                           }}>
                             <div style={{
                               height: '100%', borderRadius: '2px',
@@ -346,8 +346,8 @@ export default function ModulIndikatorPage() {
                           {modul.status.lengkap === 0 && modul.status.count > 0 && (
                             <div style={{
                               padding: '0.75rem', borderRadius: '8px',
-                              background: '#fef3c7', border: '1px solid #f59e0b40',
-                              fontSize: '0.8rem', color: '#92400e',
+                              background: 'var(--warn-bg)', border: '1px solid var(--warn)',
+                              fontSize: '0.8rem', color: 'var(--warn)',
                             }}>
                               ⚠️ <strong>Semua status bukti dukung saat ini Belum</strong> —
                               perlu diverifikasi ulang sesuai kriteria level masing-masing indikator.
@@ -412,14 +412,16 @@ export default function ModulIndikatorPage() {
                                     </td>
                                     <td style={{...tdStyle, textAlign:'center'}}>
                                       {canPreview ? (
-                                        <button onClick={() => setPreviewDoc({url, title: bd.nama})}
+                                        <a href={url} target="_blank" rel="noopener noreferrer"
+                                          onClick={e => { e.preventDefault(); openPdf(url, bd.nama); }}
                                           style={{
                                             padding: '0.25rem 0.5rem', borderRadius: '4px', border: 'none',
                                             background: 'var(--primary)', color: '#fff', cursor: 'pointer',
                                             fontSize: '0.7rem', fontWeight: 600, whiteSpace: 'nowrap',
+                                            textDecoration: 'none', display: 'inline-block',
                                           }}>
                                           👁️ Lihat
-                                        </button>
+                                        </a>
                                       ) : (
                                         <span style={{ fontSize: '0.65rem', color: 'var(--muted)' }}>—</span>
                                       )}
@@ -462,49 +464,7 @@ export default function ModulIndikatorPage() {
         </div>
       </section>
 
-      {/* ════════ PREVIEW MODAL ════════ */}
-      {previewDoc && (
-        <div onClick={() => setPreviewDoc(null)} style={{
-          position: 'fixed', inset: 0, zIndex: 9999,
-          background: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(4px)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          padding: '2rem',
-        }}>
-          <div onClick={e => e.stopPropagation()} style={{
-            background: '#fff', borderRadius: '12px',
-            width: '100%', maxWidth: '1000px', height: '90vh',
-            display: 'flex', flexDirection: 'column',
-            overflow: 'hidden', boxShadow: '0 20px 60px rgba(0,0,0,0.3)',
-          }}>
-            {/* Header */}
-            <div style={{
-              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-              padding: '1rem 1.25rem', borderBottom: '1px solid #e5e7eb',
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <span style={{ fontSize: '1.1rem' }}>📄</span>
-                <span style={{ fontWeight: 600, fontSize: '0.9rem', color: '#1f2937' }}>
-                  {previewDoc.title}
-                </span>
-              </div>
-              <button onClick={() => setPreviewDoc(null)} style={{
-                background: '#f3f4f6', border: 'none', borderRadius: '8px',
-                width: '36px', height: '36px', cursor: 'pointer',
-                fontSize: '1.2rem', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                color: '#6b7280', transition: 'all 0.15s',
-              }}>✕</button>
-            </div>
-            {/* PDF preview via Google Docs Viewer (handles CORS/XFO issues) */}
-            <div style={{ flex: 1, position: 'relative', background: '#f8f9fa' }}>
-              <iframe
-                src={`https://docs.google.com/viewer?url=${encodeURIComponent(previewDoc.url)}&embedded=true`}
-                style={{ width: '100%', height: '100%', border: 'none' }}
-                title={previewDoc.title}
-              />
-            </div>
-          </div>
-        </div>
-      )}
+
 
       <style jsx>{`
         .stat-row {
