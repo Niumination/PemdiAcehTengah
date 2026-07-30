@@ -8,6 +8,7 @@ const securityHeaders = [
       "font-src 'self' https://fonts.gstatic.com",
       "img-src 'self' data: https:",
       "script-src 'self' 'unsafe-inline'",
+      "frame-src https://docs.google.com",
       "connect-src 'self' https://*.supabase.co",
       "base-uri 'self'",
       "form-action 'self'",

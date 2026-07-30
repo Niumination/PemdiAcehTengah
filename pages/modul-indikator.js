@@ -373,75 +373,62 @@ export default function ModulIndikatorPage() {
                               </thead>
                               <tbody>
                                 {modul.ind.bukti_dukung.map(bd => {
-                                  const sm = STATUS_META[bd.status] || STATUS_META.belum;
-                                  const url = bd.url_preview || bd.url_sumber||'';
-                                  const isPdf = url.endsWith('.pdf');
-                                  const isXlsx = url.endsWith('.xlsx');
-                                  const hasPreview = url && (url.startsWith('/bukti/') || url.startsWith('http'));
-                                  return (
-                                    <tr key={bd.id} style={{ borderBottom: '1px solid var(--border)' }}>
-                                      <td style={tdStyle}>
-                                        <span style={{
-                                          padding: '0.15rem 0.4rem', borderRadius: '4px',
-                                          background: `${LEVEL_WARNA[bd.level] || '#6b7280'}15`,
-                                          color: LEVEL_WARNA[bd.level] || '#6b7280',
-                                          fontWeight: 600, fontSize: '0.7rem',
-                                        }}>L{bd.level}</span>
-                                      </td>
-                                      <td style={{ ...tdStyle, fontWeight: 500 }}>
-                                        {bd.nama}
-                                        {bd.detail && <div style={{ fontSize: '0.7rem', color: 'var(--muted)', marginTop: '0.15rem' }}>{bd.detail}</div>}
-                                      </td>
-                                      <td style={tdStyle}>
-                                        {bd.opd?.map((o, i) => (
-                                          <span key={i} style={{
-                                            display: 'inline-block', padding: '0.1rem 0.35rem',
-                                            margin: '0.1rem', borderRadius: '4px',
-                                            background: 'var(--surface-2)', fontSize: '0.7rem',
-                                          }}>{o}</span>
-                                        ))}
-                                      </td>
-                                      <td style={tdStyle}>
-                                        <span style={{
-                                          display: 'inline-flex', alignItems: 'center', gap: '0.25rem',
-                                          padding: '0.15rem 0.5rem', borderRadius: '4px',
-                                          background: sm.bg, color: sm.color,
-                                          fontSize: '0.7rem', fontWeight: 600, whiteSpace: 'nowrap',
-                                        }}>
-                                          {sm.icon} {sm.label}
-                                        </span>
-                                      </td>
-                                      <td style={{...tdStyle, textAlign:'center'}}>
-                                        {hasPreview && bd.status === 'lengkap' ? (
-                                          isPdf ? (
-                                            <button onClick={() => setPreviewDoc({url, title: bd.nama, isPdf: true})}
-                                              style={{
-                                                padding: '0.25rem 0.5rem', borderRadius: '4px', border: 'none',
-                                                background: 'var(--primary)', color: '#fff', cursor: 'pointer',
-                                                fontSize: '0.7rem', fontWeight: 600, whiteSpace: 'nowrap',
-                                              }}>
-                                              👁️ Lihat
-                                            </button>
-                                          ) : (
-                                            <a href={bd.url_sumber || url} target="_blank" rel="noopener noreferrer"
-                                              style={{
-                                                padding: '0.25rem 0.5rem', borderRadius: '4px',
-                                                background: 'var(--primary-50)', color: 'var(--primary)',
-                                                fontSize: '0.7rem', fontWeight: 600, textDecoration: 'none',
-                                                display: 'inline-block', whiteSpace: 'nowrap',
-                                              }}>
-                                              📥 Unduh
-                                            </a>
-                                          )
-                                        ) : (
-                                          <span style={{ fontSize: '0.65rem', color: 'var(--muted)' }}>—</span>
-                                        )}
-                                      </td>
-                                      <td style={{ ...tdStyle, fontSize: '0.7rem', color: 'var(--muted)', maxWidth: '160px' }}>
-                                        {bd.catatan || '-'}
-                                      </td>
-                                    </tr>
-                                  );
+                                const sm = STATUS_META[bd.status] || STATUS_META.belum;
+                                const url = bd.url_preview || '';
+                                const isPdf = bd._ext === 'pdf' && !!url;
+                                const canPreview = isPdf;
+                                return (
+                                  <tr key={bd.id} style={{ borderBottom: '1px solid var(--border)' }}>
+                                    <td style={tdStyle}>
+                                      <span style={{
+                                        padding: '0.15rem 0.4rem', borderRadius: '4px',
+                                        background: `${LEVEL_WARNA[bd.level] || '#6b7280'}15`,
+                                        color: LEVEL_WARNA[bd.level] || '#6b7280',
+                                        fontWeight: 600, fontSize: '0.7rem',
+                                      }}>L{bd.level}</span>
+                                    </td>
+                                    <td style={{ ...tdStyle, fontWeight: 500 }}>
+                                      {bd.nama}
+                                      {bd.detail && <div style={{ fontSize: '0.7rem', color: 'var(--muted)', marginTop: '0.15rem' }}>{bd.detail}</div>}
+                                    </td>
+                                    <td style={tdStyle}>
+                                      {bd.opd?.map((o, i) => (
+                                        <span key={i} style={{
+                                          display: 'inline-block', padding: '0.1rem 0.35rem',
+                                          margin: '0.1rem', borderRadius: '4px',
+                                          background: 'var(--surface-2)', fontSize: '0.7rem',
+                                        }}>{o}</span>
+                                      ))}
+                                    </td>
+                                    <td style={tdStyle}>
+                                      <span style={{
+                                        display: 'inline-flex', alignItems: 'center', gap: '0.25rem',
+                                        padding: '0.15rem 0.5rem', borderRadius: '4px',
+                                        background: sm.bg, color: sm.color,
+                                        fontSize: '0.7rem', fontWeight: 600, whiteSpace: 'nowrap',
+                                      }}>
+                                        {sm.icon} {sm.label}
+                                      </span>
+                                    </td>
+                                    <td style={{...tdStyle, textAlign:'center'}}>
+                                      {canPreview ? (
+                                        <button onClick={() => setPreviewDoc({url, title: bd.nama})}
+                                          style={{
+                                            padding: '0.25rem 0.5rem', borderRadius: '4px', border: 'none',
+                                            background: 'var(--primary)', color: '#fff', cursor: 'pointer',
+                                            fontSize: '0.7rem', fontWeight: 600, whiteSpace: 'nowrap',
+                                          }}>
+                                          👁️ Lihat
+                                        </button>
+                                      ) : (
+                                        <span style={{ fontSize: '0.65rem', color: 'var(--muted)' }}>—</span>
+                                      )}
+                                    </td>
+                                    <td style={{ ...tdStyle, fontSize: '0.7rem', color: 'var(--muted)', maxWidth: '160px' }}>
+                                      {bd.catatan || '-'}
+                                    </td>
+                                  </tr>
+                                );
                                 })}
                               </tbody>
                             </table>
@@ -495,7 +482,7 @@ export default function ModulIndikatorPage() {
               padding: '1rem 1.25rem', borderBottom: '1px solid #e5e7eb',
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <span style={{ fontSize: '1.1rem' }}>{previewDoc.isPdf ? '📄' : '📊'}</span>
+                <span style={{ fontSize: '1.1rem' }}>📄</span>
                 <span style={{ fontWeight: 600, fontSize: '0.9rem', color: '#1f2937' }}>
                   {previewDoc.title}
                 </span>
@@ -507,32 +494,13 @@ export default function ModulIndikatorPage() {
                 color: '#6b7280', transition: 'all 0.15s',
               }}>✕</button>
             </div>
-            {/* Document body */}
-            <div style={{ flex: 1, position: 'relative' }}>
-              {previewDoc.isPdf ? (
-                <iframe
-                  src={previewDoc.url}
-                  style={{ width: '100%', height: '100%', border: 'none' }}
-                  title={previewDoc.title}
-                />
-              ) : (
-                <div style={{
-                  display: 'flex', flexDirection: 'column', alignItems: 'center',
-                  justifyContent: 'center', height: '100%', gap: '1rem',
-                  color: '#6b7280',
-                }}>
-                  <span style={{ fontSize: '3rem' }}>📊</span>
-                  <p>File spreadsheet — gunakan tombol Unduh untuk membuka</p>
-                  <a href={previewDoc.url} target="_blank" rel="noopener noreferrer"
-                    style={{
-                      padding: '0.6rem 1.5rem', borderRadius: '8px', border: 'none',
-                      background: 'var(--primary)', color: '#fff', cursor: 'pointer',
-                      fontSize: '0.9rem', fontWeight: 600, textDecoration: 'none',
-                    }}>
-                    📥 Unduh File
-                  </a>
-                </div>
-              )}
+            {/* PDF preview via Google Docs Viewer (handles CORS/XFO issues) */}
+            <div style={{ flex: 1, position: 'relative', background: '#f8f9fa' }}>
+              <iframe
+                src={`https://docs.google.com/viewer?url=${encodeURIComponent(previewDoc.url)}&embedded=true`}
+                style={{ width: '100%', height: '100%', border: 'none' }}
+                title={previewDoc.title}
+              />
             </div>
           </div>
         </div>
