@@ -23,8 +23,8 @@ const STATUS_META = {
   lengkap: { icon: '✅', label: 'Lengkap',    color: '#059669', bg: '#d1fae5' },
 };
 
-const LEVEL_LABEL = { 1: 'Initiate', 2: 'Emerging', 3: 'Established', 4: 'Leading', 5: 'Transformative' };
-const LEVEL_WARNA = { 1: '#ef4444', 2: '#f59e0b', 3: '#3b82f6', 4: '#10b981', 5: '#8b5cf6' };
+const LEVEL_LABEL = { 0: 'Baseline', 1: 'Initiate', 2: 'Emerging', 3: 'Established', 4: 'Leading', 5: 'Transformative' };
+const LEVEL_WARNA = { 0: '#9ca3af', 1: '#ef4444', 2: '#f59e0b', 3: '#3b82f6', 4: '#10b981', 5: '#8b5cf6' };
 
 function hitungStatus(ind) {
   if (!ind?.bukti_dukung) return { count: 0, lengkap: 0, proses: 0, belum: 0 };

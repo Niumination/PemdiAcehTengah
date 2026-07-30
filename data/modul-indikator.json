@@ -14,6 +14,14 @@
           "kriteria": "### Kriteria Substansi Rencana Aksi Nasional Pemdi untuk perencanaan pada Instansi Pemerintah dalam tahap penyusunan. Nasional Pemerintah Digital pada perencanaan Instansi Pemerintah dalam tahap penyusunan<br>• Perencanaan pada tingkat Instansi Pusat dapat berupa Rencana Strategis, Rencana Kerja, dan bentuk perencanaan instansi lainnya, dan<br>• Perencanaan pada tingkat Pemerintah Daerah dapat berupa Rencana Pembangunan Jangka Menengah Daerah, Rencana Strategis Perangkat Daerah, Rencana Kerja, d"
         },
         {
+          "level": 2,
+          "kriteria": "## Kriteria Substansi Rencana Aksi Nasional Pemdi pada perencanaan Instansi Pemerintah telah menjadi referensi arah pelaksanaan Tata Kelola Pemerintah Digital pada sebagian Layanan Digital Instansi Pemerintah.<br><br>## Kondisi<br>Pelaksanaan Tata Kelola Pemerintah Digital telah dilaksanakan pada sebagian layanan digital pemerintah mengacu pada Substansi Rencana Aksi Nasional Pemerintah Digital di perencanaan Instansi Pemerintah dan Arsitektur Pemerintah Digital.<br><br>## Data Dukung:<br>• Dokumentasi pelaksanaan Tata Kelola Pemdi pada sebagian Layanan Digital Instansi Pemerintah<br>• Substansi Rencana Aksi Nasional Pemdi yang telah menjadi referensi"
+        },
+        {
+          "level": 3,
+          "kriteria": "## Kriteria Pelaksanaan Tata Kelola Pemerintah Digital Instansi Pemerintah telah dilakukan reviu secara menyeluruh pada seluruh Layanan Digital Pemerintah prioritas dan/atau Layanan Digital Pemerintah tematik.<br><br>## Kondisi<br>Tata Kelola Pemerintah Digital telah dilaksanakan secara konsisten lebih dari 2 tahun terakhir dan telah dilakukan reviu kepada pelaksanaan tata kelola pada seluruh Layanan Digital Pemerintah prioritas dan/atau Layanan Digital Pemerintah tematik sesuai substansi Rencana Aksi Nasional pada perencanaan IPPD.<br><br>## Data Dukung:<br>• Laporan reviu pelaksanaan Tata Kelola Pemerintah Digital<br>• Dokumentasi reviu yang menunjukkan konsistensi pelaksanaan lebih dari 2 tahun"
+        },
+        {
           "level": 4,
           "kriteria": "### Kriteria - 1. Langkah-langkah atau kegiatan nyata telah dilaksanakan sesuai reviu atas Substansi Rencana Aksi Nasional Pemdi pada perencanaan Instansi Pemerintah. - 2. Telah memanfaatkan reviu Arsitektur Pemdi, pada seluruh Layanan Digital Pemerintah prioritas dan/atau Layanan Digital Pemerintah tematik, untuk"
         },
@@ -69,6 +77,10 @@
       "image_count": 176,
       "level_kriteria": [
         {
+          "level": 1,
+          "kriteria": "## Kriteria<br>Dalam tahap penyusunan peta kompetensi digital ASN dan identifikasi kebutuhan pengembangan kompetensi digital di lingkungan Instansi Pemerintah.<br><br>## Kondisi<br>Proses identifikasi kompetensi digital ASN masih bersifat ad-hoc dan belum didasarkan pada peta kompetensi yang terstandarisasi. Pemanfaatan AI dan data analytics masih bersifat individual dan belum terkelola.<br><br>## Data Dukung:<br>• Dokumentasi awal identifikasi kebutuhan kompetensi digital ASN<br>• Notulensi rapat pembahasan peta kompetensi digital<br>• Inventarisasi awal penggunaan tools AI/analytics di lingkungan instansi"
+        },
+        {
           "level": 2,
           "kriteria": "telah terpenuhi LaporandanAnalisispemanfaatanData AI 5 # ✅ ###### Contoh penggunaan AI ###### Laporan penggunaan ###### Hasil analisis data - ● 1–2 use case sederhana, misalnya: - ○ ringkasan dokumen - ○ analisis data sederhana - ● Screenshot atau hasil output AI - ● Laporan penggunaan AI/analisis data (tidak harus berkala) - ● Deskripsi singkat tujuan penggunaan - ● Grafik atau tabel analisis dasar - ● Tidak harus berupa dashboard aktif ###### Indikator 3 Tingkat Kematangan Sumber Daya Manusia "
         },
@@ -105,6 +117,26 @@
         {
           "level": 0,
           "kriteria": "|Kolaborasi antar Instansi Pemerintah dalam penerapan sesuaiSubstansi Rencana Aksi Pemerintah Digital pada perencanaanInstansi Pemerintah.Kondisi|"
+        },
+        {
+          "level": 1,
+          "kriteria": "## Kriteria<br>Substansi Rencana Aksi Nasional Pemdi pada perencanaan Instansi Pemerintah masih dalam penyusunan mengenai kolaborasi antar unit kerja/perangkat daerah di Instansi Pemerintah, dilaksanakan secara terarah sesuai dengan kebutuhan.<br><br>## Kondisi<br>Kolaborasi antar unit kerja/perangkat daerah dalam penerapan Pemdi masih bersifat informal dan belum terstruktur.<br><br>## Data Dukung:<br>• Penetapan Tim Koordinasi Pemerintah Digital Instansi Pemerintah<br>• Dokumentasi awal forum koordinasi internal"
+        },
+        {
+          "level": 2,
+          "kriteria": "## Kriteria<br>Substansi Rencana Aksi Nasional Pemdi pada perencanaan Instansi Pemerintah telah menjadi referensi pelaksanaan kolaborasi antar unit kerja/perangkat daerah pada sebagian layanan digital pemerintah.<br><br>## Kondisi<br>Kolaborasi antar unit kerja/perangkat daerah telah dilaksanakan pada sebagian layanan digital pemerintah sesuai dengan substansi RAN Pemdi.<br><br>## Data Dukung:<br>• Substansi RAN Pemdi pada perencanaan Instansi Pemerintah dengan rincian rencana kolaborasi<br>• Bukti pelaksanaan kolaborasi (notulensi, dokumentasi, undangan)"
+        },
+        {
+          "level": 3,
+          "kriteria": "## Kriteria<br>Pelaksanaan kolaborasi antar unit kerja/perangkat daerah telah dilakukan reviu secara menyeluruh. Kolaborasi telah dilaksanakan secara konsisten dan terukur.<br><br>## Kondisi<br>Forum Koordinasi Pemerintah Digital telah berjalan rutin dan hasil kolaborasi telah diimplementasikan pada layanan digital pemerintah.<br><br>## Data Dukung:<br>• Laporan reviu pelaksanaan kolaborasi<br>• Dokumentasi forum koordinasi yang berjalan secara berkala<br>• Bukti implementasi hasil kolaborasi pada layanan digital"
+        },
+        {
+          "level": 4,
+          "kriteria": "## Kriteria<br>Tindak lanjut sesuai reviu telah dilaksanakan secara menyeluruh. Kolaborasi tidak terbatas pada internal instansi namun juga melibatkan akademisi, pelaku usaha, dan masyarakat.<br><br>## Kondisi<br>Kolaborasi antar Instansi Pemerintah telah berjalan dan melibatkan pemangku kepentingan eksternal secara partisipatif (co-creation).<br><br>## Data Dukung:<br>• MoU/PKS dengan pihak eksternal<br>• Dokumentasi kegiatan kolaborasi dengan akademisi, pelaku usaha, komunitas<br>• Bukti partisipasi aktif para pihak"
+        },
+        {
+          "level": 5,
+          "kriteria": "## Kriteria<br>Optimalisasi kolaborasi Pemerintah Digital telah dilaksanakan secara berkelanjutan dan memberikan dampak nasional. Kolaborasi telah menjadi budaya kerja dan direplikasi oleh instansi lain.<br><br>## Kondisi<br>Forum Koordinasi Pemerintah Digital telah menjadi praktik baik yang direplikasi dan memberikan kontribusi pada pencapaian target Pemdi nasional.<br><br>## Data Dukung:<br>• Laporan optimalisasi dan pengembangan kolaborasi Pemdi<br>• Dokumentasi forum yang menjadi rujukan instansi lain<br>• Bukti dampak kolaborasi terhadap layanan digital nasional"
         }
       ],
       "data_dukung_modul": [],
@@ -119,6 +151,10 @@
       "image_count": 96,
       "level_kriteria": [
         {
+          "level": 1,
+          "kriteria": "## Kriteria<br>Dalam tahap penyusunan tata kelola data sesuai prinsip Satu Data Indonesia. Proses pengelolaan data masih bersifat sektoral dan belum terintegrasi.<br><br>## Kondisi<br>Instansi Pemerintah masih dalam tahap awal penerapan Satu Data Indonesia. Data dikelola secara terpisah oleh masing-masing unit kerja.<br><br>## Data Dukung:<br>• Dokumentasi awal penyusunan tata kelola data<br>• Inventarisasi data yang dikelola masing-masing unit kerja"
+        },
+        {
           "level": 2,
           "kriteria": "## Simulasi ###### Contoh kasus: Pemerintah Kabupaten X telah melaksanakan Evaluasi SDI pada tahun 2024 dengan hasil Indeks SDI 25. Berapa hasil konversi Indeks Indikator 5 Evaluasi Kinerja Pemdi Pemerintah Kabupaten X? = Nilai Indeks Indikator 5 Evaluasi Kinerja Pemdi Pemerintah Kabupaten X adalah = ## 2.00 = = Nilai konversi ini secara otomatis akan masuk ke dalam sistem tauval. # Indikator 5 Tingkat Kematangan Tata Kelola Data"
         },
@@ -129,6 +165,10 @@
         {
           "level": 4,
           "kriteria": "## Simulasi ## Kondisi ###### Contoh kasus: Indeks Range Memuaskan Pemerintah Kabupaten X telah melaksanakan Evaluasi SDI pada tahun 2024 dengan hasil Indeks SDI 68.75. # 4.0 - 5.0 Berapa hasil konversi Indeks Indikator 5 Evaluasi Kinerja Pemdi Pemerintah Kabupaten X? Range SDI # 75.0 – 100.0 # 62.5 – 75.0 Nilai Indeks Indikator 5 Evaluasi Kinerja Pemdi Pemerintah Kabupaten X adalah = = = = ## 3.75 Formula konversi Dengan ketentuan sebagai berikut Nilai konversi ini secara otomatis akan masuk ke"
+        },
+        {
+          "level": 5,
+          "kriteria": "## Kriteria<br>Tata kelola data telah terintegrasi secara menyeluruh dan menjadi budaya organisasi. Pemanfaatan data telah mendukung kebijakan berbasis data dan inovasi layanan.<br><br>## Kondisi<br>Indeks SDI > 75 dengan rentang konversi 4.0 – 5.0. Seluruh data telah terintegrasi dan dimanfaatkan untuk perencanaan dan evaluasi kebijakan.<br><br>## Data Dukung:<br>• Hasil Evaluasi SDI dengan Indeks > 75<br>• Dashboard data terintegrasi<br>• Bukti pemanfaatan data untuk kebijakan"
         }
       ],
       "data_dukung_modul": [
@@ -160,6 +200,10 @@
         {
           "level": 4,
           "kriteria": "## Kriteria - 1. Telah dilakukan review secara berkala terhadap regulasi/kebijakan penyelenggaraan informasi geospasial dan kelembagaan pengelola Simpul Jaringan IG berikut dengan program kerjanya, dalam rangka memperkuat berbagi pakai dan pemanfaatan informasi geospasial untuk mendukung Perencanaan dan Layanan Digital Pemerintah. - 2. Telah memiliki program peningkatan kapasitas SDM dan program beasiswa yang dilakukan secara rutin. - 3. Telah dianggarkan secara rutin peningkatan dan pemeliharaa"
+        },
+        {
+          "level": 5,
+          "kriteria": "## Kriteria<br>Penyelenggaraan informasi geospasial telah optimal dan memberikan dampak pada layanan digital pemerintah. Inovasi berbasis IG telah dikembangkan dan menjadi rujukan nasional.<br><br>## Kondisi<br>Seluruh proses penyelenggaraan IG telah terintegrasi secara menyeluruh dengan peningkatan kualitas berkesinambungan. Geoportal telah terintegrasi dengan Simpul Jaringan IG Nasional.<br><br>## Data Dukung:<br>• Laporan inovasi berbasis informasi geospasial<br>• Dokumentasi integrasi dengan Simpul Jaringan IG Nasional<br>• Bukti peningkatan kualitas berkelanjutan"
         }
       ],
       "data_dukung_modul": [],
@@ -208,6 +252,26 @@
         {
           "level": 0,
           "kriteria": "Uraian implementasi PDP saat ini terhadap 7 kondisi penerapan PDP."
+        },
+        {
+          "level": 1,
+          "kriteria": "## Kriteria<br>Dalam tahap penyusunan kebijakan dan prosedur pelindungan data pribadi sesuai dengan peraturan perundang-undangan.<br><br>## Kondisi<br>Instansi Pemerintah masih dalam tahap inventarisasi data pribadi yang dikelola dan identifikasi kesenjangan kepatuhan PDP.<br><br>## Data Dukung:<br>• Dokumentasi inventarisasi data pribadi<br>• Rancangan awal kebijakan pelindungan data pribadi"
+        },
+        {
+          "level": 2,
+          "kriteria": "## Kriteria<br>Kebijakan dan prosedur pelindungan data pribadi telah tersedia dan diterapkan pada sebagian layanan digital pemerintah.<br><br>## Kondisi<br>Sebagian layanan digital pemerintah telah menerapkan prinsip pelindungan data pribadi sesuai ketentuan perundang-undangan.<br><br>## Data Dukung:<br>• Kebijakan pelindungan data pribadi yang telah ditetapkan<br>• Dokumentasi penerapan PDP pada sebagian layanan digital"
+        },
+        {
+          "level": 3,
+          "kriteria": "## Kriteria<br>Pelaksanaan pelindungan data pribadi telah direviu secara menyeluruh dan diterapkan pada seluruh layanan digital prioritas.<br><br>## Kondisi<br>Seluruh layanan digital prioritas telah menerapkan PDP dan telah dilakukan reviu kepatuhan secara berkala.<br><br>## Data Dukung:<br>• Laporan reviu pelaksanaan pelindungan data pribadi<br>• Dokumentasi kepatuhan PDP pada seluruh layanan digital prioritas"
+        },
+        {
+          "level": 4,
+          "kriteria": "## Kriteria<br>Tindak lanjut hasil reviu PDP telah dilaksanakan. Terdapat mekanisme pengaduan dan pemulihan pelanggaran data pribadi.<br><br>## Kondisi<br>Mekanisme penanganan pelanggaran data pribadi telah berjalan dan terdapat bukti tindak lanjut perbaikan.<br><br>## Data Dukung:<br>• Laporan penanganan insiden pelanggaran data pribadi<br>• Bukti tindak lanjut hasil reviu PDP"
+        },
+        {
+          "level": 5,
+          "kriteria": "## Kriteria<br>Pelindungan data pribadi telah menjadi budaya organisasi dan terintegrasi dalam seluruh proses bisnis. Inovasi PDP telah menjadi praktik baik nasional.<br><br>## Kondisi<br>PDP telah diterapkan secara end-to-end pada seluruh siklus pengelolaan data dan menjadi rujukan bagi instansi lain.<br><br>## Data Dukung:<br>• Dokumentasi budaya PDP dalam organisasi<br>• Sertifikasi atau pengakuan kepatuhan PDP<br>• Bukti replikasi praktik PDP oleh instansi lain"
         }
       ],
       "data_dukung_modul": [],
@@ -236,6 +300,10 @@
         {
           "level": 4,
           "kriteria": "### Kriteria 1. Tindak Lanjut atas hasil Audit Eksternal Keamanan Pemerintah Digital dan Teknologi Pemerintah Digital dalam penyelenggaraan Layanan Pemerintah telah dilaksanakan. ### Data Dukung: 1. Laporan Hasil Tindak Lanjut Audit Eksternal Keamanan Pemerintah Digital dan Teknologi Pemerintah Digital."
+        },
+        {
+          "level": 5,
+          "kriteria": "## Kriteria<br>Pelaksanaan audit keamanan telah optimal dan menjadi budaya organisasi. Hasil audit ditindaklanjuti secara berkelanjutan dan memberikan dampak peningkatan keamanan secara nasional.<br><br>## Kondisi<br>Audit internal dan eksternal telah dilaksanakan secara rutin, tindak lanjut hasil audit dipantau dan dievaluasi secara berkala untuk perbaikan berkelanjutan.<br><br>## Data Dukung:<br>• Laporan hasil audit periode berjalan<br>• Dokumentasi tindak lanjut hasil audit<br>• Bukti peningkatan kematangan keamanan dari periode ke periode"
         }
       ],
       "data_dukung_modul": [
@@ -306,6 +374,10 @@
         {
           "level": 4,
           "kriteria": "## Kriteria 1. Telah melakukan tindak lanjut hasil evaluasi pada penerapan teknologi kriptografi. ## Kondisi Data Dukung: teknologi kriptografi telah dilaksanakan secara menyeluruh.<br>2. Penerapan teknologi kriptografi telah menjadi budaya kerja untuk mendukung kualitas Layanan Digital Pemerintah.<br>3. Penyelenggaraan persandian telah terorganisir dan terkelola dengan baik<br>| - 1. Laporan tindak lanjut hasil evaluasi penerapan teknologi kriptografi. - 2. Nilai IKASANDI pada Area Kematangan P"
+        },
+        {
+          "level": 5,
+          "kriteria": "## Kriteria<br>Penerapan teknologi kriptografi telah optimal dan terintegrasi secara menyeluruh. Nilai IKASANDI pada Area Kematangan Persandian menunjukkan level optimal.<br><br>## Kondisi<br>Teknologi kriptografi telah diterapkan pada seluruh siklus data (at-rest, in-transit, in-use) secara menyeluruh dan telah menjadi budaya kerja. Penyelenggaraan persandian telah terorganisir dan terkelola dengan baik.<br><br>## Data Dukung:<br>• Nilai IKASANDI pada Area Kematangan Persandian menunjukkan level optimal<br>• Laporan audit penerapan kriptografi<br>• Dokumentasi budaya keamanan kriptografi dalam organisasi"
         }
       ],
       "data_dukung_modul": [
@@ -346,6 +418,10 @@
         {
           "level": 4,
           "kriteria": "## Kriteria - 1. Pelaksanaan penanganan insiden oleh TTIS Instansi Pemerintah telah dievaluasi untuk perbaikan berkelanjutan. - 2. Optimalisasi penanganan insiden siber Instansi Pemerintah memberikan dampak terhadap kapabilitas keamanan Pemerintah Digital nasional. keamanan siber area Penanganan Insiden Siber telah diverifikasi oleh lembaga yang menyelenggarakan tugas pemerintahan di bidang siber dan sandi dan/atau pemerintah daerah yang diberikan kewenangan sesuai dengan peraturan perundang-und"
+        },
+        {
+          "level": 5,
+          "kriteria": "## Kriteria<br>Kapabilitas penanganan insiden siber telah optimal dan memberikan dampak nasional. TTIS berperan aktif dalam ekosistem keamanan siber nasional.<br><br>## Kondisi<br>Penanganan insiden siber telah terintegrasi dengan ekosistem keamanan siber nasional. TTIS berkontribusi pada peningkatan kapabilitas penanganan insiden di tingkat nasional.<br><br>## Data Dukung:<br>• Nilai IKASANDI area Penanganan Insiden Siber pada level optimal<br>• Dokumentasi kontribusi TTIS pada ekosistem keamanan siber nasional<br>• Laporan evaluasi penanganan insiden secara berkala"
         }
       ],
       "data_dukung_modul": [
@@ -398,12 +474,20 @@
       "image_count": 46,
       "level_kriteria": [
         {
+          "level": 1,
+          "kriteria": "## Kriteria<br>Substansi Rencana Aksi Nasional Pemerintah Digital pada perencanaan IPPD dan Arsitektur Teknologi Pemerintah Digital pada tingkat mikro dalam tahapan penyusunan, sebagai referensi pemanfaatan Infrastruktur Pemerintah Digital.<br><br>## Kondisi<br>Pada tingkat ini, proses Pemanfaatan Infrastruktur Pemerintah Digital dilakukan secara sewaktu-waktu atau bersifat sektoral dan terbatas pada layanan digital tertentu.<br><br>## Data Dukung:<br>• Dokumentasi pemanfaatan infrastruktur digital yang bersifat sektoral<br>• Inventarisasi infrastruktur TIK yang tersedia"
+        },
+        {
           "level": 2,
           "kriteria": "## Kriteria Substansi Rencana Aksi Nasional Pemdi pada perencanaan Instansi Pemerintah dan Arsitektur Teknologi Pemdi telah menjadi referensi penyediaan Infrastruktur Digital Instansi serta sebagian Layanan Digital Instansi Pemerintah telah berbasis teknologi awan sesuai peraturan perundang-undangan yang berlaku. ## Data Dukung 1 pemanfaatan Infrastruktur Pemerintah Digital pada sebagian Layanan Digital Pemerintah yang dimuat pada Substansi Rencana Aksi Nasional Pemerintah Digital pada perencana"
         },
         {
           "level": 3,
           "kriteria": "## Kriteria Substansi Rencana Aksi Nasional Pemerintah Digital pada perencanaan IPPD dan Arsitektur Teknologi Pemerintah Digital telah menjadi referensi penyediaan Infrastruktur Digital Instansi serta seluruh Layanan Digital Pemerintah prioritas dan/atau Layanan Digital Pemerintah tematik IPPD telah berbasis teknologi awan. 1 ## Data Dukung pemanfaatan Infrastruktur Pemerintah Digital pada seluruh Layanan Digital Pemerintah prioritas dan/atau Layanan Digital Pemerintah tematik yang dimuat pada S"
+        },
+        {
+          "level": 4,
+          "kriteria": "## Kriteria<br>Telah dilakukan reviu dan tindak lanjut atas pemanfaatan Infrastruktur Pemerintah Digital. Seluruh Layanan Digital Pemerintah telah berbasis teknologi awan dan terintegrasi dengan Pusat Data Nasional.<br><br>## Kondisi<br>Infrastruktur Digital telah direviu secara berkala dan tindak lanjut perbaikan telah dilaksanakan. Pemanfaatan teknologi awan telah optimal.<br><br>## Data Dukung:<br>• Laporan reviu pemanfaatan infrastruktur digital<br>• Bukti tindak lanjut hasil reviu<br>• Dokumentasi integrasi dengan Pusat Data Nasional"
         },
         {
           "level": 5,
@@ -425,6 +509,22 @@
       "image_count": 52,
       "level_kriteria": [
         {
+          "level": 1,
+          "kriteria": "## Kriteria<br>Substansi Rencana Aksi Nasional Pemdi pada perencanaan Instansi Pemerintah dan Arsitektur Proses Bisnis pada tingkat mikro dalam tahap penyusunan, sebagai referensi keterpaduan proses bisnis.<br><br>## Kondisi<br>Proses bisnis masih bersifat sektoral dan belum terintegrasi lintas sektor. Pemetaan proses bisnis masih dilaksanakan secara parsial.<br><br>## Data Dukung:<br>• Dokumentasi awal pemetaan proses bisnis<br>• Inventarisasi proses bisnis masing-masing unit kerja"
+        },
+        {
+          "level": 2,
+          "kriteria": "## Kriteria<br>Substansi RAN Pemdi dan Arsitektur Proses Bisnis telah menjadi referensi penerapan keterpaduan proses bisnis pada sebagian layanan digital pemerintah lintas sektor.<br><br>## Kondisi<br>Proses bisnis pada sebagian layanan digital prioritas telah terpetakan dan terintegrasi lintas unit kerja.<br><br>## Data Dukung:<br>• Dokumentasi pemetaan proses bisnis pada sebagian layanan digital<br>• Bukti integrasi proses bisnis lintas unit kerja"
+        },
+        {
+          "level": 3,
+          "kriteria": "## Kriteria<br>Keterpaduan proses bisnis lintas sektor telah dilaksanakan secara menyeluruh pada seluruh layanan digital prioritas dan telah direviu.<br><br>## Kondisi<br>Seluruh proses bisnis pada layanan digital prioritas telah terintegrasi dan telah dilakukan reviu secara berkala untuk memastikan keselarasan.<br><br>## Data Dukung:<br>• Laporan reviu keterpaduan proses bisnis<br>• Dokumentasi integrasi proses bisnis seluruh layanan digital prioritas"
+        },
+        {
+          "level": 4,
+          "kriteria": "## Kriteria<br>Tindak lanjut hasil reviu keterpaduan proses bisnis telah dilaksanakan. Optimalisasi proses bisnis telah diterapkan untuk mendukung layanan digital yang adaptif.<br><br>## Kondisi<br>Hasil reviu telah ditindaklanjuti dengan perbaikan proses bisnis. Keterpaduan proses bisnis telah mendukung peningkatan kualitas layanan digital.<br><br>## Data Dukung:<br>• Laporan tindak lanjut hasil reviu proses bisnis<br>• Dokumentasi optimalisasi proses bisnis<br>• Bukti peningkatan kualitas layanan"
+        },
+        {
           "level": 5,
           "kriteria": "Reviu dilakukan atas Substansi Rencana Aksi Pemdi pada Perencanaan Instansi Pemerintah dan Arsitektur sesuai dengan perubahan Kebijakan maupuan Penerapan, Reviu berisikan: Berupa perbaikan/perubahan Arsitektur Domain Proses Bisnis"
         }
@@ -440,6 +540,22 @@
       "deskripsi": "Integrasi aplikasi adalah proses menghubungkan berbagai aplikasi dan sistem perangkat lunak agar dapat",
       "image_count": 27,
       "level_kriteria": [
+        {
+          "level": 1,
+          "kriteria": "## Kriteria<br>Substansi Rencana Aksi Nasional Pemdi pada perencanaan Instansi Pemerintah dan Arsitektur Aplikasi dalam tahap penyusunan. Integrasi aplikasi masih bersifat parsial dan ad-hoc.<br><br>## Kondisi<br>Aplikasi-aplikasi pemerintah masih berjalan secara silo dan belum terintegrasi. Integrasi dilakukan secara point-to-point sesuai kebutuhan.<br><br>## Data Dukung:<br>• Dokumentasi inventarisasi aplikasi<br>• Arsitektur aplikasi awal"
+        },
+        {
+          "level": 2,
+          "kriteria": "## Kriteria<br>Substansi RAN Pemdi dan Arsitektur Aplikasi telah menjadi referensi integrasi pada sebagian aplikasi layanan digital pemerintah.<br><br>## Kondisi<br>Sebagian aplikasi layanan digital prioritas telah terintegrasi menggunakan mekanisme API atau service bus.<br><br>## Data Dukung:<br>• Dokumentasi integrasi aplikasi pada sebagian layanan<br>• Bukti penggunaan API/service bus"
+        },
+        {
+          "level": 3,
+          "kriteria": "## Kriteria<br>Integrasi aplikasi telah dilaksanakan secara menyeluruh pada seluruh layanan digital prioritas dan telah direviu.<br><br>## Kondisi<br>Seluruh aplikasi layanan digital prioritas telah terintegrasi dalam satu platform dan telah dilakukan reviu secara berkala.<br><br>## Data Dukung:<br>• Laporan reviu integrasi aplikasi<br>• Dokumentasi integrasi seluruh aplikasi prioritas"
+        },
+        {
+          "level": 4,
+          "kriteria": "## Kriteria<br>Tindak lanjut hasil reviu integrasi aplikasi telah dilaksanakan. Optimalisasi integrasi telah mendukung layanan digital yang terpadu.<br><br>## Kondisi<br>Integrasi aplikasi telah optimal dengan mekanisme monitoring dan evaluasi yang berjalan. Seluruh aplikasi telah terintegrasi secara seamless.<br><br>## Data Dukung:<br>• Laporan tindak lanjut hasil reviu integrasi<br>• Dashboard monitoring integrasi aplikasi"
+        },
         {
           "level": 5,
           "kriteria": "pelayanan publik dan pembangunan, dalam memberikan layanan kepada masyarakat di setiap aspek kehidupan (Human-Based) yang berorientasi pada kemudahan pengguna. ### Laporan Matriks pemantauan hasil tindak lanjut Integrasi Aplikasi. Dokumentasi dapat berupa - 1. Tindaklanjut perbaikan dari hasil reviu - 2. Laporan koordinasi atas tindaklanjut. - 3. Dokumen screenshot perbaikan. - 4. Dokumen naskah dinas lainnya"
@@ -459,6 +575,18 @@
         {
           "level": 1,
           "kriteria": "### Kondisi ### Kriteria Substansi Rencana Aksi Nasional Pemdi pada perencanaan Instansi Pemerintah dan Arsitektur Layanan Digital Pemerintah pada tingkat mikro dalam tahap penyusunan, sebagai referensi penerapan Portal Layanan Digital Pemerintah pada Instansi Pemerintah. Penerapan Portal Layanan Digital Pemerintah pada Instansi Pemerintah secara sewaktu-waktu atau bersifat sektoral dan terbatas pada layanan digital tertentu. Data Dukung Portal Layanan Digital Pemerintah pada IPPD. Portal Layana"
+        },
+        {
+          "level": 2,
+          "kriteria": "## Kriteria<br>Substansi Rencana Aksi Nasional Pemdi pada perencanaan IPPD dan Arsitektur Layanan Digital Pemerintah telah menjadi referensi penerapan Portal Layanan Digital Pemerintah pada sebagian layanan digital Instansi Pemerintah.<br><br>## Kondisi<br>Portal Layanan Digital Pemerintah telah tersedia dan menyajikan sebagian layanan digital pemerintah secara terintegrasi.<br><br>## Data Dukung:<br>• Portal Layanan Digital Pemerintah pada IPPD<br>• Dokumentasi layanan digital yang terintegrasi"
+        },
+        {
+          "level": 3,
+          "kriteria": "## Kriteria<br>Penerapan Portal Layanan Digital Pemerintah telah dilaksanakan secara menyeluruh dan telah direviu. Portal menjadi pintu layanan utama bagi masyarakat.<br><br>## Kondisi<br>Seluruh layanan digital pemerintah telah terintegrasi dalam portal dan telah dilakukan reviu secara berkala terhadap kualitas layanan.<br><br>## Data Dukung:<br>• Laporan reviu portal layanan digital<br>• Statistik penggunaan portal"
+        },
+        {
+          "level": 4,
+          "kriteria": "## Kriteria<br>Tindak lanjut hasil reviu portal telah dilaksanakan. Portal telah terintegrasi dengan Portal Layanan Digital Nasional dan Dasbor Presiden.<br><br>## Kondisi<br>Portal telah terintegrasi dengan ekosistem layanan digital nasional dan menjadi sumber data bagi Dasbor Presiden.<br><br>## Data Dukung:<br>• Bukti integrasi dengan Portal Layanan Digital Nasional<br>• Laporan tindak lanjut hasil reviu portal"
         },
         {
           "level": 5,
@@ -489,6 +617,10 @@
         {
           "level": 3,
           "kriteria": "## Kriteria - • Penerapan interoperabilitas data telah diterapkan pada seluruh Layanan Digital Pemerintah prioritas dan/atau Layanan Digital Pemerintah tematik Instansi Pemerintah serta mendukung Satu Data Indonesia. - • Instansi Pemerintah telah menerapkan interoperabilitas data secara luas, memungkinkan pertukaran data secara waktu nyata"
+        },
+        {
+          "level": 4,
+          "kriteria": "## Kriteria<br>Tindak lanjut hasil reviu interoperabilitas data telah dilaksanakan. Pertukaran data telah berjalan secara waktu nyata (real-time) pada seluruh layanan digital prioritas.<br><br>## Kondisi<br>Interoperabilitas data telah berjalan secara optimal. Pertukaran data antar instansi telah real-time dan mendukung kebutuhan Dasbor Presiden.<br><br>## Data Dukung:<br>• Laporan tindak lanjut hasil reviu interoperabilitas<br>• Dokumentasi pertukaran data real-time<br>• Dashboard interoperabilitas data"
         },
         {
           "level": 5,
@@ -525,6 +657,10 @@
         {
           "level": 4,
           "kriteria": "### Kriteria - 1. Tindak Lanjut atas hasil reviu pelaksanaan pemenuhan SLA telah dilaksanakan. - 2. Tindak lanjut atas hasil reviu Fasilitas Dukungan Pengguna Layanan Digital Instansi Pemerintah dan Sistem pemantauan pemenuhan SLA telah dilaksanakan ### Data Dukung: # 1 99,9% ### Kondisi"
+        },
+        {
+          "level": 5,
+          "kriteria": "## Kriteria<br>Fasilitas dukungan pengguna telah optimal dan menjadi budaya organisasi. Kepuasan layanan dukungan mencapai tingkat tertinggi dan menjadi praktik baik nasional.<br><br>## Kondisi<br>Fasilitas dukungan pengguna telah terintegrasi secara end-to-end dengan peningkatan kualitas berkesinambungan. SLA tercapai 99,9% secara konsisten dan menjadi rujukan instansi lain.<br><br>## Data Dukung:<br>• Laporan pencapaian SLA periode berjalan<br>• Dokumentasi inovasi fasilitas dukungan pengguna<br>• Bukti replikasi praktik baik oleh instansi lain"
         }
       ],
       "data_dukung_modul": [
@@ -544,6 +680,10 @@
       "deskripsi": "Kepuasan pengguna layanan digital pemerintah Adalah tingkat kepuasan pengguna terhadap Layanan Digital Pemerintah Instansi, baik untuk Layanan",
       "image_count": 155,
       "level_kriteria": [
+        {
+          "level": 1,
+          "kriteria": "## Kriteria<br>Dalam tahap penyusunan mekanisme pengelolaan kepuasan pengguna layanan digital pemerintah. Survei kepuasan masih bersifat manual dan belum terstandarisasi.<br><br>## Kondisi<br>Pengelolaan kepuasan pengguna masih bersifat reaktif dan belum memiliki sistem pengukuran yang terstandarisasi.<br><br>## Data Dukung:<br>• Dokumentasi awal perencanaan survei kepuasan<br>• Contoh survei kepuasan manual yang pernah dilakukan"
+        },
         {
           "level": 2,
           "kriteria": "### Data Dukung Hasil kepuasan pengguna layanan digital yang dilihat melalui portal instansi Bukti tindak lanjut pengelolaan kepuasan pengguna layanan digital Bentuk: Laporan Tindak Lanjut Data jumlah Berita Acara ### Transaksi Layanan Digital Risalah / Notulensi dalam kurun waktu 1 tahun ### Kriteria Telah membentuk tim teknis dalam pengelolaan pengalaman dan kepuasan pengguna Layanan Digital Instansi Pemerintah Survei kepuasan pengguna dipublikasikan secara daring dalam bentuk dasbor untuk set"
