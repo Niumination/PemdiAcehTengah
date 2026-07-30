@@ -80,7 +80,7 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 | `components/` | React komponen |
 | `styles/` | CSS globals — **Gayo Civic Digital v3**, CSS variables, hero award gradient, dark mode |
 | `data/` | Data statis JSON (OPD, SPBE, ProBis, SKM, Pemdi) + glosarium |
-| `docs/` | Dokumentasi, PDF, riset. **Baru:** `docs/modul-indikator/` — 20 modul indikator Pemdi (Permenpan 8/2026) terekstrak ke Markdown dari PPT via ODL-PDF |
+| `docs/` | Dokumentasi, PDF, riset |
 | `docs.old/` | Legacy docs — referensi historis (tidak diindex DOX) |
 | `lib/` | Supabase client (`supabaseAdmin.js`), security helpers (`security.js`), admin auth (`adminAuth.js`) |
 | `pages/admin.js` | Admin Dashboard — authenticate via ADMIN_TOKEN (Bearer) |
@@ -166,3 +166,13 @@ Commit terbaru ada 3, **semua di branch `fix/full-audit-award-redesign`** (belum
 4. Remove stale or contradictory text
 5. Run existing verification (build test)
 6. Report docs intentionally left unchanged
+
+---
+
+## 🧹 Cleanup History — 30 Jul 2026
+
+| Tanggal | Item | Ukuran | Tindakan | Alasan |
+|---------|------|:------:|:--------:|--------|
+| 30 Jul | `docs/modul-indikator/` | 501 MB | ✅ Dihapus | 1.535 raw PNG exports PPTX — konten sudah diekstrak ke `data/modul-indikator.json`. Sudah di `.gitignore` sejak awal. |
+| 30 Jul | `pages/pemdi.js` — bukti dukung section | 715 baris | ✅ Dihapus | Semua 57 bukti dukung direset ke "belum" karena belum sesuai kriteria level. Lihat commit `ca17535`. |
+| — | `public/bukti-dukung/` (31 MB, 42 file) | ⏳ **Ditunda** | — | Masih disimpan untuk dipakai nanti saat semua bukti dukung sudah diverifikasi sesuai kriteria level masing-masing indikator. Jangan hapus sampai proses verifikasi selesai. |
