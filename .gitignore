@@ -42,3 +42,6 @@ yarn-error.log*
 
 # Modul Indikator — raw PNG extracts (502MB), content already in data/modul-indikator.json
 /docs/modul-indikator/
+
+# Bukti dukung PDF/XLSX — 302MB, served from original URLs as fallback
+/public/bukti/

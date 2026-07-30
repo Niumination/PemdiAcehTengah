@@ -1,0 +1,728 @@
+{
+  "bukti_dukung": {
+    "I01": [
+      {
+        "level": 1,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Arsitektur Sistem Pemerintahan Berbasis Elektronik",
+        "nama_file": "I01_L1_Perbup_48_2025_Arsitektur_SPBE.pdf",
+        "local_path": "/bukti/I01_L1_Perbup_48_2025_Arsitektur_SPBE.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH / Setdakab)",
+        "relevansi": "Memuat kebijakan resmi Arsitektur SPBE Pemkab Aceh Tengah yang selaras dengan Rencana Aksi SPBE Nasional sebagai acuan perencanaan Tata Kelola Pemdi.",
+        "status": "lengkap"
+      },
+      {
+        "level": 1,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 8 Tahun 2022 tentang Rencana Pembangunan Daerah Kabupaten Aceh Tengah Tahun 2023-2026",
+        "nama_file": "I01_L1_Perbup_8_2022_RPD_2023_2026.pdf",
+        "local_path": "/bukti/I01_L1_Perbup_8_2022_RPD_2023_2026.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/d6720ace-6bf0-426b-bb73-54b13f43a83b",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH / Bappeda)",
+        "relevansi": "Dokumen perencanaan pembangunan daerah jangka menengah aktif di Kabupaten Aceh Tengah yang memuat arah kebijakan transformasi digital/SPBE.",
+        "status": "lengkap"
+      },
+      {
+        "level": 2,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Arsitektur Sistem Pemerintahan Berbasis Elektronik",
+        "nama_file": "I01_L2_Perbup_48_2025_Arsitektur_SPBE.pdf",
+        "local_path": "/bukti/I01_L2_Perbup_48_2025_Arsitektur_SPBE.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH / Setdakab)",
+        "relevansi": "Menjadi referensi utama pelaksanaan tata kelola dan arsitektur layanan digital pada seluruh OPD Pemerintah Kabupaten Aceh Tengah.",
+        "status": "lengkap"
+      },
+      {
+        "level": 2,
+        "judul": "Laporan Hasil Reviu Laporan Kinerja di Aceh Tengah Tahun 2025",
+        "nama_file": "I01_L2_Laporan_2025_Reviu_Kinerja.xlsx",
+        "local_path": "/bukti/I01_L2_Laporan_2025_Reviu_Kinerja.xlsx",
+        "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/laporan-hasil-reviu-laporan-kinerja-di-aceh-tengah-tahun-2025",
+        "sumber_label": "OpenData Aceh Tengah",
+        "icon": "📊",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (OpenData / Inspektorat)",
+        "relevansi": "Laporan reviu kinerja pelaksanaan program kerja pemerintah daerah Aceh Tengah tahun 2025.",
+        "status": "lengkap"
+      }
+    ],
+    "I02": [
+      {
+        "level": 1,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 126 Tahun 2019 tentang Pedoman Standar Pelayanan",
+        "nama_file": "I02_L1_Perbup_126_2019_Standar_Pelayanan.pdf",
+        "local_path": "/bukti/I02_L1_Perbup_126_2019_Standar_Pelayanan.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/e8187833-5111-4436-be42-68dfd5d80b76",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH / Bagian Organisasi)",
+        "relevansi": "Dasar hukum standar pelayanan publik yang menjadi rujukan persiapan manajemen layanan digital pada seluruh perangkat daerah Aceh Tengah.",
+        "status": "lengkap"
+      },
+      {
+        "level": 1,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 73 Tahun 2020 tentang Pelayanan Administrasi Kependudukan Daring",
+        "nama_file": "I02_L1_Perbup_73_2020_Pelayanan_Adminduk_Online.pdf",
+        "local_path": "/bukti/I02_L1_Perbup_73_2020_Pelayanan_Adminduk_Online.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/2a0b0c2f-d693-4a15-9e7f-b42d7ab081eb",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH / Dinas Dukcapil)",
+        "relevansi": "Bukti penerapan dan regulasi manajemen layanan digital pemerintahan pada sektor pelayanan administrasi kependudukan online.",
+        "status": "lengkap"
+      },
+      {
+        "level": 2,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Arsitektur Sistem Pemerintahan Berbasis Elektronik",
+        "nama_file": "I02_L2_Perbup_48_2025_Arsitektur_SPBE.pdf",
+        "local_path": "/bukti/I02_L2_Perbup_48_2025_Arsitektur_SPBE.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH / Setdakab)",
+        "relevansi": "Memuat ketetapan Domain Arsitektur Layanan SPBE sebagai rujukan pelaksanaan manajemen layanan digital di lingkungan instansi.",
+        "status": "lengkap"
+      },
+      {
+        "level": 2,
+        "judul": "Pedoman Penanganan Pengaduan/Keluhan RSUD Datu Beru Kabupaten Aceh Tengah",
+        "nama_file": "I02_L2_Pedoman_Pengaduan_RSUD.pdf",
+        "local_path": "/bukti/I02_L2_Pedoman_Pengaduan_RSUD.pdf",
+        "url_sumber": "https://raw.githubusercontent.com/Niumination/PemdiAcehTengah/main/public/bukti-dukung/04-layanan/pedoman_pengaduan_rsud.pdf",
+        "sumber_label": "GitHub (Repo Publik)",
+        "icon": "💻",
+        "penerbit": "RSUD Datu Beru Kabupaten Aceh Tengah",
+        "relevansi": "Bukti nyata pelaksanaan manajemen layanan digital dan pengelolaan aduan pada OPD layanan kesehatan Aceh Tengah.",
+        "status": "lengkap"
+      }
+    ],
+    "I03": [
+      {
+        "level": 1,
+        "judul": "Publikasi Hasil Literasi Digital Sektor Pemerintahan Kabupaten Aceh Tengah Tahun 2023",
+        "nama_file": "I03_L1_Laporan_2023_Literasi_Digital_Sektor_Pemerintahan.pdf",
+        "local_path": "/bukti/I03_L1_Laporan_2023_Literasi_Digital_Sektor_Pemerintahan.pdf",
+        "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/literasi-digital-sektor-pemerintahan-2023",
+        "sumber_label": "OpenData Aceh Tengah",
+        "icon": "📊",
+        "penerbit": "Diskominfo Kabupaten Aceh Tengah & BPS Kabupaten Aceh Tengah",
+        "relevansi": "Dokumen primer survei, identifikasi, dan pemetaan tingkat kompetensi digital ASN sektor pemerintahan di Kabupaten Aceh Tengah.",
+        "status": "lengkap"
+      },
+      {
+        "level": 1,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 9 Tahun 2025 tentang SOTK Dinas Komunikasi dan Informatika",
+        "nama_file": "I03_L1_Perbup_9_2025_SOTK_Diskominfo.pdf",
+        "local_path": "/bukti/I03_L1_Perbup_9_2025_SOTK_Diskominfo.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/af9a42bf-cea9-46c8-a739-9beb5d21e990",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH / Diskominfo)",
+        "relevansi": "Penetapan struktur dan tugas kelembagaan untuk penyiapan dan pengembangan kapasitas SDM pemerintah digital Aceh Tengah.",
+        "status": "lengkap"
+      },
+      {
+        "level": 2,
+        "judul": "Publikasi Hasil Literasi Digital Sektor Pemerintahan Kabupaten Aceh Tengah Tahun 2023",
+        "nama_file": "I03_L2_Laporan_2023_Literasi_Digital_Sektor_Pemerintahan.pdf",
+        "local_path": "/bukti/I03_L2_Laporan_2023_Literasi_Digital_Sektor_Pemerintahan.pdf",
+        "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/literasi-digital-sektor-pemerintahan-2023",
+        "sumber_label": "OpenData Aceh Tengah",
+        "icon": "📊",
+        "penerbit": "Diskominfo Kabupaten Aceh Tengah & BPS Kabupaten Aceh Tengah",
+        "relevansi": "Memuat analisis mendalam berupa grafik, tabel statistik, serta evaluasi pemanfaatan teknologi digital dan kompetensi ASN di lingkungan Aceh Tengah.",
+        "status": "lengkap"
+      }
+    ],
+    "I04": [
+      {
+        "level": 1,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 70 Tahun 2019 tentang Pedoman SPBE di Lingkungan Pemerintah Kabupaten Aceh Tengah",
+        "nama_file": "I04_L1_Perbup_70_2019_Pedoman_SPBE_Tim_Koordinasi.pdf",
+        "local_path": "/bukti/I04_L1_Perbup_70_2019_Pedoman_SPBE_Tim_Koordinasi.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/edee8e80-8f98-4038-b694-48706c86448a",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH / Bagian Hukum)",
+        "relevansi": "Regulasi primer yang mengamanatkan pembentukan Tim Koordinasi SPBE serta kolaborasi antar perangkat daerah di Kabupaten Aceh Tengah.",
+        "status": "lengkap"
+      },
+      {
+        "level": 1,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Arsitektur SPBE",
+        "nama_file": "I04_L1_Perbup_48_2025_Arsitektur_SPBE.pdf",
+        "local_path": "/bukti/I04_L1_Perbup_48_2025_Arsitektur_SPBE.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH / Setdakab)",
+        "relevansi": "Menetapkan kerangka kolaborasi antar unit kerja pemerintah daerah dalam penyelenggaraan sistem pemerintahan digital.",
+        "status": "lengkap"
+      },
+      {
+        "level": 2,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Arsitektur SPBE",
+        "nama_file": "I04_L2_Perbup_48_2025_Arsitektur_SPBE.pdf",
+        "local_path": "/bukti/I04_L2_Perbup_48_2025_Arsitektur_SPBE.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH / Setdakab)",
+        "relevansi": "Menjadi acuan formal pelaksanaan kolaborasi keterpaduan layanan digital pada instansi pemerintah daerah Aceh Tengah.",
+        "status": "lengkap"
+      }
+    ],
+    "I05": [
+      {
+        "level": 1,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 60 Tahun 2022 tentang Satu Data Indonesia Kabupaten Aceh Tengah",
+        "nama_file": "I05_L1_Perbup_60_2022_Satu_Data_Indonesia.pdf",
+        "local_path": "/bukti/I05_L1_Perbup_60_2022_Satu_Data_Indonesia.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/d9671249-08cc-4e6c-87f0-aa04f8ada75c",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH / Setdakab)",
+        "relevansi": "Dasar hukum utama penyelenggaraan tata kelola data, penetapan walidata (Diskominfo), dan prinsip Satu Data Indonesia di Aceh Tengah.",
+        "status": "lengkap"
+      },
+      {
+        "level": 1,
+        "judul": "SOP Pengumpulan, Analisis, Pengelolaan dan Diseminasi Data Statistik Sektoral (Tanda Tangan Basah)",
+        "nama_file": "I05_L1_SOP_8003_2023_Statistik_Sektoral_Walidata.pdf",
+        "local_path": "/bukti/I05_L1_SOP_8003_2023_Statistik_Sektoral_Walidata.pdf",
+        "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/b07e4546-ff19-4041-b58b-6e456bb1f9c3",
+        "sumber_label": "OpenData Aceh Tengah",
+        "icon": "📊",
+        "penerbit": "Dinas Komunikasi dan Informatika Kabupaten Aceh Tengah",
+        "relevansi": "Bukti pengesahan prosedur operasi standar tata kelola data sektoral dan fungsi walidata oleh Kepala Diskominfo Aceh Tengah.",
+        "status": "lengkap"
+      },
+      {
+        "level": 2,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 60 Tahun 2022 tentang Satu Data Indonesia Kabupaten Aceh Tengah",
+        "nama_file": "I05_L2_Perbup_60_2022_Satu_Data_Indonesia.pdf",
+        "local_path": "/bukti/I05_L2_Perbup_60_2022_Satu_Data_Indonesia.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/d9671249-08cc-4e6c-87f0-aa04f8ada75c",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH / Setdakab)",
+        "relevansi": "Memenuhi kriteria tata kelola data pemerintah daerah sesuai prinsip Satu Data Indonesia (SDI).",
+        "status": "lengkap"
+      }
+    ],
+    "I06": [
+      {
+        "level": 1,
+        "judul": "Data dan Peta Rencana Detail Tata Ruang (RDTR) yang Dikelola di Aceh Tengah Tahun 2025",
+        "nama_file": "I06_L1_Laporan_2025_Data_Peta_RDTR_Aceh_Tengah.xlsx",
+        "local_path": "/bukti/I06_L1_Laporan_2025_Data_Peta_RDTR_Aceh_Tengah.xlsx",
+        "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/data-dan-peta-rdtr-yang-dikelola-di-aceh-tengah-tahun-2025",
+        "sumber_label": "OpenData Aceh Tengah",
+        "icon": "📊",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (OpenData / Dinas PUPR/Pertanahan)",
+        "relevansi": "Bukti ketersediaan, pengelolaan, dan berbagi pakai informasi geospasial serta peta Rencana Detail Tata Ruang melalui portal publik Pemkab Aceh Tengah.",
+        "status": "lengkap"
+      },
+      {
+        "level": 2,
+        "judul": "Data dan Peta Rencana Detail Tata Ruang (RDTR) yang Dikelola di Aceh Tengah Tahun 2025",
+        "nama_file": "I06_L2_Laporan_2025_Data_Peta_RDTR_Aceh_Tengah.xlsx",
+        "local_path": "/bukti/I06_L2_Laporan_2025_Data_Peta_RDTR_Aceh_Tengah.xlsx",
+        "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/data-dan-peta-rdtr-yang-dikelola-di-aceh-tengah-tahun-2025",
+        "sumber_label": "OpenData Aceh Tengah",
+        "icon": "📊",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (OpenData / Dinas PUPR/Pertanahan)",
+        "relevansi": "Memenuhi kondisi berbagi pakai sebagian informasi geospasial pemerintah daerah (Catatan: SK Tim Geospasial dicatat pada rekap kekurangan).",
+        "status": "lengkap"
+      }
+    ],
+    "I07": [
+      {
+        "level": 1,
+        "judul": "SOP Pengumpulan, Analisis, Pengelolaan dan Diseminasi Data Statistik Sektoral (Tanda Tangan Basah)",
+        "nama_file": "I07_L1_SOP_8003_2023_Statistik_Sektoral_Walidata.pdf",
+        "local_path": "/bukti/I07_L1_SOP_8003_2023_Statistik_Sektoral_Walidata.pdf",
+        "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/b07e4546-ff19-4041-b58b-6e456bb1f9c3",
+        "sumber_label": "OpenData Aceh Tengah",
+        "icon": "📊",
+        "penerbit": "Dinas Komunikasi dan Informatika Kabupaten Aceh Tengah",
+        "relevansi": "Bukti pengesahan standar operasi prosedur dalam pelaksanaan statistik sektoral oleh perangkat daerah walidata statistik Aceh Tengah.",
+        "status": "lengkap"
+      },
+      {
+        "level": 2,
+        "judul": "SOP Pengumpulan, Analisis, Pengelolaan dan Diseminasi Data Statistik Sektoral (Tanda Tangan Basah)",
+        "nama_file": "I07_L2_SOP_8003_2023_Statistik_Sektoral_Walidata.pdf",
+        "local_path": "/bukti/I07_L2_SOP_8003_2023_Statistik_Sektoral_Walidata.pdf",
+        "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/b07e4546-ff19-4041-b58b-6e456bb1f9c3",
+        "sumber_label": "OpenData Aceh Tengah",
+        "icon": "📊",
+        "penerbit": "Dinas Komunikasi dan Informatika Kabupaten Aceh Tengah",
+        "relevansi": "Membuktikan pelaksanaan tahapan manajemen penyelenggaraan statistik sektoral (EPSS) yang terdefinisi dan disahkan resmi.",
+        "status": "lengkap"
+      },
+      {
+        "level": 2,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 60 Tahun 2022 tentang Satu Data Indonesia Kabupaten Aceh Tengah",
+        "nama_file": "I07_L2_Perbup_60_2022_Satu_Data_Indonesia.pdf",
+        "local_path": "/bukti/I07_L2_Perbup_60_2022_Satu_Data_Indonesia.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/d9671249-08cc-4e6c-87f0-aa04f8ada75c",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH / Setdakab)",
+        "relevansi": "Memuat kebijakan tata kelola statistik sektoral oleh walidata daerah (Diskominfo) dalam koordinasi dengan BPS.",
+        "status": "lengkap"
+      }
+    ],
+    "I08": [
+      {
+        "level": 1,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 6 Tahun 2025 tentang Sistem Klasifikasi Keamanan dan Akses Arsip Dinamis",
+        "nama_file": "I08_L1_Perbup_6_2025_Klasifikasi_Keamanan_Arsip_Dinamis.pdf",
+        "local_path": "/bukti/I08_L1_Perbup_6_2025_Klasifikasi_Keamanan_Arsip_Dinamis.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/ade79cb3-cb2b-4b8e-bf31-b35ddeded969",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH / Dinas Perpustakaan & Kearsipan)",
+        "relevansi": "Menetapkan regulasi klasifikasi keamanan arsip, pembatasan akses, dan perlindungan informasi sensitif/pribadi pegawai dan masyarakat.",
+        "status": "lengkap"
+      },
+      {
+        "level": 1,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 73 Tahun 2020 tentang Pelayanan Administrasi Kependudukan Daring",
+        "nama_file": "I08_L1_Perbup_73_2020_Pelayanan_Adminduk_Online.pdf",
+        "local_path": "/bukti/I08_L1_Perbup_73_2020_Pelayanan_Adminduk_Online.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/2a0b0c2f-d693-4a15-9e7f-b42d7ab081eb",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH / Dinas Dukcapil)",
+        "relevansi": "Dasar hukum keamanan dan kerahasiaan data kependudukan dalam layanan administrasi publik secara daring.",
+        "status": "lengkap"
+      },
+      {
+        "level": 2,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 6 Tahun 2025 tentang Sistem Klasifikasi Keamanan dan Akses Arsip Dinamis",
+        "nama_file": "I08_L2_Perbup_6_2025_Klasifikasi_Keamanan_Arsip_Dinamis.pdf",
+        "local_path": "/bukti/I08_L2_Perbup_6_2025_Klasifikasi_Keamanan_Arsip_Dinamis.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/ade79cb3-cb2b-4b8e-bf31-b35ddeded969",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH)",
+        "relevansi": "Bukti penerapan prosedur pelindungan kerahasiaan data pada sistem informasi dan arsip dinamis pemerintah daerah.",
+        "status": "lengkap"
+      },
+      {
+        "level": 2,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 137 Tahun 2019 tentang Pedoman Penyelenggaraan Pelayanan Informasi Publik",
+        "nama_file": "I08_L2_Perbup_137_2019_PPID_Informasi_Publik.pdf",
+        "local_path": "/bukti/I08_L2_Perbup_137_2019_PPID_Informasi_Publik.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/6cd5c436-d64e-4068-bb08-2e0526d87cb5",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH / PPID)",
+        "relevansi": "Menetapkan prosedur pelindungan data pribadi dan informasi yang dikecualikan dari publikasi dalam layanan informasi pemerintah.",
+        "status": "lengkap"
+      }
+    ],
+    "I09": [
+      {
+        "level": 1,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Arsitektur SPBE",
+        "nama_file": "I09_L1_Perbup_48_2025_Arsitektur_Keamanan_SPBE.pdf",
+        "local_path": "/bukti/I09_L1_Perbup_48_2025_Arsitektur_Keamanan_SPBE.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH / Setdakab)",
+        "relevansi": "Menetapkan standar keamanan digital, audit, dan perlindungan siber sebagai referensi perencanaan keamanan SPBE OPD.",
+        "status": "lengkap"
+      },
+      {
+        "level": 1,
+        "judul": "Laporan Hasil Pengawasan Kinerja Pemerintah Daerah di Aceh Tengah Tahun 2025",
+        "nama_file": "I09_L1_Laporan_2025_Pengawasan_Kinerja_Aceh_Tengah.xlsx",
+        "local_path": "/bukti/I09_L1_Laporan_2025_Pengawasan_Kinerja_Aceh_Tengah.xlsx",
+        "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/laporan-hasil-pengawasan-kinerja-pemerintah-daerah-di-aceh-tengah-tahun-2025",
+        "sumber_label": "OpenData Aceh Tengah",
+        "icon": "📊",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (OpenData / Inspektorat)",
+        "relevansi": "Bukti pengawasan kinerja internal pemerintah daerah Aceh Tengah tahun 2025.",
+        "status": "lengkap"
+      }
+    ],
+    "I10": [
+      {
+        "level": 1,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 6 Tahun 2025 tentang Sistem Klasifikasi Keamanan dan Akses Arsip Dinamis",
+        "nama_file": "I10_L1_Perbup_6_2025_Klasifikasi_Keamanan_Arsip_Dinamis.pdf",
+        "local_path": "/bukti/I10_L1_Perbup_6_2025_Klasifikasi_Keamanan_Arsip_Dinamis.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/ade79cb3-cb2b-4b8e-bf31-b35ddeded969",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH)",
+        "relevansi": "Memenuhi kriteria tata kelola dan manajemen keamanan informasi pemerintah daerah Aceh Tengah.",
+        "status": "lengkap"
+      },
+      {
+        "level": 1,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Arsitektur SPBE",
+        "nama_file": "I10_L1_Perbup_48_2025_Arsitektur_Keamanan_SPBE.pdf",
+        "local_path": "/bukti/I10_L1_Perbup_48_2025_Arsitektur_Keamanan_SPBE.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH)",
+        "relevansi": "Rujukan utama arsitektur keamanan siber dan perlindungan aset sistem informasi pemerintah daerah.",
+        "status": "lengkap"
+      },
+      {
+        "level": 2,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 6 Tahun 2025 tentang Sistem Klasifikasi Keamanan dan Akses Arsip Dinamis",
+        "nama_file": "I10_L2_Perbup_6_2025_Klasifikasi_Keamanan_Arsip_Dinamis.pdf",
+        "local_path": "/bukti/I10_L2_Perbup_6_2025_Klasifikasi_Keamanan_Arsip_Dinamis.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/ade79cb3-cb2b-4b8e-bf31-b35ddeded969",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH)",
+        "relevansi": "Bukti regulasi penerapan tata kelola keamanan informasi daerah (Catatan: Surat identifikasi IIV ke BSSN dicatat di rekap kekurangan).",
+        "status": "lengkap"
+      }
+    ],
+    "I11": [
+      {
+        "level": 1,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Arsitektur SPBE",
+        "nama_file": "I11_L1_Perbup_48_2025_Arsitektur_SPBE_Kriptografi.pdf",
+        "local_path": "/bukti/I11_L1_Perbup_48_2025_Arsitektur_SPBE_Kriptografi.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH)",
+        "relevansi": "Dasar hukum penyiapan dan penerapan teknologi kriptografi untuk keamanan data digital dan persandian pemerintah daerah.",
+        "status": "lengkap"
+      },
+      {
+        "level": 2,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Arsitektur SPBE",
+        "nama_file": "I11_L2_Perbup_48_2025_Arsitektur_SPBE_Kriptografi.pdf",
+        "local_path": "/bukti/I11_L2_Perbup_48_2025_Arsitektur_SPBE_Kriptografi.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH)",
+        "relevansi": "Acuan penerapan standar keamanan kriptografi pada layanan digital (Catatan: Laporan penerapan teknis BSrE dicatat di rekap kekurangan).",
+        "status": "lengkap"
+      }
+    ],
+    "I12": [
+      {
+        "level": 1,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Arsitektur SPBE",
+        "nama_file": "I12_L1_Perbup_48_2025_Arsitektur_SPBE_CSIRT.pdf",
+        "local_path": "/bukti/I12_L1_Perbup_48_2025_Arsitektur_SPBE_CSIRT.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH)",
+        "relevansi": "Memuat penetapan kerangka penyiapan dan kapabilitas penanganan insiden siber pada layanan digital pemerintah daerah.",
+        "status": "lengkap"
+      }
+    ],
+    "I13": [
+      {
+        "level": 1,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Arsitektur SPBE",
+        "nama_file": "I13_L1_Perbup_48_2025_Arsitektur_Aplikasi_SPBE.pdf",
+        "local_path": "/bukti/I13_L1_Perbup_48_2025_Arsitektur_Aplikasi_SPBE.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH)",
+        "relevansi": "Regulasi yang menetapkan arsitektur dan pedoman siklus pengembangan aplikasi pemerintah digital agar terarah dan tidak silo.",
+        "status": "lengkap"
+      },
+      {
+        "level": 1,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 9 Tahun 2025 tentang SOTK Dinas Komunikasi dan Informatika",
+        "nama_file": "I13_L1_Perbup_9_2025_SOTK_Diskominfo.pdf",
+        "local_path": "/bukti/I13_L1_Perbup_9_2025_SOTK_Diskominfo.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/af9a42bf-cea9-46c8-a739-9beb5d21e990",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH)",
+        "relevansi": "Dasar kelembagaan pengampu kebijakan pengembangan aplikasi digital dan konsultasi teknis TIK.",
+        "status": "lengkap"
+      },
+      {
+        "level": 2,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Arsitektur SPBE",
+        "nama_file": "I13_L2_Perbup_48_2025_Arsitektur_Aplikasi_SPBE.pdf",
+        "local_path": "/bukti/I13_L2_Perbup_48_2025_Arsitektur_Aplikasi_SPBE.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH)",
+        "relevansi": "Acuan arsitektur aplikasi (Catatan: Dokumentasi teknis repositori git dan siklus SDLC dicatat di rekap kekurangan).",
+        "status": "lengkap"
+      }
+    ],
+    "I14": [
+      {
+        "level": 1,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Arsitektur SPBE",
+        "nama_file": "I14_L1_Perbup_48_2025_Arsitektur_Infrastruktur_SPBE.pdf",
+        "local_path": "/bukti/I14_L1_Perbup_48_2025_Arsitektur_Infrastruktur_SPBE.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH)",
+        "relevansi": "Dasar hukum standar penyediaan dan pemanfaatan infrastruktur TIK, jaringan intra pemerintah, dan pusat data.",
+        "status": "lengkap"
+      },
+      {
+        "level": 2,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Arsitektur SPBE",
+        "nama_file": "I14_L2_Perbup_48_2025_Arsitektur_Infrastruktur_SPBE.pdf",
+        "local_path": "/bukti/I14_L2_Perbup_48_2025_Arsitektur_Infrastruktur_SPBE.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH)",
+        "relevansi": "Acuan kebijakan infrastruktur SPBE (Catatan: KIB server, NMS, dan bukti sewa cloud dicatat di rekap kekurangan).",
+        "status": "lengkap"
+      }
+    ],
+    "I15": [
+      {
+        "level": 1,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Arsitektur SPBE",
+        "nama_file": "I15_L1_Perbup_48_2025_Arsitektur_Proses_Bisnis.pdf",
+        "local_path": "/bukti/I15_L1_Perbup_48_2025_Arsitektur_Proses_Bisnis.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH)",
+        "relevansi": "Regulasi primer yang mengesahkan referensi keterpaduan proses bisnis dan pemetaan alur kerja perangkat daerah.",
+        "status": "lengkap"
+      },
+      {
+        "level": 2,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Arsitektur SPBE",
+        "nama_file": "I15_L2_Perbup_48_2025_Arsitektur_Proses_Bisnis.pdf",
+        "local_path": "/bukti/I15_L2_Perbup_48_2025_Arsitektur_Proses_Bisnis.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH)",
+        "relevansi": "Menjadi referensi keterpaduan proses bisnis (Catatan: Flowchart dan peta proses bisnis detail OPD dicatat di rekap kekurangan).",
+        "status": "lengkap"
+      }
+    ],
+    "I16": [
+      {
+        "level": 1,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Arsitektur SPBE",
+        "nama_file": "I16_L1_Perbup_48_2025_Arsitektur_Integrasi_SPBE.pdf",
+        "local_path": "/bukti/I16_L1_Perbup_48_2025_Arsitektur_Integrasi_SPBE.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH)",
+        "relevansi": "Menetapkan kebijakan integrasi aplikasi antar instansi untuk mencegah fragmentasi sistem dan mendukung interoperabilitas.",
+        "status": "lengkap"
+      },
+      {
+        "level": 2,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Arsitektur SPBE",
+        "nama_file": "I16_L2_Perbup_48_2025_Arsitektur_Integrasi_SPBE.pdf",
+        "local_path": "/bukti/I16_L2_Perbup_48_2025_Arsitektur_Integrasi_SPBE.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH)",
+        "relevansi": "Acuan integrasi aplikasi (Catatan: Dokumentasi API teknis, Service Bus, dan UAT dicatat di rekap kekurangan).",
+        "status": "lengkap"
+      }
+    ],
+    "I17": [
+      {
+        "level": 1,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 30 Tahun 2022 tentang Penyelenggaraan Mal Pelayanan Publik",
+        "nama_file": "I17_L1_Perbup_30_2022_Mal_Pelayanan_Publik.pdf",
+        "local_path": "/bukti/I17_L1_Perbup_30_2022_Mal_Pelayanan_Publik.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/407b38e8-5363-4b1a-bd3f-66c637164394",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH / DPMPTSP)",
+        "relevansi": "Dasar hukum integrasi layanan publik dalam satu pintu (Mal Pelayanan Publik) sebagai referensi penyelenggaraan portal layanan digital.",
+        "status": "lengkap"
+      },
+      {
+        "level": 1,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Arsitektur SPBE",
+        "nama_file": "I17_L1_Perbup_48_2025_Arsitektur_Layanan_SPBE.pdf",
+        "local_path": "/bukti/I17_L1_Perbup_48_2025_Arsitektur_Layanan_SPBE.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH)",
+        "relevansi": "Menetapkan standar integrasi layanan publik dan administrasi pada portal layanan digital daerah.",
+        "status": "lengkap"
+      },
+      {
+        "level": 2,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 30 Tahun 2022 tentang Penyelenggaraan Mal Pelayanan Publik",
+        "nama_file": "I17_L2_Perbup_30_2022_Mal_Pelayanan_Publik.pdf",
+        "local_path": "/bukti/I17_L2_Perbup_30_2022_Mal_Pelayanan_Publik.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/407b38e8-5363-4b1a-bd3f-66c637164394",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH / DPMPTSP)",
+        "relevansi": "Membuktikan ketersediaan regulasi dan penyelenggaraan layanan terpadu (MPP) yang mengintegrasikan perizinan dan layanan publik.",
+        "status": "lengkap"
+      },
+      {
+        "level": 2,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 73 Tahun 2020 tentang Pelayanan Administrasi Kependudukan Daring",
+        "nama_file": "I17_L2_Perbup_73_2020_Pelayanan_Adminduk_Online.pdf",
+        "local_path": "/bukti/I17_L2_Perbup_73_2020_Pelayanan_Adminduk_Online.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/2a0b0c2f-d693-4a15-9e7f-b42d7ab081eb",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH / Dukcapil)",
+        "relevansi": "Bukti penerapan layanan digital sektor administrasi kependudukan yang menyajikan layanan secara online kepada masyarakat.",
+        "status": "lengkap"
+      }
+    ],
+    "I18": [
+      {
+        "level": 1,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 60 Tahun 2022 tentang Satu Data Indonesia Kabupaten Aceh Tengah",
+        "nama_file": "I18_L1_Perbup_60_2022_Satu_Data_Indonesia.pdf",
+        "local_path": "/bukti/I18_L1_Perbup_60_2022_Satu_Data_Indonesia.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/d9671249-08cc-4e6c-87f0-aa04f8ada75c",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH)",
+        "relevansi": "Dasar hukum utama interoperabilitas data, standar data, metadata, dan pertukaran data antar instansi di Kabupaten Aceh Tengah.",
+        "status": "lengkap"
+      },
+      {
+        "level": 1,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Arsitektur SPBE",
+        "nama_file": "I18_L1_Perbup_48_2025_Arsitektur_Data_SPBE.pdf",
+        "local_path": "/bukti/I18_L1_Perbup_48_2025_Arsitektur_Data_SPBE.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH)",
+        "relevansi": "Regulasi yang menetapkan arsitektur data pemerintah digital daerah sebagai pedoman penerapan interoperabilitas data.",
+        "status": "lengkap"
+      },
+      {
+        "level": 2,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 60 Tahun 2022 tentang Satu Data Indonesia Kabupaten Aceh Tengah",
+        "nama_file": "I18_L2_Perbup_60_2022_Satu_Data_Indonesia.pdf",
+        "local_path": "/bukti/I18_L2_Perbup_60_2022_Satu_Data_Indonesia.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/d9671249-08cc-4e6c-87f0-aa04f8ada75c",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH)",
+        "relevansi": "Membuktikan pelaksanaan kebijakan berbagi pakai data daerah (Catatan: Katalog OpenData Aceh Tengah memuat 862 dataset aktif).",
+        "status": "lengkap"
+      }
+    ],
+    "I19": [
+      {
+        "level": 1,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 21 Tahun 2021 tentang Pedoman Pelaksanaan Sistem Penanganan Pengaduan",
+        "nama_file": "I19_L1_Perbup_21_2021_Sistem_Penanganan_Pengaduan.pdf",
+        "local_path": "/bukti/I19_L1_Perbup_21_2021_Sistem_Penanganan_Pengaduan.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/d0d9a4c9-089f-4e69-ad24-24b101057b62",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH / Diskominfo & Inspektorat)",
+        "relevansi": "Dasar hukum pengelolaan pengaduan publik, service desk, dan fasilitas dukungan pengguna layanan pemerintah di Kabupaten Aceh Tengah.",
+        "status": "lengkap"
+      },
+      {
+        "level": 1,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 126 Tahun 2019 tentang Pedoman Standar Pelayanan",
+        "nama_file": "I19_L1_Perbup_126_2019_Standar_Pelayanan.pdf",
+        "local_path": "/bukti/I19_L1_Perbup_126_2019_Standar_Pelayanan.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/e8187833-5111-4436-be42-68dfd5d80b76",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH / Bagian Organisasi)",
+        "relevansi": "Dasar hukum standar operasional prosedur (SOP) dan Service Level Agreement (SLA) layanan publik instansi pemerintah daerah.",
+        "status": "lengkap"
+      },
+      {
+        "level": 2,
+        "judul": "Peraturan Bupati Aceh Tengah Nomor 21 Tahun 2021 tentang Pedoman Pelaksanaan Sistem Penanganan Pengaduan",
+        "nama_file": "I19_L2_Perbup_21_2021_Sistem_Penanganan_Pengaduan.pdf",
+        "local_path": "/bukti/I19_L2_Perbup_21_2021_Sistem_Penanganan_Pengaduan.pdf",
+        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/d0d9a4c9-089f-4e69-ad24-24b101057b62",
+        "sumber_label": "JDIH Aceh Tengah",
+        "icon": "⚖️",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (JDIH)",
+        "relevansi": "Memenuhi kondisi pelaksanaan sistem penanganan pengaduan online (Catatan: Laporan rekap tiket SP4N-LAPOR dicatat di rekap kekurangan).",
+        "status": "lengkap"
+      },
+      {
+        "level": 2,
+        "judul": "Hasil Survei Kepuasan Masyarakat di Kabupaten Aceh Tengah bulan Januari - Mei Tahun 2026",
+        "nama_file": "I19_L2_Laporan_2026_Survei_Kepuasan_Masyarakat.xlsx",
+        "local_path": "/bukti/I19_L2_Laporan_2026_Survei_Kepuasan_Masyarakat.xlsx",
+        "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/hasil-survei-kepuasan-masyarakat-di-kabupaten-aceh-tengah-bulan-januari-mei-tahun-2026",
+        "sumber_label": "OpenData Aceh Tengah",
+        "icon": "📊",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (OpenData / Bagian Organisasi)",
+        "relevansi": "Bukti aktif tahun 2026 pengelolaan umpan balik pengguna dan hasil evaluasi pelayanan publik daerah Aceh Tengah.",
+        "status": "lengkap"
+      }
+    ],
+    "I20": [
+      {
+        "level": 1,
+        "judul": "Hasil Survei Kepuasan Masyarakat di Kabupaten Aceh Tengah bulan Januari - Mei Tahun 2026",
+        "nama_file": "I20_L1_Laporan_2026_Survei_Kepuasan_Masyarakat.xlsx",
+        "local_path": "/bukti/I20_L1_Laporan_2026_Survei_Kepuasan_Masyarakat.xlsx",
+        "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/hasil-survei-kepuasan-masyarakat-di-kabupaten-aceh-tengah-bulan-januari-mei-tahun-2026",
+        "sumber_label": "OpenData Aceh Tengah",
+        "icon": "📊",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (OpenData / Bagian Organisasi)",
+        "relevansi": "Bukti primer pelaksanaan survei kepuasan masyarakat (SKM) terbaru di Kabupaten Aceh Tengah untuk menilai kualitas pelayanan publik.",
+        "status": "lengkap"
+      },
+      {
+        "level": 1,
+        "judul": "Laporan Survei Kepuasan Masyarakat (SKM) Kecamatan Kebayakan Periode Jan–Jun 2025",
+        "nama_file": "I20_L1_Laporan_2025_SKM_Kebayakan.pdf",
+        "local_path": "/bukti/I20_L1_Laporan_2025_SKM_Kebayakan.pdf",
+        "url_sumber": "https://raw.githubusercontent.com/Niumination/PemdiAcehTengah/main/public/bukti-dukung/04-layanan/skm_kebayakan_2025.pdf",
+        "sumber_label": "GitHub (Repo Publik)",
+        "icon": "💻",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (Kecamatan Kebayakan)",
+        "relevansi": "Laporan lengkap survei kepuasan masyarakat pada unit pelayanan publik daerah Aceh Tengah tahun 2025.",
+        "status": "lengkap"
+      },
+      {
+        "level": 2,
+        "judul": "Hasil Survei Kepuasan Masyarakat di Kabupaten Aceh Tengah bulan Januari - Mei Tahun 2026",
+        "nama_file": "I20_L2_Laporan_2026_Survei_Kepuasan_Masyarakat.xlsx",
+        "local_path": "/bukti/I20_L2_Laporan_2026_Survei_Kepuasan_Masyarakat.xlsx",
+        "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/hasil-survei-kepuasan-masyarakat-di-kabupaten-aceh-tengah-bulan-januari-mei-tahun-2026",
+        "sumber_label": "OpenData Aceh Tengah",
+        "icon": "📊",
+        "penerbit": "Pemerintah Kabupaten Aceh Tengah (OpenData / Bagian Organisasi)",
+        "relevansi": "Bukti pengolahan dan publikasi hasil survei kepuasan masyarakat melalui portal data terbuka (OpenData) Pemkab Aceh Tengah.",
+        "status": "lengkap"
+      }
+    ]
+  }
+}

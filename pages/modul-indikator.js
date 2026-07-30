@@ -44,6 +44,7 @@ export default function ModulIndikatorPage() {
   const [levelFilter, setLevelFilter] = useState(0); // 0 = all
   const [buka, setBuka] = useState(null);
   const [tabFilter, setTabFilter] = useState('semua'); // 'semua' | 'perlu' | 'selesai'
+  const [previewDoc, setPreviewDoc] = useState(null); // { url, title, isPdf } | null
 
   // Auto-open modul from query param ?modul=N
   useEffect(() => {
@@ -339,17 +340,19 @@ export default function ModulIndikatorPage() {
                         </div>
                       )}
 
-                      {/* ════ Current Evidence Status — semua belum divalidasi ════ */}
+                      {/* ════ Current Evidence Status — validated by PemdiArena ════ */}
                       {modul.ind?.bukti_dukung?.length > 0 && (
                         <div style={{ marginTop: '1rem' }}>
-                          <div style={{
-                            padding: '0.75rem', borderRadius: '8px',
-                            background: '#fef3c7', border: '1px solid #f59e0b40',
-                            fontSize: '0.8rem', color: '#92400e',
-                          }}>
-                            ⚠️ <strong>Semua status bukti dukung saat ini <strong>Belum</strong> —</strong>
-                            perlu diverifikasi ulang sesuai kriteria level masing-masing indikator.
-                          </div>
+                          {modul.status.lengkap === 0 && modul.status.count > 0 && (
+                            <div style={{
+                              padding: '0.75rem', borderRadius: '8px',
+                              background: '#fef3c7', border: '1px solid #f59e0b40',
+                              fontSize: '0.8rem', color: '#92400e',
+                            }}>
+                              ⚠️ <strong>Semua status bukti dukung saat ini Belum</strong> —
+                              perlu diverifikasi ulang sesuai kriteria level masing-masing indikator.
+                            </div>
+                          )}
                           <h4 style={{ fontSize: '0.85rem', fontWeight: 700, marginBottom: '0.5rem', color: 'var(--text)' }}>
                             📋 Bukti Dukung — Kondisi Existing Pemkab Aceh Tengah
                           </h4>
@@ -362,14 +365,19 @@ export default function ModulIndikatorPage() {
                                 <tr style={{ background: 'var(--surface-2)' }}>
                                   <th style={thStyle}>Level</th>
                                   <th style={thStyle}>Nama Bukti Dukung</th>
-                                  <th style={thStyle}>OPD Terkait</th>
+                                  <th style={thStyle}>OPD</th>
                                   <th style={thStyle}>Status</th>
+                                  <th style={{...thStyle, width:'70px', textAlign:'center'}}>Aksi</th>
                                   <th style={thStyle}>Catatan</th>
                                 </tr>
                               </thead>
                               <tbody>
                                 {modul.ind.bukti_dukung.map(bd => {
                                   const sm = STATUS_META[bd.status] || STATUS_META.belum;
+                                  const url = bd.url_preview || bd.url_sumber||'';
+                                  const isPdf = url.endsWith('.pdf');
+                                  const isXlsx = url.endsWith('.xlsx');
+                                  const hasPreview = url && (url.startsWith('/bukti/') || url.startsWith('http'));
                                   return (
                                     <tr key={bd.id} style={{ borderBottom: '1px solid var(--border)' }}>
                                       <td style={tdStyle}>
@@ -403,7 +411,33 @@ export default function ModulIndikatorPage() {
                                           {sm.icon} {sm.label}
                                         </span>
                                       </td>
-                                      <td style={{ ...tdStyle, fontSize: '0.7rem', color: 'var(--muted)', maxWidth: '200px' }}>
+                                      <td style={{...tdStyle, textAlign:'center'}}>
+                                        {hasPreview && bd.status === 'lengkap' ? (
+                                          isPdf ? (
+                                            <button onClick={() => setPreviewDoc({url, title: bd.nama, isPdf: true})}
+                                              style={{
+                                                padding: '0.25rem 0.5rem', borderRadius: '4px', border: 'none',
+                                                background: 'var(--primary)', color: '#fff', cursor: 'pointer',
+                                                fontSize: '0.7rem', fontWeight: 600, whiteSpace: 'nowrap',
+                                              }}>
+                                              👁️ Lihat
+                                            </button>
+                                          ) : (
+                                            <a href={bd.url_sumber || url} target="_blank" rel="noopener noreferrer"
+                                              style={{
+                                                padding: '0.25rem 0.5rem', borderRadius: '4px',
+                                                background: 'var(--primary-50)', color: 'var(--primary)',
+                                                fontSize: '0.7rem', fontWeight: 600, textDecoration: 'none',
+                                                display: 'inline-block', whiteSpace: 'nowrap',
+                                              }}>
+                                              📥 Unduh
+                                            </a>
+                                          )
+                                        ) : (
+                                          <span style={{ fontSize: '0.65rem', color: 'var(--muted)' }}>—</span>
+                                        )}
+                                      </td>
+                                      <td style={{ ...tdStyle, fontSize: '0.7rem', color: 'var(--muted)', maxWidth: '160px' }}>
                                         {bd.catatan || '-'}
                                       </td>
                                     </tr>
@@ -440,6 +474,69 @@ export default function ModulIndikatorPage() {
           </div>
         </div>
       </section>
+
+      {/* ════════ PREVIEW MODAL ════════ */}
+      {previewDoc && (
+        <div onClick={() => setPreviewDoc(null)} style={{
+          position: 'fixed', inset: 0, zIndex: 9999,
+          background: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(4px)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          padding: '2rem',
+        }}>
+          <div onClick={e => e.stopPropagation()} style={{
+            background: '#fff', borderRadius: '12px',
+            width: '100%', maxWidth: '1000px', height: '90vh',
+            display: 'flex', flexDirection: 'column',
+            overflow: 'hidden', boxShadow: '0 20px 60px rgba(0,0,0,0.3)',
+          }}>
+            {/* Header */}
+            <div style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+              padding: '1rem 1.25rem', borderBottom: '1px solid #e5e7eb',
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <span style={{ fontSize: '1.1rem' }}>{previewDoc.isPdf ? '📄' : '📊'}</span>
+                <span style={{ fontWeight: 600, fontSize: '0.9rem', color: '#1f2937' }}>
+                  {previewDoc.title}
+                </span>
+              </div>
+              <button onClick={() => setPreviewDoc(null)} style={{
+                background: '#f3f4f6', border: 'none', borderRadius: '8px',
+                width: '36px', height: '36px', cursor: 'pointer',
+                fontSize: '1.2rem', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                color: '#6b7280', transition: 'all 0.15s',
+              }}>✕</button>
+            </div>
+            {/* Document body */}
+            <div style={{ flex: 1, position: 'relative' }}>
+              {previewDoc.isPdf ? (
+                <iframe
+                  src={previewDoc.url}
+                  style={{ width: '100%', height: '100%', border: 'none' }}
+                  title={previewDoc.title}
+                />
+              ) : (
+                <div style={{
+                  display: 'flex', flexDirection: 'column', alignItems: 'center',
+                  justifyContent: 'center', height: '100%', gap: '1rem',
+                  color: '#6b7280',
+                }}>
+                  <span style={{ fontSize: '3rem' }}>📊</span>
+                  <p>File spreadsheet — gunakan tombol Unduh untuk membuka</p>
+                  <a href={previewDoc.url} target="_blank" rel="noopener noreferrer"
+                    style={{
+                      padding: '0.6rem 1.5rem', borderRadius: '8px', border: 'none',
+                      background: 'var(--primary)', color: '#fff', cursor: 'pointer',
+                      fontSize: '0.9rem', fontWeight: 600, textDecoration: 'none',
+                    }}>
+                    📥 Unduh File
+                  </a>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
 
       <style jsx>{`
         .stat-row {
