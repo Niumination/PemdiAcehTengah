@@ -163,7 +163,9 @@
           "nama": "Peraturan Bupati Aceh Tengah Nomor 9 Tahun 2025 tentang SOTK",
           "level": 1,
           "status": "lengkap",
-          "dokumen_kunci": []
+          "dokumen_kunci": [
+            9
+          ]
         },
         {
           "id": "V2.I3_3",
@@ -209,9 +211,7 @@
           "level": 2,
           "status": "belum",
           "dokumen_kunci": [
-            9,
-            10,
-            13
+            9
           ]
         },
         {
@@ -542,7 +542,9 @@
           "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
           "level": 1,
           "status": "lengkap",
-          "dokumen_kunci": []
+          "dokumen_kunci": [
+            19
+          ]
         },
         {
           "id": "V1.I9_2",
@@ -678,7 +680,9 @@
           "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
           "level": 1,
           "status": "lengkap",
-          "dokumen_kunci": []
+          "dokumen_kunci": [
+            23
+          ]
         },
         {
           "id": "B12.1",
@@ -1045,7 +1049,9 @@
           "nama": "Peraturan Bupati Aceh Tengah Nomor 126 Tahun 2019 tentang Pe",
           "level": 1,
           "status": "lengkap",
-          "dokumen_kunci": []
+          "dokumen_kunci": [
+            30
+          ]
         },
         {
           "id": "V2.I19_3",
@@ -1062,7 +1068,7 @@
           "level": 2,
           "status": "lengkap",
           "dokumen_kunci": [
-            30
+            31
           ]
         },
         {
@@ -1177,7 +1183,7 @@
   "generated_at": "2026-08-05",
   "stats": {
     "total_bukti": 114,
-    "terpetakan": 110,
-    "belum_terpetakan": 4
+    "terpetakan": 114,
+    "belum_terpetakan": 0
   }
 }

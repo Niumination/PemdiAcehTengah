@@ -30,7 +30,14 @@
           "kriteria": "- 2. Perubahan Substansi Rencana Aksi Nasional Pemerintah Digital pada perencanaan Instansi Pemerintah - 1. Berupa perbaikan/perubahan Arsitektur - 2. Perubahan Substansi Perencanaan Instansi"
         }
       ],
-      "data_dukung_modul": [],
+      "data_dukung_modul": [
+        "(1) Bab/uraian khusus PEMERINTAH DIGITAL (Pemdi/SPBE) yang memuat substansi Rencana Aksi Nasional (RAN) Pemdi — visi, misi, tujuan, sasaran, arah kebijakan, strategi, dan program/kegiatan Pemdi",
+        "(1) Matriks pemetaan (partial/full mapping) substansi RAN Pemdi → bab/strategi/program dalam dokumen perencanaan (lampiran) sehingga reviewer mudah melihat keterkaitan",
+        "(1) Program dan kegiatan Pemdi beserta indikator kinerja, target (tahunan & 5 tahunan), satuan, dan lokus OPD — mis. program transformasi digital, SPBE, interoperabilitas, layanan digital",
+        "(5) Dasar hukum (PermenPANRB 8/2026, peraturan daerah, pertimbangan)",
+        "(5) Struktur Tim: Pembina (Bupati), Koordinator/Ketua (Sekda), Penanggung Jawab/Wakil Ketua (Kepala Diskominfo), Sekretaris, 7 Pokja sesuai aspek (Tata Kelola, Penyelenggara, Data, Keamanan, Teknologi, Keterpaduan, Kepuasan), Pelaksana Entri Data",
+        "(5) Nama lengkap, NIP, jabatan setiap anggota dan pokja (lampiran daftar keanggotaan)"
+      ],
       "rekomendasi": []
     },
     {
@@ -139,7 +146,14 @@
           "kriteria": "## Kriteria<br>Optimalisasi kolaborasi Pemerintah Digital telah dilaksanakan secara berkelanjutan dan memberikan dampak nasional. Kolaborasi telah menjadi budaya kerja dan direplikasi oleh instansi lain.<br><br>## Kondisi<br>Forum Koordinasi Pemerintah Digital telah menjadi praktik baik yang direplikasi dan memberikan kontribusi pada pencapaian target Pemdi nasional.<br><br>## Data Dukung:<br>• Laporan optimalisasi dan pengembangan kolaborasi Pemdi<br>• Dokumentasi forum yang menjadi rujukan instansi lain<br>• Bukti dampak kolaborasi terhadap layanan digital nasional"
         }
       ],
-      "data_dukung_modul": [],
+      "data_dukung_modul": [
+        "(1) Bab/uraian khusus PEMERINTAH DIGITAL (Pemdi/SPBE) yang memuat substansi Rencana Aksi Nasional (RAN) Pemdi — visi, misi, tujuan, sasaran, arah kebijakan, strategi, dan program/kegiatan Pemdi",
+        "(1) Matriks pemetaan (partial/full mapping) substansi RAN Pemdi → bab/strategi/program dalam dokumen perencanaan (lampiran) sehingga reviewer mudah melihat keterkaitan",
+        "(1) Program dan kegiatan Pemdi beserta indikator kinerja, target (tahunan & 5 tahunan), satuan, dan lokus OPD — mis. program transformasi digital, SPBE, interoperabilitas, layanan digital",
+        "(5) Dasar hukum (PermenPANRB 8/2026, peraturan daerah, pertimbangan)",
+        "(5) Struktur Tim: Pembina (Bupati), Koordinator/Ketua (Sekda), Penanggung Jawab/Wakil Ketua (Kepala Diskominfo), Sekretaris, 7 Pokja sesuai aspek (Tata Kelola, Penyelenggara, Data, Keamanan, Teknologi, Keterpaduan, Kepuasan), Pelaksana Entri Data",
+        "(5) Nama lengkap, NIP, jabatan setiap anggota dan pokja (lampiran daftar keanggotaan)"
+      ],
       "rekomendasi": []
     },
     {
@@ -206,7 +220,11 @@
           "kriteria": "## Kriteria<br>Penyelenggaraan informasi geospasial telah optimal dan memberikan dampak pada layanan digital pemerintah. Inovasi berbasis IG telah dikembangkan dan menjadi rujukan nasional.<br><br>## Kondisi<br>Seluruh proses penyelenggaraan IG telah terintegrasi secara menyeluruh dengan peningkatan kualitas berkesinambungan. Geoportal telah terintegrasi dengan Simpul Jaringan IG Nasional.<br><br>## Data Dukung:<br>• Laporan inovasi berbasis informasi geospasial<br>• Dokumentasi integrasi dengan Simpul Jaringan IG Nasional<br>• Bukti peningkatan kualitas berkelanjutan"
         }
       ],
-      "data_dukung_modul": [],
+      "data_dukung_modul": [
+        "(18) I5 (SDI): SK Walidata/Produsen Data, metadata data sektoral, notulen Forum SDI, laporan pemantauan data, screenshot portal data.go.id / portal daerah",
+        "(18) I6 (SJIG): SK Simpul Jaringan IG, geoportal daerah, metadata IG, daftar data spasial, notulen/BA Simpul Jaringan, screenshot geoportal",
+        "(18) I7 (EPSS): SK Pembina/Walidata Statistik Sektoral, metadata statistik, publikasi statistik sektoral, notulen Forum Statistik, laporan EPSS internal"
+      ],
       "rekomendasi": []
     },
     {
@@ -238,7 +256,11 @@
           "kriteria": "kelola penyelenggaraan Statistik Sektoral dan telah diintegrasikan secara menyeluruh dalam organisasi. - 4. Kinerja penyelenggaraan statistik sektoral dapat diukur melalui kegiatan reviu dan evaluasi pada setiap proses. - 5. Proses penyelenggaraan statistik sektoral telah dilakukan peningkatan kualitas berkesinambungan berdasarkan hasil reviu dan evaluasi. ## Kondisi 4,20 < IPS < 5,00"
         }
       ],
-      "data_dukung_modul": [],
+      "data_dukung_modul": [
+        "(18) I5 (SDI): SK Walidata/Produsen Data, metadata data sektoral, notulen Forum SDI, laporan pemantauan data, screenshot portal data.go.id / portal daerah",
+        "(18) I6 (SJIG): SK Simpul Jaringan IG, geoportal daerah, metadata IG, daftar data spasial, notulen/BA Simpul Jaringan, screenshot geoportal",
+        "(18) I7 (EPSS): SK Pembina/Walidata Statistik Sektoral, metadata statistik, publikasi statistik sektoral, notulen Forum Statistik, laporan EPSS internal"
+      ],
       "rekomendasi": []
     },
     {
@@ -274,7 +296,11 @@
           "kriteria": "## Kriteria<br>Pelindungan data pribadi telah menjadi budaya organisasi dan terintegrasi dalam seluruh proses bisnis. Inovasi PDP telah menjadi praktik baik nasional.<br><br>## Kondisi<br>PDP telah diterapkan secara end-to-end pada seluruh siklus pengelolaan data dan menjadi rujukan bagi instansi lain.<br><br>## Data Dukung:<br>• Dokumentasi budaya PDP dalam organisasi<br>• Sertifikasi atau pengakuan kepatuhan PDP<br>• Bukti replikasi praktik PDP oleh instansi lain"
         }
       ],
-      "data_dukung_modul": [],
+      "data_dukung_modul": [
+        "(17) 7 substansi yang harus didokumentasikan (masing-masing dari draft → diterapkan → evaluasi → tindak lanjut):",
+        "(17) 1) Tata Kelola PDP — kebijakan, struktur, proses (draft → dokumen formal ditetapkan → diterapkan seluruh layanan)",
+        "(17) 2) Program awareness & kompetensi PDP — silabus, materi, jadwal, rekap peserta, pre-post test"
+      ],
       "rekomendasi": []
     },
     {
@@ -462,7 +488,14 @@
           "kriteria": "Pemerintah sesuai dengan substansi Rencana Aksi Nasional Pemerintah Digital pada perencanaan Instansi Pemerintah.<br><br><br>Kondisi| Laporan reviu pelaksanaan pembangunan/pengembangan aplikasi. Laporan reviu pelaksanaan pembangunan/pengembang an aplikasi. ## 1 ###### Bukti implementasi perbaikan Dokumen tindak lanjut hasil reviu - ● Perubahan desain atau arsitektur aplikasi - ● Peningkatan fitur atau integrasi sistem - ● Penyempurnaan proses pengembangan - ● Daftar rekomendasi dari laporan revi"
         }
       ],
-      "data_dukung_modul": [],
+      "data_dukung_modul": [
+        "(1) Bab/uraian khusus PEMERINTAH DIGITAL (Pemdi/SPBE) yang memuat substansi Rencana Aksi Nasional (RAN) Pemdi — visi, misi, tujuan, sasaran, arah kebijakan, strategi, dan program/kegiatan Pemdi",
+        "(1) Matriks pemetaan (partial/full mapping) substansi RAN Pemdi → bab/strategi/program dalam dokumen perencanaan (lampiran) sehingga reviewer mudah melihat keterkaitan",
+        "(1) Program dan kegiatan Pemdi beserta indikator kinerja, target (tahunan & 5 tahunan), satuan, dan lokus OPD — mis. program transformasi digital, SPBE, interoperabilitas, layanan digital",
+        "(3) Pengisian 6 domain arsitektur pada SIAP Digital: Proses Bisnis, Data & Informasi, Aplikasi, Infrastruktur, Keamanan, Layanan — sesuai target level (sebagian/seluruh layanan)",
+        "(3) Proses Bisnis: peta proses bisnis as-is (level 1–2) → to-be (level 3) layanan prioritas/tematik, BPMN/flowchart",
+        "(3) Data: daftar data/informasi, arsitektur data, interoperabilitas data (SDI)"
+      ],
       "rekomendasi": []
     },
     {
@@ -529,7 +562,14 @@
           "kriteria": "Reviu dilakukan atas Substansi Rencana Aksi Pemdi pada Perencanaan Instansi Pemerintah dan Arsitektur sesuai dengan perubahan Kebijakan maupuan Penerapan, Reviu berisikan: Berupa perbaikan/perubahan Arsitektur Domain Proses Bisnis"
         }
       ],
-      "data_dukung_modul": [],
+      "data_dukung_modul": [
+        "(3) Pengisian 6 domain arsitektur pada SIAP Digital: Proses Bisnis, Data & Informasi, Aplikasi, Infrastruktur, Keamanan, Layanan — sesuai target level (sebagian/seluruh layanan)",
+        "(3) Proses Bisnis: peta proses bisnis as-is (level 1–2) → to-be (level 3) layanan prioritas/tematik, BPMN/flowchart",
+        "(3) Data: daftar data/informasi, arsitektur data, interoperabilitas data (SDI)",
+        "(27) L1: Screenshot SIAP Digital domain proses bisnis terisi; peta proses bisnis as-is; dokumen arsitektur proses bisnis",
+        "(27) L2: Dokumen pemetaan proses bisnis as-is selaras SIAP Digital — diagram BPMN/flowchart, matriks proses–layanan–PD; dokumen proses bisnis to-be + gap analysis as-is vs to-be + usulan simplifikasi",
+        "(27) L3: Pemetaan proses bisnis SELURUH layanan prioritas/tematik di SIAP Digital + katalog proses bisnis lengkap; to-be seluruh layanan + peta integrasi lintas sektor + BA kesepakatan"
+      ],
       "rekomendasi": []
     },
     {
@@ -561,7 +601,14 @@
           "kriteria": "pelayanan publik dan pembangunan, dalam memberikan layanan kepada masyarakat di setiap aspek kehidupan (Human-Based) yang berorientasi pada kemudahan pengguna. ### Laporan Matriks pemantauan hasil tindak lanjut Integrasi Aplikasi. Dokumentasi dapat berupa - 1. Tindaklanjut perbaikan dari hasil reviu - 2. Laporan koordinasi atas tindaklanjut. - 3. Dokumen screenshot perbaikan. - 4. Dokumen naskah dinas lainnya"
         }
       ],
-      "data_dukung_modul": [],
+      "data_dukung_modul": [
+        "(1) Bab/uraian khusus PEMERINTAH DIGITAL (Pemdi/SPBE) yang memuat substansi Rencana Aksi Nasional (RAN) Pemdi — visi, misi, tujuan, sasaran, arah kebijakan, strategi, dan program/kegiatan Pemdi",
+        "(1) Matriks pemetaan (partial/full mapping) substansi RAN Pemdi → bab/strategi/program dalam dokumen perencanaan (lampiran) sehingga reviewer mudah melihat keterkaitan",
+        "(1) Program dan kegiatan Pemdi beserta indikator kinerja, target (tahunan & 5 tahunan), satuan, dan lokus OPD — mis. program transformasi digital, SPBE, interoperabilitas, layanan digital",
+        "(28) L1: Laporan pelaksanaan integrasi aplikasi — uraian, arsitektur integrasi, API/ESB/SSO yang dipakai, daftar aplikasi terintegrasi",
+        "(28) L2: Dokumen pemetaan integrasi selaras rencana aksi Pemdi; matriks aplikasi sumber–target–metode integrasi–status; laporan + matriks pemantauan integrasi pada SEBAGIAN layanan + screenshot API gateway/log",
+        "(28) L3: Laporan + matriks pemantauan integrasi pada SELURUH layanan; katalog API; bukti SSO/data sharing lintas aplikasi"
+      ],
       "rekomendasi": []
     },
     {

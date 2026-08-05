@@ -84,6 +84,39 @@ function groupBuktiByDokumen(indId, buktis) {
   });
 }
 
+// ── Dokumen kunci yang dicakup indikator tapi BELUM punya bukti existing ──
+function getDokumenTanpaBukti(indId) {
+  const dkNos = groupBuktiByDokumen(indId, []);
+  // Dokumen kunci yang mencakup indikator ini
+  const semuaDk = dokumenKunci.dokumen.filter(d => d.indikator.includes(indId)).map(d => d.no);
+  const punyaBukti = new Set();
+  // kumpulkan dokumen yang sudah punya bukti
+  const indMapping = buktiMapping.indikator.find(i => i.indikator_id === indId);
+  if (indMapping) {
+    for (const b of indMapping.bukti) {
+      for (const no of b.dokumen_kunci) punyaBukti.add(no);
+    }
+  }
+  return semuaDk.filter(no => !punyaBukti.has(no));
+}
+
+// ── Deteksi duplikasi nama bukti (V1/V2 = dokumen sama di 2 level) ──
+function deteksiDuplikat(buktis) {
+  const seen = new Map(); // nama(55) → [ids]
+  for (const b of buktis) {
+    const key = (b.nama || '').slice(0, 55);
+    if (!seen.has(key)) seen.set(key, []);
+    seen.get(key).push(b.id);
+  }
+  const dups = new Map(); // id → true (kalau nama-nya muncul >1x)
+  for (const [key, ids] of seen) {
+    if (ids.length > 1) {
+      for (const id of ids) dups.set(id, true);
+    }
+  }
+  return dups;
+}
+
 export default function ModulIndikatorPage() {
   const router = useRouter();
   const [cari, setCari] = useState('');
@@ -187,13 +220,16 @@ export default function ModulIndikatorPage() {
               {merged.filter(m => m.status.lengkap === m.status.count && m.status.count > 0).length}/{merged.length} indikator lengkap
             </span>
             <span className="stat-badge">
-              {merged.reduce((s, m) => s + m.status.count, 0)} total bukti dukung
+              {merged.reduce((s, m) => s + m.status.count, 0)}/{pemdiData.target_item_bukti || merged.reduce((s, m) => s + m.status.count, 0)} bukti dukung
             </span>
             <span className="stat-badge" style={{ background: 'var(--warn-bg)', color: 'var(--warn)' }}>
               {merged.reduce((s, m) => s + m.status.belum, 0)} perlu dikerjakan
             </span>
             <span className="stat-badge" style={{ background: 'var(--ok-bg)', color: 'var(--ok)' }}>
               {merged.reduce((s, m) => s + m.status.lengkap, 0)} selesai
+            </span>
+            <span className="stat-badge" style={{ background: 'var(--surface-2)', color: 'var(--muted)' }}>
+              Gap: {(pemdiData.target_item_bukti || 0) - merged.reduce((s, m) => s + m.status.count, 0)} item
             </span>
           </div>
         </div>
@@ -461,6 +497,7 @@ export default function ModulIndikatorPage() {
                                 const isPdf = bd._ext === 'pdf' && !!url;
                                 const canPreview = isPdf;
                                 const dkNos = getDokumenForBukti(modul.ind.id, bd.id);
+                                const isDup = deteksiDuplikat(modul.ind.bukti_dukung).has(bd.id);
                                 return (
                                   <tr key={bd.id} style={{ borderBottom: '1px solid var(--border)' }}>
                                     <td style={tdStyle}>
@@ -473,6 +510,15 @@ export default function ModulIndikatorPage() {
                                     </td>
                                     <td style={{ ...tdStyle, fontWeight: 500 }}>
                                       {bd.nama}
+                                      {isDup && (
+                                        <span style={{
+                                          display: 'inline-block', marginLeft: '0.4rem', padding: '0.1rem 0.4rem',
+                                          borderRadius: '4px', background: 'var(--gold-light)', color: 'var(--gold)',
+                                          fontSize: '0.62rem', fontWeight: 600, verticalAlign: 'middle',
+                                        }} title="Dokumen yang sama dipakai sebagai bukti di lebih dari satu level — wajar sesuai kriteria level">
+                                          🔁 multi-level
+                                        </span>
+                                      )}
                                       {bd.detail && <div style={{ fontSize: '0.7rem', color: 'var(--muted)', marginTop: '0.15rem' }}>{bd.detail}</div>}
                                     </td>
                                     <td style={tdStyle}>
@@ -615,6 +661,44 @@ export default function ModulIndikatorPage() {
                                       })}
                                     </tbody>
                                   </table>
+                                </div>
+                              );
+                            })}
+
+                            {/* ═══ Placeholder: dokumen kunci tanpa bukti existing ═══ */}
+                            {getDokumenTanpaBukti(modul.ind.id).map(no => {
+                              const info = getDokumenInfo(no);
+                              return (
+                                <div key={`ph-${no}`} style={{
+                                  border: '1px dashed var(--warn)', borderRadius: '8px', overflow: 'hidden',
+                                  background: 'var(--warn-bg)10',
+                                }}>
+                                  <div style={{
+                                    display: 'flex', alignItems: 'center', gap: '0.5rem',
+                                    padding: '0.5rem 0.75rem', background: 'var(--warn-bg)30',
+                                  }}>
+                                    <button
+                                      onClick={() => setBukaDokumen(no)}
+                                      style={{
+                                        border: 'none', background: 'var(--warn)', color: '#fff',
+                                        borderRadius: '4px', padding: '0.15rem 0.45rem',
+                                        fontSize: '0.7rem', fontWeight: 700, cursor: 'pointer',
+                                      }}
+                                    >#{no}</button>
+                                    <span style={{ flex: 1, fontSize: '0.75rem', fontWeight: 600, color: 'var(--text)' }}>
+                                      {info?.nama || `Dokumen #${no}`}
+                                    </span>
+                                    <span style={{
+                                      fontSize: '0.65rem', padding: '0.15rem 0.5rem', borderRadius: '10px',
+                                      background: 'var(--warn-bg)', color: 'var(--warn)', fontWeight: 700, whiteSpace: 'nowrap',
+                                    }}>
+                                      🆕 Perlu Disusun
+                                    </span>
+                                  </div>
+                                  <div style={{ padding: '0.5rem 0.75rem', fontSize: '0.7rem', color: 'var(--muted)' }}>
+                                    Belum ada bukti dukung existing untuk dokumen kunci ini. Lihat substansi wajib di
+                                    section <strong>Peta Dokumen Kunci</strong> di bawah untuk panduan penyusunan.
+                                  </div>
                                 </div>
                               );
                             })}

@@ -176,3 +176,16 @@ Commit terbaru ada 3, **semua di branch `fix/full-audit-award-redesign`** (belum
 | 30 Jul | `docs/modul-indikator/` | 501 MB | ✅ Dihapus | 1.535 raw PNG exports PPTX — konten sudah diekstrak ke `data/modul-indikator.json`. Sudah di `.gitignore` sejak awal. |
 | 30 Jul | `pages/pemdi.js` — bukti dukung section | 715 baris | ✅ Dihapus | Semua 57 bukti dukung direset ke "belum" karena belum sesuai kriteria level. Lihat commit `ca17535`. |
 | — | `public/bukti-dukung/` (31 MB, 42 file) | ⏳ **Ditunda** | — | Masih disimpan untuk dipakai nanti saat semua bukti dukung sudah diverifikasi sesuai kriteria level masing-masing indikator. Jangan hapus sampai proses verifikasi selesai. |
+
+## 🧹 Update Data — 5 Agu 2026 (Penyelarasan Bukti Dukung)
+
+| Item | Perubahan |
+|------|-----------|
+| `data/pemdi.json` | `total_item_bukti` 57 → **114** (realita) + `target_item_bukti` 178 (target Excel) + `indeks_terkini` (dihitung dari bukti lengkap). Nilai indikator kini dihitung dari bukti: level tertinggi dengan bukti lengkap (bukan statis 1.0). |
+| `data/bukti-dokumen-mapping.json` | **114/114 bukti** terpetakan ke 31 dokumen kunci (keyword + filter indikator + koreksi manual). |
+| `data/modul-indikator.json` | `data_dukung_modul` 46 → 85 item — 8 modul kosong diisi dari substansi dokumen kunci. |
+| `pages/modul-indikator.js` | Kolom "Dokumen Kunci" + toggle view Per Level/Per Dokumen Kunci + placeholder "🆕 Perlu Disusun" untuk dokumen kunci tanpa bukti + badge "🔁 multi-level" untuk duplikasi V1/V2 + stat bar 114/178 + Gap. |
+| `pages/requirement.js` + `api/requirement.js` | Kolom "Dok. Kunci" di semua kategori (A-L) — 47 item direferensikan ke dokumen kunci. |
+| `pages/pemdi.js` | Label "Indeks Pemdi (dari Bukti Dukung)" — dihitung dari 114 bukti. |
+
+> ⚠️ **Catatan:** 5 dokumen kunci belum punya bukti existing: **#2 (Peta Rencana), #6 (SK Asesor), #11 (Komunitas Belajar), #12 (Microlearning), #14 (Sertifikasi Keahlian)** — tampil sebagai placeholder "Perlu Disusun" di modul-indikator.

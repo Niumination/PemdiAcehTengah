@@ -65,9 +65,10 @@ export default function PemdiPage() {
             <span className="badge badge-yellow">Level Kematangan Cukup</span>
           </div>
           <div className="glow-card" style={{ padding: '20px', textAlign: 'center', borderColor: 'var(--primary)' }}>
-            <div style={{ fontSize: '0.78rem', color: 'var(--primary)', textTransform: 'uppercase', fontWeight: 800, letterSpacing: '0.05em' }}>Estimasi Indeks Pemdi Saat Ini</div>
+            <div style={{ fontSize: '0.78rem', color: 'var(--primary)', textTransform: 'uppercase', fontWeight: 800, letterSpacing: '0.05em' }}>Indeks Pemdi (dari Bukti Dukung)</div>
             <div style={{ fontSize: '2.2rem', fontWeight: 800, color: 'var(--primary)', fontFamily: 'var(--font-mono)', margin: '6px 0' }}>{formatDesimal(indeks)}</div>
             <span className={`badge ${predikat.bg}`} style={{ color: predikat.warna }}>Predikat {predikat.label}</span>
+            <div style={{ fontSize: '0.68rem', color: 'var(--muted)', marginTop: '6px' }}>Dihitung dari {pemdiData.total_item_bukti} bukti dukung · {pemdiData.total_item_manual} manual</div>
           </div>
           <div className="glow-card" style={{ padding: '20px', textAlign: 'center' }}>
             <div style={{ fontSize: '0.78rem', color: 'var(--muted)', textTransform: 'uppercase', fontWeight: 700, letterSpacing: '0.05em' }}>Target Evaluasi 2026</div>
