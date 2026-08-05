@@ -1160,8 +1160,8 @@ input:focus, select:focus, textarea:focus {
 /* ============ 10. SCROLL TOP BUTTON ============ */
 .scroll-top {
   position: fixed;
-  right: 22px;
-  bottom: 22px;
+  right: 32px; /* sejajar terpusat dengan rating-widget (52px di right 28) */
+  bottom: 90px; /* 28 + 52 + gap 10 → di atas tombol rating */
   width: 44px;
   height: 44px;
   border-radius: 50%;
@@ -1179,7 +1179,7 @@ input:focus, select:focus, textarea:focus {
   visibility: hidden;
   transform: translateY(12px);
   transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
-  z-index: 999;
+  z-index: 9999;
   padding: 0;
 }
 .scroll-top:hover {
@@ -1193,7 +1193,4 @@ input:focus, select:focus, textarea:focus {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
-}
-@media (max-width: 560px) {
-  .scroll-top { right: 14px; bottom: 14px; width: 40px; height: 40px; }
 }

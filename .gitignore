@@ -45,3 +45,8 @@ yarn-error.log*
 
 # Bukti dukung PDF/XLSX — 302MB, served from original URLs as fallback
 /public/bukti/
+
+# Tool artifacts (agent skills, locks, backup data)
+.claude/
+skills-lock.json
+data/*.bak-*

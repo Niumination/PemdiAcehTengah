@@ -28,16 +28,17 @@ export default function SkmPrompt() {
       <button className="skm-toast-close" onClick={() => setShow(false)} aria-label="Tutup">✕</button>
       <style jsx>{`
         .skm-toast {
-          position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 1000;
+          position: fixed; top: calc(var(--gov-strip-h, 36px) + 70px); right: 1.5rem;
+          bottom: auto; z-index: 1000;
           display: flex; align-items: center; gap: 0.75rem;
           padding: 0.75rem 1rem 0.75rem 1.25rem;
           background: var(--primary); color: white;
           border-radius: var(--r, 16px); box-shadow: var(--shadow-lg, 0 10px 15px -3px rgba(0,0,0,0.1));
           font-size: 0.875rem; max-width: 420px;
-          animation: skm-slide-up 0.35s ease;
+          animation: skm-slide-down 0.35s ease;
         }
-        @keyframes skm-slide-up {
-          from { opacity: 0; transform: translateY(1rem); }
+        @keyframes skm-slide-down {
+          from { opacity: 0; transform: translateY(-1rem); }
           to   { opacity: 1; transform: translateY(0); }
         }
         .skm-toast strong { font-weight: 600; }
@@ -54,7 +55,7 @@ export default function SkmPrompt() {
         }
         .skm-toast-close:hover { color: white; }
         @media (max-width: 640px) {
-          .skm-toast { left: 1rem; right: 1rem; bottom: 1rem; max-width: none; flex-wrap: wrap; }
+          .skm-toast { top: calc(var(--gov-strip-h, 36px) + 64px); left: 1rem; right: 1rem; max-width: none; flex-wrap: wrap; }
         }
       `}</style>
     </div>

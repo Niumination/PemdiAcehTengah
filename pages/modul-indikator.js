@@ -141,6 +141,113 @@ function hitungBuktiBaru() {
   return { total: all.length, proses, belum, dokumen: dkSet.size };
 }
 
+// ── Format kriteria level (markdown-ish → HTML aman, tanpa dependency) ──
+// Kriteria di data/modul-indikator.json berisi artefak markdown mentah
+// (## / ### / ######, <br>, bullet • / - ● / - 1.). Converter ini:
+//   <br>      → baris baru
+//   ## Label  → div.kriteria-h (label section)
+//   • / - ●   → <ul><li>
+//   - 1. / 1. → <ol><li>
+//   inline "A - 1. x - 2. y" → label + <ol>
+// Semua input di-escape HTML dulu → aman dari XSS.
+function escapeHtml(s) {
+  return String(s)
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+// Pecah "label - 1. a - 2. b" → { label: 'label', items: ['a', 'b'] }
+function splitInlineItems(str) {
+  const parts = str.split(/\s+-\s*(\d+)[.)]\s+/);
+  if (parts.length < 3) return { label: str.trim(), items: [] };
+  const items = [];
+  for (let i = 2; i < parts.length; i += 2) items.push(parts[i].trim());
+  return { label: parts[0].trim(), items };
+}
+
+function formatKriteria(text) {
+  if (!text) return '';
+  // <br> → baris baru; sisa "<br" tanpa ">" (artefak data terpotong di 500 char) juga dibersihkan
+  let t = String(text).replace(/<br\s*\/?>/gi, '\n').replace(/<br/gi, '\n');
+  // Promosikan marker heading (##..######) yang nyangkut di tengah baris
+  // (artefak ekstraksi) menjadi awal baris → dikenali sebagai section label.
+  // Butuh karakter sebelumnya non-spasi & non-hash supaya "###" di awal
+  // string tidak terpecah.
+  t = t.replace(/([^\s#])(\s*)(#{2,6})(\s+)/g, '$1\n$3 ');
+  t = escapeHtml(t);
+  const out = [];
+  let listType = null;
+  const closeList = () => { if (listType) { out.push(`</${listType}>`); listType = null; } };
+
+  const emit = (line) => {
+    const s = line.trim();
+    if (!s) { closeList(); return; }
+
+    // Heading: ## / ### / ... / ######
+    const hm = s.match(/^(#{1,6})\s+(.*)$/);
+    if (hm) {
+      closeList();
+      const seq = splitInlineItems(hm[2].trim());
+      if (seq.label.length > 60) {
+        // Heading panjang (artefak ekstraksi) → paragraf biasa, marker # dihilangkan
+        out.push(`<p>${seq.label}</p>`);
+      } else {
+        out.push(`<div class="kriteria-h">${seq.label}</div>`);
+      }
+      if (seq.items.length) {
+        out.push('<ol>');
+        seq.items.forEach(it => out.push(`<li>${it}</li>`));
+        out.push('</ol>');
+      }
+      return;
+    }
+
+    // Bullet: • / ● / ○ / "- ● ..."
+    const bm = s.match(/^(?:[•●○]|-\s*[●○•])\s*(.+)$/);
+    if (bm) {
+      if (listType !== 'ul') { closeList(); out.push('<ul>'); listType = 'ul'; }
+      out.push(`<li>${bm[1]}</li>`);
+      return;
+    }
+
+    // Ordered: "1. ..." atau "- 1. ..."
+    const om = s.match(/^(?:-\s*)?(\d+)[.)]\s+(.+)$/);
+    if (om) {
+      if (listType !== 'ol') { closeList(); out.push('<ol>'); listType = 'ol'; }
+      out.push(`<li>${om[2]}</li>`);
+      return;
+    }
+
+    // Dash bullet: "- teks"
+    const bm2 = s.match(/^-\s+(.+)$/);
+    if (bm2) {
+      if (listType !== 'ul') { closeList(); out.push('<ul>'); listType = 'ul'; }
+      out.push(`<li>${bm2[1]}</li>`);
+      return;
+    }
+
+    // Urutan inline: "teks - 1. a - 2. b"
+    const seq = splitInlineItems(s);
+    if (seq.items.length >= 2 && seq.label) {
+      closeList();
+      out.push(`<p>${seq.label}</p>`);
+      out.push('<ol>');
+      seq.items.forEach(it => out.push(`<li>${it}</li>`));
+      out.push('</ol>');
+      return;
+    }
+
+    closeList();
+    out.push(`<p>${s}</p>`);
+  };
+
+  t.split('\n').forEach(emit);
+  closeList();
+  return out.join('\n');
+}
+
 export default function ModulIndikatorPage() {
   const router = useRouter();
   const [cari, setCari] = useState('');
@@ -393,32 +500,38 @@ export default function ModulIndikatorPage() {
                           <h4 style={{ fontSize: '0.85rem', fontWeight: 700, marginBottom: '0.5rem', color: 'var(--text)' }}>
                             📊 Kriteria per Level
                           </h4>
-                          <div style={{
-                            display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-                            gap: '0.5rem',
-                          }}>
-                            {modul.level_kriteria.map(lk => (
-                              <div key={lk.level} style={{
-                                padding: '0.6rem 0.75rem', borderRadius: '8px',
-                                background: `${LEVEL_WARNA[lk.level] || '#6b7280'}08`,
-                                border: `1px solid ${LEVEL_WARNA[lk.level] || '#6b7280'}20`,
-                              }}>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.25rem' }}>
-                                  <span style={{
-                                    width: '18px', height: '18px', borderRadius: '50%',
-                                    background: LEVEL_WARNA[lk.level] || '#6b7280',
-                                    color: '#fff', fontSize: '0.6rem', fontWeight: 700,
-                                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                  }}>{lk.level}</span>
-                                  <span style={{ fontSize: '0.75rem', fontWeight: 600 }}>
-                                    {LEVEL_LABEL[lk.level] || `Level ${lk.level}`}
-                                  </span>
-                                </div>
-                                <p style={{ fontSize: '0.75rem', color: 'var(--muted)', lineHeight: 1.5, margin: 0 }}>
-                                  {lk.kriteria}
-                                </p>
-                              </div>
-                            ))}
+                          <div style={{ overflowX: 'auto', border: '1px solid var(--border)', borderRadius: '8px' }}>
+                            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.78rem' }}>
+                              <thead>
+                                <tr style={{ background: 'var(--surface-2)' }}>
+                                  <th style={{ ...thStyle, width: '180px' }}>Level</th>
+                                  <th style={thStyle}>Kriteria</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {modul.level_kriteria.map(lk => (
+                                  <tr key={lk.level} style={{ borderBottom: '1px solid var(--border)', verticalAlign: 'top' }}>
+                                    <td style={{ ...tdStyle, whiteSpace: 'nowrap' }}>
+                                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                        <span style={{
+                                          display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                                          minWidth: '24px', height: '24px', borderRadius: '6px',
+                                          background: `${LEVEL_WARNA[lk.level] || '#6b7280'}15`,
+                                          color: LEVEL_WARNA[lk.level] || '#6b7280',
+                                          fontWeight: 700, fontSize: '0.72rem', padding: '0 0.35rem',
+                                        }}>L{lk.level}</span>
+                                        <span style={{ fontSize: '0.74rem', fontWeight: 600, color: 'var(--text)' }}>
+                                          {LEVEL_LABEL[lk.level] || `Level ${lk.level}`}
+                                        </span>
+                                      </div>
+                                    </td>
+                                    <td style={{ ...tdStyle, fontSize: '0.78rem', lineHeight: 1.6, color: 'var(--text)' }}>
+                                      <div className="kriteria-render" dangerouslySetInnerHTML={{ __html: formatKriteria(lk.kriteria) }} />
+                                    </td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
                           </div>
                         </div>
                       )}
@@ -1427,6 +1540,18 @@ export default function ModulIndikatorPage() {
           font-size: 0.78rem;
           font-weight: 600;
         }
+        .kriteria-render p { margin: 0.2rem 0; }
+        .kriteria-render ul, .kriteria-render ol { margin: 0.2rem 0 0.4rem; padding-left: 1.3rem; }
+        .kriteria-render li { margin-bottom: 0.15rem; line-height: 1.55; }
+        .kriteria-h {
+          font-weight: 700;
+          font-size: 0.72rem;
+          color: var(--primary);
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          margin: 0.45rem 0 0.2rem;
+        }
+        .kriteria-h:first-child { margin-top: 0; }
       `}</style>
     </>
   );
