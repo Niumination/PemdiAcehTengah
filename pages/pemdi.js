@@ -483,7 +483,7 @@ export default function PemdiPage() {
         title={preview ? `👁️ Preview Bukti: ${preview.id}` : ''}
         open={!!preview}
         onClose={() => setPreview(null)}
-        maxWidth={820}
+        maxWidth={1000}
       >
         {preview && (
           <div>
@@ -507,7 +507,7 @@ export default function PemdiPage() {
             </div>
             <div style={{ border: '1px solid var(--line)', borderRadius: '10px', overflow: 'hidden', background: '#f4f6f9', minHeight: 300 }}>
               {preview.url.match(/\.(pdf|png|jpe?g|gif|webp)(\?|$)/i) ? (
-                <iframe src={preview.url} title={`Preview ${preview.id}`} style={{ width: '100%', height: '70vh', border: 'none' }} />
+                <iframe src={preview.url} title={`Preview ${preview.id}`} style={{ width: '100%', height: '78vh', border: 'none' }} />
               ) : (
                 <div style={{ padding: '20px', fontSize: '0.8rem', color: 'var(--muted)' }}>
                   Format tidak bisa di-preview langsung. Buka file sumber:

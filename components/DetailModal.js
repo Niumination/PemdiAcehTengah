@@ -61,7 +61,7 @@ export default function DetailModal({ title, open, onClose, children, maxWidth =
       <div
         ref={panelRef}
         className={`sp-panel ${open ? 'open' : ''}`}
-        style={{ maxWidth }}
+        style={{ width: maxWidth, maxWidth: '90vw' }}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
