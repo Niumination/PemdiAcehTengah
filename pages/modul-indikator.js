@@ -596,6 +596,143 @@ export default function ModulIndikatorPage() {
         </div>
       </section>
 
+      {/* ════════ ANALISIS KESESUAIAN RPJMD 2025-2029 ════════ */}
+      <section style={{ marginTop: '3rem' }}>
+        <div className="container">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
+            <span style={{ fontSize: '1.5rem' }}>📑</span>
+            <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text)', margin: 0 }}>
+              Analisis Kesesuaian RPJMD 2025-2029
+            </h2>
+          </div>
+          <p style={{ color: 'var(--muted)', fontSize: '0.85rem', maxWidth: 760, marginBottom: '1rem' }}>
+            Hasil ekstraksi dan analisis <strong>RPJMD Kabupaten Aceh Tengah 2025-2029</strong> (Qanun Tahun 2025,
+            409 halaman) terhadap substansi yang dibutuhkan pada Peta Dokumen Kunci — khususnya
+            <strong> Dokumen #1 (RPJMD/RKPD/Renstra/Renja yang Memuat Substansi RAN Pemdi)</strong>.
+            Berikut poin-poin yang <strong style={{ color: 'var(--ok)' }}>sudah termuat</strong>.
+          </p>
+
+          {/* Ringkasan stat */}
+          <div className="stat-row" style={{ flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.25rem' }}>
+            <span className="stat-badge" style={{ background: 'var(--ok-bg)', color: 'var(--ok)' }}>
+              6/9 substansi termuat
+            </span>
+            <span className="stat-badge" style={{ background: 'var(--warn-bg)', color: 'var(--warn)' }}>
+              3 perlu penguatan
+            </span>
+            <span className="stat-badge" style={{ background: 'var(--surface-2)', color: 'var(--muted)' }}>
+              Indeks SPBE target: 1,5 → 1,92 (2029)
+            </span>
+          </div>
+
+          {/* Tabel kesesuaian substansi */}
+          <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.75rem' }}>
+              <thead>
+                <tr style={{ background: 'var(--surface-2)' }}>
+                  <th style={{ padding: '0.5rem 0.75rem', textAlign: 'left', color: 'var(--text)', borderBottom: '1px solid var(--border)' }}>Substansi Wajib (Dokumen #1)</th>
+                  <th style={{ padding: '0.5rem 0.75rem', textAlign: 'center', color: 'var(--text)', borderBottom: '1px solid var(--border)' }}>Status</th>
+                  <th style={{ padding: '0.5rem 0.75rem', textAlign: 'left', color: 'var(--text)', borderBottom: '1px solid var(--border)' }}>Lokasi di RPJMD</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Bab/uraian khusus Pemerintah Digital (SPBE/Pemdi) — visi, misi, arah kebijakan, strategi</td>
+                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--ok)' }}>✅ Termuat</span></td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Bab 2.3.4 Transformasi Digital (II-116); Sasaran "Meningkatnya Transformasi Digital dalam Tata Kelola" (III-28)</td>
+                </tr>
+                <tr>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Program & kegiatan Pemdi beserta indikator kinerja + target</td>
+                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--ok)' }}>✅ Termuat</span></td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Program Pengelolaan Aplikasi Informatika, Indeks SPBE 1,5→1,92, IPTIK 5,7→7,0</td>
+                </tr>
+                <tr>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Rencana pengembangan aplikasi & pemaduan layanan ke portal</td>
+                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--ok)' }}>✅ Termuat</span></td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Koordinasi pemanfaatan Portal Pelayanan Pemerintah Daerah terintegrasi (III-40); portal layanan terpadu + aplikasi mobile + sistem data terpadu</td>
+                </tr>
+                <tr>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Kebijakan anggaran Pemdi (arah alokasi anggaran lintas PD)</td>
+                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--ok)' }}>✅ Termuat</span></td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Proyeksi belanja Kominfo (Rp 212-247 jt/tahun) & Persandian (Rp 27-77 jt/tahun) 2025-2029</td>
+                </tr>
+                <tr>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Interoperabilitas data & integrasi layanan (Sistem Penghubung Layanan)</td>
+                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--ok)' }}>✅ Termuat</span></td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Sub kegiatan "Sistem Penghubung Layanan Pemerintah Daerah dalam rangka interoperabilitas data dan integrasi layanan"</td>
+                </tr>
+                <tr>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Rencana kolaborasi antar PD & instansi (Pemdi lintas sektor)</td>
+                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--ok)' }}>✅ Termuat (parsial)</span></td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Forum Satu Data, koordinasi e-walidata SIPD, kolaborasi dengan PT & komunitas digital (II-116)</td>
+                </tr>
+                <tr>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Matriks pemetaan (full mapping) substansi RAN Pemdi → bab/program</td>
+                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--warn)' }}>⚠️ Perlu penguatan</span></td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Tersirat integrasi IPD ke kinerja seluruh OPD, belum ada matriks eksplisit</td>
+                </tr>
+                <tr>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Manajemen layanan digital (risiko, perubahan, pengetahuan, BCP, relasi pengguna)</td>
+                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--warn)' }}>⚠️ Perlu penguatan</span></td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Belum eksplisit — perlu SOP/IK manajemen layanan digital (Dokumen #8)</td>
+                </tr>
+                <tr>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Keterkaitan eksplisit dengan Arsitektur Pemdi (SIAP Digital) & RAN Pemdi</td>
+                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--warn)' }}>⚠️ Perlu penguatan</span></td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Mengadopsi kerangka IPD & EGA, belum referensi silang ke SIAP Digital</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          {/* Screenshot bukti */}
+          <div style={{ marginBottom: '1.5rem' }}>
+            <p style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text)', marginBottom: '0.75rem' }}>
+              📸 Bukti Visual dari RPJMD:
+            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1rem' }}>
+              {[
+                { src: '/docs/rpjmd/bab-transformasi-digital.png', title: 'Bab 2.3.4 Transformasi Digital (II-116)', desc: 'Pengarusutamaan transformasi digital: super platform, percepatan digitalisasi, talenta digital' },
+                { src: '/docs/rpjmd/tabel-indeks-spbe.png', title: 'Capaian Indeks SPBE (II-150)', desc: 'Tabel kinerja Kominfo: Indeks SPBE 1,54 (2020) → 2,18 (2024), target 2029: 1,92' },
+                { src: '/docs/rpjmd/arah-kebijakan-digital.png', title: 'Arah Kebijakan Transformasi Digital (III-28)', desc: 'Misi 3: percepatan transformasi digital, perluasan infrastruktur, SDM digital, digitalisasi layanan prioritas' },
+                { src: '/docs/rpjmd/program-portal.png', title: 'Program Portal Terpadu (III-40)', desc: 'Koordinasi pemanfaatan Portal Pelayanan Pemerintah Daerah terintegrasi + interoperabilitas data' },
+              ].map((img, i) => (
+                <div key={i} style={{
+                  border: '1px solid var(--border)', borderRadius: '10px', overflow: 'hidden',
+                  background: 'var(--card-bg)',
+                }}>
+                  <button
+                    onClick={() => setPreviewDoc({ url: img.src, title: img.title })}
+                    style={{ padding: 0, border: 'none', background: 'transparent', cursor: 'pointer', width: '100%', display: 'block' }}
+                  >
+                    <img src={img.src} alt={img.title} style={{ width: '100%', height: 'auto', display: 'block' }} />
+                  </button>
+                  <div style={{ padding: '0.6rem 0.75rem' }}>
+                    <p style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text)', margin: 0 }}>{img.title}</p>
+                    <p style={{ fontSize: '0.68rem', color: 'var(--muted)', margin: '0.25rem 0 0' }}>{img.desc}</p>
+                    <p style={{ fontSize: '0.6rem', color: 'var(--ok)', margin: '0.25rem 0 0' }}>👆 Klik untuk perbesar</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Kesimpulan */}
+          <div style={{
+            background: 'var(--ok-bg)', border: '1px solid var(--ok)', borderRadius: '10px',
+            padding: '1rem', fontSize: '0.78rem', color: 'var(--text)', lineHeight: 1.6,
+          }}>
+            <strong>💡 Kesimpulan:</strong> RPJMD 2025-2029 sudah memuat <strong>6 dari 9 substansi</strong> yang
+            dibutuhkan Dokumen #1 (bab transformasi digital, program & indikator SPBE, portal terpadu, anggaran,
+            interoperabilitas, kolaborasi). Perlu penguatan: <strong>matriks mapping RAN Pemdi</strong>,
+            <strong> manajemen layanan digital</strong> (SOP/IK — Dokumen #8), dan
+            <strong> referensi eksplisit ke Arsitektur SIAP Digital</strong>. Ini bisa menjadi bahan verifikasi
+            tingkat kematangan <strong>I1 Level 1-2</strong> (kebijakan & rencana aksi Pemdi termuat dalam dokumen
+            perencanaan resmi/Qanun).
+          </div>
+        </div>
+      </section>
+
       {/* ════════ PREVIEW MODAL ════════ */}
       {previewDoc && (
         <div onClick={() => setPreviewDoc(null)} style={{
