@@ -733,6 +733,141 @@ export default function ModulIndikatorPage() {
         </div>
       </section>
 
+      {/* ════════ RPJMD UNTUK INDIKATOR LAIN ════════ */}
+      <section style={{ marginTop: '3rem' }}>
+        <div className="container">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
+            <span style={{ fontSize: '1.5rem' }}>🎯</span>
+            <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text)', margin: 0 }}>
+              RPJMD untuk Indikator Lainnya
+            </h2>
+          </div>
+          <p style={{ color: 'var(--muted)', fontSize: '0.85rem', maxWidth: 760, marginBottom: '1rem' }}>
+            Selain Dokumen #1, RPJMD 2025-2029 juga memuat substansi yang dibutuhkan untuk
+            <strong> 7 indikator lain</strong> (I3, I5, I7, I10, I11, I12, I14, I15, I17, I20) —
+            terkait Dokumen #9, #18, #20, #22, #23-24, #26, #27, #29, #31 pada Peta Dokumen Kunci.
+          </p>
+
+          {/* Stat mini */}
+          <div className="stat-row" style={{ flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.25rem' }}>
+            <span className="stat-badge" style={{ background: 'var(--ok-bg)', color: 'var(--ok)' }}>
+              10 indikator lain terdukung
+            </span>
+            <span className="stat-badge" style={{ background: 'var(--warn-bg)', color: 'var(--warn)' }}>
+              7 dokumen kunci terkait
+            </span>
+          </div>
+
+          {/* Tabel indikator lain */}
+          <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.75rem' }}>
+              <thead>
+                <tr style={{ background: 'var(--surface-2)' }}>
+                  <th style={{ padding: '0.5rem 0.75rem', textAlign: 'left', color: 'var(--text)', borderBottom: '1px solid var(--border)' }}>Indikator</th>
+                  <th style={{ padding: '0.5rem 0.75rem', textAlign: 'left', color: 'var(--text)', borderBottom: '1px solid var(--border)' }}>Substansi RPJMD yang Termuat</th>
+                  <th style={{ padding: '0.5rem 0.75rem', textAlign: 'left', color: 'var(--text)', borderBottom: '1px solid var(--border)' }}>Dokumen Kunci Terkait</th>
+                  <th style={{ padding: '0.5rem 0.75rem', textAlign: 'left', color: 'var(--text)', borderBottom: '1px solid var(--border)' }}>Lokasi di RPJMD</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>I3</strong> — SDM Digital ASN</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Peningkatan kapasitas SDM digital & literasi digital; produksi talenta digital</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>#9 (Peta Kompetensi), #10 (Diklat)</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Arah Kebijakan Misi 3 (III-28)</td>
+                </tr>
+                <tr>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>I5</strong> — Tata Kelola Data (SDI)</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Program unggulan "Aceh Tengah Satu Data"; Forum Satu Data & e-walidata SIPD</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>#18 (Bukti eksternal SDI)</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Program Unggulan #1 (III-38)</td>
+                </tr>
+                <tr>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>I7</strong> — Pembangunan Statistik (EPSS)</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Pemenuhan Prinsip Satu Data Indonesia; Program Statistik Sektoral; Persentase data statistik sektoral 80→90%</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>#18 (Bukti eksternal EPSS)</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Program Unggulan #1 + Bidang Statistik</td>
+                </tr>
+                <tr>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>I10</strong> — Keamanan Siber (IKASANDI)</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Menguatnya keamanan siber & sandi; penguatan keamanan siber untuk melindungi data & informasi</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>#20 (IKASANDI siber)</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Bidang Persandian (III-90)</td>
+                </tr>
+                <tr>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>I11</strong> — Kriptografi</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Program penyelenggaraan persandian untuk pengamanan informasi; layanan keamanan informasi & persandian</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>#22 (Kriptografi)</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Bidang Persandian (III-90)</td>
+                </tr>
+                <tr>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>I12</strong> — Penanganan Insiden</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Penguatan keamanan siber (fondasi penanganan insiden); kebijakan tata kelola keamanan informasi</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>#23-24 (CSIRT/insiden)</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Bidang Persandian (III-90)</td>
+                </tr>
+                <tr>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>I14</strong> — Infrastruktur Digital</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Pembangunan infrastruktur e-government (portal terpadu, aplikasi mobile, data terpadu); penyediaan akses internet; broadband</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>#26 (Infrastruktur)</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Rencana Aksi (III-40), Akses Internet (III-89)</td>
+                </tr>
+                <tr>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>I15</strong> — Proses Bisnis</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Peningkatan ketatalaksanaan (business process); identifikasi "Belum disusun Peta Proses Bisnis OPD" sebagai akar masalah</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>#27 (BPMN)</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Arah Kebijakan Misi 3 + Analisis isu</td>
+                </tr>
+                <tr>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>I17</strong> — Portal Layanan</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Penguatan pelayanan publik digital via Command Center & sistem e-government</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>#29 (Portal)</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Analisis Tata Kelola (II-211)</td>
+                </tr>
+                <tr>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>I20</strong> — Kepuasan Pengguna</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Indeks Survey Kepuasan Masyarakat (%) sebagai indikator kinerja target (mis. Dinas Pendidikan 82,13→88,40)</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>#31 (SKM)</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Indikator Kinerja OPD (IV-35)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          {/* Screenshot bukti */}
+          <div>
+            <p style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text)', marginBottom: '0.75rem' }}>
+              📸 Bukti Visual dari RPJMD:
+            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1rem' }}>
+              {[
+                { src: '/docs/rpjmd/program-satu-data.png', title: 'Program Unggulan Satu Data (III-38)', desc: 'I5 & I7: "Aceh Tengah Satu Data" + Program Statistik Sektoral, Pemenuhan Prinsip SDI' },
+                { src: '/docs/rpjmd/keamanan-persandian.png', title: 'Bidang Persandian & Keamanan (III-90)', desc: 'I10-I12: Program persandian, keamanan siber, kebijakan tata kelola keamanan informasi' },
+                { src: '/docs/rpjmd/indeks-kepuasan.png', title: 'Indeks Kepuasan Masyarakat (IV-35)', desc: 'I20: Target IKM sebagai indikator kinerja OPD (82,13 → 88,40)' },
+                { src: '/docs/rpjmd/command-center.png', title: 'Command Center & e-Gov (II-211)', desc: 'I17: Penguatan pelayanan publik berbasis digital melalui Command Center' },
+              ].map((img, i) => (
+                <div key={i} style={{
+                  border: '1px solid var(--border)', borderRadius: '10px', overflow: 'hidden',
+                  background: 'var(--card-bg)',
+                }}>
+                  <button
+                    onClick={() => setPreviewDoc({ url: img.src, title: img.title })}
+                    style={{ padding: 0, border: 'none', background: 'transparent', cursor: 'pointer', width: '100%', display: 'block' }}
+                  >
+                    <img src={img.src} alt={img.title} style={{ width: '100%', height: 'auto', display: 'block' }} />
+                  </button>
+                  <div style={{ padding: '0.6rem 0.75rem' }}>
+                    <p style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text)', margin: 0 }}>{img.title}</p>
+                    <p style={{ fontSize: '0.68rem', color: 'var(--muted)', margin: '0.25rem 0 0' }}>{img.desc}</p>
+                    <p style={{ fontSize: '0.6rem', color: 'var(--ok)', margin: '0.25rem 0 0' }}>👆 Klik untuk perbesar</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ════════ PREVIEW MODAL ════════ */}
       {previewDoc && (
         <div onClick={() => setPreviewDoc(null)} style={{
