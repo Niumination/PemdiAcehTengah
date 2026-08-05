@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 // ── Data ──
 import moduls from '@/data/modul-indikator.json';
 import pemdiData from '@/data/pemdi.json';
+import dokumenKunci from '@/data/dokumen-kunci.json';
 
 // ── Helpers ──
 function cariIndikator(id) {
@@ -45,6 +46,7 @@ export default function ModulIndikatorPage() {
   const [buka, setBuka] = useState(null);
   const [tabFilter, setTabFilter] = useState('semua'); // 'semua' | 'perlu' | 'selesai'
   const [previewDoc, setPreviewDoc] = useState(null); // { url, title } | null
+  const [bukaDokumen, setBukaDokumen] = useState(null); // dokumen kunci accordion
 
   // Convert JDIH URL to proxy URL for same-origin iframe
   const toProxyUrl = (url) => {
@@ -465,6 +467,132 @@ export default function ModulIndikatorPage() {
               </div>
             )}
           </div>
+        </div>
+      </section>
+
+      {/* ════════ DOKUMEN KUNCI — detail bukti dukung (tambahan, tidak mengubah modul) ════════ */}
+      <section style={{ marginTop: '3rem' }}>
+        <div className="container">
+          <div style={{
+            display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem',
+          }}>
+            <span style={{ fontSize: '1.5rem' }}>🗂️</span>
+            <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text)', margin: 0 }}>
+              Peta Dokumen Kunci Bukti Dukung
+            </h2>
+          </div>
+          <p style={{ color: 'var(--muted)', fontSize: '0.85rem', maxWidth: 720, marginBottom: '1rem' }}>
+            {dokumenKunci.total_dokumen} dokumen kunci yang harus disiapkan — satu dokumen dapat menginisiasi
+            beberapa indikator sekaligus. Klik untuk melihat substansi/isi wajib di dalamnya.
+          </p>
+
+          {/* Stat mini */}
+          <div className="stat-row" style={{ flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.25rem' }}>
+            <span className="stat-badge" style={{ background: 'var(--surface-2)', color: 'var(--muted)' }}>
+              {dokumenKunci.total_dokumen} dokumen kunci
+            </span>
+            <span className="stat-badge" style={{ background: 'var(--warn-bg)', color: 'var(--warn)' }}>
+              {dokumenKunci.dokumen.filter(d => d.prioritas.toLowerCase().includes('tertinggi')).length} prioritas tertinggi
+            </span>
+            <span className="stat-badge" style={{ background: 'var(--ok-bg)', color: 'var(--ok)' }}>
+              {dokumenKunci.dokumen.reduce((s, d) => s + d.substansi.length, 0)} item substansi wajib
+            </span>
+          </div>
+
+          {/* Daftar dokumen kunci (accordion) */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            {dokumenKunci.dokumen.map((doc) => {
+              const open = bukaDokumen === doc.no;
+              const prioritasWarna = doc.prioritas.toLowerCase().includes('tertinggi')
+                ? 'var(--danger, #e63946)' : doc.prioritas.toLowerCase().includes('tinggi')
+                ? 'var(--warn, #f59e0b)' : 'var(--muted)';
+              return (
+                <div key={doc.no} style={{
+                  border: '1px solid var(--border)', borderRadius: '10px',
+                  background: open ? 'var(--surface-2)' : 'var(--card-bg)',
+                  overflow: 'hidden', transition: 'all 0.2s',
+                }}>
+                  {/* Header */}
+                  <button
+                    onClick={() => setBukaDokumen(open ? null : doc.no)}
+                    style={{
+                      width: '100%', display: 'flex', alignItems: 'center', gap: '0.75rem',
+                      padding: '0.85rem 1rem', border: 'none', background: 'transparent',
+                      cursor: 'pointer', textAlign: 'left', color: 'var(--text)',
+                    }}
+                  >
+                    <span style={{
+                      minWidth: '28px', height: '28px', borderRadius: '8px',
+                      background: 'var(--surface-2)', display: 'flex', alignItems: 'center',
+                      justifyContent: 'center', fontSize: '0.75rem', fontWeight: 700,
+                      color: 'var(--muted)',
+                    }}>{doc.no}</span>
+                    <span style={{ flex: 1, fontWeight: 600, fontSize: '0.85rem' }}>{doc.nama}</span>
+                    <span style={{ fontSize: '0.7rem', color: prioritasWarna, fontWeight: 600, whiteSpace: 'nowrap' }}>
+                      {doc.prioritas}
+                    </span>
+                    <span style={{
+                      fontSize: '0.65rem', color: 'var(--muted)', background: 'var(--surface-2)',
+                      padding: '0.15rem 0.5rem', borderRadius: '12px', whiteSpace: 'nowrap',
+                    }}>
+                      {doc.indikator.length > 0 ? doc.indikator.join(' · ') : 'Lintas indikator'}
+                    </span>
+                    <span style={{ color: 'var(--muted)', transform: open ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}>▾</span>
+                  </button>
+
+                  {/* Isi (accordion body) */}
+                  {open && (
+                    <div style={{ padding: '0.25rem 1rem 1rem 1rem', borderTop: '1px solid var(--border)' }}>
+                      {/* Jenis */}
+                      {doc.jenis && (
+                        <p style={{ fontSize: '0.75rem', color: 'var(--muted)', margin: '0.75rem 0 0.25rem' }}>
+                          <strong style={{ color: 'var(--text)' }}>Jenis:</strong> {doc.jenis}
+                        </p>
+                      )}
+                      {/* Penanggung jawab */}
+                      {doc.penanggung_jawab && (
+                        <p style={{ fontSize: '0.75rem', color: 'var(--muted)', margin: '0.25rem 0' }}>
+                          <strong style={{ color: 'var(--text)' }}>Penanggung Jawab:</strong> {doc.penanggung_jawab}
+                        </p>
+                      )}
+                      {/* Unit pendukung */}
+                      {doc.unit_pendukung && (
+                        <p style={{ fontSize: '0.75rem', color: 'var(--muted)', margin: '0.25rem 0' }}>
+                          <strong style={{ color: 'var(--text)' }}>Unit Pendukung:</strong> {doc.unit_pendukung}
+                        </p>
+                      )}
+                      {/* Indikator & level */}
+                      {doc.indikator_level && (
+                        <p style={{ fontSize: '0.75rem', color: 'var(--muted)', margin: '0.25rem 0' }}>
+                          <strong style={{ color: 'var(--text)' }}>Indikator & Level Dicakup:</strong> {doc.indikator_level}
+                        </p>
+                      )}
+
+                      {/* Substansi wajib */}
+                      {doc.substansi.length > 0 && (
+                        <div style={{ marginTop: '0.75rem' }}>
+                          <p style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text)', marginBottom: '0.4rem' }}>
+                            📝 Substansi / Isi yang Wajib Dimuat:
+                          </p>
+                          <ul style={{ margin: 0, paddingLeft: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
+                            {doc.substansi.map((s, i) => (
+                              <li key={i} style={{ fontSize: '0.75rem', color: 'var(--muted)', lineHeight: 1.5 }}>
+                                {s}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          <p style={{ fontSize: '0.7rem', color: 'var(--muted)', marginTop: '1rem' }}>
+            Sumber: {dokumenKunci.sumber}
+          </p>
         </div>
       </section>
 

@@ -1,0 +1,614 @@
+{
+  "judul": "Peta Dokumen Kunci Bukti Dukung PEMDI Aceh Tengah",
+  "sumber": "Daftar_Lengkap_Bukti_Dukung_PEMDI_Aceh_Tengah.xlsx (sheet 02 & 06) + PermenPANRB 8/2026",
+  "total_dokumen": 31,
+  "dokumen": [
+    {
+      "no": 1,
+      "nama": "RPJMD / RKPD / Renstra / Renja yang Memuat Substansi RAN Pemdi",
+      "jenis": "Dokumen perencanaan resmi (Perda RPJMD, Perkada RKPD, Perkadis Renstra/Renja)",
+      "penanggung_jawab": "BAPPEDA (Koordinator Pokja Tata Kelola & Manajemen)",
+      "unit_pendukung": "Diskominfo (Kabid Layanan E-Gov), Bag. Organisasi, Tim Koordinasi Pemdi, BPKAD, seluruh PD",
+      "indikator_level": "I1 L1, L2, L3, L5; I2 L1, L2; I4 L1, L2; I13 L1, L2; I16 L2; I17 L2",
+      "prioritas": "Tertinggi — fondasi sejumlah indikator",
+      "indikator": [
+        "I1",
+        "I2",
+        "I4",
+        "I13",
+        "I16",
+        "I17"
+      ],
+      "substansi": [
+        "Bab/uraian khusus PEMERINTAH DIGITAL (Pemdi/SPBE) yang memuat substansi Rencana Aksi Nasional (RAN) Pemdi — visi, misi, tujuan, sasaran, arah kebijakan, strategi, dan program/kegiatan Pemdi",
+        "Matriks pemetaan (partial/full mapping) substansi RAN Pemdi → bab/strategi/program dalam dokumen perencanaan (lampiran) sehingga reviewer mudah melihat keterkaitan",
+        "Program dan kegiatan Pemdi beserta indikator kinerja, target (tahunan & 5 tahunan), satuan, dan lokus OPD — mis. program transformasi digital, SPBE, interoperabilitas, layanan digital",
+        "Substansi manajemen layanan digital: rencana pengelolaan risiko, perubahan, pengetahuan, keberlangsungan layanan (BCP), dan relasi pengguna layanan digital",
+        "Rencana kolaborasi antar Perangkat Daerah dalam penerapan Pemdi (matriks kolaborasi lintas PD) dan dengan instansi pusat/provinsi (jika sudah dipetakan)",
+        "Rencana pengembangan aplikasi Pemerintah Digital (daftar aplikasi yang akan dibangun/dikembangkan, prioritas, arsitektur) dan rencana pemaduan layanan ke portal",
+        "Kebijakan anggaran: arah alokasi anggaran Pemdi (program/kegiatan + indikasi pagu) lintas PD",
+        "Keterkaitan dengan Arsitektur Pemdi (SIAP Digital) dan Rencana Aksi Pemdi (dasar penyusunan) — lampirkan referensi silang",
+        "Dokumen ditetapkan resmi (Perda/Perkada) dan diundangkan untuk level Developing; untuk level Initiate cukup draf/stempel-paraf berjalan"
+      ]
+    },
+    {
+      "no": 2,
+      "nama": "Peta Rencana / Rencana Aksi Pemdi (Substansi RAN Pemdi)",
+      "jenis": "Dokumen (Word/PDF resmi berstempel/paraf)",
+      "penanggung_jawab": "BAPPEDA (Koordinator Pokja Tata Kelola & Manajemen)",
+      "unit_pendukung": "Diskominfo, Bag. Organisasi, Tim Koordinasi Pemdi, seluruh PD",
+      "indikator_level": "I1 L1, L3, L5",
+      "prioritas": "Tinggi — dasar penyusunan dokumen perencanaan",
+      "indikator": [
+        "I1"
+      ],
+      "substansi": [
+        "Daftar lengkap substansi RAN Pemdi yang diadopsi daerah (7 aspek: Tata Kelola, Penyelenggara, Data, Keamanan, Teknologi, Keterpaduan, Kepuasan)",
+        "Rencana aksi: aksi/regulasi/kegiatan yang akan dilakukan, penanggung jawab, jadwal, target waktu, dan indikator keberhasilan",
+        "Peta rencana: keterkaitan antar aksi dan dukungannya terhadap pencapaian indeks Pemdi",
+        "Matriks partial mapping (level 2) → matriks full mapping (level 3): substansi RAN → dokumen perencanaan daerah",
+        "Mekanisme review dan update berkala + change log (untuk level Leading)"
+      ]
+    },
+    {
+      "no": 3,
+      "nama": "Arsitektur Pemerintah Digital di SIAP Digital (+ Dokumen Arsitektur)",
+      "jenis": "Screenshot/Sistem (SIAP Digital KemenPANRB) + export/printout dokumen",
+      "penanggung_jawab": "Diskominfo (Kabid Layanan E-Gov / Sekretaris Tim) + BAPPEDA + Bag. Organisasi",
+      "unit_pendukung": "Bidang TIK Diskominfo, PD pemilik layanan",
+      "indikator_level": "I1 L2, L3, L4; I13 L1, L3; I14 L1, L2; I15 L1, L2",
+      "prioritas": "Tinggi — menginisiasi banyak indikator sekaligus",
+      "indikator": [
+        "I1",
+        "I13",
+        "I14",
+        "I15"
+      ],
+      "substansi": [
+        "Pengisian 6 domain arsitektur pada SIAP Digital: Proses Bisnis, Data & Informasi, Aplikasi, Infrastruktur, Keamanan, Layanan — sesuai target level (sebagian/seluruh layanan)",
+        "Proses Bisnis: peta proses bisnis as-is (level 1–2) → to-be (level 3) layanan prioritas/tematik, BPMN/flowchart",
+        "Data: daftar data/informasi, arsitektur data, interoperabilitas data (SDI)",
+        "Aplikasi: katalog aplikasi, arsitektur aplikasi, daftar aplikasi dalam arsitektur",
+        "Infrastruktur: topologi jaringan, pusat data (PDN/PDN-T/DC daerah), komputasi/storage/network/cloud",
+        "Keamanan: kebijakan dan kontrol keamanan siber",
+        "Layanan: katalog layanan digital, peta keterpaduan layanan",
+        "Export/printout hasil pengisian + daftar layanan yang sudah diisi (bukti audit)",
+        "Dokumen Arsitektur Pemdi resmi (ditetapkan) yang menjadi referensi pembangunan/pengembangan keterpaduan layanan + bukti integrasi dengan arsitektur provinsi/nasional (level Embedded)"
+      ]
+    },
+    {
+      "no": 4,
+      "nama": "KAK / RKA / DPA / Rekap Anggaran Program Pemdi",
+      "jenis": "Dokumen anggaran (KAK, RAB, RKA, DPA) + rekap",
+      "penanggung_jawab": "BAPPEDA (Koordinator Pokja Tata Kelola & Manajemen)",
+      "unit_pendukung": "BPKAD, Diskominfo, PD terkait",
+      "indikator_level": "I1 L2, L3",
+      "prioritas": "Tinggi",
+      "indikator": [
+        "I1"
+      ],
+      "substansi": [
+        "KAK (Kerangka Acuan Kerja)/RAB untuk kegiatan Pemdi yang mendukung substansi RAN Pemdi (sebagian → seluruh)",
+        "RKA/DPA PD terkait yang memuat program/kegiatan Pemdi beserta alokasi anggarannya",
+        "Ringkasan alokasi anggaran Pemdi per program/kegiatan lintas PD (rekap anggaran Pemdi lintas PD untuk level Developing)",
+        "Keselarasan anggaran dengan rencana aksi (dokumen no. 2) dan indikator RPJMD (dokumen no. 1)"
+      ]
+    },
+    {
+      "no": 5,
+      "nama": "SK Tim Koordinasi Pemerintah Digital Daerah",
+      "jenis": "Dokumen (SK Bupati, lengkap lampiran)",
+      "penanggung_jawab": "Sekda (Koordinator Pemdi) / Diskominfo (Penanggung Jawab)",
+      "unit_pendukung": "Bag. Hukum, Bag. Organisasi, seluruh anggota Tim Koordinasi",
+      "indikator_level": "I4 L1; I1 L3 (pelengkap rapat)",
+      "prioritas": "Tertinggi — fondasi seluruh aspek (draf sudah ada)",
+      "indikator": [
+        "I1",
+        "I4"
+      ],
+      "substansi": [
+        "Dasar hukum (PermenPANRB 8/2026, peraturan daerah, pertimbangan)",
+        "Struktur Tim: Pembina (Bupati), Koordinator/Ketua (Sekda), Penanggung Jawab/Wakil Ketua (Kepala Diskominfo), Sekretaris, 7 Pokja sesuai aspek (Tata Kelola, Penyelenggara, Data, Keamanan, Teknologi, Keterpaduan, Kepuasan), Pelaksana Entri Data",
+        "Nama lengkap, NIP, jabatan setiap anggota dan pokja (lampiran daftar keanggotaan)",
+        "Uraian tugas dan fungsi (tupoksi) Tim Koordinasi dan masing-masing Pokja",
+        "Mekanisme kerja: rapat berkala, pelaporan, koordinasi dengan asesor internal"
+      ]
+    },
+    {
+      "no": 6,
+      "nama": "SK Tim Asesor Internal Evaluasi Kinerja Pemdi",
+      "jenis": "Dokumen (SK Sekda)",
+      "penanggung_jawab": "Sekda / Diskominfo / Bag. Hukum",
+      "unit_pendukung": "Inspektorat, perwakilan Pokja",
+      "indikator_level": "Fondasi lintas indikator (proses asesmen)",
+      "prioritas": "Tertinggi — fondasi proses penilaian mandiri (draf sudah ada)",
+      "indikator": [],
+      "substansi": [
+        "Pembentukan Tim Asesor Internal beserta susunan keanggotaan (nama, NIP, jabatan)",
+        "Uraian tugas: melakukan reviu/evaluasi internal kesiapan bukti dukung, verifikasi, visitasi",
+        "Mekanisme koordinasi dengan Tim Koordinasi Pemdi dan Pokja",
+        "Jadwal kegiatan asesmen internal"
+      ]
+    },
+    {
+      "no": 7,
+      "nama": "Paket Dokumentasi Rapat Tim Koordinasi Pemdi",
+      "jenis": "Dokumen + Foto/Dokumentasi",
+      "penanggung_jawab": "Sekretariat Tim Koordinasi Pemdi (Diskominfo)",
+      "unit_pendukung": "Seluruh anggota Tim Koordinasi, BAPPEDA",
+      "indikator_level": "I1 L2, L3; I4 L1",
+      "prioritas": "Tinggi — berkala",
+      "indikator": [
+        "I1",
+        "I4"
+      ],
+      "substansi": [
+        "Undangan rapat resmi (dengan agenda pembahasan substansi RAN Pemdi / rencana aksi)",
+        "Daftar hadir peserta (dilengkapi tanda tangan/NIP)",
+        "Notulen rapat (pokok bahasan, pembahasan, kesimpulan, keputusan)",
+        "Foto dokumentasi kegiatan rapat",
+        "Berita Acara (BA) rapat untuk pembahasan substansi RAN Pemdi — sebagian (L2) dan seluruh substansi (L3)",
+        "Arsip konsolidasi kolaboratif antar Pokja/PD dalam menyusun substansi RAN Pemdi"
+      ]
+    },
+    {
+      "no": 8,
+      "nama": "SOP/IK Manajemen Layanan Digital + Log/Ticket + Laporan 5 Domain",
+      "jenis": "Dokumen + Screenshot (SOP/IK, log, register risiko, change request log)",
+      "penanggung_jawab": "Diskominfo (Unit Pengelola Layanan Digital)",
+      "unit_pendukung": "Bag. Organisasi, seluruh PD pemilik layanan digital, BAPPEDA",
+      "indikator_level": "I2 L1, L2, L3, L4, L5",
+      "prioritas": "Tinggi",
+      "indikator": [
+        "I2"
+      ],
+      "substansi": [
+        "SOP/IK manajemen layanan internal (penanganan, eskalasi, monitoring) — skala internal terbatas (L1) → resmi (L3)",
+        "Log/ticket manajemen layanan (aplikasi helpdesk atau log manual) — bukti pelaksanaan",
+        "Laporan pelaksanaan 5 domain manajemen pada SEBAGIAN (L2) → SELURUH (L3) layanan digital:",
+        "1) Manajemen Risiko — register risiko layanan digital, penilaian, mitigasi",
+        "2) Manajemen Perubahan — change request log, prosedur perubahan, approval",
+        "3) Manajemen Pengetahuan — knowledge base, dokumentasi SOP, materi internal",
+        "4) Manajemen Keberlangsungan (BCP) — rencana keberlangsungan layanan, backup, disaster recovery",
+        "5) Manajemen Relasi Pengguna — kanal komunikasi, umpan balik pengguna, penanganan keluhan",
+        "Matriks cakupan layanan × domain manajemen (L3)",
+        "Bukti implementasi SLA/BCP/knowledge base (L3)",
+        "Laporan reviu/evaluasi penerapan manajemen layanan + temuan & rekomendasi + BA (L4)",
+        "Laporan optimalisasi/perbaikan, bukti peningkatan KPI/SLA, matriks before-after, rencana continuous improvement (L5)"
+      ]
+    },
+    {
+      "no": 9,
+      "nama": "Peta Kompetensi Digital ASN",
+      "jenis": "Dokumen",
+      "penanggung_jawab": "BKPSDM (Koordinator Pokja Penyelenggara – SDM)",
+      "unit_pendukung": "Diskominfo, Bag. Organisasi, Bag. Hukum, seluruh PD",
+      "indikator_level": "I3 L1, L2, L3, L4, L5",
+      "prioritas": "Tertinggi — semua level I3",
+      "indikator": [
+        "I3"
+      ],
+      "substansi": [
+        "Pemetaan kompetensi digital ASN per jenis/jenjang jabatan: kepemimpinan digital, kemahiran digital, literasi digital",
+        "Draft/awal (L1) → struktur lengkap & disahkan unit berwenang (L2) → komprehensif terintegrasi formasi jabatan TIK/digital (L3) → terbarui & terhubung program pengembangan (L4) → best practice menjadi rujukan (L5)",
+        "Matriks kompetensi: jabatan × domain kompetensi digital × level penguasaan",
+        "Gap kompetensi dan rencana pengembangan (diisi sesuai level)",
+        "Daftar ASN dan hasil asesmen/pemetaan yang mendukung"
+      ]
+    },
+    {
+      "no": 10,
+      "nama": "Laporan Peningkatan Kompetensi Digital (Diklat/Bimtek) + Sertifikat",
+      "jenis": "Dokumen + Sertifikat",
+      "penanggung_jawab": "BKPSDM (Koordinator Pokja Penyelenggara – SDM)",
+      "unit_pendukung": "Diskominfo, LAN/instansi pelatihan",
+      "indikator_level": "I3 L2, L3; I3 L1 (dasar)",
+      "prioritas": "Tinggi",
+      "indikator": [
+        "I3"
+      ],
+      "substansi": [
+        "Laporan diklat/bimtek/pelatihan kompetensi digital (nama kegiatan, tanggal, penyelenggara, materi)",
+        "Daftar peserta lengkap (nama, NIP, unit kerja)",
+        "Sertifikat peserta (asli/fotokopi sah) — contoh: GTA Kominfo, BPSDMD, pelatihan digital lain",
+        "Rekap peningkatan kompetensi per domain (L3: lebih luas/berkala)",
+        "Dokumentasi foto kegiatan (jika ada)"
+      ]
+    },
+    {
+      "no": 11,
+      "nama": "Dokumentasi Komunitas Belajar Digital",
+      "jenis": "Dokumen + Foto + Data",
+      "penanggung_jawab": "BKPSDM (Koordinator Pokja Penyelenggara – SDM)",
+      "unit_pendukung": "Seluruh PD",
+      "indikator_level": "I3 L1, L2, L3",
+      "prioritas": "Tinggi",
+      "indikator": [
+        "I3"
+      ],
+      "substansi": [
+        "Notulen & foto kegiatan komunitas belajar digital (undangan, daftar hadir, materi)",
+        "SK/SKB pembentukan komunitas belajar (jika ada)",
+        "Rekap keikutsertaan: ≥20% ASN (L2) → ≥50% ASN (L3) dengan daftar nama/NIP",
+        "Materi pembelajaran yang dipakai komunitas"
+      ]
+    },
+    {
+      "no": 12,
+      "nama": "Laporan Microlearning Internal & Pembelajaran Digital Nasional",
+      "jenis": "Dokumen + Screenshot/Media",
+      "penanggung_jawab": "BKPSDM (Koordinator Pokja Penyelenggara – SDM)",
+      "unit_pendukung": "Diskominfo",
+      "indikator_level": "I3 L1 (microlearning); I3 L2 (nasional)",
+      "prioritas": "Sedang",
+      "indikator": [
+        "I3"
+      ],
+      "substansi": [
+        "Microlearning internal: modul singkat/video/e-learning sederhana + laporan penggunaan + tautan/modul + rekap peserta + screenshot platform",
+        "Pembelajaran digital nasional: laporan pemanfaatan platform (mis. ASN Unggul, Pusat Pembelajaran ASN), rekap peserta, screenshot"
+      ]
+    },
+    {
+      "no": 13,
+      "nama": "Laporan Pemanfaatan AI & Analisis Data oleh ASN",
+      "jenis": "Dokumen + Screenshot",
+      "penanggung_jawab": "BKPSDM (Koordinator Pokja Penyelenggara – SDM)",
+      "unit_pendukung": "Diskominfo, PD terkait",
+      "indikator_level": "I3 L3, L4; I3 L5",
+      "prioritas": "Sedang (level 3–4)",
+      "indikator": [
+        "I3"
+      ],
+      "substansi": [
+        "Laporan pemanfaatan AI & analisis data oleh ≥20% ASN (L3) → ≥50% ASN (L4) dengan daftar nama/NIP",
+        "Contoh use case AI dan hasil analisis data (portofolio kerja)",
+        "Screenshot bukti penggunaan"
+      ]
+    },
+    {
+      "no": 14,
+      "nama": "Sertifikasi Keahlian Digital Minimal 20% ASN",
+      "jenis": "Dokumen + Sertifikat",
+      "penanggung_jawab": "BKPSDM (Koordinator Pokja Penyelenggara – SDM)",
+      "unit_pendukung": "Diskominfo",
+      "indikator_level": "I3 L4",
+      "prioritas": "Sedang (level 4)",
+      "indikator": [
+        "I3"
+      ],
+      "substansi": [
+        "Sertifikat keahlian digital profesional/teknis (mis. BNSP, vendor, sertifikasi internasional) untuk ≥20% ASN",
+        "Rekap sertifikat per pegawai + portofolio keahlian"
+      ]
+    },
+    {
+      "no": 15,
+      "nama": "Screenshot & Bukti Penggunaan Aplikasi Kerja Digital Internal",
+      "jenis": "Screenshot + Dokumen",
+      "penanggung_jawab": "Diskominfo + BKPSDM",
+      "unit_pendukung": "Seluruh PD",
+      "indikator_level": "I3 L1",
+      "prioritas": "Sedang (level 1)",
+      "indikator": [
+        "I3"
+      ],
+      "substansi": [
+        "Screenshot penggunaan e-office/e-absensi/e-kinerja/aplikasi kerja digital",
+        "Rekap user aktif per aplikasi",
+        "Panduan penggunaan aplikasi"
+      ]
+    },
+    {
+      "no": 16,
+      "nama": "Bukti Kolaborasi antar PD / antar Instansi / Pentahelix",
+      "jenis": "Dokumen + Foto",
+      "penanggung_jawab": "Bag. Organisasi (Koordinator Pokja Penyelenggara – Kolaborasi)",
+      "unit_pendukung": "Diskominfo, BAPPEDA, Bag. Hukum, seluruh PD",
+      "indikator_level": "I4 L1, L2, L3, L4, L5",
+      "prioritas": "Tinggi",
+      "indikator": [
+        "I4"
+      ],
+      "substansi": [
+        "L1: Notulen/BA rapat lintas PD, MoU/Nota Kesepahaman internal, foto kegiatan, laporan joint project Pemdi antar PD",
+        "L2: dokumen rencana kolaborasi antar Instansi Pemerintah (lintas kab/kota/provinsi/pusat — mis. Provinsi Aceh, KOMDIGI, BSSN) + MoU/PKS",
+        "L3: kolaborasi pentahelix (akademisi, pelaku usaha, industri, media, komunitas, ormas) dalam/luar negeri — notulen forum, foto, laporan",
+        "L4: laporan reviu pelaksanaan kolaborasi + temuan & rekomendasi + BA",
+        "L5: laporan optimalisasi kolaborasi, bukti perluasan jejaring/peningkatan outcome, update MoU, best practice"
+      ]
+    },
+    {
+      "no": 17,
+      "nama": "Paket Tata Kelola Pelindungan Data Pribadi (PDP) + Evaluasi + Tindak Lanjut",
+      "jenis": "Dokumen + Screenshot",
+      "penanggung_jawab": "Diskominfo (Bid. Statistik & Persandian, Koordinator Pokja Data/PDP)",
+      "unit_pendukung": "Bag. Hukum, DPO/PPDP, seluruh PD pemilik layanan digital",
+      "indikator_level": "I8 L1–L5 (35 item)",
+      "prioritas": "Tertinggi — 35 item, volume terbesar",
+      "indikator": [
+        "I8"
+      ],
+      "substansi": [
+        "7 substansi yang harus didokumentasikan (masing-masing dari draft → diterapkan → evaluasi → tindak lanjut):",
+        "1) Tata Kelola PDP — kebijakan, struktur, proses (draft → dokumen formal ditetapkan → diterapkan seluruh layanan)",
+        "2) Program awareness & kompetensi PDP — silabus, materi, jadwal, rekap peserta, pre-post test",
+        "3) Penunjukan Pejabat/Petugas PDP (DPO/PPDP) — SK, surat tugas, uraian jabatan, laporan kinerja DPO",
+        "4) Mekanisme pemenuhan Hak Subjek Data — SOP akses/koreksi/penghapusan, form/request log, SLA, dashboard request",
+        "5) Pemberitahuan pelindungan data (Privacy Notice) — kebijakan privasi terpublikasi di layanan + screenshot + URL",
+        "6) Mekanisme pengamanan data pribadi — SOP pengamanan, kontrol teknis/organisasional, hardening, enkripsi, audit trail",
+        "7) Pengelolaan Risiko/Dampak PDP (DPIA) — register risiko, DPIA per layanan, residual risk",
+        "Dokumen evaluasi per substansi (laporan evaluasi, temuan, rekomendasi, BA) — level Embedded",
+        "Dokumen tindak lanjut evaluasi (matriks temuan–aksi–status, bukti perbaikan, update DPIA) — level Leading"
+      ]
+    },
+    {
+      "no": 18,
+      "nama": "Bukti Pendukung Indikator Eksternal (SDI, SJIG, EPSS, Interoperabilitas Data)",
+      "jenis": "Dokumen + Portal + Screenshot",
+      "penanggung_jawab": "Diskominfo (Bid. Statistik & Persandian) + BAPPEDA",
+      "unit_pendukung": "BPS, BIG, seluruh PD produsen data",
+      "indikator_level": "I5 (SDI); I6 (SJIG); I7 (EPSS); I18 (Interoperabilitas)",
+      "prioritas": "Tinggi — untuk visitasi",
+      "indikator": [
+        "I5",
+        "I6",
+        "I7",
+        "I18"
+      ],
+      "substansi": [
+        "I5 (SDI): SK Walidata/Produsen Data, metadata data sektoral, notulen Forum SDI, laporan pemantauan data, screenshot portal data.go.id / portal daerah",
+        "I6 (SJIG): SK Simpul Jaringan IG, geoportal daerah, metadata IG, daftar data spasial, notulen/BA Simpul Jaringan, screenshot geoportal",
+        "I7 (EPSS): SK Pembina/Walidata Statistik Sektoral, metadata statistik, publikasi statistik sektoral, notulen Forum Statistik, laporan EPSS internal",
+        "I18 (Interoperabilitas): katalog data yang di-share, API/endpoint interoperabilitas, MoU berbagi data, log pertukaran data, screenshot integrasi lintas sistem, laporan pemanfaatan data bersama"
+      ]
+    },
+    {
+      "no": 19,
+      "nama": "SK Tim Audit + Rencana Audit (PKPT) + LHA Internal + TL + Audit Eksternal + TL",
+      "jenis": "Dokumen",
+      "penanggung_jawab": "Inspektorat (Koordinator Pokja Keamanan – Audit)",
+      "unit_pendukung": "Diskominfo (Bid. Statistik & Persandian / Bid. TIK), auditor eksternal/BSSN",
+      "indikator_level": "I9 L1, L2, L3, L4, L5",
+      "prioritas": "Tinggi",
+      "indikator": [
+        "I9"
+      ],
+      "substansi": [
+        "L1: SK/Surat Penetapan Tim Audit Keamanan Pemdi & Teknologi Pemdi dari Koordinator Pemdi (Sekda)",
+        "L1: Rencana Audit (program audit tahunan, ruang lingkup, jadwal, checklist, tim) — selaraskan dengan PKPT Inspektorat",
+        "L2: Laporan Hasil Audit Internal (LHA) keamanan Pemdi & teknologi Pemdi — temuan, rekomendasi, BA audit",
+        "L3: Laporan tindak lanjut temuan audit internal — matriks temuan–aksi–status–bukti, BA monitoring",
+        "L4: Laporan Hasil Audit Eksternal (lembaga independen/BSSN/auditor eksternal)",
+        "L5: Laporan tindak lanjut audit eksternal — matriks temuan–aksi–status, bukti perbaikan"
+      ]
+    },
+    {
+      "no": 20,
+      "nama": "Instrumen & Hasil IKASANDI — Area Keamanan Siber",
+      "jenis": "Dokumen + Screenshot/Sistem",
+      "penanggung_jawab": "Diskominfo (Bid. Statistik & Persandian, Koordinator Pokja Keamanan Siber)",
+      "unit_pendukung": "Inspektorat, Bid. TIK Diskominfo, BSSN",
+      "indikator_level": "I10 L1–L5",
+      "prioritas": "Tinggi",
+      "indikator": [
+        "I10"
+      ],
+      "substansi": [
+        "Hasil pengukuran IKASANDI area Keamanan Siber sesuai rentang skor: 0–<1,5 (L1) | 1,5–<2,5 (L2) | 2,5–<3,5 (L3) | 3,5–<4,0 (L4) | 4,0–5,0 (L5)",
+        "Form/instrumen IKASANDI terisi + screenshot portal IKASANDI BSSN",
+        "Evidence kontrol keamanan: kontrol dasar (L1) → menengah (L3) → lanjutan (L4) → mature + verifikasi BSSN (L5)",
+        "Sertakan identifikasi aset, kebijakan keamanan, firewall, monitoring, patch management, dll. sesuai kontrol"
+      ]
+    },
+    {
+      "no": 21,
+      "nama": "Dokumen Identifikasi Infrastruktur Informasi Vital (IIV)",
+      "jenis": "Dokumen",
+      "penanggung_jawab": "Diskominfo (Bid. Statistik & Persandian)",
+      "unit_pendukung": "Bid. TIK Diskominfo, Inspektorat, BSSN",
+      "indikator_level": "I10 L2",
+      "prioritas": "Tinggi (level 2)",
+      "indikator": [
+        "I10"
+      ],
+      "substansi": [
+        "Dokumen inventarisasi/identifikasi IIV (SIPD, SIAK, LPSE, server krusial lainnya)",
+        "Klasifikasi aset kritis + alasan pentingnya (dampak bila gagal)",
+        "SK/penetapan IIV",
+        "Usulan pendaftaran objek vital ke BSSN"
+      ]
+    },
+    {
+      "no": 22,
+      "nama": "Laporan Penerapan & Evaluasi Kriptografi + Inventaris Aset Terenkripsi",
+      "jenis": "Dokumen + Screenshot",
+      "penanggung_jawab": "Diskominfo (Bid. Statistik & Persandian, Koordinator Pokja Keamanan – Kriptografi)",
+      "unit_pendukung": "Bid. TIK Diskominfo, Inspektorat, BSSN/BSrE",
+      "indikator_level": "I11 L1–L5",
+      "prioritas": "Tinggi",
+      "indikator": [
+        "I11"
+      ],
+      "substansi": [
+        "L1: Dokumen inventarisasi aset yang dienkripsi (data at-rest/in-transit/in-use) + laporan awal penerapan kriptografi",
+        "L2: Laporan pelaksanaan penerapan kriptografi (algoritma, modul, cakupan layanan); screenshot konfigurasi TLS/enkripsi disk/VPN; sertifikat digital",
+        "L3: Laporan kriptografi level Developing (cakupan lebih luas, standar nasional, key management); bukti penerapan di layanan prioritas",
+        "L4: Laporan evaluasi penerapan kriptografi — temuan kesenjangan, rekomendasi, BA evaluasi",
+        "L5: Laporan tindak lanjut evaluasi (upgrade algoritma, key rotation) + hasil IKASANDI area Persandian skor 4,0–5,0"
+      ]
+    },
+    {
+      "no": 23,
+      "nama": "SK TTIS/CSIRT + Dokumentasi Penanganan Insiden + SOP/Playbook",
+      "jenis": "Dokumen + Log",
+      "penanggung_jawab": "Diskominfo (Bid. Statistik & Persandian)",
+      "unit_pendukung": "Bid. TIK Diskominfo, Inspektorat, CSIRT/TTIS daerah, BSSN",
+      "indikator_level": "I12 L1, L2; I12 L3",
+      "prioritas": "Tinggi",
+      "indikator": [
+        "I12"
+      ],
+      "substansi": [
+        "L1: Laporan/log penanganan insiden siber — ticket insiden, timeline penanganan, BA insiden (jika ada)",
+        "L2: SK/Surat Penetapan Tim Tanggap Insiden Siber (TTIS/CSIRT) Kabupaten Aceh Tengah — uraian tugas, kontak on-call",
+        "L2: SOP/playbook penanganan insiden",
+        "L3: evidence operasional TTIS + laporan drill/tabletop exercise",
+        "L4: kolaborasi dengan TTIS Nasional, laporan insiden formal | L5: mature CSIRT + verifikasi BSSN"
+      ]
+    },
+    {
+      "no": 24,
+      "nama": "Instrumen & Hasil IKASANDI — Area Penanganan Insiden Siber",
+      "jenis": "Dokumen + Screenshot/Sistem",
+      "penanggung_jawab": "Diskominfo (Bid. Statistik & Persandian, Koordinator Pokja Keamanan – Insiden)",
+      "unit_pendukung": "Inspektorat, Bid. TIK, CSIRT/TTIS daerah, BSSN",
+      "indikator_level": "I12 L1–L5",
+      "prioritas": "Tinggi",
+      "indikator": [
+        "I12"
+      ],
+      "substansi": [
+        "Hasil self-assessment IKASANDI area Penanganan Insiden Siber: 0–<1,5 (L1) | 1,5–<2,5 (L2) | 2,5–<3,5 (L3) | 3,5–<4,0 (L4) | 4,0–5,0 (L5)",
+        "Instrumen terisi + screenshot portal (catatan: bukan hasil verifikasi lembaga siber & sandi)",
+        "Evidence sesuai level: SOP/playbook (L2), laporan drill/tabletop (L3), kolaborasi TTIS nasional (L4), mature CSIRT + verifikasi BSSN (L5)"
+      ]
+    },
+    {
+      "no": 25,
+      "nama": "Dokumentasi SDLC Aplikasi + Repositori + Terminasi + Reviu Unit Pengelola Layanan Digital",
+      "jenis": "Dokumen + Repositori + Screenshot",
+      "penanggung_jawab": "Diskominfo (Bid. Layanan E-Government, Koordinator Pokja Teknologi – Aplikasi)",
+      "unit_pendukung": "Bid. TIK Diskominfo, BAPPEDA, PD pemilik aplikasi, vendor",
+      "indikator_level": "I13 L1–L5",
+      "prioritas": "Tinggi",
+      "indikator": [
+        "I13"
+      ],
+      "substansi": [
+        "L1: KAK pengembangan aplikasi + BA serah terima + screenshot aplikasi + laporan pengembangan awal; dokumen perencanaan memuat substansi pengembangan aplikasi; screenshot SIAP Digital domain aplikasi + katalog aplikasi",
+        "L2: Dokumentasi SDLC (analisis kebutuhan, desain, implementasi, uji, deploy) untuk aplikasi yang dibangun/dikembangkan + dokumen teknis/repo",
+        "L3: SDLC lengkap multi-aplikasi; standar coding; hasil UAT; BA go-live; laporan reviu Unit Pengelola Layanan Digital berkala; laporan terminasi/decommissioning (alasan, migrasi data, penutupan akses, BA); repositori kode & katalog aplikasi (Git/GitLab)",
+        "L4: Laporan reviu pelaksanaan pembangunan/pengembangan aplikasi (evaluasi SDLC, kepatuhan arsitektur, kualitas) + rekomendasi",
+        "L5: Laporan tindak lanjut reviu; bukti perbaikan proses SDLC/standar; update pipeline CI/CD; matriks before-after"
+      ]
+    },
+    {
+      "no": 26,
+      "nama": "Dasbor & Laporan Pemanfaatan Infrastruktur (Pusat Data, JIP) + Reviu + TL",
+      "jenis": "Dokumen + Screenshot",
+      "penanggung_jawab": "Diskominfo (Bid. TIK, Koordinator Pokja Teknologi – Infrastruktur)",
+      "unit_pendukung": "Bid. Layanan E-Gov Diskominfo, BAPPEDA, PD pengguna infrastruktur",
+      "indikator_level": "I14 L1–L5",
+      "prioritas": "Tinggi",
+      "indikator": [
+        "I14"
+      ],
+      "substansi": [
+        "L1: Screenshot dasbor ekosistem pusat data (PDN/PDN-T/DC daerah); rekap VM/container/storage; bukti onboarding PDN; screenshot SIAP Digital domain infrastruktur + topologi jaringan",
+        "L2: Laporan pemantauan + matriks pemanfaatan infrastruktur pada SEBAGIAN layanan (compute, storage, network, cloud)",
+        "L3: Laporan pemantauan pada SELURUH layanan + coverage JIP/PDN",
+        "L4: Laporan reviu infrastruktur (kapasitas, ketersediaan, keamanan, keselarasan arsitektur) + temuan & rekomendasi",
+        "L5: Laporan tindak lanjut reviu — bukti upgrade/migrasi/optimasi, matriks temuan–aksi–status"
+      ]
+    },
+    {
+      "no": 27,
+      "nama": "Pemetaan Proses Bisnis As-Is & To-Be (BPMN) + Reviu + TL",
+      "jenis": "Dokumen + Screenshot SIAP",
+      "penanggung_jawab": "Bag. Organisasi (Koordinator Pokja Keterpaduan – Proses Bisnis)",
+      "unit_pendukung": "BAPPEDA, Diskominfo (E-Gov & TIK & Statistik), seluruh PD layanan",
+      "indikator_level": "I15 L1–L5",
+      "prioritas": "Tinggi",
+      "indikator": [
+        "I15"
+      ],
+      "substansi": [
+        "L1: Screenshot SIAP Digital domain proses bisnis terisi; peta proses bisnis as-is; dokumen arsitektur proses bisnis",
+        "L2: Dokumen pemetaan proses bisnis as-is selaras SIAP Digital — diagram BPMN/flowchart, matriks proses–layanan–PD; dokumen proses bisnis to-be + gap analysis as-is vs to-be + usulan simplifikasi",
+        "L3: Pemetaan proses bisnis SELURUH layanan prioritas/tematik di SIAP Digital + katalog proses bisnis lengkap; to-be seluruh layanan + peta integrasi lintas sektor + BA kesepakatan",
+        "L4: Laporan reviu pelaksanaan keterpaduan proses bisnis — temuan & rekomendasi, BA reviu",
+        "L5: Laporan tindak lanjut reviu — bukti implementasi to-be, update SIAP Digital, matriks before-after"
+      ]
+    },
+    {
+      "no": 28,
+      "nama": "Laporan & Matriks Integrasi Aplikasi (API/SSO/Data Sharing) + Reviu + TL",
+      "jenis": "Dokumen + Screenshot",
+      "penanggung_jawab": "Diskominfo (Bid. TIK, Koordinator Pokja Keterpaduan – Integrasi Aplikasi)",
+      "unit_pendukung": "Bid. E-Gov, Bid. Statistik, Bag. Organisasi, BAPPEDA, PD pemilik aplikasi",
+      "indikator_level": "I16 L1–L5",
+      "prioritas": "Tinggi",
+      "indikator": [
+        "I16"
+      ],
+      "substansi": [
+        "L1: Laporan pelaksanaan integrasi aplikasi — uraian, arsitektur integrasi, API/ESB/SSO yang dipakai, daftar aplikasi terintegrasi",
+        "L2: Dokumen pemetaan integrasi selaras rencana aksi Pemdi; matriks aplikasi sumber–target–metode integrasi–status; laporan + matriks pemantauan integrasi pada SEBAGIAN layanan + screenshot API gateway/log",
+        "L3: Laporan + matriks pemantauan integrasi pada SELURUH layanan; katalog API; bukti SSO/data sharing lintas aplikasi",
+        "L4: Matriks pemantauan hasil reviu integrasi — temuan, status kepatuhan arsitektur",
+        "L5: Matriks pemantauan tindak lanjut integrasi — bukti perbaikan/perluasan, update arsitektur"
+      ]
+    },
+    {
+      "no": 29,
+      "nama": "Portal Layanan Digital Daerah + Integrasi Portal Nasional + Dasbor Pemanfaatan",
+      "jenis": "Portal + Screenshot + Dokumen + Data",
+      "penanggung_jawab": "Diskominfo (Bid. Layanan E-Government, Koordinator Pokja Keterpaduan – Portal)",
+      "unit_pendukung": "Bid. TIK, Bag. Organisasi, DPMPTSP, seluruh PD layanan publik",
+      "indikator_level": "I17 L1–L5",
+      "prioritas": "Tinggi",
+      "indikator": [
+        "I17"
+      ],
+      "substansi": [
+        "L1: URL & screenshot portal layanan digital daerah (acehtengahkab.go.id); daftar layanan di portal; SK/penetapan portal (jika ada)",
+        "L2: Dokumen rencana pemaduan layanan ke portal (roadmap, prioritas, jadwal) selaras substansi RAN Pemdi; screenshot portal menampilkan SEBAGIAN layanan berbasis siklus hidup (life event) + katalog life-event",
+        "L3: Screenshot portal SELURUH layanan berbasis siklus hidup + katalog lengkap life-event; dasbor matriks pemanfaatan Portal Nasional (INAdigital); laporan >50% populasi pengguna + metodologi; login dengan identitas digital nasional (INA Digital ID/IdP) + bukti SSO",
+        "L4: Dasbor matriks pemanfaatan level Embedded (detail/berkala) + laporan reviu pemanfaatan; laporan >90% populasi pengguna",
+        "L5: Laporan tindak lanjut matriks pemantauan — bukti perbaikan UX/integrasi/promosi; laporan >90% dipertahankan + strategi sustaining"
+      ]
+    },
+    {
+      "no": 30,
+      "nama": "Dasbor Helpdesk/Service Desk + Dasbor SLA + Laporan Pemenuhan SLA + Evaluasi + TL",
+      "jenis": "Screenshot + Dokumen + Data",
+      "penanggung_jawab": "Diskominfo (Bid. Layanan E-Government, Koordinator Pokja Kepuasan – Fasilitas Dukungan)",
+      "unit_pendukung": "DPMPTSP, Bag. Organisasi, seluruh PD penyelenggara layanan digital",
+      "indikator_level": "I19 L1–L5",
+      "prioritas": "Tinggi",
+      "indikator": [
+        "I19"
+      ],
+      "substansi": [
+        "L1: Screenshot dasbor helpdesk/service desk; kanal pengaduan (call center, chat, email, ticket); SOP dukungan pengguna; dasbor SLA (response/resolution time) + dokumen penetapan SLA + rekap awal; dasbor tracking tahapan layanan per pengguna",
+        "L2: Dasbor fasilitas dukungan lebih lengkap (multi-kanal, knowledge base, FAQ) + laporan operasional helpdesk; laporan pemenuhan SLA ≥90% + rekap + metodologi + screenshot",
+        "L3: Dasbor level Developing (terintegrasi multi-layanan, analitik, eskalasi otomatis); laporan pemenuhan SLA ≥99% + continuous monitoring",
+        "L4: Laporan evaluasi kepatuhan SLA & fasilitas dukungan — temuan, rekomendasi, BA",
+        "L5: Laporan tindak lanjut matriks pemantauan — bukti perbaikan kanal/SLA/knowledge base; laporan SLA 99,9% + high-availability + sustaining excellence"
+      ]
+    },
+    {
+      "no": 31,
+      "nama": "Laporan SKM/Kepuasan Pengguna Layanan Digital + FGD Masyarakat + Log Perubahan",
+      "jenis": "Dokumen + Foto + Data + Log",
+      "penanggung_jawab": "DPMPTSP (Koordinator Pokja Kepuasan – Pengelolaan Kepuasan Pengguna)",
+      "unit_pendukung": "Diskominfo (Bid. Layanan E-Gov), Bag. Organisasi, seluruh PD penyelenggara layanan",
+      "indikator_level": "I20 L1–L5",
+      "prioritas": "Tinggi",
+      "indikator": [
+        "I20"
+      ],
+      "substansi": [
+        "L1: Laporan hasil survei kepuasan pengguna layanan digital (SKM/ICS) — kuesioner, rekap skor, metodologi, sampel responden",
+        "L2: Bukti pelibatan masyarakat — notulen/undangan/daftar hadir/foto FGD atau diskusi publik atas hasil survei + BA masukan; laporan hasil kepuasan level Emerging (cakupan lebih luas/berkala, skor ambang Emerging)",
+        "L3: Bukti pelibatan masyarakat lebih sistematis (multi-kanal, multi-periode) + notulen FGD + tindak lanjut masukan; laporan hasil level Developing (skor ambang Baik, terintegrasi layanan digital)",
+        "L4: Log perubahan layanan berdasarkan hasil kepuasan (change log fitur/proses/kebijakan, ticket perbaikan, release note); laporan hasil level Embedded (skor Sangat Baik, tren peningkatan)",
+        "L5: Log perubahan level Leading (closed-loop continuous improvement, bukti dampak terhadap skor); laporan hasil level Leading (skor Memuaskan, benchmark, strategi sustaining)",
+        "Level 1–2 selesai → tambahkan cakupan \"seluruh layanan\" untuk naik ke **Level 3 (Developing/Baik)** — target predikat Baik (indeks ≥ 2,5).",
+        "Level 4 (Embedded) = tambahkan **laporan reviu/evaluasi** pada hampir semua paket (dok. 8, 16, 17, 19, 22, 25–31).",
+        "Level 5 (Leading) = tambahkan **laporan tindak lanjut reviu + bukti perbaikan + change log** pada paket yang sama."
+      ]
+    }
+  ]
+}
