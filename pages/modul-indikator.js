@@ -868,6 +868,117 @@ export default function ModulIndikatorPage() {
         </div>
       </section>
 
+      {/* ════════ BUKTI DUKUNG DOKUMEN PENDUKUNG ════════ */}
+      <section style={{ marginTop: '3rem' }}>
+        <div className="container">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
+            <span style={{ fontSize: '1.5rem' }}>📎</span>
+            <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text)', margin: 0 }}>
+              Bukti Dukung Dokumen Pendukung
+            </h2>
+          </div>
+          <p style={{ color: 'var(--muted)', fontSize: '0.85rem', maxWidth: 760, marginBottom: '1rem' }}>
+            Hasil ekstraksi <strong>5 dokumen pendukung Diskominfo</strong> (RENSTRA 2025-2029, Renja 2026,
+            DPA 2026, RKA Rincian Belanja SPBE, dan Capaian Realisasi RKPD) — substansi yang mendukung
+            <strong> 9 indikator</strong> pada Peta Dokumen Kunci.
+          </p>
+
+          {/* Stat mini */}
+          <div className="stat-row" style={{ flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.25rem' }}>
+            <span className="stat-badge" style={{ background: 'var(--ok-bg)', color: 'var(--ok)' }}>
+              5 dokumen pendukung
+            </span>
+            <span className="stat-badge" style={{ background: 'var(--warn-bg)', color: 'var(--warn)' }}>
+              9 indikator terdukung
+            </span>
+            <span className="stat-badge" style={{ background: 'var(--surface-2)', color: 'var(--muted)' }}>
+              SPBE realisasi 2025: 2,59
+            </span>
+          </div>
+
+          {/* Tabel dokumen × substansi × indikator */}
+          <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.75rem' }}>
+              <thead>
+                <tr style={{ background: 'var(--surface-2)' }}>
+                  <th style={{ padding: '0.5rem 0.75rem', textAlign: 'left', color: 'var(--text)', borderBottom: '1px solid var(--border)' }}>Dokumen</th>
+                  <th style={{ padding: '0.5rem 0.75rem', textAlign: 'left', color: 'var(--text)', borderBottom: '1px solid var(--border)' }}>Substansi yang Termuat</th>
+                  <th style={{ padding: '0.5rem 0.75rem', textAlign: 'left', color: 'var(--text)', borderBottom: '1px solid var(--border)' }}>Indikator Terkait</th>
+                  <th style={{ padding: '0.5rem 0.75rem', textAlign: 'left', color: 'var(--text)', borderBottom: '1px solid var(--border)' }}>Dokumen Kunci</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>RENSTRA Diskominfo 2025-2029</strong></td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Tujuan-sasaran SPBE (Indeks SPBE 2,6→2,9); strategi implementasi SPBE terintegrasi; program pengelolaan aplikasi informatika (Indeks SPBE 2,88-2,96); 7 dokumen kebijakan tata kelola SPBE (arsitektur, peta rencana, proses bisnis)</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>I1, I2, I4, I13, I15, I16</strong></td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>#1, #2, #3, #8, #25</td>
+                </tr>
+                <tr>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>Ranhir Renja Diskominfo 2026</strong></td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Target Indeks SPBE 2,8→2,9 (2026); kegiatan koordinasi tata kelola SPBE 7 dokumen Rp 150 jt; pelatihan ASN pengelola SPBE 10 orang; literasi SPBE 2% masyarakat</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>I1, I3</strong></td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>#1, #9</td>
+                </tr>
+                <tr>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>DPA Diskominfo 2026</strong></td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Anggaran portal terpadu Rp 90 jt; promosi literasi SPBE Rp 64,6 jt; koordinasi tata kelola SPBE Rp 154,6 jt; kabupaten cerdas Rp 179,4 jt; persandian Rp 86,4 jt</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>I1, I10, I11, I14, I17</strong></td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>#4, #20, #22, #26, #29</td>
+                </tr>
+                <tr>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>RKA Rincian Belanja (Sub Keg. 0037)</strong></td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Rincian belanja koordinasi kebijakan tata kelola SPBE: arsitektur, peta rencana, proses bisnis, rencana & anggaran SPBE — Rp 154,6 jt (ATK, cetak, perjalanan dinas)</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>I1, I15</strong></td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>#4, #27</td>
+                </tr>
+                <tr>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>Capaian Realisasi RKPD</strong></td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Evaluasi capaian 2025: Indeks Transformasi Digital (target 48), Indeks SPBE realisasi <strong>2,59</strong> (target 2,8), IPS 2,97 (target 3,14), kepuasan masyarakat 60% (target 60,18%) — kategori Sangat Tinggi</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>I1, I7, I20</strong></td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>#1, #18, #31</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          {/* Screenshot bukti */}
+          <div>
+            <p style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text)', marginBottom: '0.75rem' }}>
+              📸 Bukti Visual dari Dokumen Pendukung:
+            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1rem' }}>
+              {[
+                { src: '/docs/bukti/renstra-tujuan-sasaran.png', title: 'RENSTRA — Tujuan & Sasaran (Bab III)', desc: 'I1/I2/I4: Indeks SPBE target 2,6→2,9 sebagai sasaran strategis transformasi digital' },
+                { src: '/docs/bukti/renstra-program-aplikasi.png', title: 'RENSTRA — Program Aplikasi Informatika', desc: 'I13: Program pengelolaan aplikasi informatika (Indeks SPBE 2,88→2,96)' },
+                { src: '/docs/bukti/renja-program_spbe.png', title: 'Renja 2026 — Program Tata Kelola SPBE', desc: 'I1: Kegiatan koordinasi kebijakan tata kelola SPBE — 7 dokumen, Rp 150 jt' },
+                { src: '/docs/bukti/dpa-ringkasan_program.png', title: 'DPA 2026 — Ringkasan Program', desc: 'I1/I17: Anggaran portal terpadu Rp 90 jt, tata kelola SPBE Rp 154,6 jt' },
+                { src: '/docs/bukti/dpa-subkegiatan_0037.png', title: 'DPA — Sub Kegiatan Tata Kelola SPBE', desc: 'I1/I15: Keluaran 7 dokumen kebijakan SPBE (arsitektur, peta rencana, proses bisnis)' },
+                { src: '/docs/bukti/rka-rincian_belanja.png', title: 'RKA — Rincian Belanja SPBE', desc: 'I1: Rincian belanja operasional Rp 154,6 jt (belanja barang, jasa, perjalanan)' },
+                { src: '/docs/bukti/realisasi-rkpd.png', title: 'Capaian Realisasi RKPD 2025', desc: 'I1/I7/I20: Indeks SPBE realisasi 2,59; IPS 2,97; kepuasan 60% — kategori Sangat Tinggi' },
+              ].map((img, i) => (
+                <div key={i} style={{
+                  border: '1px solid var(--border)', borderRadius: '10px', overflow: 'hidden',
+                  background: 'var(--card-bg)',
+                }}>
+                  <button
+                    onClick={() => setPreviewDoc({ url: img.src, title: img.title })}
+                    style={{ padding: 0, border: 'none', background: 'transparent', cursor: 'pointer', width: '100%', display: 'block' }}
+                  >
+                    <img src={img.src} alt={img.title} style={{ width: '100%', height: 'auto', display: 'block' }} />
+                  </button>
+                  <div style={{ padding: '0.6rem 0.75rem' }}>
+                    <p style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text)', margin: 0 }}>{img.title}</p>
+                    <p style={{ fontSize: '0.68rem', color: 'var(--muted)', margin: '0.25rem 0 0' }}>{img.desc}</p>
+                    <p style={{ fontSize: '0.6rem', color: 'var(--ok)', margin: '0.25rem 0 0' }}>👆 Klik untuk perbesar</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ════════ PREVIEW MODAL ════════ */}
       {previewDoc && (
         <div onClick={() => setPreviewDoc(null)} style={{
