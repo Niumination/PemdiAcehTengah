@@ -122,6 +122,7 @@ export default function Requirement() {
                         <th>Data / Dokumen</th>
                         <th style={{ width: 140 }}>Fungsi</th>
                         <th style={{ width: 90 }}>Format</th>
+                        <th style={{ width: 110 }}>Dok. Kunci</th>
                         <th style={{ width: 140 }}>Dari</th>
                       </tr>
                     </thead>
@@ -135,6 +136,15 @@ export default function Requirement() {
                             {item.format.split('/').map((f, fi) => (
                               <span key={fi} className="req-format-tag">{f.trim()}</span>
                             ))}
+                          </td>
+                          <td style={{ textAlign: 'center' }}>
+                            {item.dokumenKunci ? (
+                              <span style={{
+                                display: 'inline-block', padding: '0.1rem 0.4rem', borderRadius: '4px',
+                                background: 'rgba(27,67,50,0.1)', color: '#1B4332',
+                                fontSize: '0.7rem', fontWeight: 700,
+                              }}>{item.dokumenKunci}</span>
+                            ) : <span style={{ color: '#ccc' }}>—</span>}
                           </td>
                           <td style={{ fontSize: '0.85rem' }}>{item.sumber}</td>
                         </tr>

@@ -93,15 +93,15 @@ const requirementData = {
     },
     {
       id: 'F', icon: '💻', name: 'Data SPBE & TIK',
-      description: 'Data Sistem Pemerintahan Berbasis Elektronik yang menjadi acuan digitalisasi proses bisnis.',
+      description: 'Data Sistem Pemerintahan Berbasis Elektronik yang menjadi acuan digitalisasi proses bisnis. Selaras dengan Peta Dokumen Kunci Bukti Dukung Pemdi.',
       items: [
-        { no: 'F1', data: 'Dokumen Arsitektur SPBE (Perpres 132/2022)', fungsi: 'Domain proses bisnis dalam SPBE', format: 'PDF', sumber: 'Diskominfo' },
-        { no: 'F2', data: 'Peta Rencana SPBE 2025-2030', fungsi: 'Target digitalisasi', format: 'PDF', sumber: 'Diskominfo' },
-        { no: 'F3', data: 'Master Plan TIK / IT Master Plan', fungsi: 'Infrastruktur digital', format: 'PDF', sumber: 'Diskominfo' },
-        { no: 'F4', data: 'Domain Proses Bisnis dalam SPBE (indikator 11-14)', fungsi: 'Nilai kematangan proses', format: 'Data SPBE', sumber: 'Diskominfo' },
-        { no: 'F5', data: 'Data aplikasi/sistem yang sudah berjalan', fungsi: 'Aplikasi existing', format: 'spreadsheet', sumber: 'Diskominfo' },
-        { no: 'F6', data: 'Arsitektur integrasi SIAT (Sistem Informasi Aceh Terintegrasi)', fungsi: 'Ekosistem digital Aceh', format: 'PDF', sumber: 'Diskominfo' },
-        { no: 'F7', data: 'Akses ke dashboard e-Keurani', fungsi: 'Data kepegawaian', format: 'API/Web', sumber: 'BKPSDM' },
+        { no: 'F1', data: 'Dokumen Arsitektur SPBE (Perpres 132/2022)', fungsi: 'Domain proses bisnis dalam SPBE', format: 'PDF', sumber: 'Diskominfo', dokumenKunci: '#3' },
+        { no: 'F2', data: 'Peta Rencana SPBE 2025-2030', fungsi: 'Target digitalisasi', format: 'PDF', sumber: 'Diskominfo', dokumenKunci: '#2' },
+        { no: 'F3', data: 'Master Plan TIK / IT Master Plan', fungsi: 'Infrastruktur digital', format: 'PDF', sumber: 'Diskominfo', dokumenKunci: '#3' },
+        { no: 'F4', data: 'Domain Proses Bisnis dalam SPBE (indikator 11-14)', fungsi: 'Nilai kematangan proses', format: 'Data SPBE', sumber: 'Diskominfo', dokumenKunci: '#27' },
+        { no: 'F5', data: 'Data aplikasi/sistem yang sudah berjalan', fungsi: 'Aplikasi existing', format: 'spreadsheet', sumber: 'Diskominfo', dokumenKunci: '#25' },
+        { no: 'F6', data: 'Arsitektur integrasi SIAT (Sistem Informasi Aceh Terintegrasi)', fungsi: 'Ekosistem digital Aceh', format: 'PDF', sumber: 'Diskominfo', dokumenKunci: '#28' },
+        { no: 'F7', data: 'Akses ke dashboard e-Keurani', fungsi: 'Data kepegawaian', format: 'API/Web', sumber: 'BKPSDM', dokumenKunci: '#25' },
       ]
     },
     {

@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 import moduls from '@/data/modul-indikator.json';
 import pemdiData from '@/data/pemdi.json';
 import dokumenKunci from '@/data/dokumen-kunci.json';
+import buktiMapping from '@/data/bukti-dokumen-mapping.json';
 
 // ── Helpers ──
 function cariIndikator(id) {
@@ -38,6 +39,51 @@ function hitungStatus(ind) {
   };
 }
 
+// ── Mapping helper: bukti existing → dokumen kunci ──
+function getDokumenForBukti(indId, buktiId) {
+  const ind = buktiMapping.indikator.find(i => i.indikator_id === indId);
+  if (!ind) return [];
+  const b = ind.bukti.find(x => x.id === buktiId);
+  return b?.dokumen_kunci || [];
+}
+
+function getDokumenInfo(no) {
+  return dokumenKunci.dokumen.find(d => d.no === no);
+}
+
+// ── Kelompokkan bukti per dokumen kunci (untuk toggle view) ──
+function groupBuktiByDokumen(indId, buktis) {
+  const groups = new Map(); // no → { no, nama, buktis: [], lengkap, total }
+  for (const b of buktis) {
+    const dkNos = getDokumenForBukti(indId, b.id);
+    if (dkNos.length === 0) {
+      // Bukti tanpa mapping → grup "Tanpa Dokumen Kunci"
+      if (!groups.has(0)) groups.set(0, { no: 0, nama: 'Tanpa Dokumen Kunci', buktis: [], lengkap: 0, total: 0 });
+      groups.get(0).buktis.push(b);
+    } else {
+      for (const no of dkNos) {
+        if (!groups.has(no)) {
+          const info = getDokumenInfo(no);
+          groups.set(no, { no, nama: info?.nama || `Dokumen #${no}`, buktis: [], lengkap: 0, total: 0 });
+        }
+        groups.get(no).buktis.push(b);
+      }
+    }
+  }
+  // Hitung status
+  for (const g of groups.values()) {
+    g.total = g.buktis.length;
+    g.lengkap = g.buktis.filter(b => b.status === 'lengkap').length;
+    g.status = g.lengkap === g.total && g.total > 0 ? 'lengkap' : g.lengkap > 0 ? 'sebagian' : 'belum';
+  }
+  // Urutkan: dokumen kunci (1..31) dulu, "Tanpa" terakhir
+  return [...groups.values()].sort((a, b) => {
+    if (a.no === 0) return 1;
+    if (b.no === 0) return -1;
+    return a.no - b.no;
+  });
+}
+
 export default function ModulIndikatorPage() {
   const router = useRouter();
   const [cari, setCari] = useState('');
@@ -47,6 +93,7 @@ export default function ModulIndikatorPage() {
   const [tabFilter, setTabFilter] = useState('semua'); // 'semua' | 'perlu' | 'selesai'
   const [previewDoc, setPreviewDoc] = useState(null); // { url, title } | null
   const [bukaDokumen, setBukaDokumen] = useState(null); // dokumen kunci accordion
+  const [viewMode, setViewMode] = useState({}); // per modul: { [nomor]: 'level' | 'dokumen' }
 
   // Convert JDIH URL to proxy URL for same-origin iframe
   const toProxyUrl = (url) => {
@@ -364,6 +411,33 @@ export default function ModulIndikatorPage() {
                           <h4 style={{ fontSize: '0.85rem', fontWeight: 700, marginBottom: '0.5rem', color: 'var(--text)' }}>
                             📋 Bukti Dukung — Kondisi Existing Pemkab Aceh Tengah
                           </h4>
+
+                          {/* Toggle view: Per Level ↔ Per Dokumen Kunci */}
+                          <div style={{ display: 'flex', gap: '0.4rem', marginBottom: '0.75rem', alignItems: 'center', flexWrap: 'wrap' }}>
+                            <span style={{ fontSize: '0.7rem', color: 'var(--muted)' }}>Tampilkan:</span>
+                            {[
+                              { key: 'level', label: 'Per Level' },
+                              { key: 'dokumen', label: 'Per Dokumen Kunci' },
+                            ].map(mode => (
+                              <button
+                                key={mode.key}
+                                onClick={() => setViewMode(prev => ({ ...prev, [modul.nomor]: mode.key }))}
+                                style={{
+                                  padding: '0.25rem 0.6rem', borderRadius: '6px', border: '1px solid var(--border)',
+                                  background: (viewMode[modul.nomor] || 'level') === mode.key ? 'var(--primary)' : 'var(--surface-2)',
+                                  color: (viewMode[modul.nomor] || 'level') === mode.key ? '#fff' : 'var(--text)',
+                                  cursor: 'pointer', fontSize: '0.7rem', fontWeight: 600,
+                                }}
+                              >
+                                {mode.label}
+                              </button>
+                            ))}
+                            <span style={{ fontSize: '0.65rem', color: 'var(--muted)', marginLeft: 'auto' }}>
+                              {buktiMapping.stats?.terpetakan}/{buktiMapping.stats?.total_bukti} bukti terpetakan
+                            </span>
+                          </div>
+
+                          {(viewMode[modul.nomor] || 'level') === 'level' ? (
                           <div style={{ overflowX: 'auto' }}>
                             <table style={{
                               width: '100%', borderCollapse: 'collapse', fontSize: '0.78rem',
@@ -375,6 +449,7 @@ export default function ModulIndikatorPage() {
                                   <th style={thStyle}>Nama Bukti Dukung</th>
                                   <th style={thStyle}>OPD</th>
                                   <th style={thStyle}>Status</th>
+                                  <th style={thStyle}>Dokumen Kunci</th>
                                   <th style={{...thStyle, width:'70px', textAlign:'center'}}>Aksi</th>
                                   <th style={thStyle}>Catatan</th>
                                 </tr>
@@ -385,6 +460,7 @@ export default function ModulIndikatorPage() {
                                 const url = bd.url_preview || '';
                                 const isPdf = bd._ext === 'pdf' && !!url;
                                 const canPreview = isPdf;
+                                const dkNos = getDokumenForBukti(modul.ind.id, bd.id);
                                 return (
                                   <tr key={bd.id} style={{ borderBottom: '1px solid var(--border)' }}>
                                     <td style={tdStyle}>
@@ -418,6 +494,27 @@ export default function ModulIndikatorPage() {
                                         {sm.icon} {sm.label}
                                       </span>
                                     </td>
+                                    <td style={tdStyle}>
+                                      {dkNos.length > 0 ? dkNos.map(no => {
+                                        const info = getDokumenInfo(no);
+                                        return (
+                                          <span key={no} style={{
+                                            display: 'inline-block', padding: '0.1rem 0.4rem', margin: '0.1rem',
+                                            borderRadius: '4px', background: 'var(--primary)15',
+                                            color: 'var(--primary)', fontSize: '0.65rem', fontWeight: 700,
+                                            border: '1px solid var(--primary)30',
+                                            cursor: 'pointer', whiteSpace: 'nowrap',
+                                          }}
+                                          title={info?.nama || ''}
+                                          onClick={() => setBukaDokumen(no)}
+                                          >
+                                            #{no}
+                                          </span>
+                                        );
+                                      }) : (
+                                        <span style={{ fontSize: '0.65rem', color: 'var(--muted)' }}>—</span>
+                                      )}
+                                    </td>
                                     <td style={{...tdStyle, textAlign:'center'}}>
                                       {canPreview ? (
                                         <button onClick={() => setPreviewDoc({url: toProxyUrl(url), title: bd.nama})}
@@ -441,6 +538,88 @@ export default function ModulIndikatorPage() {
                               </tbody>
                             </table>
                           </div>
+                          ) : (
+                          /* ── VIEW PER DOKUMEN KUNCI ── */
+                          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                            {groupBuktiByDokumen(modul.ind.id, modul.ind.bukti_dukung).map(group => {
+                              const stColor = group.status === 'lengkap' ? 'var(--ok)' : group.status === 'sebagian' ? 'var(--warn)' : 'var(--muted)';
+                              const stBg = group.status === 'lengkap' ? 'var(--ok-bg)' : group.status === 'sebagian' ? 'var(--warn-bg)' : 'var(--surface-2)';
+                              return (
+                                <div key={group.no} style={{
+                                  border: '1px solid var(--border)', borderRadius: '8px', overflow: 'hidden',
+                                }}>
+                                  <div style={{
+                                    display: 'flex', alignItems: 'center', gap: '0.5rem',
+                                    padding: '0.5rem 0.75rem', background: 'var(--surface-2)',
+                                    borderBottom: '1px solid var(--border)',
+                                  }}>
+                                    {group.no > 0 ? (
+                                      <button
+                                        onClick={() => setBukaDokumen(group.no)}
+                                        style={{
+                                          border: 'none', background: 'var(--primary)', color: '#fff',
+                                          borderRadius: '4px', padding: '0.15rem 0.45rem',
+                                          fontSize: '0.7rem', fontWeight: 700, cursor: 'pointer',
+                                        }}
+                                      >#{group.no}</button>
+                                    ) : (
+                                      <span style={{ fontSize: '0.7rem', color: 'var(--muted)', fontWeight: 700 }}>—</span>
+                                    )}
+                                    <span style={{ flex: 1, fontSize: '0.75rem', fontWeight: 600, color: 'var(--text)' }}>
+                                      {group.nama}
+                                    </span>
+                                    <span style={{
+                                      fontSize: '0.65rem', padding: '0.15rem 0.5rem', borderRadius: '10px',
+                                      background: stBg, color: stColor, fontWeight: 600, whiteSpace: 'nowrap',
+                                    }}>
+                                      {group.lengkap}/{group.total} lengkap
+                                    </span>
+                                  </div>
+                                  <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.75rem' }}>
+                                    <thead>
+                                      <tr style={{ background: 'var(--surface-2)' }}>
+                                        <th style={{...thStyle, width:'50px'}}>Level</th>
+                                        <th style={thStyle}>Nama Bukti Dukung</th>
+                                        <th style={{...thStyle, width:'100px'}}>Status</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      {group.buktis.map((bd, i) => {
+                                        const sm = STATUS_META[bd.status] || STATUS_META.belum;
+                                        return (
+                                          <tr key={bd.id} style={{ borderBottom: '1px solid var(--border)' }}>
+                                            <td style={tdStyle}>
+                                              <span style={{
+                                                padding: '0.15rem 0.4rem', borderRadius: '4px',
+                                                background: `${LEVEL_WARNA[bd.level] || '#6b7280'}15`,
+                                                color: LEVEL_WARNA[bd.level] || '#6b7280',
+                                                fontWeight: 600, fontSize: '0.7rem',
+                                              }}>L{bd.level}</span>
+                                            </td>
+                                            <td style={{ ...tdStyle, fontWeight: 500 }}>
+                                              {bd.nama}
+                                              {bd.detail && <div style={{ fontSize: '0.68rem', color: 'var(--muted)', marginTop: '0.1rem' }}>{bd.detail}</div>}
+                                            </td>
+                                            <td style={tdStyle}>
+                                              <span style={{
+                                                display: 'inline-flex', alignItems: 'center', gap: '0.25rem',
+                                                padding: '0.15rem 0.5rem', borderRadius: '4px',
+                                                background: sm.bg, color: sm.color,
+                                                fontSize: '0.7rem', fontWeight: 600, whiteSpace: 'nowrap',
+                                              }}>
+                                                {sm.icon} {sm.label}
+                                              </span>
+                                            </td>
+                                          </tr>
+                                        );
+                                      })}
+                                    </tbody>
+                                  </table>
+                                </div>
+                              );
+                            })}
+                          </div>
+                          )}
                         </div>
                       )}
 
