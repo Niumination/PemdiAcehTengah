@@ -117,6 +117,30 @@ function deteksiDuplikat(buktis) {
   return dups;
 }
 
+// ── Kumpulkan semua bukti baru (P1.*) dari seluruh indikator ──
+function getBuktiBaru() {
+  const out = [];
+  for (const a of pemdiData.aspek) {
+    for (const ind of a.indikator) {
+      for (const b of ind.bukti_dukung || []) {
+        if (b._sumber_baru) {
+          out.push({ ...b, _indikator: ind.id, _namaIndikator: ind.nama });
+        }
+      }
+    }
+  }
+  return out.sort((x, y) => x.id.localeCompare(y.id));
+}
+
+function hitungBuktiBaru() {
+  const all = getBuktiBaru();
+  const proses = all.filter(b => b.status === 'proses').length;
+  const belum = all.filter(b => b.status === 'belum').length;
+  const dkSet = new Set();
+  for (const b of all) for (const no of (b._dokumen_kunci || [])) dkSet.add(no);
+  return { total: all.length, proses, belum, dokumen: dkSet.size };
+}
+
 export default function ModulIndikatorPage() {
   const router = useRouter();
   const [cari, setCari] = useState('');
@@ -440,8 +464,8 @@ export default function ModulIndikatorPage() {
                               background: 'var(--warn-bg)', border: '1px solid var(--warn)',
                               fontSize: '0.8rem', color: 'var(--warn)',
                             }}>
-                              ⚠️ <strong>Semua status bukti dukung saat ini Belum</strong> —
-                              perlu diverifikasi ulang sesuai kriteria level masing-masing indikator.
+                              ⚠️ <strong>Belum ada bukti dukung yang dinyatakan Lengkap</strong> —
+                              bukti existing & baru masih perlu diverifikasi ulang sesuai kriteria level masing-masing indikator.
                             </div>
                           )}
                           <h4 style={{ fontSize: '0.85rem', fontWeight: 700, marginBottom: '0.5rem', color: 'var(--text)' }}>
@@ -729,6 +753,107 @@ export default function ModulIndikatorPage() {
                 Tidak ada modul yang cocok dengan filter.
               </div>
             )}
+          </div>
+        </div>
+      </section>
+
+      {/* ════════ BUKTI DUKUNG BARU 2026 — Portal Evaluasi & Dokumen (inject baru) ════════ */}
+      <section style={{ marginTop: '3rem' }}>
+        <div className="container">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
+            <span style={{ fontSize: '1.5rem' }}>📥</span>
+            <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text)', margin: 0 }}>
+              Bukti Dukung Baru — Portal Evaluasi & Dokumen 2026
+            </h2>
+            <span className="badge badge-yellow" style={{ fontSize: '0.65rem' }}>BARU</span>
+          </div>
+          <p style={{ color: 'var(--muted)', fontSize: '0.85rem', maxWidth: 760, marginBottom: '1rem' }}>
+            <strong>20 bukti dukung</strong> baru yang dipetakan ke Peta Dokumen Kunci — berasal dari
+            <strong> portal evaluasi PEMDI (eval.spbe.go.id)</strong> kode <code>PG_04</code> & <code>TD_13</code> (SK Tim
+            Koordinasi, DPA/RKA, rapat koordinasi, KAK & laporan aplikasi Bapokting) dan dokumen Diskominfo 2026 yang
+            ditemukan di Documents (Indeks KAMI, Perbup persandian, SK Forum Satu Data, RPJMD, Renstra, Renja, DPA, RKA).
+            Masih perlu verifikasi kesesuaian kriteria level sebelum dianggap lengkap.
+          </p>
+
+          {/* Stat mini */}
+          <div className="stat-row" style={{ flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.25rem' }}>
+            <span className="stat-badge" style={{ background: 'var(--ok-bg)', color: 'var(--ok)' }}>
+              {hitungBuktiBaru().total} bukti baru
+            </span>
+            <span className="stat-badge" style={{ background: 'var(--warn-bg)', color: 'var(--warn)' }}>
+              {hitungBuktiBaru().proses} di-portal eval
+            </span>
+            <span className="stat-badge" style={{ background: 'var(--surface-2)', color: 'var(--muted)' }}>
+              {hitungBuktiBaru().belum} belum diunggah
+            </span>
+            <span className="stat-badge" style={{ background: 'var(--primary-bg, #e3edff)', color: 'var(--primary)' }}>
+              {hitungBuktiBaru().dokumen} dokumen kunci terdukung
+            </span>
+          </div>
+
+          {/* Tabel bukti baru */}
+          <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.75rem' }}>
+              <thead>
+                <tr style={{ background: 'var(--surface-2)' }}>
+                  <th style={{...thStyle, width:'50px'}}>Ind.</th>
+                  <th style={thStyle}>Nama Bukti Dukung</th>
+                  <th style={{...thStyle, width:'70px'}}>Level</th>
+                  <th style={{...thStyle, width:'110px'}}>Dok. Kunci</th>
+                  <th style={{...thStyle, width:'110px'}}>Status</th>
+                  <th style={{...thStyle, width:'150px'}}>Sumber</th>
+                </tr>
+              </thead>
+              <tbody>
+                {getBuktiBaru().map(bd => {
+                  const sm = STATUS_META[bd.status] || STATUS_META.belum;
+                  const dkNos = bd._dokumen_kunci || [];
+                  const url = bd.url_preview || '';
+                  const isPdf = bd._ext === 'pdf' && !!url;
+                  return (
+                    <tr key={bd.id} style={{ borderBottom: '1px solid var(--border)' }}>
+                      <td style={tdStyle}>
+                        <span style={{ padding: '0.15rem 0.4rem', borderRadius: '4px', background: 'var(--primary-bg, #e3edff)', color: 'var(--primary)', fontWeight: 700, fontSize: '0.68rem' }}>
+                          {bd._indikator}
+                        </span>
+                      </td>
+                      <td style={{ ...tdStyle, fontWeight: 500 }}>
+                        {bd.nama}
+                        {bd.detail && <div style={{ fontSize: '0.68rem', color: 'var(--muted)', marginTop: '0.15rem' }}>{bd.detail}</div>}
+                        {bd.catatan && <div style={{ fontSize: '0.66rem', color: 'var(--muted)', marginTop: '0.15rem', opacity: 0.85 }}>📝 {bd.catatan}</div>}
+                        {url && (
+                          <a href={url} target="_blank" rel="noopener noreferrer"
+                            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.68rem', color: 'var(--primary)', marginTop: '0.2rem', textDecoration: 'underline' }}>
+                            {isPdf ? '📄 Buka PDF' : '🖼️ Lihat preview'} ↗
+                          </a>
+                        )}
+                      </td>
+                      <td style={tdStyle}>
+                        <span style={{ padding: '0.15rem 0.4rem', borderRadius: '4px', background: `${LEVEL_WARNA[bd.level] || '#6b7280'}15`, color: LEVEL_WARNA[bd.level] || '#6b7280', fontWeight: 600, fontSize: '0.7rem' }}>
+                          L{bd.level}
+                        </span>
+                      </td>
+                      <td style={tdStyle}>
+                        {dkNos.length > 0 ? dkNos.map(no => (
+                          <button key={no} onClick={() => setBukaDokumen(no)} style={{
+                            border: 'none', background: 'var(--primary)', color: '#fff', borderRadius: '4px',
+                            padding: '0.15rem 0.45rem', fontSize: '0.68rem', fontWeight: 700, cursor: 'pointer', marginRight: '0.25rem',
+                          }}>#{no}</button>
+                        )) : <span style={{ color: 'var(--muted)', fontSize: '0.7rem' }}>—</span>}
+                      </td>
+                      <td style={tdStyle}>
+                        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', padding: '0.15rem 0.5rem', borderRadius: '4px', background: sm.bg, color: sm.color, fontSize: '0.7rem', fontWeight: 600, whiteSpace: 'nowrap' }}>
+                          {sm.icon} {sm.label}
+                        </span>
+                      </td>
+                      <td style={{ ...tdStyle, fontSize: '0.68rem', color: 'var(--muted)' }}>
+                        {bd._portal ? '🖥️ Portal eval.spbe.go.id' : '📁 Documents 2026'}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
         </div>
       </section>

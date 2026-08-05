@@ -5,7 +5,7 @@
   "target_predikat": "Baik",
   "baseline_spbe": 2.59,
   "baseline_predikat": "Cukup",
-  "total_item_bukti": 114,
+  "total_item_bukti": 134,
   "total_item_manual": 114,
   "total_item_eksternal": 0,
   "dasar_hukum": [
@@ -77,7 +77,7 @@
       }
     ]
   },
-  "catatan": "STATUS: 57 item bukti dukung. Lengkap: 2, Proses: 22, Belum: 33. Verifikasi berkas publik dari 42 file sumber internet (humas, CSIRT, PPID, open data). Baseline SPBE 2025 = 2.59. Target indeks >= 2.50.",
+  "catatan": "STATUS: 57 item bukti dukung. Lengkap: 2, Proses: 22, Belum: 33. Verifikasi berkas publik dari 42 file sumber internet (humas, CSIRT, PPID, open data). Baseline SPBE 2025 = 2.59. Target indeks >= 2.50.\n- 5 Agu 2026: +20 bukti baru (portal eval.spbe.go.id PG_04/TD_13 + dokumen Documents/odl-pdf).",
   "aspek": [
     {
       "id": 1,
@@ -205,6 +205,184 @@
                 "Bagian Organisasi"
               ],
               "status": "belum"
+            },
+            {
+              "id": "P1.I1_1",
+              "level": 1,
+              "nama": "SK Bupati No. 555/395/DISKOMINFO/2026 — Penetapan Tim Koordinasi Pemerintah Digital (PEMDI) Kab. Aceh Tengah",
+              "detail": "Dasar pembentukan Tim Koordinasi PEMDI (PermenPAN-RB 8/2026)",
+              "opd": [
+                "Diskominfo"
+              ],
+              "status": "proses",
+              "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode PG_04_01). Masih perlu verifikasi kesesuaian kriteria level.",
+              "url_preview": "/bukti-dukung/05-portal-pemdi/PG_04_01_SK-Koordinasi_2026.pdf",
+              "url_sumber": "/bukti-dukung/05-portal-pemdi/PG_04_01_SK-Koordinasi_2026.pdf",
+              "_ext": "pdf",
+              "_dokumen_kunci": [
+                5
+              ],
+              "_sumber_baru": true
+            },
+            {
+              "id": "P1.I1_2",
+              "level": 1,
+              "nama": "DPA/RKA Diskominfo 2026 — Sub Kegiatan 2.16.03.2.02.0037 Koordinasi Tata Kelola SPBE (Arsitektur, Peta Rencana, Proses Bisnis) Rp154,6 Juta",
+              "detail": "RKA-Belanja SKPD Diskominfo TA 2026, sumber PAD",
+              "opd": [
+                "Diskominfo"
+              ],
+              "status": "proses",
+              "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode PG_04_02). Bukti anggaran program Pemdi/SPBE.",
+              "url_preview": "/bukti-dukung/05-portal-pemdi/PG_04_02_DPA_2026.pdf",
+              "url_sumber": "/bukti-dukung/05-portal-pemdi/PG_04_02_DPA_2026.pdf",
+              "_ext": "pdf",
+              "_dokumen_kunci": [
+                4
+              ],
+              "_sumber_baru": true
+            },
+            {
+              "id": "P1.I1_3",
+              "level": 1,
+              "nama": "Undangan & Rundown Rapat Koordinasi Penerapan Transformasi Digital Pemerintah (25-26 Juni 2026)",
+              "detail": "Setdakab No. 005/2291/DISKOMINFO, 22 Juni 2026 — narasumber Deputi Transformasi Digital KemenPANRB",
+              "opd": [
+                "Diskominfo"
+              ],
+              "status": "proses",
+              "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode PG_04_03). Paket dokumentasi rapat tim koordinasi Pemdi.",
+              "url_preview": "/bukti-dukung/05-portal-pemdi/PG_04_03_RapatPemdi_2026.pdf",
+              "url_sumber": "/bukti-dukung/05-portal-pemdi/PG_04_03_RapatPemdi_2026.pdf",
+              "_ext": "pdf",
+              "_dokumen_kunci": [
+                7
+              ],
+              "_sumber_baru": true
+            },
+            {
+              "id": "P1.I1_4",
+              "level": 1,
+              "nama": "DPA-SKPD Diskominfo TA 2026 (Lengkap, 97 hal)",
+              "detail": "Disetujui Sekda Drs. Mursyid, M.Si — Kepala Diskominfo Mustafa Kamal",
+              "opd": [
+                "Diskominfo"
+              ],
+              "status": "belum",
+              "catatan": "Dokumen resmi — Ditemukan di Documents, belum diunggah ke portal. Rekap DPA seluruh kegiatan Diskominfo 2026.",
+              "url_preview": "/bukti-dukung/06-dokumen-2026/DPA_Diskominfo_2026_lengkap.pdf",
+              "url_sumber": "/bukti-dukung/06-dokumen-2026/DPA_Diskominfo_2026_lengkap.pdf",
+              "_ext": "pdf",
+              "_dokumen_kunci": [
+                4
+              ],
+              "_sumber_baru": true
+            },
+            {
+              "id": "P1.I1_5",
+              "level": 1,
+              "nama": "Renstra Diskominfo Aceh Tengah 2025-2029 (GO LIVE)",
+              "detail": "Rencana Strategis Diskominfo periode 2025-2029",
+              "opd": [
+                "Diskominfo"
+              ],
+              "status": "belum",
+              "catatan": "Dokumen resmi — Ditemukan di Documents (odl-pdf), belum diunggah ke portal. Substansi program Pemdi/SPBE dalam Renstra.",
+              "url_preview": "/bukti-dukung/06-dokumen-2026/RENSTRA 25-29 GO LIVE.pdf",
+              "url_sumber": "/bukti-dukung/06-dokumen-2026/RENSTRA 25-29 GO LIVE.pdf",
+              "_ext": "pdf",
+              "_dokumen_kunci": [
+                1
+              ],
+              "_sumber_baru": true
+            },
+            {
+              "id": "P1.I1_6",
+              "level": 1,
+              "nama": "Renja Diskominfo TA 2026 (Rancangan Akhir)",
+              "detail": "Rencana Kerja Diskominfo 2026",
+              "opd": [
+                "Diskominfo"
+              ],
+              "status": "belum",
+              "catatan": "Dokumen resmi — Ditemukan di Documents (odl-pdf), belum diunggah ke portal.",
+              "url_preview": "/bukti-dukung/06-dokumen-2026/Ranhir Renja Diskominfo 2026.pdf",
+              "url_sumber": "/bukti-dukung/06-dokumen-2026/Ranhir Renja Diskominfo 2026.pdf",
+              "_ext": "pdf",
+              "_dokumen_kunci": [
+                1
+              ],
+              "_sumber_baru": true
+            },
+            {
+              "id": "P1.I1_7",
+              "level": 1,
+              "nama": "RKA Rincian Belanja Sub Kegiatan 0037 Tata Kelola SPBE (Cetak SIPD)",
+              "detail": "Revisi SIPD — rincian belanja kegiatan tata kelola SPBE",
+              "opd": [
+                "Diskominfo"
+              ],
+              "status": "belum",
+              "catatan": "Dokumen resmi — Ditemukan di Documents (odl-pdf), belum diunggah ke portal.",
+              "url_preview": "/bukti-dukung/06-dokumen-2026/RKA_Rincian_0037_TataKelolaSPBE_2026.pdf",
+              "url_sumber": "/bukti-dukung/06-dokumen-2026/RKA_Rincian_0037_TataKelolaSPBE_2026.pdf",
+              "_ext": "pdf",
+              "_dokumen_kunci": [
+                4
+              ],
+              "_sumber_baru": true
+            },
+            {
+              "id": "P1.I1_8",
+              "level": 1,
+              "nama": "Capaian Realisasi RKPD Diskominfo (Tabel 2.143 Evaluasi IKD)",
+              "detail": "Indeks SPBE 2,59 (92,5%), ITD 47,57 poin, IPS 2,97, kepuasan 60%",
+              "opd": [
+                "Diskominfo"
+              ],
+              "status": "belum",
+              "catatan": "Data resmi — Ditemukan di Documents (odl-pdf), belum diunggah ke portal. Bukti capaian kinerja program.",
+              "url_preview": "/bukti-dukung/06-dokumen-2026/Capaian_RKPD_preview.png",
+              "url_sumber": "/bukti-dukung/06-dokumen-2026/Capaian_Realisasi_RKPD_Diskominfo.xlsx",
+              "_ext": "png",
+              "_dokumen_kunci": [
+                1
+              ],
+              "_sumber_baru": true
+            },
+            {
+              "id": "P1.I1_9",
+              "level": 1,
+              "nama": "Qanun RPJMD Kab. Aceh Tengah 2025-2029",
+              "detail": "Rencana Pembangunan Jangka Menengah Daerah 2025-2029 (409 hal)",
+              "opd": [
+                "Diskominfo"
+              ],
+              "status": "belum",
+              "catatan": "Dokumen resmi — Ditemukan di Documents, belum diunggah ke portal. Visi-misi & program strategis termasuk digitalisasi.",
+              "url_preview": "/bukti-dukung/06-dokumen-2026/RPJMD AT 2025-2029 rankhir.pdf",
+              "url_sumber": "/bukti-dukung/06-dokumen-2026/RPJMD AT 2025-2029 rankhir.pdf",
+              "_ext": "pdf",
+              "_dokumen_kunci": [
+                1
+              ],
+              "_sumber_baru": true
+            },
+            {
+              "id": "P1.I1_10",
+              "level": 1,
+              "nama": "Perbup No. 70/2016 — Susunan Organisasi dan Tata Kerja Diskominfo",
+              "detail": "SOTK Diskominfo Kab. Aceh Tengah",
+              "opd": [
+                "Diskominfo"
+              ],
+              "status": "belum",
+              "catatan": "Dokumen resmi — Pendukung kelembagaan pengelola Pemdi. Belum diunggah ke portal.",
+              "url_preview": "/bukti-dukung/06-dokumen-2026/perbup_70_2016_kominfo SOTK - Sandi Diskominfo.pdf",
+              "url_sumber": "/bukti-dukung/06-dokumen-2026/perbup_70_2016_kominfo SOTK - Sandi Diskominfo.pdf",
+              "_ext": "pdf",
+              "_dokumen_kunci": [],
+              "_sumber_baru": true
             }
           ]
         },
@@ -522,6 +700,42 @@
               ],
               "status": "belum",
               "catatan": "PKS E-Keurani Pemkab-Pemprov (integrasi data ASN) ditemukan. Salinan PKS resmi perlu diminta"
+            },
+            {
+              "id": "P1.I4_1",
+              "level": 1,
+              "nama": "SK Bupati No. 555/395/DISKOMINFO/2026 — Tim Koordinasi PEMDI (kolaborasi lintas OPD)",
+              "detail": "Anggota tim: Inspektorat, Bappeda, BPKAD, PUPR, Pertanahan, DPMPTSP, Dukcapil, Diskominfo, Bagian Organisasi, Hukum, Tapem",
+              "opd": [
+                "Diskominfo"
+              ],
+              "status": "proses",
+              "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode PG_04_01). Bukti kolaborasi antar perangkat daerah.",
+              "url_preview": "/bukti-dukung/05-portal-pemdi/PG_04_01_SK-Koordinasi_2026.pdf",
+              "url_sumber": "/bukti-dukung/05-portal-pemdi/PG_04_01_SK-Koordinasi_2026.pdf",
+              "_ext": "pdf",
+              "_dokumen_kunci": [
+                5
+              ],
+              "_sumber_baru": true
+            },
+            {
+              "id": "P1.I4_2",
+              "level": 1,
+              "nama": "Rapat Koordinasi Penerapan Transformasi Digital Pemerintah (25-26 Juni 2026)",
+              "detail": "Kolaborasi Pemkab dengan KemenPANRB — 11 OPD diundang",
+              "opd": [
+                "Diskominfo"
+              ],
+              "status": "proses",
+              "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode PG_04_03). Bukti kolaborasi Pemdi.",
+              "url_preview": "/bukti-dukung/05-portal-pemdi/PG_04_03_RapatPemdi_2026.pdf",
+              "url_sumber": "/bukti-dukung/05-portal-pemdi/PG_04_03_RapatPemdi_2026.pdf",
+              "_ext": "pdf",
+              "_dokumen_kunci": [
+                7
+              ],
+              "_sumber_baru": true
             }
           ]
         }
@@ -632,6 +846,24 @@
               ],
               "status": "belum",
               "catatan": "Portal Open Data aktif (852 datasets, 61 organisasi) + Desk Satu Data 2026 + PERKIM MENDATA. Metadata sektoral perlu verifikasi"
+            },
+            {
+              "id": "P1.I5_1",
+              "level": 1,
+              "nama": "SK Bupati No. 188.55/375/BAPPEDA/2025 — Perubahan Pedoman Pembentukan Forum Satu Data Kab. Aceh Tengah",
+              "detail": "Dasar hukum Forum Satu Data (Perpres 39/2019)",
+              "opd": [
+                "Diskominfo"
+              ],
+              "status": "belum",
+              "catatan": "Dokumen resmi — Ditemukan di Documents, belum diunggah ke portal. Bukti tata kelola data (SDI).",
+              "url_preview": "/bukti-dukung/06-dokumen-2026/REVISI SK PEDOMAN FORUM SATU DATA ACEH TENGAH TAHUN 2025.pdf",
+              "url_sumber": "/bukti-dukung/06-dokumen-2026/REVISI SK PEDOMAN FORUM SATU DATA ACEH TENGAH TAHUN 2025.pdf",
+              "_ext": "pdf",
+              "_dokumen_kunci": [
+                18
+              ],
+              "_sumber_baru": true
             }
           ]
         },
@@ -799,6 +1031,24 @@
                 "BPS"
               ],
               "status": "belum"
+            },
+            {
+              "id": "P1.I7_1",
+              "level": 1,
+              "nama": "Capaian Indeks Pembangunan Statistik (IPS) Diskominfo 2,97 — Tabel 2.143 Evaluasi IKD",
+              "detail": "IPS 2,97 dari target 3,14 (94,6% capaian)",
+              "opd": [
+                "Diskominfo"
+              ],
+              "status": "belum",
+              "catatan": "Data resmi — Ditemukan di Documents (odl-pdf), belum diunggah ke portal. Bukti capaian statistik sektoral.",
+              "url_preview": "/bukti-dukung/06-dokumen-2026/Capaian_RKPD_preview.png",
+              "url_sumber": "/bukti-dukung/06-dokumen-2026/Capaian_Realisasi_RKPD_Diskominfo.xlsx",
+              "_ext": "png",
+              "_dokumen_kunci": [
+                18
+              ],
+              "_sumber_baru": true
             }
           ]
         },
@@ -902,6 +1152,24 @@
                 "OPD Pemilik Layanan"
               ],
               "status": "belum"
+            },
+            {
+              "id": "P1.I8_1",
+              "level": 1,
+              "nama": "Hasil Indeks KAMI 5.0 — Bagian VII Pelindungan Data Pribadi (Skor 66, Kematangan II)",
+              "detail": "Indeks KAMI Diskominfo, 13 April 2026",
+              "opd": [
+                "Diskominfo"
+              ],
+              "status": "belum",
+              "catatan": "Data resmi — Ditemukan di Documents, belum diunggah ke portal. Evaluasi PDP bagian dari Indeks KAMI.",
+              "url_preview": "/bukti-dukung/06-dokumen-2026/Indeks_KAMI_5.0_preview.png",
+              "url_sumber": "/bukti-dukung/06-dokumen-2026/Indeks_KAMI_5.0_Diskominfo_2026.xlsx",
+              "_ext": "png",
+              "_dokumen_kunci": [
+                17
+              ],
+              "_sumber_baru": true
             }
           ]
         }
@@ -1058,6 +1326,24 @@
                 "Diskominfo (Bidang Persandian)"
               ],
               "status": "belum"
+            },
+            {
+              "id": "P1.I10_1",
+              "level": 1,
+              "nama": "Instrumen & Hasil Indeks KAMI 5.0 — Area Keamanan Siber (Skor 563, \"Cukup Baik\")",
+              "detail": "Indeks KAMI Diskominfo, diisi 13 April 2026 oleh Mansyur Ramadhan Arita, A.Md; Kategori SE: Rendah (12); Tata Kelola 49, Risiko 23, Kerangka 75, Aset 185, Teknologi 165, PDP 66",
+              "opd": [
+                "Diskominfo"
+              ],
+              "status": "belum",
+              "catatan": "Data resmi — Ditemukan di Documents, belum diunggah ke portal. Padanan IKASANDI untuk keamanan siber.",
+              "url_preview": "/bukti-dukung/06-dokumen-2026/Indeks_KAMI_5.0_preview.png",
+              "url_sumber": "/bukti-dukung/06-dokumen-2026/Indeks_KAMI_5.0_Diskominfo_2026.xlsx",
+              "_ext": "png",
+              "_dokumen_kunci": [
+                20
+              ],
+              "_sumber_baru": true
             }
           ]
         },
@@ -1125,6 +1411,42 @@
               ],
               "status": "belum",
               "catatan": "Berita Dukcapil gunakan TTE ditemukan + e-Kinerja punya TTE BSrE. Screenshot HTTPS perlu diverifikasi"
+            },
+            {
+              "id": "P1.I11_1",
+              "level": 1,
+              "nama": "Perbup No. 1/2025 — Pedoman Penataan Pola Hubungan Komunikasi Sandi",
+              "detail": "Berdasarkan Perka BSSN No. 10/2019",
+              "opd": [
+                "Diskominfo"
+              ],
+              "status": "belum",
+              "catatan": "Dokumen resmi — Ditemukan di Documents, belum diunggah ke portal. Bukti penerapan kriptografi/persandian.",
+              "url_preview": "/bukti-dukung/06-dokumen-2026/Perbup Penataan Pola Hub Kom Sandi - Sandi Diskominfo.pdf",
+              "url_sumber": "/bukti-dukung/06-dokumen-2026/Perbup Penataan Pola Hub Kom Sandi - Sandi Diskominfo.pdf",
+              "_ext": "pdf",
+              "_dokumen_kunci": [
+                22
+              ],
+              "_sumber_baru": true
+            },
+            {
+              "id": "P1.I11_2",
+              "level": 1,
+              "nama": "Perbup No. 2/2025 — Penyelenggaraan Persandian untuk Pengamanan Informasi",
+              "detail": "Berdasarkan Perka BSSN No. 10/2019",
+              "opd": [
+                "Diskominfo"
+              ],
+              "status": "belum",
+              "catatan": "Dokumen resmi — Ditemukan di Documents, belum diunggah ke portal. Bukti penerapan kriptografi.",
+              "url_preview": "/bukti-dukung/06-dokumen-2026/Perbup Penyelenggaraan Persandian - Sandi Diskominfo.pdf",
+              "url_sumber": "/bukti-dukung/06-dokumen-2026/Perbup Penyelenggaraan Persandian - Sandi Diskominfo.pdf",
+              "_ext": "pdf",
+              "_dokumen_kunci": [
+                22
+              ],
+              "_sumber_baru": true
             }
           ]
         },
@@ -1306,6 +1628,42 @@
                 "Vendor"
               ],
               "status": "belum"
+            },
+            {
+              "id": "P1.I13_1",
+              "level": 1,
+              "nama": "KAK Pengembangan Aplikasi Bahan Pokok Penting (Bapokting) Kab. Aceh Tengah 2026",
+              "detail": "Kerangka Acuan Kerja pengembangan aplikasi monitoring harga — Diskominfo",
+              "opd": [
+                "Diskominfo"
+              ],
+              "status": "proses",
+              "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode TD_13_01). Bukti SDLC aplikasi pemerintah digital.",
+              "url_preview": "/bukti-dukung/05-portal-pemdi/TD_13_01_KAK-Bapokting_2026.pdf",
+              "url_sumber": "/bukti-dukung/05-portal-pemdi/TD_13_01_KAK-Bapokting_2026.pdf",
+              "_ext": "pdf",
+              "_dokumen_kunci": [
+                25
+              ],
+              "_sumber_baru": true
+            },
+            {
+              "id": "P1.I13_2",
+              "level": 1,
+              "nama": "Laporan Akhir Pengembangan Aplikasi Bahan Pokok Penting (Bapokting) 2026",
+              "detail": "Laporan penyelesaian pengembangan aplikasi — Diskominfo",
+              "opd": [
+                "Diskominfo"
+              ],
+              "status": "proses",
+              "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode TD_13_04). Bukti SDLC & dokumentasi aplikasi.",
+              "url_preview": "/bukti-dukung/05-portal-pemdi/TD_13_04_LaporanBapokting_2026.pdf",
+              "url_sumber": "/bukti-dukung/05-portal-pemdi/TD_13_04_LaporanBapokting_2026.pdf",
+              "_ext": "pdf",
+              "_dokumen_kunci": [
+                25
+              ],
+              "_sumber_baru": true
             }
           ]
         },

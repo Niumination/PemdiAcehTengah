@@ -189,3 +189,15 @@ Commit terbaru ada 3, **semua di branch `fix/full-audit-award-redesign`** (belum
 | `pages/pemdi.js` | Label "Indeks Pemdi (dari Bukti Dukung)" — dihitung dari 114 bukti. |
 
 > ⚠️ **Catatan:** 5 dokumen kunci belum punya bukti existing: **#2 (Peta Rencana), #6 (SK Asesor), #11 (Komunitas Belajar), #12 (Microlearning), #14 (Sertifikasi Keahlian)** — tampil sebagai placeholder "Perlu Disusun" di modul-indikator.
+
+## 📥 Update Data — 5 Agu 2026 (Bukti Dukung Baru Portal Evaluasi)
+
+| Item | Perubahan |
+|------|-----------|
+| `public/bukti-dukung/05-portal-pemdi/` | **7 file** dari `~/Documents/REAL-PEMDI-DATA DUKUNG/` — sudah diunggah ke portal eval.spbe.go.id (kode PG_04 & TD_13): SK Tim Koordinasi PEMDI 555/395/2026, DPA/RKA 0037 tata kelola SPBE, undangan+rundown Rapat Transformasi Digital 25-26 Jun 2026, KAK & Laporan Akhir Aplikasi Bapokting. |
+| `public/bukti-dukung/06-dokumen-2026/` | **13 file** dari `~/Documents/` & `odl-pdf bukti dukung/` — belum diunggah: Indeks KAMI 5.0 (skor 563 "Cukup Baik", 13 Apr 2026), 2 Perbup persandian, SK Forum Satu Data 188.55/375/2025, RPJMD 2025-2029, Renstra/Renja/DPA/RKA Diskominfo 2026, capaian RKPD. |
+| `data/pemdi.json` | **+20 bukti baru** (id `P1.*`, flag `_sumber_baru`, `_dokumen_kunci`, `_portal`) → `total_item_bukti` 114 → **134** (57 lengkap, 70 belum, 7 proses). |
+| `data/bukti-dokumen-mapping.json` | Regenerated → **133/134 terpetakan** (Perbup SOTK sengaja tanpa dokumen kunci). |
+| `pages/modul-indikator.js` | **Section baru "📥 Bukti Dukung Baru — Portal Evaluasi & Dokumen 2026"** — tabel 20 bukti baru (indikator, level, dokumen kunci clickable, status, sumber portal/Documents). |
+
+> ℹ️ **Catatan:** Bukti baru ber-status `proses` (7 file portal eval) & `belum` (13 dokumen Documents) — belum ada yang `lengkap`, sehingga indeks Pemdi belum berubah. Verifikasi kesesuaian kriteria level diperlukan sebelum dianggap lengkap.
