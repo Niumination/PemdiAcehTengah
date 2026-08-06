@@ -175,7 +175,7 @@ Commit terbaru ada 3, **semua di branch `fix/full-audit-award-redesign`** (belum
 |---------|------|:------:|:--------:|--------|
 | 30 Jul | `docs/modul-indikator/` | 501 MB | ✅ Dihapus | 1.535 raw PNG exports PPTX — konten sudah diekstrak ke `data/modul-indikator.json`. Sudah di `.gitignore` sejak awal. |
 | 30 Jul | `pages/pemdi.js` — bukti dukung section | 715 baris | ✅ Dihapus | Semua 57 bukti dukung direset ke "belum" karena belum sesuai kriteria level. Lihat commit `ca17535`. |
-| — | `public/bukti-dukung/` (31 MB, 42 file) | ⏳ **Ditunda** | — | Masih disimpan untuk dipakai nanti saat semua bukti dukung sudah diverifikasi sesuai kriteria level masing-masing indikator. Jangan hapus sampai proses verifikasi selesai. |
+| — | `public/bukti-dukung/` (31 MB, 42 file → **39 file flat**) | ⏳ **Ditunda** | — | Masih disimpan untuk dipakai nanti saat semua bukti dukung sudah diverifikasi sesuai kriteria level masing-masing indikator. Jangan hapus sampai proses verifikasi selesai. (6 Agu: di-flatten — semua file langsung di `public/bukti-dukung/`, tanpa subfolder.) |
 
 ## 🧹 Update Data — 5 Agu 2026 (Penyelarasan Bukti Dukung)
 
@@ -194,10 +194,18 @@ Commit terbaru ada 3, **semua di branch `fix/full-audit-award-redesign`** (belum
 
 | Item | Perubahan |
 |------|-----------|
-| `public/bukti-dukung/05-portal-pemdi/` | **7 file** dari `~/Documents/REAL-PEMDI-DATA DUKUNG/` — sudah diunggah ke portal eval.spbe.go.id (kode PG_04 & TD_13): SK Tim Koordinasi PEMDI 555/395/2026, DPA/RKA 0037 tata kelola SPBE, undangan+rundown Rapat Transformasi Digital 25-26 Jun 2026, KAK & Laporan Akhir Aplikasi Bapokting. |
-| `public/bukti-dukung/06-dokumen-2026/` | **13 file** dari `~/Documents/` & `odl-pdf bukti dukung/` — belum diunggah: Indeks KAMI 5.0 (skor 563 "Cukup Baik", 13 Apr 2026), 2 Perbup persandian, SK Forum Satu Data 188.55/375/2025, RPJMD 2025-2029, Renstra/Renja/DPA/RKA Diskominfo 2026, capaian RKPD. |
+| ~~`public/bukti-dukung/05-portal-pemdi/`~~ | **7 file** dari `~/Documents/REAL-PEMDI-DATA DUKUNG/` — sudah diunggah ke portal eval.spbe.go.id (kode PG_04 & TD_13): SK Tim Koordinasi PEMDI 555/395/2026, DPA/RKA 0037 tata kelola SPBE, undangan+rundown Rapat Transformasi Digital 25-26 Jun 2026, KAK & Laporan Akhir Aplikasi Bapokting. *(Subfolder dihapus 6 Agu — file kini di root `public/bukti-dukung/`.)* |
+| ~~`public/bukti-dukung/06-dokumen-2026/`~~ | **13 file** dari `~/Documents/` & `odl-pdf bukti dukung/` — belum diunggah: Indeks KAMI 5.0 (skor 563 "Cukup Baik", 13 Apr 2026), 2 Perbup persandian, SK Forum Satu Data 188.55/375/2025, RPJMD 2025-2029, Renstra/Renja/DPA/RKA Diskominfo 2026, capaian RKPD. *(Subfolder dihapus 6 Agu — file kini di root.)* |
 | `data/pemdi.json` | **+20 bukti baru** (id `P1.*`, flag `_sumber_baru`, `_dokumen_kunci`, `_portal`) → `total_item_bukti` 114 → **134** (57 lengkap, 70 belum, 7 proses). |
 | `data/bukti-dokumen-mapping.json` | Regenerated → **133/134 terpetakan** (Perbup SOTK sengaja tanpa dokumen kunci). |
 | `pages/modul-indikator.js` | **Section baru "📥 Bukti Dukung Baru — Portal Evaluasi & Dokumen 2026"** — tabel 20 bukti baru (indikator, level, dokumen kunci clickable, status, sumber portal/Documents). |
 
 > ℹ️ **Catatan:** Bukti baru ber-status `proses` (7 file portal eval) & `belum` (13 dokumen Documents) — belum ada yang `lengkap`, sehingga indeks Pemdi belum berubah. Verifikasi kesesuaian kriteria level diperlukan sebelum dianggap lengkap.
+
+## 🧹 Update Data — 6 Agu 2026 (Flatten + Rename Bukti Dukung)
+
+| Item | Perubahan |
+|------|-----------|
+| `public/bukti-dukung/` | **Di-flatten**: 8 subfolder (00-manifest s/d 07-eksternal) dihapus — semua 39 file langsung di root `public/bukti-dukung/`. 2 file portal hilang (`TD_13_02`/`TD_13_05` DPA) disalin dari `~/Documents/REAL-PEMDI-DATA DUKUNG/`. |
+| `public/bukti-dukung/*` | **Rename 39 file** → format `Aspek_I#_NoUrut_Nama_Tahun.ext` (Aspek disingkat: TataKelola/Penyelenggara/Data/KeamananSiber/Teknologi/Keterpaduan/Kepuasan; NoUrut = urutan item per indikator level 1→5; Nama disingkat; Tahun = tahun dokumen). Contoh: `TataKelola_I1_01_Perbup-48-Arsitektur-SPBE_2025.pdf`. Script: `scripts/rename-bukti-dukung.py` (re-run aman). |
+| `data/pemdi.json` | **103 referensi path** (`url_preview`/`url_sumber`, termasuk raw GitHub) di-update ke nama baru. Backup: `pemdi.json.bak-rename`. |
