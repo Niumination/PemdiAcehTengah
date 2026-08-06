@@ -226,7 +226,7 @@
             },
             {
               "id": "P1.I1_2",
-              "level": 1,
+              "level": 2,
               "nama": "DPA/RKA Diskominfo 2026 — Sub Kegiatan 2.16.03.2.02.0037 Koordinasi Tata Kelola SPBE (Arsitektur, Peta Rencana, Proses Bisnis) Rp154,6 Juta",
               "detail": "RKA-Belanja SKPD Diskominfo TA 2026, sumber PAD",
               "opd": [
@@ -244,7 +244,7 @@
             },
             {
               "id": "P1.I1_3",
-              "level": 1,
+              "level": 2,
               "nama": "Undangan & Rundown Rapat Koordinasi Penerapan Transformasi Digital Pemerintah (25-26 Juni 2026)",
               "detail": "Setdakab No. 005/2291/DISKOMINFO, 22 Juni 2026 — narasumber Deputi Transformasi Digital KemenPANRB",
               "opd": [
@@ -262,7 +262,7 @@
             },
             {
               "id": "P1.I1_4",
-              "level": 1,
+              "level": 2,
               "nama": "DPA-SKPD Diskominfo TA 2026 (Lengkap, 97 hal)",
               "detail": "Disetujui Sekda Drs. Mursyid, M.Si — Kepala Diskominfo Mustafa Kamal",
               "opd": [
@@ -280,7 +280,7 @@
             },
             {
               "id": "P1.I1_5",
-              "level": 1,
+              "level": 2,
               "nama": "Renstra Diskominfo Aceh Tengah 2025-2029 (GO LIVE)",
               "detail": "Rencana Strategis Diskominfo periode 2025-2029",
               "opd": [
@@ -298,7 +298,7 @@
             },
             {
               "id": "P1.I1_6",
-              "level": 1,
+              "level": 2,
               "nama": "Renja Diskominfo TA 2026 (Rancangan Akhir)",
               "detail": "Rencana Kerja Diskominfo 2026",
               "opd": [
@@ -316,7 +316,7 @@
             },
             {
               "id": "P1.I1_7",
-              "level": 1,
+              "level": 2,
               "nama": "RKA Rincian Belanja Sub Kegiatan 0037 Tata Kelola SPBE (Cetak SIPD)",
               "detail": "Revisi SIPD — rincian belanja kegiatan tata kelola SPBE",
               "opd": [
@@ -352,7 +352,7 @@
             },
             {
               "id": "P1.I1_9",
-              "level": 1,
+              "level": 2,
               "nama": "Qanun RPJMD Kab. Aceh Tengah 2025-2029",
               "detail": "Rencana Pembangunan Jangka Menengah Daerah 2025-2029 (409 hal)",
               "opd": [
@@ -721,7 +721,7 @@
             },
             {
               "id": "P1.I4_2",
-              "level": 1,
+              "level": 2,
               "nama": "Rapat Koordinasi Penerapan Transformasi Digital Pemerintah (25-26 Juni 2026)",
               "detail": "Kolaborasi Pemkab dengan KemenPANRB — 11 OPD diundang",
               "opd": [
@@ -1593,7 +1593,7 @@
                 "Diskominfo"
               ],
               "status": "belum",
-              "catatan": "siCantik (perizinan), e-Kinerja, Open Data, Satu Data teridentifikasi. Matriks lengkap perlu dari Diskominfo"
+              "catatan": "SICANTIK (perizinan), e-Kinerja, Open Data, Satu Data teridentifikasi. Matriks lengkap perlu dari Diskominfo"
             },
             {
               "id": "B13.2",
@@ -1615,7 +1615,7 @@
                 "Diskominfo"
               ],
               "status": "belum",
-              "catatan": "siCantik dan portal lain sudah live. SIAP Digital perlu screenshot"
+              "catatan": "SICANTIK dan portal lain sudah live. SIAP Digital perlu screenshot"
             },
             {
               "id": "B13.4",
@@ -1747,7 +1747,7 @@
       "deskripsi": "Keterpaduan proses bisnis, integrasi aplikasi, portal layanan, dan interoperabilitas data lintas sektor",
       "target": 2.5,
       "nilai": 2.0,
-      "total_item": 26,
+      "total_item": 25,
       "koordinator": "Bag. Organisasi; BAPPEDA; Diskominfo (E-Gov, TIK, Statistik & Persandian)",
       "indikator": [
         {
@@ -1960,7 +1960,7 @@
                 "Diskominfo"
               ],
               "status": "belum",
-              "catatan": "Portal utama acehtengahkab.go.id + siCantik + Open Data aktif. Perlu screenshot bertanggal"
+              "catatan": "Portal utama acehtengahkab.go.id + SICANTIK + Open Data aktif. Perlu screenshot bertanggal"
             },
             {
               "id": "B17.2",
@@ -2295,6 +2295,6 @@
       "item_gap": 4
     }
   ],
-  "target_item_bukti": 178,
+  "target_item_bukti": 177,
   "indeks_terkini": 1.92
 }

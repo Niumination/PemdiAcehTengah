@@ -500,38 +500,34 @@ export default function ModulIndikatorPage() {
                           <h4 style={{ fontSize: '0.85rem', fontWeight: 700, marginBottom: '0.5rem', color: 'var(--text)' }}>
                             📊 Kriteria per Level
                           </h4>
-                          <div style={{ overflowX: 'auto', border: '1px solid var(--border)', borderRadius: '8px' }}>
-                            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.78rem' }}>
-                              <thead>
-                                <tr style={{ background: 'var(--surface-2)' }}>
-                                  <th style={{ ...thStyle, width: '180px' }}>Level</th>
-                                  <th style={thStyle}>Kriteria</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                {modul.level_kriteria.map(lk => (
-                                  <tr key={lk.level} style={{ borderBottom: '1px solid var(--border)', verticalAlign: 'top' }}>
-                                    <td style={{ ...tdStyle, whiteSpace: 'nowrap' }}>
-                                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                        <span style={{
-                                          display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                                          minWidth: '24px', height: '24px', borderRadius: '6px',
-                                          background: `${LEVEL_WARNA[lk.level] || '#6b7280'}15`,
-                                          color: LEVEL_WARNA[lk.level] || '#6b7280',
-                                          fontWeight: 700, fontSize: '0.72rem', padding: '0 0.35rem',
-                                        }}>L{lk.level}</span>
-                                        <span style={{ fontSize: '0.74rem', fontWeight: 600, color: 'var(--text)' }}>
-                                          {LEVEL_LABEL[lk.level] || `Level ${lk.level}`}
-                                        </span>
-                                      </div>
-                                    </td>
-                                    <td style={{ ...tdStyle, fontSize: '0.78rem', lineHeight: 1.6, color: 'var(--text)' }}>
-                                      <div className="kriteria-render" dangerouslySetInnerHTML={{ __html: formatKriteria(lk.kriteria) }} />
-                                    </td>
-                                  </tr>
-                                ))}
-                              </tbody>
-                            </table>
+                          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: '0.75rem', alignItems: 'start' }}>
+                            {modul.level_kriteria.map(lk => (
+                              <div key={lk.level} style={{
+                                borderRadius: '10px', overflow: 'hidden',
+                                border: '1px solid var(--border)',
+                                background: 'var(--surface-1)',
+                                display: 'flex', flexDirection: 'column', height: '100%',
+                              }}>
+                                <div style={{
+                                  background: `${LEVEL_WARNA[lk.level] || '#6b7280'}12`,
+                                  display: 'flex', alignItems: 'center', gap: '0.5rem',
+                                  padding: '0.5rem 0.75rem',
+                                }}>
+                                  <span style={{
+                                    display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                                    background: LEVEL_WARNA[lk.level] || '#6b7280',
+                                    color: '#fff', fontWeight: 700, fontSize: '0.72rem',
+                                    borderRadius: '6px', padding: '0.15rem 0.45rem', lineHeight: 1.5,
+                                  }}>L{lk.level}</span>
+                                  <span style={{ fontSize: '0.78rem', fontWeight: 600, color: 'var(--text)' }}>
+                                    {LEVEL_LABEL[lk.level] || `Level ${lk.level}`}
+                                  </span>
+                                </div>
+                                <div style={{ padding: '0.75rem', fontSize: '0.8rem', lineHeight: 1.6, color: 'var(--text)', overflowWrap: 'break-word' }}>
+                                  <div className="kriteria-render" dangerouslySetInnerHTML={{ __html: formatKriteria(lk.kriteria) }} />
+                                </div>
+                              </div>
+                            ))}
                           </div>
                         </div>
                       )}

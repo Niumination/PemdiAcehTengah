@@ -106,7 +106,7 @@
         },
         {
           "level": 4,
-          "kriteria": "Laporan peningkatan kompetensi digital. Peta Kompetensi untuk pelaksanaan Pemerintah ## 1 Digital. Dokumentasi pelaksanaan peningkatan kompetensi digital dan selanjutnya dibuktikan dengan Komparasi Dashboard Instansional pada tahun ini dan tahun sebelumnya beserta peningkatan jumlah ASN yang mengikuti Asesmen ###### 2026 2027 Lebih dari 90% ASN pada kementerian X telah memiliki kompetensi digital optimal Substansi Dalam persiapan peningkatan kompetensi digital kepada ASN berbasis peta kompetensi"
+          "kriteria": "Laporan peningkatan kompetensi digital. Peta Kompetensi untuk pelaksanaan Pemerintah ## 1 Digital. Dokumentasi pelaksanaan peningkatan kompetensi digital dan selanjutnya dibuktikan dengan Komparasi Dashboard Instansional pada tahun ini dan tahun sebelumnya beserta peningkatan jumlah ASN yang mengikuti Asesmen 2026 2027 Lebih dari 90% ASN pada kementerian X telah memiliki kompetensi digital optimal Substansi Dalam persiapan peningkatan kompetensi digital kepada ASN berbasis peta kompetensi"
         },
         {
           "level": 5,
@@ -136,7 +136,7 @@
       "level_kriteria": [
         {
           "level": 0,
-          "kriteria": "|Kolaborasi antar Instansi Pemerintah dalam penerapan sesuaiSubstansi Rencana Aksi Pemerintah Digital pada perencanaanInstansi Pemerintah.Kondisi|"
+          "kriteria": "Kolaborasi antar Instansi Pemerintah dalam penerapan sesuai Substansi Rencana Aksi Pemerintah Digital pada perencanaan Instansi Pemerintah. Kondisi"
         },
         {
           "level": 1,
@@ -440,7 +440,7 @@
         },
         {
           "level": 4,
-          "kriteria": "## Kriteria 1. Telah melakukan tindak lanjut hasil evaluasi pada penerapan teknologi kriptografi. ## Kondisi Data Dukung: teknologi kriptografi telah dilaksanakan secara menyeluruh.<br>2. Penerapan teknologi kriptografi telah menjadi budaya kerja untuk mendukung kualitas Layanan Digital Pemerintah.<br>3. Penyelenggaraan persandian telah terorganisir dan terkelola dengan baik<br>| - 1. Laporan tindak lanjut hasil evaluasi penerapan teknologi kriptografi. - 2. Nilai IKASANDI pada Area Kematangan P"
+          "kriteria": "## Kriteria 1. Telah melakukan tindak lanjut hasil evaluasi pada penerapan teknologi kriptografi. ## Kondisi Data Dukung: teknologi kriptografi telah dilaksanakan secara menyeluruh.<br>2. Penerapan teknologi kriptografi telah menjadi budaya kerja untuk mendukung kualitas Layanan Digital Pemerintah.<br>3. Penyelenggaraan persandian telah terorganisir dan terkelola dengan baik<br>- 1. Laporan tindak lanjut hasil evaluasi penerapan teknologi kriptografi. - 2. Nilai IKASANDI pada Area Kematangan P"
         },
         {
           "level": 5,
@@ -456,7 +456,7 @@
         "(dua) siklus data (at",
         "transit; atau at",
         "use) pada 100% Sistem Elektronik dengan minimal kategorisasi Sistem Elektronik (SE)/Layanan Digital Pemerintah pada tingkat tinggi.<br>2. Ev",
-        "teknologi kriptografi telah dilaksanakan secara menyeluruh.<br>2. Penerapan teknologi kriptografi telah menjadi budaya kerja untuk mendukung kualitas Layanan Digital Pemerintah.<br>3. Penyelenggaraan persandian telah terorganisir dan terkelola dengan baik<br>|",
+        "teknologi kriptografi telah dilaksanakan secara menyeluruh.<br>2. Penerapan teknologi kriptografi telah menjadi budaya kerja untuk mendukung kualitas Layanan Digital Pemerintah.<br>3. Penyelenggaraan persandian telah terorganisir dan terkelola dengan baik<br>",
         "1. Laporan tindak lanjut hasil evaluasi penerapan teknologi kriptografi.",
         "2. Nilai IKASANDI pada Area Kematangan P"
       ],
@@ -476,11 +476,11 @@
       "level_kriteria": [
         {
           "level": 1,
-          "kriteria": "## Kriteria - 1. Dalam tahap penyiapan untuk Penanganan Insiden Siber pada Layanan Digital Pemerintah. - 2. Penanganan Insiden Siber pada Layanan Digital Pemerintah dilaksanakan sesuai kebutuhan Instansi Pemerintah. secara sewaktu-waktu atau bersifat terbatas pada layanan digital tertentu,<br>2. Dalam Tahap Penyiapan TTIS.<br><br><br>Kondisi| ## Data Dukung: - 1. Dokumentasi pelaksanaan penanganan insiden. - 2. Nilai IKASANDI pada area Penanganan Insiden Siber. 0 < IKASANDI < 1,50"
+          "kriteria": "## Kriteria - 1. Dalam tahap penyiapan untuk Penanganan Insiden Siber pada Layanan Digital Pemerintah. - 2. Penanganan Insiden Siber pada Layanan Digital Pemerintah dilaksanakan sesuai kebutuhan Instansi Pemerintah. secara sewaktu-waktu atau bersifat terbatas pada layanan digital tertentu,<br>2. Dalam Tahap Penyiapan TTIS.<br><br><br>Kondisi: ## Data Dukung: - 1. Dokumentasi pelaksanaan penanganan insiden. - 2. Nilai IKASANDI pada area Penanganan Insiden Siber. 0 < IKASANDI < 1,50"
         },
         {
           "level": 2,
-          "kriteria": "## Kriteria - 1. IPPD telah membentuk TTIS sesuai dengan pedoman dan perencanaan yang terarah. - 2. Penanganan insiden siber telah dilakukan oleh TTIS pada sebagian Layanan Digital Pemerintah. (Self-Assessment)<br>2. Tersedianya hasil pengukuran kematangan keamanan siber area Penanganan Insiden Siber secara mandiri.<br>3. IPPD memiliki TTIS yang teregistrasi di TTIS Nasional.<br><br><br>Kondisi| ## Data Dukung: - 1. Penetapan TTIS. - 2. Nilai IKASANDI pada area Penanganan Insiden Siber. 1,50 < I"
+          "kriteria": "## Kriteria - 1. IPPD telah membentuk TTIS sesuai dengan pedoman dan perencanaan yang terarah. - 2. Penanganan insiden siber telah dilakukan oleh TTIS pada sebagian Layanan Digital Pemerintah. (Self-Assessment)<br>2. Tersedianya hasil pengukuran kematangan keamanan siber area Penanganan Insiden Siber secara mandiri.<br>3. IPPD memiliki TTIS yang teregistrasi di TTIS Nasional.<br><br><br>Kondisi: ## Data Dukung: - 1. Penetapan TTIS. - 2. Nilai IKASANDI pada area Penanganan Insiden Siber. 1,50 < I"
         },
         {
           "level": 3,
@@ -521,7 +521,7 @@
         },
         {
           "level": 2,
-          "kriteria": "terpenuhi # ✅ ### RepositoriPemerintahaplikasiDigital 4 - ➔ Dokumentasi repositori aplikasi : ◆ daftar aplikasi yang tersimpan ◆ struktur folder/kode sumber - ➔ Screenshot repositori: ◆ tampilan project/repository ◆ riwayat commit (versioning) - ➔ Bukti penggunaan aktif: - ➔ Dokumentasi teknis: ◆ dokumentasi API / arsitektur sistem - ➔ Standarisasi pengelolaan: ◆ penamaan repository konsisten ◆ penggunaan branch/version control - ➔ Keterkaitan dengan proses pengembangan: Laporan hasil terminasi "
+          "kriteria": "terpenuhi # ✅ ### Repositori Pemerintah Aplikasi Digital 4 - ➔ Dokumentasi repositori aplikasi : ◆ daftar aplikasi yang tersimpan ◆ struktur folder/kode sumber - ➔ Screenshot repositori: ◆ tampilan project/repository ◆ riwayat commit (versioning) - ➔ Bukti penggunaan aktif: - ➔ Dokumentasi teknis: ◆ dokumentasi API / arsitektur sistem - ➔ Standarisasi pengelolaan: ◆ penamaan repository konsisten ◆ penggunaan branch/version control - ➔ Keterkaitan dengan proses pengembangan: Laporan hasil terminasi "
         },
         {
           "level": 3,
@@ -533,7 +533,7 @@
         },
         {
           "level": 5,
-          "kriteria": "Pemerintah sesuai dengan substansi Rencana Aksi Nasional Pemerintah Digital pada perencanaan Instansi Pemerintah.<br><br><br>Kondisi| Laporan reviu pelaksanaan pembangunan/pengembangan aplikasi. Laporan reviu pelaksanaan pembangunan/pengembang an aplikasi. ## 1 ###### Bukti implementasi perbaikan Dokumen tindak lanjut hasil reviu - ● Perubahan desain atau arsitektur aplikasi - ● Peningkatan fitur atau integrasi sistem - ● Penyempurnaan proses pengembangan - ● Daftar rekomendasi dari laporan revi"
+          "kriteria": "Pemerintah sesuai dengan substansi Rencana Aksi Nasional Pemerintah Digital pada perencanaan Instansi Pemerintah.<br><br><br>Kondisi: Laporan reviu pelaksanaan pembangunan/pengembangan aplikasi. Laporan reviu pelaksanaan pembangunan/pengembang an aplikasi. ## 1 ###### Bukti implementasi perbaikan Dokumen tindak lanjut hasil reviu - ● Perubahan desain atau arsitektur aplikasi - ● Peningkatan fitur atau integrasi sistem - ● Penyempurnaan proses pengembangan - ● Daftar rekomendasi dari laporan revi"
         }
       ],
       "data_dukung_modul": [
@@ -577,7 +577,7 @@
         },
         {
           "level": 5,
-          "kriteria": "pelayanan publik dan pembangunan, dalam rangka memberikan layanan kepada masyarakat untuk setiap aspek kehidupan (Human-Based) yang berorientasi pada kemudahan pengguna.<br><br><br>Kondisi| #### Bukti reviu atas pemanfaatan infrastruktur Pemerintah Digital Reviu dilakukan atas pemanfaatan infrastruktur Pemdi pada Arsitektur sesuai dengan perubahan Kebijakan maupun Penerapan, Reviu berisikan: - 1. Berupa perbaikan/perubahan Arsitektur - 2. Laporan tindaklanjut berdasarkan reviu ##### Laporan Tind"
+          "kriteria": "pelayanan publik dan pembangunan, dalam rangka memberikan layanan kepada masyarakat untuk setiap aspek kehidupan (Human-Based) yang berorientasi pada kemudahan pengguna.<br><br><br>Kondisi: #### Bukti reviu atas pemanfaatan infrastruktur Pemerintah Digital Reviu dilakukan atas pemanfaatan infrastruktur Pemdi pada Arsitektur sesuai dengan perubahan Kebijakan maupun Penerapan, Reviu berisikan: - 1. Berupa perbaikan/perubahan Arsitektur - 2. Laporan tindak lanjut berdasarkan reviu ##### Laporan Tind"
         }
       ],
       "data_dukung_modul": [
@@ -659,7 +659,7 @@
         },
         {
           "level": 5,
-          "kriteria": "pelayanan publik dan pembangunan, dalam memberikan layanan kepada masyarakat di setiap aspek kehidupan (Human-Based) yang berorientasi pada kemudahan pengguna. ### Laporan Matriks pemantauan hasil tindak lanjut Integrasi Aplikasi. Dokumentasi dapat berupa - 1. Tindaklanjut perbaikan dari hasil reviu - 2. Laporan koordinasi atas tindaklanjut. - 3. Dokumen screenshot perbaikan. - 4. Dokumen naskah dinas lainnya"
+          "kriteria": "pelayanan publik dan pembangunan, dalam memberikan layanan kepada masyarakat di setiap aspek kehidupan (Human-Based) yang berorientasi pada kemudahan pengguna. ### Laporan Matriks pemantauan hasil tindak lanjut Integrasi Aplikasi. Dokumentasi dapat berupa - 1. Tindaklanjut perbaikan dari hasil reviu - 2. Laporan koordinasi atas tindak lanjut. - 3. Dokumen screenshot perbaikan. - 4. Dokumen naskah dinas lainnya"
         }
       ],
       "data_dukung_modul": [
@@ -814,7 +814,7 @@
         },
         {
           "level": 3,
-          "kriteria": "### Data Dukung Kondisi Hasil kepuasan pengguna layanan digital Partisipasi pengguna layanan digital # 70% Data transaksi layanan digital dalam 1 tahun Tingkat kepuasan pengguna >4 Log perubahan layanan yang disajikan kepada publik secara daring Bukti pelaksanaan Forum Respons Daring Mystery Guest Laporan hasil mystery guest audit audit telah dilaksanakan secara rutin dan terdokumentasi ##### Log perubahan layanan Forum Respons Daring tersedia secara daring ### <2 kali Dalam setahun"
+          "kriteria": "### Data Dukung Kondisi Hasil kepuasan pengguna layanan digital Partisipasi pengguna layanan digital # 70% Data transaksi layanan digital dalam 1 tahun Tingkat kepuasan pengguna >4 Log perubahan layanan yang disajikan kepada publik secara daring Bukti pelaksanaan Forum Respons Daring Mystery Guest Laporan hasil mystery guest audit telah dilaksanakan secara rutin dan terdokumentasi ##### Log perubahan layanan Forum Respons Daring tersedia secara daring ### <2 kali Dalam setahun"
         },
         {
           "level": 4,
@@ -822,7 +822,7 @@
         },
         {
           "level": 5,
-          "kriteria": "Pemerintah Kementerian PANRB melakukan IPPD bisa memantau perkembangan kepuasan pengguna melalui dasbor kepuasan pengguna ###### pemasangan widget pada layanan digital ### Kriteria Kanal umpan balik dua arah tersedia dan aktif (misalnya formulir saran digital, email layanan, dan komentar publik) yang telah ditindak Survei sudah menyasar minimal 1 kelompok rentan (misalnya penyandang disabilitas, lansia, atau perempuan) yang telah ditindak lanjuti. Kepuasan Pengguna Layanan Digital Pemerintah tel"
+          "kriteria": "Pemerintah Kementerian PANRB melakukan IPPD bisa memantau perkembangan kepuasan pengguna melalui dasbor kepuasan pengguna Pemasangan widget pada layanan digital ### Kriteria Kanal umpan balik dua arah tersedia dan aktif (misalnya formulir saran digital, email layanan, dan komentar publik) yang telah ditindak Survei sudah menyasar minimal 1 kelompok rentan (misalnya penyandang disabilitas, lansia, atau perempuan) yang telah ditindak lanjuti. Kepuasan Pengguna Layanan Digital Pemerintah tel"
         }
       ],
       "data_dukung_modul": [
