@@ -1,2300 +1,2336 @@
 {
-  "tentang": "Indeks Pemerintah Digital (Indeks Pemdi) — PermenPANRB 8/2026",
-  "tahun": 2026,
-  "target_indeks": 2.5,
-  "target_predikat": "Baik",
-  "baseline_spbe": 2.59,
-  "baseline_predikat": "Cukup",
-  "total_item_bukti": 134,
-  "total_item_manual": 114,
-  "total_item_eksternal": 0,
-  "dasar_hukum": [
-    {
-      "nama": "Undang-Undang Nomor 11 Tahun 2008 tentang Informasi dan Transaksi Elektronik",
-      "singkat": "UU ITE"
-    },
-    {
-      "nama": "Peraturan Presiden Nomor 95 Tahun 2018 tentang Sistem Pemerintahan Berbasis Elektronik",
-      "singkat": "Perpres 95/2018 (SPBE)"
-    },
-    {
-      "nama": "Peraturan Presiden Nomor 82 Tahun 2023 tentang Percepatan Transformasi Digital dan Keterpaduan Layanan Digital Nasional",
-      "singkat": "Perpres 82/2023"
-    },
-    {
-      "nama": "Peraturan Menteri PANRB Nomor 8 Tahun 2026 tentang Evaluasi Kinerja Pemerintah Digital",
-      "singkat": "PermenPANRB 8/2026 (Pemdi)"
-    },
-    {
-      "nama": "Keputusan Bupati Aceh Tengah Nomor 555/…/DISKOMINFO/2026 tentang Tim Koordinasi Pemerintah Digital (Pemdi)",
-      "singkat": "SK Tim Koordinasi Pemdi 2026"
-    },
-    {
-      "nama": "Keputusan Sekretaris Daerah Kabupaten Aceh Tengah tentang Tim Asesor Internal Evaluasi Kinerja Pemerintah Digital",
-      "singkat": "SK Tim Asesor Internal 2026"
-    }
-  ],
-  "tim_koordinasi": {
-    "pembina": "Bupati Aceh Tengah",
-    "ketua": "Sekretaris Daerah",
-    "wakil_ketua": "Kepala Diskominfo",
-    "sekretaris": "Kabid Layanan E-Government – Diskominfo",
-    "pokja": [
-      {
-        "id": 1,
-        "nama": "Tata Kelola dan Manajemen",
-        "koordinator": "Kepala BAPPEDA"
-      },
-      {
-        "id": 2,
-        "nama": "Penyelenggara",
-        "koordinator": "Kepala BKPSDM; Kepala Bag. Organisasi; Kepala Bag. Hukum"
-      },
-      {
-        "id": 3,
-        "nama": "Data",
-        "koordinator": "Kabid Statistik dan Persandian – Diskominfo"
-      },
-      {
-        "id": 4,
-        "nama": "Keamanan Pemerintah Digital Siber",
-        "koordinator": "Inspektorat; Diskominfo – Bid. Statistik & Persandian"
-      },
-      {
-        "id": 5,
-        "nama": "Teknologi Digital",
-        "koordinator": "Kabid TIK; Kabid Layanan E-Government – Diskominfo"
-      },
-      {
-        "id": 6,
-        "nama": "Keterpaduan",
-        "koordinator": "Kepala Bag. Organisasi; Kepala BAPPEDA; Kabid Layanan E-Government; Kabid TIK; Kabid Statistik & Persandian"
-      },
-      {
-        "id": 7,
-        "nama": "Kepuasan Pengguna Layanan Digital Pemerintah",
-        "koordinator": "Kepala DPMPTSP; Kabid Layanan E-Government – Diskominfo"
-      }
-    ]
+ "tentang": "Indeks Pemerintah Digital (Indeks Pemdi) — PermenPANRB 8/2026",
+ "tahun": 2026,
+ "target_indeks": 2.5,
+ "target_predikat": "Baik",
+ "baseline_spbe": 2.59,
+ "baseline_predikat": "Cukup",
+ "total_item_bukti": 134,
+ "total_item_manual": 114,
+ "total_item_eksternal": 0,
+ "dasar_hukum": [
+  {
+   "nama": "Undang-Undang Nomor 11 Tahun 2008 tentang Informasi dan Transaksi Elektronik",
+   "singkat": "UU ITE"
   },
-  "catatan": "STATUS: 57 item bukti dukung. Lengkap: 2, Proses: 22, Belum: 33. Verifikasi berkas publik dari 42 file sumber internet (humas, CSIRT, PPID, open data). Baseline SPBE 2025 = 2.59. Target indeks >= 2.50.\n- 5 Agu 2026: +20 bukti baru (portal eval.spbe.go.id PG_04/TD_13 + dokumen Documents/odl-pdf).",
-  "aspek": [
+  {
+   "nama": "Peraturan Presiden Nomor 95 Tahun 2018 tentang Sistem Pemerintahan Berbasis Elektronik",
+   "singkat": "Perpres 95/2018 (SPBE)"
+  },
+  {
+   "nama": "Peraturan Presiden Nomor 82 Tahun 2023 tentang Percepatan Transformasi Digital dan Keterpaduan Layanan Digital Nasional",
+   "singkat": "Perpres 82/2023"
+  },
+  {
+   "nama": "Peraturan Menteri PANRB Nomor 8 Tahun 2026 tentang Evaluasi Kinerja Pemerintah Digital",
+   "singkat": "PermenPANRB 8/2026 (Pemdi)"
+  },
+  {
+   "nama": "Keputusan Bupati Aceh Tengah Nomor 555/…/DISKOMINFO/2026 tentang Tim Koordinasi Pemerintah Digital (Pemdi)",
+   "singkat": "SK Tim Koordinasi Pemdi 2026"
+  },
+  {
+   "nama": "Keputusan Sekretaris Daerah Kabupaten Aceh Tengah tentang Tim Asesor Internal Evaluasi Kinerja Pemerintah Digital",
+   "singkat": "SK Tim Asesor Internal 2026"
+  }
+ ],
+ "tim_koordinasi": {
+  "pembina": "Bupati Aceh Tengah",
+  "ketua": "Sekretaris Daerah",
+  "wakil_ketua": "Kepala Diskominfo",
+  "sekretaris": "Kabid Layanan E-Government – Diskominfo",
+  "pokja": [
+   {
+    "id": 1,
+    "nama": "Tata Kelola dan Manajemen",
+    "koordinator": "Kepala BAPPEDA"
+   },
+   {
+    "id": 2,
+    "nama": "Penyelenggara",
+    "koordinator": "Kepala BKPSDM; Kepala Bag. Organisasi; Kepala Bag. Hukum"
+   },
+   {
+    "id": 3,
+    "nama": "Data",
+    "koordinator": "Kabid Statistik dan Persandian – Diskominfo"
+   },
+   {
+    "id": 4,
+    "nama": "Keamanan Pemerintah Digital Siber",
+    "koordinator": "Inspektorat; Diskominfo – Bid. Statistik & Persandian"
+   },
+   {
+    "id": 5,
+    "nama": "Teknologi Digital",
+    "koordinator": "Kabid TIK; Kabid Layanan E-Government – Diskominfo"
+   },
+   {
+    "id": 6,
+    "nama": "Keterpaduan",
+    "koordinator": "Kepala Bag. Organisasi; Kepala BAPPEDA; Kabid Layanan E-Government; Kabid TIK; Kabid Statistik & Persandian"
+   },
+   {
+    "id": 7,
+    "nama": "Kepuasan Pengguna Layanan Digital Pemerintah",
+    "koordinator": "Kepala DPMPTSP; Kabid Layanan E-Government – Diskominfo"
+   }
+  ]
+ },
+ "catatan": "STATUS: 57 item bukti dukung. Lengkap: 2, Proses: 22, Belum: 33. Verifikasi berkas publik dari 42 file sumber internet (humas, CSIRT, PPID, open data). Baseline SPBE 2025 = 2.59. Target indeks >= 2.50.\n- 5 Agu 2026: +20 bukti baru (portal eval.spbe.go.id PG_04/TD_13 + dokumen Documents/odl-pdf).",
+ "aspek": [
+  {
+   "id": 1,
+   "nama": "Tata Kelola dan Manajemen",
+   "singkat": "Tata Kelola",
+   "bobot": 10,
+   "warna": "#1d70b8",
+   "deskripsi": "Kesiapan tata kelola Pemerintah Digital dan pengelolaan layanan digital pemerintah — mencakup perencanaan, penganggaran, arsitektur, dan manajemen risiko",
+   "target": 2.5,
+   "nilai": 2.0,
+   "total_item": 20,
+   "koordinator": "BAPPEDA",
+   "indikator": [
     {
-      "id": 1,
-      "nama": "Tata Kelola dan Manajemen",
-      "singkat": "Tata Kelola",
-      "bobot": 10,
-      "warna": "#1d70b8",
-      "deskripsi": "Kesiapan tata kelola Pemerintah Digital dan pengelolaan layanan digital pemerintah — mencakup perencanaan, penganggaran, arsitektur, dan manajemen risiko",
-      "target": 2.5,
-      "nilai": 2.0,
-      "total_item": 20,
-      "koordinator": "BAPPEDA",
-      "indikator": [
-        {
-          "id": "I1",
-          "nama": "Tingkat Kematangan Tata Kelola Pemerintah Digital",
-          "deskripsi": "Kebijakan internal, struktur organisasi, mekanisme koordinasi Pemdi — termasuk Rencana Aksi Pemdi dan Arsitektur Pemdi",
-          "nilai": 2.0,
-          "target": 2.5,
-          "bobot": 5,
-          "sumber": "Arsitektur SPBE 1.00 + Peta Rencana 1.00 + Kebijakan Tim Koord 3.00 (SPBE 2025)",
-          "kontribusi_portal": "Dokumentasi kebijakan, rencana aksi, arsitektur dipublikasikan melalui portal",
-          "penanggung_jawab": {
-            "lead": "BAPPEDA (Koordinator Pokja Tata Kelola & Manajemen)",
-            "support": [
-              "Diskominfo (Kabid Layanan E-Gov)",
-              "Bag. Organisasi",
-              "Tim Koordinasi Pemdi",
-              "seluruh PD"
-            ],
-            "tim": "Tim Tata Kelola & Manajemen Pemdi"
-          },
-          "bukti_dukung": [
-            {
-              "id": "V1.I1_1",
-              "level": 1,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Memuat kebijakan resmi Arsitektur SPBE Pemkab Aceh Tengah ya",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V1.I1_2",
-              "level": 1,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 8 Tahun 2022 tentang Renc",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Dokumen perencanaan pembangunan daerah jangka menengah aktif",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-d6720ace-peraturan-bupati-aceh-tengah-nomor-8-tahun-2022-tentang-renc.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/d6720ace-6bf0-426b-bb73-54b13f43a83b",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V2.I1_3",
-              "level": 2,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Menjadi referensi utama pelaksanaan tata kelola dan arsitekt",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V2.I1_4",
-              "level": 2,
-              "nama": "Laporan Hasil Reviu Laporan Kinerja di Aceh Tengah Tahun 202",
-              "detail": "OpenData Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Laporan reviu kinerja pelaksanaan program kerja pemerintah d",
-              "url_preview": "/bukti-dukung/07-eksternal/opendata-laporan-reviu-kinerja-laporan-hasil-reviu-laporan-kinerja-di-aceh-tengah.xlsx",
-              "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/laporan-hasil-reviu-laporan-kinerja-di-aceh-tengah-tahun-2025",
-              "_ext": "xlsx"
-            },
-            {
-              "id": "B1.1",
-              "level": 1,
-              "nama": "Draf RPJMD / Renstra Diskominfo / Renja OPD",
-              "detail": "Draf harus memuat bab khusus 'Rencana Aksi SPBE' — RPJMD Kabupaten, Renstra Diskominfo, atau Renja OPD yang sedang disusun",
-              "opd": [
-                "Bappeda",
-                "Diskominfo",
-                "OPD Terkait"
-              ],
-              "status": "belum",
-              "catatan": "Renstra Diskominfo, LAKIP 2021, RPD 2023-2026 ditemukan publik. Perlu verifikasi ada/frasa aksi SPBE"
-            },
-            {
-              "id": "B1.2",
-              "level": 2,
-              "nama": "Dokumen DPA/RKA memuat anggaran program SPBE",
-              "detail": "DPA/RKA tahun anggaran berjalan yang memuat program SPBE beserta alokasi anggarannya",
-              "opd": [
-                "Diskominfo",
-                "BPKD",
-                "OPD Terkait"
-              ],
-              "status": "belum"
-            },
-            {
-              "id": "B1.3",
-              "level": 2,
-              "nama": "Screenshot pengisian Arsitektur SPBE pada SIAP Digital",
-              "detail": "Tangkapan layar dari SIAP Digital KemenpanRB yang menunjukkan Pemkab Aceh Tengah sudah mulai mengisi Arsitektur SPBE",
-              "opd": [
-                "Diskominfo"
-              ],
-              "status": "belum",
-              "catatan": "Screenshot SIAP Digital belum ditemukan, harus minta ke Diskominfo"
-            },
-            {
-              "id": "B1.4",
-              "level": 2,
-              "nama": "Notulensi & Berita Acara Rapat Tim Koordinasi SPBE Daerah",
-              "detail": "Dokumentasi rapat koordinasi rutin Tim Koordinasi SPBE Daerah dengan daftar hadir dan keputusan",
-              "opd": [
-                "Diskominfo",
-                "Bagian Organisasi"
-              ],
-              "status": "belum"
-            },
-            {
-              "id": "P1.I1_1",
-              "level": 1,
-              "nama": "SK Bupati No. 555/395/DISKOMINFO/2026 — Penetapan Tim Koordinasi Pemerintah Digital (PEMDI) Kab. Aceh Tengah",
-              "detail": "Dasar pembentukan Tim Koordinasi PEMDI (PermenPAN-RB 8/2026)",
-              "opd": [
-                "Diskominfo"
-              ],
-              "status": "proses",
-              "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode PG_04_01). Masih perlu verifikasi kesesuaian kriteria level.",
-              "url_preview": "/bukti-dukung/05-portal-pemdi/PG_04_01_SK-Koordinasi_2026.pdf",
-              "url_sumber": "/bukti-dukung/05-portal-pemdi/PG_04_01_SK-Koordinasi_2026.pdf",
-              "_ext": "pdf",
-              "_dokumen_kunci": [
-                5
-              ],
-              "_sumber_baru": true
-            },
-            {
-              "id": "P1.I1_2",
-              "level": 2,
-              "nama": "DPA/RKA Diskominfo 2026 — Sub Kegiatan 2.16.03.2.02.0037 Koordinasi Tata Kelola SPBE (Arsitektur, Peta Rencana, Proses Bisnis) Rp154,6 Juta",
-              "detail": "RKA-Belanja SKPD Diskominfo TA 2026, sumber PAD",
-              "opd": [
-                "Diskominfo"
-              ],
-              "status": "proses",
-              "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode PG_04_02). Bukti anggaran program Pemdi/SPBE.",
-              "url_preview": "/bukti-dukung/05-portal-pemdi/PG_04_02_DPA_2026.pdf",
-              "url_sumber": "/bukti-dukung/05-portal-pemdi/PG_04_02_DPA_2026.pdf",
-              "_ext": "pdf",
-              "_dokumen_kunci": [
-                4
-              ],
-              "_sumber_baru": true
-            },
-            {
-              "id": "P1.I1_3",
-              "level": 2,
-              "nama": "Undangan & Rundown Rapat Koordinasi Penerapan Transformasi Digital Pemerintah (25-26 Juni 2026)",
-              "detail": "Setdakab No. 005/2291/DISKOMINFO, 22 Juni 2026 — narasumber Deputi Transformasi Digital KemenPANRB",
-              "opd": [
-                "Diskominfo"
-              ],
-              "status": "proses",
-              "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode PG_04_03). Paket dokumentasi rapat tim koordinasi Pemdi.",
-              "url_preview": "/bukti-dukung/05-portal-pemdi/PG_04_03_RapatPemdi_2026.pdf",
-              "url_sumber": "/bukti-dukung/05-portal-pemdi/PG_04_03_RapatPemdi_2026.pdf",
-              "_ext": "pdf",
-              "_dokumen_kunci": [
-                7
-              ],
-              "_sumber_baru": true
-            },
-            {
-              "id": "P1.I1_4",
-              "level": 2,
-              "nama": "DPA-SKPD Diskominfo TA 2026 (Lengkap, 97 hal)",
-              "detail": "Disetujui Sekda Drs. Mursyid, M.Si — Kepala Diskominfo Mustafa Kamal",
-              "opd": [
-                "Diskominfo"
-              ],
-              "status": "belum",
-              "catatan": "Dokumen resmi — Ditemukan di Documents, belum diunggah ke portal. Rekap DPA seluruh kegiatan Diskominfo 2026.",
-              "url_preview": "/bukti-dukung/06-dokumen-2026/DPA_Diskominfo_2026_lengkap.pdf",
-              "url_sumber": "/bukti-dukung/06-dokumen-2026/DPA_Diskominfo_2026_lengkap.pdf",
-              "_ext": "pdf",
-              "_dokumen_kunci": [
-                4
-              ],
-              "_sumber_baru": true
-            },
-            {
-              "id": "P1.I1_5",
-              "level": 2,
-              "nama": "Renstra Diskominfo Aceh Tengah 2025-2029 (GO LIVE)",
-              "detail": "Rencana Strategis Diskominfo periode 2025-2029",
-              "opd": [
-                "Diskominfo"
-              ],
-              "status": "belum",
-              "catatan": "Dokumen resmi — Ditemukan di Documents (odl-pdf), belum diunggah ke portal. Substansi program Pemdi/SPBE dalam Renstra.",
-              "url_preview": "/bukti-dukung/06-dokumen-2026/RENSTRA 25-29 GO LIVE.pdf",
-              "url_sumber": "/bukti-dukung/06-dokumen-2026/RENSTRA 25-29 GO LIVE.pdf",
-              "_ext": "pdf",
-              "_dokumen_kunci": [
-                1
-              ],
-              "_sumber_baru": true
-            },
-            {
-              "id": "P1.I1_6",
-              "level": 2,
-              "nama": "Renja Diskominfo TA 2026 (Rancangan Akhir)",
-              "detail": "Rencana Kerja Diskominfo 2026",
-              "opd": [
-                "Diskominfo"
-              ],
-              "status": "belum",
-              "catatan": "Dokumen resmi — Ditemukan di Documents (odl-pdf), belum diunggah ke portal.",
-              "url_preview": "/bukti-dukung/06-dokumen-2026/Ranhir Renja Diskominfo 2026.pdf",
-              "url_sumber": "/bukti-dukung/06-dokumen-2026/Ranhir Renja Diskominfo 2026.pdf",
-              "_ext": "pdf",
-              "_dokumen_kunci": [
-                1
-              ],
-              "_sumber_baru": true
-            },
-            {
-              "id": "P1.I1_7",
-              "level": 2,
-              "nama": "RKA Rincian Belanja Sub Kegiatan 0037 Tata Kelola SPBE (Cetak SIPD)",
-              "detail": "Revisi SIPD — rincian belanja kegiatan tata kelola SPBE",
-              "opd": [
-                "Diskominfo"
-              ],
-              "status": "belum",
-              "catatan": "Dokumen resmi — Ditemukan di Documents (odl-pdf), belum diunggah ke portal.",
-              "url_preview": "/bukti-dukung/06-dokumen-2026/RKA_Rincian_0037_TataKelolaSPBE_2026.pdf",
-              "url_sumber": "/bukti-dukung/06-dokumen-2026/RKA_Rincian_0037_TataKelolaSPBE_2026.pdf",
-              "_ext": "pdf",
-              "_dokumen_kunci": [
-                4
-              ],
-              "_sumber_baru": true
-            },
-            {
-              "id": "P1.I1_8",
-              "level": 1,
-              "nama": "Capaian Realisasi RKPD Diskominfo (Tabel 2.143 Evaluasi IKD)",
-              "detail": "Indeks SPBE 2,59 (92,5%), ITD 47,57 poin, IPS 2,97, kepuasan 60%",
-              "opd": [
-                "Diskominfo"
-              ],
-              "status": "belum",
-              "catatan": "Data resmi — Ditemukan di Documents (odl-pdf), belum diunggah ke portal. Bukti capaian kinerja program.",
-              "url_preview": "/bukti-dukung/06-dokumen-2026/Capaian_RKPD_preview.png",
-              "url_sumber": "/bukti-dukung/06-dokumen-2026/Capaian_Realisasi_RKPD_Diskominfo.xlsx",
-              "_ext": "png",
-              "_dokumen_kunci": [
-                1
-              ],
-              "_sumber_baru": true
-            },
-            {
-              "id": "P1.I1_9",
-              "level": 2,
-              "nama": "Qanun RPJMD Kab. Aceh Tengah 2025-2029",
-              "detail": "Rencana Pembangunan Jangka Menengah Daerah 2025-2029 (409 hal)",
-              "opd": [
-                "Diskominfo"
-              ],
-              "status": "belum",
-              "catatan": "Dokumen resmi — Ditemukan di Documents, belum diunggah ke portal. Visi-misi & program strategis termasuk digitalisasi.",
-              "url_preview": "/bukti-dukung/06-dokumen-2026/RPJMD AT 2025-2029 rankhir.pdf",
-              "url_sumber": "/bukti-dukung/06-dokumen-2026/RPJMD AT 2025-2029 rankhir.pdf",
-              "_ext": "pdf",
-              "_dokumen_kunci": [
-                1
-              ],
-              "_sumber_baru": true
-            },
-            {
-              "id": "P1.I1_10",
-              "level": 1,
-              "nama": "Perbup No. 70/2016 — Susunan Organisasi dan Tata Kerja Diskominfo",
-              "detail": "SOTK Diskominfo Kab. Aceh Tengah",
-              "opd": [
-                "Diskominfo"
-              ],
-              "status": "belum",
-              "catatan": "Dokumen resmi — Pendukung kelembagaan pengelola Pemdi. Belum diunggah ke portal.",
-              "url_preview": "/bukti-dukung/06-dokumen-2026/perbup_70_2016_kominfo SOTK - Sandi Diskominfo.pdf",
-              "url_sumber": "/bukti-dukung/06-dokumen-2026/perbup_70_2016_kominfo SOTK - Sandi Diskominfo.pdf",
-              "_ext": "pdf",
-              "_dokumen_kunci": [],
-              "_sumber_baru": true
-            }
-          ]
-        },
-        {
-          "id": "I2",
-          "nama": "Tingkat Kematangan Manajemen Layanan Digital Pemerintah",
-          "deskripsi": "Pengelolaan siklus hidup layanan digital — perencanaan, implementasi, monitoring, dan evaluasi layanan",
-          "nilai": 2.0,
-          "target": 2.5,
-          "bobot": 5,
-          "sumber": "Manajemen Risiko 1.00 + Manajemen Layanan 1.00 + Manajemen Perubahan 1.00 (SPBE 2025)",
-          "kontribusi_portal": "Portal sebagai platform manajemen layanan digital terpadu",
-          "penanggung_jawab": {
-            "lead": "BAPPEDA (Koordinator Pokja Tata Kelola & Manajemen)",
-            "support": [
-              "Diskominfo",
-              "BPKD",
-              "Bagian Organisasi"
-            ],
-            "tim": "Tim Manajemen Layanan Digital"
-          },
-          "bukti_dukung": [
-            {
-              "id": "V1.I2_1",
-              "level": 1,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 126 Tahun 2019 tentang Pe",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Dasar hukum standar pelayanan publik yang menjadi rujukan pe",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-e8187833-peraturan-bupati-aceh-tengah-nomor-126-tahun-2019-tentang-pe.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/e8187833-5111-4436-be42-68dfd5d80b76",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V1.I2_2",
-              "level": 1,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 73 Tahun 2020 tentang Pel",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Bukti penerapan dan regulasi manajemen layanan digital pemer",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-2a0b0c2f-peraturan-bupati-aceh-tengah-nomor-73-tahun-2020-tentang-pel.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/2a0b0c2f-d693-4a15-9e7f-b42d7ab081eb",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V2.I2_3",
-              "level": 2,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Memuat ketetapan Domain Arsitektur Layanan SPBE sebagai ruju",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V2.I2_4",
-              "level": 2,
-              "nama": "Pedoman Penanganan Pengaduan/Keluhan RSUD Datu Beru Kabupate",
-              "detail": "GitHub (Repo Publik)",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Bukti nyata pelaksanaan manajemen layanan digital dan pengel",
-              "url_preview": "/bukti-dukung/04-layanan/pedoman_pengaduan_rsud.pdf",
-              "url_sumber": "https://raw.githubusercontent.com/Niumination/PemdiAcehTengah/main/public/bukti-dukung/04-layanan/pedoman_pengaduan_rsud.pdf",
-              "_ext": "pdf"
-            },
-            {
-              "id": "B2.1",
-              "level": 1,
-              "nama": "Notulensi rapat internal Diskominfo mengenai SOP/Helpdesk IT",
-              "detail": "Catatan rapat internal Diskominfo tentang SOP layanan atau Helpdesk IT, termasuk daftar hadir",
-              "opd": [
-                "Diskominfo"
-              ],
-              "status": "belum"
-            },
-            {
-              "id": "B2.2",
-              "level": 2,
-              "nama": "Logbook penanganan kendala aplikasi / Analisis Risiko Aplikasi",
-              "detail": "Logbook penanganan kendala aplikasi, lembar reviu keluhan, atau Analisis Risiko Aplikasi",
-              "opd": [
-                "Diskominfo",
-                "OPD Pemilik Layanan"
-              ],
-              "status": "belum",
-              "catatan": "Pedoman Pengaduan RSUD ditemukan (PDF). Perlu bukti penerapan digital"
-            }
-          ]
-        }
+     "id": "I1",
+     "nama": "Tingkat Kematangan Tata Kelola Pemerintah Digital",
+     "deskripsi": "Kebijakan internal, struktur organisasi, mekanisme koordinasi Pemdi — termasuk Rencana Aksi Pemdi dan Arsitektur Pemdi",
+     "nilai": 2.0,
+     "target": 2.5,
+     "bobot": 5,
+     "sumber": "Arsitektur SPBE 1.00 + Peta Rencana 1.00 + Kebijakan Tim Koord 3.00 (SPBE 2025)",
+     "kontribusi_portal": "Dokumentasi kebijakan, rencana aksi, arsitektur dipublikasikan melalui portal",
+     "penanggung_jawab": {
+      "lead": "BAPPEDA (Koordinator Pokja Tata Kelola & Manajemen)",
+      "support": [
+       "Diskominfo (Kabid Layanan E-Gov)",
+       "Bag. Organisasi",
+       "Tim Koordinasi Pemdi",
+       "seluruh PD"
       ],
-      "item_aktual": 14,
-      "item_gap": 6
+      "tim": "Tim Tata Kelola & Manajemen Pemdi"
+     },
+     "bukti_dukung": [
+      {
+       "id": "V1.I1_1",
+       "level": 1,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Memuat kebijakan resmi Arsitektur SPBE Pemkab Aceh Tengah ya",
+       "url_preview": "/bukti-dukung/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V1.I1_2",
+       "level": 1,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 8 Tahun 2022 tentang Renc",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Dokumen perencanaan pembangunan daerah jangka menengah aktif",
+       "url_preview": "/bukti-dukung/jdih-d6720ace-peraturan-bupati-aceh-tengah-nomor-8-tahun-2022-tentang-renc.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/d6720ace-6bf0-426b-bb73-54b13f43a83b",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V2.I1_3",
+       "level": 2,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Menjadi referensi utama pelaksanaan tata kelola dan arsitekt",
+       "url_preview": "/bukti-dukung/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V2.I1_4",
+       "level": 2,
+       "nama": "Laporan Hasil Reviu Laporan Kinerja di Aceh Tengah Tahun 202",
+       "detail": "OpenData Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Laporan reviu kinerja pelaksanaan program kerja pemerintah d",
+       "url_preview": "/bukti-dukung/opendata-laporan-reviu-kinerja-laporan-hasil-reviu-laporan-kinerja-di-aceh-tengah.xlsx",
+       "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/laporan-hasil-reviu-laporan-kinerja-di-aceh-tengah-tahun-2025",
+       "_ext": "xlsx"
+      },
+      {
+       "id": "B1.1",
+       "level": 1,
+       "nama": "Draf RPJMD / Renstra Diskominfo / Renja OPD",
+       "detail": "Draf harus memuat bab khusus 'Rencana Aksi SPBE' — RPJMD Kabupaten, Renstra Diskominfo, atau Renja OPD yang sedang disusun",
+       "opd": [
+        "Bappeda",
+        "Diskominfo",
+        "OPD Terkait"
+       ],
+       "status": "belum",
+       "catatan": "Renstra Diskominfo, LAKIP 2021, RPD 2023-2026 ditemukan publik. Perlu verifikasi ada/frasa aksi SPBE"
+      },
+      {
+       "id": "B1.2",
+       "level": 2,
+       "nama": "Dokumen DPA/RKA memuat anggaran program SPBE",
+       "detail": "DPA/RKA tahun anggaran berjalan yang memuat program SPBE beserta alokasi anggarannya",
+       "opd": [
+        "Diskominfo",
+        "BPKD",
+        "OPD Terkait"
+       ],
+       "status": "belum"
+      },
+      {
+       "id": "B1.3",
+       "level": 2,
+       "nama": "Screenshot pengisian Arsitektur SPBE pada SIAP Digital",
+       "detail": "Tangkapan layar dari SIAP Digital KemenpanRB yang menunjukkan Pemkab Aceh Tengah sudah mulai mengisi Arsitektur SPBE",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "belum",
+       "catatan": "Screenshot SIAP Digital belum ditemukan, harus minta ke Diskominfo"
+      },
+      {
+       "id": "B1.4",
+       "level": 2,
+       "nama": "Notulensi & Berita Acara Rapat Tim Koordinasi SPBE Daerah",
+       "detail": "Dokumentasi rapat koordinasi rutin Tim Koordinasi SPBE Daerah dengan daftar hadir dan keputusan",
+       "opd": [
+        "Diskominfo",
+        "Bagian Organisasi"
+       ],
+       "status": "belum"
+      },
+      {
+       "id": "P1.I1_1",
+       "level": 1,
+       "nama": "SK Bupati No. 555/395/DISKOMINFO/2026 — Penetapan Tim Koordinasi Pemerintah Digital (PEMDI) Kab. Aceh Tengah",
+       "detail": "Dasar pembentukan Tim Koordinasi PEMDI (PermenPAN-RB 8/2026)",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "proses",
+       "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode PG_04_01). Masih perlu verifikasi kesesuaian kriteria level.",
+       "url_preview": "/bukti-dukung/PG_04_01_SK-Koordinasi_2026.pdf",
+       "url_sumber": "/bukti-dukung/PG_04_01_SK-Koordinasi_2026.pdf",
+       "_ext": "pdf",
+       "_dokumen_kunci": [
+        5
+       ],
+       "_sumber_baru": true
+      },
+      {
+       "id": "P1.I1_2",
+       "level": 2,
+       "nama": "DPA/RKA Diskominfo 2026 — Sub Kegiatan 2.16.03.2.02.0037 Koordinasi Tata Kelola SPBE (Arsitektur, Peta Rencana, Proses Bisnis) Rp154,6 Juta",
+       "detail": "RKA-Belanja SKPD Diskominfo TA 2026, sumber PAD",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "proses",
+       "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode PG_04_02). Bukti anggaran program Pemdi/SPBE.",
+       "url_preview": "/bukti-dukung/PG_04_02_DPA_2026.pdf",
+       "url_sumber": "/bukti-dukung/PG_04_02_DPA_2026.pdf",
+       "_ext": "pdf",
+       "_dokumen_kunci": [
+        4
+       ],
+       "_sumber_baru": true
+      },
+      {
+       "id": "P1.I1_3",
+       "level": 2,
+       "nama": "Undangan & Rundown Rapat Koordinasi Penerapan Transformasi Digital Pemerintah (25-26 Juni 2026)",
+       "detail": "Setdakab No. 005/2291/DISKOMINFO, 22 Juni 2026 — narasumber Deputi Transformasi Digital KemenPANRB",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "proses",
+       "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode PG_04_03). Paket dokumentasi rapat tim koordinasi Pemdi.",
+       "url_preview": "/bukti-dukung/PG_04_03_RapatPemdi_2026.pdf",
+       "url_sumber": "/bukti-dukung/PG_04_03_RapatPemdi_2026.pdf",
+       "_ext": "pdf",
+       "_dokumen_kunci": [
+        7
+       ],
+       "_sumber_baru": true
+      },
+      {
+       "id": "P1.I1_4",
+       "level": 2,
+       "nama": "DPA-SKPD Diskominfo TA 2026 (Lengkap, 97 hal)",
+       "detail": "Disetujui Sekda Drs. Mursyid, M.Si — Kepala Diskominfo Mustafa Kamal",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "belum",
+       "catatan": "Dokumen resmi — Ditemukan di Documents, belum diunggah ke portal. Rekap DPA seluruh kegiatan Diskominfo 2026.",
+       "url_preview": "/bukti-dukung/DPA_Diskominfo_2026_lengkap.pdf",
+       "url_sumber": "/bukti-dukung/DPA_Diskominfo_2026_lengkap.pdf",
+       "_ext": "pdf",
+       "_dokumen_kunci": [
+        4
+       ],
+       "_sumber_baru": true
+      },
+      {
+       "id": "P1.I1_5",
+       "level": 2,
+       "nama": "Renstra Diskominfo Aceh Tengah 2025-2029 (GO LIVE)",
+       "detail": "Rencana Strategis Diskominfo periode 2025-2029",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "belum",
+       "catatan": "Dokumen resmi — Ditemukan di Documents (odl-pdf), belum diunggah ke portal. Substansi program Pemdi/SPBE dalam Renstra.",
+       "url_preview": "/bukti-dukung/RENSTRA 25-29 GO LIVE.pdf",
+       "url_sumber": "/bukti-dukung/RENSTRA 25-29 GO LIVE.pdf",
+       "_ext": "pdf",
+       "_dokumen_kunci": [
+        1
+       ],
+       "_sumber_baru": true
+      },
+      {
+       "id": "P1.I1_6",
+       "level": 2,
+       "nama": "Renja Diskominfo TA 2026 (Rancangan Akhir)",
+       "detail": "Rencana Kerja Diskominfo 2026",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "belum",
+       "catatan": "Dokumen resmi — Ditemukan di Documents (odl-pdf), belum diunggah ke portal.",
+       "url_preview": "/bukti-dukung/Ranhir Renja Diskominfo 2026.pdf",
+       "url_sumber": "/bukti-dukung/Ranhir Renja Diskominfo 2026.pdf",
+       "_ext": "pdf",
+       "_dokumen_kunci": [
+        1
+       ],
+       "_sumber_baru": true
+      },
+      {
+       "id": "P1.I1_7",
+       "level": 2,
+       "nama": "RKA Rincian Belanja Sub Kegiatan 0037 Tata Kelola SPBE (Cetak SIPD)",
+       "detail": "Revisi SIPD — rincian belanja kegiatan tata kelola SPBE",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "belum",
+       "catatan": "Dokumen resmi — Ditemukan di Documents (odl-pdf), belum diunggah ke portal.",
+       "url_preview": "/bukti-dukung/RKA_Rincian_0037_TataKelolaSPBE_2026.pdf",
+       "url_sumber": "/bukti-dukung/RKA_Rincian_0037_TataKelolaSPBE_2026.pdf",
+       "_ext": "pdf",
+       "_dokumen_kunci": [
+        4
+       ],
+       "_sumber_baru": true
+      },
+      {
+       "id": "P1.I1_8",
+       "level": 1,
+       "nama": "Capaian Realisasi RKPD Diskominfo (Tabel 2.143 Evaluasi IKD)",
+       "detail": "Indeks SPBE 2,59 (92,5%), ITD 47,57 poin, IPS 2,97, kepuasan 60%",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "belum",
+       "catatan": "Data resmi — Ditemukan di Documents (odl-pdf), belum diunggah ke portal. Bukti capaian kinerja program.",
+       "url_preview": "/bukti-dukung/Capaian_RKPD_preview.png",
+       "url_sumber": "/bukti-dukung/Capaian_Realisasi_RKPD_Diskominfo.xlsx",
+       "_ext": "png",
+       "_dokumen_kunci": [
+        1
+       ],
+       "_sumber_baru": true
+      },
+      {
+       "id": "P1.I1_9",
+       "level": 2,
+       "nama": "Qanun RPJMD Kab. Aceh Tengah 2025-2029",
+       "detail": "Rencana Pembangunan Jangka Menengah Daerah 2025-2029 (409 hal)",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "belum",
+       "catatan": "Dokumen resmi — Ditemukan di Documents, belum diunggah ke portal. Visi-misi & program strategis termasuk digitalisasi.",
+       "url_preview": "/bukti-dukung/RPJMD AT 2025-2029 rankhir.pdf",
+       "url_sumber": "/bukti-dukung/RPJMD AT 2025-2029 rankhir.pdf",
+       "_ext": "pdf",
+       "_dokumen_kunci": [
+        1
+       ],
+       "_sumber_baru": true
+      },
+      {
+       "id": "P1.I1_10",
+       "level": 1,
+       "nama": "Perbup No. 70/2016 — Susunan Organisasi dan Tata Kerja Diskominfo",
+       "detail": "SOTK Diskominfo Kab. Aceh Tengah",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "belum",
+       "catatan": "Dokumen resmi — Pendukung kelembagaan pengelola Pemdi. Belum diunggah ke portal.",
+       "url_preview": "/bukti-dukung/perbup_70_2016_kominfo SOTK - Sandi Diskominfo.pdf",
+       "url_sumber": "/bukti-dukung/perbup_70_2016_kominfo SOTK - Sandi Diskominfo.pdf",
+       "_ext": "pdf",
+       "_dokumen_kunci": [],
+       "_sumber_baru": true
+      }
+     ]
     },
     {
-      "id": 2,
-      "nama": "Penyelenggara",
-      "singkat": "Penyelenggara",
-      "bobot": 10,
-      "warna": "#28a197",
-      "deskripsi": "Kompetensi sumber daya manusia dan kolaborasi lintas OPD dalam penyelenggaraan Pemerintah Digital",
-      "target": 2.5,
-      "nilai": 2.0,
-      "total_item": 32,
-      "koordinator": "BKPSDM; Bag. Organisasi; Bag. Hukum",
-      "indikator": [
-        {
-          "id": "I3",
-          "nama": "Tingkat Kematangan Sumber Daya Manusia Pemerintah Digital",
-          "deskripsi": "Tingkat literasi digital ASN, pemanfaatan AI dan teknologi mutakhir, kompetensi TIK",
-          "nilai": 2.0,
-          "target": 2.5,
-          "bobot": 5,
-          "sumber": "Kompetensi SDM SPBE 1.00 (SPBE 2025) — masih rendah, perlu program literasi",
-          "kontribusi_portal": "Materi literasi digital, panduan penggunaan layanan digital",
-          "penanggung_jawab": {
-            "lead": "BKPSDM (Koordinator Pokja Penyelenggara – SDM)",
-            "support": [
-              "Bagian Organisasi",
-              "Diskominfo"
-            ],
-            "tim": "Tim Pengembangan SDM Digital"
-          },
-          "bukti_dukung": [
-            {
-              "id": "V1.I3_1",
-              "level": 1,
-              "nama": "Publikasi Hasil Literasi Digital Sektor Pemerintahan Kabupat",
-              "detail": "OpenData Aceh Tengah",
-              "opd": [
-                "Diskominfo"
-              ],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Dokumen primer survei, identifikasi, dan pemetaan tingkat ko",
-              "url_preview": "/bukti-dukung/07-eksternal/opendata-literasi-digital-literasi-digital-sektor-pemerintahan-pdf.pdf",
-              "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/literasi-digital-sektor-pemerintahan-2023",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V1.I3_2",
-              "level": 1,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 9 Tahun 2025 tentang SOTK",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [
-                "Diskominfo"
-              ],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Penetapan struktur dan tugas kelembagaan untuk penyiapan dan",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-af9a42bf-peraturan-bupati-aceh-tengah-nomor-9-tahun-2025-tentang-sotk.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/af9a42bf-cea9-46c8-a739-9beb5d21e990",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V2.I3_3",
-              "level": 2,
-              "nama": "Publikasi Hasil Literasi Digital Sektor Pemerintahan Kabupat",
-              "detail": "OpenData Aceh Tengah",
-              "opd": [
-                "Diskominfo"
-              ],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Memuat analisis mendalam berupa grafik, tabel statistik, ser",
-              "url_preview": "/bukti-dukung/07-eksternal/opendata-literasi-digital-literasi-digital-sektor-pemerintahan-pdf.pdf",
-              "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/literasi-digital-sektor-pemerintahan-2023",
-              "_ext": "pdf"
-            },
-            {
-              "id": "B3.1",
-              "level": 1,
-              "nama": "Dokumen Peta Kompetensi ASN",
-              "detail": "Peta Kompetensi ASN dari BKPSDM yang mendokumentasikan tingkat kompetensi digital seluruh ASN",
-              "opd": [
-                "BKPSDM"
-              ],
-              "status": "belum"
-            },
-            {
-              "id": "B3.2",
-              "level": 1,
-              "nama": "Screenshot presensi online / penggunaan Srikandi/e-Kinerja",
-              "detail": "Tangkapan layar yang menunjukkan ASN Pemkab Aceh Tengah sudah menggunakan Srikandi atau e-Kinerja",
-              "opd": [
-                "Seluruh OPD",
-                "BKPSDM"
-              ],
-              "status": "belum",
-              "catatan": "Portal e-Kinerja aktif (e-Absensi tersinkron, TTE BSrE). Perlu screenshot individual"
-            },
-            {
-              "id": "B3.3",
-              "level": 1,
-              "nama": "Dokumentasi (Foto/Absensi) Bimtek IT/Srikandi",
-              "detail": "Dokumentasi kegiatan Bimtek IT atau Srikandi berupa foto dan daftar hadir peserta",
-              "opd": [
-                "BKPSDM",
-                "Diskominfo"
-              ],
-              "status": "belum",
-              "catatan": "Pelatihan VSGA 75 peserta (Operator Komputer, Video Editor, Junior Graphic Designer) via BBPSDMP Kominfo Medan — Juni 2023"
-            },
-            {
-              "id": "B3.4",
-              "level": 2,
-              "nama": "Laporan Asesmen BKN (MyASN) terkait literasi digital ASN",
-              "detail": "Laporan MyASN yang menunjukkan persentase kelulusan literasi digital ASN",
-              "opd": [
-                "BKPSDM"
-              ],
-              "status": "belum",
-              "catatan": "Laporan MyASN/asesmen BKN belum ditemukan publik"
-            },
-            {
-              "id": "B3.5",
-              "level": 2,
-              "nama": "Sertifikat diklat IT pegawai",
-              "detail": "Sertifikat pelatihan IT pegawai (contoh: GTA Kominfo, BPSDMD, atau pelatihan digital lainnya)",
-              "opd": [
-                "BKPSDM",
-                "Pegawai Terkait"
-              ],
-              "status": "belum"
-            }
-          ]
-        },
-        {
-          "id": "I4",
-          "nama": "Tingkat Kematangan Kolaborasi Pemerintah Digital",
-          "deskripsi": "Kerja sama antar OPD, dengan instansi pusat, dan pihak lain dalam penyelenggaraan Pemdi",
-          "nilai": 2.0,
-          "target": 2.5,
-          "bobot": 5,
-          "sumber": "Tim Koordinasi SPBE 3.00 + Kolaborasi SPBE 3.00 (SPBE 2025) — modal baik",
-          "kontribusi_portal": "Publikasi data bersama, fitur kolaborasi lintas OPD",
-          "penanggung_jawab": {
-            "lead": "Bag. Organisasi (Koordinator Pokja Penyelenggara – Kolaborasi)",
-            "support": [
-              "BKPSDM",
-              "Bag. Hukum",
-              "Diskominfo"
-            ],
-            "tim": "Tim Kolaborasi & Kemitraan Pemdi"
-          },
-          "bukti_dukung": [
-            {
-              "id": "V1.I4_1",
-              "level": 1,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 70 Tahun 2019 tentang Ped",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Regulasi primer yang mengamanatkan pembentukan Tim Koordinas",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-edee8e80-peraturan-bupati-aceh-tengah-nomor-70-tahun-2019-tentang-ped.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/edee8e80-8f98-4038-b694-48706c86448a",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V1.I4_2",
-              "level": 1,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Menetapkan kerangka kolaborasi antar unit kerja pemerintah d",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V2.I4_3",
-              "level": 2,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Menjadi acuan formal pelaksanaan kolaborasi keterpaduan laya",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-              "_ext": "pdf"
-            },
-            {
-              "id": "B4.1",
-              "level": 1,
-              "nama": "SK Bupati tentang Tim Koordinasi SPBE Daerah",
-              "detail": "SK Bupati Aceh Tengah yang menetapkan pembentukan Tim Koordinasi SPBE Daerah",
-              "opd": [
-                "Diskominfo",
-                "Bagian Hukum"
-              ],
-              "status": "belum"
-            },
-            {
-              "id": "B4.2",
-              "level": 1,
-              "nama": "Dokumen Renja memuat agenda rapat koordinasi digital",
-              "detail": "Renja Diskominfo/Bappeda yang mencantumkan agenda rapat koordinasi rutin antar OPD terkait digital",
-              "opd": [
-                "Bappeda",
-                "Diskominfo"
-              ],
-              "status": "belum"
-            },
-            {
-              "id": "B4.3",
-              "level": 2,
-              "nama": "Perjanjian Kerja Sama (PKS)/MoU integrasi sistem lintas instansi",
-              "detail": "MoU/PKS kolaborasi lintas instansi (contoh: MoU dengan BSSN terkait TTE, atau Bank Aceh Syariah terkait pajak)",
-              "opd": [
-                "Bagian Kerja Sama",
-                "Diskominfo",
-                "OPD Terkait"
-              ],
-              "status": "belum",
-              "catatan": "PKS E-Keurani Pemkab-Pemprov (integrasi data ASN) ditemukan. Salinan PKS resmi perlu diminta"
-            },
-            {
-              "id": "P1.I4_1",
-              "level": 1,
-              "nama": "SK Bupati No. 555/395/DISKOMINFO/2026 — Tim Koordinasi PEMDI (kolaborasi lintas OPD)",
-              "detail": "Anggota tim: Inspektorat, Bappeda, BPKAD, PUPR, Pertanahan, DPMPTSP, Dukcapil, Diskominfo, Bagian Organisasi, Hukum, Tapem",
-              "opd": [
-                "Diskominfo"
-              ],
-              "status": "proses",
-              "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode PG_04_01). Bukti kolaborasi antar perangkat daerah.",
-              "url_preview": "/bukti-dukung/05-portal-pemdi/PG_04_01_SK-Koordinasi_2026.pdf",
-              "url_sumber": "/bukti-dukung/05-portal-pemdi/PG_04_01_SK-Koordinasi_2026.pdf",
-              "_ext": "pdf",
-              "_dokumen_kunci": [
-                5
-              ],
-              "_sumber_baru": true
-            },
-            {
-              "id": "P1.I4_2",
-              "level": 2,
-              "nama": "Rapat Koordinasi Penerapan Transformasi Digital Pemerintah (25-26 Juni 2026)",
-              "detail": "Kolaborasi Pemkab dengan KemenPANRB — 11 OPD diundang",
-              "opd": [
-                "Diskominfo"
-              ],
-              "status": "proses",
-              "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode PG_04_03). Bukti kolaborasi Pemdi.",
-              "url_preview": "/bukti-dukung/05-portal-pemdi/PG_04_03_RapatPemdi_2026.pdf",
-              "url_sumber": "/bukti-dukung/05-portal-pemdi/PG_04_03_RapatPemdi_2026.pdf",
-              "_ext": "pdf",
-              "_dokumen_kunci": [
-                7
-              ],
-              "_sumber_baru": true
-            }
-          ]
-        }
+     "id": "I2",
+     "nama": "Tingkat Kematangan Manajemen Layanan Digital Pemerintah",
+     "deskripsi": "Pengelolaan siklus hidup layanan digital — perencanaan, implementasi, monitoring, dan evaluasi layanan",
+     "nilai": 2.0,
+     "target": 2.5,
+     "bobot": 5,
+     "sumber": "Manajemen Risiko 1.00 + Manajemen Layanan 1.00 + Manajemen Perubahan 1.00 (SPBE 2025)",
+     "kontribusi_portal": "Portal sebagai platform manajemen layanan digital terpadu",
+     "penanggung_jawab": {
+      "lead": "BAPPEDA (Koordinator Pokja Tata Kelola & Manajemen)",
+      "support": [
+       "Diskominfo",
+       "BPKD",
+       "Bagian Organisasi"
       ],
-      "item_aktual": 14,
-      "item_gap": 18
-    },
-    {
-      "id": 3,
-      "nama": "Data",
-      "singkat": "Data",
-      "bobot": 15,
-      "warna": "#d4351c",
-      "deskripsi": "Tata kelola data, informasi geospasial, statistik sektoral, dan perlindungan data pribadi — termasuk indeks SDI, SJIG, EPSS, dan kepatuhan UU PDP",
-      "target": 2.5,
-      "nilai": 2.0,
-      "total_item": 38,
-      "koordinator": "Diskominfo – Bid. Statistik & Persandian",
-      "indikator": [
-        {
-          "id": "I5",
-          "nama": "Tingkat Kematangan Tata Kelola Data (Indeks Satu Data Indonesia)",
-          "deskripsi": "Penerapan prinsip Satu Data Indonesia, kualitas data, interoperabilitas data — nilai eksternal dari SDI",
-          "nilai": 2.0,
-          "target": 2.5,
-          "bobot": 5,
-          "sumber": "Kebijakan Manajemen Data 4.00 (SPBE 2025) — kebijakan kuat, implementasi perlu diperkuat",
-          "kontribusi_portal": "Publikasi dataset melalui portal, standar SDI",
-          "penanggung_jawab": {
-            "lead": "Diskominfo – Bid. Statistik & Persandian (Koordinator Pokja Data)",
-            "support": [
-              "Bappeda",
-              "BPS",
-              "seluruh PD"
-            ],
-            "tim": "Tim Satu Data Indonesia"
-          },
-          "bukti_dukung": [
-            {
-              "id": "V1.I5_1",
-              "level": 1,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 60 Tahun 2022 tentang Sat",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Dasar hukum utama penyelenggaraan tata kelola data, penetapa",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-d9671249-peraturan-bupati-aceh-tengah-nomor-60-tahun-2022-tentang-sat.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/d9671249-08cc-4e6c-87f0-aa04f8ada75c",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V1.I5_2",
-              "level": 1,
-              "nama": "SOP Pengumpulan, Analisis, Pengelolaan dan Diseminasi Data S",
-              "detail": "OpenData Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Bukti pengesahan prosedur operasi standar tata kelola data s",
-              "url_preview": "/bukti-dukung/07-eksternal/opendata-data-rdtr-sop-epss-dari-diskominfo-tt-basah-pdf.pdf",
-              "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/b07e4546-ff19-4041-b58b-6e456bb1f9c3",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V2.I5_3",
-              "level": 2,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 60 Tahun 2022 tentang Sat",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Memenuhi kriteria tata kelola data pemerintah daerah sesuai ",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-d9671249-peraturan-bupati-aceh-tengah-nomor-60-tahun-2022-tentang-sat.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/d9671249-08cc-4e6c-87f0-aa04f8ada75c",
-              "_ext": "pdf"
-            },
-            {
-              "id": "B5.1",
-              "level": 1,
-              "nama": "SK Bupati tentang Forum SDI & SK Wali Data",
-              "detail": "SK Bupati Aceh Tengah tentang Forum Satu Data Indonesia tingkat Kabupaten beserta SK Penetapan Wali Data OPD",
-              "opd": [
-                "Bappeda",
-                "Diskominfo",
-                "Bagian Hukum"
-              ],
-              "status": "belum"
-            },
-            {
-              "id": "B5.2",
-              "level": 1,
-              "nama": "Notulensi rapat awal persiapan portal Open Data",
-              "detail": "Dokumentasi rapat persiapan portal Open Data dengan daftar hadir dan keputusan",
-              "opd": [
-                "Diskominfo",
-                "Bappeda",
-                "BPS"
-              ],
-              "status": "belum",
-              "catatan": "FGD Aceh Tengah Dalam Angka 2021 (Humas) + Portal Open Data + Penguatan Satu Data 2025 ditemukan. Perlu SK Forum SDI/Wali Data resmi"
-            },
-            {
-              "id": "B5.3",
-              "level": 2,
-              "nama": "Draf Metadata Sektoral dari OPD terkait",
-              "detail": "Draft struktur data sektoral (contoh: data stunting dari Dinkes, data luas lahan kopi dari Distan) yang sudah dikomunikasikan dengan BPS",
-              "opd": [
-                "OPD Produsen Data",
-                "Diskominfo"
-              ],
-              "status": "belum",
-              "catatan": "Portal Open Data aktif (852 datasets, 61 organisasi) + Desk Satu Data 2026 + PERKIM MENDATA. Metadata sektoral perlu verifikasi"
-            },
-            {
-              "id": "P1.I5_1",
-              "level": 1,
-              "nama": "SK Bupati No. 188.55/375/BAPPEDA/2025 — Perubahan Pedoman Pembentukan Forum Satu Data Kab. Aceh Tengah",
-              "detail": "Dasar hukum Forum Satu Data (Perpres 39/2019)",
-              "opd": [
-                "Diskominfo"
-              ],
-              "status": "belum",
-              "catatan": "Dokumen resmi — Ditemukan di Documents, belum diunggah ke portal. Bukti tata kelola data (SDI).",
-              "url_preview": "/bukti-dukung/06-dokumen-2026/REVISI SK PEDOMAN FORUM SATU DATA ACEH TENGAH TAHUN 2025.pdf",
-              "url_sumber": "/bukti-dukung/06-dokumen-2026/REVISI SK PEDOMAN FORUM SATU DATA ACEH TENGAH TAHUN 2025.pdf",
-              "_ext": "pdf",
-              "_dokumen_kunci": [
-                18
-              ],
-              "_sumber_baru": true
-            }
-          ]
-        },
-        {
-          "id": "I6",
-          "nama": "Tingkat Kematangan Penyelenggaraan Informasi Geospasial (Indeks SJIG)",
-          "deskripsi": "Ketersediaan dan pemanfaatan data geospasial dalam layanan Pemdi — nilai eksternal dari BIG",
-          "nilai": 2.0,
-          "target": 2.0,
-          "bobot": 3,
-          "sumber": "Estimasi — dataset BIG belum aktif terintegrasi",
-          "kontribusi_portal": "Peta interaktif OPD dan sebaran layanan",
-          "penanggung_jawab": {
-            "lead": "Diskominfo – Bid. Statistik & Persandian",
-            "support": [
-              "BIG (Badan Informasi Geospasial)",
-              "Dinas PUPR"
-            ],
-            "tim": "Tim Informasi Geospasial"
-          },
-          "bukti_dukung": [
-            {
-              "id": "V1.I6_1",
-              "level": 1,
-              "nama": "Data dan Peta Rencana Detail Tata Ruang (RDTR) yang Dikelola",
-              "detail": "OpenData Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Bukti ketersediaan, pengelolaan, dan berbagi pakai informasi",
-              "url_preview": "/bukti-dukung/07-eksternal/opendata-data-peta-rdtr-data-dan-peta-rdtr-yang-dikelola-di-aceh-tengah-ta.xlsx",
-              "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/data-dan-peta-rdtr-yang-dikelola-di-aceh-tengah-tahun-2025",
-              "_ext": "xlsx"
-            },
-            {
-              "id": "V2.I6_2",
-              "level": 2,
-              "nama": "Data dan Peta Rencana Detail Tata Ruang (RDTR) yang Dikelola",
-              "detail": "OpenData Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Memenuhi kondisi berbagi pakai sebagian informasi geospasial",
-              "url_preview": "/bukti-dukung/07-eksternal/opendata-data-peta-rdtr-data-dan-peta-rdtr-yang-dikelola-di-aceh-tengah-ta.xlsx",
-              "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/data-dan-peta-rdtr-yang-dikelola-di-aceh-tengah-tahun-2025",
-              "_ext": "xlsx"
-            },
-            {
-              "id": "B6.1",
-              "level": 1,
-              "nama": "SK Bupati/Sekda tentang Tim Jaringan Informasi Geospasial",
-              "detail": "SK Bupati atau Sekda tentang pembentukan Tim Jaringan Informasi Geospasial Aceh Tengah",
-              "opd": [
-                "Bappeda",
-                "Dinas PUPR"
-              ],
-              "status": "belum"
-            },
-            {
-              "id": "B6.2",
-              "level": 1,
-              "nama": "Screenshot persiapan Web GIS / Geoportal",
-              "detail": "Tangkapan layar persiapan atau tampilan sementara Web GIS/Geoportal (jika masih offline)",
-              "opd": [
-                "Bappeda",
-                "Diskominfo"
-              ],
-              "status": "belum"
-            },
-            {
-              "id": "B6.3",
-              "level": 2,
-              "nama": "Peraturan Bupati tentang Penyelenggaraan Simpul Jaringan IG",
-              "detail": "Perbup tentang Penyelenggaraan Simpul Jaringan Informasi Geospasial Daerah",
-              "opd": [
-                "Bappeda",
-                "Bagian Hukum"
-              ],
-              "status": "belum"
-            },
-            {
-              "id": "B6.4",
-              "level": 2,
-              "nama": "Screenshot peta RTRW/Peta Desa di Portal Geospasial",
-              "detail": "Screenshot ketersediaan peta digital dasar (RTRW/Desa) yang memiliki metadata di portal Geospasial",
-              "opd": [
-                "Bappeda",
-                "Dinas PUPR"
-              ],
-              "status": "belum"
-            }
-          ]
-        },
-        {
-          "id": "I7",
-          "nama": "Tingkat Kematangan Pembangunan Statistik (Indeks Pembangunan Statistik / EPSS)",
-          "deskripsi": "Produksi dan publikasi statistik sektoral yang terstandarisasi — nilai eksternal dari BPS",
-          "nilai": 2.0,
-          "target": 2.0,
-          "bobot": 3,
-          "sumber": "Estimasi — perlu koordinasi BPS untuk EPSS",
-          "kontribusi_portal": "Publikasi statistik daerah, dashboard data",
-          "penanggung_jawab": {
-            "lead": "Diskominfo – Bid. Statistik & Persandian",
-            "support": [
-              "BPS",
-              "Bappeda"
-            ],
-            "tim": "Tim Statistik Sektoral"
-          },
-          "bukti_dukung": [
-            {
-              "id": "V1.I7_1",
-              "level": 1,
-              "nama": "SOP Pengumpulan, Analisis, Pengelolaan dan Diseminasi Data S",
-              "detail": "OpenData Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Bukti pengesahan standar operasi prosedur dalam pelaksanaan ",
-              "url_preview": "/bukti-dukung/07-eksternal/opendata-data-rdtr-sop-epss-dari-diskominfo-tt-basah-pdf.pdf",
-              "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/b07e4546-ff19-4041-b58b-6e456bb1f9c3",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V2.I7_2",
-              "level": 2,
-              "nama": "SOP Pengumpulan, Analisis, Pengelolaan dan Diseminasi Data S",
-              "detail": "OpenData Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Membuktikan pelaksanaan tahapan manajemen penyelenggaraan st",
-              "url_preview": "/bukti-dukung/07-eksternal/opendata-data-rdtr-sop-epss-dari-diskominfo-tt-basah-pdf.pdf",
-              "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/b07e4546-ff19-4041-b58b-6e456bb1f9c3",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V2.I7_3",
-              "level": 2,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 60 Tahun 2022 tentang Sat",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Memuat kebijakan tata kelola statistik sektoral oleh walidat",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-d9671249-peraturan-bupati-aceh-tengah-nomor-60-tahun-2022-tentang-sat.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/d9671249-08cc-4e6c-87f0-aa04f8ada75c",
-              "_ext": "pdf"
-            },
-            {
-              "id": "B7.1",
-              "level": 1,
-              "nama": "Publikasi 'Aceh Tengah Dalam Angka' / Data Sektoral ad-hoc",
-              "detail": "Buku publikasi 'Aceh Tengah Dalam Angka' tahun berjalan atau laporan pengumpulan data manual",
-              "opd": [
-                "BPS",
-                "Diskominfo"
-              ],
-              "status": "belum",
-              "catatan": "Portal Statistik Sektoral aktif di portal. Publikasi Aceh Tengah Dalam Angka perlu diunduh tahun berjalan"
-            },
-            {
-              "id": "B7.2",
-              "level": 2,
-              "nama": "SOP / Dokumen Metodologi Perencanaan Survei Sektoral OPD",
-              "detail": "Metodologi Survei Kepuasan Pasien (RSUD Datu Beru) atau Survei Produksi Kopi yang dikonsultasikan ke BPS",
-              "opd": [
-                "OPD Pelaksana",
-                "BPS"
-              ],
-              "status": "belum"
-            },
-            {
-              "id": "P1.I7_1",
-              "level": 1,
-              "nama": "Capaian Indeks Pembangunan Statistik (IPS) Diskominfo 2,97 — Tabel 2.143 Evaluasi IKD",
-              "detail": "IPS 2,97 dari target 3,14 (94,6% capaian)",
-              "opd": [
-                "Diskominfo"
-              ],
-              "status": "belum",
-              "catatan": "Data resmi — Ditemukan di Documents (odl-pdf), belum diunggah ke portal. Bukti capaian statistik sektoral.",
-              "url_preview": "/bukti-dukung/06-dokumen-2026/Capaian_RKPD_preview.png",
-              "url_sumber": "/bukti-dukung/06-dokumen-2026/Capaian_Realisasi_RKPD_Diskominfo.xlsx",
-              "_ext": "png",
-              "_dokumen_kunci": [
-                18
-              ],
-              "_sumber_baru": true
-            }
-          ]
-        },
-        {
-          "id": "I8",
-          "nama": "Tingkat Kematangan Pelindungan Data Pribadi",
-          "deskripsi": "Penerapan prinsip PDP dalam layanan digital pemerintah — consent, hak subjek data, breach notification, DPIA",
-          "nilai": 2.0,
-          "target": 2.0,
-          "bobot": 4,
-          "sumber": "Indikator baru Pemdi — 35 item bukti dukung. Wajib UU PDP 27/2022",
-          "kontribusi_portal": "Kebijakan privasi, mekanisme consent, form PDP compliant",
-          "penanggung_jawab": {
-            "lead": "Diskominfo – Bid. Statistik & Persandian",
-            "support": [
-              "Bagian Hukum",
-              "Inspektorat",
-              "seluruh PD"
-            ],
-            "tim": "Tim Pelindungan Data Pribadi"
-          },
-          "bukti_dukung": [
-            {
-              "id": "V1.I8_1",
-              "level": 1,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 6 Tahun 2025 tentang Sist",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Menetapkan regulasi klasifikasi keamanan arsip, pembatasan a",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-ade79cb3-peraturan-bupati-aceh-tengah-nomor-6-tahun-2025-tentang-sist.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/ade79cb3-cb2b-4b8e-bf31-b35ddeded969",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V1.I8_2",
-              "level": 1,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 73 Tahun 2020 tentang Pel",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Dasar hukum keamanan dan kerahasiaan data kependudukan dalam",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-2a0b0c2f-peraturan-bupati-aceh-tengah-nomor-73-tahun-2020-tentang-pel.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/2a0b0c2f-d693-4a15-9e7f-b42d7ab081eb",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V2.I8_3",
-              "level": 2,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 6 Tahun 2025 tentang Sist",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Bukti penerapan prosedur pelindungan kerahasiaan data pada s",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-ade79cb3-peraturan-bupati-aceh-tengah-nomor-6-tahun-2025-tentang-sist.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/ade79cb3-cb2b-4b8e-bf31-b35ddeded969",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V2.I8_4",
-              "level": 2,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 137 Tahun 2019 tentang Pe",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Menetapkan prosedur pelindungan data pribadi dan informasi y",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-6cd5c436-peraturan-bupati-aceh-tengah-nomor-137-tahun-2019-tentang-pe.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/6cd5c436-d64e-4068-bb08-2e0526d87cb5",
-              "_ext": "pdf"
-            },
-            {
-              "id": "B8.1",
-              "level": 1,
-              "nama": "Draf Nota Dinas/SE Bupati himbauan kerahasiaan NIK/data masyarakat",
-              "detail": "Draf surat edaran atau nota dinas Bupati tentang himbauan kerahasiaan NIK, KK, atau rekam medis masyarakat",
-              "opd": [
-                "Diskominfo",
-                "Bagian Hukum"
-              ],
-              "status": "belum"
-            },
-            {
-              "id": "B8.2",
-              "level": 2,
-              "nama": "SOP Pengamanan Data Pribadi di instansi pelayanan",
-              "detail": "SOP di instansi pelayanan tentang pengamanan data pribadi (contoh: SOP Dukcapil tentang larangan memfoto layar NIK)",
-              "opd": [
-                "Dukcapil",
-                "RSUD",
-                "OPD Pemilik Layanan"
-              ],
-              "status": "belum"
-            },
-            {
-              "id": "B8.3",
-              "level": 2,
-              "nama": "Laporan/Dokumentasi sosialisasi pengamanan password",
-              "detail": "Bukti foto/absensi sosialisasi pengamanan password ke perangkat kampung atau pegawai",
-              "opd": [
-                "Diskominfo",
-                "OPD Pemilik Layanan"
-              ],
-              "status": "belum"
-            },
-            {
-              "id": "P1.I8_1",
-              "level": 1,
-              "nama": "Hasil Indeks KAMI 5.0 — Bagian VII Pelindungan Data Pribadi (Skor 66, Kematangan II)",
-              "detail": "Indeks KAMI Diskominfo, 13 April 2026",
-              "opd": [
-                "Diskominfo"
-              ],
-              "status": "belum",
-              "catatan": "Data resmi — Ditemukan di Documents, belum diunggah ke portal. Evaluasi PDP bagian dari Indeks KAMI.",
-              "url_preview": "/bukti-dukung/06-dokumen-2026/Indeks_KAMI_5.0_preview.png",
-              "url_sumber": "/bukti-dukung/06-dokumen-2026/Indeks_KAMI_5.0_Diskominfo_2026.xlsx",
-              "_ext": "png",
-              "_dokumen_kunci": [
-                17
-              ],
-              "_sumber_baru": true
-            }
-          ]
-        }
-      ],
-      "item_aktual": 24,
-      "item_gap": 14
-    },
-    {
-      "id": 4,
-      "nama": "Keamanan Pemerintah Digital Siber",
-      "singkat": "Keamanan Siber",
-      "bobot": 15,
-      "warna": "#859900",
-      "deskripsi": "Audit keamanan, keamanan siber (IKASANDI), kriptografi, dan penanganan insiden siber",
-      "target": 2.5,
-      "nilai": 1.47,
-      "total_item": 25,
-      "koordinator": "Inspektorat; Diskominfo – Bid. Statistik & Persandian",
-      "indikator": [
-        {
-          "id": "I9",
-          "nama": "Tingkat Kematangan Pelaksanaan Audit Keamanan Pemdi & Teknologi Pemdi",
-          "deskripsi": "Pelaksanaan audit keamanan secara berkala pada sistem dan infrastruktur Pemdi",
-          "nilai": 1.0,
-          "target": 2.5,
-          "bobot": 4,
-          "sumber": "Audit TIK 1.00 — Audit Infrastruktur, Aplikasi, Keamanan semua 1.00 (SPBE 2025)",
-          "kontribusi_portal": "Log audit, rekomendasi keamanan",
-          "penanggung_jawab": {
-            "lead": "Inspektorat (Koordinator Pokja Keamanan – Audit)",
-            "support": [
-              "Diskominfo (Fungsi Persandian)"
-            ],
-            "tim": "Tim Audit Keamanan TIK"
-          },
-          "bukti_dukung": [
-            {
-              "id": "V1.I9_1",
-              "level": 1,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Menetapkan standar keamanan digital, audit, dan perlindungan",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V1.I9_2",
-              "level": 1,
-              "nama": "Laporan Hasil Pengawasan Kinerja Pemerintah Daerah di Aceh T",
-              "detail": "OpenData Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Bukti pengawasan kinerja internal pemerintah daerah Aceh Ten",
-              "url_preview": "/bukti-dukung/07-eksternal/opendata-laporan-pengawasan-kinerja-laporan-hasil-pengawasan-kinerja-pemerintah-daerah.xlsx",
-              "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/laporan-hasil-pengawasan-kinerja-pemerintah-daerah-di-aceh-tengah-tahun-2025",
-              "_ext": "xlsx"
-            },
-            {
-              "id": "B9.1",
-              "level": 1,
-              "nama": "SK Tim Audit Internal TIK & Dokumen PKPT Inspektorat",
-              "detail": "SK Sekda untuk tim gabungan Inspektorat & IT Diskominfo. Dokumen PKPT yang memuat agenda 'Audit Keamanan TIK/Aplikasi'",
-              "opd": [
-                "Inspektorat",
-                "Diskominfo"
-              ],
-              "status": "belum"
-            },
-            {
-              "id": "B9.2",
-              "level": 2,
-              "nama": "Laporan Hasil Audit (LHA) Keamanan Internal",
-              "detail": "Dokumen LHA Inspektorat yang mengaudit Data Center Diskominfo atau kerentanan aplikasi DPMPTSP",
-              "opd": [
-                "Inspektorat"
-              ],
-              "status": "belum"
-            }
-          ]
-        },
-        {
-          "id": "I10",
-          "nama": "Tingkat Kematangan Keamanan Siber (IKASANDI)",
-          "deskripsi": "Penerapan standar keamanan siber nasional pada sistem Pemdi — indeks IKASANDI",
-          "nilai": 2.0,
-          "target": 2.5,
-          "bobot": 4,
-          "sumber": "Estimasi — perlu koordinasi BSSN untuk standardisasi",
-          "kontribusi_portal": "HTTPS, CSP, OWASP compliance, security headers",
-          "penanggung_jawab": {
-            "lead": "Diskominfo – Bid. Statistik & Persandian",
-            "support": [
-              "BSSN",
-              "Inspektorat"
-            ],
-            "tim": "Tim Keamanan Siber"
-          },
-          "bukti_dukung": [
-            {
-              "id": "V1.I10_1",
-              "level": 1,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 6 Tahun 2025 tentang Sist",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Memenuhi kriteria tata kelola dan manajemen keamanan informa",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-ade79cb3-peraturan-bupati-aceh-tengah-nomor-6-tahun-2025-tentang-sist.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/ade79cb3-cb2b-4b8e-bf31-b35ddeded969",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V1.I10_2",
-              "level": 1,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Rujukan utama arsitektur keamanan siber dan perlindungan ase",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V2.I10_3",
-              "level": 2,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 6 Tahun 2025 tentang Sist",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Bukti regulasi penerapan tata kelola keamanan informasi daer",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-ade79cb3-peraturan-bupati-aceh-tengah-nomor-6-tahun-2025-tentang-sist.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/ade79cb3-cb2b-4b8e-bf31-b35ddeded969",
-              "_ext": "pdf"
-            },
-            {
-              "id": "B10.1",
-              "level": 1,
-              "nama": "Bukti screenshot pengisian kuesioner IKASANDI ke BSSN",
-              "detail": "Bukti admin Diskominfo telah mengisi kuesioner Indeks Keamanan Siber (Self-Assessment) BSSN",
-              "opd": [
-                "Diskominfo (Bidang Persandian)"
-              ],
-              "status": "belum"
-            },
-            {
-              "id": "B10.2",
-              "level": 2,
-              "nama": "Surat/Dokumen Identifikasi Infrastruktur Informasi Vital (IIV)",
-              "detail": "Surat resmi ke BSSN berisi daftar server krusial (SIPD, SIAK, LPSE) untuk didaftarkan sebagai objek vital",
-              "opd": [
-                "Diskominfo (Bidang Persandian)"
-              ],
-              "status": "belum"
-            },
-            {
-              "id": "P1.I10_1",
-              "level": 1,
-              "nama": "Instrumen & Hasil Indeks KAMI 5.0 — Area Keamanan Siber (Skor 563, \"Cukup Baik\")",
-              "detail": "Indeks KAMI Diskominfo, diisi 13 April 2026 oleh Mansyur Ramadhan Arita, A.Md; Kategori SE: Rendah (12); Tata Kelola 49, Risiko 23, Kerangka 75, Aset 185, Teknologi 165, PDP 66",
-              "opd": [
-                "Diskominfo"
-              ],
-              "status": "belum",
-              "catatan": "Data resmi — Ditemukan di Documents, belum diunggah ke portal. Padanan IKASANDI untuk keamanan siber.",
-              "url_preview": "/bukti-dukung/06-dokumen-2026/Indeks_KAMI_5.0_preview.png",
-              "url_sumber": "/bukti-dukung/06-dokumen-2026/Indeks_KAMI_5.0_Diskominfo_2026.xlsx",
-              "_ext": "png",
-              "_dokumen_kunci": [
-                20
-              ],
-              "_sumber_baru": true
-            }
-          ]
-        },
-        {
-          "id": "I11",
-          "nama": "Tingkat Kematangan Penerapan Kriptografi untuk Keamanan Data (IKASANDI)",
-          "deskripsi": "Penggunaan enkripsi dan tanda tangan digital dalam layanan Pemdi",
-          "nilai": 2.0,
-          "target": 2.5,
-          "bobot": 3,
-          "sumber": "Estimasi — implementasi TTE (Tanda Tangan Elektronik) belum merata",
-          "kontribusi_portal": "HTTPS, enkripsi data pengguna",
-          "penanggung_jawab": {
-            "lead": "Diskominfo – Bid. Statistik & Persandian",
-            "support": [
-              "BSSN"
-            ],
-            "tim": "Tim Kriptografi & TTE"
-          },
-          "bukti_dukung": [
-            {
-              "id": "V1.I11_1",
-              "level": 1,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Dasar hukum penyiapan dan penerapan teknologi kriptografi un",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V2.I11_2",
-              "level": 2,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Acuan penerapan standar keamanan kriptografi pada layanan di",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-              "_ext": "pdf"
-            },
-            {
-              "id": "B11.1",
-              "level": 1,
-              "nama": "Dokumen usulan pengadaan sertifikat elektronik (TTE) ke BSrE BSSN",
-              "detail": "Telaahan staf terkait inisiasi penggunaan TTE untuk pejabat Setdakab",
-              "opd": [
-                "Diskominfo",
-                "Setdakab"
-              ],
-              "status": "belum",
-              "catatan": "50 ASN dilatih TTE + berita sosialisasi TTE ditemukan. Usulan BSrE perlu dokumen resmi"
-            },
-            {
-              "id": "B11.2",
-              "level": 2,
-              "nama": "Dokumen PDF ber-barcode TTE & Screenshot gembok SSL (HTTPS)",
-              "detail": "Screenshot dokumen ber-TTE (barcode BSrE) dan address bar web acehtengahkab.go.id menunjukkan HTTPS (gembok tertutup)",
-              "opd": [
-                "Diskominfo",
-                "OPD Terkait"
-              ],
-              "status": "belum",
-              "catatan": "Berita Dukcapil gunakan TTE ditemukan + e-Kinerja punya TTE BSrE. Screenshot HTTPS perlu diverifikasi"
-            },
-            {
-              "id": "P1.I11_1",
-              "level": 1,
-              "nama": "Perbup No. 1/2025 — Pedoman Penataan Pola Hubungan Komunikasi Sandi",
-              "detail": "Berdasarkan Perka BSSN No. 10/2019",
-              "opd": [
-                "Diskominfo"
-              ],
-              "status": "belum",
-              "catatan": "Dokumen resmi — Ditemukan di Documents, belum diunggah ke portal. Bukti penerapan kriptografi/persandian.",
-              "url_preview": "/bukti-dukung/06-dokumen-2026/Perbup Penataan Pola Hub Kom Sandi - Sandi Diskominfo.pdf",
-              "url_sumber": "/bukti-dukung/06-dokumen-2026/Perbup Penataan Pola Hub Kom Sandi - Sandi Diskominfo.pdf",
-              "_ext": "pdf",
-              "_dokumen_kunci": [
-                22
-              ],
-              "_sumber_baru": true
-            },
-            {
-              "id": "P1.I11_2",
-              "level": 1,
-              "nama": "Perbup No. 2/2025 — Penyelenggaraan Persandian untuk Pengamanan Informasi",
-              "detail": "Berdasarkan Perka BSSN No. 10/2019",
-              "opd": [
-                "Diskominfo"
-              ],
-              "status": "belum",
-              "catatan": "Dokumen resmi — Ditemukan di Documents, belum diunggah ke portal. Bukti penerapan kriptografi.",
-              "url_preview": "/bukti-dukung/06-dokumen-2026/Perbup Penyelenggaraan Persandian - Sandi Diskominfo.pdf",
-              "url_sumber": "/bukti-dukung/06-dokumen-2026/Perbup Penyelenggaraan Persandian - Sandi Diskominfo.pdf",
-              "_ext": "pdf",
-              "_dokumen_kunci": [
-                22
-              ],
-              "_sumber_baru": true
-            }
-          ]
-        },
-        {
-          "id": "I12",
-          "nama": "Tingkat Kematangan Kapabilitas Penanganan Insiden Siber (IKASANDI)",
-          "deskripsi": "Kesiapan prosedur penanganan insiden keamanan siber — CSIRT, SOP, reporting",
-          "nilai": 1.0,
-          "target": 2.5,
-          "bobot": 4,
-          "sumber": "Estimasi — SOP insiden siber belum terdokumentasi; 7 item bukti dukung",
-          "kontribusi_portal": "Dokumentasi prosedur, contact person",
-          "penanggung_jawab": {
-            "lead": "Diskominfo – Bid. Statistik & Persandian",
-            "support": [
-              "BSSN",
-              "Inspektorat"
-            ],
-            "tim": "Tim CSIRT/TTIS Kabupaten"
-          },
-          "bukti_dukung": [
-            {
-              "id": "V1.I12_1",
-              "level": 1,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Memuat penetapan kerangka penyiapan dan kapabilitas penangan",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-              "_ext": "pdf"
-            },
-            {
-              "id": "B12.1",
-              "level": 1,
-              "nama": "SK Pembentukan/Inisiasi Tim Aceh Tengah-CSIRT",
-              "detail": "SK Bupati tentang pembentukan CSIRT yang masih dalam tahap persiapan",
-              "opd": [
-                "Diskominfo",
-                "Bagian Hukum"
-              ],
-              "status": "belum",
-              "catatan": "Situs csirt.acehtengahkab.go.id aktif, ada fungsi 'Lapor Insiden'. SK pembentukan perlu diminta resmi"
-            },
-            {
-              "id": "B12.2",
-              "level": 2,
-              "nama": "Surat Tanda Registrasi (STR) CSIRT dari BSSN",
-              "detail": "Sertifikat STR Aceh Tengah-CSIRT dari BSSN",
-              "opd": [
-                "Diskominfo (Bidang Persandian)"
-              ],
-              "status": "belum"
-            },
-            {
-              "id": "B12.3",
-              "level": 2,
-              "nama": "Dokumen Log/Berita Acara Penanganan Insiden Siber",
-              "detail": "Dokumen Laporan Penanganan Insiden saat web diretas (deface) dan pemulihannya",
-              "opd": [
-                "Diskominfo (Tim CSIRT)"
-              ],
-              "status": "belum",
-              "catatan": "Situs CSIRT menyediakan kanal pelaporan insiden. Log/BA insiden perlu dokumen resmi"
-            }
-          ]
-        }
-      ],
-      "item_aktual": 17,
-      "item_gap": 8
-    },
-    {
-      "id": 5,
-      "nama": "Teknologi Digital",
-      "singkat": "Teknologi",
-      "bobot": 10,
-      "warna": "#6f42c1",
-      "deskripsi": "Kesiapan aplikasi dan infrastruktur teknologi digital pendukung Pemdi",
-      "target": 2.5,
-      "nilai": 2.0,
-      "total_item": 18,
-      "koordinator": "Kabid TIK; Kabid Layanan E-Government – Diskominfo",
-      "indikator": [
-        {
-          "id": "I13",
-          "nama": "Tingkat Kematangan Aplikasi Pemerintah Digital",
-          "deskripsi": "Ketersediaan, kualitas, dan keterpaduan aplikasi pendukung Pemdi",
-          "nilai": 2.0,
-          "target": 2.5,
-          "bobot": 5,
-          "sumber": "Pembangunan Aplikasi 1.00 (SPBE 2025) + Portal existing sebagai aplikasi utama",
-          "kontribusi_portal": "✅ Portal PemdiAcehTengah adalah aplikasi Pemdi utama yang sudah live",
-          "penanggung_jawab": {
-            "lead": "Diskominfo – Bid. Layanan E-Government (Koordinator Pokja Teknologi Digital)",
-            "support": [
-              "Semua OPD"
-            ],
-            "tim": "Tim Aplikasi & Sistem Informasi"
-          },
-          "bukti_dukung": [
-            {
-              "id": "V1.I13_1",
-              "level": 1,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Regulasi yang menetapkan arsitektur dan pedoman siklus penge",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V1.I13_2",
-              "level": 1,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 9 Tahun 2025 tentang SOTK",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Dasar kelembagaan pengampu kebijakan pengembangan aplikasi d",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-af9a42bf-peraturan-bupati-aceh-tengah-nomor-9-tahun-2025-tentang-sotk.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/af9a42bf-cea9-46c8-a739-9beb5d21e990",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V2.I13_3",
-              "level": 2,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Acuan arsitektur aplikasi (Catatan: Dokumentasi teknis repos",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-              "_ext": "pdf"
-            },
-            {
-              "id": "B13.1",
-              "level": 1,
-              "nama": "Matriks Excel Inventarisasi SELURUH Aplikasi Pemkab",
-              "detail": "Matriks yang mendata semua aset software: Web utama, Web OPD, JDIH, LPSE, SIPD, SIMRS, dll",
-              "opd": [
-                "Diskominfo"
-              ],
-              "status": "belum",
-              "catatan": "SICANTIK (perizinan), e-Kinerja, Open Data, Satu Data teridentifikasi. Matriks lengkap perlu dari Diskominfo"
-            },
-            {
-              "id": "B13.2",
-              "level": 1,
-              "nama": "Dokumen Kajian Kebutuhan pembuatan aplikasi OPD",
-              "detail": "Kajian kebutuhan saat OPD mengusulkan aplikasi baru",
-              "opd": [
-                "OPD Pengusul",
-                "Diskominfo"
-              ],
-              "status": "belum"
-            },
-            {
-              "id": "B13.3",
-              "level": 2,
-              "nama": "Screenshot pendaftaran daftar aplikasi di SIAP Digital",
-              "detail": "Screenshot Diskominfo mendaftarkan aplikasi di portal SIAP Digital",
-              "opd": [
-                "Diskominfo"
-              ],
-              "status": "belum",
-              "catatan": "SICANTIK dan portal lain sudah live. SIAP Digital perlu screenshot"
-            },
-            {
-              "id": "B13.4",
-              "level": 2,
-              "nama": "Dokumen Blueprint / User Manual aplikasi (bukti SDLC)",
-              "detail": "Dokumen Blueprint/User Manual aplikasi lokal yang membuktikan perancangan siklus (SDLC)",
-              "opd": [
-                "Diskominfo",
-                "OPD Pemilik Aplikasi",
-                "Vendor"
-              ],
-              "status": "belum"
-            },
-            {
-              "id": "P1.I13_1",
-              "level": 1,
-              "nama": "KAK Pengembangan Aplikasi Bahan Pokok Penting (Bapokting) Kab. Aceh Tengah 2026",
-              "detail": "Kerangka Acuan Kerja pengembangan aplikasi monitoring harga — Diskominfo",
-              "opd": [
-                "Diskominfo"
-              ],
-              "status": "proses",
-              "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode TD_13_01). Bukti SDLC aplikasi pemerintah digital.",
-              "url_preview": "/bukti-dukung/05-portal-pemdi/TD_13_01_KAK-Bapokting_2026.pdf",
-              "url_sumber": "/bukti-dukung/05-portal-pemdi/TD_13_01_KAK-Bapokting_2026.pdf",
-              "_ext": "pdf",
-              "_dokumen_kunci": [
-                25
-              ],
-              "_sumber_baru": true
-            },
-            {
-              "id": "P1.I13_2",
-              "level": 1,
-              "nama": "Laporan Akhir Pengembangan Aplikasi Bahan Pokok Penting (Bapokting) 2026",
-              "detail": "Laporan penyelesaian pengembangan aplikasi — Diskominfo",
-              "opd": [
-                "Diskominfo"
-              ],
-              "status": "proses",
-              "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode TD_13_04). Bukti SDLC & dokumentasi aplikasi.",
-              "url_preview": "/bukti-dukung/05-portal-pemdi/TD_13_04_LaporanBapokting_2026.pdf",
-              "url_sumber": "/bukti-dukung/05-portal-pemdi/TD_13_04_LaporanBapokting_2026.pdf",
-              "_ext": "pdf",
-              "_dokumen_kunci": [
-                25
-              ],
-              "_sumber_baru": true
-            }
-          ]
-        },
-        {
-          "id": "I14",
-          "nama": "Tingkat Kematangan Infrastruktur Pemerintah Digital",
-          "deskripsi": "Infrastruktur TIK — pusat data, jaringan, cloud — yang mendukung Pemdi",
-          "nilai": 2.0,
-          "target": 2.5,
-          "bobot": 5,
-          "sumber": "Layanan Pusat Data 2.00, Jaringan Intra 3.00 (SPBE 2025) — perlu peningkatan",
-          "kontribusi_portal": "Dokumentasi infrastruktur, SLA layanan",
-          "penanggung_jawab": {
-            "lead": "Diskominfo – Bid. Layanan E-Government",
-            "support": [
-              "Kemendigi",
-              "BAPPEDA"
-            ],
-            "tim": "Tim Infrastruktur TIK"
-          },
-          "bukti_dukung": [
-            {
-              "id": "V1.I14_1",
-              "level": 1,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Dasar hukum standar penyediaan dan pemanfaatan infrastruktur",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V2.I14_2",
-              "level": 2,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Acuan kebijakan infrastruktur SPBE (Catatan: KIB server, NMS",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-              "_ext": "pdf"
-            },
-            {
-              "id": "B14.1",
-              "level": 1,
-              "nama": "Matriks KIB Inventaris Perangkat Keras Jaringan/Server",
-              "detail": "Merinci jumlah server di Data Center, router, dan topologi jaringan FO",
-              "opd": [
-                "Diskominfo",
-                "BPKD"
-              ],
-              "status": "belum",
-              "catatan": "Command Center, fiber optic, jaringan intra-pemerintah (APJII) ditemukan. KIB B/E perlu dari BPKD"
-            },
-            {
-              "id": "B14.2",
-              "level": 2,
-              "nama": "Tangkapan layar Dasbor Network Monitoring System",
-              "detail": "Screenshot aplikasi pemantau jaringan (MikroTik/PRTG) yang menunjukkan status UP/DOWN server atau grafik koneksi",
-              "opd": [
-                "Diskominfo"
-              ],
-              "status": "belum",
-              "catatan": "Workshop infrastruktur SPBE dilaksanakan. Dashboard NMS perlu screenshot MikroTik/PRTG"
-            }
-          ]
-        }
-      ],
-      "item_aktual": 11,
-      "item_gap": 7
-    },
-    {
-      "id": 6,
-      "nama": "Keterpaduan",
-      "singkat": "Keterpaduan",
-      "bobot": 15,
-      "warna": "#e65100",
-      "deskripsi": "Keterpaduan proses bisnis, integrasi aplikasi, portal layanan, dan interoperabilitas data lintas sektor",
-      "target": 2.5,
-      "nilai": 2.0,
-      "total_item": 25,
-      "koordinator": "Bag. Organisasi; BAPPEDA; Diskominfo (E-Gov, TIK, Statistik & Persandian)",
-      "indikator": [
-        {
-          "id": "I15",
-          "nama": "Tingkat Kematangan Keterpaduan Proses Bisnis Lintas Sektor",
-          "deskripsi": "Keterpaduan proses bisnis lintas unit dan instansi dalam pelayanan Pemdi",
-          "nilai": 2.0,
-          "target": 2.5,
-          "bobot": 4,
-          "sumber": "Inovasi Proses Bisnis 1.00 (baseline) + PPB Fase 2 yang sudah dikerjakan",
-          "kontribusi_portal": "✅ Halaman /probis — PPB 3 level terintegrasi",
-          "penanggung_jawab": {
-            "lead": "Bag. Organisasi (Koordinator Pokja Keterpaduan)",
-            "support": [
-              "Diskominfo",
-              "Bappeda",
-              "Dinas Perpustakaan & Arsip",
-              "Semua OPD"
-            ],
-            "tim": "Tim Proses Bisnis & Tata Laksana"
-          },
-          "bukti_dukung": [
-            {
-              "id": "V1.I15_1",
-              "level": 1,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Regulasi primer yang mengesahkan referensi keterpaduan prose",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V2.I15_2",
-              "level": 2,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Menjadi referensi keterpaduan proses bisnis (Catatan: Flowch",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-              "_ext": "pdf"
-            },
-            {
-              "id": "B15.1",
-              "level": 1,
-              "nama": "Bagan Flowchart Proses Bisnis As-Is terunggah di SIAP",
-              "detail": "Bagan eksisting (misal 'Alur Izin Usaha') yang telah di-upload ke menu Proses Bisnis SIAP Digital",
-              "opd": [
-                "Bagian Organisasi",
-                "Diskominfo",
-                "OPD Terkait"
-              ],
-              "status": "belum"
-            },
-            {
-              "id": "B15.2",
-              "level": 2,
-              "nama": "Kajian/Rancangan Proses Bisnis Terpadu To-Be terunggah di SIAP",
-              "detail": "Bagan rancangan integrasi (misal izin usaha terhubung dengan Dukcapil) yang diunggah di SIAP Digital",
-              "opd": [
-                "Bagian Organisasi",
-                "Diskominfo"
-              ],
-              "status": "belum"
-            }
-          ]
-        },
-        {
-          "id": "I16",
-          "nama": "Tingkat Kematangan Integrasi Aplikasi",
-          "deskripsi": "Tingkat integrasi antar aplikasi dalam ekosistem Pemdi — API, interoperabilitas",
-          "nilai": 2.0,
-          "target": 2.5,
-          "bobot": 4,
-          "sumber": "Penghubung Layanan 2.00 (SPBE 2025) — implementasi parsial",
-          "kontribusi_portal": "API endpoint Pemdi untuk integrasi data",
-          "penanggung_jawab": {
-            "lead": "Bag. Organisasi",
-            "support": [
-              "Diskominfo",
-              "Semua OPD (Pemilik Aplikasi)"
-            ],
-            "tim": "Tim Integrasi Sistem & API"
-          },
-          "bukti_dukung": [
-            {
-              "id": "V1.I16_1",
-              "level": 1,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Menetapkan kebijakan integrasi aplikasi antar instansi untuk",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V2.I16_2",
-              "level": 2,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Acuan integrasi aplikasi (Catatan: Dokumentasi API teknis, S",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-              "_ext": "pdf"
-            },
-            {
-              "id": "B16.1",
-              "level": 1,
-              "nama": "Notulensi Rapat Koordinasi API & Dokumen UAT",
-              "detail": "Berita Acara Rapat Diskominfo, Dukcapil, RSUD terkait sinkronisasi NIK. Laporan Uji Coba dari programmer",
-              "opd": [
-                "Diskominfo",
-                "OPD Terkait"
-              ],
-              "status": "belum",
-              "catatan": "PKS E-Keurani menunjukkan inisiatif integrasi. BA rapat/API perlu dokumen teknis"
-            },
-            {
-              "id": "B16.2",
-              "level": 2,
-              "nama": "Matriks Integrasi Aplikasi & Screenshot kode API/Sinkronisasi",
-              "detail": "Tangkapan layar kode API (Web Service) yang membuktikan dua sistem sinkron",
-              "opd": [
-                "Diskominfo"
-              ],
-              "status": "belum"
-            }
-          ]
-        },
-        {
-          "id": "I17",
-          "nama": "Tingkat Kematangan Portal Layanan Digital Pemerintah",
-          "deskripsi": "Ketersediaan portal terpadu yang menjadi titik akses utama layanan digital pemerintah daerah",
-          "nilai": 2.0,
-          "target": 3.5,
-          "bobot": 4,
-          "sumber": "✅ Layanan SPBE 3.75 (rata-rata layanan administrasi 3.80, publik 3.67). Portal sudah live dan berfungsi",
-          "kontribusi_portal": "✅ INI PORTAL KITA — kontribusi langsung dan terukur",
-          "penanggung_jawab": {
-            "lead": "Bag. Organisasi",
-            "support": [
-              "Diskominfo",
-              "Semua OPD (Penyedia Layanan)"
-            ],
-            "tim": "Tim Portal & Layanan Digital"
-          },
-          "bukti_dukung": [
-            {
-              "id": "V1.I17_1",
-              "level": 1,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 30 Tahun 2022 tentang Pen",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Dasar hukum integrasi layanan publik dalam satu pintu (Mal P",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-407b38e8-peraturan-bupati-aceh-tengah-nomor-30-tahun-2022-tentang-pen.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/407b38e8-5363-4b1a-bd3f-66c637164394",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V1.I17_2",
-              "level": 1,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Menetapkan standar integrasi layanan publik dan administrasi",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V2.I17_3",
-              "level": 2,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 30 Tahun 2022 tentang Pen",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Membuktikan ketersediaan regulasi dan penyelenggaraan layana",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-407b38e8-peraturan-bupati-aceh-tengah-nomor-30-tahun-2022-tentang-pen.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/407b38e8-5363-4b1a-bd3f-66c637164394",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V2.I17_4",
-              "level": 2,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 73 Tahun 2020 tentang Pel",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Bukti penerapan layanan digital sektor administrasi kependud",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-2a0b0c2f-peraturan-bupati-aceh-tengah-nomor-73-tahun-2020-tentang-pel.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/2a0b0c2f-d693-4a15-9e7f-b42d7ab081eb",
-              "_ext": "pdf"
-            },
-            {
-              "id": "B17.1",
-              "level": 1,
-              "nama": "Screenshot penuh antarmuka portal utama acehtengahkab.go.id",
-              "detail": "Screenshot portal web resmi acehtengahkab.go.id yang menunjukkan portal sudah aktif dan berfungsi",
-              "opd": [
-                "Diskominfo"
-              ],
-              "status": "belum",
-              "catatan": "Portal utama acehtengahkab.go.id + SICANTIK + Open Data aktif. Perlu screenshot bertanggal"
-            },
-            {
-              "id": "B17.2",
-              "level": 2,
-              "nama": "Peraturan Bupati tentang Portal Layanan Publik Daerah",
-              "detail": "Perbup yang mewajibkan seluruh layanan aplikasi harus bermuara pada portal tunggal acehtengahkab.go.id",
-              "opd": [
-                "Diskominfo",
-                "Bagian Hukum"
-              ],
-              "status": "belum",
-              "catatan": "Perbup portal tunggal belum ditemukan"
-            }
-          ]
-        },
-        {
-          "id": "I18",
-          "nama": "Tingkat Kematangan Interoperabilitas Data",
-          "deskripsi": "Kemampuan bertukar data antar sistem secara otomatis dan terstandarisasi",
-          "nilai": 2.0,
-          "target": 2.5,
-          "bobot": 3,
-          "sumber": "Estimasi — perlu implementasi GovTech/API Gateway",
-          "kontribusi_portal": "API endpoint standar SDI, format data terbuka",
-          "penanggung_jawab": {
-            "lead": "Bag. Organisasi",
-            "support": [
-              "Diskominfo",
-              "Bappeda",
-              "Kemendigi"
-            ],
-            "tim": "Tim Interoperabilitas & Open Data"
-          },
-          "bukti_dukung": [
-            {
-              "id": "V1.I18_1",
-              "level": 1,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 60 Tahun 2022 tentang Sat",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Dasar hukum utama interoperabilitas data, standar data, meta",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-d9671249-peraturan-bupati-aceh-tengah-nomor-60-tahun-2022-tentang-sat.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/d9671249-08cc-4e6c-87f0-aa04f8ada75c",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V1.I18_2",
-              "level": 1,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Regulasi yang menetapkan arsitektur data pemerintah digital ",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V2.I18_3",
-              "level": 2,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 60 Tahun 2022 tentang Sat",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Membuktikan pelaksanaan kebijakan berbagi pakai data daerah ",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-d9671249-peraturan-bupati-aceh-tengah-nomor-60-tahun-2022-tentang-sat.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/d9671249-08cc-4e6c-87f0-aa04f8ada75c",
-              "_ext": "pdf"
-            },
-            {
-              "id": "B18.1",
-              "level": 1,
-              "nama": "Screenshot Arsitektur Data dari portal SIAP Digital & Daftar Struktur DB",
-              "detail": "Screenshot portal SIAP Digital domain Arsitektur Data dan daftar database tiap OPD",
-              "opd": [
-                "Diskominfo",
-                "Bappeda"
-              ],
-              "status": "belum",
-              "catatan": "Portal Open Data 852 datasets, 61 organisasi aktif. Arsitektur data SIAP perlu screenshot"
-            },
-            {
-              "id": "B18.2",
-              "level": 2,
-              "nama": "Berita Acara/Screenshot pemanfaatan API data lintas OPD",
-              "detail": "Bukti Dinas Sosial menarik data spasial Bappeda dan data Dukcapil via API tanpa bertukar flashdisk",
-              "opd": [
-                "Diskominfo",
-                "OPD Produsen Data"
-              ],
-              "status": "belum"
-            }
-          ]
-        }
-      ],
-      "item_aktual": 19,
-      "item_gap": 7
-    },
-    {
-      "id": 7,
-      "nama": "Kepuasan Pengguna Layanan Digital Pemerintah",
-      "singkat": "Kepuasan",
-      "bobot": 25,
-      "warna": "#00838f",
-      "deskripsi": "Fasilitas dukungan pengguna dan pengelolaan kepuasan pengguna layanan digital pemerintah",
-      "target": 3.0,
-      "nilai": 2.0,
-      "total_item": 19,
-      "koordinator": "DPMPTSP; Diskominfo – Bid. Layanan E-Government",
-      "indikator": [
-        {
-          "id": "I19",
-          "nama": "Tingkat Kematangan Fasilitas Dukungan Pengguna Layanan Digital Pemerintah",
-          "deskripsi": "Ketersediaan helpdesk, FAQ, pelaporan masalah, panduan pengguna, kanal dukungan digital",
-          "nilai": 2.0,
-          "target": 3.0,
-          "bobot": 10,
-          "sumber": "Layanan Pengaduan 4.00 + Layanan Publik 3.67 (SPBE 2025) — Sp4 Lapor, FAQ, widget sudah ada",
-          "kontribusi_portal": "✅ Widget Lapor, halaman FAQ, form SKM, informasi layanan",
-          "penanggung_jawab": {
-            "lead": "DPMPTSP (Koordinator Pokja Kepuasan – Fasilitas Dukungan Pengguna)",
-            "support": [
-              "Diskominfo",
-              "Semua OPD (Penyedia Layanan)"
-            ],
-            "tim": "Tim Dukungan Pengguna & Helpdesk"
-          },
-          "bukti_dukung": [
-            {
-              "id": "V1.I19_1",
-              "level": 1,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 21 Tahun 2021 tentang Ped",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [
-                "Diskominfo"
-              ],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Dasar hukum pengelolaan pengaduan publik, service desk, dan ",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-d0d9a4c9-peraturan-bupati-aceh-tengah-nomor-21-tahun-2021-tentang-ped.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/d0d9a4c9-089f-4e69-ad24-24b101057b62",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V1.I19_2",
-              "level": 1,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 126 Tahun 2019 tentang Pe",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Dasar hukum standar operasional prosedur (SOP) dan Service L",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-e8187833-peraturan-bupati-aceh-tengah-nomor-126-tahun-2019-tentang-pe.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/e8187833-5111-4436-be42-68dfd5d80b76",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V2.I19_3",
-              "level": 2,
-              "nama": "Peraturan Bupati Aceh Tengah Nomor 21 Tahun 2021 tentang Ped",
-              "detail": "JDIH Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Memenuhi kondisi pelaksanaan sistem penanganan pengaduan onl",
-              "url_preview": "/bukti-dukung/07-eksternal/jdih-d0d9a4c9-peraturan-bupati-aceh-tengah-nomor-21-tahun-2021-tentang-ped.pdf",
-              "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/d0d9a4c9-089f-4e69-ad24-24b101057b62",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V2.I19_4",
-              "level": 2,
-              "nama": "Hasil Survei Kepuasan Masyarakat di Kabupaten Aceh Tengah bu",
-              "detail": "OpenData Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Bukti aktif tahun 2026 pengelolaan umpan balik pengguna dan ",
-              "url_preview": "/bukti-dukung/07-eksternal/opendata-hasil-survei-kepuasan-hasil-survei-kepuasan-masyarakat-di-kabupaten-aceh.xlsx",
-              "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/hasil-survei-kepuasan-masyarakat-di-kabupaten-aceh-tengah-bulan-januari-mei-tahun-2026",
-              "_ext": "xlsx"
-            },
-            {
-              "id": "B19.1",
-              "level": 1,
-              "nama": "Draf Dokumen SLA IT penanganan jaringan/sistem",
-              "detail": "Draf dokumen standar waktu penanganan aduan jaringan dan sistem",
-              "opd": [
-                "Diskominfo"
-              ],
-              "status": "belum"
-            },
-            {
-              "id": "B19.2",
-              "level": 1,
-              "nama": "Screenshot Grup WA IT/Google Form aduan dasar",
-              "detail": "Screenshot WA Grup IT atau Google Form pengaduan sederhana",
-              "opd": [
-                "Diskominfo",
-                "Humas Setdakab"
-              ],
-              "status": "belum",
-              "catatan": "SP4N-LAPOR: pendampingan ke seluruh kecamatan, pelatihan OPD/puskesmas/BUMD 2024, penghargaan KemenPANRB 2023"
-            },
-            {
-              "id": "B19.3",
-              "level": 2,
-              "nama": "SOP Resmi Pengaduan Layanan IT",
-              "detail": "SOP resmi pengaduan layanan IT yang sudah ditetapkan",
-              "opd": [
-                "Diskominfo",
-                "Bagian Organisasi"
-              ],
-              "status": "belum",
-              "catatan": "Pedoman Pengaduan RSUD (PDF) + sistem SP4N-LAPOR aktif. SOP resmi perlu dari Diskominfo/Bag. Organisasi"
-            },
-            {
-              "id": "B19.4",
-              "level": 2,
-              "nama": "Screenshot Dasbor Aplikasi Ticketing/Helpdesk",
-              "detail": "Screenshot antarmuka aplikasi Helpdesk memuat nomor tiket, waktu keluhan, dan status penanganan",
-              "opd": [
-                "Diskominfo"
-              ],
-              "status": "belum",
-              "catatan": "SP4N-LAPOR punya dashboard tiket. Ticketing internal Pemkab perlu screenshot"
-            }
-          ]
-        },
-        {
-          "id": "I20",
-          "nama": "Tingkat Kematangan Pengelolaan Kepuasan Pengguna Layanan Digital Pemerintah",
-          "deskripsi": "Pengukuran dan pengelolaan kepuasan pengguna secara sistematis — survei, analisis, tindak lanjut",
-          "nilai": 2.0,
-          "target": 3.0,
-          "bobot": 15,
-          "sumber": "✅ Layanan Publik 3.67 + 4.00 (SPBE 2025). SKM sudah berjalan. SKM digital via portal bisa jadi nilai tambah",
-          "kontribusi_portal": "✅ Survei SKM online, dashboard kepuasan, laporan real-time",
-          "penanggung_jawab": {
-            "lead": "DPMPTSP (Koordinator Pokja Kepuasan – Pengelolaan Kepuasan Pengguna)",
-            "support": [
-              "Diskominfo",
-              "Bag. Organisasi",
-              "seluruh PD penyelenggara layanan"
-            ],
-            "tim": "Tim Kepuasan Pengguna & SKM"
-          },
-          "bukti_dukung": [
-            {
-              "id": "V1.I20_1",
-              "level": 1,
-              "nama": "Hasil Survei Kepuasan Masyarakat di Kabupaten Aceh Tengah bu",
-              "detail": "OpenData Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Bukti primer pelaksanaan survei kepuasan masyarakat (SKM) te",
-              "url_preview": "/bukti-dukung/07-eksternal/opendata-hasil-survei-kepuasan-hasil-survei-kepuasan-masyarakat-di-kabupaten-aceh.xlsx",
-              "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/hasil-survei-kepuasan-masyarakat-di-kabupaten-aceh-tengah-bulan-januari-mei-tahun-2026",
-              "_ext": "xlsx"
-            },
-            {
-              "id": "V1.I20_2",
-              "level": 1,
-              "nama": "Laporan Survei Kepuasan Masyarakat (SKM) Kecamatan Kebayakan",
-              "detail": "GitHub (Repo Publik)",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Laporan lengkap survei kepuasan masyarakat pada unit pelayan",
-              "url_preview": "/bukti-dukung/04-layanan/skm_kebayakan_2025.pdf",
-              "url_sumber": "https://raw.githubusercontent.com/Niumination/PemdiAcehTengah/main/public/bukti-dukung/04-layanan/skm_kebayakan_2025.pdf",
-              "_ext": "pdf"
-            },
-            {
-              "id": "V2.I20_3",
-              "level": 2,
-              "nama": "Hasil Survei Kepuasan Masyarakat di Kabupaten Aceh Tengah bu",
-              "detail": "OpenData Aceh Tengah",
-              "opd": [],
-              "status": "lengkap",
-              "catatan": "Dokumen resmi — Bukti pengolahan dan publikasi hasil survei kepuasan masyara",
-              "url_preview": "/bukti-dukung/07-eksternal/opendata-hasil-survei-kepuasan-hasil-survei-kepuasan-masyarakat-di-kabupaten-aceh.xlsx",
-              "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/hasil-survei-kepuasan-masyarakat-di-kabupaten-aceh-tengah-bulan-januari-mei-tahun-2026",
-              "_ext": "xlsx"
-            },
-            {
-              "id": "B20.1",
-              "level": 1,
-              "nama": "Laporan Survei Kepuasan Masyarakat (e-SKM) Online",
-              "detail": "Laporan SKM elektronik dari DPMPTSP/RSUD/Dukcapil",
-              "opd": [
-                "DPMPTSP",
-                "RSUD",
-                "Dukcapil",
-                "OPD Pelayanan"
-              ],
-              "status": "belum",
-              "catatan": "SKM Dukcapil 2024: nilai 96,17, 100 responden, 9 unsur. SKM Kebayakan 2025 (periode Jan-Jun). Sosialisasi SKM 2024 dilaksanakan"
-            },
-            {
-              "id": "B20.2",
-              "level": 1,
-              "nama": "Notulensi Rapat Evaluasi layanan (minimal 1 kelompok rentan)",
-              "detail": "Notulensi rapat evaluasi hasil SKM yang mengundang minimal 1 kelompok rentan (Disabilitas/Lansia/Perempuan di Takengon)",
-              "opd": [
-                "OPD Pelayanan Terkait"
-              ],
-              "status": "belum",
-              "catatan": "Sosialisasi SKM 2024 dilakukan. Notulensi dengan kelompok rentan perlu verifikasi"
-            },
-            {
-              "id": "B20.3",
-              "level": 2,
-              "nama": "Screenshot fitur Widget Rating/Kepuasan pada portal aplikasi",
-              "detail": "Screenshot tombol rating 1-5 di aplikasi atau portal",
-              "opd": [
-                "Diskominfo",
-                "OPD Pelayanan"
-              ],
-              "status": "belum"
-            },
-            {
-              "id": "B20.4",
-              "level": 2,
-              "nama": "Notulensi Rapat Evaluasi Triwulanan (minimal 3 kelompok rentan/CSO)",
-              "detail": "Notulensi rapat evaluasi 3 bulanan yang mengundang minimal 3 kelompok rentan/CSO",
-              "opd": [
-                "OPD Pelayanan Terkait"
-              ],
-              "status": "belum"
-            }
-          ]
-        }
-      ],
-      "item_aktual": 15,
-      "item_gap": 4
+      "tim": "Tim Manajemen Layanan Digital"
+     },
+     "bukti_dukung": [
+      {
+       "id": "V1.I2_1",
+       "level": 1,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 126 Tahun 2019 tentang Pe",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Dasar hukum standar pelayanan publik yang menjadi rujukan pe",
+       "url_preview": "/bukti-dukung/jdih-e8187833-peraturan-bupati-aceh-tengah-nomor-126-tahun-2019-tentang-pe.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/e8187833-5111-4436-be42-68dfd5d80b76",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V1.I2_2",
+       "level": 1,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 73 Tahun 2020 tentang Pel",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Bukti penerapan dan regulasi manajemen layanan digital pemer",
+       "url_preview": "/bukti-dukung/jdih-2a0b0c2f-peraturan-bupati-aceh-tengah-nomor-73-tahun-2020-tentang-pel.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/2a0b0c2f-d693-4a15-9e7f-b42d7ab081eb",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V2.I2_3",
+       "level": 2,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Memuat ketetapan Domain Arsitektur Layanan SPBE sebagai ruju",
+       "url_preview": "/bukti-dukung/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V2.I2_4",
+       "level": 2,
+       "nama": "Pedoman Penanganan Pengaduan/Keluhan RSUD Datu Beru Kabupate",
+       "detail": "GitHub (Repo Publik)",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Bukti nyata pelaksanaan manajemen layanan digital dan pengel",
+       "url_preview": "/bukti-dukung/pedoman_pengaduan_rsud.pdf",
+       "url_sumber": "https://raw.githubusercontent.com/Niumination/PemdiAcehTengah/main/public/bukti-dukung/pedoman_pengaduan_rsud.pdf",
+       "_ext": "pdf"
+      },
+      {
+       "id": "B2.1",
+       "level": 1,
+       "nama": "Notulensi rapat internal Diskominfo mengenai SOP/Helpdesk IT",
+       "detail": "Catatan rapat internal Diskominfo tentang SOP layanan atau Helpdesk IT, termasuk daftar hadir",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "belum"
+      },
+      {
+       "id": "B2.2",
+       "level": 2,
+       "nama": "Logbook penanganan kendala aplikasi / Analisis Risiko Aplikasi",
+       "detail": "Logbook penanganan kendala aplikasi, lembar reviu keluhan, atau Analisis Risiko Aplikasi",
+       "opd": [
+        "Diskominfo",
+        "OPD Pemilik Layanan"
+       ],
+       "status": "belum",
+       "catatan": "Pedoman Pengaduan RSUD ditemukan (PDF). Perlu bukti penerapan digital"
+      }
+     ]
     }
-  ],
-  "target_item_bukti": 177,
-  "indeks_terkini": 1.92
+   ],
+   "item_aktual": 14,
+   "item_gap": 6
+  },
+  {
+   "id": 2,
+   "nama": "Penyelenggara",
+   "singkat": "Penyelenggara",
+   "bobot": 10,
+   "warna": "#28a197",
+   "deskripsi": "Kompetensi sumber daya manusia dan kolaborasi lintas OPD dalam penyelenggaraan Pemerintah Digital",
+   "target": 2.5,
+   "nilai": 2.0,
+   "total_item": 32,
+   "koordinator": "BKPSDM; Bag. Organisasi; Bag. Hukum",
+   "indikator": [
+    {
+     "id": "I3",
+     "nama": "Tingkat Kematangan Sumber Daya Manusia Pemerintah Digital",
+     "deskripsi": "Tingkat literasi digital ASN, pemanfaatan AI dan teknologi mutakhir, kompetensi TIK",
+     "nilai": 2.0,
+     "target": 2.5,
+     "bobot": 5,
+     "sumber": "Kompetensi SDM SPBE 1.00 (SPBE 2025) — masih rendah, perlu program literasi",
+     "kontribusi_portal": "Materi literasi digital, panduan penggunaan layanan digital",
+     "penanggung_jawab": {
+      "lead": "BKPSDM (Koordinator Pokja Penyelenggara – SDM)",
+      "support": [
+       "Bagian Organisasi",
+       "Diskominfo"
+      ],
+      "tim": "Tim Pengembangan SDM Digital"
+     },
+     "bukti_dukung": [
+      {
+       "id": "V1.I3_1",
+       "level": 1,
+       "nama": "Publikasi Hasil Literasi Digital Sektor Pemerintahan Kabupat",
+       "detail": "OpenData Aceh Tengah",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Dokumen primer survei, identifikasi, dan pemetaan tingkat ko",
+       "url_preview": "/bukti-dukung/opendata-literasi-digital-literasi-digital-sektor-pemerintahan-pdf.pdf",
+       "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/literasi-digital-sektor-pemerintahan-2023",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V1.I3_2",
+       "level": 1,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 9 Tahun 2025 tentang SOTK",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Penetapan struktur dan tugas kelembagaan untuk penyiapan dan",
+       "url_preview": "/bukti-dukung/jdih-af9a42bf-peraturan-bupati-aceh-tengah-nomor-9-tahun-2025-tentang-sotk.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/af9a42bf-cea9-46c8-a739-9beb5d21e990",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V2.I3_3",
+       "level": 2,
+       "nama": "Publikasi Hasil Literasi Digital Sektor Pemerintahan Kabupat",
+       "detail": "OpenData Aceh Tengah",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Memuat analisis mendalam berupa grafik, tabel statistik, ser",
+       "url_preview": "/bukti-dukung/opendata-literasi-digital-literasi-digital-sektor-pemerintahan-pdf.pdf",
+       "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/literasi-digital-sektor-pemerintahan-2023",
+       "_ext": "pdf"
+      },
+      {
+       "id": "B3.1",
+       "level": 1,
+       "nama": "Dokumen Peta Kompetensi ASN",
+       "detail": "Peta Kompetensi ASN dari BKPSDM yang mendokumentasikan tingkat kompetensi digital seluruh ASN",
+       "opd": [
+        "BKPSDM"
+       ],
+       "status": "belum"
+      },
+      {
+       "id": "B3.2",
+       "level": 1,
+       "nama": "Screenshot presensi online / penggunaan Srikandi/e-Kinerja",
+       "detail": "Tangkapan layar yang menunjukkan ASN Pemkab Aceh Tengah sudah menggunakan Srikandi atau e-Kinerja",
+       "opd": [
+        "Seluruh OPD",
+        "BKPSDM"
+       ],
+       "status": "belum",
+       "catatan": "Portal e-Kinerja aktif (e-Absensi tersinkron, TTE BSrE). Perlu screenshot individual"
+      },
+      {
+       "id": "B3.3",
+       "level": 1,
+       "nama": "Dokumentasi (Foto/Absensi) Bimtek IT/Srikandi",
+       "detail": "Dokumentasi kegiatan Bimtek IT atau Srikandi berupa foto dan daftar hadir peserta",
+       "opd": [
+        "BKPSDM",
+        "Diskominfo"
+       ],
+       "status": "belum",
+       "catatan": "Pelatihan VSGA 75 peserta (Operator Komputer, Video Editor, Junior Graphic Designer) via BBPSDMP Kominfo Medan — Juni 2023"
+      },
+      {
+       "id": "B3.4",
+       "level": 2,
+       "nama": "Laporan Asesmen BKN (MyASN) terkait literasi digital ASN",
+       "detail": "Laporan MyASN yang menunjukkan persentase kelulusan literasi digital ASN",
+       "opd": [
+        "BKPSDM"
+       ],
+       "status": "belum",
+       "catatan": "Laporan MyASN/asesmen BKN belum ditemukan publik"
+      },
+      {
+       "id": "B3.5",
+       "level": 2,
+       "nama": "Sertifikat diklat IT pegawai",
+       "detail": "Sertifikat pelatihan IT pegawai (contoh: GTA Kominfo, BPSDMD, atau pelatihan digital lainnya)",
+       "opd": [
+        "BKPSDM",
+        "Pegawai Terkait"
+       ],
+       "status": "belum"
+      }
+     ]
+    },
+    {
+     "id": "I4",
+     "nama": "Tingkat Kematangan Kolaborasi Pemerintah Digital",
+     "deskripsi": "Kerja sama antar OPD, dengan instansi pusat, dan pihak lain dalam penyelenggaraan Pemdi",
+     "nilai": 2.0,
+     "target": 2.5,
+     "bobot": 5,
+     "sumber": "Tim Koordinasi SPBE 3.00 + Kolaborasi SPBE 3.00 (SPBE 2025) — modal baik",
+     "kontribusi_portal": "Publikasi data bersama, fitur kolaborasi lintas OPD",
+     "penanggung_jawab": {
+      "lead": "Bag. Organisasi (Koordinator Pokja Penyelenggara – Kolaborasi)",
+      "support": [
+       "BKPSDM",
+       "Bag. Hukum",
+       "Diskominfo"
+      ],
+      "tim": "Tim Kolaborasi & Kemitraan Pemdi"
+     },
+     "bukti_dukung": [
+      {
+       "id": "V1.I4_1",
+       "level": 1,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 70 Tahun 2019 tentang Ped",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Regulasi primer yang mengamanatkan pembentukan Tim Koordinas",
+       "url_preview": "/bukti-dukung/jdih-edee8e80-peraturan-bupati-aceh-tengah-nomor-70-tahun-2019-tentang-ped.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/edee8e80-8f98-4038-b694-48706c86448a",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V1.I4_2",
+       "level": 1,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Menetapkan kerangka kolaborasi antar unit kerja pemerintah d",
+       "url_preview": "/bukti-dukung/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V2.I4_3",
+       "level": 2,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Menjadi acuan formal pelaksanaan kolaborasi keterpaduan laya",
+       "url_preview": "/bukti-dukung/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+       "_ext": "pdf"
+      },
+      {
+       "id": "B4.1",
+       "level": 1,
+       "nama": "SK Bupati tentang Tim Koordinasi SPBE Daerah",
+       "detail": "SK Bupati Aceh Tengah yang menetapkan pembentukan Tim Koordinasi SPBE Daerah",
+       "opd": [
+        "Diskominfo",
+        "Bagian Hukum"
+       ],
+       "status": "belum"
+      },
+      {
+       "id": "B4.2",
+       "level": 1,
+       "nama": "Dokumen Renja memuat agenda rapat koordinasi digital",
+       "detail": "Renja Diskominfo/Bappeda yang mencantumkan agenda rapat koordinasi rutin antar OPD terkait digital",
+       "opd": [
+        "Bappeda",
+        "Diskominfo"
+       ],
+       "status": "belum"
+      },
+      {
+       "id": "B4.3",
+       "level": 2,
+       "nama": "Perjanjian Kerja Sama (PKS)/MoU integrasi sistem lintas instansi",
+       "detail": "MoU/PKS kolaborasi lintas instansi (contoh: MoU dengan BSSN terkait TTE, atau Bank Aceh Syariah terkait pajak)",
+       "opd": [
+        "Bagian Kerja Sama",
+        "Diskominfo",
+        "OPD Terkait"
+       ],
+       "status": "belum",
+       "catatan": "PKS E-Keurani Pemkab-Pemprov (integrasi data ASN) ditemukan. Salinan PKS resmi perlu diminta"
+      },
+      {
+       "id": "P1.I4_1",
+       "level": 1,
+       "nama": "SK Bupati No. 555/395/DISKOMINFO/2026 — Tim Koordinasi PEMDI (kolaborasi lintas OPD)",
+       "detail": "Anggota tim: Inspektorat, Bappeda, BPKAD, PUPR, Pertanahan, DPMPTSP, Dukcapil, Diskominfo, Bagian Organisasi, Hukum, Tapem",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "proses",
+       "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode PG_04_01). Bukti kolaborasi antar perangkat daerah.",
+       "url_preview": "/bukti-dukung/PG_04_01_SK-Koordinasi_2026.pdf",
+       "url_sumber": "/bukti-dukung/PG_04_01_SK-Koordinasi_2026.pdf",
+       "_ext": "pdf",
+       "_dokumen_kunci": [
+        5
+       ],
+       "_sumber_baru": true
+      },
+      {
+       "id": "P1.I4_2",
+       "level": 2,
+       "nama": "Rapat Koordinasi Penerapan Transformasi Digital Pemerintah (25-26 Juni 2026)",
+       "detail": "Kolaborasi Pemkab dengan KemenPANRB — 11 OPD diundang",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "proses",
+       "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode PG_04_03). Bukti kolaborasi Pemdi.",
+       "url_preview": "/bukti-dukung/PG_04_03_RapatPemdi_2026.pdf",
+       "url_sumber": "/bukti-dukung/PG_04_03_RapatPemdi_2026.pdf",
+       "_ext": "pdf",
+       "_dokumen_kunci": [
+        7
+       ],
+       "_sumber_baru": true
+      }
+     ]
+    }
+   ],
+   "item_aktual": 14,
+   "item_gap": 18
+  },
+  {
+   "id": 3,
+   "nama": "Data",
+   "singkat": "Data",
+   "bobot": 15,
+   "warna": "#d4351c",
+   "deskripsi": "Tata kelola data, informasi geospasial, statistik sektoral, dan perlindungan data pribadi — termasuk indeks SDI, SJIG, EPSS, dan kepatuhan UU PDP",
+   "target": 2.5,
+   "nilai": 2.0,
+   "total_item": 38,
+   "koordinator": "Diskominfo – Bid. Statistik & Persandian",
+   "indikator": [
+    {
+     "id": "I5",
+     "nama": "Tingkat Kematangan Tata Kelola Data (Indeks Satu Data Indonesia)",
+     "deskripsi": "Penerapan prinsip Satu Data Indonesia, kualitas data, interoperabilitas data — nilai eksternal dari SDI",
+     "nilai": 2.0,
+     "target": 2.5,
+     "bobot": 5,
+     "sumber": "Kebijakan Manajemen Data 4.00 (SPBE 2025) — kebijakan kuat, implementasi perlu diperkuat",
+     "kontribusi_portal": "Publikasi dataset melalui portal, standar SDI",
+     "penanggung_jawab": {
+      "lead": "Diskominfo – Bid. Statistik & Persandian (Koordinator Pokja Data)",
+      "support": [
+       "Bappeda",
+       "BPS",
+       "seluruh PD"
+      ],
+      "tim": "Tim Satu Data Indonesia"
+     },
+     "bukti_dukung": [
+      {
+       "id": "V1.I5_1",
+       "level": 1,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 60 Tahun 2022 tentang Sat",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Dasar hukum utama penyelenggaraan tata kelola data, penetapa",
+       "url_preview": "/bukti-dukung/jdih-d9671249-peraturan-bupati-aceh-tengah-nomor-60-tahun-2022-tentang-sat.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/d9671249-08cc-4e6c-87f0-aa04f8ada75c",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V1.I5_2",
+       "level": 1,
+       "nama": "SOP Pengumpulan, Analisis, Pengelolaan dan Diseminasi Data S",
+       "detail": "OpenData Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Bukti pengesahan prosedur operasi standar tata kelola data s",
+       "url_preview": "/bukti-dukung/opendata-data-rdtr-sop-epss-dari-diskominfo-tt-basah-pdf.pdf",
+       "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/b07e4546-ff19-4041-b58b-6e456bb1f9c3",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V2.I5_3",
+       "level": 2,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 60 Tahun 2022 tentang Sat",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Memenuhi kriteria tata kelola data pemerintah daerah sesuai ",
+       "url_preview": "/bukti-dukung/jdih-d9671249-peraturan-bupati-aceh-tengah-nomor-60-tahun-2022-tentang-sat.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/d9671249-08cc-4e6c-87f0-aa04f8ada75c",
+       "_ext": "pdf"
+      },
+      {
+       "id": "B5.1",
+       "level": 1,
+       "nama": "SK Bupati tentang Forum SDI & SK Wali Data",
+       "detail": "SK Bupati Aceh Tengah tentang Forum Satu Data Indonesia tingkat Kabupaten beserta SK Penetapan Wali Data OPD",
+       "opd": [
+        "Bappeda",
+        "Diskominfo",
+        "Bagian Hukum"
+       ],
+       "status": "belum"
+      },
+      {
+       "id": "B5.2",
+       "level": 1,
+       "nama": "Notulensi rapat awal persiapan portal Open Data",
+       "detail": "Dokumentasi rapat persiapan portal Open Data dengan daftar hadir dan keputusan",
+       "opd": [
+        "Diskominfo",
+        "Bappeda",
+        "BPS"
+       ],
+       "status": "belum",
+       "catatan": "FGD Aceh Tengah Dalam Angka 2021 (Humas) + Portal Open Data + Penguatan Satu Data 2025 ditemukan. Perlu SK Forum SDI/Wali Data resmi"
+      },
+      {
+       "id": "B5.3",
+       "level": 2,
+       "nama": "Draf Metadata Sektoral dari OPD terkait",
+       "detail": "Draft struktur data sektoral (contoh: data stunting dari Dinkes, data luas lahan kopi dari Distan) yang sudah dikomunikasikan dengan BPS",
+       "opd": [
+        "OPD Produsen Data",
+        "Diskominfo"
+       ],
+       "status": "belum",
+       "catatan": "Portal Open Data aktif (852 datasets, 61 organisasi) + Desk Satu Data 2026 + PERKIM MENDATA. Metadata sektoral perlu verifikasi"
+      },
+      {
+       "id": "P1.I5_1",
+       "level": 1,
+       "nama": "SK Bupati No. 188.55/375/BAPPEDA/2025 — Perubahan Pedoman Pembentukan Forum Satu Data Kab. Aceh Tengah",
+       "detail": "Dasar hukum Forum Satu Data (Perpres 39/2019)",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "belum",
+       "catatan": "Dokumen resmi — Ditemukan di Documents, belum diunggah ke portal. Bukti tata kelola data (SDI).",
+       "url_preview": "/bukti-dukung/REVISI SK PEDOMAN FORUM SATU DATA ACEH TENGAH TAHUN 2025.pdf",
+       "url_sumber": "/bukti-dukung/REVISI SK PEDOMAN FORUM SATU DATA ACEH TENGAH TAHUN 2025.pdf",
+       "_ext": "pdf",
+       "_dokumen_kunci": [
+        18
+       ],
+       "_sumber_baru": true
+      }
+     ]
+    },
+    {
+     "id": "I6",
+     "nama": "Tingkat Kematangan Penyelenggaraan Informasi Geospasial (Indeks SJIG)",
+     "deskripsi": "Ketersediaan dan pemanfaatan data geospasial dalam layanan Pemdi — nilai eksternal dari BIG",
+     "nilai": 2.0,
+     "target": 2.0,
+     "bobot": 3,
+     "sumber": "Estimasi — dataset BIG belum aktif terintegrasi",
+     "kontribusi_portal": "Peta interaktif OPD dan sebaran layanan",
+     "penanggung_jawab": {
+      "lead": "Diskominfo – Bid. Statistik & Persandian",
+      "support": [
+       "BIG (Badan Informasi Geospasial)",
+       "Dinas PUPR"
+      ],
+      "tim": "Tim Informasi Geospasial"
+     },
+     "bukti_dukung": [
+      {
+       "id": "V1.I6_1",
+       "level": 1,
+       "nama": "Data dan Peta Rencana Detail Tata Ruang (RDTR) yang Dikelola",
+       "detail": "OpenData Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Bukti ketersediaan, pengelolaan, dan berbagi pakai informasi",
+       "url_preview": "/bukti-dukung/opendata-data-peta-rdtr-data-dan-peta-rdtr-yang-dikelola-di-aceh-tengah-ta.xlsx",
+       "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/data-dan-peta-rdtr-yang-dikelola-di-aceh-tengah-tahun-2025",
+       "_ext": "xlsx"
+      },
+      {
+       "id": "V2.I6_2",
+       "level": 2,
+       "nama": "Data dan Peta Rencana Detail Tata Ruang (RDTR) yang Dikelola",
+       "detail": "OpenData Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Memenuhi kondisi berbagi pakai sebagian informasi geospasial",
+       "url_preview": "/bukti-dukung/opendata-data-peta-rdtr-data-dan-peta-rdtr-yang-dikelola-di-aceh-tengah-ta.xlsx",
+       "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/data-dan-peta-rdtr-yang-dikelola-di-aceh-tengah-tahun-2025",
+       "_ext": "xlsx"
+      },
+      {
+       "id": "B6.1",
+       "level": 1,
+       "nama": "SK Bupati/Sekda tentang Tim Jaringan Informasi Geospasial",
+       "detail": "SK Bupati atau Sekda tentang pembentukan Tim Jaringan Informasi Geospasial Aceh Tengah",
+       "opd": [
+        "Bappeda",
+        "Dinas PUPR"
+       ],
+       "status": "belum"
+      },
+      {
+       "id": "B6.2",
+       "level": 1,
+       "nama": "Screenshot persiapan Web GIS / Geoportal",
+       "detail": "Tangkapan layar persiapan atau tampilan sementara Web GIS/Geoportal (jika masih offline)",
+       "opd": [
+        "Bappeda",
+        "Diskominfo"
+       ],
+       "status": "belum"
+      },
+      {
+       "id": "B6.3",
+       "level": 2,
+       "nama": "Peraturan Bupati tentang Penyelenggaraan Simpul Jaringan IG",
+       "detail": "Perbup tentang Penyelenggaraan Simpul Jaringan Informasi Geospasial Daerah",
+       "opd": [
+        "Bappeda",
+        "Bagian Hukum"
+       ],
+       "status": "belum"
+      },
+      {
+       "id": "B6.4",
+       "level": 2,
+       "nama": "Screenshot peta RTRW/Peta Desa di Portal Geospasial",
+       "detail": "Screenshot ketersediaan peta digital dasar (RTRW/Desa) yang memiliki metadata di portal Geospasial",
+       "opd": [
+        "Bappeda",
+        "Dinas PUPR"
+       ],
+       "status": "belum"
+      }
+     ]
+    },
+    {
+     "id": "I7",
+     "nama": "Tingkat Kematangan Pembangunan Statistik (Indeks Pembangunan Statistik / EPSS)",
+     "deskripsi": "Produksi dan publikasi statistik sektoral yang terstandarisasi — nilai eksternal dari BPS",
+     "nilai": 2.0,
+     "target": 2.0,
+     "bobot": 3,
+     "sumber": "Estimasi — perlu koordinasi BPS untuk EPSS",
+     "kontribusi_portal": "Publikasi statistik daerah, dashboard data",
+     "penanggung_jawab": {
+      "lead": "Diskominfo – Bid. Statistik & Persandian",
+      "support": [
+       "BPS",
+       "Bappeda"
+      ],
+      "tim": "Tim Statistik Sektoral"
+     },
+     "bukti_dukung": [
+      {
+       "id": "V1.I7_1",
+       "level": 1,
+       "nama": "SOP Pengumpulan, Analisis, Pengelolaan dan Diseminasi Data S",
+       "detail": "OpenData Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Bukti pengesahan standar operasi prosedur dalam pelaksanaan ",
+       "url_preview": "/bukti-dukung/opendata-data-rdtr-sop-epss-dari-diskominfo-tt-basah-pdf.pdf",
+       "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/b07e4546-ff19-4041-b58b-6e456bb1f9c3",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V2.I7_2",
+       "level": 2,
+       "nama": "SOP Pengumpulan, Analisis, Pengelolaan dan Diseminasi Data S",
+       "detail": "OpenData Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Membuktikan pelaksanaan tahapan manajemen penyelenggaraan st",
+       "url_preview": "/bukti-dukung/opendata-data-rdtr-sop-epss-dari-diskominfo-tt-basah-pdf.pdf",
+       "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/b07e4546-ff19-4041-b58b-6e456bb1f9c3",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V2.I7_3",
+       "level": 2,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 60 Tahun 2022 tentang Sat",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Memuat kebijakan tata kelola statistik sektoral oleh walidat",
+       "url_preview": "/bukti-dukung/jdih-d9671249-peraturan-bupati-aceh-tengah-nomor-60-tahun-2022-tentang-sat.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/d9671249-08cc-4e6c-87f0-aa04f8ada75c",
+       "_ext": "pdf"
+      },
+      {
+       "id": "B7.1",
+       "level": 1,
+       "nama": "Publikasi 'Aceh Tengah Dalam Angka' / Data Sektoral ad-hoc",
+       "detail": "Buku publikasi 'Aceh Tengah Dalam Angka' tahun berjalan atau laporan pengumpulan data manual",
+       "opd": [
+        "BPS",
+        "Diskominfo"
+       ],
+       "status": "belum",
+       "catatan": "Portal Statistik Sektoral aktif di portal. Publikasi Aceh Tengah Dalam Angka perlu diunduh tahun berjalan"
+      },
+      {
+       "id": "B7.2",
+       "level": 2,
+       "nama": "SOP / Dokumen Metodologi Perencanaan Survei Sektoral OPD",
+       "detail": "Metodologi Survei Kepuasan Pasien (RSUD Datu Beru) atau Survei Produksi Kopi yang dikonsultasikan ke BPS",
+       "opd": [
+        "OPD Pelaksana",
+        "BPS"
+       ],
+       "status": "belum"
+      },
+      {
+       "id": "P1.I7_1",
+       "level": 1,
+       "nama": "Capaian Indeks Pembangunan Statistik (IPS) Diskominfo 2,97 — Tabel 2.143 Evaluasi IKD",
+       "detail": "IPS 2,97 dari target 3,14 (94,6% capaian)",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "belum",
+       "catatan": "Data resmi — Ditemukan di Documents (odl-pdf), belum diunggah ke portal. Bukti capaian statistik sektoral.",
+       "url_preview": "/bukti-dukung/Capaian_RKPD_preview.png",
+       "url_sumber": "/bukti-dukung/Capaian_Realisasi_RKPD_Diskominfo.xlsx",
+       "_ext": "png",
+       "_dokumen_kunci": [
+        18
+       ],
+       "_sumber_baru": true
+      }
+     ]
+    },
+    {
+     "id": "I8",
+     "nama": "Tingkat Kematangan Pelindungan Data Pribadi",
+     "deskripsi": "Penerapan prinsip PDP dalam layanan digital pemerintah — consent, hak subjek data, breach notification, DPIA",
+     "nilai": 2.0,
+     "target": 2.0,
+     "bobot": 4,
+     "sumber": "Indikator baru Pemdi — 35 item bukti dukung. Wajib UU PDP 27/2022",
+     "kontribusi_portal": "Kebijakan privasi, mekanisme consent, form PDP compliant",
+     "penanggung_jawab": {
+      "lead": "Diskominfo – Bid. Statistik & Persandian",
+      "support": [
+       "Bagian Hukum",
+       "Inspektorat",
+       "seluruh PD"
+      ],
+      "tim": "Tim Pelindungan Data Pribadi"
+     },
+     "bukti_dukung": [
+      {
+       "id": "V1.I8_1",
+       "level": 1,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 6 Tahun 2025 tentang Sist",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Menetapkan regulasi klasifikasi keamanan arsip, pembatasan a",
+       "url_preview": "/bukti-dukung/jdih-ade79cb3-peraturan-bupati-aceh-tengah-nomor-6-tahun-2025-tentang-sist.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/ade79cb3-cb2b-4b8e-bf31-b35ddeded969",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V1.I8_2",
+       "level": 1,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 73 Tahun 2020 tentang Pel",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Dasar hukum keamanan dan kerahasiaan data kependudukan dalam",
+       "url_preview": "/bukti-dukung/jdih-2a0b0c2f-peraturan-bupati-aceh-tengah-nomor-73-tahun-2020-tentang-pel.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/2a0b0c2f-d693-4a15-9e7f-b42d7ab081eb",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V2.I8_3",
+       "level": 2,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 6 Tahun 2025 tentang Sist",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Bukti penerapan prosedur pelindungan kerahasiaan data pada s",
+       "url_preview": "/bukti-dukung/jdih-ade79cb3-peraturan-bupati-aceh-tengah-nomor-6-tahun-2025-tentang-sist.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/ade79cb3-cb2b-4b8e-bf31-b35ddeded969",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V2.I8_4",
+       "level": 2,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 137 Tahun 2019 tentang Pe",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Menetapkan prosedur pelindungan data pribadi dan informasi y",
+       "url_preview": "/bukti-dukung/jdih-6cd5c436-peraturan-bupati-aceh-tengah-nomor-137-tahun-2019-tentang-pe.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/6cd5c436-d64e-4068-bb08-2e0526d87cb5",
+       "_ext": "pdf"
+      },
+      {
+       "id": "B8.1",
+       "level": 1,
+       "nama": "Draf Nota Dinas/SE Bupati himbauan kerahasiaan NIK/data masyarakat",
+       "detail": "Draf surat edaran atau nota dinas Bupati tentang himbauan kerahasiaan NIK, KK, atau rekam medis masyarakat",
+       "opd": [
+        "Diskominfo",
+        "Bagian Hukum"
+       ],
+       "status": "belum"
+      },
+      {
+       "id": "B8.2",
+       "level": 2,
+       "nama": "SOP Pengamanan Data Pribadi di instansi pelayanan",
+       "detail": "SOP di instansi pelayanan tentang pengamanan data pribadi (contoh: SOP Dukcapil tentang larangan memfoto layar NIK)",
+       "opd": [
+        "Dukcapil",
+        "RSUD",
+        "OPD Pemilik Layanan"
+       ],
+       "status": "belum"
+      },
+      {
+       "id": "B8.3",
+       "level": 2,
+       "nama": "Laporan/Dokumentasi sosialisasi pengamanan password",
+       "detail": "Bukti foto/absensi sosialisasi pengamanan password ke perangkat kampung atau pegawai",
+       "opd": [
+        "Diskominfo",
+        "OPD Pemilik Layanan"
+       ],
+       "status": "belum"
+      },
+      {
+       "id": "P1.I8_1",
+       "level": 1,
+       "nama": "Hasil Indeks KAMI 5.0 — Bagian VII Pelindungan Data Pribadi (Skor 66, Kematangan II)",
+       "detail": "Indeks KAMI Diskominfo, 13 April 2026",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "belum",
+       "catatan": "Data resmi — Ditemukan di Documents, belum diunggah ke portal. Evaluasi PDP bagian dari Indeks KAMI.",
+       "url_preview": "/bukti-dukung/Indeks_KAMI_5.0_preview.png",
+       "url_sumber": "/bukti-dukung/Indeks_KAMI_5.0_Diskominfo_2026.xlsx",
+       "_ext": "png",
+       "_dokumen_kunci": [
+        17
+       ],
+       "_sumber_baru": true
+      }
+     ]
+    }
+   ],
+   "item_aktual": 24,
+   "item_gap": 14
+  },
+  {
+   "id": 4,
+   "nama": "Keamanan Pemerintah Digital Siber",
+   "singkat": "Keamanan Siber",
+   "bobot": 15,
+   "warna": "#859900",
+   "deskripsi": "Audit keamanan, keamanan siber (IKASANDI), kriptografi, dan penanganan insiden siber",
+   "target": 2.5,
+   "nilai": 1.47,
+   "total_item": 25,
+   "koordinator": "Inspektorat; Diskominfo – Bid. Statistik & Persandian",
+   "indikator": [
+    {
+     "id": "I9",
+     "nama": "Tingkat Kematangan Pelaksanaan Audit Keamanan Pemdi & Teknologi Pemdi",
+     "deskripsi": "Pelaksanaan audit keamanan secara berkala pada sistem dan infrastruktur Pemdi",
+     "nilai": 1.0,
+     "target": 2.5,
+     "bobot": 4,
+     "sumber": "Audit TIK 1.00 — Audit Infrastruktur, Aplikasi, Keamanan semua 1.00 (SPBE 2025)",
+     "kontribusi_portal": "Log audit, rekomendasi keamanan",
+     "penanggung_jawab": {
+      "lead": "Inspektorat (Koordinator Pokja Keamanan – Audit)",
+      "support": [
+       "Diskominfo (Fungsi Persandian)"
+      ],
+      "tim": "Tim Audit Keamanan TIK"
+     },
+     "bukti_dukung": [
+      {
+       "id": "V1.I9_1",
+       "level": 1,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Menetapkan standar keamanan digital, audit, dan perlindungan",
+       "url_preview": "/bukti-dukung/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V1.I9_2",
+       "level": 1,
+       "nama": "Laporan Hasil Pengawasan Kinerja Pemerintah Daerah di Aceh T",
+       "detail": "OpenData Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Bukti pengawasan kinerja internal pemerintah daerah Aceh Ten",
+       "url_preview": "/bukti-dukung/opendata-laporan-pengawasan-kinerja-laporan-hasil-pengawasan-kinerja-pemerintah-daerah.xlsx",
+       "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/laporan-hasil-pengawasan-kinerja-pemerintah-daerah-di-aceh-tengah-tahun-2025",
+       "_ext": "xlsx"
+      },
+      {
+       "id": "B9.1",
+       "level": 1,
+       "nama": "SK Tim Audit Internal TIK & Dokumen PKPT Inspektorat",
+       "detail": "SK Sekda untuk tim gabungan Inspektorat & IT Diskominfo. Dokumen PKPT yang memuat agenda 'Audit Keamanan TIK/Aplikasi'",
+       "opd": [
+        "Inspektorat",
+        "Diskominfo"
+       ],
+       "status": "belum"
+      },
+      {
+       "id": "B9.2",
+       "level": 2,
+       "nama": "Laporan Hasil Audit (LHA) Keamanan Internal",
+       "detail": "Dokumen LHA Inspektorat yang mengaudit Data Center Diskominfo atau kerentanan aplikasi DPMPTSP",
+       "opd": [
+        "Inspektorat"
+       ],
+       "status": "belum"
+      }
+     ]
+    },
+    {
+     "id": "I10",
+     "nama": "Tingkat Kematangan Keamanan Siber (IKASANDI)",
+     "deskripsi": "Penerapan standar keamanan siber nasional pada sistem Pemdi — indeks IKASANDI",
+     "nilai": 2.0,
+     "target": 2.5,
+     "bobot": 4,
+     "sumber": "Estimasi — perlu koordinasi BSSN untuk standardisasi",
+     "kontribusi_portal": "HTTPS, CSP, OWASP compliance, security headers",
+     "penanggung_jawab": {
+      "lead": "Diskominfo – Bid. Statistik & Persandian",
+      "support": [
+       "BSSN",
+       "Inspektorat"
+      ],
+      "tim": "Tim Keamanan Siber"
+     },
+     "bukti_dukung": [
+      {
+       "id": "V1.I10_1",
+       "level": 1,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 6 Tahun 2025 tentang Sist",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Memenuhi kriteria tata kelola dan manajemen keamanan informa",
+       "url_preview": "/bukti-dukung/jdih-ade79cb3-peraturan-bupati-aceh-tengah-nomor-6-tahun-2025-tentang-sist.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/ade79cb3-cb2b-4b8e-bf31-b35ddeded969",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V1.I10_2",
+       "level": 1,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Rujukan utama arsitektur keamanan siber dan perlindungan ase",
+       "url_preview": "/bukti-dukung/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V2.I10_3",
+       "level": 2,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 6 Tahun 2025 tentang Sist",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Bukti regulasi penerapan tata kelola keamanan informasi daer",
+       "url_preview": "/bukti-dukung/jdih-ade79cb3-peraturan-bupati-aceh-tengah-nomor-6-tahun-2025-tentang-sist.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/ade79cb3-cb2b-4b8e-bf31-b35ddeded969",
+       "_ext": "pdf"
+      },
+      {
+       "id": "B10.1",
+       "level": 1,
+       "nama": "Bukti screenshot pengisian kuesioner IKASANDI ke BSSN",
+       "detail": "Bukti admin Diskominfo telah mengisi kuesioner Indeks Keamanan Siber (Self-Assessment) BSSN",
+       "opd": [
+        "Diskominfo (Bidang Persandian)"
+       ],
+       "status": "belum"
+      },
+      {
+       "id": "B10.2",
+       "level": 2,
+       "nama": "Surat/Dokumen Identifikasi Infrastruktur Informasi Vital (IIV)",
+       "detail": "Surat resmi ke BSSN berisi daftar server krusial (SIPD, SIAK, LPSE) untuk didaftarkan sebagai objek vital",
+       "opd": [
+        "Diskominfo (Bidang Persandian)"
+       ],
+       "status": "belum"
+      },
+      {
+       "id": "P1.I10_1",
+       "level": 1,
+       "nama": "Instrumen & Hasil Indeks KAMI 5.0 — Area Keamanan Siber (Skor 563, \"Cukup Baik\")",
+       "detail": "Indeks KAMI Diskominfo, diisi 13 April 2026 oleh Mansyur Ramadhan Arita, A.Md; Kategori SE: Rendah (12); Tata Kelola 49, Risiko 23, Kerangka 75, Aset 185, Teknologi 165, PDP 66",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "belum",
+       "catatan": "Data resmi — Ditemukan di Documents, belum diunggah ke portal. Padanan IKASANDI untuk keamanan siber.",
+       "url_preview": "/bukti-dukung/Indeks_KAMI_5.0_preview.png",
+       "url_sumber": "/bukti-dukung/Indeks_KAMI_5.0_Diskominfo_2026.xlsx",
+       "_ext": "png",
+       "_dokumen_kunci": [
+        20
+       ],
+       "_sumber_baru": true
+      }
+     ]
+    },
+    {
+     "id": "I11",
+     "nama": "Tingkat Kematangan Penerapan Kriptografi untuk Keamanan Data (IKASANDI)",
+     "deskripsi": "Penggunaan enkripsi dan tanda tangan digital dalam layanan Pemdi",
+     "nilai": 2.0,
+     "target": 2.5,
+     "bobot": 3,
+     "sumber": "Estimasi — implementasi TTE (Tanda Tangan Elektronik) belum merata",
+     "kontribusi_portal": "HTTPS, enkripsi data pengguna",
+     "penanggung_jawab": {
+      "lead": "Diskominfo – Bid. Statistik & Persandian",
+      "support": [
+       "BSSN"
+      ],
+      "tim": "Tim Kriptografi & TTE"
+     },
+     "bukti_dukung": [
+      {
+       "id": "V1.I11_1",
+       "level": 1,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Dasar hukum penyiapan dan penerapan teknologi kriptografi un",
+       "url_preview": "/bukti-dukung/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V2.I11_2",
+       "level": 2,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Acuan penerapan standar keamanan kriptografi pada layanan di",
+       "url_preview": "/bukti-dukung/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+       "_ext": "pdf"
+      },
+      {
+       "id": "B11.1",
+       "level": 1,
+       "nama": "Dokumen usulan pengadaan sertifikat elektronik (TTE) ke BSrE BSSN",
+       "detail": "Telaahan staf terkait inisiasi penggunaan TTE untuk pejabat Setdakab",
+       "opd": [
+        "Diskominfo",
+        "Setdakab"
+       ],
+       "status": "belum",
+       "catatan": "50 ASN dilatih TTE + berita sosialisasi TTE ditemukan. Usulan BSrE perlu dokumen resmi"
+      },
+      {
+       "id": "B11.2",
+       "level": 2,
+       "nama": "Dokumen PDF ber-barcode TTE & Screenshot gembok SSL (HTTPS)",
+       "detail": "Screenshot dokumen ber-TTE (barcode BSrE) dan address bar web acehtengahkab.go.id menunjukkan HTTPS (gembok tertutup)",
+       "opd": [
+        "Diskominfo",
+        "OPD Terkait"
+       ],
+       "status": "belum",
+       "catatan": "Berita Dukcapil gunakan TTE ditemukan + e-Kinerja punya TTE BSrE. Screenshot HTTPS perlu diverifikasi"
+      },
+      {
+       "id": "P1.I11_1",
+       "level": 1,
+       "nama": "Perbup No. 1/2025 — Pedoman Penataan Pola Hubungan Komunikasi Sandi",
+       "detail": "Berdasarkan Perka BSSN No. 10/2019",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "belum",
+       "catatan": "Dokumen resmi — Ditemukan di Documents, belum diunggah ke portal. Bukti penerapan kriptografi/persandian.",
+       "url_preview": "/bukti-dukung/Perbup Penataan Pola Hub Kom Sandi - Sandi Diskominfo.pdf",
+       "url_sumber": "/bukti-dukung/Perbup Penataan Pola Hub Kom Sandi - Sandi Diskominfo.pdf",
+       "_ext": "pdf",
+       "_dokumen_kunci": [
+        22
+       ],
+       "_sumber_baru": true
+      },
+      {
+       "id": "P1.I11_2",
+       "level": 1,
+       "nama": "Perbup No. 2/2025 — Penyelenggaraan Persandian untuk Pengamanan Informasi",
+       "detail": "Berdasarkan Perka BSSN No. 10/2019",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "belum",
+       "catatan": "Dokumen resmi — Ditemukan di Documents, belum diunggah ke portal. Bukti penerapan kriptografi.",
+       "url_preview": "/bukti-dukung/Perbup Penyelenggaraan Persandian - Sandi Diskominfo.pdf",
+       "url_sumber": "/bukti-dukung/Perbup Penyelenggaraan Persandian - Sandi Diskominfo.pdf",
+       "_ext": "pdf",
+       "_dokumen_kunci": [
+        22
+       ],
+       "_sumber_baru": true
+      }
+     ]
+    },
+    {
+     "id": "I12",
+     "nama": "Tingkat Kematangan Kapabilitas Penanganan Insiden Siber (IKASANDI)",
+     "deskripsi": "Kesiapan prosedur penanganan insiden keamanan siber — CSIRT, SOP, reporting",
+     "nilai": 1.0,
+     "target": 2.5,
+     "bobot": 4,
+     "sumber": "Estimasi — SOP insiden siber belum terdokumentasi; 7 item bukti dukung",
+     "kontribusi_portal": "Dokumentasi prosedur, contact person",
+     "penanggung_jawab": {
+      "lead": "Diskominfo – Bid. Statistik & Persandian",
+      "support": [
+       "BSSN",
+       "Inspektorat"
+      ],
+      "tim": "Tim CSIRT/TTIS Kabupaten"
+     },
+     "bukti_dukung": [
+      {
+       "id": "V1.I12_1",
+       "level": 1,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Memuat penetapan kerangka penyiapan dan kapabilitas penangan",
+       "url_preview": "/bukti-dukung/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+       "_ext": "pdf"
+      },
+      {
+       "id": "B12.1",
+       "level": 1,
+       "nama": "SK Pembentukan/Inisiasi Tim Aceh Tengah-CSIRT",
+       "detail": "SK Bupati tentang pembentukan CSIRT yang masih dalam tahap persiapan",
+       "opd": [
+        "Diskominfo",
+        "Bagian Hukum"
+       ],
+       "status": "belum",
+       "catatan": "Situs csirt.acehtengahkab.go.id aktif, ada fungsi 'Lapor Insiden'. SK pembentukan perlu diminta resmi"
+      },
+      {
+       "id": "B12.2",
+       "level": 2,
+       "nama": "Surat Tanda Registrasi (STR) CSIRT dari BSSN",
+       "detail": "Sertifikat STR Aceh Tengah-CSIRT dari BSSN",
+       "opd": [
+        "Diskominfo (Bidang Persandian)"
+       ],
+       "status": "belum"
+      },
+      {
+       "id": "B12.3",
+       "level": 2,
+       "nama": "Dokumen Log/Berita Acara Penanganan Insiden Siber",
+       "detail": "Dokumen Laporan Penanganan Insiden saat web diretas (deface) dan pemulihannya",
+       "opd": [
+        "Diskominfo (Tim CSIRT)"
+       ],
+       "status": "belum",
+       "catatan": "Situs CSIRT menyediakan kanal pelaporan insiden. Log/BA insiden perlu dokumen resmi"
+      }
+     ]
+    }
+   ],
+   "item_aktual": 17,
+   "item_gap": 8
+  },
+  {
+   "id": 5,
+   "nama": "Teknologi Digital",
+   "singkat": "Teknologi",
+   "bobot": 10,
+   "warna": "#6f42c1",
+   "deskripsi": "Kesiapan aplikasi dan infrastruktur teknologi digital pendukung Pemdi",
+   "target": 2.5,
+   "nilai": 2.0,
+   "total_item": 18,
+   "koordinator": "Kabid TIK; Kabid Layanan E-Government – Diskominfo",
+   "indikator": [
+    {
+     "id": "I13",
+     "nama": "Tingkat Kematangan Aplikasi Pemerintah Digital",
+     "deskripsi": "Ketersediaan, kualitas, dan keterpaduan aplikasi pendukung Pemdi",
+     "nilai": 2.0,
+     "target": 2.5,
+     "bobot": 5,
+     "sumber": "Pembangunan Aplikasi 1.00 (SPBE 2025) + Portal existing sebagai aplikasi utama",
+     "kontribusi_portal": "✅ Portal PemdiAcehTengah adalah aplikasi Pemdi utama yang sudah live",
+     "penanggung_jawab": {
+      "lead": "Diskominfo – Bid. Layanan E-Government (Koordinator Pokja Teknologi Digital)",
+      "support": [
+       "Semua OPD"
+      ],
+      "tim": "Tim Aplikasi & Sistem Informasi"
+     },
+     "bukti_dukung": [
+      {
+       "id": "V1.I13_1",
+       "level": 1,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Regulasi yang menetapkan arsitektur dan pedoman siklus penge",
+       "url_preview": "/bukti-dukung/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V1.I13_2",
+       "level": 1,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 9 Tahun 2025 tentang SOTK",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Dasar kelembagaan pengampu kebijakan pengembangan aplikasi d",
+       "url_preview": "/bukti-dukung/jdih-af9a42bf-peraturan-bupati-aceh-tengah-nomor-9-tahun-2025-tentang-sotk.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/af9a42bf-cea9-46c8-a739-9beb5d21e990",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V2.I13_3",
+       "level": 2,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Acuan arsitektur aplikasi (Catatan: Dokumentasi teknis repos",
+       "url_preview": "/bukti-dukung/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+       "_ext": "pdf"
+      },
+      {
+       "id": "B13.1",
+       "level": 1,
+       "nama": "Matriks Excel Inventarisasi SELURUH Aplikasi Pemkab",
+       "detail": "Matriks yang mendata semua aset software: Web utama, Web OPD, JDIH, LPSE, SIPD, SIMRS, dll",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "belum",
+       "catatan": "SICANTIK (perizinan), e-Kinerja, Open Data, Satu Data teridentifikasi. Matriks lengkap perlu dari Diskominfo"
+      },
+      {
+       "id": "B13.2",
+       "level": 1,
+       "nama": "Dokumen Kajian Kebutuhan pembuatan aplikasi OPD",
+       "detail": "Kajian kebutuhan saat OPD mengusulkan aplikasi baru",
+       "opd": [
+        "OPD Pengusul",
+        "Diskominfo"
+       ],
+       "status": "belum"
+      },
+      {
+       "id": "B13.3",
+       "level": 2,
+       "nama": "Screenshot pendaftaran daftar aplikasi di SIAP Digital",
+       "detail": "Screenshot Diskominfo mendaftarkan aplikasi di portal SIAP Digital",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "belum",
+       "catatan": "SICANTIK dan portal lain sudah live. SIAP Digital perlu screenshot"
+      },
+      {
+       "id": "B13.4",
+       "level": 2,
+       "nama": "Dokumen Blueprint / User Manual aplikasi (bukti SDLC)",
+       "detail": "Dokumen Blueprint/User Manual aplikasi lokal yang membuktikan perancangan siklus (SDLC)",
+       "opd": [
+        "Diskominfo",
+        "OPD Pemilik Aplikasi",
+        "Vendor"
+       ],
+       "status": "belum"
+      },
+      {
+       "id": "P1.I13_1",
+       "level": 1,
+       "nama": "KAK Pengembangan Aplikasi Bahan Pokok Penting (Bapokting) Kab. Aceh Tengah 2026",
+       "detail": "Kerangka Acuan Kerja pengembangan aplikasi monitoring harga — Diskominfo",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "proses",
+       "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode TD_13_01). Bukti SDLC aplikasi pemerintah digital.",
+       "url_preview": "/bukti-dukung/TD_13_01_KAK-Bapokting_2026.pdf",
+       "url_sumber": "/bukti-dukung/TD_13_01_KAK-Bapokting_2026.pdf",
+       "_ext": "pdf",
+       "_dokumen_kunci": [
+        25
+       ],
+       "_sumber_baru": true
+      },
+      {
+       "id": "P1.I13_2",
+       "level": 1,
+       "nama": "Laporan Akhir Pengembangan Aplikasi Bahan Pokok Penting (Bapokting) 2026",
+       "detail": "Laporan penyelesaian pengembangan aplikasi — Diskominfo",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "proses",
+       "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode TD_13_04). Bukti SDLC & dokumentasi aplikasi.",
+       "url_preview": "/bukti-dukung/TD_13_04_LaporanBapokting_2026.pdf",
+       "url_sumber": "/bukti-dukung/TD_13_04_LaporanBapokting_2026.pdf",
+       "_ext": "pdf",
+       "_dokumen_kunci": [
+        25
+       ],
+       "_sumber_baru": true
+      },
+      {
+       "id": "P1.I13_3",
+       "level": 1,
+       "nama": "DPA/RKA Diskominfo 2026 — Bukti Anggaran Pengembangan Aplikasi (portal eval kode TD_13_02)",
+       "detail": "Dokumen anggaran (DPA/RKA) pendukung pengembangan aplikasi pemerintah digital",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "proses",
+       "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode TD_13_02). Bukti anggaran aplikasi.",
+       "url_preview": "/bukti-dukung/TD_13_02_DPA_2026.pdf",
+       "url_sumber": "/bukti-dukung/TD_13_02_DPA_2026.pdf",
+       "_ext": "pdf",
+       "_dokumen_kunci": [
+        25
+       ],
+       "_sumber_baru": true
+      },
+      {
+       "id": "P1.I13_4",
+       "level": 1,
+       "nama": "DPA/RKA Diskominfo 2026 — Bukti Anggaran Pengembangan Aplikasi (portal eval kode TD_13_05)",
+       "detail": "Dokumen anggaran (DPA/RKA) pendukung pengembangan aplikasi pemerintah digital",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "proses",
+       "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode TD_13_05). Bukti anggaran aplikasi.",
+       "url_preview": "/bukti-dukung/TD_13_05_DPA_2026.pdf",
+       "url_sumber": "/bukti-dukung/TD_13_05_DPA_2026.pdf",
+       "_ext": "pdf",
+       "_dokumen_kunci": [
+        25
+       ],
+       "_sumber_baru": true
+      }
+     ]
+    },
+    {
+     "id": "I14",
+     "nama": "Tingkat Kematangan Infrastruktur Pemerintah Digital",
+     "deskripsi": "Infrastruktur TIK — pusat data, jaringan, cloud — yang mendukung Pemdi",
+     "nilai": 2.0,
+     "target": 2.5,
+     "bobot": 5,
+     "sumber": "Layanan Pusat Data 2.00, Jaringan Intra 3.00 (SPBE 2025) — perlu peningkatan",
+     "kontribusi_portal": "Dokumentasi infrastruktur, SLA layanan",
+     "penanggung_jawab": {
+      "lead": "Diskominfo – Bid. Layanan E-Government",
+      "support": [
+       "Kemendigi",
+       "BAPPEDA"
+      ],
+      "tim": "Tim Infrastruktur TIK"
+     },
+     "bukti_dukung": [
+      {
+       "id": "V1.I14_1",
+       "level": 1,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Dasar hukum standar penyediaan dan pemanfaatan infrastruktur",
+       "url_preview": "/bukti-dukung/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V2.I14_2",
+       "level": 2,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Acuan kebijakan infrastruktur SPBE (Catatan: KIB server, NMS",
+       "url_preview": "/bukti-dukung/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+       "_ext": "pdf"
+      },
+      {
+       "id": "B14.1",
+       "level": 1,
+       "nama": "Matriks KIB Inventaris Perangkat Keras Jaringan/Server",
+       "detail": "Merinci jumlah server di Data Center, router, dan topologi jaringan FO",
+       "opd": [
+        "Diskominfo",
+        "BPKD"
+       ],
+       "status": "belum",
+       "catatan": "Command Center, fiber optic, jaringan intra-pemerintah (APJII) ditemukan. KIB B/E perlu dari BPKD"
+      },
+      {
+       "id": "B14.2",
+       "level": 2,
+       "nama": "Tangkapan layar Dasbor Network Monitoring System",
+       "detail": "Screenshot aplikasi pemantau jaringan (MikroTik/PRTG) yang menunjukkan status UP/DOWN server atau grafik koneksi",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "belum",
+       "catatan": "Workshop infrastruktur SPBE dilaksanakan. Dashboard NMS perlu screenshot MikroTik/PRTG"
+      }
+     ]
+    }
+   ],
+   "item_aktual": 11,
+   "item_gap": 7
+  },
+  {
+   "id": 6,
+   "nama": "Keterpaduan",
+   "singkat": "Keterpaduan",
+   "bobot": 15,
+   "warna": "#e65100",
+   "deskripsi": "Keterpaduan proses bisnis, integrasi aplikasi, portal layanan, dan interoperabilitas data lintas sektor",
+   "target": 2.5,
+   "nilai": 2.0,
+   "total_item": 25,
+   "koordinator": "Bag. Organisasi; BAPPEDA; Diskominfo (E-Gov, TIK, Statistik & Persandian)",
+   "indikator": [
+    {
+     "id": "I15",
+     "nama": "Tingkat Kematangan Keterpaduan Proses Bisnis Lintas Sektor",
+     "deskripsi": "Keterpaduan proses bisnis lintas unit dan instansi dalam pelayanan Pemdi",
+     "nilai": 2.0,
+     "target": 2.5,
+     "bobot": 4,
+     "sumber": "Inovasi Proses Bisnis 1.00 (baseline) + PPB Fase 2 yang sudah dikerjakan",
+     "kontribusi_portal": "✅ Halaman /probis — PPB 3 level terintegrasi",
+     "penanggung_jawab": {
+      "lead": "Bag. Organisasi (Koordinator Pokja Keterpaduan)",
+      "support": [
+       "Diskominfo",
+       "Bappeda",
+       "Dinas Perpustakaan & Arsip",
+       "Semua OPD"
+      ],
+      "tim": "Tim Proses Bisnis & Tata Laksana"
+     },
+     "bukti_dukung": [
+      {
+       "id": "V1.I15_1",
+       "level": 1,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Regulasi primer yang mengesahkan referensi keterpaduan prose",
+       "url_preview": "/bukti-dukung/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V2.I15_2",
+       "level": 2,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Menjadi referensi keterpaduan proses bisnis (Catatan: Flowch",
+       "url_preview": "/bukti-dukung/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+       "_ext": "pdf"
+      },
+      {
+       "id": "B15.1",
+       "level": 1,
+       "nama": "Bagan Flowchart Proses Bisnis As-Is terunggah di SIAP",
+       "detail": "Bagan eksisting (misal 'Alur Izin Usaha') yang telah di-upload ke menu Proses Bisnis SIAP Digital",
+       "opd": [
+        "Bagian Organisasi",
+        "Diskominfo",
+        "OPD Terkait"
+       ],
+       "status": "belum"
+      },
+      {
+       "id": "B15.2",
+       "level": 2,
+       "nama": "Kajian/Rancangan Proses Bisnis Terpadu To-Be terunggah di SIAP",
+       "detail": "Bagan rancangan integrasi (misal izin usaha terhubung dengan Dukcapil) yang diunggah di SIAP Digital",
+       "opd": [
+        "Bagian Organisasi",
+        "Diskominfo"
+       ],
+       "status": "belum"
+      }
+     ]
+    },
+    {
+     "id": "I16",
+     "nama": "Tingkat Kematangan Integrasi Aplikasi",
+     "deskripsi": "Tingkat integrasi antar aplikasi dalam ekosistem Pemdi — API, interoperabilitas",
+     "nilai": 2.0,
+     "target": 2.5,
+     "bobot": 4,
+     "sumber": "Penghubung Layanan 2.00 (SPBE 2025) — implementasi parsial",
+     "kontribusi_portal": "API endpoint Pemdi untuk integrasi data",
+     "penanggung_jawab": {
+      "lead": "Bag. Organisasi",
+      "support": [
+       "Diskominfo",
+       "Semua OPD (Pemilik Aplikasi)"
+      ],
+      "tim": "Tim Integrasi Sistem & API"
+     },
+     "bukti_dukung": [
+      {
+       "id": "V1.I16_1",
+       "level": 1,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Menetapkan kebijakan integrasi aplikasi antar instansi untuk",
+       "url_preview": "/bukti-dukung/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V2.I16_2",
+       "level": 2,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Acuan integrasi aplikasi (Catatan: Dokumentasi API teknis, S",
+       "url_preview": "/bukti-dukung/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+       "_ext": "pdf"
+      },
+      {
+       "id": "B16.1",
+       "level": 1,
+       "nama": "Notulensi Rapat Koordinasi API & Dokumen UAT",
+       "detail": "Berita Acara Rapat Diskominfo, Dukcapil, RSUD terkait sinkronisasi NIK. Laporan Uji Coba dari programmer",
+       "opd": [
+        "Diskominfo",
+        "OPD Terkait"
+       ],
+       "status": "belum",
+       "catatan": "PKS E-Keurani menunjukkan inisiatif integrasi. BA rapat/API perlu dokumen teknis"
+      },
+      {
+       "id": "B16.2",
+       "level": 2,
+       "nama": "Matriks Integrasi Aplikasi & Screenshot kode API/Sinkronisasi",
+       "detail": "Tangkapan layar kode API (Web Service) yang membuktikan dua sistem sinkron",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "belum"
+      }
+     ]
+    },
+    {
+     "id": "I17",
+     "nama": "Tingkat Kematangan Portal Layanan Digital Pemerintah",
+     "deskripsi": "Ketersediaan portal terpadu yang menjadi titik akses utama layanan digital pemerintah daerah",
+     "nilai": 2.0,
+     "target": 3.5,
+     "bobot": 4,
+     "sumber": "✅ Layanan SPBE 3.75 (rata-rata layanan administrasi 3.80, publik 3.67). Portal sudah live dan berfungsi",
+     "kontribusi_portal": "✅ INI PORTAL KITA — kontribusi langsung dan terukur",
+     "penanggung_jawab": {
+      "lead": "Bag. Organisasi",
+      "support": [
+       "Diskominfo",
+       "Semua OPD (Penyedia Layanan)"
+      ],
+      "tim": "Tim Portal & Layanan Digital"
+     },
+     "bukti_dukung": [
+      {
+       "id": "V1.I17_1",
+       "level": 1,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 30 Tahun 2022 tentang Pen",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Dasar hukum integrasi layanan publik dalam satu pintu (Mal P",
+       "url_preview": "/bukti-dukung/jdih-407b38e8-peraturan-bupati-aceh-tengah-nomor-30-tahun-2022-tentang-pen.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/407b38e8-5363-4b1a-bd3f-66c637164394",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V1.I17_2",
+       "level": 1,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Menetapkan standar integrasi layanan publik dan administrasi",
+       "url_preview": "/bukti-dukung/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V2.I17_3",
+       "level": 2,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 30 Tahun 2022 tentang Pen",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Membuktikan ketersediaan regulasi dan penyelenggaraan layana",
+       "url_preview": "/bukti-dukung/jdih-407b38e8-peraturan-bupati-aceh-tengah-nomor-30-tahun-2022-tentang-pen.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/407b38e8-5363-4b1a-bd3f-66c637164394",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V2.I17_4",
+       "level": 2,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 73 Tahun 2020 tentang Pel",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Bukti penerapan layanan digital sektor administrasi kependud",
+       "url_preview": "/bukti-dukung/jdih-2a0b0c2f-peraturan-bupati-aceh-tengah-nomor-73-tahun-2020-tentang-pel.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/2a0b0c2f-d693-4a15-9e7f-b42d7ab081eb",
+       "_ext": "pdf"
+      },
+      {
+       "id": "B17.1",
+       "level": 1,
+       "nama": "Screenshot penuh antarmuka portal utama acehtengahkab.go.id",
+       "detail": "Screenshot portal web resmi acehtengahkab.go.id yang menunjukkan portal sudah aktif dan berfungsi",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "belum",
+       "catatan": "Portal utama acehtengahkab.go.id + SICANTIK + Open Data aktif. Perlu screenshot bertanggal"
+      },
+      {
+       "id": "B17.2",
+       "level": 2,
+       "nama": "Peraturan Bupati tentang Portal Layanan Publik Daerah",
+       "detail": "Perbup yang mewajibkan seluruh layanan aplikasi harus bermuara pada portal tunggal acehtengahkab.go.id",
+       "opd": [
+        "Diskominfo",
+        "Bagian Hukum"
+       ],
+       "status": "belum",
+       "catatan": "Perbup portal tunggal belum ditemukan"
+      }
+     ]
+    },
+    {
+     "id": "I18",
+     "nama": "Tingkat Kematangan Interoperabilitas Data",
+     "deskripsi": "Kemampuan bertukar data antar sistem secara otomatis dan terstandarisasi",
+     "nilai": 2.0,
+     "target": 2.5,
+     "bobot": 3,
+     "sumber": "Estimasi — perlu implementasi GovTech/API Gateway",
+     "kontribusi_portal": "API endpoint standar SDI, format data terbuka",
+     "penanggung_jawab": {
+      "lead": "Bag. Organisasi",
+      "support": [
+       "Diskominfo",
+       "Bappeda",
+       "Kemendigi"
+      ],
+      "tim": "Tim Interoperabilitas & Open Data"
+     },
+     "bukti_dukung": [
+      {
+       "id": "V1.I18_1",
+       "level": 1,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 60 Tahun 2022 tentang Sat",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Dasar hukum utama interoperabilitas data, standar data, meta",
+       "url_preview": "/bukti-dukung/jdih-d9671249-peraturan-bupati-aceh-tengah-nomor-60-tahun-2022-tentang-sat.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/d9671249-08cc-4e6c-87f0-aa04f8ada75c",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V1.I18_2",
+       "level": 1,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Ars",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Regulasi yang menetapkan arsitektur data pemerintah digital ",
+       "url_preview": "/bukti-dukung/jdih-28818ade-peraturan-bupati-aceh-tengah-nomor-48-tahun-2025-tentang-ars.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V2.I18_3",
+       "level": 2,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 60 Tahun 2022 tentang Sat",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Membuktikan pelaksanaan kebijakan berbagi pakai data daerah ",
+       "url_preview": "/bukti-dukung/jdih-d9671249-peraturan-bupati-aceh-tengah-nomor-60-tahun-2022-tentang-sat.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/d9671249-08cc-4e6c-87f0-aa04f8ada75c",
+       "_ext": "pdf"
+      },
+      {
+       "id": "B18.1",
+       "level": 1,
+       "nama": "Screenshot Arsitektur Data dari portal SIAP Digital & Daftar Struktur DB",
+       "detail": "Screenshot portal SIAP Digital domain Arsitektur Data dan daftar database tiap OPD",
+       "opd": [
+        "Diskominfo",
+        "Bappeda"
+       ],
+       "status": "belum",
+       "catatan": "Portal Open Data 852 datasets, 61 organisasi aktif. Arsitektur data SIAP perlu screenshot"
+      },
+      {
+       "id": "B18.2",
+       "level": 2,
+       "nama": "Berita Acara/Screenshot pemanfaatan API data lintas OPD",
+       "detail": "Bukti Dinas Sosial menarik data spasial Bappeda dan data Dukcapil via API tanpa bertukar flashdisk",
+       "opd": [
+        "Diskominfo",
+        "OPD Produsen Data"
+       ],
+       "status": "belum"
+      }
+     ]
+    }
+   ],
+   "item_aktual": 19,
+   "item_gap": 7
+  },
+  {
+   "id": 7,
+   "nama": "Kepuasan Pengguna Layanan Digital Pemerintah",
+   "singkat": "Kepuasan",
+   "bobot": 25,
+   "warna": "#00838f",
+   "deskripsi": "Fasilitas dukungan pengguna dan pengelolaan kepuasan pengguna layanan digital pemerintah",
+   "target": 3.0,
+   "nilai": 2.0,
+   "total_item": 19,
+   "koordinator": "DPMPTSP; Diskominfo – Bid. Layanan E-Government",
+   "indikator": [
+    {
+     "id": "I19",
+     "nama": "Tingkat Kematangan Fasilitas Dukungan Pengguna Layanan Digital Pemerintah",
+     "deskripsi": "Ketersediaan helpdesk, FAQ, pelaporan masalah, panduan pengguna, kanal dukungan digital",
+     "nilai": 2.0,
+     "target": 3.0,
+     "bobot": 10,
+     "sumber": "Layanan Pengaduan 4.00 + Layanan Publik 3.67 (SPBE 2025) — Sp4 Lapor, FAQ, widget sudah ada",
+     "kontribusi_portal": "✅ Widget Lapor, halaman FAQ, form SKM, informasi layanan",
+     "penanggung_jawab": {
+      "lead": "DPMPTSP (Koordinator Pokja Kepuasan – Fasilitas Dukungan Pengguna)",
+      "support": [
+       "Diskominfo",
+       "Semua OPD (Penyedia Layanan)"
+      ],
+      "tim": "Tim Dukungan Pengguna & Helpdesk"
+     },
+     "bukti_dukung": [
+      {
+       "id": "V1.I19_1",
+       "level": 1,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 21 Tahun 2021 tentang Ped",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Dasar hukum pengelolaan pengaduan publik, service desk, dan ",
+       "url_preview": "/bukti-dukung/jdih-d0d9a4c9-peraturan-bupati-aceh-tengah-nomor-21-tahun-2021-tentang-ped.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/d0d9a4c9-089f-4e69-ad24-24b101057b62",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V1.I19_2",
+       "level": 1,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 126 Tahun 2019 tentang Pe",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Dasar hukum standar operasional prosedur (SOP) dan Service L",
+       "url_preview": "/bukti-dukung/jdih-e8187833-peraturan-bupati-aceh-tengah-nomor-126-tahun-2019-tentang-pe.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/e8187833-5111-4436-be42-68dfd5d80b76",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V2.I19_3",
+       "level": 2,
+       "nama": "Peraturan Bupati Aceh Tengah Nomor 21 Tahun 2021 tentang Ped",
+       "detail": "JDIH Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Memenuhi kondisi pelaksanaan sistem penanganan pengaduan onl",
+       "url_preview": "/bukti-dukung/jdih-d0d9a4c9-peraturan-bupati-aceh-tengah-nomor-21-tahun-2021-tentang-ped.pdf",
+       "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/d0d9a4c9-089f-4e69-ad24-24b101057b62",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V2.I19_4",
+       "level": 2,
+       "nama": "Hasil Survei Kepuasan Masyarakat di Kabupaten Aceh Tengah bu",
+       "detail": "OpenData Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Bukti aktif tahun 2026 pengelolaan umpan balik pengguna dan ",
+       "url_preview": "/bukti-dukung/opendata-hasil-survei-kepuasan-hasil-survei-kepuasan-masyarakat-di-kabupaten-aceh.xlsx",
+       "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/hasil-survei-kepuasan-masyarakat-di-kabupaten-aceh-tengah-bulan-januari-mei-tahun-2026",
+       "_ext": "xlsx"
+      },
+      {
+       "id": "B19.1",
+       "level": 1,
+       "nama": "Draf Dokumen SLA IT penanganan jaringan/sistem",
+       "detail": "Draf dokumen standar waktu penanganan aduan jaringan dan sistem",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "belum"
+      },
+      {
+       "id": "B19.2",
+       "level": 1,
+       "nama": "Screenshot Grup WA IT/Google Form aduan dasar",
+       "detail": "Screenshot WA Grup IT atau Google Form pengaduan sederhana",
+       "opd": [
+        "Diskominfo",
+        "Humas Setdakab"
+       ],
+       "status": "belum",
+       "catatan": "SP4N-LAPOR: pendampingan ke seluruh kecamatan, pelatihan OPD/puskesmas/BUMD 2024, penghargaan KemenPANRB 2023"
+      },
+      {
+       "id": "B19.3",
+       "level": 2,
+       "nama": "SOP Resmi Pengaduan Layanan IT",
+       "detail": "SOP resmi pengaduan layanan IT yang sudah ditetapkan",
+       "opd": [
+        "Diskominfo",
+        "Bagian Organisasi"
+       ],
+       "status": "belum",
+       "catatan": "Pedoman Pengaduan RSUD (PDF) + sistem SP4N-LAPOR aktif. SOP resmi perlu dari Diskominfo/Bag. Organisasi"
+      },
+      {
+       "id": "B19.4",
+       "level": 2,
+       "nama": "Screenshot Dasbor Aplikasi Ticketing/Helpdesk",
+       "detail": "Screenshot antarmuka aplikasi Helpdesk memuat nomor tiket, waktu keluhan, dan status penanganan",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "belum",
+       "catatan": "SP4N-LAPOR punya dashboard tiket. Ticketing internal Pemkab perlu screenshot"
+      }
+     ]
+    },
+    {
+     "id": "I20",
+     "nama": "Tingkat Kematangan Pengelolaan Kepuasan Pengguna Layanan Digital Pemerintah",
+     "deskripsi": "Pengukuran dan pengelolaan kepuasan pengguna secara sistematis — survei, analisis, tindak lanjut",
+     "nilai": 2.0,
+     "target": 3.0,
+     "bobot": 15,
+     "sumber": "✅ Layanan Publik 3.67 + 4.00 (SPBE 2025). SKM sudah berjalan. SKM digital via portal bisa jadi nilai tambah",
+     "kontribusi_portal": "✅ Survei SKM online, dashboard kepuasan, laporan real-time",
+     "penanggung_jawab": {
+      "lead": "DPMPTSP (Koordinator Pokja Kepuasan – Pengelolaan Kepuasan Pengguna)",
+      "support": [
+       "Diskominfo",
+       "Bag. Organisasi",
+       "seluruh PD penyelenggara layanan"
+      ],
+      "tim": "Tim Kepuasan Pengguna & SKM"
+     },
+     "bukti_dukung": [
+      {
+       "id": "V1.I20_1",
+       "level": 1,
+       "nama": "Hasil Survei Kepuasan Masyarakat di Kabupaten Aceh Tengah bu",
+       "detail": "OpenData Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Bukti primer pelaksanaan survei kepuasan masyarakat (SKM) te",
+       "url_preview": "/bukti-dukung/opendata-hasil-survei-kepuasan-hasil-survei-kepuasan-masyarakat-di-kabupaten-aceh.xlsx",
+       "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/hasil-survei-kepuasan-masyarakat-di-kabupaten-aceh-tengah-bulan-januari-mei-tahun-2026",
+       "_ext": "xlsx"
+      },
+      {
+       "id": "V1.I20_2",
+       "level": 1,
+       "nama": "Laporan Survei Kepuasan Masyarakat (SKM) Kecamatan Kebayakan",
+       "detail": "GitHub (Repo Publik)",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Laporan lengkap survei kepuasan masyarakat pada unit pelayan",
+       "url_preview": "/bukti-dukung/skm_kebayakan_2025.pdf",
+       "url_sumber": "https://raw.githubusercontent.com/Niumination/PemdiAcehTengah/main/public/bukti-dukung/skm_kebayakan_2025.pdf",
+       "_ext": "pdf"
+      },
+      {
+       "id": "V2.I20_3",
+       "level": 2,
+       "nama": "Hasil Survei Kepuasan Masyarakat di Kabupaten Aceh Tengah bu",
+       "detail": "OpenData Aceh Tengah",
+       "opd": [],
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Bukti pengolahan dan publikasi hasil survei kepuasan masyara",
+       "url_preview": "/bukti-dukung/opendata-hasil-survei-kepuasan-hasil-survei-kepuasan-masyarakat-di-kabupaten-aceh.xlsx",
+       "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/hasil-survei-kepuasan-masyarakat-di-kabupaten-aceh-tengah-bulan-januari-mei-tahun-2026",
+       "_ext": "xlsx"
+      },
+      {
+       "id": "B20.1",
+       "level": 1,
+       "nama": "Laporan Survei Kepuasan Masyarakat (e-SKM) Online",
+       "detail": "Laporan SKM elektronik dari DPMPTSP/RSUD/Dukcapil",
+       "opd": [
+        "DPMPTSP",
+        "RSUD",
+        "Dukcapil",
+        "OPD Pelayanan"
+       ],
+       "status": "belum",
+       "catatan": "SKM Dukcapil 2024: nilai 96,17, 100 responden, 9 unsur. SKM Kebayakan 2025 (periode Jan-Jun). Sosialisasi SKM 2024 dilaksanakan"
+      },
+      {
+       "id": "B20.2",
+       "level": 1,
+       "nama": "Notulensi Rapat Evaluasi layanan (minimal 1 kelompok rentan)",
+       "detail": "Notulensi rapat evaluasi hasil SKM yang mengundang minimal 1 kelompok rentan (Disabilitas/Lansia/Perempuan di Takengon)",
+       "opd": [
+        "OPD Pelayanan Terkait"
+       ],
+       "status": "belum",
+       "catatan": "Sosialisasi SKM 2024 dilakukan. Notulensi dengan kelompok rentan perlu verifikasi"
+      },
+      {
+       "id": "B20.3",
+       "level": 2,
+       "nama": "Screenshot fitur Widget Rating/Kepuasan pada portal aplikasi",
+       "detail": "Screenshot tombol rating 1-5 di aplikasi atau portal",
+       "opd": [
+        "Diskominfo",
+        "OPD Pelayanan"
+       ],
+       "status": "belum"
+      },
+      {
+       "id": "B20.4",
+       "level": 2,
+       "nama": "Notulensi Rapat Evaluasi Triwulanan (minimal 3 kelompok rentan/CSO)",
+       "detail": "Notulensi rapat evaluasi 3 bulanan yang mengundang minimal 3 kelompok rentan/CSO",
+       "opd": [
+        "OPD Pelayanan Terkait"
+       ],
+       "status": "belum"
+      }
+     ]
+    }
+   ],
+   "item_aktual": 15,
+   "item_gap": 4
+  }
+ ],
+ "target_item_bukti": 177,
+ "indeks_terkini": 1.92
 }
