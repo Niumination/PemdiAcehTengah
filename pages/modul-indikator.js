@@ -19,12 +19,12 @@ function cariIndikator(id) {
   return null;
 }
 
-// Jumlah item L1 terpenuhi vs total (untuk notice indikator belum-lengkap)
+// Jumlah item L1 terpenuhi vs total (untuk notice indikator belum-lengkap) — bukti UTAMA saja
 function hitungStatusL1(indId) {
   const ind = cariIndikator(indId);
   if (!ind) return '0 item';
   const l1 = (ind.bukti_dukung || []).filter(b => b.level === 1);
-  const lkp = l1.filter(b => b.status === 'lengkap').length;
+  const lkp = l1.filter(b => b._peran !== 'pendukung' && b.status === 'lengkap').length;
   const items = moduls.modules
     .find(x => x.indikator_id === indId)?.level_kriteria
     ?.find(lk => lk.level === 1)?.bukti_dukung?.length || 0;
@@ -720,6 +720,7 @@ export default function ModulIndikatorPage() {
                                 const sm = STATUS_META[bd.status] || STATUS_META.belum;
                                 const url = bd.url_preview || '';
                                 const isPdf = bd._ext === 'pdf' && !!url;
+                                const isUrl = bd._ext === 'url' && !!url;
                                 const canPreview = isPdf;
                                 const dkNos = getDokumenForBukti(modul.ind.id, bd.id);
                                 const isDup = deteksiDuplikat(modul.ind.bukti_dukung).has(bd.id);
@@ -805,6 +806,15 @@ export default function ModulIndikatorPage() {
                                           }}>
                                           👁️ Lihat
                                         </button>
+                                      ) : isUrl ? (
+                                        <a href={url} target="_blank" rel="noopener noreferrer"
+                                          style={{
+                                            display: 'inline-block', padding: '0.25rem 0.5rem', borderRadius: '4px',
+                                            background: 'var(--primary)', color: '#fff', textDecoration: 'none',
+                                            fontSize: '0.7rem', fontWeight: 600, whiteSpace: 'nowrap',
+                                          }}>
+                                          🌐 Buka
+                                        </a>
                                       ) : (
                                         <span style={{ fontSize: '0.65rem', color: 'var(--muted)' }}>—</span>
                                       )}
@@ -1034,7 +1044,7 @@ export default function ModulIndikatorPage() {
                         {url && (
                           <a href={url} target="_blank" rel="noopener noreferrer"
                             style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.68rem', color: 'var(--primary)', marginTop: '0.2rem', textDecoration: 'underline' }}>
-                            {isPdf ? '📄 Buka PDF' : '🖼️ Lihat preview'} ↗
+                            {bd._ext === 'url' ? '🌐 Buka URL' : isPdf ? '📄 Buka PDF' : '🖼️ Lihat preview'} ↗
                           </a>
                         )}
                       </td>

@@ -239,3 +239,20 @@ User mengoreksi: banyak bukti existing TIDAK nyambung dengan kriteria & panduan 
 | `scripts/sesuaikan-bukti-kriteria.py` | Script penyesuaian (re-run aman; backup `pemdi.json.bak-kriteria`). |
 
 > Aturan baru: **kelengkapan level dihitung hanya dari bukti _peran=utama**. Bukti pendukung tetap tampil (transparansi) tapi tidak menghitung. I17 sekarang benar: URL + screenshot + daftar layanan (utama) + Perbup 30/48/73 (pendukung).
+
+## 🧹 Update Data — 6 Agu 2026 (Penyempurnaan Audit Ulang Bukti Dukung)
+
+Audit ulang menyeluruh setelah penyesuaian — temuan & perbaikan:
+
+| Temuan | Perbaikan |
+|--------|-----------|
+| 2 file bukti indikator TAMPIL masih di `belum-lengkap/` | `Data_I8_01_Perbup-6-Sistem-Pemdi_2025.pdf` (dipakai I10) & `Kepuasan_I19_06_Hasil-Survei-Kepuasan_2026.xlsx` (dipakai I20) → kembali ke root. |
+| Nomor urut file screenshot I17 tidak sesuai item | Rename `Keterpaduan_I17_02/03_*` → `_05/_06` (URL portal=item 04, Screenshot=05, Daftar=06). |
+| Bukti portal I17 tanpa dokumen kunci | `_dokumen_kunci: [29]` untuk P1.I17_1/2/3 (dok #29 Portal). B17.1 (Screenshot portal, belum) diisi → lengkap (file sama dengan P1.I17_2). |
+| `bukti-dokumen-mapping.json` stale | +3 bukti I17 → dok #29; stats 134→**137** (136 terpetakan, 1 belum = Perbup SOTK). |
+| Bukti `_ext: "url"` belum di-handle UI | Kolom Aksi: tombol 🌐 Buka (link langsung, bukan iframe — X-Frame-Options); /pemdi grid: link 🌐 buka; tabel Bukti Baru: label "🌐 Buka URL". |
+| Teks hero /pemdi stale ("Dihitung dari 134") | Dinamis: "Dihitung dari {totalTampil} bukti dukung tampil (139 di data · 177 target)". Helper `totalTampil` = bukti indikator `_l1_lengkap !== false`. |
+| `hitungStatusL1` hitung semua bukti | Fix: hanya bukti `_peran !== "pendukung"` (konsisten dengan _l1_lengkap). |
+| `total_item_bukti` stale 134 | → **139** (aktual, termasuk hidden). `total_item_manual` 114 tetap (sumber lama). |
+
+**Hasil akhir (verified)**: 0 referensi putus · 0 file unused · 10 file di `belum-lengkap/` semuanya milik indikator hidden · 12 indikator TAMPIL (I1,I2,I5,I6,I7,I10,I11,I15,I16,I17,I18,I20) · 8 HIDDEN (I3,I4,I8,I9,I12,I13,I14,I19) · statistik UI 84/177 tampil (42 lengkap, 3 proses, 39 belum, gap 93). Script: `scripts/sempurnakan-bukti.py`.

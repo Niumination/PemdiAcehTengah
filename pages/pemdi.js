@@ -144,6 +144,9 @@ export default function PemdiPage() {
   const indeks = hitungIndeks(aspek);
   const predikat = getPredikat(indeks);
   const gap = Math.max(0, target_indeks - indeks);
+  // Jumlah bukti yang TAMPIL (indikator _l1_lengkap !== false)
+  const totalTampil = aspek.reduce((s, a) => s + a.indikator.reduce((s2, i) =>
+    i._l1_lengkap === false ? s2 : s2 + (i.bukti_dukung || []).length, 0), 0);
 
   const [modalAspek, setModalAspek] = useState(null);
   const [preview, setPreview] = useState(null); // { id, nama, level, status, url, dkNos, indId }
@@ -232,7 +235,7 @@ export default function PemdiPage() {
             <div style={{ fontSize: '0.78rem', color: 'var(--primary)', textTransform: 'uppercase', fontWeight: 800, letterSpacing: '0.05em' }}>Indeks Pemdi (dari Bukti Dukung)</div>
             <div style={{ fontSize: '2.2rem', fontWeight: 800, color: 'var(--primary)', fontFamily: 'var(--font-mono)', margin: '6px 0' }}>{formatDesimal(indeks)}</div>
             <span className={`badge ${predikat.bg}`} style={{ color: predikat.warna }}>Predikat {predikat.label}</span>
-            <div style={{ fontSize: '0.68rem', color: 'var(--muted)', marginTop: '6px' }}>Dihitung dari {pemdiData.total_item_bukti} bukti dukung · {pemdiData.total_item_manual} manual</div>
+            <div style={{ fontSize: '0.68rem', color: 'var(--muted)', marginTop: '6px' }}>Dihitung dari {totalTampil} bukti dukung tampil ({pemdiData.total_item_bukti} di data · {pemdiData.target_item_bukti} target)</div>
           </div>
           <div className="glow-card" style={{ padding: '20px', textAlign: 'center' }}>
             <div style={{ fontSize: '0.78rem', color: 'var(--muted)', textTransform: 'uppercase', fontWeight: 700, letterSpacing: '0.05em' }}>Target Evaluasi 2026</div>
@@ -397,14 +400,19 @@ export default function PemdiPage() {
                                         </span>
                                       )}
                                       {dkNos.length > 0 && <span style={{ color: 'var(--primary)', fontWeight: 700 }}> #{dkNos.join(', #')}</span>}
-                                      {b.url_preview && (
+                                      {b.url_preview && (b._ext === 'url' ? (
+                                        <a href={b.url_preview} target="_blank" rel="noopener noreferrer"
+                                          style={{ color: 'var(--primary)', textDecoration: 'underline', fontSize: '0.68rem', marginLeft: '4px' }}>
+                                          🌐 buka
+                                        </a>
+                                      ) : (
                                         <button
                                           onClick={() => setPreview({ id: b.id, nama: b.nama, detail: b.detail || '', level, status: b.status, url: b.url_preview, dkNos, indId: ind.id, indNama: ind.nama })}
                                           style={{ border: 'none', background: 'transparent', color: 'var(--primary)', textDecoration: 'underline', cursor: 'pointer', fontSize: '0.68rem', padding: 0, marginLeft: '4px' }}
                                         >
                                           👁️ preview
                                         </button>
-                                      )}
+                                      ))}
                                     </span>
                                   </div>
                                 );

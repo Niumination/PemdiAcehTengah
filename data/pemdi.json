@@ -5,7 +5,7 @@
  "target_predikat": "Baik",
  "baseline_spbe": 2.59,
  "baseline_predikat": "Cukup",
- "total_item_bukti": 134,
+ "total_item_bukti": 139,
  "total_item_manual": 114,
  "total_item_eksternal": 0,
  "dasar_hukum": [
@@ -1145,7 +1145,7 @@
        "opd": [],
        "status": "lengkap",
        "catatan": "Dokumen resmi — Menetapkan regulasi klasifikasi keamanan arsip, pembatasan a",
-       "url_preview": "/bukti-dukung/belum-lengkap/Data_I8_01_Perbup-6-Sistem-Pemdi_2025.pdf",
+       "url_preview": "/bukti-dukung/Data_I8_01_Perbup-6-Sistem-Pemdi_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/ade79cb3-cb2b-4b8e-bf31-b35ddeded969",
        "_ext": "pdf",
        "_peran": "pendukung"
@@ -1171,7 +1171,7 @@
        "opd": [],
        "status": "lengkap",
        "catatan": "Dokumen resmi — Bukti penerapan prosedur pelindungan kerahasiaan data pada s",
-       "url_preview": "/bukti-dukung/belum-lengkap/Data_I8_01_Perbup-6-Sistem-Pemdi_2025.pdf",
+       "url_preview": "/bukti-dukung/Data_I8_01_Perbup-6-Sistem-Pemdi_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/ade79cb3-cb2b-4b8e-bf31-b35ddeded969",
        "_ext": "pdf",
        "_peran": "pendukung"
@@ -1359,7 +1359,7 @@
        "opd": [],
        "status": "lengkap",
        "catatan": "Dokumen resmi — Memenuhi kriteria tata kelola dan manajemen keamanan informa",
-       "url_preview": "/bukti-dukung/belum-lengkap/Data_I8_01_Perbup-6-Sistem-Pemdi_2025.pdf",
+       "url_preview": "/bukti-dukung/Data_I8_01_Perbup-6-Sistem-Pemdi_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/ade79cb3-cb2b-4b8e-bf31-b35ddeded969",
        "_ext": "pdf",
        "_peran": "pendukung"
@@ -1385,7 +1385,7 @@
        "opd": [],
        "status": "lengkap",
        "catatan": "Dokumen resmi — Bukti regulasi penerapan tata kelola keamanan informasi daer",
-       "url_preview": "/bukti-dukung/belum-lengkap/Data_I8_01_Perbup-6-Sistem-Pemdi_2025.pdf",
+       "url_preview": "/bukti-dukung/Data_I8_01_Perbup-6-Sistem-Pemdi_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/ade79cb3-cb2b-4b8e-bf31-b35ddeded969",
        "_ext": "pdf",
        "_peran": "pendukung"
@@ -2121,13 +2121,16 @@
        "id": "B17.1",
        "level": 1,
        "nama": "Screenshot penuh antarmuka portal utama acehtengahkab.go.id",
-       "detail": "Screenshot portal web resmi acehtengahkab.go.id yang menunjukkan portal sudah aktif dan berfungsi",
+       "detail": "Tangkapan layar portal digital Pemkab Aceh Tengah (pemdi-aceh-tengah.vercel.app) — file sama dengan P1.I17_2",
        "opd": [
         "Diskominfo"
        ],
-       "status": "belum",
-       "catatan": "Portal utama acehtengahkab.go.id + SICANTIK + Open Data aktif. Perlu screenshot bertanggal",
-       "_peran": "utama"
+       "status": "lengkap",
+       "catatan": "Screenshot penuh antarmuka portal utama — bukti nyata keberadaan portal (file sama dengan P1.I17_2, multi-bukti wajar).",
+       "_peran": "utama",
+       "_ext": "png",
+       "url_preview": "/bukti-dukung/Keterpaduan_I17_05_Screenshot-Portal_2026.png",
+       "url_sumber": "/bukti-dukung/Keterpaduan_I17_05_Screenshot-Portal_2026.png"
       },
       {
        "id": "B17.2",
@@ -2151,12 +2154,15 @@
         "Diskominfo"
        ],
        "status": "lengkap",
-       "catatan": "Portal layanan digital daerah (acehtengahkab.go.id) — sesuai kriteria L1 I17 'Portal Layanan Digital Pemerintah pada Instansi Pemerintah'.",
+       "catatan": "URL portal layanan digital daerah (acehtengahkab.go.id) — sesuai kriteria L1 I17 'Portal Layanan Digital Pemerintah pada Instansi Pemerintah'. Bukti URL: portal resmi Pemkab.",
        "url_preview": "https://acehtengahkab.go.id",
        "url_sumber": "https://acehtengahkab.go.id",
        "_ext": "url",
        "_peran": "utama",
-       "_sumber_baru": true
+       "_sumber_baru": true,
+       "_dokumen_kunci": [
+        29
+       ]
       },
       {
        "id": "P1.I17_2",
@@ -2168,11 +2174,14 @@
        ],
        "status": "lengkap",
        "catatan": "Screenshot portal layanan digital daerah — bukti nyata keberadaan portal (kriteria L1 I17).",
-       "url_preview": "/bukti-dukung/Keterpaduan_I17_02_Screenshot-Portal_2026.png",
-       "url_sumber": "/bukti-dukung/Keterpaduan_I17_02_Screenshot-Portal_2026.png",
+       "url_preview": "/bukti-dukung/Keterpaduan_I17_05_Screenshot-Portal_2026.png",
+       "url_sumber": "/bukti-dukung/Keterpaduan_I17_05_Screenshot-Portal_2026.png",
        "_ext": "png",
        "_peran": "utama",
-       "_sumber_baru": true
+       "_sumber_baru": true,
+       "_dokumen_kunci": [
+        29
+       ]
       },
       {
        "id": "P1.I17_3",
@@ -2184,11 +2193,14 @@
        ],
        "status": "lengkap",
        "catatan": "Daftar layanan digital yang tersedia di portal — sesuai panduan modul L1 I17 'daftar layanan yang tersedia di portal'.",
-       "url_preview": "/bukti-dukung/Keterpaduan_I17_03_Daftar-Layanan-Portal_2026.png",
-       "url_sumber": "/bukti-dukung/Keterpaduan_I17_03_Daftar-Layanan-Portal_2026.png",
+       "url_preview": "/bukti-dukung/Keterpaduan_I17_06_Daftar-Layanan-Portal_2026.png",
+       "url_sumber": "/bukti-dukung/Keterpaduan_I17_06_Daftar-Layanan-Portal_2026.png",
        "_ext": "png",
        "_peran": "utama",
-       "_sumber_baru": true
+       "_sumber_baru": true,
+       "_dokumen_kunci": [
+        29
+       ]
       }
      ],
      "_l1_lengkap": true
@@ -2362,7 +2374,7 @@
        "opd": [],
        "status": "lengkap",
        "catatan": "Dokumen resmi — Bukti aktif tahun 2026 pengelolaan umpan balik pengguna dan ",
-       "url_preview": "/bukti-dukung/belum-lengkap/Kepuasan_I19_06_Hasil-Survei-Kepuasan_2026.xlsx",
+       "url_preview": "/bukti-dukung/Kepuasan_I19_06_Hasil-Survei-Kepuasan_2026.xlsx",
        "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/hasil-survei-kepuasan-masyarakat-di-kabupaten-aceh-tengah-bulan-januari-mei-tahun-2026",
        "_ext": "xlsx",
        "_peran": "pendukung"
@@ -2446,7 +2458,7 @@
        "opd": [],
        "status": "lengkap",
        "catatan": "Dokumen resmi — Bukti primer pelaksanaan survei kepuasan masyarakat (SKM) te",
-       "url_preview": "/bukti-dukung/belum-lengkap/Kepuasan_I19_06_Hasil-Survei-Kepuasan_2026.xlsx",
+       "url_preview": "/bukti-dukung/Kepuasan_I19_06_Hasil-Survei-Kepuasan_2026.xlsx",
        "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/hasil-survei-kepuasan-masyarakat-di-kabupaten-aceh-tengah-bulan-januari-mei-tahun-2026",
        "_ext": "xlsx",
        "_peran": "utama"
@@ -2472,7 +2484,7 @@
        "opd": [],
        "status": "lengkap",
        "catatan": "Dokumen resmi — Bukti pengolahan dan publikasi hasil survei kepuasan masyara",
-       "url_preview": "/bukti-dukung/belum-lengkap/Kepuasan_I19_06_Hasil-Survei-Kepuasan_2026.xlsx",
+       "url_preview": "/bukti-dukung/Kepuasan_I19_06_Hasil-Survei-Kepuasan_2026.xlsx",
        "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/hasil-survei-kepuasan-masyarakat-di-kabupaten-aceh-tengah-bulan-januari-mei-tahun-2026",
        "_ext": "xlsx",
        "_peran": "utama"
