@@ -259,9 +259,11 @@ export default function ModulIndikatorPage() {
   const [bukaDokumen, setBukaDokumen] = useState(null); // dokumen kunci accordion
   const [viewMode, setViewMode] = useState({}); // per modul: { [nomor]: 'level' | 'dokumen' }
 
-  // Convert JDIH URL to proxy URL for same-origin iframe
+  // Convert JDIH URL to proxy URL for same-origin iframe.
+  // File lokal (/bukti-dukung/...) dipakai langsung — same-origin, bebas X-Frame-Options.
   const toProxyUrl = (url) => {
     if (!url) return '';
+    if (url.startsWith('/')) return url;
     return `/api/proxy-pdf?url=${encodeURIComponent(url)}`;
   };
 
