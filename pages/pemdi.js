@@ -391,6 +391,11 @@ export default function PemdiPage() {
                                     <span title={sm.label}>{sm.icon}</span>
                                     <span style={{ flex: 1, lineHeight: 1.35 }}>
                                       {b.nama}
+                                      {b._peran === 'pendukung' && (
+                                        <span style={{ fontSize: '0.6rem', color: 'var(--muted)', border: '1px solid var(--border)', borderRadius: '3px', padding: '0 4px', marginLeft: '4px' }}>
+                                          🔹 Pendukung
+                                        </span>
+                                      )}
                                       {dkNos.length > 0 && <span style={{ color: 'var(--primary)', fontWeight: 700 }}> #{dkNos.join(', #')}</span>}
                                       {b.url_preview && (
                                         <button

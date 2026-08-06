@@ -223,3 +223,19 @@ Aturan penilaian Pemdi: **jika Level 1 tidak lengkap, Level 2 ke atas TIDAK dini
 | `scripts/pisah-belum-lengkap.py` | Script kelengkapan L1 → pindah file + flag data (re-run aman). |
 
 > Indikator eksternal (I5/I6/I7/I18 — nilai otomatis sistem nasional, 0 item modul) otomatis dianggap lengkap dan tetap tampil. I12/I14 tidak punya file primary (bukti = Perbup 48 milik I1) — file tetap di root, hanya entri UI yang disembunyikan. Contoh bukti di kartu level modul (panduan, bukan tabel penilaian) tetap tampil.
+
+## 🧹 Update Data — 6 Agu 2026 (Penyesuaian Bukti Dukung ↔ Kriteria per Level)
+
+User mengoreksi: banyak bukti existing TIDAK nyambung dengan kriteria & panduan modul (contoh I17 portal: buktinya Perbup 30/48/73, harusnya URL + screenshot + daftar layanan). Pola: Perbup 48/2025 Arsitektur SPBE dipakai sebagai bukti "lengkap" di ~15 indikator padahal hanya sesuai untuk indikator arsitektur/perencanaan.
+
+| Item | Perubahan |
+|------|-----------|
+| `data/pemdi.json` | Semua bukti diberi `_peran: "utama"|"pendukung"` (136 bukti). **Utama** = bukti langsung substansi kriteria (dihitung kelengkapan level); **Pendukung** = dokumen penunjang (perbup/SK umum, badge 🔹 di UI, tidak dihitung). Perbup 48/9 SOTK/70/6/137/30/73/SKM turun jadi pendukung di indikator yang tidak sesuai. |
+| `data/pemdi.json` | **7 bukti diverifikasi → lengkap** (sesuai substansi kriteria): Indeks KAMI I10, Perbup 1-2/2025 persandian I11, KAK+Laporan Bapokting I13, SK Tim+Rapat I4. |
+| `data/pemdi.json` | **Bukti baru I17 (3)**: P1.I17_1 URL portal (acehtengahkab.go.id), P1.I17_2 Screenshot portal, P1.I17_3 Daftar 25 layanan — sesuai panduan modul L1 I17 "URL & screenshot portal layanan digital daerah, daftar layanan". |
+| `public/bukti-dukung/` | +2 file: `Keterpaduan_I17_02_Screenshot-Portal_2026.png`, `Keterpaduan_I17_03_Daftar-Layanan-Portal_2026.png` (screenshot portal pemdi + direktori layanan). `KeamananSiber_I9_02_Laporan-Pengawasan-Kinerja_2026.xlsx` → belum-lengkap (I9 jadi hidden). Indeks KAMI → kembali root (I10 tampil). |
+| `_l1_lengkap` | Recomputed dgn bukti **utama saja**: TAMPIL 12 (I1,I2,I5,I6,I7,I10,I11,I15,I16,I17,I18,I20) · HIDDEN 8 (I3,I4,I8,I9,I12,I13,I14,I19). I9 baru hidden; I10/I11/I17 baru tampil dgn bukti benar. |
+| `pages/modul-indikator.js` + `pages/pemdi.js` | Badge "🔹 Pendukung" di tabel existing & grid per level. Statistik: 84/177 bukti tampil, 41 lengkap. |
+| `scripts/sesuaikan-bukti-kriteria.py` | Script penyesuaian (re-run aman; backup `pemdi.json.bak-kriteria`). |
+
+> Aturan baru: **kelengkapan level dihitung hanya dari bukti _peran=utama**. Bukti pendukung tetap tampil (transparansi) tapi tidak menghitung. I17 sekarang benar: URL + screenshot + daftar layanan (utama) + Perbup 30/48/73 (pendukung).

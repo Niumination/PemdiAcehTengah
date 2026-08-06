@@ -121,7 +121,8 @@
        "catatan": "Dokumen resmi — Memuat kebijakan resmi Arsitektur SPBE Pemkab Aceh Tengah ya",
        "url_preview": "/bukti-dukung/TataKelola_I1_01_Perbup-48-Arsitektur-SPBE_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "utama"
       },
       {
        "id": "V1.I1_2",
@@ -133,7 +134,8 @@
        "catatan": "Dokumen resmi — Dokumen perencanaan pembangunan daerah jangka menengah aktif",
        "url_preview": "/bukti-dukung/TataKelola_I1_02_Perbup-8-Rencana-SPBE_2022.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/d6720ace-6bf0-426b-bb73-54b13f43a83b",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "utama"
       },
       {
        "id": "V2.I1_3",
@@ -145,7 +147,8 @@
        "catatan": "Dokumen resmi — Menjadi referensi utama pelaksanaan tata kelola dan arsitekt",
        "url_preview": "/bukti-dukung/TataKelola_I1_01_Perbup-48-Arsitektur-SPBE_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "utama"
       },
       {
        "id": "V2.I1_4",
@@ -157,7 +160,8 @@
        "catatan": "Dokumen resmi — Laporan reviu kinerja pelaksanaan program kerja pemerintah d",
        "url_preview": "/bukti-dukung/TataKelola_I1_08_Laporan-Reviu-Kinerja_2026.xlsx",
        "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/laporan-hasil-reviu-laporan-kinerja-di-aceh-tengah-tahun-2025",
-       "_ext": "xlsx"
+       "_ext": "xlsx",
+       "_peran": "utama"
       },
       {
        "id": "B1.1",
@@ -170,7 +174,8 @@
         "OPD Terkait"
        ],
        "status": "belum",
-       "catatan": "Renstra Diskominfo, LAKIP 2021, RPD 2023-2026 ditemukan publik. Perlu verifikasi ada/frasa aksi SPBE"
+       "catatan": "Renstra Diskominfo, LAKIP 2021, RPD 2023-2026 ditemukan publik. Perlu verifikasi ada/frasa aksi SPBE",
+       "_peran": "utama"
       },
       {
        "id": "B1.2",
@@ -182,7 +187,8 @@
         "BPKD",
         "OPD Terkait"
        ],
-       "status": "belum"
+       "status": "belum",
+       "_peran": "utama"
       },
       {
        "id": "B1.3",
@@ -193,7 +199,8 @@
         "Diskominfo"
        ],
        "status": "belum",
-       "catatan": "Screenshot SIAP Digital belum ditemukan, harus minta ke Diskominfo"
+       "catatan": "Screenshot SIAP Digital belum ditemukan, harus minta ke Diskominfo",
+       "_peran": "utama"
       },
       {
        "id": "B1.4",
@@ -204,7 +211,8 @@
         "Diskominfo",
         "Bagian Organisasi"
        ],
-       "status": "belum"
+       "status": "belum",
+       "_peran": "utama"
       },
       {
        "id": "P1.I1_1",
@@ -222,7 +230,8 @@
        "_dokumen_kunci": [
         5
        ],
-       "_sumber_baru": true
+       "_sumber_baru": true,
+       "_peran": "utama"
       },
       {
        "id": "P1.I1_2",
@@ -240,7 +249,8 @@
        "_dokumen_kunci": [
         4
        ],
-       "_sumber_baru": true
+       "_sumber_baru": true,
+       "_peran": "utama"
       },
       {
        "id": "P1.I1_3",
@@ -258,7 +268,8 @@
        "_dokumen_kunci": [
         7
        ],
-       "_sumber_baru": true
+       "_sumber_baru": true,
+       "_peran": "utama"
       },
       {
        "id": "P1.I1_4",
@@ -276,7 +287,8 @@
        "_dokumen_kunci": [
         4
        ],
-       "_sumber_baru": true
+       "_sumber_baru": true,
+       "_peran": "utama"
       },
       {
        "id": "P1.I1_5",
@@ -294,7 +306,8 @@
        "_dokumen_kunci": [
         1
        ],
-       "_sumber_baru": true
+       "_sumber_baru": true,
+       "_peran": "utama"
       },
       {
        "id": "P1.I1_6",
@@ -312,7 +325,8 @@
        "_dokumen_kunci": [
         1
        ],
-       "_sumber_baru": true
+       "_sumber_baru": true,
+       "_peran": "utama"
       },
       {
        "id": "P1.I1_7",
@@ -330,7 +344,8 @@
        "_dokumen_kunci": [
         4
        ],
-       "_sumber_baru": true
+       "_sumber_baru": true,
+       "_peran": "utama"
       },
       {
        "id": "P1.I1_8",
@@ -348,7 +363,8 @@
        "_dokumen_kunci": [
         1
        ],
-       "_sumber_baru": true
+       "_sumber_baru": true,
+       "_peran": "utama"
       },
       {
        "id": "P1.I1_9",
@@ -366,7 +382,8 @@
        "_dokumen_kunci": [
         1
        ],
-       "_sumber_baru": true
+       "_sumber_baru": true,
+       "_peran": "utama"
       },
       {
        "id": "P1.I1_10",
@@ -382,7 +399,8 @@
        "url_sumber": "/bukti-dukung/TataKelola_I1_06_Perbup-70-SOTK-Diskominfo_2016.pdf",
        "_ext": "pdf",
        "_dokumen_kunci": [],
-       "_sumber_baru": true
+       "_sumber_baru": true,
+       "_peran": "pendukung"
       }
      ],
      "_l1_lengkap": true
@@ -416,7 +434,8 @@
        "catatan": "Dokumen resmi — Dasar hukum standar pelayanan publik yang menjadi rujukan pe",
        "url_preview": "/bukti-dukung/TataKelola_I2_01_Perbup-126-Standar-Pelayanan_2019.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/e8187833-5111-4436-be42-68dfd5d80b76",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "utama"
       },
       {
        "id": "V1.I2_2",
@@ -428,7 +447,8 @@
        "catatan": "Dokumen resmi — Bukti penerapan dan regulasi manajemen layanan digital pemer",
        "url_preview": "/bukti-dukung/TataKelola_I2_02_Perbup-73-Pelayanan_2020.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/2a0b0c2f-d693-4a15-9e7f-b42d7ab081eb",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "utama"
       },
       {
        "id": "V2.I2_3",
@@ -440,7 +460,8 @@
        "catatan": "Dokumen resmi — Memuat ketetapan Domain Arsitektur Layanan SPBE sebagai ruju",
        "url_preview": "/bukti-dukung/TataKelola_I1_01_Perbup-48-Arsitektur-SPBE_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "utama"
       },
       {
        "id": "V2.I2_4",
@@ -452,7 +473,8 @@
        "catatan": "Dokumen resmi — Bukti nyata pelaksanaan manajemen layanan digital dan pengel",
        "url_preview": "/bukti-dukung/TataKelola_I2_05_Pedoman-Pengaduan-RSUD_2026.pdf",
        "url_sumber": "https://raw.githubusercontent.com/Niumination/PemdiAcehTengah/main/public/bukti-dukung/TataKelola_I2_05_Pedoman-Pengaduan-RSUD_2026.pdf",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "utama"
       },
       {
        "id": "B2.1",
@@ -462,7 +484,8 @@
        "opd": [
         "Diskominfo"
        ],
-       "status": "belum"
+       "status": "belum",
+       "_peran": "utama"
       },
       {
        "id": "B2.2",
@@ -474,7 +497,8 @@
         "OPD Pemilik Layanan"
        ],
        "status": "belum",
-       "catatan": "Pedoman Pengaduan RSUD ditemukan (PDF). Perlu bukti penerapan digital"
+       "catatan": "Pedoman Pengaduan RSUD ditemukan (PDF). Perlu bukti penerapan digital",
+       "_peran": "utama"
       }
      ],
      "_l1_lengkap": true
@@ -525,7 +549,8 @@
        "catatan": "Dokumen resmi — Dokumen primer survei, identifikasi, dan pemetaan tingkat ko",
        "url_preview": "/bukti-dukung/belum-lengkap/Penyelenggara_I3_01_Literasi-Digital-2023_2023.pdf",
        "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/literasi-digital-sektor-pemerintahan-2023",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "utama"
       },
       {
        "id": "V1.I3_2",
@@ -539,7 +564,8 @@
        "catatan": "Dokumen resmi — Penetapan struktur dan tugas kelembagaan untuk penyiapan dan",
        "url_preview": "/bukti-dukung/belum-lengkap/Penyelenggara_I3_02_Perbup-9-SOTK_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/af9a42bf-cea9-46c8-a739-9beb5d21e990",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "pendukung"
       },
       {
        "id": "V2.I3_3",
@@ -553,7 +579,8 @@
        "catatan": "Dokumen resmi — Memuat analisis mendalam berupa grafik, tabel statistik, ser",
        "url_preview": "/bukti-dukung/belum-lengkap/Penyelenggara_I3_01_Literasi-Digital-2023_2023.pdf",
        "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/literasi-digital-sektor-pemerintahan-2023",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "utama"
       },
       {
        "id": "B3.1",
@@ -563,7 +590,8 @@
        "opd": [
         "BKPSDM"
        ],
-       "status": "belum"
+       "status": "belum",
+       "_peran": "utama"
       },
       {
        "id": "B3.2",
@@ -575,7 +603,8 @@
         "BKPSDM"
        ],
        "status": "belum",
-       "catatan": "Portal e-Kinerja aktif (e-Absensi tersinkron, TTE BSrE). Perlu screenshot individual"
+       "catatan": "Portal e-Kinerja aktif (e-Absensi tersinkron, TTE BSrE). Perlu screenshot individual",
+       "_peran": "utama"
       },
       {
        "id": "B3.3",
@@ -587,7 +616,8 @@
         "Diskominfo"
        ],
        "status": "belum",
-       "catatan": "Pelatihan VSGA 75 peserta (Operator Komputer, Video Editor, Junior Graphic Designer) via BBPSDMP Kominfo Medan — Juni 2023"
+       "catatan": "Pelatihan VSGA 75 peserta (Operator Komputer, Video Editor, Junior Graphic Designer) via BBPSDMP Kominfo Medan — Juni 2023",
+       "_peran": "utama"
       },
       {
        "id": "B3.4",
@@ -598,7 +628,8 @@
         "BKPSDM"
        ],
        "status": "belum",
-       "catatan": "Laporan MyASN/asesmen BKN belum ditemukan publik"
+       "catatan": "Laporan MyASN/asesmen BKN belum ditemukan publik",
+       "_peran": "utama"
       },
       {
        "id": "B3.5",
@@ -609,7 +640,8 @@
         "BKPSDM",
         "Pegawai Terkait"
        ],
-       "status": "belum"
+       "status": "belum",
+       "_peran": "utama"
       }
      ],
      "_l1_lengkap": false
@@ -643,7 +675,8 @@
        "catatan": "Dokumen resmi — Regulasi primer yang mengamanatkan pembentukan Tim Koordinas",
        "url_preview": "/bukti-dukung/belum-lengkap/Penyelenggara_I4_01_Perbup-70-Pedoman-SPBE_2019.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/edee8e80-8f98-4038-b694-48706c86448a",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "pendukung"
       },
       {
        "id": "V1.I4_2",
@@ -655,7 +688,8 @@
        "catatan": "Dokumen resmi — Menetapkan kerangka kolaborasi antar unit kerja pemerintah d",
        "url_preview": "/bukti-dukung/TataKelola_I1_01_Perbup-48-Arsitektur-SPBE_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "pendukung"
       },
       {
        "id": "V2.I4_3",
@@ -667,7 +701,8 @@
        "catatan": "Dokumen resmi — Menjadi acuan formal pelaksanaan kolaborasi keterpaduan laya",
        "url_preview": "/bukti-dukung/TataKelola_I1_01_Perbup-48-Arsitektur-SPBE_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "pendukung"
       },
       {
        "id": "B4.1",
@@ -678,7 +713,8 @@
         "Diskominfo",
         "Bagian Hukum"
        ],
-       "status": "belum"
+       "status": "belum",
+       "_peran": "utama"
       },
       {
        "id": "B4.2",
@@ -689,7 +725,8 @@
         "Bappeda",
         "Diskominfo"
        ],
-       "status": "belum"
+       "status": "belum",
+       "_peran": "utama"
       },
       {
        "id": "B4.3",
@@ -702,7 +739,8 @@
         "OPD Terkait"
        ],
        "status": "belum",
-       "catatan": "PKS E-Keurani Pemkab-Pemprov (integrasi data ASN) ditemukan. Salinan PKS resmi perlu diminta"
+       "catatan": "PKS E-Keurani Pemkab-Pemprov (integrasi data ASN) ditemukan. Salinan PKS resmi perlu diminta",
+       "_peran": "utama"
       },
       {
        "id": "P1.I4_1",
@@ -712,15 +750,16 @@
        "opd": [
         "Diskominfo"
        ],
-       "status": "proses",
-       "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode PG_04_01). Bukti kolaborasi antar perangkat daerah.",
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode PG_04_01). Bukti kolaborasi antar perangkat daerah. ✅ Terverifikasi sesuai kriteria: SK Bupati 555/395/2026 Tim Koordinasi Pemdi — memenuhi item L1 I4 \"Penetapan Tim Koordinasi Pemerintah Digital\"",
        "url_preview": "/bukti-dukung/TataKelola_I1_04_SK-Tim-Koordinasi-Pemdi_2026.pdf",
        "url_sumber": "/bukti-dukung/TataKelola_I1_04_SK-Tim-Koordinasi-Pemdi_2026.pdf",
        "_ext": "pdf",
        "_dokumen_kunci": [
         5
        ],
-       "_sumber_baru": true
+       "_sumber_baru": true,
+       "_peran": "utama"
       },
       {
        "id": "P1.I4_2",
@@ -730,15 +769,16 @@
        "opd": [
         "Diskominfo"
        ],
-       "status": "proses",
-       "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode PG_04_03). Bukti kolaborasi Pemdi.",
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode PG_04_03). Bukti kolaborasi Pemdi. ✅ Terverifikasi sesuai kriteria: Rapat Koordinasi Transformasi Digital 25-26 Jun 2026 (11 OPD + KemenPANRB) — memenuhi item L1 I4 \"Bukti Pelaksanaan Kolaborasi\"",
        "url_preview": "/bukti-dukung/TataKelola_I1_13_Rapat-Koordinasi-Pemdi_2026.pdf",
        "url_sumber": "/bukti-dukung/TataKelola_I1_13_Rapat-Koordinasi-Pemdi_2026.pdf",
        "_ext": "pdf",
        "_dokumen_kunci": [
         7
        ],
-       "_sumber_baru": true
+       "_sumber_baru": true,
+       "_peran": "utama"
       }
      ],
      "_l1_lengkap": false
@@ -788,7 +828,8 @@
        "catatan": "Dokumen resmi — Dasar hukum utama penyelenggaraan tata kelola data, penetapa",
        "url_preview": "/bukti-dukung/Data_I5_01_Perbup-60-Satu-Data_2022.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/d9671249-08cc-4e6c-87f0-aa04f8ada75c",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "utama"
       },
       {
        "id": "V1.I5_2",
@@ -800,7 +841,8 @@
        "catatan": "Dokumen resmi — Bukti pengesahan prosedur operasi standar tata kelola data s",
        "url_preview": "/bukti-dukung/Data_I5_02_SOP-EPSS_2026.pdf",
        "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/b07e4546-ff19-4041-b58b-6e456bb1f9c3",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "utama"
       },
       {
        "id": "V2.I5_3",
@@ -812,7 +854,8 @@
        "catatan": "Dokumen resmi — Memenuhi kriteria tata kelola data pemerintah daerah sesuai ",
        "url_preview": "/bukti-dukung/Data_I5_01_Perbup-60-Satu-Data_2022.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/d9671249-08cc-4e6c-87f0-aa04f8ada75c",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "utama"
       },
       {
        "id": "B5.1",
@@ -824,7 +867,8 @@
         "Diskominfo",
         "Bagian Hukum"
        ],
-       "status": "belum"
+       "status": "belum",
+       "_peran": "utama"
       },
       {
        "id": "B5.2",
@@ -837,7 +881,8 @@
         "BPS"
        ],
        "status": "belum",
-       "catatan": "FGD Aceh Tengah Dalam Angka 2021 (Humas) + Portal Open Data + Penguatan Satu Data 2025 ditemukan. Perlu SK Forum SDI/Wali Data resmi"
+       "catatan": "FGD Aceh Tengah Dalam Angka 2021 (Humas) + Portal Open Data + Penguatan Satu Data 2025 ditemukan. Perlu SK Forum SDI/Wali Data resmi",
+       "_peran": "utama"
       },
       {
        "id": "B5.3",
@@ -849,7 +894,8 @@
         "Diskominfo"
        ],
        "status": "belum",
-       "catatan": "Portal Open Data aktif (852 datasets, 61 organisasi) + Desk Satu Data 2026 + PERKIM MENDATA. Metadata sektoral perlu verifikasi"
+       "catatan": "Portal Open Data aktif (852 datasets, 61 organisasi) + Desk Satu Data 2026 + PERKIM MENDATA. Metadata sektoral perlu verifikasi",
+       "_peran": "utama"
       },
       {
        "id": "P1.I5_1",
@@ -867,7 +913,8 @@
        "_dokumen_kunci": [
         18
        ],
-       "_sumber_baru": true
+       "_sumber_baru": true,
+       "_peran": "utama"
       }
      ],
      "_l1_lengkap": true
@@ -900,7 +947,8 @@
        "catatan": "Dokumen resmi — Bukti ketersediaan, pengelolaan, dan berbagi pakai informasi",
        "url_preview": "/bukti-dukung/Data_I6_01_Data-Peta-RDTR_2026.xlsx",
        "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/data-dan-peta-rdtr-yang-dikelola-di-aceh-tengah-tahun-2025",
-       "_ext": "xlsx"
+       "_ext": "xlsx",
+       "_peran": "utama"
       },
       {
        "id": "V2.I6_2",
@@ -912,7 +960,8 @@
        "catatan": "Dokumen resmi — Memenuhi kondisi berbagi pakai sebagian informasi geospasial",
        "url_preview": "/bukti-dukung/Data_I6_01_Data-Peta-RDTR_2026.xlsx",
        "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/data-dan-peta-rdtr-yang-dikelola-di-aceh-tengah-tahun-2025",
-       "_ext": "xlsx"
+       "_ext": "xlsx",
+       "_peran": "utama"
       },
       {
        "id": "B6.1",
@@ -923,7 +972,8 @@
         "Bappeda",
         "Dinas PUPR"
        ],
-       "status": "belum"
+       "status": "belum",
+       "_peran": "utama"
       },
       {
        "id": "B6.2",
@@ -934,7 +984,8 @@
         "Bappeda",
         "Diskominfo"
        ],
-       "status": "belum"
+       "status": "belum",
+       "_peran": "utama"
       },
       {
        "id": "B6.3",
@@ -945,7 +996,8 @@
         "Bappeda",
         "Bagian Hukum"
        ],
-       "status": "belum"
+       "status": "belum",
+       "_peran": "utama"
       },
       {
        "id": "B6.4",
@@ -956,7 +1008,8 @@
         "Bappeda",
         "Dinas PUPR"
        ],
-       "status": "belum"
+       "status": "belum",
+       "_peran": "utama"
       }
      ],
      "_l1_lengkap": true
@@ -989,7 +1042,8 @@
        "catatan": "Dokumen resmi — Bukti pengesahan standar operasi prosedur dalam pelaksanaan ",
        "url_preview": "/bukti-dukung/Data_I5_02_SOP-EPSS_2026.pdf",
        "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/b07e4546-ff19-4041-b58b-6e456bb1f9c3",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "utama"
       },
       {
        "id": "V2.I7_2",
@@ -1001,7 +1055,8 @@
        "catatan": "Dokumen resmi — Membuktikan pelaksanaan tahapan manajemen penyelenggaraan st",
        "url_preview": "/bukti-dukung/Data_I5_02_SOP-EPSS_2026.pdf",
        "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/b07e4546-ff19-4041-b58b-6e456bb1f9c3",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "utama"
       },
       {
        "id": "V2.I7_3",
@@ -1013,7 +1068,8 @@
        "catatan": "Dokumen resmi — Memuat kebijakan tata kelola statistik sektoral oleh walidat",
        "url_preview": "/bukti-dukung/Data_I5_01_Perbup-60-Satu-Data_2022.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/d9671249-08cc-4e6c-87f0-aa04f8ada75c",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "pendukung"
       },
       {
        "id": "B7.1",
@@ -1025,7 +1081,8 @@
         "Diskominfo"
        ],
        "status": "belum",
-       "catatan": "Portal Statistik Sektoral aktif di portal. Publikasi Aceh Tengah Dalam Angka perlu diunduh tahun berjalan"
+       "catatan": "Portal Statistik Sektoral aktif di portal. Publikasi Aceh Tengah Dalam Angka perlu diunduh tahun berjalan",
+       "_peran": "utama"
       },
       {
        "id": "B7.2",
@@ -1036,7 +1093,8 @@
         "OPD Pelaksana",
         "BPS"
        ],
-       "status": "belum"
+       "status": "belum",
+       "_peran": "utama"
       },
       {
        "id": "P1.I7_1",
@@ -1054,7 +1112,8 @@
        "_dokumen_kunci": [
         18
        ],
-       "_sumber_baru": true
+       "_sumber_baru": true,
+       "_peran": "utama"
       }
      ],
      "_l1_lengkap": true
@@ -1088,7 +1147,8 @@
        "catatan": "Dokumen resmi — Menetapkan regulasi klasifikasi keamanan arsip, pembatasan a",
        "url_preview": "/bukti-dukung/belum-lengkap/Data_I8_01_Perbup-6-Sistem-Pemdi_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/ade79cb3-cb2b-4b8e-bf31-b35ddeded969",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "pendukung"
       },
       {
        "id": "V1.I8_2",
@@ -1100,7 +1160,8 @@
        "catatan": "Dokumen resmi — Dasar hukum keamanan dan kerahasiaan data kependudukan dalam",
        "url_preview": "/bukti-dukung/TataKelola_I2_02_Perbup-73-Pelayanan_2020.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/2a0b0c2f-d693-4a15-9e7f-b42d7ab081eb",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "pendukung"
       },
       {
        "id": "V2.I8_3",
@@ -1112,7 +1173,8 @@
        "catatan": "Dokumen resmi — Bukti penerapan prosedur pelindungan kerahasiaan data pada s",
        "url_preview": "/bukti-dukung/belum-lengkap/Data_I8_01_Perbup-6-Sistem-Pemdi_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/ade79cb3-cb2b-4b8e-bf31-b35ddeded969",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "pendukung"
       },
       {
        "id": "V2.I8_4",
@@ -1124,7 +1186,8 @@
        "catatan": "Dokumen resmi — Menetapkan prosedur pelindungan data pribadi dan informasi y",
        "url_preview": "/bukti-dukung/belum-lengkap/Data_I8_06_Perbup-137-Penyelenggaraan_2019.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/6cd5c436-d64e-4068-bb08-2e0526d87cb5",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "pendukung"
       },
       {
        "id": "B8.1",
@@ -1135,7 +1198,8 @@
         "Diskominfo",
         "Bagian Hukum"
        ],
-       "status": "belum"
+       "status": "belum",
+       "_peran": "utama"
       },
       {
        "id": "B8.2",
@@ -1147,7 +1211,8 @@
         "RSUD",
         "OPD Pemilik Layanan"
        ],
-       "status": "belum"
+       "status": "belum",
+       "_peran": "utama"
       },
       {
        "id": "B8.3",
@@ -1158,7 +1223,8 @@
         "Diskominfo",
         "OPD Pemilik Layanan"
        ],
-       "status": "belum"
+       "status": "belum",
+       "_peran": "utama"
       },
       {
        "id": "P1.I8_1",
@@ -1170,13 +1236,14 @@
        ],
        "status": "belum",
        "catatan": "Data resmi — Ditemukan di Documents, belum diunggah ke portal. Evaluasi PDP bagian dari Indeks KAMI.",
-       "url_preview": "/bukti-dukung/belum-lengkap/Data_I8_04_Indeks-KAMI-5.0-Preview_2026.png",
-       "url_sumber": "/bukti-dukung/belum-lengkap/Data_I8_04_Indeks-KAMI-5.0_2026.xlsx",
+       "url_preview": "/bukti-dukung/Data_I8_04_Indeks-KAMI-5.0-Preview_2026.png",
+       "url_sumber": "/bukti-dukung/Data_I8_04_Indeks-KAMI-5.0_2026.xlsx",
        "_ext": "png",
        "_dokumen_kunci": [
         17
        ],
-       "_sumber_baru": true
+       "_sumber_baru": true,
+       "_peran": "utama"
       }
      ],
      "_l1_lengkap": false
@@ -1224,7 +1291,8 @@
        "catatan": "Dokumen resmi — Menetapkan standar keamanan digital, audit, dan perlindungan",
        "url_preview": "/bukti-dukung/TataKelola_I1_01_Perbup-48-Arsitektur-SPBE_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "pendukung"
       },
       {
        "id": "V1.I9_2",
@@ -1234,9 +1302,10 @@
        "opd": [],
        "status": "lengkap",
        "catatan": "Dokumen resmi — Bukti pengawasan kinerja internal pemerintah daerah Aceh Ten",
-       "url_preview": "/bukti-dukung/KeamananSiber_I9_02_Laporan-Pengawasan-Kinerja_2026.xlsx",
+       "url_preview": "/bukti-dukung/belum-lengkap/KeamananSiber_I9_02_Laporan-Pengawasan-Kinerja_2026.xlsx",
        "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/laporan-hasil-pengawasan-kinerja-pemerintah-daerah-di-aceh-tengah-tahun-2025",
-       "_ext": "xlsx"
+       "_ext": "xlsx",
+       "_peran": "utama"
       },
       {
        "id": "B9.1",
@@ -1247,7 +1316,8 @@
         "Inspektorat",
         "Diskominfo"
        ],
-       "status": "belum"
+       "status": "belum",
+       "_peran": "utama"
       },
       {
        "id": "B9.2",
@@ -1257,10 +1327,11 @@
        "opd": [
         "Inspektorat"
        ],
-       "status": "belum"
+       "status": "belum",
+       "_peran": "utama"
       }
      ],
-     "_l1_lengkap": true
+     "_l1_lengkap": false
     },
     {
      "id": "I10",
@@ -1290,7 +1361,8 @@
        "catatan": "Dokumen resmi — Memenuhi kriteria tata kelola dan manajemen keamanan informa",
        "url_preview": "/bukti-dukung/belum-lengkap/Data_I8_01_Perbup-6-Sistem-Pemdi_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/ade79cb3-cb2b-4b8e-bf31-b35ddeded969",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "pendukung"
       },
       {
        "id": "V1.I10_2",
@@ -1302,7 +1374,8 @@
        "catatan": "Dokumen resmi — Rujukan utama arsitektur keamanan siber dan perlindungan ase",
        "url_preview": "/bukti-dukung/TataKelola_I1_01_Perbup-48-Arsitektur-SPBE_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "pendukung"
       },
       {
        "id": "V2.I10_3",
@@ -1314,7 +1387,8 @@
        "catatan": "Dokumen resmi — Bukti regulasi penerapan tata kelola keamanan informasi daer",
        "url_preview": "/bukti-dukung/belum-lengkap/Data_I8_01_Perbup-6-Sistem-Pemdi_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/ade79cb3-cb2b-4b8e-bf31-b35ddeded969",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "pendukung"
       },
       {
        "id": "B10.1",
@@ -1324,7 +1398,8 @@
        "opd": [
         "Diskominfo (Bidang Persandian)"
        ],
-       "status": "belum"
+       "status": "belum",
+       "_peran": "utama"
       },
       {
        "id": "B10.2",
@@ -1334,7 +1409,8 @@
        "opd": [
         "Diskominfo (Bidang Persandian)"
        ],
-       "status": "belum"
+       "status": "belum",
+       "_peran": "utama"
       },
       {
        "id": "P1.I10_1",
@@ -1344,15 +1420,16 @@
        "opd": [
         "Diskominfo"
        ],
-       "status": "belum",
-       "catatan": "Data resmi — Ditemukan di Documents, belum diunggah ke portal. Padanan IKASANDI untuk keamanan siber.",
-       "url_preview": "/bukti-dukung/belum-lengkap/Data_I8_04_Indeks-KAMI-5.0-Preview_2026.png",
-       "url_sumber": "/bukti-dukung/belum-lengkap/Data_I8_04_Indeks-KAMI-5.0_2026.xlsx",
+       "status": "lengkap",
+       "catatan": "Data resmi — Ditemukan di Documents, belum diunggah ke portal. Padanan IKASANDI untuk keamanan siber. ✅ Terverifikasi sesuai kriteria: Hasil Indeks KAMI 5.0 — Area Keamanan Siber (skor 563 \"Cukup Baik\") sesuai kriteria L1 I10 (nilai IKASANDI area Keamanan Siber 0–1,50; dasar penerapan keamanan siber)",
+       "url_preview": "/bukti-dukung/Data_I8_04_Indeks-KAMI-5.0-Preview_2026.png",
+       "url_sumber": "/bukti-dukung/Data_I8_04_Indeks-KAMI-5.0_2026.xlsx",
        "_ext": "png",
        "_dokumen_kunci": [
         20
        ],
-       "_sumber_baru": true
+       "_sumber_baru": true,
+       "_peran": "utama"
       }
      ],
      "_l1_lengkap": true
@@ -1384,7 +1461,8 @@
        "catatan": "Dokumen resmi — Dasar hukum penyiapan dan penerapan teknologi kriptografi un",
        "url_preview": "/bukti-dukung/TataKelola_I1_01_Perbup-48-Arsitektur-SPBE_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "pendukung"
       },
       {
        "id": "V2.I11_2",
@@ -1396,7 +1474,8 @@
        "catatan": "Dokumen resmi — Acuan penerapan standar keamanan kriptografi pada layanan di",
        "url_preview": "/bukti-dukung/TataKelola_I1_01_Perbup-48-Arsitektur-SPBE_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "pendukung"
       },
       {
        "id": "B11.1",
@@ -1408,7 +1487,8 @@
         "Setdakab"
        ],
        "status": "belum",
-       "catatan": "50 ASN dilatih TTE + berita sosialisasi TTE ditemukan. Usulan BSrE perlu dokumen resmi"
+       "catatan": "50 ASN dilatih TTE + berita sosialisasi TTE ditemukan. Usulan BSrE perlu dokumen resmi",
+       "_peran": "utama"
       },
       {
        "id": "B11.2",
@@ -1420,7 +1500,8 @@
         "OPD Terkait"
        ],
        "status": "belum",
-       "catatan": "Berita Dukcapil gunakan TTE ditemukan + e-Kinerja punya TTE BSrE. Screenshot HTTPS perlu diverifikasi"
+       "catatan": "Berita Dukcapil gunakan TTE ditemukan + e-Kinerja punya TTE BSrE. Screenshot HTTPS perlu diverifikasi",
+       "_peran": "utama"
       },
       {
        "id": "P1.I11_1",
@@ -1430,15 +1511,16 @@
        "opd": [
         "Diskominfo"
        ],
-       "status": "belum",
-       "catatan": "Dokumen resmi — Ditemukan di Documents, belum diunggah ke portal. Bukti penerapan kriptografi/persandian.",
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Ditemukan di Documents, belum diunggah ke portal. Bukti penerapan kriptografi/persandian. ✅ Terverifikasi sesuai kriteria: Perbup No. 1/2025 Penataan Pola Hubungan Komunikasi Sandi — dasar penerapan kriptografi/persandian sesuai kriteria L1 I11",
        "url_preview": "/bukti-dukung/KeamananSiber_I11_03_Perbup-1-Penataan-Pola-Sandi_2025.pdf",
        "url_sumber": "/bukti-dukung/KeamananSiber_I11_03_Perbup-1-Penataan-Pola-Sandi_2025.pdf",
        "_ext": "pdf",
        "_dokumen_kunci": [
         22
        ],
-       "_sumber_baru": true
+       "_sumber_baru": true,
+       "_peran": "utama"
       },
       {
        "id": "P1.I11_2",
@@ -1448,15 +1530,16 @@
        "opd": [
         "Diskominfo"
        ],
-       "status": "belum",
-       "catatan": "Dokumen resmi — Ditemukan di Documents, belum diunggah ke portal. Bukti penerapan kriptografi.",
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Ditemukan di Documents, belum diunggah ke portal. Bukti penerapan kriptografi. ✅ Terverifikasi sesuai kriteria: Perbup No. 2/2025 Penyelenggaraan Persandian — dasar penerapan kriptografi sesuai kriteria L1 I11",
        "url_preview": "/bukti-dukung/KeamananSiber_I11_04_Perbup-2-Penyelenggaraan-Persandian_2025.pdf",
        "url_sumber": "/bukti-dukung/KeamananSiber_I11_04_Perbup-2-Penyelenggaraan-Persandian_2025.pdf",
        "_ext": "pdf",
        "_dokumen_kunci": [
         22
        ],
-       "_sumber_baru": true
+       "_sumber_baru": true,
+       "_peran": "utama"
       }
      ],
      "_l1_lengkap": true
@@ -1489,7 +1572,8 @@
        "catatan": "Dokumen resmi — Memuat penetapan kerangka penyiapan dan kapabilitas penangan",
        "url_preview": "/bukti-dukung/TataKelola_I1_01_Perbup-48-Arsitektur-SPBE_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "pendukung"
       },
       {
        "id": "B12.1",
@@ -1501,7 +1585,8 @@
         "Bagian Hukum"
        ],
        "status": "belum",
-       "catatan": "Situs csirt.acehtengahkab.go.id aktif, ada fungsi 'Lapor Insiden'. SK pembentukan perlu diminta resmi"
+       "catatan": "Situs csirt.acehtengahkab.go.id aktif, ada fungsi 'Lapor Insiden'. SK pembentukan perlu diminta resmi",
+       "_peran": "utama"
       },
       {
        "id": "B12.2",
@@ -1511,7 +1596,8 @@
        "opd": [
         "Diskominfo (Bidang Persandian)"
        ],
-       "status": "belum"
+       "status": "belum",
+       "_peran": "utama"
       },
       {
        "id": "B12.3",
@@ -1522,7 +1608,8 @@
         "Diskominfo (Tim CSIRT)"
        ],
        "status": "belum",
-       "catatan": "Situs CSIRT menyediakan kanal pelaporan insiden. Log/BA insiden perlu dokumen resmi"
+       "catatan": "Situs CSIRT menyediakan kanal pelaporan insiden. Log/BA insiden perlu dokumen resmi",
+       "_peran": "utama"
       }
      ],
      "_l1_lengkap": false
@@ -1570,7 +1657,8 @@
        "catatan": "Dokumen resmi — Regulasi yang menetapkan arsitektur dan pedoman siklus penge",
        "url_preview": "/bukti-dukung/TataKelola_I1_01_Perbup-48-Arsitektur-SPBE_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "pendukung"
       },
       {
        "id": "V1.I13_2",
@@ -1582,7 +1670,8 @@
        "catatan": "Dokumen resmi — Dasar kelembagaan pengampu kebijakan pengembangan aplikasi d",
        "url_preview": "/bukti-dukung/belum-lengkap/Penyelenggara_I3_02_Perbup-9-SOTK_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/af9a42bf-cea9-46c8-a739-9beb5d21e990",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "pendukung"
       },
       {
        "id": "V2.I13_3",
@@ -1594,7 +1683,8 @@
        "catatan": "Dokumen resmi — Acuan arsitektur aplikasi (Catatan: Dokumentasi teknis repos",
        "url_preview": "/bukti-dukung/TataKelola_I1_01_Perbup-48-Arsitektur-SPBE_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "pendukung"
       },
       {
        "id": "B13.1",
@@ -1605,7 +1695,8 @@
         "Diskominfo"
        ],
        "status": "belum",
-       "catatan": "SICANTIK (perizinan), e-Kinerja, Open Data, Satu Data teridentifikasi. Matriks lengkap perlu dari Diskominfo"
+       "catatan": "SICANTIK (perizinan), e-Kinerja, Open Data, Satu Data teridentifikasi. Matriks lengkap perlu dari Diskominfo",
+       "_peran": "utama"
       },
       {
        "id": "B13.2",
@@ -1616,7 +1707,8 @@
         "OPD Pengusul",
         "Diskominfo"
        ],
-       "status": "belum"
+       "status": "belum",
+       "_peran": "utama"
       },
       {
        "id": "B13.3",
@@ -1627,7 +1719,8 @@
         "Diskominfo"
        ],
        "status": "belum",
-       "catatan": "SICANTIK dan portal lain sudah live. SIAP Digital perlu screenshot"
+       "catatan": "SICANTIK dan portal lain sudah live. SIAP Digital perlu screenshot",
+       "_peran": "utama"
       },
       {
        "id": "B13.4",
@@ -1639,7 +1732,8 @@
         "OPD Pemilik Aplikasi",
         "Vendor"
        ],
-       "status": "belum"
+       "status": "belum",
+       "_peran": "utama"
       },
       {
        "id": "P1.I13_1",
@@ -1649,15 +1743,16 @@
        "opd": [
         "Diskominfo"
        ],
-       "status": "proses",
-       "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode TD_13_01). Bukti SDLC aplikasi pemerintah digital.",
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode TD_13_01). Bukti SDLC aplikasi pemerintah digital. ✅ Terverifikasi sesuai kriteria: KAK Pengembangan Aplikasi Bapokting 2026 — dokumentasi siklus pengembangan aplikasi (kriteria L1 I13 item 1)",
        "url_preview": "/bukti-dukung/belum-lengkap/Teknologi_I13_05_KAK-Aplikasi-Bapokting_2026.pdf",
        "url_sumber": "/bukti-dukung/belum-lengkap/Teknologi_I13_05_KAK-Aplikasi-Bapokting_2026.pdf",
        "_ext": "pdf",
        "_dokumen_kunci": [
         25
        ],
-       "_sumber_baru": true
+       "_sumber_baru": true,
+       "_peran": "utama"
       },
       {
        "id": "P1.I13_2",
@@ -1667,15 +1762,16 @@
        "opd": [
         "Diskominfo"
        ],
-       "status": "proses",
-       "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode TD_13_04). Bukti SDLC & dokumentasi aplikasi.",
+       "status": "lengkap",
+       "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode TD_13_04). Bukti SDLC & dokumentasi aplikasi. ✅ Terverifikasi sesuai kriteria: Laporan Akhir Pengembangan Aplikasi Bapokting 2026 — dokumentasi siklus pengembangan aplikasi (kriteria L1 I13 item 1)",
        "url_preview": "/bukti-dukung/belum-lengkap/Teknologi_I13_06_Laporan-Aplikasi-Bapokting_2026.pdf",
        "url_sumber": "/bukti-dukung/belum-lengkap/Teknologi_I13_06_Laporan-Aplikasi-Bapokting_2026.pdf",
        "_ext": "pdf",
        "_dokumen_kunci": [
         25
        ],
-       "_sumber_baru": true
+       "_sumber_baru": true,
+       "_peran": "utama"
       },
       {
        "id": "P1.I13_3",
@@ -1693,7 +1789,8 @@
        "_dokumen_kunci": [
         25
        ],
-       "_sumber_baru": true
+       "_sumber_baru": true,
+       "_peran": "pendukung"
       },
       {
        "id": "P1.I13_4",
@@ -1711,7 +1808,8 @@
        "_dokumen_kunci": [
         25
        ],
-       "_sumber_baru": true
+       "_sumber_baru": true,
+       "_peran": "pendukung"
       }
      ],
      "_l1_lengkap": false
@@ -1744,7 +1842,8 @@
        "catatan": "Dokumen resmi — Dasar hukum standar penyediaan dan pemanfaatan infrastruktur",
        "url_preview": "/bukti-dukung/TataKelola_I1_01_Perbup-48-Arsitektur-SPBE_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "utama"
       },
       {
        "id": "V2.I14_2",
@@ -1756,7 +1855,8 @@
        "catatan": "Dokumen resmi — Acuan kebijakan infrastruktur SPBE (Catatan: KIB server, NMS",
        "url_preview": "/bukti-dukung/TataKelola_I1_01_Perbup-48-Arsitektur-SPBE_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "utama"
       },
       {
        "id": "B14.1",
@@ -1768,7 +1868,8 @@
         "BPKD"
        ],
        "status": "belum",
-       "catatan": "Command Center, fiber optic, jaringan intra-pemerintah (APJII) ditemukan. KIB B/E perlu dari BPKD"
+       "catatan": "Command Center, fiber optic, jaringan intra-pemerintah (APJII) ditemukan. KIB B/E perlu dari BPKD",
+       "_peran": "utama"
       },
       {
        "id": "B14.2",
@@ -1779,7 +1880,8 @@
         "Diskominfo"
        ],
        "status": "belum",
-       "catatan": "Workshop infrastruktur SPBE dilaksanakan. Dashboard NMS perlu screenshot MikroTik/PRTG"
+       "catatan": "Workshop infrastruktur SPBE dilaksanakan. Dashboard NMS perlu screenshot MikroTik/PRTG",
+       "_peran": "utama"
       }
      ],
      "_l1_lengkap": false
@@ -1830,7 +1932,8 @@
        "catatan": "Dokumen resmi — Regulasi primer yang mengesahkan referensi keterpaduan prose",
        "url_preview": "/bukti-dukung/TataKelola_I1_01_Perbup-48-Arsitektur-SPBE_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "utama"
       },
       {
        "id": "V2.I15_2",
@@ -1842,7 +1945,8 @@
        "catatan": "Dokumen resmi — Menjadi referensi keterpaduan proses bisnis (Catatan: Flowch",
        "url_preview": "/bukti-dukung/TataKelola_I1_01_Perbup-48-Arsitektur-SPBE_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "utama"
       },
       {
        "id": "B15.1",
@@ -1854,7 +1958,8 @@
         "Diskominfo",
         "OPD Terkait"
        ],
-       "status": "belum"
+       "status": "belum",
+       "_peran": "utama"
       },
       {
        "id": "B15.2",
@@ -1865,7 +1970,8 @@
         "Bagian Organisasi",
         "Diskominfo"
        ],
-       "status": "belum"
+       "status": "belum",
+       "_peran": "utama"
       }
      ],
      "_l1_lengkap": true
@@ -1898,7 +2004,8 @@
        "catatan": "Dokumen resmi — Menetapkan kebijakan integrasi aplikasi antar instansi untuk",
        "url_preview": "/bukti-dukung/TataKelola_I1_01_Perbup-48-Arsitektur-SPBE_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "utama"
       },
       {
        "id": "V2.I16_2",
@@ -1910,7 +2017,8 @@
        "catatan": "Dokumen resmi — Acuan integrasi aplikasi (Catatan: Dokumentasi API teknis, S",
        "url_preview": "/bukti-dukung/TataKelola_I1_01_Perbup-48-Arsitektur-SPBE_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "utama"
       },
       {
        "id": "B16.1",
@@ -1922,7 +2030,8 @@
         "OPD Terkait"
        ],
        "status": "belum",
-       "catatan": "PKS E-Keurani menunjukkan inisiatif integrasi. BA rapat/API perlu dokumen teknis"
+       "catatan": "PKS E-Keurani menunjukkan inisiatif integrasi. BA rapat/API perlu dokumen teknis",
+       "_peran": "utama"
       },
       {
        "id": "B16.2",
@@ -1932,7 +2041,8 @@
        "opd": [
         "Diskominfo"
        ],
-       "status": "belum"
+       "status": "belum",
+       "_peran": "utama"
       }
      ],
      "_l1_lengkap": true
@@ -1965,7 +2075,8 @@
        "catatan": "Dokumen resmi — Dasar hukum integrasi layanan publik dalam satu pintu (Mal P",
        "url_preview": "/bukti-dukung/Keterpaduan_I17_01_Perbup-30-Penyelenggaraan_2022.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/407b38e8-5363-4b1a-bd3f-66c637164394",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "pendukung"
       },
       {
        "id": "V1.I17_2",
@@ -1977,7 +2088,8 @@
        "catatan": "Dokumen resmi — Menetapkan standar integrasi layanan publik dan administrasi",
        "url_preview": "/bukti-dukung/TataKelola_I1_01_Perbup-48-Arsitektur-SPBE_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "pendukung"
       },
       {
        "id": "V2.I17_3",
@@ -1989,7 +2101,8 @@
        "catatan": "Dokumen resmi — Membuktikan ketersediaan regulasi dan penyelenggaraan layana",
        "url_preview": "/bukti-dukung/Keterpaduan_I17_01_Perbup-30-Penyelenggaraan_2022.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/407b38e8-5363-4b1a-bd3f-66c637164394",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "pendukung"
       },
       {
        "id": "V2.I17_4",
@@ -2001,7 +2114,8 @@
        "catatan": "Dokumen resmi — Bukti penerapan layanan digital sektor administrasi kependud",
        "url_preview": "/bukti-dukung/TataKelola_I2_02_Perbup-73-Pelayanan_2020.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/2a0b0c2f-d693-4a15-9e7f-b42d7ab081eb",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "pendukung"
       },
       {
        "id": "B17.1",
@@ -2012,7 +2126,8 @@
         "Diskominfo"
        ],
        "status": "belum",
-       "catatan": "Portal utama acehtengahkab.go.id + SICANTIK + Open Data aktif. Perlu screenshot bertanggal"
+       "catatan": "Portal utama acehtengahkab.go.id + SICANTIK + Open Data aktif. Perlu screenshot bertanggal",
+       "_peran": "utama"
       },
       {
        "id": "B17.2",
@@ -2024,7 +2139,56 @@
         "Bagian Hukum"
        ],
        "status": "belum",
-       "catatan": "Perbup portal tunggal belum ditemukan"
+       "catatan": "Perbup portal tunggal belum ditemukan",
+       "_peran": "utama"
+      },
+      {
+       "id": "P1.I17_1",
+       "level": 1,
+       "nama": "Portal Layanan Digital Pemerintah Kab. Aceh Tengah (acehtengahkab.go.id)",
+       "detail": "URL portal resmi pemerintah daerah — pintu akses layanan digital",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "lengkap",
+       "catatan": "Portal layanan digital daerah (acehtengahkab.go.id) — sesuai kriteria L1 I17 'Portal Layanan Digital Pemerintah pada Instansi Pemerintah'.",
+       "url_preview": "https://acehtengahkab.go.id",
+       "url_sumber": "https://acehtengahkab.go.id",
+       "_ext": "url",
+       "_peran": "utama",
+       "_sumber_baru": true
+      },
+      {
+       "id": "P1.I17_2",
+       "level": 1,
+       "nama": "Screenshot Portal Layanan Digital Pemerintah Daerah",
+       "detail": "Tangkapan layar portal digital Pemkab Aceh Tengah (pemdi-aceh-tengah.vercel.app) — 25 layanan terpadu, 52 perangkat daerah",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "lengkap",
+       "catatan": "Screenshot portal layanan digital daerah — bukti nyata keberadaan portal (kriteria L1 I17).",
+       "url_preview": "/bukti-dukung/Keterpaduan_I17_02_Screenshot-Portal_2026.png",
+       "url_sumber": "/bukti-dukung/Keterpaduan_I17_02_Screenshot-Portal_2026.png",
+       "_ext": "png",
+       "_peran": "utama",
+       "_sumber_baru": true
+      },
+      {
+       "id": "P1.I17_3",
+       "level": 1,
+       "nama": "Daftar Layanan Digital Pemerintah pada Portal",
+       "detail": "Direktori 25 layanan publik (7 sektor, 52 PD) dengan SLA di portal digital Pemkab",
+       "opd": [
+        "Diskominfo"
+       ],
+       "status": "lengkap",
+       "catatan": "Daftar layanan digital yang tersedia di portal — sesuai panduan modul L1 I17 'daftar layanan yang tersedia di portal'.",
+       "url_preview": "/bukti-dukung/Keterpaduan_I17_03_Daftar-Layanan-Portal_2026.png",
+       "url_sumber": "/bukti-dukung/Keterpaduan_I17_03_Daftar-Layanan-Portal_2026.png",
+       "_ext": "png",
+       "_peran": "utama",
+       "_sumber_baru": true
       }
      ],
      "_l1_lengkap": true
@@ -2058,7 +2222,8 @@
        "catatan": "Dokumen resmi — Dasar hukum utama interoperabilitas data, standar data, meta",
        "url_preview": "/bukti-dukung/Data_I5_01_Perbup-60-Satu-Data_2022.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/d9671249-08cc-4e6c-87f0-aa04f8ada75c",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "utama"
       },
       {
        "id": "V1.I18_2",
@@ -2070,7 +2235,8 @@
        "catatan": "Dokumen resmi — Regulasi yang menetapkan arsitektur data pemerintah digital ",
        "url_preview": "/bukti-dukung/TataKelola_I1_01_Perbup-48-Arsitektur-SPBE_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "utama"
       },
       {
        "id": "V2.I18_3",
@@ -2082,7 +2248,8 @@
        "catatan": "Dokumen resmi — Membuktikan pelaksanaan kebijakan berbagi pakai data daerah ",
        "url_preview": "/bukti-dukung/Data_I5_01_Perbup-60-Satu-Data_2022.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/d9671249-08cc-4e6c-87f0-aa04f8ada75c",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "utama"
       },
       {
        "id": "B18.1",
@@ -2094,7 +2261,8 @@
         "Bappeda"
        ],
        "status": "belum",
-       "catatan": "Portal Open Data 852 datasets, 61 organisasi aktif. Arsitektur data SIAP perlu screenshot"
+       "catatan": "Portal Open Data 852 datasets, 61 organisasi aktif. Arsitektur data SIAP perlu screenshot",
+       "_peran": "utama"
       },
       {
        "id": "B18.2",
@@ -2105,7 +2273,8 @@
         "Diskominfo",
         "OPD Produsen Data"
        ],
-       "status": "belum"
+       "status": "belum",
+       "_peran": "utama"
       }
      ],
      "_l1_lengkap": true
@@ -2156,7 +2325,8 @@
        "catatan": "Dokumen resmi — Dasar hukum pengelolaan pengaduan publik, service desk, dan ",
        "url_preview": "/bukti-dukung/belum-lengkap/Kepuasan_I19_01_Perbup-21-Pedoman_2021.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/d0d9a4c9-089f-4e69-ad24-24b101057b62",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "utama"
       },
       {
        "id": "V1.I19_2",
@@ -2168,7 +2338,8 @@
        "catatan": "Dokumen resmi — Dasar hukum standar operasional prosedur (SOP) dan Service L",
        "url_preview": "/bukti-dukung/TataKelola_I2_01_Perbup-126-Standar-Pelayanan_2019.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/e8187833-5111-4436-be42-68dfd5d80b76",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "pendukung"
       },
       {
        "id": "V2.I19_3",
@@ -2180,7 +2351,8 @@
        "catatan": "Dokumen resmi — Memenuhi kondisi pelaksanaan sistem penanganan pengaduan onl",
        "url_preview": "/bukti-dukung/belum-lengkap/Kepuasan_I19_01_Perbup-21-Pedoman_2021.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/d0d9a4c9-089f-4e69-ad24-24b101057b62",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "utama"
       },
       {
        "id": "V2.I19_4",
@@ -2192,7 +2364,8 @@
        "catatan": "Dokumen resmi — Bukti aktif tahun 2026 pengelolaan umpan balik pengguna dan ",
        "url_preview": "/bukti-dukung/belum-lengkap/Kepuasan_I19_06_Hasil-Survei-Kepuasan_2026.xlsx",
        "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/hasil-survei-kepuasan-masyarakat-di-kabupaten-aceh-tengah-bulan-januari-mei-tahun-2026",
-       "_ext": "xlsx"
+       "_ext": "xlsx",
+       "_peran": "pendukung"
       },
       {
        "id": "B19.1",
@@ -2202,7 +2375,8 @@
        "opd": [
         "Diskominfo"
        ],
-       "status": "belum"
+       "status": "belum",
+       "_peran": "utama"
       },
       {
        "id": "B19.2",
@@ -2214,7 +2388,8 @@
         "Humas Setdakab"
        ],
        "status": "belum",
-       "catatan": "SP4N-LAPOR: pendampingan ke seluruh kecamatan, pelatihan OPD/puskesmas/BUMD 2024, penghargaan KemenPANRB 2023"
+       "catatan": "SP4N-LAPOR: pendampingan ke seluruh kecamatan, pelatihan OPD/puskesmas/BUMD 2024, penghargaan KemenPANRB 2023",
+       "_peran": "utama"
       },
       {
        "id": "B19.3",
@@ -2226,7 +2401,8 @@
         "Bagian Organisasi"
        ],
        "status": "belum",
-       "catatan": "Pedoman Pengaduan RSUD (PDF) + sistem SP4N-LAPOR aktif. SOP resmi perlu dari Diskominfo/Bag. Organisasi"
+       "catatan": "Pedoman Pengaduan RSUD (PDF) + sistem SP4N-LAPOR aktif. SOP resmi perlu dari Diskominfo/Bag. Organisasi",
+       "_peran": "utama"
       },
       {
        "id": "B19.4",
@@ -2237,7 +2413,8 @@
         "Diskominfo"
        ],
        "status": "belum",
-       "catatan": "SP4N-LAPOR punya dashboard tiket. Ticketing internal Pemkab perlu screenshot"
+       "catatan": "SP4N-LAPOR punya dashboard tiket. Ticketing internal Pemkab perlu screenshot",
+       "_peran": "utama"
       }
      ],
      "_l1_lengkap": false
@@ -2271,7 +2448,8 @@
        "catatan": "Dokumen resmi — Bukti primer pelaksanaan survei kepuasan masyarakat (SKM) te",
        "url_preview": "/bukti-dukung/belum-lengkap/Kepuasan_I19_06_Hasil-Survei-Kepuasan_2026.xlsx",
        "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/hasil-survei-kepuasan-masyarakat-di-kabupaten-aceh-tengah-bulan-januari-mei-tahun-2026",
-       "_ext": "xlsx"
+       "_ext": "xlsx",
+       "_peran": "utama"
       },
       {
        "id": "V1.I20_2",
@@ -2283,7 +2461,8 @@
        "catatan": "Dokumen resmi — Laporan lengkap survei kepuasan masyarakat pada unit pelayan",
        "url_preview": "/bukti-dukung/Kepuasan_I20_02_SKM-Kebayakan_2025.pdf",
        "url_sumber": "https://raw.githubusercontent.com/Niumination/PemdiAcehTengah/main/public/bukti-dukung/Kepuasan_I20_02_SKM-Kebayakan_2025.pdf",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "_peran": "utama"
       },
       {
        "id": "V2.I20_3",
@@ -2295,7 +2474,8 @@
        "catatan": "Dokumen resmi — Bukti pengolahan dan publikasi hasil survei kepuasan masyara",
        "url_preview": "/bukti-dukung/belum-lengkap/Kepuasan_I19_06_Hasil-Survei-Kepuasan_2026.xlsx",
        "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/hasil-survei-kepuasan-masyarakat-di-kabupaten-aceh-tengah-bulan-januari-mei-tahun-2026",
-       "_ext": "xlsx"
+       "_ext": "xlsx",
+       "_peran": "utama"
       },
       {
        "id": "B20.1",
@@ -2309,7 +2489,8 @@
         "OPD Pelayanan"
        ],
        "status": "belum",
-       "catatan": "SKM Dukcapil 2024: nilai 96,17, 100 responden, 9 unsur. SKM Kebayakan 2025 (periode Jan-Jun). Sosialisasi SKM 2024 dilaksanakan"
+       "catatan": "SKM Dukcapil 2024: nilai 96,17, 100 responden, 9 unsur. SKM Kebayakan 2025 (periode Jan-Jun). Sosialisasi SKM 2024 dilaksanakan",
+       "_peran": "utama"
       },
       {
        "id": "B20.2",
@@ -2320,7 +2501,8 @@
         "OPD Pelayanan Terkait"
        ],
        "status": "belum",
-       "catatan": "Sosialisasi SKM 2024 dilakukan. Notulensi dengan kelompok rentan perlu verifikasi"
+       "catatan": "Sosialisasi SKM 2024 dilakukan. Notulensi dengan kelompok rentan perlu verifikasi",
+       "_peran": "utama"
       },
       {
        "id": "B20.3",
@@ -2331,7 +2513,8 @@
         "Diskominfo",
         "OPD Pelayanan"
        ],
-       "status": "belum"
+       "status": "belum",
+       "_peran": "utama"
       },
       {
        "id": "B20.4",
@@ -2341,7 +2524,8 @@
        "opd": [
         "OPD Pelayanan Terkait"
        ],
-       "status": "belum"
+       "status": "belum",
+       "_peran": "utama"
       }
      ],
      "_l1_lengkap": true

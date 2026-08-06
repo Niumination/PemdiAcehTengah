@@ -735,6 +735,15 @@ export default function ModulIndikatorPage() {
                                     </td>
                                     <td style={{ ...tdStyle, fontWeight: 500 }}>
                                       {bd.nama}
+                                      {bd._peran === 'pendukung' && (
+                                        <span style={{
+                                          display: 'inline-block', marginLeft: '0.4rem', padding: '0.1rem 0.4rem',
+                                          borderRadius: '4px', background: 'var(--surface-2)', color: 'var(--muted)',
+                                          border: '1px solid var(--border)', fontSize: '0.62rem', fontWeight: 600, verticalAlign: 'middle',
+                                        }} title="Dokumen penunjang (perbup/SK umum) — mendukung bukti utama, tidak dihitung untuk kelengkapan level">
+                                          🔹 Pendukung
+                                        </span>
+                                      )}
                                       {isDup && (
                                         <span style={{
                                           display: 'inline-block', marginLeft: '0.4rem', padding: '0.1rem 0.4rem',
