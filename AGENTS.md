@@ -209,3 +209,17 @@ Commit terbaru ada 3, **semua di branch `fix/full-audit-award-redesign`** (belum
 | `public/bukti-dukung/` | **Di-flatten**: 8 subfolder (00-manifest s/d 07-eksternal) dihapus — semua 39 file langsung di root `public/bukti-dukung/`. 2 file portal hilang (`TD_13_02`/`TD_13_05` DPA) disalin dari `~/Documents/REAL-PEMDI-DATA DUKUNG/`. |
 | `public/bukti-dukung/*` | **Rename 39 file** → format `Aspek_I#_NoUrut_Nama_Tahun.ext` (Aspek disingkat: TataKelola/Penyelenggara/Data/KeamananSiber/Teknologi/Keterpaduan/Kepuasan; NoUrut = urutan item per indikator level 1→5; Nama disingkat; Tahun = tahun dokumen). Contoh: `TataKelola_I1_01_Perbup-48-Arsitektur-SPBE_2025.pdf`. Script: `scripts/rename-bukti-dukung.py` (re-run aman). |
 | `data/pemdi.json` | **103 referensi path** (`url_preview`/`url_sumber`, termasuk raw GitHub) di-update ke nama baru. Backup: `pemdi.json.bak-rename`. |
+
+## 🧹 Update Data — 6 Agu 2026 (Kelengkapan Level 1 — Aturan Penilaian Berjenjang)
+
+Aturan penilaian Pemdi: **jika Level 1 tidak lengkap, Level 2 ke atas TIDAK dinilai**. L1 lengkap = semua item `level_kriteria[L1]` (modul-indikator.json) terpenuhi bukti status `lengkap` (pemdi.json).
+
+| Item | Perubahan |
+|------|-----------|
+| `public/bukti-dukung/belum-lengkap/` | **Folder baru** — 13 file bukti indikator yang L1 belum lengkap dipindah ke sini (I3: Literasi Digital, Perbup 9 SOTK; I4: Perbup 70; I8: Perbup 6, Indeks KAMI x2, Perbup 137; I13: KAK/Laporan/DPA Bapokting x4; I19: Perbup 21, Hasil SKM). 26 file indikator L1 lengkap tetap di root. |
+| `data/pemdi.json` | **7 indikator ditandai `_l1_lengkap: false`** (I3, I4, I8, I12, I13, I14, I19) — sisanya `true`. Referensi 13 file pindah → `bukti-dukung/belum-lengkap/`. |
+| `pages/modul-indikator.js` | Indikator `_l1_lengkap: false` → badge gembok "L1 Belum Lengkap", bukti disembunyikan (tabel Kondisi Existing diganti notice), tabel Bukti Dukung Baru di-filter, statistik header hanya hitung bukti tampil (**85/177**, gap 92), tab "Perlu Dikerjakan" tetap menampilkan indikator hidden. |
+| `pages/pemdi.js` | Sama: badge + notice + grid bukti per level diganti notice + rekomendasi tunggal "lengkapi L1". |
+| `scripts/pisah-belum-lengkap.py` | Script kelengkapan L1 → pindah file + flag data (re-run aman). |
+
+> Indikator eksternal (I5/I6/I7/I18 — nilai otomatis sistem nasional, 0 item modul) otomatis dianggap lengkap dan tetap tampil. I12/I14 tidak punya file primary (bukti = Perbup 48 milik I1) — file tetap di root, hanya entri UI yang disembunyikan. Contoh bukti di kartu level modul (panduan, bukan tabel penilaian) tetap tampil.

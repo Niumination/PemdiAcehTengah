@@ -19,6 +19,18 @@ function cariIndikator(id) {
   return null;
 }
 
+// Jumlah item L1 terpenuhi vs total (untuk notice indikator belum-lengkap)
+function hitungStatusL1(indId) {
+  const ind = cariIndikator(indId);
+  if (!ind) return '0 item';
+  const l1 = (ind.bukti_dukung || []).filter(b => b.level === 1);
+  const lkp = l1.filter(b => b.status === 'lengkap').length;
+  const items = moduls.modules
+    .find(x => x.indikator_id === indId)?.level_kriteria
+    ?.find(lk => lk.level === 1)?.bukti_dukung?.length || 0;
+  return `${lkp}/${items} item Level 1 terpenuhi`;
+}
+
 const STATUS_META = {
   belum:   { icon: '⬜', label: 'Belum',     color: 'var(--muted)', bg: 'var(--surface-2)' },
   proses:  { icon: '🔄', label: 'Proses',    color: 'var(--warn)', bg: 'var(--warn-bg)' },
@@ -31,6 +43,10 @@ const LEVEL_WARNA = { 0: '#9ca3af', 1: '#ef4444', 2: '#f59e0b', 3: '#3b82f6', 4:
 function hitungStatus(ind) {
   if (!ind?.bukti_dukung) return { count: 0, lengkap: 0, proses: 0, belum: 0 };
   const bd = ind.bukti_dukung;
+  // Aturan penilaian: L1 tidak lengkap → L2 tidak dinilai → bukti disembunyikan
+  if (ind._l1_lengkap === false) {
+    return { count: 0, lengkap: 0, proses: 0, belum: 0, hidden: true, hiddenCount: bd.length };
+  }
   return {
     count: bd.length,
     lengkap: bd.filter(b => b.status === 'lengkap').length,
@@ -122,6 +138,7 @@ function getBuktiBaru() {
   const out = [];
   for (const a of pemdiData.aspek) {
     for (const ind of a.indikator) {
+      if (ind._l1_lengkap === false) continue; // L1 belum lengkap → sembunyikan
       for (const b of ind.bukti_dukung || []) {
         if (b._sumber_baru) {
           out.push({ ...b, _indikator: ind.id, _namaIndikator: ind.nama });
@@ -306,7 +323,7 @@ export default function ModulIndikatorPage() {
         m.indikator_id?.toLowerCase().includes(q)
       );
     }
-    if (tabFilter === 'perlu') list = list.filter(m => m.status.belum > 0 || m.status.proses > 0);
+    if (tabFilter === 'perlu') list = list.filter(m => m.status.hidden || m.status.belum > 0 || m.status.proses > 0);
     if (tabFilter === 'selesai') list = list.filter(m => m.status.lengkap === m.status.count && m.status.count > 0);
     return list;
   }, [merged, aspekFilter, levelFilter, cari, tabFilter]);
@@ -454,10 +471,24 @@ export default function ModulIndikatorPage() {
                           fontSize: '0.65rem', padding: '0.15rem 0.4rem', borderRadius: '4px',
                           background: `${w}15`, color: w, fontWeight: 600,
                         }}>{modul.aspek?.replace('Aspek ', 'A')}</span>
+                        {modul.status.hidden && (
+                          <span style={{
+                            fontSize: '0.65rem', padding: '0.15rem 0.4rem', borderRadius: '4px',
+                            background: '#ef44441a', color: '#ef4444', fontWeight: 600,
+                          }} title="Level 1 belum lengkap — aturan penilaian: L2 tidak dinilai jika L1 tidak lengkap">
+                            🔒 L1 Belum Lengkap
+                          </span>
+                        )}
                       </div>
 
                       {/* Progress bar */}
-                      {modul.status.count > 0 && (
+                      {modul.status.hidden ? (
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.3rem' }}>
+                          <span style={{ fontSize: '0.72rem', color: '#ef4444' }}>
+                            🔒 {modul.status.hiddenCount} bukti disembunyikan — lengkapi item Level 1 dulu
+                          </span>
+                        </div>
+                      ) : modul.status.count > 0 && (
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.3rem' }}>
                           <div style={{
                             flex: 1, height: '4px', borderRadius: '2px',
@@ -615,7 +646,18 @@ export default function ModulIndikatorPage() {
                       )}
 
                       {/* ════ Current Evidence Status — validated by PemdiArena ════ */}
-                      {modul.ind?.bukti_dukung?.length > 0 && (
+                      {modul.status.hidden ? (
+                        <div style={{
+                          marginTop: '1rem', padding: '0.75rem', borderRadius: '8px',
+                          background: '#ef44440d', border: '1px dashed #ef4444',
+                          fontSize: '0.8rem', color: '#ef4444',
+                        }}>
+                          🔒 <strong>Bukti dukung disembunyikan sementara</strong> — Level 1 belum lengkap
+                          ({modul.status.hiddenCount} bukti di folder <code>belum-lengkap/</code>).
+                          Aturan penilaian: jika Level 1 tidak lengkap, Level 2 ke atas tidak dinilai.
+                          Lengkapi seluruh item Level 1 ({hitungStatusL1(modul.indikator_id)}) untuk menampilkan kembali bukti.
+                        </div>
+                      ) : modul.ind?.bukti_dukung?.length > 0 && (
                         <div style={{ marginTop: '1rem' }}>
                           {modul.status.lengkap === 0 && modul.status.count > 0 && (
                             <div style={{

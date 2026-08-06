@@ -34,6 +34,10 @@ function getPredikat(nilai) {
 function hitungStatusInd(ind) {
   if (!ind?.bukti_dukung) return { count: 0, lengkap: 0, proses: 0, belum: 0 };
   const bd = ind.bukti_dukung;
+  // Aturan penilaian: L1 tidak lengkap → L2 tidak dinilai → bukti disembunyikan
+  if (ind._l1_lengkap === false) {
+    return { count: 0, lengkap: 0, proses: 0, belum: 0, hidden: true, hiddenCount: bd.length };
+  }
   return {
     count: bd.length,
     lengkap: bd.filter(b => b.status === 'lengkap').length,
@@ -66,6 +70,15 @@ function rekomendasiInd(ind, kriteriaFn) {
   const st = hitungStatusInd(ind);
   const nilai = ind.nilai || 0;
   const target = ind.target || 0;
+
+  // L1 belum lengkap → prioritas tunggal: lengkapi L1
+  if (ind._l1_lengkap === false) {
+    reco.push({
+      icon: '🔒',
+      teks: 'Level 1 belum lengkap — Level 2 ke atas tidak dinilai. Lengkapi seluruh item bukti Level 1 terlebih dahulu.',
+    });
+    return reco;
+  }
 
   // 1. Level berikutnya untuk naik nilai
   if (nilai < 5) {
@@ -328,6 +341,11 @@ export default function PemdiPage() {
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
                         <span className="badge badge-blue">{ind.id}</span>
                         <strong style={{ fontSize: '0.92rem', color: 'var(--text)' }}>{ind.nama}</strong>
+                        {st.hidden && (
+                          <span className="badge" style={{ background: '#ef44441a', color: '#ef4444', border: '1px solid #ef4444', fontSize: '0.68rem' }}>
+                            🔒 L1 Belum Lengkap
+                          </span>
+                        )}
                       </div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
                         <span style={{ fontWeight: 800, fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--primary)' }}>
@@ -343,6 +361,13 @@ export default function PemdiPage() {
                     </div>
 
                     {/* Checklist per level */}
+                    {st.hidden ? (
+                      <div style={{ padding: '10px 12px', borderRadius: '8px', background: '#ef44440d', border: '1px dashed #ef4444', marginBottom: '12px', fontSize: '0.74rem', color: '#ef4444', lineHeight: 1.5 }}>
+                        🔒 Bukti dukung disembunyikan — {st.hiddenCount} bukti dipindah ke folder <code>belum-lengkap/</code>.
+                        Aturan penilaian: jika Level 1 tidak lengkap, Level 2 ke atas tidak dinilai.
+                        Lengkapi seluruh item Level 1 untuk menampilkan kembali.
+                      </div>
+                    ) : (
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))', gap: '10px', marginBottom: '12px' }}>
                       {buktiPerLevel.map(({ level, items }) => (
                         <div key={level} style={{ padding: '10px', borderRadius: '8px', background: 'var(--surface-2)', border: '1px solid var(--line)' }}>
@@ -384,6 +409,7 @@ export default function PemdiPage() {
                         </div>
                       ))}
                     </div>
+                    )}
 
                     {/* Rekomendasi */}
                     <div style={{ padding: '10px 12px', borderRadius: '8px', background: 'var(--warn-bg)', border: '1px solid var(--warn)', marginBottom: '12px' }}>

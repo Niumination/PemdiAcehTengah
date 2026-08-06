@@ -384,7 +384,8 @@
        "_dokumen_kunci": [],
        "_sumber_baru": true
       }
-     ]
+     ],
+     "_l1_lengkap": true
     },
     {
      "id": "I2",
@@ -475,7 +476,8 @@
        "status": "belum",
        "catatan": "Pedoman Pengaduan RSUD ditemukan (PDF). Perlu bukti penerapan digital"
       }
-     ]
+     ],
+     "_l1_lengkap": true
     }
    ],
    "item_aktual": 14,
@@ -521,7 +523,7 @@
        ],
        "status": "lengkap",
        "catatan": "Dokumen resmi — Dokumen primer survei, identifikasi, dan pemetaan tingkat ko",
-       "url_preview": "/bukti-dukung/Penyelenggara_I3_01_Literasi-Digital-2023_2023.pdf",
+       "url_preview": "/bukti-dukung/belum-lengkap/Penyelenggara_I3_01_Literasi-Digital-2023_2023.pdf",
        "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/literasi-digital-sektor-pemerintahan-2023",
        "_ext": "pdf"
       },
@@ -535,7 +537,7 @@
        ],
        "status": "lengkap",
        "catatan": "Dokumen resmi — Penetapan struktur dan tugas kelembagaan untuk penyiapan dan",
-       "url_preview": "/bukti-dukung/Penyelenggara_I3_02_Perbup-9-SOTK_2025.pdf",
+       "url_preview": "/bukti-dukung/belum-lengkap/Penyelenggara_I3_02_Perbup-9-SOTK_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/af9a42bf-cea9-46c8-a739-9beb5d21e990",
        "_ext": "pdf"
       },
@@ -549,7 +551,7 @@
        ],
        "status": "lengkap",
        "catatan": "Dokumen resmi — Memuat analisis mendalam berupa grafik, tabel statistik, ser",
-       "url_preview": "/bukti-dukung/Penyelenggara_I3_01_Literasi-Digital-2023_2023.pdf",
+       "url_preview": "/bukti-dukung/belum-lengkap/Penyelenggara_I3_01_Literasi-Digital-2023_2023.pdf",
        "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/literasi-digital-sektor-pemerintahan-2023",
        "_ext": "pdf"
       },
@@ -609,7 +611,8 @@
        ],
        "status": "belum"
       }
-     ]
+     ],
+     "_l1_lengkap": false
     },
     {
      "id": "I4",
@@ -638,7 +641,7 @@
        "opd": [],
        "status": "lengkap",
        "catatan": "Dokumen resmi — Regulasi primer yang mengamanatkan pembentukan Tim Koordinas",
-       "url_preview": "/bukti-dukung/Penyelenggara_I4_01_Perbup-70-Pedoman-SPBE_2019.pdf",
+       "url_preview": "/bukti-dukung/belum-lengkap/Penyelenggara_I4_01_Perbup-70-Pedoman-SPBE_2019.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/edee8e80-8f98-4038-b694-48706c86448a",
        "_ext": "pdf"
       },
@@ -737,7 +740,8 @@
        ],
        "_sumber_baru": true
       }
-     ]
+     ],
+     "_l1_lengkap": false
     }
    ],
    "item_aktual": 14,
@@ -865,7 +869,8 @@
        ],
        "_sumber_baru": true
       }
-     ]
+     ],
+     "_l1_lengkap": true
     },
     {
      "id": "I6",
@@ -953,7 +958,8 @@
        ],
        "status": "belum"
       }
-     ]
+     ],
+     "_l1_lengkap": true
     },
     {
      "id": "I7",
@@ -1050,7 +1056,8 @@
        ],
        "_sumber_baru": true
       }
-     ]
+     ],
+     "_l1_lengkap": true
     },
     {
      "id": "I8",
@@ -1079,7 +1086,7 @@
        "opd": [],
        "status": "lengkap",
        "catatan": "Dokumen resmi — Menetapkan regulasi klasifikasi keamanan arsip, pembatasan a",
-       "url_preview": "/bukti-dukung/Data_I8_01_Perbup-6-Sistem-Pemdi_2025.pdf",
+       "url_preview": "/bukti-dukung/belum-lengkap/Data_I8_01_Perbup-6-Sistem-Pemdi_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/ade79cb3-cb2b-4b8e-bf31-b35ddeded969",
        "_ext": "pdf"
       },
@@ -1103,7 +1110,7 @@
        "opd": [],
        "status": "lengkap",
        "catatan": "Dokumen resmi — Bukti penerapan prosedur pelindungan kerahasiaan data pada s",
-       "url_preview": "/bukti-dukung/Data_I8_01_Perbup-6-Sistem-Pemdi_2025.pdf",
+       "url_preview": "/bukti-dukung/belum-lengkap/Data_I8_01_Perbup-6-Sistem-Pemdi_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/ade79cb3-cb2b-4b8e-bf31-b35ddeded969",
        "_ext": "pdf"
       },
@@ -1115,7 +1122,7 @@
        "opd": [],
        "status": "lengkap",
        "catatan": "Dokumen resmi — Menetapkan prosedur pelindungan data pribadi dan informasi y",
-       "url_preview": "/bukti-dukung/Data_I8_06_Perbup-137-Penyelenggaraan_2019.pdf",
+       "url_preview": "/bukti-dukung/belum-lengkap/Data_I8_06_Perbup-137-Penyelenggaraan_2019.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/6cd5c436-d64e-4068-bb08-2e0526d87cb5",
        "_ext": "pdf"
       },
@@ -1163,15 +1170,16 @@
        ],
        "status": "belum",
        "catatan": "Data resmi — Ditemukan di Documents, belum diunggah ke portal. Evaluasi PDP bagian dari Indeks KAMI.",
-       "url_preview": "/bukti-dukung/Data_I8_04_Indeks-KAMI-5.0-Preview_2026.png",
-       "url_sumber": "/bukti-dukung/Data_I8_04_Indeks-KAMI-5.0_2026.xlsx",
+       "url_preview": "/bukti-dukung/belum-lengkap/Data_I8_04_Indeks-KAMI-5.0-Preview_2026.png",
+       "url_sumber": "/bukti-dukung/belum-lengkap/Data_I8_04_Indeks-KAMI-5.0_2026.xlsx",
        "_ext": "png",
        "_dokumen_kunci": [
         17
        ],
        "_sumber_baru": true
       }
-     ]
+     ],
+     "_l1_lengkap": false
     }
    ],
    "item_aktual": 24,
@@ -1251,7 +1259,8 @@
        ],
        "status": "belum"
       }
-     ]
+     ],
+     "_l1_lengkap": true
     },
     {
      "id": "I10",
@@ -1279,7 +1288,7 @@
        "opd": [],
        "status": "lengkap",
        "catatan": "Dokumen resmi — Memenuhi kriteria tata kelola dan manajemen keamanan informa",
-       "url_preview": "/bukti-dukung/Data_I8_01_Perbup-6-Sistem-Pemdi_2025.pdf",
+       "url_preview": "/bukti-dukung/belum-lengkap/Data_I8_01_Perbup-6-Sistem-Pemdi_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/ade79cb3-cb2b-4b8e-bf31-b35ddeded969",
        "_ext": "pdf"
       },
@@ -1303,7 +1312,7 @@
        "opd": [],
        "status": "lengkap",
        "catatan": "Dokumen resmi — Bukti regulasi penerapan tata kelola keamanan informasi daer",
-       "url_preview": "/bukti-dukung/Data_I8_01_Perbup-6-Sistem-Pemdi_2025.pdf",
+       "url_preview": "/bukti-dukung/belum-lengkap/Data_I8_01_Perbup-6-Sistem-Pemdi_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/ade79cb3-cb2b-4b8e-bf31-b35ddeded969",
        "_ext": "pdf"
       },
@@ -1337,15 +1346,16 @@
        ],
        "status": "belum",
        "catatan": "Data resmi — Ditemukan di Documents, belum diunggah ke portal. Padanan IKASANDI untuk keamanan siber.",
-       "url_preview": "/bukti-dukung/Data_I8_04_Indeks-KAMI-5.0-Preview_2026.png",
-       "url_sumber": "/bukti-dukung/Data_I8_04_Indeks-KAMI-5.0_2026.xlsx",
+       "url_preview": "/bukti-dukung/belum-lengkap/Data_I8_04_Indeks-KAMI-5.0-Preview_2026.png",
+       "url_sumber": "/bukti-dukung/belum-lengkap/Data_I8_04_Indeks-KAMI-5.0_2026.xlsx",
        "_ext": "png",
        "_dokumen_kunci": [
         20
        ],
        "_sumber_baru": true
       }
-     ]
+     ],
+     "_l1_lengkap": true
     },
     {
      "id": "I11",
@@ -1448,7 +1458,8 @@
        ],
        "_sumber_baru": true
       }
-     ]
+     ],
+     "_l1_lengkap": true
     },
     {
      "id": "I12",
@@ -1513,7 +1524,8 @@
        "status": "belum",
        "catatan": "Situs CSIRT menyediakan kanal pelaporan insiden. Log/BA insiden perlu dokumen resmi"
       }
-     ]
+     ],
+     "_l1_lengkap": false
     }
    ],
    "item_aktual": 17,
@@ -1568,7 +1580,7 @@
        "opd": [],
        "status": "lengkap",
        "catatan": "Dokumen resmi — Dasar kelembagaan pengampu kebijakan pengembangan aplikasi d",
-       "url_preview": "/bukti-dukung/Penyelenggara_I3_02_Perbup-9-SOTK_2025.pdf",
+       "url_preview": "/bukti-dukung/belum-lengkap/Penyelenggara_I3_02_Perbup-9-SOTK_2025.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/af9a42bf-cea9-46c8-a739-9beb5d21e990",
        "_ext": "pdf"
       },
@@ -1639,8 +1651,8 @@
        ],
        "status": "proses",
        "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode TD_13_01). Bukti SDLC aplikasi pemerintah digital.",
-       "url_preview": "/bukti-dukung/Teknologi_I13_05_KAK-Aplikasi-Bapokting_2026.pdf",
-       "url_sumber": "/bukti-dukung/Teknologi_I13_05_KAK-Aplikasi-Bapokting_2026.pdf",
+       "url_preview": "/bukti-dukung/belum-lengkap/Teknologi_I13_05_KAK-Aplikasi-Bapokting_2026.pdf",
+       "url_sumber": "/bukti-dukung/belum-lengkap/Teknologi_I13_05_KAK-Aplikasi-Bapokting_2026.pdf",
        "_ext": "pdf",
        "_dokumen_kunci": [
         25
@@ -1657,8 +1669,8 @@
        ],
        "status": "proses",
        "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode TD_13_04). Bukti SDLC & dokumentasi aplikasi.",
-       "url_preview": "/bukti-dukung/Teknologi_I13_06_Laporan-Aplikasi-Bapokting_2026.pdf",
-       "url_sumber": "/bukti-dukung/Teknologi_I13_06_Laporan-Aplikasi-Bapokting_2026.pdf",
+       "url_preview": "/bukti-dukung/belum-lengkap/Teknologi_I13_06_Laporan-Aplikasi-Bapokting_2026.pdf",
+       "url_sumber": "/bukti-dukung/belum-lengkap/Teknologi_I13_06_Laporan-Aplikasi-Bapokting_2026.pdf",
        "_ext": "pdf",
        "_dokumen_kunci": [
         25
@@ -1675,8 +1687,8 @@
        ],
        "status": "proses",
        "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode TD_13_02). Bukti anggaran aplikasi.",
-       "url_preview": "/bukti-dukung/Teknologi_I13_07_DPA-Aplikasi-Bapokting_2026.pdf",
-       "url_sumber": "/bukti-dukung/Teknologi_I13_07_DPA-Aplikasi-Bapokting_2026.pdf",
+       "url_preview": "/bukti-dukung/belum-lengkap/Teknologi_I13_07_DPA-Aplikasi-Bapokting_2026.pdf",
+       "url_sumber": "/bukti-dukung/belum-lengkap/Teknologi_I13_07_DPA-Aplikasi-Bapokting_2026.pdf",
        "_ext": "pdf",
        "_dokumen_kunci": [
         25
@@ -1693,15 +1705,16 @@
        ],
        "status": "proses",
        "catatan": "Dokumen resmi — Diunggah ke portal eval.spbe.go.id (kode TD_13_05). Bukti anggaran aplikasi.",
-       "url_preview": "/bukti-dukung/Teknologi_I13_08_DPA-Aplikasi-Bapokting_2026.pdf",
-       "url_sumber": "/bukti-dukung/Teknologi_I13_08_DPA-Aplikasi-Bapokting_2026.pdf",
+       "url_preview": "/bukti-dukung/belum-lengkap/Teknologi_I13_08_DPA-Aplikasi-Bapokting_2026.pdf",
+       "url_sumber": "/bukti-dukung/belum-lengkap/Teknologi_I13_08_DPA-Aplikasi-Bapokting_2026.pdf",
        "_ext": "pdf",
        "_dokumen_kunci": [
         25
        ],
        "_sumber_baru": true
       }
-     ]
+     ],
+     "_l1_lengkap": false
     },
     {
      "id": "I14",
@@ -1768,7 +1781,8 @@
        "status": "belum",
        "catatan": "Workshop infrastruktur SPBE dilaksanakan. Dashboard NMS perlu screenshot MikroTik/PRTG"
       }
-     ]
+     ],
+     "_l1_lengkap": false
     }
    ],
    "item_aktual": 11,
@@ -1853,7 +1867,8 @@
        ],
        "status": "belum"
       }
-     ]
+     ],
+     "_l1_lengkap": true
     },
     {
      "id": "I16",
@@ -1919,7 +1934,8 @@
        ],
        "status": "belum"
       }
-     ]
+     ],
+     "_l1_lengkap": true
     },
     {
      "id": "I17",
@@ -2010,7 +2026,8 @@
        "status": "belum",
        "catatan": "Perbup portal tunggal belum ditemukan"
       }
-     ]
+     ],
+     "_l1_lengkap": true
     },
     {
      "id": "I18",
@@ -2090,7 +2107,8 @@
        ],
        "status": "belum"
       }
-     ]
+     ],
+     "_l1_lengkap": true
     }
    ],
    "item_aktual": 19,
@@ -2136,7 +2154,7 @@
        ],
        "status": "lengkap",
        "catatan": "Dokumen resmi — Dasar hukum pengelolaan pengaduan publik, service desk, dan ",
-       "url_preview": "/bukti-dukung/Kepuasan_I19_01_Perbup-21-Pedoman_2021.pdf",
+       "url_preview": "/bukti-dukung/belum-lengkap/Kepuasan_I19_01_Perbup-21-Pedoman_2021.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/d0d9a4c9-089f-4e69-ad24-24b101057b62",
        "_ext": "pdf"
       },
@@ -2160,7 +2178,7 @@
        "opd": [],
        "status": "lengkap",
        "catatan": "Dokumen resmi — Memenuhi kondisi pelaksanaan sistem penanganan pengaduan onl",
-       "url_preview": "/bukti-dukung/Kepuasan_I19_01_Perbup-21-Pedoman_2021.pdf",
+       "url_preview": "/bukti-dukung/belum-lengkap/Kepuasan_I19_01_Perbup-21-Pedoman_2021.pdf",
        "url_sumber": "https://jdih.acehtengahkab.go.id/dih/detail/d0d9a4c9-089f-4e69-ad24-24b101057b62",
        "_ext": "pdf"
       },
@@ -2172,7 +2190,7 @@
        "opd": [],
        "status": "lengkap",
        "catatan": "Dokumen resmi — Bukti aktif tahun 2026 pengelolaan umpan balik pengguna dan ",
-       "url_preview": "/bukti-dukung/Kepuasan_I19_06_Hasil-Survei-Kepuasan_2026.xlsx",
+       "url_preview": "/bukti-dukung/belum-lengkap/Kepuasan_I19_06_Hasil-Survei-Kepuasan_2026.xlsx",
        "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/hasil-survei-kepuasan-masyarakat-di-kabupaten-aceh-tengah-bulan-januari-mei-tahun-2026",
        "_ext": "xlsx"
       },
@@ -2221,7 +2239,8 @@
        "status": "belum",
        "catatan": "SP4N-LAPOR punya dashboard tiket. Ticketing internal Pemkab perlu screenshot"
       }
-     ]
+     ],
+     "_l1_lengkap": false
     },
     {
      "id": "I20",
@@ -2250,7 +2269,7 @@
        "opd": [],
        "status": "lengkap",
        "catatan": "Dokumen resmi — Bukti primer pelaksanaan survei kepuasan masyarakat (SKM) te",
-       "url_preview": "/bukti-dukung/Kepuasan_I19_06_Hasil-Survei-Kepuasan_2026.xlsx",
+       "url_preview": "/bukti-dukung/belum-lengkap/Kepuasan_I19_06_Hasil-Survei-Kepuasan_2026.xlsx",
        "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/hasil-survei-kepuasan-masyarakat-di-kabupaten-aceh-tengah-bulan-januari-mei-tahun-2026",
        "_ext": "xlsx"
       },
@@ -2274,7 +2293,7 @@
        "opd": [],
        "status": "lengkap",
        "catatan": "Dokumen resmi — Bukti pengolahan dan publikasi hasil survei kepuasan masyara",
-       "url_preview": "/bukti-dukung/Kepuasan_I19_06_Hasil-Survei-Kepuasan_2026.xlsx",
+       "url_preview": "/bukti-dukung/belum-lengkap/Kepuasan_I19_06_Hasil-Survei-Kepuasan_2026.xlsx",
        "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/hasil-survei-kepuasan-masyarakat-di-kabupaten-aceh-tengah-bulan-januari-mei-tahun-2026",
        "_ext": "xlsx"
       },
@@ -2324,7 +2343,8 @@
        ],
        "status": "belum"
       }
-     ]
+     ],
+     "_l1_lengkap": true
     }
    ],
    "item_aktual": 15,
