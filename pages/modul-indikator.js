@@ -526,7 +526,35 @@ export default function ModulIndikatorPage() {
                                   </span>
                                 </div>
                                 <div style={{ padding: '0.75rem', fontSize: '0.8rem', lineHeight: 1.6, color: 'var(--text)', overflowWrap: 'break-word' }}>
-                                  <div className="kriteria-render" dangerouslySetInnerHTML={{ __html: formatKriteria(lk.kriteria) }} />
+                                  {/* Ringkasan singkat kriteria */}
+                                  {lk.ringkasan && (
+                                    <p style={{ margin: 0, marginBottom: lk.bukti_dukung?.length ? '0.6rem' : 0 }}>
+                                      {lk.ringkasan}
+                                    </p>
+                                  )}
+                                  {/* Daftar bukti dukung (dari Excel Daftar Lengkap sheet 2) */}
+                                  {lk.bukti_dukung?.length > 0 && (
+                                    <div>
+                                      <p style={{
+                                        fontSize: '0.66rem', fontWeight: 700, color: 'var(--primary)',
+                                        margin: '0 0 0.3rem', textTransform: 'uppercase', letterSpacing: '0.5px',
+                                      }}>
+                                        📎 Bukti Dukung ({lk.bukti_dukung.length})
+                                      </p>
+                                      <ul style={{ margin: 0, paddingLeft: '1.05rem' }}>
+                                        {lk.bukti_dukung.map((b, i) => (
+                                          <li key={i} style={{ fontSize: '0.73rem', marginBottom: '0.3rem', color: 'var(--muted)', lineHeight: 1.5 }}>
+                                            {b.item}
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </div>
+                                  )}
+                                  {!lk.bukti_dukung?.length && (
+                                    <p style={{ fontSize: '0.7rem', color: 'var(--muted)', margin: '0.25rem 0 0', fontStyle: 'italic' }}>
+                                      — indikator eksternal / belum ada item bukti di Daftar Lengkap
+                                    </p>
+                                  )}
                                 </div>
                               </div>
                             ))}
@@ -537,14 +565,34 @@ export default function ModulIndikatorPage() {
                       {/* ════ Evidence from Modul ════ */}
                       {modul.data_dukung_modul?.length > 0 && (
                         <div style={{ marginTop: '1rem' }}>
-                          <h4 style={{ fontSize: '0.85rem', fontWeight: 700, marginBottom: '0.5rem', color: 'var(--text)' }}>
+                          <h4 style={{ fontSize: '0.85rem', fontWeight: 700, marginBottom: '0.3rem', color: 'var(--text)' }}>
                             📎 Contoh Bukti Dukung (Modul)
                           </h4>
-                          <ul style={{ paddingLeft: '1.2rem', margin: 0, fontSize: '0.8rem', color: 'var(--muted)' }}>
-                            {modul.data_dukung_modul.map((item, i) => (
-                              <li key={i} style={{ marginBottom: '0.25rem' }}>{item}</li>
-                            ))}
-                          </ul>
+                          <p style={{ fontSize: '0.7rem', color: 'var(--muted)', marginBottom: '0.6rem' }}>
+                            Disusun sesuai kondisi Pemkab Aceh Tengah — cocokkan dengan item bukti per level di atas.
+                          </p>
+                          {modul.data_dukung_modul.map((lv, li) => (
+                            <div key={li} style={{ marginBottom: '0.6rem', paddingLeft: '0.25rem' }}>
+                              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.25rem' }}>
+                                <span style={{
+                                  display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                                  background: LEVEL_WARNA[lv.level] || '#6b7280',
+                                  color: '#fff', fontWeight: 700, fontSize: '0.62rem',
+                                  borderRadius: '5px', padding: '0.1rem 0.35rem', lineHeight: 1.5,
+                                }}>L{lv.level}</span>
+                                <span style={{ fontSize: '0.72rem', fontWeight: 600, color: 'var(--text)' }}>
+                                  {lv.label}
+                                </span>
+                              </div>
+                              <ul style={{ paddingLeft: '1.2rem', margin: 0 }}>
+                                {lv.items.map((item, i) => (
+                                  <li key={i} style={{ fontSize: '0.75rem', color: 'var(--muted)', marginBottom: '0.2rem', lineHeight: 1.5 }}>
+                                    {item}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))}
                         </div>
                       )}
 
