@@ -4,9 +4,9 @@
    =================================================================== */
 
 /* ============ 1. DESIGN TOKENS ============ */
+/* LIGHT THEME (DEFAULT) — Luxury Navy/Beige/Gold
+   Navy #1F2A44 · Warm Beige #E8DCC8 · Soft Gold #C6A75E */
 :root {
-  /* Brand Primary — #004098 Pemkab Aceh Tengah */
-
   /* Legacy aliases — mapped from existing V4 tokens */
   --gray-50: var(--line-2);
   --gray-100: var(--line-2);
@@ -26,33 +26,33 @@
   --mark-bg: #fef08a;
   --mark-color: #000;
 
-  --primary: #004098;
-  --primary-hover: #003078;
-  --primary-deep: #001f4d;
-  --primary-50: #eff5fc;
-  --primary-100: #dbe8f8;
-  --primary-200: #b8d2f2;
-  
+  --primary: #1F2A44;          /* Navy */
+  --primary-hover: #2C3A5E;    /* Navy lebih terang */
+  --primary-deep: #10162A;     /* Navy pekat */
+  --primary-50: #EDF0F6;
+  --primary-100: #DCE2EE;
+  --primary-200: #BAC6DE;
+
   /* Accent Colors */
   --teal: #0ea5a4;
   --teal-hover: #0b8a89;
   --teal-light: #e6f7f7;
-  --gold: #b8860b;
-  --gold-light: #fef9e7;
+  --gold: #C6A75E;             /* Soft Gold */
+  --gold-light: #F8F2E3;
   --gov-red: #c8102e;
 
-  /* Neutrals & Surfaces — Softer */
-  --ink: #1e293b;
-  --ink-secondary: #475569;
-  --muted: #64748b;
-  --muted-light: #94a3b8;
-  --line: #e2e8f0;
-  --line-2: #f1f5f9;
-  --bg: #fafbfc;
-  --bg-subtle: #f1f5f9;
+  /* Neutrals & Surfaces — Warm Beige */
+  --ink: #1F2A44;
+  --ink-secondary: #48536B;
+  --muted: #6A7590;
+  --muted-light: #99A2B8;
+  --line: #DFD9CB;
+  --line-2: #EBE6DA;
+  --bg: #F5F1E8;
+  --bg-subtle: #EDE7DA;
   --surface: #ffffff;
-  --surface-2: #f8fafc;
-  --surface-hover: #f1f5f9;
+  --surface-2: #F8F5ED;
+  --surface-hover: #EFEAE0;
 
   /* Status Colors */
   --ok: #15803d;
@@ -69,9 +69,9 @@
   --info-border: #bae6fd;
 
   /* Gradients */
-  --sidebar-grad: linear-gradient(180deg, #003375 0%, #001e42 100%);
-  --hero-grad: radial-gradient(900px 360px at 92% -15%, rgba(14,165,164,0.3), transparent), radial-gradient(600px 220px at 8% 110%, rgba(184,134,11,0.22), transparent), linear-gradient(135deg, #004098 0%, #00224a 100%);
-  --card-glow: radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 64, 152, 0.06), transparent 40%);
+  --sidebar-grad: linear-gradient(180deg, #243150 0%, #141C30 100%);
+  --hero-grad: radial-gradient(900px 360px at 92% -15%, rgba(198,167,94,0.25), transparent), radial-gradient(600px 220px at 8% 110%, rgba(31,42,68,0.35), transparent), linear-gradient(135deg, #1F2A44 0%, #111A2E 100%);
+  --card-glow: radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(31, 42, 68, 0.06), transparent 40%);
 
   /* Radii */
   --r-xs: 6px;
@@ -107,33 +107,33 @@
   --transition-slow: 350ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ============ DARK MODE ============ */
+/* ============ DARK MODE — Midnight Navy & Gold ============ */
 [data-theme="dark"] {
-  --primary: #4da3ff;
-  --primary-hover: #318be8;
-  --primary-deep: #132b4a;
-  --primary-50: #10213d;
-  --primary-100: #183359;
-  --primary-200: #234778;
+  --primary: #C6A75E;          /* Soft Gold sebagai primary interaktif */
+  --primary-hover: #D5BA7C;
+  --primary-deep: #A3874B;
+  --primary-50: #1E2740;
+  --primary-100: #2A3657;
+  --primary-200: #3A4A75;
 
   --teal: #2dd4cf;
   --teal-hover: #22b8b3;
   --teal-light: #0c2b2b;
-  --gold: #f2c94c;
-  --gold-light: #2c2512;
+  --gold: #C6A75E;
+  --gold-light: #2A2414;
   --gov-red: #f87171;
 
-  --ink: #f1f5f9;
-  --ink-secondary: #cbd5e1;
-  --muted: #94a3b8;
-  --muted-light: #64748b;
-  --line: #1e293b;
-  --line-2: #152033;
-  --bg: #0b1120;
-  --bg-subtle: #0f172a;
-  --surface: #131d31;
-  --surface-2: #0d1526;
-  --surface-hover: #1b273f;
+  --ink: #E8DCC8;              /* Warm Beige */
+  --ink-secondary: #BDB6A6;
+  --muted: #8E97AC;
+  --muted-light: #6B7590;
+  --line: #222D44;
+  --line-2: #1A2438;
+  --bg: #0B101C;
+  --bg-subtle: #101728;
+  --surface: #141C2E;
+  --surface-2: #10182A;
+  --surface-hover: #1A2438;
 
   --ok: #4ade80;
   --ok-bg: #0d2818;
@@ -148,8 +148,8 @@
   --info-bg: #0c2838;
   --info-border: #075985;
 
-  --sidebar-grad: linear-gradient(180deg, #0b1424 0%, #060b13 100%);
-  --hero-grad: radial-gradient(900px 360px at 90% -20%, rgba(45,212,207,0.22), transparent), linear-gradient(135deg, #0d223f 0%, #050a14 100%);
+  --sidebar-grad: linear-gradient(180deg, #131C30 0%, #0A0F1C 100%);
+  --hero-grad: radial-gradient(900px 360px at 90% -20%, rgba(198,167,94,0.22), transparent), linear-gradient(135deg, #1F2A44 0%, #0B101C 100%);
 
   --sh-xs: 0 1px 2px rgba(0,0,0,0.5);
   --sh-sm: 0 2px 6px rgba(0,0,0,0.6);
@@ -265,7 +265,7 @@ html.anim-ready .reveal.d4 { transition-delay: 0.24s; }
   align-items: center;
   min-height: var(--gov-strip-h);
   padding: 0;
-  background: linear-gradient(90deg, #001f4d 0%, #004098 50%, #001f4d 100%);
+  background: linear-gradient(90deg, #10162A 0%, #1F2A44 50%, #10162A 100%);
   color: #f1f5f9;
   font-size: 11.5px;
   font-weight: 600;
@@ -1183,7 +1183,7 @@ input:focus, select:focus, textarea:focus {
   padding: 0;
 }
 .scroll-top:hover {
-  background: var(--primary-dark, #00306f);
+  background: var(--primary-dark, #1F2A44);
   transform: translateY(-2px);
 }
 .scroll-top:active {

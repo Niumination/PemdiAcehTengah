@@ -14,7 +14,7 @@ const actions = [
     label: 'Lapor / Saran',
     desc: 'Sampaikan laporan, aspirasi, atau saran untuk perbaikan layanan',
     href: '/lapor',
-    color: '#004098',
+    color: '#1F2A44',
     bgColor: 'rgba(0,64,152,.1)',
   },
   {

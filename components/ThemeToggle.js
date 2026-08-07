@@ -17,9 +17,7 @@ function getPreferredTheme() {
   } catch {
     /* ignore */
   }
-  if (typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    return 'dark';
-  }
+  // Default SELALU light — palette Navy/Beige/Gold adalah tema resmi
   return 'light';
 }
 
@@ -36,20 +34,8 @@ export default function ThemeToggle({ className, style: overrideStyle }) {
   }, []);
 
   useEffect(() => {
-    const mq = window.matchMedia('(prefers-color-scheme: dark)');
-    const handler = (e) => {
-      try {
-        if (!localStorage.getItem(STORAGE_KEY)) {
-          const next = e.matches ? 'dark' : 'light';
-          setTheme(next);
-          document.documentElement.setAttribute('data-theme', next);
-        }
-      } catch {
-        /* ignore */
-      }
-    };
-    mq.addEventListener('change', handler);
-    return () => mq.removeEventListener('change', handler);
+    // Tidak perlu mengikuti prefers-color-scheme OS — tema terang resmi default.
+    // Pengguna bisa toggle manual; pilihan tersimpan di localStorage.
   }, []);
 
   const toggle = useCallback(() => {

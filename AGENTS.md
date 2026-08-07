@@ -269,3 +269,17 @@ Sumber asli modul = 20 PPTX (konversi ilovepdf, di Downloads/modul-pptx). Analis
 | `brain/docs/ground-truth-modul-pemdi/` | 20 JSON ground truth + script query & terapkan (tanpa regex — hindari bug escaping). |
 
 **Verifikasi**: audit_sync 7/7 checkpoint ✅ (139==139, 0 issue) · build 0 error · browser render ringkasan baru benar · `_l1_lengkap` tetap konsisten (12 tampil / 8 hidden). Script: `terapkan_ground_truth.py` (string-ops, immune escaping).
+
+## 🎨 Update Tema — 8 Agu 2026 (Luxury Navy/Beige/Gold)
+
+Palette resmi dari user: **Navy #1F2A44 · Warm Beige #E8DCC8 · Soft Gold #C6A75E** (sumber: JPEG "The Ultimate Luxury Color Combo" di Downloads — teks di gambar dikonfirmasi via OCR).
+
+| Perubahan | Detail |
+|-----------|--------|
+| `styles/globals.css` `:root` | **Tema terang (default)** = Navy primary, bg Warm Beige, aksen Soft Gold. Gradien hero/sidebar navy+gold. |
+| `styles/globals.css` `[data-theme=dark]` | **Tema gelap padanan "Midnight Navy & Gold"**: bg #0B101C, surface #141C2E, primary interaktif Gold #C6A75E, teks Warm Beige #E8DCC8. |
+| `pages/_document.js` + `components/ThemeToggle.js` | **Default SELALU light** (abaikan prefers-color-scheme OS). Toggle manual tetap tersimpan di localStorage. |
+| `pages/_app.js` | theme-color & mask-icon → #1F2A44. |
+| `components/PPBChain.js`, `QuickActions.js` | Hardcode #004098 → #1F2A44. |
+
+**Verifikasi**: build 0 error · light: primary #1F2A44, bg #F5F1E8 (DOM-checked) · dark: bg #0B101C, primary #C6A75E (DOM-checked) · default light setelah clear localStorage.

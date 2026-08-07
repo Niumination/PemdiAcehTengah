@@ -28,7 +28,8 @@ export default function Document() {
               (function(){
                 var t;
                 try { t = localStorage.getItem('theme'); } catch(e){}
-                if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                // Default SELALU light — palette Navy/Beige/Gold adalah tema resmi
+                if (!t) t = 'light';
                 document.documentElement.setAttribute('data-theme', t);
               })();
             `,

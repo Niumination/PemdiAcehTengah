@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 const LEVELS = [
-  { level: 'L0', title: 'Visi & Misi', desc: 'Visi & 8 Misi Pembangunan Daerah Aceh Tengah', color: '#004098' },
+  { level: 'L0', title: 'Visi & Misi', desc: 'Visi & 8 Misi Pembangunan Daerah Aceh Tengah', color: '#1F2A44' },
   { level: 'L1', title: '34 Urusan Konkuren', desc: 'Urusan wajib & pilihan — pendidikan, kesehatan, PU, sosial, dll', color: '#0ea5a4' },
   { level: 'L2', title: '78 Proses Bisnis', desc: '6 kategori: Perencanaan, Pelaksanaan, Anggaran, Monev, Layanan, Pengawasan', color: '#c79a3a' },
 ];
