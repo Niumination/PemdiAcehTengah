@@ -1058,6 +1058,26 @@
       25
      ],
      "sumber": "baru"
+    },
+    {
+     "id": "P1.I13_3",
+     "nama": "DPA/RKA Diskominfo 2026 — Bukti Anggaran Pengembangan Aplikasi (portal eval kode TD_13_02)",
+     "level": 1,
+     "status": "proses",
+     "dokumen_kunci": [
+      25
+     ],
+     "sumber": "baru"
+    },
+    {
+     "id": "P1.I13_4",
+     "nama": "DPA/RKA Diskominfo 2026 — Bukti Anggaran Pengembangan Aplikasi (portal eval kode TD_13_05)",
+     "level": 1,
+     "status": "proses",
+     "dokumen_kunci": [
+      25
+     ],
+     "sumber": "baru"
     }
    ]
   },
@@ -1524,8 +1544,8 @@
  ],
  "generated_at": "2026-08-05",
  "stats": {
-  "total_bukti": 137,
-  "terpetakan": 136,
+  "total_bukti": 139,
+  "terpetakan": 138,
   "belum_terpetakan": 1
  }
 }

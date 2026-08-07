@@ -256,3 +256,16 @@ Audit ulang menyeluruh setelah penyesuaian — temuan & perbaikan:
 | `total_item_bukti` stale 134 | → **139** (aktual, termasuk hidden). `total_item_manual` 114 tetap (sumber lama). |
 
 **Hasil akhir (verified)**: 0 referensi putus · 0 file unused · 10 file di `belum-lengkap/` semuanya milik indikator hidden · 12 indikator TAMPIL (I1,I2,I5,I6,I7,I10,I11,I15,I16,I17,I18,I20) · 8 HIDDEN (I3,I4,I8,I9,I12,I13,I14,I19) · statistik UI 84/177 tampil (42 lengkap, 3 proses, 39 belum, gap 93). Script: `scripts/sempurnakan-bukti.py`.
+
+## 🧹 Update Data — 7 Agu 2026 (Ground Truth NotebookLM — Perbaikan Kriteria Level)
+
+Sumber asli modul = 20 PPTX (konversi ilovepdf, di Downloads/modul-pptx). Analisis mandiri menemukan 274 kalimat konten PPT hilang di modul-indikator.json (analisis teks 95 level) + tabel kriteria banyak berupa GAMBAR (vision API terkendala kuota). Solusi: **NotebookLM** (notebook "Modul-Pemdi", 21 sources) sebagai ground truth — query 20 indikator, jawaban + cited_text tersimpan di `brain/docs/ground-truth-modul-pemdi/I1-20.json` (±115.000 char, 322 references).
+
+| Item | Perubahan |
+|------|-----------|
+| `data/modul-indikator.json` | **100 level kriteria ditulis ulang LENGKAP** dari ground truth: format baru = "Kriteria:\n…\n\nKondisi:\n…\n\nData Dukung:\n…" (dulu hanya kriteria inti ~200-700 char, sekarang 500-1.900 char/level mencakup semua segmen resmi). Backup: `.bak-gt`. |
+| `data/modul-indikator.json` | `ringkasan` di-regenerate dari kriteria baru (≤160 char, kalimat pertama bagian Kriteria). I20 kini punya kriteria lengkap (sebelumnya "tanpa slide kriteria"). |
+| `data/bukti-dokumen-mapping.json` | +2 entri P1.I13_3/P1.I13_4 (DPA Bapokting) → total 139 = pemdi.json. |
+| `brain/docs/ground-truth-modul-pemdi/` | 20 JSON ground truth + script query & terapkan (tanpa regex — hindari bug escaping). |
+
+**Verifikasi**: audit_sync 7/7 checkpoint ✅ (139==139, 0 issue) · build 0 error · browser render ringkasan baru benar · `_l1_lengkap` tetap konsisten (12 tampil / 8 hidden). Script: `terapkan_ground_truth.py` (string-ops, immune escaping).
