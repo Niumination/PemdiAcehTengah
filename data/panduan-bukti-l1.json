@@ -1,0 +1,512 @@
+{
+ "generated_at": "2026-08-07",
+ "deskripsi": "Panduan penyusunan bukti dukung Level 1 per indikator (sumber: workspace bd-arena). Draf — finalisasi: tanda tangan, data riil, screenshot asli.",
+ "indikator": [
+  {
+   "indikator": "I1",
+   "nama": "Tingkat Kematangan Tata Kelola Pemerintah Digital",
+   "aspek": "Tata Kelola dan Manajemen",
+   "dokumen": [
+    {
+     "file": "/panduan-bukti-l1/I01/i01-peta-rencana-pemdi-aceh-tengah.pdf",
+     "judul": "Peta Rencana Pemdi 2025-2029 (Rancangan Awal Memuat Substansi RAN Pemdi)",
+     "jenis": "Draf perencanaan",
+     "status": "lampiran",
+     "dokumen_kunci": [],
+     "catatan": "Tambahkan sebagai bukti pendukung (dokumen kunci no 2 — Peta Rencana/Rencana Aksi Pemdi). Status: DRAF — pada Level 1 cukup sebagian substansi."
+    }
+   ]
+  },
+  {
+   "indikator": "I2",
+   "nama": "Tingkat Kematangan Manajemen Layanan Digital Pemerintah",
+   "aspek": "Tata Kelola dan Manajemen",
+   "dokumen": [
+    {
+     "file": "/panduan-bukti-l1/I02/i02-sop-manajemen-layanan-digital-internal.pdf",
+     "judul": "SOP Manajemen Layanan Digital Internal",
+     "jenis": "SOP",
+     "status": "lengkap",
+     "dokumen_kunci": [
+      8
+     ],
+     "catatan": "Dokumen kunci no 8 — SOP/IK Manajemen Layanan."
+    },
+    {
+     "file": "/panduan-bukti-l1/I02/i02-laporan-pelaksanaan-layanan-internal.pdf",
+     "judul": "Laporan Pelaksanaan Layanan Internal (Jan-Jun 2026)",
+     "jenis": "Laporan",
+     "status": "lampiran",
+     "dokumen_kunci": [],
+     "catatan": "Bukti pelaksanaan + log/ticket 5 domain manajemen."
+    }
+   ]
+  },
+  {
+   "indikator": "I3",
+   "nama": "Tingkat Kematangan Sumber Daya Manusia Pemerintah Digital",
+   "aspek": "Penyelenggara",
+   "dokumen": [
+    {
+     "file": "/panduan-bukti-l1/I03/i03-peta-kompetensi-digital-asn.pdf",
+     "judul": "Peta Kompetensi Digital ASN",
+     "jenis": "Dokumen induk",
+     "status": "proses",
+     "dokumen_kunci": [
+      9
+     ],
+     "catatan": "Dokumen kunci no 9 — Peta Kompetensi Digital ASN (draf/awal)."
+    },
+    {
+     "file": "/panduan-bukti-l1/I03/i03-rekap-penggunaan-aplikasi-digital.pdf",
+     "judul": "Rekap Penggunaan Aplikasi Kerja Digital",
+     "jenis": "Screenshot + laporan",
+     "status": "lengkap",
+     "dokumen_kunci": [
+      15
+     ],
+     "catatan": "Dokumen kunci no 15 — Screenshot & bukti penggunaan aplikasi kerja digital internal (ganti data dummy dengan data asli)."
+    }
+   ]
+  },
+  {
+   "indikator": "I4",
+   "nama": "Tingkat Kematangan Kolaborasi Pemerintah Digital",
+   "aspek": "Penyelenggara",
+   "dokumen": [
+    {
+     "file": "/panduan-bukti-l1/I04/i04-sk-bupati-tim-koordinasi-pemdi-555-395-2026.pdf",
+     "judul": "SK Bupati 555/395/2026 Tim Koordinasi Pemdi (lengkap lampiran)",
+     "jenis": "SK",
+     "status": "lengkap",
+     "dokumen_kunci": [
+      5,
+      7,
+      16
+     ],
+     "catatan": "Dokumen kunci no 5 — SK Tim Koordinasi Pemdi; sekaligus no 7 (rapat) & no 16 (kolaborasi)."
+    },
+    {
+     "file": "/panduan-bukti-l1/I04/i04-rencana-kolaborasi-lintas-pd.pdf",
+     "judul": "Rencana Kolaborasi Lintas Perangkat Daerah",
+     "jenis": "Rencana",
+     "status": "lampiran",
+     "dokumen_kunci": [],
+     "catatan": "Matriks kolaborasi lintas PD (lampiran SK)."
+    }
+   ]
+  },
+  {
+   "indikator": "I5",
+   "nama": "Tingkat Kematangan Tata Kelola Data (Indeks Satu Data Indonesia)",
+   "aspek": "Data",
+   "dokumen": [
+    {
+     "file": "/panduan-bukti-l1/I05/i05-perbup-60-2022-satu-data-indonesia.pdf",
+     "judul": "Perbup 60/2022 Satu Data Indonesia (salinan)",
+     "jenis": "Regulasi",
+     "status": "lampiran",
+     "dokumen_kunci": [],
+     "catatan": "Salinan perbup (jika situs belum memiliki salinan yang dapat diunduh)."
+    },
+    {
+     "file": "/panduan-bukti-l1/I05/i05-sk-forum-satu-data-188-55-375-bappeda-2025.pdf",
+     "judul": "SK Kepala Bappeda 188.55/375/2025 Forum Satu Data",
+     "jenis": "SK",
+     "status": "lengkap",
+     "dokumen_kunci": [
+      18
+     ],
+     "catatan": "SK Forum Satu Data (Walidata/Produsen)."
+    },
+    {
+     "file": "/panduan-bukti-l1/I05/i05-rancangan-daftar-data-daerah-dan-ba.pdf",
+     "judul": "Rancangan Awal Daftar Data Daerah + Berita Acara",
+     "jenis": "BA + daftar",
+     "status": "proses",
+     "dokumen_kunci": [
+      18
+     ],
+     "catatan": "Daftar 30 data prioritas + BA kesepakatan awal."
+    }
+   ]
+  },
+  {
+   "indikator": "I6",
+   "nama": "Tingkat Kematangan Penyelenggaraan Informasi Geospasial (Indeks SJIG)",
+   "aspek": "Data",
+   "dokumen": [
+    {
+     "file": "/panduan-bukti-l1/I06/i06-ketersediaan-data-peta-rdtr-2025.pdf",
+     "judul": "Dokumen Ketersediaan Data & Peta RDTR 2025 (+ metadata)",
+     "jenis": "Dokumen + metadata",
+     "status": "lampiran",
+     "dokumen_kunci": [],
+     "catatan": "Lampiran metadata lengkap (20 elemen)."
+    },
+    {
+     "file": "/panduan-bukti-l1/I06/i06-inventarisasi-data-geospasial.pdf",
+     "judul": "Inventarisasi Awal Data & Informasi Geospasial (20 layer)",
+     "jenis": "Inventarisasi",
+     "status": "proses",
+     "dokumen_kunci": [
+      18
+     ],
+     "catatan": "Daftar 20 layer spasial + status ketersediaan."
+    }
+   ]
+  },
+  {
+   "indikator": "I7",
+   "nama": "Tingkat Kematangan Pembangunan Statistik (Indeks Pembangunan Statistik / EPSS)",
+   "aspek": "Data",
+   "dokumen": [
+    {
+     "file": "/panduan-bukti-l1/I07/i07-sop-pengumpulan-diseminasi-data-statistik.pdf",
+     "judul": "SOP Pengumpulan & Diseminasi Data Statistik",
+     "jenis": "SOP",
+     "status": "lampiran",
+     "dokumen_kunci": [],
+     "catatan": ""
+    },
+    {
+     "file": "/panduan-bukti-l1/I07/i07-katalog-produk-data-statistik-sektoral.pdf",
+     "judul": "Katalog Produk Data Statistik Sektoral (30 produk)",
+     "jenis": "Katalog",
+     "status": "lengkap",
+     "dokumen_kunci": [
+      18
+     ],
+     "catatan": "Daftar 30 produk statistik (ATA/KCA/Statda)."
+    }
+   ]
+  },
+  {
+   "indikator": "I8",
+   "nama": "Tingkat Kematangan Pelindungan Data Pribadi",
+   "aspek": "Data",
+   "dokumen": [
+    {
+     "file": "/panduan-bukti-l1/I08/i08-kerangka-tata-kelola-pdp.pdf",
+     "judul": "Kerangka Tata Kelola Pelindungan Data Pribadi (draf)",
+     "jenis": "Kebijakan/kerangka",
+     "status": "proses",
+     "dokumen_kunci": [
+      17
+     ],
+     "catatan": "Substansi 1) Tata Kelola PDP."
+    },
+    {
+     "file": "/panduan-bukti-l1/I08/i08-rencana-silabus-awareness-pdp.pdf",
+     "judul": "Rencana & Silabus Program Awareness PDP",
+     "jenis": "Program + silabus + materi",
+     "status": "proses",
+     "dokumen_kunci": [
+      17
+     ],
+     "catatan": "Substansi 2) Program awareness & kompetensi PDP (3 silabus terperinci)."
+    }
+   ]
+  },
+  {
+   "indikator": "I9",
+   "nama": "Tingkat Kematangan Pelaksanaan Audit Keamanan Pemdi & Teknologi Pemdi",
+   "aspek": "Keamanan Pemerintah Digital Siber",
+   "dokumen": [
+    {
+     "file": "/panduan-bukti-l1/I09/i09-sk-tim-audit-keamanan-pemdi.pdf",
+     "judul": "SK Sekretaris Daerah — Tim Audit Keamanan Pemdi",
+     "jenis": "SK",
+     "status": "lengkap",
+     "dokumen_kunci": [
+      19
+     ],
+     "catatan": "Dokumen kunci no 19 — SK Tim Audit (Koordinator Pemdi/Sekda)."
+    },
+    {
+     "file": "/panduan-bukti-l1/I09/i09-rencana-audit-keamanan-pemdi-2026.pdf",
+     "judul": "Rencana Audit Keamanan Pemdi 2026 (program, ruang lingkup, jadwal, checklist, tim)",
+     "jenis": "Rencana",
+     "status": "lengkap",
+     "dokumen_kunci": [
+      19
+     ],
+     "catatan": "Dokumen kunci no 19 — Rencana audit tahunan + checklist 20 butir."
+    }
+   ]
+  },
+  {
+   "indikator": "I10",
+   "nama": "Tingkat Kematangan Keamanan Siber (IKASANDI)",
+   "aspek": "Keamanan Pemerintah Digital Siber",
+   "dokumen": [
+    {
+     "file": "/panduan-bukti-l1/I10/i10-instrumen-ikasandi-keamanan-siber.pdf",
+     "judul": "Instrumen Self-Assessment IKASANDI Area Keamanan Siber (skor 1,10)",
+     "jenis": "Instrumen + skor",
+     "status": "lengkap",
+     "dokumen_kunci": [
+      20
+     ],
+     "catatan": "Skor 0—<1,5 (1,10) = Initiate."
+    },
+    {
+     "file": "/panduan-bukti-l1/I10/i10-bukti-kontrol-keamanan-siber-dan-kami-5-0.pdf",
+     "judul": "Bukti Kontrol Dasar Keamanan Siber + Hasil KAMI 5.0 (skor 563)",
+     "jenis": "Bukti + laporan",
+     "status": "lampiran",
+     "dokumen_kunci": [],
+     "catatan": "Evidence kontrol dasar + KAMI 5.0 area Keamanan Siber = 563 (I+)."
+    }
+   ]
+  },
+  {
+   "indikator": "I11",
+   "nama": "Tingkat Kematangan Penerapan Kriptografi untuk Keamanan Data (IKASANDI)",
+   "aspek": "Keamanan Pemerintah Digital Siber",
+   "dokumen": [
+    {
+     "file": "/panduan-bukti-l1/I11/i11-inventarisasi-aset-dienkripsi-dan-laporan-awal-kriptografi.pdf",
+     "judul": "Inventarisasi Aset yang Dienkripsi + Laporan Awal Penerapan Kriptografi",
+     "jenis": "Inventarisasi + laporan",
+     "status": "lengkap",
+     "dokumen_kunci": [
+      22
+     ],
+     "catatan": "Data at-rest/in-transit/in-use."
+    },
+    {
+     "file": "/panduan-bukti-l1/I11/i11-lampiran-teknis-bukti-konfigurasi-kriptografi.pdf",
+     "judul": "Lampiran Teknis Bukti Konfigurasi (TLS, enkripsi disk, VPN, sertifikat)",
+     "jenis": "Screenshot/bukti teknis",
+     "status": "lampiran",
+     "dokumen_kunci": [],
+     "catatan": "13 placeholder screenshot — diisi dengan tangkapan layar asli."
+    }
+   ]
+  },
+  {
+   "indikator": "I12",
+   "nama": "Tingkat Kematangan Kapabilitas Penanganan Insiden Siber (IKASANDI)",
+   "aspek": "Keamanan Pemerintah Digital Siber",
+   "dokumen": [
+    {
+     "file": "/panduan-bukti-l1/I12/i12-laporan-penanganan-insiden-siber.pdf",
+     "judul": "Laporan/Log Penanganan Insiden Siber (Semester I/2026, 12 insiden)",
+     "jenis": "Log + BA",
+     "status": "lengkap",
+     "dokumen_kunci": [
+      23
+     ],
+     "catatan": "Daftar 12 insiden (P-1 s.d. P-4) + BA."
+    },
+    {
+     "file": "/panduan-bukti-l1/I12/i12-instrumen-ikasandi-penanganan-insiden-siber.pdf",
+     "judul": "Instrumen Self-Assessment IKASANDI Penanganan Insiden (skor 1,08)",
+     "jenis": "Instrumen",
+     "status": "lengkap",
+     "dokumen_kunci": [
+      24
+     ],
+     "catatan": "Skor 1,08 (0—<1,5) = Initiate; SK TTIS/CSIRT akan menyusul (Level 2)."
+    }
+   ]
+  },
+  {
+   "indikator": "I13",
+   "nama": "Tingkat Kematangan Aplikasi Pemerintah Digital",
+   "aspek": "Teknologi Digital",
+   "dokumen": [
+    {
+     "file": "/panduan-bukti-l1/I13/i13-kak-pengembangan-aplikasi-bapokting-2026.pdf",
+     "judul": "KAK Pengembangan Aplikasi Bapokting 2026",
+     "jenis": "KAK",
+     "status": "proses",
+     "dokumen_kunci": [
+      25
+     ],
+     "catatan": "Dokumen kunci no 25 — SDLC; KAK lengkap."
+    },
+    {
+     "file": "/panduan-bukti-l1/I13/i13-laporan-pengembangan-awal-bapokting-2026.pdf",
+     "judul": "Laporan Pengembangan Awal Bapokting (prototype, 50-55%)",
+     "jenis": "Laporan + screenshot",
+     "status": "lampiran",
+     "dokumen_kunci": [],
+     "catatan": "Tahap inisiasi/awal (Level 1). BAST final menyusul (Level 3)."
+    }
+   ]
+  },
+  {
+   "indikator": "I14",
+   "nama": "Tingkat Kematangan Infrastruktur Pemerintah Digital",
+   "aspek": "Teknologi Digital",
+   "dokumen": [
+    {
+     "file": "/panduan-bukti-l1/I14/i14-dokumen-ketersediaan-infrastruktur-dan-arsitektur.pdf",
+     "judul": "Dokumen Ketersediaan Infrastruktur, Arsitektur & Topologi Jaringan",
+     "jenis": "Dokumen + diagram",
+     "status": "lampiran",
+     "dokumen_kunci": [],
+     "catatan": "Topologi, daftar perangkat, PDN."
+    },
+    {
+     "file": "/panduan-bukti-l1/I14/i14-dasbor-pdn-dan-siap-digital.pdf",
+     "judul": "Dasbor Pemanfaatan PDN & SIAP Digital (screenshot)",
+     "jenis": "Screenshot",
+     "status": "proses",
+     "dokumen_kunci": [
+      26
+     ],
+     "catatan": "Dokumen kunci no 26 — Dasbor pemanfaatan infrastruktur. Isi screenshot asli."
+    }
+   ]
+  },
+  {
+   "indikator": "I15",
+   "nama": "Tingkat Kematangan Keterpaduan Proses Bisnis Lintas Sektor",
+   "aspek": "Keterpaduan",
+   "dokumen": [
+    {
+     "file": "/panduan-bukti-l1/I15/i15-peta-proses-bisnis-asis-bpmn.pdf",
+     "judul": "Peta Proses Bisnis As-is (BPMN) — 33 proses, 3 contoh Level 2",
+     "jenis": "Dokumen + BPMN",
+     "status": "proses",
+     "dokumen_kunci": [
+      27
+     ],
+     "catatan": "Dokumen kunci no 27 — Pemetaan proses bisnis As-is & to-be (Level 1 = As-is)."
+    },
+    {
+     "file": "/panduan-bukti-l1/I15/i15-siap-digital-proses-bisnis-dan-ekspor-arsitektur.pdf",
+     "judul": "Bukti Pengisian Domain Proses Bisnis di SIAP Digital + Ekspor",
+     "jenis": "Screenshot",
+     "status": "lampiran",
+     "dokumen_kunci": [],
+     "catatan": "Domain Proses Bisnis SIAP Digital terisi."
+    }
+   ]
+  },
+  {
+   "indikator": "I16",
+   "nama": "Tingkat Kematangan Integrasi Aplikasi",
+   "aspek": "Keterpaduan",
+   "dokumen": [
+    {
+     "file": "/panduan-bukti-l1/I16/i16-laporan-pelaksanaan-integrasi-aplikasi.pdf",
+     "judul": "Laporan Pelaksanaan Integrasi Aplikasi (SSO, 6 API, 12 aplikasi)",
+     "jenis": "Laporan",
+     "status": "lengkap",
+     "dokumen_kunci": [
+      28
+     ],
+     "catatan": "Dokumen kunci no 28 — Laporan & matriks integrasi (API/SSO)."
+    }
+   ]
+  },
+  {
+   "indikator": "I17",
+   "nama": "Tingkat Kematangan Portal Layanan Digital Pemerintah",
+   "aspek": "Keterpaduan",
+   "dokumen": [
+    {
+     "file": "/panduan-bukti-l1/I17/i17-perbup-30-2022-penyelenggaraan-informasi-komunikasi-publik.pdf",
+     "judul": "Perbup 30/2022 Penyelenggaraan Informasi & Komunikasi Publik",
+     "jenis": "Regulasi",
+     "status": "lampiran",
+     "dokumen_kunci": [],
+     "catatan": ""
+    },
+    {
+     "file": "/panduan-bukti-l1/I17/i17-laporan-ketersediaan-portal-layanan-digital.pdf",
+     "judul": "Laporan Ketersediaan Portal Layanan Digital (URL, layanan, statistik)",
+     "jenis": "Laporan + screenshot",
+     "status": "lengkap",
+     "dokumen_kunci": [
+      29
+     ],
+     "catatan": "Dokumen kunci no 29 — Portal layanan. Ganti data analytics dengan data asli."
+    }
+   ]
+  },
+  {
+   "indikator": "I18",
+   "nama": "Tingkat Kematangan Interoperabilitas Data",
+   "aspek": "Keterpaduan",
+   "dokumen": [
+    {
+     "file": "/panduan-bukti-l1/I18/i18-pedoman-teknis-interoperabilitas-data.pdf",
+     "judul": "Pedoman Teknis Interoperabilitas Data & Standar Pertukaran (draf)",
+     "jenis": "Pedoman",
+     "status": "proses",
+     "dokumen_kunci": [
+      18
+     ],
+     "catatan": "Format/metadata/kode referensi."
+    },
+    {
+     "file": "/panduan-bukti-l1/I18/i18-laporan-awal-pertukaran-data-antar-pd.pdf",
+     "judul": "Laporan Awal Pertukaran Data antar PD (12 pertukaran)",
+     "jenis": "Laporan",
+     "status": "lengkap",
+     "dokumen_kunci": [
+      18
+     ],
+     "catatan": "12 pertukaran data per Semester I/2026."
+    }
+   ]
+  },
+  {
+   "indikator": "I19",
+   "nama": "Tingkat Kematangan Fasilitas Dukungan Pengguna Layanan Digital Pemerintah",
+   "aspek": "Kepuasan Pengguna Layanan Digital Pemerintah",
+   "dokumen": [
+    {
+     "file": "/panduan-bukti-l1/I19/i19-sop-helpdesk-fasilitas-dukungan-pengguna.pdf",
+     "judul": "SOP Helpdesk/Fasilitas Dukungan Pengguna",
+     "jenis": "SOP",
+     "status": "lengkap",
+     "dokumen_kunci": [
+      30
+     ],
+     "catatan": "Dokumen kunci no 30 — Dasbor & laporan SLA helpdesk."
+    },
+    {
+     "file": "/panduan-bukti-l1/I19/i19-laporan-pelaksanaan-helpdesk.pdf",
+     "judul": "Laporan Pelaksanaan Helpdesk (412 tiket, SLA 94,0%)",
+     "jenis": "Laporan + dasbor",
+     "status": "lampiran",
+     "dokumen_kunci": [],
+     "catatan": "Ganti data dengan rekap riil helpdesk."
+    }
+   ]
+  },
+  {
+   "indikator": "I20",
+   "nama": "Tingkat Kematangan Pengelolaan Kepuasan Pengguna Layanan Digital Pemerintah",
+   "aspek": "Kepuasan Pengguna Layanan Digital Pemerintah",
+   "dokumen": [
+    {
+     "file": "/panduan-bukti-l1/I20/i20-pedoman-skm-dan-umpan-balik-layanan.pdf",
+     "judul": "Pedoman Penyelenggaraan SKM & Pengelolaan Umpan Balik (draf)",
+     "jenis": "Pedoman",
+     "status": "proses",
+     "dokumen_kunci": [
+      31
+     ],
+     "catatan": "Pedoman 9 unsur PermenPANRB 14/2017 + 4 unsur digital."
+    },
+    {
+     "file": "/panduan-bukti-l1/I20/i20-laporan-hasil-skm-dan-umpan-balik.pdf",
+     "judul": "Laporan Hasil SKM (IKM 77,4/B — 1.246 responden) + Rekap Umpan Balik",
+     "jenis": "Laporan",
+     "status": "lengkap",
+     "dokumen_kunci": [
+      31
+     ],
+     "catatan": "Ganti data dengan hasil survei riil."
+    }
+   ]
+  }
+ ]
+}

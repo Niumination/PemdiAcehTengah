@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { useState, useEffect } from 'react'
+import panduanBukti from '@/data/panduan-bukti-l1.json'
 
 export default function Requirement() {
   const [requirements, setRequirements] = useState(null)
@@ -214,6 +215,59 @@ export default function Requirement() {
                 <div>
                   <h4>{out.title}</h4>
                   <p>{out.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* 📘 Panduan Penyusunan Bukti Dukung Level 1 */}
+        <div className="req-panduan">
+          <h2 className="section-title">📘 Panduan Penyusunan Bukti Dukung Level 1 (Pemdi 2026)</h2>
+          <div className="panduan-notice">
+            ⚠️ <strong>Panduan penyusunan (draf)</strong> — bukan bukti final yang dinilai. Dokumen berikut adalah acuan
+            penyusunan bukti dukung per indikator sesuai kriteria modul asli PermenPANRB 8/2026. <strong>Belum final:</strong> data
+            isian masih contoh, tanda tangan/cap & logo masih placeholder, screenshot masih `[TAMPILAN LAYAR]`. Finalisasi
+            sebelum diunggah ke portal eval.spbe.go.id.
+          </div>
+          <div className="panduan-stats">
+            <span className="panduan-stat"><strong>{panduanBukti.indikator.length}</strong> Indikator</span>
+            <span className="panduan-stat"><strong>{panduanBukti.indikator.reduce((s, i) => s + i.dokumen.length, 0)}</strong> Dokumen Panduan</span>
+            <span className="panduan-stat"><strong>{panduanBukti.indikator.filter(i => i.dokumen.some(d => d.status === 'lengkap')).length}</strong> Indikator dengan Dokumen Final</span>
+            <span className="panduan-stat"><strong>Level 1</strong> Cakupan</span>
+          </div>
+
+          <div className="panduan-grid">
+            {panduanBukti.indikator.map((ind) => (
+              <div key={ind.indikator} className="panduan-card">
+                <div className="panduan-card-head">
+                  <span className="panduan-badge">{ind.indikator}</span>
+                  <span className="panduan-aspek">{ind.aspek}</span>
+                </div>
+                <h3 className="panduan-title">{ind.nama}</h3>
+                <div className="panduan-docs">
+                  {ind.dokumen.length === 0 ? (
+                    <span className="panduan-empty">— belum ada panduan</span>
+                  ) : ind.dokumen.map((d, i) => (
+                    <div key={i} className="panduan-doc">
+                      <div className="panduan-doc-head">
+                        <span className={`panduan-status ${d.status}`}>
+                          {d.status === 'lengkap' ? '✅ Final' : d.status === 'proses' ? '🔄 Draf' : '📎 Lampiran'}
+                        </span>
+                        <span className="panduan-jenis">{d.jenis}</span>
+                      </div>
+                      <div className="panduan-doc-title">{d.judul}</div>
+                      <div className="panduan-doc-meta">
+                        {d.dokumen_kunci.length > 0 && (
+                          <span className="panduan-dk">Dok. Kunci: {d.dokumen_kunci.map(n => `#${n}`).join(', ')}</span>
+                        )}
+                      </div>
+                      {d.catatan && <div className="panduan-catatan">📝 {d.catatan}</div>}
+                      <a href={d.file} target="_blank" rel="noopener noreferrer" className="panduan-link">
+                        📄 Buka Dokumen ↗
+                      </a>
+                    </div>
+                  ))}
                 </div>
               </div>
             ))}
@@ -465,6 +519,57 @@ export default function Requirement() {
         .req-footer code { background: var(--bg-subtle); padding: 2px 6px; border-radius: 3px; font-size: 0.8rem; }
         .req-footer a { color: var(--primary); text-decoration: none; }
         .req-footer a:hover { text-decoration: underline; }
+
+        /* ── Panduan Penyusunan Bukti Dukung Level 1 ── */
+        .req-panduan { margin-top: 48px; }
+        .panduan-notice {
+          padding: 14px 16px; border-radius: 10px; font-size: 0.85rem; line-height: 1.55;
+          background: var(--warn-bg, #fff7e6); border: 1px solid #f0c36d; color: #7a5b12; margin-bottom: 16px;
+        }
+        .panduan-stats { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+        .panduan-stat {
+          padding: 8px 14px; border-radius: 8px; background: #f0f7f2; border: 1px solid #d5e8da;
+          font-size: 0.78rem; color: #3d5a45; display: inline-flex; align-items: baseline; gap: 4px;
+        }
+        .panduan-stat strong { font-size: 1rem; color: #1B4332; }
+        .panduan-grid {
+          display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+          gap: 14px;
+        }
+        .panduan-card {
+          border: 1px solid var(--line); border-radius: 12px; padding: 14px; background: var(--surface);
+          display: flex; flex-direction: column; gap: 10px;
+        }
+        .panduan-card-head { display: flex; align-items: center; gap: 8px; }
+        .panduan-badge {
+          width: 34px; height: 34px; border-radius: 8px; background: #1B4332; color: #fff;
+          display: grid; place-items: center; font-weight: 800; font-size: 0.75rem; flex-shrink: 0;
+        }
+        .panduan-aspek { font-size: 0.68rem; color: #667; background: var(--bg-subtle); padding: 3px 8px; border-radius: 100px; }
+        .panduan-title { font-size: 0.85rem; font-weight: 600; margin: 0; color: var(--ink); line-height: 1.35; }
+        .panduan-docs { display: flex; flex-direction: column; gap: 8px; }
+        .panduan-doc {
+          border: 1px solid var(--line); border-radius: 8px; padding: 10px; background: var(--bg-subtle);
+          display: flex; flex-direction: column; gap: 5px;
+        }
+        .panduan-doc-head { display: flex; justify-content: space-between; align-items: center; gap: 6px; }
+        .panduan-status {
+          font-size: 0.62rem; font-weight: 700; padding: 2px 8px; border-radius: 100px;
+          background: var(--bg-subtle); color: var(--muted);
+        }
+        .panduan-status.lengkap { background: #e6f4ea; color: #1B7A3D; }
+        .panduan-status.proses { background: #fff3e0; color: #b26a00; }
+        .panduan-jenis { font-size: 0.62rem; color: var(--muted); }
+        .panduan-doc-title { font-size: 0.75rem; font-weight: 600; color: var(--ink); line-height: 1.4; }
+        .panduan-dk { font-size: 0.65rem; color: #1B4332; background: #e8f2ec; padding: 2px 6px; border-radius: 4px; }
+        .panduan-catatan { font-size: 0.65rem; color: var(--muted); line-height: 1.4; }
+        .panduan-link {
+          font-size: 0.68rem; color: #1B4332; font-weight: 600; text-decoration: none;
+          border: 1px solid #1B4332; border-radius: 6px; padding: 4px 10px; align-self: flex-start;
+          background: var(--surface); transition: all 0.15s;
+        }
+        .panduan-link:hover { background: #1B4332; color: #fff; }
+        .panduan-empty { font-size: 0.7rem; color: var(--muted); font-style: italic; }
 
         @media (max-width: 640px) {
           .req-cards { grid-template-columns: 1fr; }
