@@ -119,12 +119,12 @@ export default function PetaProsesBisnis({ data }) {
         >
           {modalMisi && (
             <div>
-              <p style={{ fontSize: '0.875rem', color: '#505a5f', lineHeight: 1.7, marginBottom: '1rem' }}>
+              <p style={{ fontSize: '0.875rem', color: 'var(--ink-secondary)', lineHeight: 1.7, marginBottom: '1rem' }}>
                 {modalMisi.deskripsi}
               </p>
               {modalMisi.fokus && (
                 <div style={{ marginBottom: '1rem' }}>
-                  <div style={{ fontSize: '0.6875rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#505a5f', marginBottom: '0.5rem' }}>
+                  <div style={{ fontSize: '0.6875rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--ink-secondary)', marginBottom: '0.5rem' }}>
                     Fokus Strategis:
                   </div>
                   <div className="flex flex-wrap gap-1">
@@ -136,7 +136,7 @@ export default function PetaProsesBisnis({ data }) {
               )}
               {modalMisi.opd_terkait && modalMisi.opd_terkait.length > 0 && (
                 <div>
-                  <div style={{ fontSize: '0.6875rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#505a5f', marginBottom: '0.5rem' }}>
+                  <div style={{ fontSize: '0.6875rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--ink-secondary)', marginBottom: '0.5rem' }}>
                     OPD Pelaksana:
                   </div>
                   <div className="opd-tags">

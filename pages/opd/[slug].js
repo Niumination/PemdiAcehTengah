@@ -79,7 +79,7 @@ function cariRelated(daftar, opd, limit = 6) {
    LEVEL — icon & colour mapping
    ============================================= */
 const LEVEL_META = {
-  Staf:      { color: '#004098', icon: '🏛️', label: 'Staf Ahli/Setda' },
+  Staf:      { color: 'var(--primary)', icon: '🏛️', label: 'Staf Ahli/Setda' },
   Badan:     { color: '#0277bd', icon: '📊', label: 'Badan' },
   Dinas:     { color: '#2e7d32', icon: '🏢', label: 'Dinas' },
   Lembaga:   { color: '#e65100', icon: '🏫', label: 'Lembaga' },
@@ -102,7 +102,7 @@ export default function OPDPage({ opd, urusanTerkait, probisMisi, relatedOpd, pr
     );
   }
 
-  const levelMeta = LEVEL_META[opd.level] || { color: '#495057', icon: '📋', label: opd.level };
+  const levelMeta = LEVEL_META[opd.level] || { color: 'var(--ink-secondary)', icon: '📋', label: opd.level };
   const tipe = opd.jenis === 'kecamatan' ? 'Kecamatan' : 'Instansi Daerah';
 
   return (

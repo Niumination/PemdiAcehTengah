@@ -97,7 +97,7 @@ export default function GlossaryTooltip({ id, children }) {
             left: '50%',
             transform: 'translateX(-50%)',
             zIndex: 100,
-            background: '#1a1a2e',
+            background: 'var(--primary-deep)',
             color: 'white',
             borderRadius: '8px',
             padding: '0.75rem 1rem',
@@ -112,17 +112,17 @@ export default function GlossaryTooltip({ id, children }) {
           <div style={{ fontWeight: 600, marginBottom: '0.25rem', fontSize: '0.875rem' }}>
             {entry.istilah}
           </div>
-          <p style={{ margin: '0 0 0.5rem', color: '#ccc' }}>
+          <p style={{ margin: '0 0 0.5rem', color: 'var(--muted)' }}>
             {entry.singkat}
           </p>
           {entry.kepanjangan && (
-            <div style={{ fontSize: '0.75rem', color: '#999', marginBottom: '0.375rem' }}>
+            <div style={{ fontSize: '0.75rem', color: 'var(--muted)', marginBottom: '0.375rem' }}>
               {entry.kepanjangan}
             </div>
           )}
           <Link
             href={`/glosarium#${entry.id}`}
-            style={{ color: '#7eb8ff', fontSize: '0.75rem', textDecoration: 'underline' }}
+            style={{ color: 'var(--primary-200)', fontSize: '0.75rem', textDecoration: 'underline' }}
             onClick={() => setOpen(false)}
           >
             Lihat di Glosarium →

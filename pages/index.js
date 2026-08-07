@@ -72,7 +72,7 @@ export default function Home() {
           <span className="pill">
             🏛️ Portal Resmi Pemerintah Kabupaten Aceh Tengah
           </span>
-          <span style={{ fontSize: '0.78rem', color: '#b8d2f2', fontWeight: 600 }}>
+          <span style={{ fontSize: '0.78rem', color: 'var(--primary-200)', fontWeight: 600 }}>
             PermenPANRB No. 8 Tahun 2026 &amp; PermenPANRB No. 19 Tahun 2018
           </span>
         </div>

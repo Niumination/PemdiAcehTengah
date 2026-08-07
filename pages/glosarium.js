@@ -102,7 +102,7 @@ export default function GlosariumPage() {
                 top: '50%',
                 transform: 'translateY(-50%)',
                 fontSize: '1.125rem',
-                color: '#9ca3af',
+                color: 'var(--muted)',
                 pointerEvents: 'none',
               }}
               aria-hidden="true"

@@ -186,7 +186,7 @@ export default function Sidebar({ isOpen, onClose, collapsed }) {
             <span style={{ fontSize: '18px' }}>📢</span>
             <div style={{ flex: 1 }}>
               <div style={{ fontSize: '12px', fontWeight: 700, color: '#ffffff' }}>Butuh Bantuan / Lapor?</div>
-              <div style={{ fontSize: '10px', color: '#90b5db' }}>Kirim tiket & lacak real-time</div>
+              <div style={{ fontSize: '10px', color: 'var(--primary-200)' }}>Kirim tiket & lacak real-time</div>
             </div>
           </div>
           <div className="sb-foot-text">Walidata: Diskominfo Kab. Aceh Tengah</div>

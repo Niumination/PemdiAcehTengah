@@ -78,7 +78,7 @@ export default function LayananPage() {
                 padding: '0.375rem 0.875rem', borderRadius: '100px', fontSize: '0.75rem', fontWeight: kategoriAktif === null ? 600 : 500,
                 background: kategoriAktif === null ? '#fff' : 'rgba(255,255,255,0.1)',
                 border: `1px solid ${kategoriAktif === null ? '#fff' : 'rgba(255,255,255,0.25)'}`,
-                color: kategoriAktif === null ? '#004098' : 'rgba(255,255,255,0.9)',
+                color: kategoriAktif === null ? 'var(--primary)' : 'rgba(255,255,255,0.9)',
                 cursor: 'pointer', transition: 'all 0.15s ease', fontFamily: 'var(--font-body)',
               }}
             >Semua</button>

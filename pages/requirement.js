@@ -15,7 +15,7 @@ export default function Requirement() {
   }, [])
 
   if (loading) return (
-    <div style={{ maxWidth: 960, margin: '0 auto', padding: '40px 20px', textAlign: 'center', color: '#666' }}>
+    <div style={{ maxWidth: 960, margin: '0 auto', padding: '40px 20px', textAlign: 'center', color: 'var(--muted)' }}>
       <p>Memuat data requirement...</p>
     </div>
   )
@@ -130,9 +130,9 @@ export default function Requirement() {
                     <tbody>
                       {cat.items.map((item, i) => (
                         <tr key={i}>
-                          <td style={{ textAlign: 'center', color: '#666' }}>{item.no}</td>
+                          <td style={{ textAlign: 'center', color: 'var(--muted)' }}>{item.no}</td>
                           <td><strong>{item.data}</strong></td>
-                          <td style={{ fontSize: '0.85rem', color: '#555' }}>{item.fungsi}</td>
+                          <td style={{ fontSize: '0.85rem', color: 'var(--muted)' }}>{item.fungsi}</td>
                           <td style={{ textAlign: 'center' }}>
                             {item.format.split('/').map((f, fi) => (
                               <span key={fi} className="req-format-tag">{f.trim()}</span>
@@ -142,10 +142,10 @@ export default function Requirement() {
                             {item.dokumenKunci ? (
                               <span style={{
                                 display: 'inline-block', padding: '0.1rem 0.4rem', borderRadius: '4px',
-                                background: 'rgba(27,67,50,0.1)', color: '#1B4332',
+                                background: 'rgba(27,67,50,0.1)', color: 'var(--primary)',
                                 fontSize: '0.7rem', fontWeight: 700,
                               }}>{item.dokumenKunci}</span>
-                            ) : <span style={{ color: '#ccc' }}>—</span>}
+                            ) : <span style={{ color: 'var(--muted)' }}>—</span>}
                           </td>
                           <td style={{ fontSize: '0.85rem' }}>{item.sumber}</td>
                         </tr>

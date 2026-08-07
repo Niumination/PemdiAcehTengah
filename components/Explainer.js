@@ -10,7 +10,7 @@ export default function Explainer({ term, children }) {
       <strong style={{ display: 'block', marginBottom: '0.375rem', fontSize: '0.9375rem', color: '#8b6914' }}>
         ❓ Apa itu {term}?
       </strong>
-      <div className="explainer-content" style={{ fontSize: '0.875rem', lineHeight: 1.6, color: '#333' }}>
+      <div className="explainer-content" style={{ fontSize: '0.875rem', lineHeight: 1.6, color: 'var(--ink)' }}>
         {children}
       </div>
       <style jsx>{`

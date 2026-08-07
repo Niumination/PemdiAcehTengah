@@ -38,15 +38,11 @@ const STATUS_META = {
 };
 
 const LEVEL_LABEL = { 0: 'Baseline', 1: 'Initiate', 2: 'Emerging', 3: 'Established', 4: 'Leading', 5: 'Transformative' };
-const LEVEL_WARNA = { 0: '#9ca3af', 1: '#ef4444', 2: '#f59e0b', 3: '#3b82f6', 4: '#10b981', 5: '#8b5cf6' };
+const LEVEL_WARNA = { 0: 'var(--muted)', 1: '#ef4444', 2: '#f59e0b', 3: '#3b82f6', 4: '#10b981', 5: '#8b5cf6' };
 
 function hitungStatus(ind) {
   if (!ind?.bukti_dukung) return { count: 0, lengkap: 0, proses: 0, belum: 0 };
   const bd = ind.bukti_dukung;
-  // Aturan penilaian: L1 tidak lengkap → L2 tidak dinilai → bukti disembunyikan
-  if (ind._l1_lengkap === false) {
-    return { count: 0, lengkap: 0, proses: 0, belum: 0, hidden: true, hiddenCount: bd.length };
-  }
   return {
     count: bd.length,
     lengkap: bd.filter(b => b.status === 'lengkap').length,
@@ -471,24 +467,10 @@ export default function ModulIndikatorPage() {
                           fontSize: '0.65rem', padding: '0.15rem 0.4rem', borderRadius: '4px',
                           background: `${w}15`, color: w, fontWeight: 600,
                         }}>{modul.aspek?.replace('Aspek ', 'A')}</span>
-                        {modul.status.hidden && (
-                          <span style={{
-                            fontSize: '0.65rem', padding: '0.15rem 0.4rem', borderRadius: '4px',
-                            background: '#ef44441a', color: '#ef4444', fontWeight: 600,
-                          }} title="Level 1 belum lengkap — aturan penilaian: L2 tidak dinilai jika L1 tidak lengkap">
-                            🔒 L1 Belum Lengkap
-                          </span>
-                        )}
                       </div>
 
                       {/* Progress bar */}
-                      {modul.status.hidden ? (
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.3rem' }}>
-                          <span style={{ fontSize: '0.72rem', color: '#ef4444' }}>
-                            🔒 {modul.status.hiddenCount} bukti disembunyikan — lengkapi item Level 1 dulu
-                          </span>
-                        </div>
-                      ) : modul.status.count > 0 && (
+                      {modul.status.count > 0 && (
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.3rem' }}>
                           <div style={{
                             flex: 1, height: '4px', borderRadius: '2px',
@@ -646,18 +628,8 @@ export default function ModulIndikatorPage() {
                       )}
 
                       {/* ════ Current Evidence Status — validated by PemdiArena ════ */}
-                      {modul.status.hidden ? (
-                        <div style={{
-                          marginTop: '1rem', padding: '0.75rem', borderRadius: '8px',
-                          background: '#ef44440d', border: '1px dashed #ef4444',
-                          fontSize: '0.8rem', color: '#ef4444',
-                        }}>
-                          🔒 <strong>Bukti dukung disembunyikan sementara</strong> — Level 1 belum lengkap
-                          ({modul.status.hiddenCount} bukti di folder <code>belum-lengkap/</code>).
-                          Aturan penilaian: jika Level 1 tidak lengkap, Level 2 ke atas tidak dinilai.
-                          Lengkapi seluruh item Level 1 ({hitungStatusL1(modul.indikator_id)}) untuk menampilkan kembali bukti.
-                        </div>
-                      ) : modul.ind?.bukti_dukung?.length > 0 && (
+                      {false && (
+                      modul.ind?.bukti_dukung?.length > 0 && (
                         <div style={{ marginTop: '1rem' }}>
                           {modul.status.lengkap === 0 && modul.status.count > 0 && (
                             <div style={{
@@ -949,7 +921,8 @@ export default function ModulIndikatorPage() {
                           </div>
                           )}
                         </div>
-                      )}
+                      ))}
+
 
                       {/* ════ Quick Actions ════ */}
                       <div style={{ marginTop: '1rem', display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
@@ -977,6 +950,8 @@ export default function ModulIndikatorPage() {
         </div>
       </section>
 
+      {/* ════════ SEMUA SECTION BUKTI DUKUNG DISEMBUNYIKAN (file tetap, UI dibersihkan) ════════ */}
+      {false && (<>
       {/* ════════ BUKTI DUKUNG BARU 2026 — Portal Evaluasi & Dokumen (inject baru) ════════ */}
       <section style={{ marginTop: '3rem' }}>
         <div className="container">
@@ -1637,6 +1612,7 @@ export default function ModulIndikatorPage() {
         </div>
       </section>
 
+      </>)}
       {/* ════════ PREVIEW MODAL ════════ */}
       {previewDoc && (
         <div onClick={() => setPreviewDoc(null)} style={{
