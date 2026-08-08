@@ -1,19 +1,24 @@
 {
  "I1": {
   "1": [
-   "Rancangan dokumen perencanaan IP berisi substansi RAN Pemdi",
+   "Rancangan dokumen perencanaan IP berisi substansi RAN Pemdi dalam tahap penyusunan",
    [
-    "TataKelola_I1_28_RPJMK-2025-2029_2026.pdf"
+    "TataKelola_I1_29_Draft-Peta-Rencana-Pemdi_2026.pdf",
+    "TataKelola_I1_23_Notulen-Perencanaan_2025.pdf",
+    "TataKelola_I1_25_Undangan-Perencanaan_2025.pdf",
+    "TataKelola_I1_21_Daftar-Hadir-Perencanaan_2025.pdf",
+    "final-src/I1_Penjelasan_RPJMD.pdf"
    ],
-   "Qanun RPJMK Aceh Tengah 2025-2029 — dokumen perencanaan daerah memuat substansi RAN Pemdi."
+   "Draf Peta Rencana Pemdi 2025-2029 (rancangan awal memuat substansi RAN Pemdi, konsep pembahasan Tim Koordinasi) + dokumentasi proses penyusunan (undangan, daftar hadir, notulen) + penjelasan substansi RAN Pemdi pada RPJMK. Catatan: draf perlu finalisasi paraf/stempel sebelum unggah final ke portal."
   ],
   "2": [
-   "Sebagian substansi RAN Pemdi pada perencanaan IP (Renstra/RPJMD)",
+   "Sebagian substansi RAN Pemdi pada perencanaan IP (Renstra/RPJMD/Renja)",
    [
+    "TataKelola_I1_28_RPJMK-2025-2029_2026.pdf",
     "TataKelola_I1_15_Renstra-Diskominfo_2026.pdf",
     "TataKelola_I1_16_Renja-Diskominfo_2026.pdf"
    ],
-   "Renstra dan Renja Diskominfo memuat substansi RAN Pemdi pada perencanaan IPPD."
+   "Qanun RPJMK Aceh Tengah 2025-2029 (dokumen perencanaan daerah final memuat substansi RAN Pemdi) + Renstra dan Renja Diskominfo."
   ],
   "3": [
    "Perencanaan dan Anggaran yang mendukung substansi RAN Pemdi (RKA K/L RKAD)",
