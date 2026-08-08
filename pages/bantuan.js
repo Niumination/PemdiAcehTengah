@@ -13,7 +13,7 @@ export default function BantuanPage() {
         <meta name="description" content="Pusat bantuan portal Pemdi Aceh Tengah — FAQ, SLA layanan, kontak helpdesk, dan SP4N LAPOR." />
       </Head>
 
-      <section className="hero-bantuan">
+      <section data-reveal className="hero-bantuan">
         <div className="container">
           <Link href="/" className="back-link">← Beranda</Link>
           <div style={{ marginTop: '1rem' }}>

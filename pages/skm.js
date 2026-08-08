@@ -47,7 +47,7 @@ export default function SKMPage() {
         <meta name="description" content="Survei Kepuasan Masyarakat (SKM) online — Pemerintah Kabupaten Aceh Tengah. PermenPANRB 8/2026 Indikator I19 & I20." />
       </Head>
 
-      <section style={{
+      <section data-reveal style={{
         background: 'var(--hero-grad)',
         borderRadius: 'var(--r)',
         padding: '2.5rem 2rem',

@@ -26,7 +26,7 @@ export default function LaporPage() {
         <meta name="description" content="Kirim laporan pengaduan dan lacak status tindak lanjut — Pemerintah Kabupaten Aceh Tengah. Indikator I19 Fasilitas Dukungan Pengguna PermenPANRB 8/2026." />
       </Head>
 
-      <section className="section-hero-skm">
+      <section data-reveal className="section-hero-skm">
         <div className="container">
           <Link href="/" className="back-link">← Beranda</Link>
           <div style={{ marginTop: '1rem' }}>

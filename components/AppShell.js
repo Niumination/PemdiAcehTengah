@@ -87,6 +87,31 @@ export default function AppShell({ children }) {
   // Stabil: identity tidak berubah antar render → Sidebar effect tidak memicu close-loop
   const handleCloseSidebar = useCallback(() => setSidebarOpen(false), []);
 
+  /* ── Scroll reveal global: [data-reveal] & [data-reveal-stagger] ──
+     IntersectionObserver — 60fps (transform/opacity), hormati prefers-reduced-motion */
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const els = document.querySelectorAll('[data-reveal], [data-reveal-stagger]');
+    if (reduce || !('IntersectionObserver' in window)) {
+      els.forEach((el) => el.classList.add('is-visible'));
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -32px 0px' }
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, [pathname]);
+
   const breadcrumbs = getBreadcrumbs(pathname);
 
   /* ── Marquee teks ── */

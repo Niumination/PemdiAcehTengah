@@ -13,7 +13,7 @@ export default function KebijakanPrivasi() {
       </Head>
 
       {/* ============ HERO ============ */}
-      <section className="section-hero-privasi" style={{
+      <section data-reveal className="section-hero-privasi" style={{
         background: 'linear-gradient(135deg, #004098 0%, #002060 100%)',
         color: 'white',
         padding: '2.5rem 0 2rem',
@@ -135,7 +135,7 @@ export default function KebijakanPrivasi() {
           </div>
 
           {/* Kontak */}
-          <div className="card" style={{ padding: '1.5rem 2rem', marginBottom: '1rem', borderLeft: '4px solid var(--primary)' }}>
+          <div className="card" style={{ padding: '1.5rem 2rem', marginBottom: '1rem', borderTop: '3px solid var(--primary)' }}>
             <h2 style={{ fontSize: '1.125rem', fontWeight: 700, marginBottom: '0.75rem', color: 'var(--primary)' }}>
               📞 Kontak & Pengaduan
             </h2>

@@ -48,7 +48,7 @@ export default function LayananPage() {
       </Head>
 
       {/* ============ HERO ============ */}
-      <section style={{
+      <section data-reveal style={{
         background: 'var(--hero-grad)',
         borderRadius: 'var(--r)',
         padding: '2.5rem 2rem',
@@ -130,20 +130,20 @@ export default function LayananPage() {
       {/* ============ STATS ============ */}
       <section className="section" style={{ padding: '1.5rem 0' }}>
         <div className="container">
-          <div className="grid grid-4" style={{ gap: '0.75rem' }}>
-            <div className="card" style={{ padding: '1rem', textAlign: 'center' }}>
+          <div className="grid grid-4" style={{ gap: '0.75rem' }} data-reveal-stagger>
+            <div className="card" style={{ padding: '1rem', textAlign: 'center', '--i': 0 }}>
               <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--primary)' }}>{formatAngka(ringkasan.total_layanan)}</div>
               <div style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>Total Layanan</div>
             </div>
-            <div className="card" style={{ padding: '1rem', textAlign: 'center' }}>
+            <div className="card" style={{ padding: '1rem', textAlign: 'center', '--i': 1 }}>
               <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#28a197' }}>{formatAngka(ringkasan.layanan_online)}</div>
               <div style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>Bisa Online</div>
             </div>
-            <div className="card" style={{ padding: '1rem', textAlign: 'center' }}>
+            <div className="card" style={{ padding: '1rem', textAlign: 'center', '--i': 2 }}>
               <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#e65100' }}>{formatAngka(ringkasan.layanan_offline)}</div>
               <div style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>Datang Langsung</div>
             </div>
-            <div className="card" style={{ padding: '1rem', textAlign: 'center' }}>
+            <div className="card" style={{ padding: '1rem', textAlign: 'center', '--i': 3 }}>
               <div style={{ fontSize: '1.5rem', fontWeight: 700, color: getSlaWarna(slaRata) }}>{formatAngka(slaRata)}%</div>
               <div style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>Rata-rata SLA</div>
               <div style={{ fontSize: '0.625rem', marginTop: '0.25rem', color: 'var(--muted)' }}>
@@ -168,19 +168,17 @@ export default function LayananPage() {
             <h2>Kategori Layanan</h2>
             <p>Jelajahi berdasarkan kategori urusan pemerintahan</p>
           </div>
-          <div className="grid grid-3">
-            {kategori.map(k => (
+          <div className="grid grid-3" data-reveal-stagger>
+            {kategori.map((k, ki) => (
               <Link key={k.id} href={`/layanan?kategori=${k.id}`}
                 className="card"
-                style={{ textDecoration: 'none', borderTop: `3px solid ${k.warna}`, transition: 'transform 0.15s, box-shadow 0.15s' }}
+                style={{ textDecoration: 'none', borderTop: `3px solid ${k.warna}`, '--i': ki, transition: 'transform 0.28s cubic-bezier(0.16,1,0.3,1), box-shadow 0.28s cubic-bezier(0.16,1,0.3,1)' }}
                 onClick={e => {
                   e.preventDefault();
                   setKategoriAktif(k.id);
                   setCari('');
                   document.getElementById('daftar')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = 'var(--shadow-md)'; }}
-                onMouseLeave={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = 'none'; }}
               >
                 <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>{k.ikon}</div>
                 <h3 style={{ fontSize: '0.9375rem', marginBottom: '0.25rem' }}>{k.nama}</h3>

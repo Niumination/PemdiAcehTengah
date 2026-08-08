@@ -23,7 +23,7 @@ export default function PetaProsesBisnis({ data }) {
       </Head>
 
       {/* ============ HERO ============ */}
-      <section style={{
+      <section data-reveal style={{
         background: 'var(--hero-grad)',
         borderRadius: 'var(--r)',
         padding: '2.5rem 2rem',
@@ -387,14 +387,14 @@ export default function PetaProsesBisnis({ data }) {
 
         .ppb-note {
           margin-top: 1rem; padding: 0.75rem 1rem;
-          background: rgba(21, 101, 192, 0.05); border-left: 3px solid var(--primary);
+          background: rgba(21, 101, 192, 0.05); border-top: 3px solid var(--primary);
           border-radius: 6px; font-size: 0.8125rem; color: var(--muted);
         }
 
         .kategori-section { margin-bottom: 1.5rem; }
         .kategori-header {
           display: flex; gap: 1rem; align-items: flex-start;
-          border-left: 3px solid; padding-left: 1rem; margin-bottom: 1rem;
+          border-top: 3px solid; padding-top: 0.75rem; margin-bottom: 1rem;
         }
         .kategori-icon { font-size: 1.5rem; }
         .kategori-header h3 { font-size: 1.125rem; font-weight: 600; margin: 0; }

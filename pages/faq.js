@@ -46,7 +46,7 @@ export default function FAQPage() {
         <meta name="description" content="Pertanyaan umum seputar Pemerintah Digital Aceh Tengah — portal, layanan, SPBE, Pemdi, dan teknis." />
       </Head>
 
-      <section style={{
+      <section data-reveal style={{
         background: 'var(--hero-grad)',
         borderRadius: 'var(--r)',
         padding: '2.5rem 2rem',

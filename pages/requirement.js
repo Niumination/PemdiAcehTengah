@@ -34,7 +34,7 @@ export default function Requirement() {
       </Head>
 
       {/* HERO */}
-      <section style={{
+      <section data-reveal style={{
         background: 'var(--hero-grad)',
         borderRadius: 'var(--r)',
         padding: '2.5rem 2rem',
@@ -287,14 +287,14 @@ export default function Requirement() {
           max-width: 1000px;
           margin: 0 auto;
           padding: 0 20px 80px;
-          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+          font-family: var(--font-body, system-ui, sans-serif);
         }
         .section-title {
           font-size: 1.3rem;
           font-weight: 600;
           color: var(--primary);
-          border-left: 4px solid var(--primary);
-          padding-left: 12px;
+          border-top: 4px solid var(--primary);
+          padding-top: 12px;
           margin: 0 0 20px;
         }
         /* Summary Cards */

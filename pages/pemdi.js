@@ -192,6 +192,7 @@ export default function PemdiPage() {
 
       {/* Hero Header */}
       <section
+        data-reveal
         style={{
           background: 'var(--hero-grad)', color: '#ffffff', padding: '36px 28px',
           borderRadius: 'var(--r-lg)', marginBottom: '28px', position: 'relative', overflow: 'hidden',
@@ -212,19 +213,19 @@ export default function PemdiPage() {
 
       {/* Executive KPI Summary Cards */}
       <section style={{ marginBottom: '32px' }}>
-        <div className="grid-3">
-          <div className="glow-card" style={{ padding: '20px', textAlign: 'center' }}>
+        <div className="grid-3" data-reveal-stagger>
+          <div className="glow-card" style={{ padding: '20px', textAlign: 'center', '--i': 0 }}>
             <div style={{ fontSize: '0.78rem', color: 'var(--muted)', textTransform: 'uppercase', fontWeight: 700, letterSpacing: '0.05em' }}>Baseline SPBE 2025</div>
             <div style={{ fontSize: '2.2rem', fontWeight: 800, color: 'var(--gold-deep)', fontFamily: 'var(--font-mono)', margin: '6px 0' }}>{formatDesimal(baseline_spbe)}</div>
             <span className="badge badge-yellow">Level Kematangan Cukup</span>
           </div>
-          <div className="glow-card" style={{ padding: '20px', textAlign: 'center', borderColor: 'var(--primary)' }}>
+          <div className="glow-card" style={{ padding: '20px', textAlign: 'center', '--i': 1, borderColor: 'var(--primary)' }}>
             <div style={{ fontSize: '0.78rem', color: 'var(--primary)', textTransform: 'uppercase', fontWeight: 800, letterSpacing: '0.05em' }}>Indeks Pemdi (dari Bukti Dukung)</div>
             <div style={{ fontSize: '2.2rem', fontWeight: 800, color: 'var(--primary)', fontFamily: 'var(--font-mono)', margin: '6px 0' }}>{formatDesimal(indeks)}</div>
             <span className={`badge ${predikat.bg}`} style={{ color: predikat.warna }}>Predikat {predikat.label}</span>
             <div style={{ fontSize: '0.68rem', color: 'var(--muted)', marginTop: '6px' }}>Dihitung dari {totalTampil} bukti dukung tampil ({pemdiData.total_item_bukti} di data · {pemdiData.target_item_bukti} target)</div>
           </div>
-          <div className="glow-card" style={{ padding: '20px', textAlign: 'center' }}>
+          <div className="glow-card" style={{ padding: '20px', textAlign: 'center', '--i': 2 }}>
             <div style={{ fontSize: '0.78rem', color: 'var(--muted)', textTransform: 'uppercase', fontWeight: 700, letterSpacing: '0.05em' }}>Target Evaluasi 2026</div>
             <div style={{ fontSize: '2.2rem', fontWeight: 800, color: 'var(--ok)', fontFamily: 'var(--font-mono)', margin: '6px 0' }}>≥ {formatDesimal(target_indeks)}</div>
             <span className="badge badge-green">Gap Analysis: {formatDesimal(gap)} Poin</span>
@@ -242,11 +243,11 @@ export default function PemdiPage() {
           </div>
         </div>
 
-        <div className="grid-2">
-          {aspek.map((a) => {
+        <div className="grid-2" data-reveal-stagger>
+          {aspek.map((a, ai) => {
             const pct = Math.min(100, (a.nilai / a.target) * 100);
             return (
-              <div key={a.id} className="glow-card" style={{ padding: '22px', cursor: 'pointer' }} onClick={() => setModalAspek(a)}>
+              <div key={a.id} className="glow-card" style={{ padding: '22px', cursor: 'pointer', '--i': ai }} onClick={() => setModalAspek(a)}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '12px', marginBottom: '10px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                     <div style={{ width: 34, height: 34, borderRadius: '8px', background: 'var(--primary-50)', color: 'var(--primary)', display: 'grid', placeItems: 'center', fontWeight: 800, fontSize: '0.9rem' }}>{a.id}</div>

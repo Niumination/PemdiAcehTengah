@@ -100,7 +100,7 @@ export default function TanyaPage() {
       </Head>
 
       {/* ====== HERO ====== */}
-      <section className="chat-hero">
+      <section data-reveal className="chat-hero">
         <div className="container">
           <Link href="/" className="back-link">← Beranda</Link>
           <div style={{ marginTop: '1rem' }}>

@@ -52,7 +52,7 @@ export default function GlosariumPage() {
       <a href="#glosarium-content" className="skip-link">Lompat ke daftar istilah</a>
 
       {/* ============ HERO ============ */}
-      <section style={{
+      <section data-reveal style={{
         background: 'var(--hero-grad)',
         borderRadius: 'var(--r)',
         padding: '2.5rem 2rem',

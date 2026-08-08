@@ -66,7 +66,7 @@ export default function SpbePage({ data }) {
       </Head>
 
       {/* HERO */}
-      <section style={{
+      <section data-reveal style={{
         background: 'var(--hero-grad)',
         borderRadius: 'var(--r)',
         padding: '2.5rem 2rem',

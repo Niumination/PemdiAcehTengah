@@ -13,7 +13,7 @@ export default function DashboardKepuasan() {
         />
       </Head>
 
-      <section style={{
+      <section data-reveal style={{
         background: 'var(--hero-grad)',
         borderRadius: 'var(--r)',
         padding: '2.5rem 2rem',
