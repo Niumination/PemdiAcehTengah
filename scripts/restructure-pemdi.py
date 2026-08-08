@@ -94,6 +94,7 @@ for a in d['aspek']:
             best = max(lv_items, key=lambda b: match_score(b['nama'], ev['item']))
             best['status'] = 'lengkap'
             best['url_preview'] = ev['file']
+            best['_ext'] = 'pdf'  # renderer modul-indikator butuh _ext untuk tombol Lihat
             best['catatan'] = ev['catatan']
             # url_sumber: JDIH/OpenData dari sumber pertama yang dikenali
             src_urls = []
