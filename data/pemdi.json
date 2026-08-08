@@ -2798,8 +2798,8 @@
         "Semua OPD (Penyedia Layanan)"
        ],
        "status": "lengkap",
-       "catatan": "Perbup 30/2022 Mal Pelayanan Publik + arsitektur layanan digital (dasar portal).",
-       "url_preview": "/bukti-dukung/final/I17_L1_Final.pdf",
+       "catatan": "Perbup 30/2022 Penyelenggaraan MPP + screenshot portal layanan digital (acehtengahkab.go.id) + daftar layanan portal - bukti keberadaan portal layanan digital pada instansi pemerintah daerah.",
+       "url_preview": "/bukti-dukung/final/I17_L1_Portal-Instansi_2026.pdf",
        "_ext": "pdf"
       },
       {
@@ -2811,8 +2811,10 @@
         "Diskominfo",
         "Semua OPD (Penyedia Layanan)"
        ],
-       "status": "belum",
-       "catatan": ""
+       "status": "lengkap",
+       "catatan": "Portal resmi Pemerintah Kabupaten Aceh Tengah (acehtengahkab.go.id) - portal layanan digital pada IPPD, aktif.",
+       "url_preview": "https://acehtengahkab.go.id",
+       "_ext": "url"
       },
       {
        "id": "GT.I17_L2_1",
@@ -2836,9 +2838,12 @@
         "Semua OPD (Penyedia Layanan)"
        ],
        "status": "lengkap",
-       "catatan": "Penyelenggaraan MPP + laporan ketersediaan portal layanan digital.",
+       "catatan": "Perbup 30/2022 + laporan ketersediaan portal layanan digital (sebagian layanan) + lampiran dokumen portal layanan digital daerah.",
        "url_preview": "/bukti-dukung/final/I17_L2_Final.pdf",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "url_lampiran": [
+        "/bukti-dukung/Keterpaduan_I17_02_PortalLayanan_2026.pdf"
+       ]
       },
       {
        "id": "GT.I17_L3_1",
