@@ -377,7 +377,10 @@
         1
        ],
        "_sumber_baru": true,
-       "_peran": "utama"
+       "_peran": "utama",
+       "url_lampiran": [
+        "/bukti-dukung/TataKelola_I1_27_LHE-Reviu-RKPD_2027.pdf"
+       ]
       },
       {
        "id": "P1.I1_9",
@@ -396,7 +399,10 @@
         1
        ],
        "_sumber_baru": true,
-       "_peran": "utama"
+       "_peran": "utama",
+       "url_lampiran": [
+        "/bukti-dukung/TataKelola_I1_28_RPJMK-2025-2029_2026.pdf"
+       ]
       },
       {
        "id": "P1.I1_10",
@@ -1499,9 +1505,10 @@
         "Diskominfo",
         "Setdakab"
        ],
-       "status": "belum",
-       "catatan": "50 ASN dilatih TTE + berita sosialisasi TTE ditemukan. Usulan BSrE perlu dokumen resmi",
-       "_peran": "utama"
+       "status": "lengkap",
+       "catatan": "Perbup Sertifikat Elektronik Tahun 2021 — dasar hukum TTE",
+       "_peran": "utama",
+       "url_preview": "/bukti-dukung/KeamananSiber_I11_05_Perbup-Sertifikat-Elektronik_2021.pdf"
       },
       {
        "id": "B11.2",
@@ -1552,7 +1559,10 @@
         22
        ],
        "_sumber_baru": true,
-       "_peran": "utama"
+       "_peran": "utama",
+       "url_lampiran": [
+        "/bukti-dukung/KeamananSiber_I11_06_Perbup-Penyelenggaraan-Persandian-Full_2025.pdf"
+       ]
       }
      ],
      "_l1_lengkap": true
@@ -1597,9 +1607,13 @@
         "Diskominfo",
         "Bagian Hukum"
        ],
-       "status": "belum",
-       "catatan": "Situs csirt.acehtengahkab.go.id aktif, ada fungsi 'Lapor Insiden'. SK pembentukan perlu diminta resmi",
-       "_peran": "utama"
+       "status": "lengkap",
+       "catatan": "SK CSIRT Aceh Tengah 2026 + SK Tim CSIRT 2024",
+       "_peran": "utama",
+       "url_preview": "/bukti-dukung/KeamananSiber_I12_01_SK-CSIRT-Aceh-Tengah_2026.pdf",
+       "url_lampiran": [
+        "/bukti-dukung/KeamananSiber_I12_02_SK-Tim-CSIRT_2024.pdf"
+       ]
       },
       {
        "id": "B12.2",
@@ -1720,8 +1734,13 @@
         "OPD Pengusul",
         "Diskominfo"
        ],
-       "status": "belum",
-       "_peran": "utama"
+       "status": "lengkap",
+       "_peran": "utama",
+       "url_preview": "/bukti-dukung/Teknologi_I13_13_KAK-Aplikasi-Gemasih_2026.pdf",
+       "url_lampiran": [
+        "/bukti-dukung/Teknologi_I13_14_KAK-Aplikasi-Lepat_2026.pdf"
+       ],
+       "catatan": "KAK Aplikasi Gemasih + KAK Aplikasi Lepat"
       },
       {
        "id": "B13.3",
@@ -1731,9 +1750,14 @@
        "opd": [
         "Diskominfo"
        ],
-       "status": "belum",
-       "catatan": "SICANTIK dan portal lain sudah live. SIAP Digital perlu screenshot",
-       "_peran": "utama"
+       "status": "lengkap",
+       "catatan": "Screenshot aplikasi Bapokting, Gemasih, Lepat",
+       "_peran": "utama",
+       "url_preview": "/bukti-dukung/Teknologi_I13_17_Screenshot-Aplikasi-Bapokting_2026.pdf",
+       "url_lampiran": [
+        "/bukti-dukung/Teknologi_I13_18_Screenshot-Aplikasi-Gemasih_2026.pdf",
+        "/bukti-dukung/Teknologi_I13_19_Screenshot-Aplikasi-Lepat_2026.pdf"
+       ]
       },
       {
        "id": "B13.4",
@@ -1745,8 +1769,16 @@
         "OPD Pemilik Aplikasi",
         "Vendor"
        ],
-       "status": "belum",
-       "_peran": "utama"
+       "status": "lengkap",
+       "_peran": "utama",
+       "url_preview": "/bukti-dukung/Teknologi_I13_15_Laporan-Aplikasi-Gemasih_2026.pdf",
+       "url_lampiran": [
+        "/bukti-dukung/Teknologi_I13_16_Laporan-Aplikasi-Lepat_2026.pdf",
+        "/bukti-dukung/Teknologi_I13_10_BAST-Aplikasi-Bapokting_2026.pdf",
+        "/bukti-dukung/Teknologi_I13_11_BAST-Aplikasi-Gemasih_2026.pdf",
+        "/bukti-dukung/Teknologi_I13_12_BAST-Aplikasi-Lepat_2026.pdf"
+       ],
+       "catatan": "Laporan akhir Gemasih & Lepat + BAST Bapokting/Gemasih/Lepat"
       },
       {
        "id": "P1.I13_1",
