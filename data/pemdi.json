@@ -3151,8 +3151,13 @@
         "Diskominfo",
         "Semua OPD (Penyedia Layanan)"
        ],
-       "status": "belum",
-       "catatan": ""
+       "status": "lengkap",
+       "catatan": "Daftar SLA 25 layanan digital di 7 sektor (portal Pemdi, live) + Perbup 126/2019 Pedoman Standar Pelayanan (dasar hukum SLA). Bukti dari sistem yang berjalan.",
+       "url_preview": "/bukti-dukung/final/I19_L1_SLA-Layanan-Digital_2026.pdf",
+       "url_lampiran": [
+        "/bukti-dukung/TataKelola_I2_01_Perbup-126-Standar-Pelayanan_2019.pdf"
+       ],
+       "_ext": "pdf"
       },
       {
        "id": "GT.I19_L1_2",
@@ -3163,8 +3168,10 @@
         "Diskominfo",
         "Semua OPD (Penyedia Layanan)"
        ],
-       "status": "belum",
-       "catatan": ""
+       "status": "lengkap",
+       "catatan": "SLA per layanan (waktu proses tiap layanan di portal) - dokumen SLA per-proses layanan digital. Satu set dengan SLA Layanan Digital (L1-1), klaim berbeda (per-layanan vs keseluruhan).",
+       "url_preview": "/bukti-dukung/final/I19_L1_SLA-Layanan-Digital_2026.pdf",
+       "_ext": "pdf"
       },
       {
        "id": "GT.I19_L2_1",
@@ -3175,8 +3182,14 @@
         "Diskominfo",
         "Semua OPD (Penyedia Layanan)"
        ],
-       "status": "belum",
-       "catatan": ""
+       "status": "lengkap",
+       "catatan": "Fasilitas Dukungan Pengguna (FDP): sistem pengaduan SP4N-LAPOR (Perbup 21/2021) + pedoman penanganan pengaduan RSUD + pemantauan SLA 25 layanan di portal - dipenuhi pada sebagian layanan.",
+       "url_preview": "/bukti-dukung/final/I19_L1_SLA-Layanan-Digital_2026.pdf",
+       "url_lampiran": [
+        "/bukti-dukung/Kepuasan_I19_01_Perbup-21-Pedoman_2021.pdf",
+        "/bukti-dukung/TataKelola_I2_05_Pedoman-Pengaduan-RSUD_2026.pdf"
+       ],
+       "_ext": "pdf"
       },
       {
        "id": "GT.I19_L3_1",
@@ -3282,8 +3295,14 @@
         "Bag. Organisasi",
         "seluruh PD penyelenggara layanan"
        ],
-       "status": "belum",
-       "catatan": ""
+       "status": "lengkap",
+       "catatan": "SKM Online yang diterapkan Pemkab Aceh Tengah: hasil IKM Jan-Mei 2026 (79-82, OpenData) + laporan SKM Kebayakan 2025 + unit pelayanan peserta. Hasil kepuasan dilihat melalui portal instansi.",
+       "url_preview": "/bukti-dukung/final/I20_L1_SKM-Online_2026.pdf",
+       "url_lampiran": [
+        "/bukti-dukung/Kepuasan_I19_06_Hasil-Survei-Kepuasan_2026.xlsx",
+        "/bukti-dukung/Kepuasan_I20_02_SKM-Kebayakan_2025.pdf"
+       ],
+       "_ext": "pdf"
       },
       {
        "id": "GT.I20_L1_2",
@@ -3295,8 +3314,10 @@
         "Bag. Organisasi",
         "seluruh PD penyelenggara layanan"
        ],
-       "status": "belum",
-       "catatan": ""
+       "status": "lengkap",
+       "catatan": "Data transaksi layanan digital: 25 layanan di 7 sektor (portal Pemdi) + hasil survei kepuasan periode Jan-Mei 2026 (5 periode).",
+       "url_preview": "/bukti-dukung/final/I20_L1_SKM-Online_2026.pdf",
+       "_ext": "pdf"
       },
       {
        "id": "GT.I20_L1_3",
@@ -3334,8 +3355,10 @@
         "Bag. Organisasi",
         "seluruh PD penyelenggara layanan"
        ],
-       "status": "belum",
-       "catatan": ""
+       "status": "lengkap",
+       "catatan": "SKM Online (L2): hasil kepuasan melalui portal - IKM Jan-Mei 2026 dipublikasikan via OpenData (dasar pengelolaan kepuasan berkelanjutan).",
+       "url_preview": "/bukti-dukung/final/I20_L1_SKM-Online_2026.pdf",
+       "_ext": "pdf"
       },
       {
        "id": "GT.I20_L2_2",
