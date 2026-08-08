@@ -284,7 +284,7 @@ export default function LaporWidget({ externalOpen, onExternalClose, hideFab }) 
       <style jsx>{`
         .lapor-fab {
           position: fixed;
-          bottom: 1.5rem;
+          bottom: calc(1.5rem + env(safe-area-inset-bottom));
           right: 1.5rem;
           width: 56px;
           height: 56px;

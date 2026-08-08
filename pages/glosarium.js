@@ -203,7 +203,7 @@ export default function GlosariumPage() {
                     <p
                       style={{
                         fontSize: '0.8125rem',
-                        color: 'var(--gold)',
+                        color: 'var(--gold-deep)',
                         fontStyle: 'italic',
                         margin: '0 0 0.5rem',
                         lineHeight: 1.5,

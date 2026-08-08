@@ -1,14 +1,30 @@
 {
   "name": "Pemdi Aceh Tengah — Portal Pemerintah Digital",
-  "short_name": "Pemdi Aceh Tengah",
-  "description": "Portal transformasi digital tata kelola Pemerintah Kabupaten Aceh Tengah.",
+  "short_name": "Pemdi AT",
+  "description": "Portal transformasi digital tata kelola Pemerintah Kabupaten Aceh Tengah — layanan publik, indeks Pemdi & SPBE, modul indikator.",
+  "id": "/",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#ffffff",
-  "theme_color": "#004098",
+  "background_color": "#F5F1E8",
+  "theme_color": "#1F2A44",
   "lang": "id",
+  "categories": ["government", "utilities"],
+  "shortcuts": [
+    {
+      "name": "Modul Indikator",
+      "short_name": "Indikator",
+      "url": "/modul-indikator",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Direktori Layanan",
+      "short_name": "Layanan",
+      "url": "/layanan",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ],
   "icons": [
     {
       "src": "/icons/icon-192.png",

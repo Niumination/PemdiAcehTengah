@@ -720,7 +720,7 @@ export default function ModulIndikatorPage() {
                                       {isDup && (
                                         <span style={{
                                           display: 'inline-block', marginLeft: '0.4rem', padding: '0.1rem 0.4rem',
-                                          borderRadius: '4px', background: 'var(--gold-light)', color: 'var(--gold)',
+                                          borderRadius: '4px', background: 'var(--gold-light)', color: 'var(--gold-deep)',
                                           fontSize: '0.62rem', fontWeight: 600, verticalAlign: 'middle',
                                         }} title="Dokumen yang sama dipakai sebagai bukti di lebih dari satu level — wajar sesuai kriteria level">
                                           🔁 multi-level

@@ -215,7 +215,7 @@ export default function PemdiPage() {
         <div className="grid-3">
           <div className="glow-card" style={{ padding: '20px', textAlign: 'center' }}>
             <div style={{ fontSize: '0.78rem', color: 'var(--muted)', textTransform: 'uppercase', fontWeight: 700, letterSpacing: '0.05em' }}>Baseline SPBE 2025</div>
-            <div style={{ fontSize: '2.2rem', fontWeight: 800, color: 'var(--gold)', fontFamily: 'var(--font-mono)', margin: '6px 0' }}>{formatDesimal(baseline_spbe)}</div>
+            <div style={{ fontSize: '2.2rem', fontWeight: 800, color: 'var(--gold-deep)', fontFamily: 'var(--font-mono)', margin: '6px 0' }}>{formatDesimal(baseline_spbe)}</div>
             <span className="badge badge-yellow">Level Kematangan Cukup</span>
           </div>
           <div className="glow-card" style={{ padding: '20px', textAlign: 'center', borderColor: 'var(--primary)' }}>

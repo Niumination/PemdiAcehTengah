@@ -28,7 +28,7 @@ export default function SkmPrompt() {
       <button className="skm-toast-close" onClick={() => setShow(false)} aria-label="Tutup">✕</button>
       <style jsx>{`
         .skm-toast {
-          position: fixed; top: calc(var(--gov-strip-h, 36px) + 70px); right: 1.5rem;
+          position: fixed; top: calc(var(--gov-strip-h, 36px) + 70px + env(safe-area-inset-top)); right: 1.5rem;
           bottom: auto; z-index: 1000;
           display: flex; align-items: center; gap: 0.75rem;
           padding: 0.75rem 1rem 0.75rem 1.25rem;

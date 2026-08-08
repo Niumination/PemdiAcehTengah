@@ -90,7 +90,7 @@ export default function AppShell({ children }) {
   const marqueeText = 'Portal Resmi Pemerintah Kabupaten Aceh Tengah — Menuju Pemerintah Digital (Pemdi)';
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', paddingTop: 'var(--gov-strip-h)' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', paddingTop: 'calc(var(--gov-strip-h) + env(safe-area-inset-top))' }}>
       {/* Official Government Strip — Marquee Running Text */}
       <div className="gov-strip" role="banner">
         <span className="gov-strip-flag" aria-hidden="true">🇮🇩</span>

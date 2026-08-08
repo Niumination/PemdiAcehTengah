@@ -38,6 +38,7 @@
   --teal-hover: #0b8a89;
   --teal-light: #e6f7f7;
   --gold: #C6A75E;             /* Soft Gold */
+  --gold-deep: #8A6A1D;        /* Gold kontras AA untuk teks di light */
   --gold-light: #F8F2E3;
   --gov-red: #c8102e;
 
@@ -120,6 +121,7 @@
   --teal-hover: #22b8b3;
   --teal-light: #0c2b2b;
   --gold: #C6A75E;
+  --gold-deep: #D5BA7C;        /* Gold terang utk teks di dark */
   --gold-light: #2A2414;
   --gov-red: #f87171;
 
@@ -1193,4 +1195,75 @@ input:focus, select:focus, textarea:focus {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+}
+
+/* ============ 11. MOBILE WEB APP (PWA / install Android) & MOTION ============ */
+
+/* --- Base mobile hardening --- */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-behavior: smooth; }
+html, body { overflow-x: clip; }
+* { -webkit-tap-highlight-color: transparent; }
+button, a, [role="button"], select, summary, input[type="checkbox"], input[type="radio"] { touch-action: manipulation; }
+::selection { background: var(--gold-light); color: var(--ink); }
+
+/* --- Safe area: notch & home indicator (viewport-fit=cover) --- */
+.gov-strip { padding-top: env(safe-area-inset-top); min-height: calc(var(--gov-strip-h) + env(safe-area-inset-top)); }
+.topbar { top: calc(var(--gov-strip-h) + env(safe-area-inset-top)); }
+.sidebar { top: calc(var(--gov-strip-h) + env(safe-area-inset-top)); }
+.scroll-top { bottom: calc(90px + env(safe-area-inset-bottom)); }
+
+/* --- Focus ring aksesibel (keyboard) --- */
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 3px; }
+
+/* --- Motion: entrance (fade-up + stagger) --- */
+@keyframes fade-up { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+.hero, .stat, .card, .qa-item,
+.grid-2 > *, .grid-3 > *, .grid-4 > *, .stats > * {
+  animation: fade-up 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.hero { animation-duration: 0.7s; }
+.stats > :nth-child(2), .grid-2 > :nth-child(2), .grid-3 > :nth-child(2), .grid-4 > :nth-child(2) { animation-delay: 70ms; }
+.stats > :nth-child(3), .grid-2 > :nth-child(3), .grid-3 > :nth-child(3), .grid-4 > :nth-child(3) { animation-delay: 140ms; }
+.stats > :nth-child(4), .grid-2 > :nth-child(4), .grid-3 > :nth-child(4), .grid-4 > :nth-child(4) { animation-delay: 210ms; }
+.grid-2 > :nth-child(5), .grid-3 > :nth-child(5), .grid-4 > :nth-child(5) { animation-delay: 280ms; }
+.grid-2 > :nth-child(6), .grid-3 > :nth-child(6), .grid-4 > :nth-child(6) { animation-delay: 350ms; }
+
+/* --- Hover polish desktop --- */
+.card, .stat {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.card:hover, .stat:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--gold) 45%, var(--line));
+  box-shadow: var(--sh);
+}
+.btn {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0) scale(0.98); }
+a { transition: color 0.18s ease; }
+.sidebar a, .sidebar button { transition: background 0.2s ease, color 0.2s ease, padding-left 0.2s ease, transform 0.2s ease; }
+
+/* --- Mobile touch & readability --- */
+@media (max-width: 768px) {
+  input, select, textarea { font-size: 16px !important; } /* cegah auto-zoom iOS saat fokus */
+  .btn { min-height: 44px; }
+  .topbar .btn { min-height: 42px; }
+  .sidebar a, .sidebar button { min-height: 44px; }
+  .content { padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
+  .container { padding: 0 16px; }
+  .lapor-fab { bottom: calc(1rem + env(safe-area-inset-bottom)) !important; }
+}
+
+/* --- Hormati preferensi reduced-motion --- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
