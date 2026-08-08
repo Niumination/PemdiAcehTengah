@@ -1234,10 +1234,8 @@
         "Inspektorat",
         "seluruh PD"
        ],
-       "status": "lengkap",
-       "catatan": "Perbup 6/2025 klasifikasi keamanan arsip dan Perbup 73/2020 (pelindungan data adminduk).",
-       "url_preview": "/bukti-dukung/final/I8_L1_Final.pdf",
-       "_ext": "pdf"
+       "status": "belum",
+       "catatan": "Dikosongkan 8 Ags 2026: Perbup 6/2025 (klasifikasi keamanan arsip) + Perbup 73/2020 (adminduk) + Perbup 137/2019 (PPID) adalah regulasi umum, bukan dokumen PDP spesifik yang diminta modul (uraian kondisi existing PDP / privacy notice + screenshot kebijakan). Rawan ditolak. Butuh dokumen PDP sesuai UU 27/2022 dari OPD."
       },
       {
        "id": "GT.I8_L1_2",
@@ -1379,10 +1377,8 @@
         "Inspektorat",
         "seluruh PD"
        ],
-       "status": "lengkap",
-       "catatan": "Perbup 6/2025 + Perbup 137/2019 PPID (informasi dikecualikan dan pelindungan data pribadi).",
-       "url_preview": "/bukti-dukung/final/I8_L2_Final.pdf",
-       "_ext": "pdf"
+       "status": "belum",
+       "catatan": "Dikosongkan 8 Ags 2026: Perbup 6/2025 (klasifikasi keamanan arsip) + Perbup 73/2020 (adminduk) + Perbup 137/2019 (PPID) adalah regulasi umum, bukan dokumen PDP spesifik yang diminta modul (uraian kondisi existing PDP / privacy notice + screenshot kebijakan). Rawan ditolak. Butuh dokumen PDP sesuai UU 27/2022 dari OPD."
       },
       {
        "id": "GT.I8_L2_6",
