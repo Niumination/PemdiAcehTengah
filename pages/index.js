@@ -145,16 +145,16 @@ export default function Home() {
       {/* ============ 2. EXECUTIVE LIVE METRICS TICKER ============ */}
       <section style={{ marginBottom: '32px' }} id="statistik">
         <div className="stats">
-          <div className="stat glow-card reveal">
+          <div className="stat glow-card reveal" style={{ borderColor: 'var(--gold)' }}>
             <div className="ic">🚀</div>
-            <div className="n">≥ 2,50</div>
-            <div className="l">Target Indeks Pemdi 2026</div>
+            <div className="n" style={{ color: 'var(--gold-deep)' }}>{formatDesimal(pemdiData.indeks_aktual ?? 0)}</div>
+            <div className="l">Indeks Pemdi dari Bukti (target ≥ 2,50)</div>
           </div>
 
           <div className="stat glow-card reveal d1">
             <div className="ic">📊</div>
             <div className="n">{formatDesimal(spbe.indeks)}</div>
-            <div className="l">Indeks SPBE 2025 (Cukup)</div>
+            <div className="l">Indeks SPBE 2025 (Baseline Cukup)</div>
           </div>
 
           <div className="stat glow-card reveal d2">
