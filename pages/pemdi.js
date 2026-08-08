@@ -260,7 +260,7 @@ export default function PemdiPage() {
                   <span style={{ color: 'var(--primary)', fontFamily: 'var(--font-mono)' }}>{formatDesimal(a.nilai)} / Target {formatDesimal(a.target)}</span>
                 </div>
                 <div style={{ height: '8px', background: 'var(--line)', borderRadius: '4px', overflow: 'hidden' }}>
-                  <div style={{ height: '100%', width: `${pct}%`, background: pct >= 80 ? 'var(--ok)' : pct >= 50 ? 'var(--gold)' : 'var(--bad)', borderRadius: '4px', transition: 'width 0.5s ease' }} />
+                  <div style={{ height: '100%', width: `${pct}%`, background: pct >= 80 ? 'var(--ok)' : pct >= 50 ? 'var(--gold)' : 'var(--bad)', borderRadius: '4px', transformOrigin: 'left', animation: pct > 0 ? 'fade-up 0.5s cubic-bezier(0.16,1,0.3,1)' : undefined }} />
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '14px', fontSize: '0.78rem', color: 'var(--primary)', fontWeight: 700 }}>
                   <span>{a.indikator?.length || 0} Indikator Terkait</span>
@@ -388,6 +388,16 @@ export default function PemdiPage() {
                                           👁️ preview
                                         </button>
                                       ))}
+                                      {(b.url_lampiran || []).map((l, li) => (
+                                        <button
+                                          key={li}
+                                          onClick={() => setPreview({ id: b.id, nama: `${b.nama} — lampiran ${li + 1}`, detail: b.detail || '', level, status: b.status, url: l, dkNos, indId: ind.id, indNama: ind.nama })}
+                                          style={{ border: 'none', background: 'transparent', color: 'var(--muted)', textDecoration: 'underline', cursor: 'pointer', fontSize: '0.68rem', padding: 0, marginLeft: '4px' }}
+                                          title={`Lampiran ${li + 1}`}
+                                        >
+                                          📎{li + 1}
+                                        </button>
+                                      ))}
                                     </span>
                                   </div>
                                 );
@@ -456,7 +466,7 @@ export default function PemdiPage() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               {modalAspek.indikator?.map((ind) => {
                 return (
-                  <div key={ind.id} style={{ padding: '16px', borderRadius: 'var(--r-xs)', background: 'var(--surface-2)', border: '1px solid var(--line)', borderLeft: '4px solid var(--primary)' }}>
+                  <div key={ind.id} style={{ padding: '16px', borderRadius: 'var(--r-xs)', background: 'var(--surface-2)', border: '1px solid var(--line)' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px', flexWrap: 'wrap', gap: '8px' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                         <span className="badge badge-blue">{ind.id}</span>
