@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Sidebar from './Sidebar';
@@ -84,6 +84,9 @@ export default function AppShell({ children }) {
     return () => window.removeEventListener('pemdi:open-lapor', openLapor);
   }, []);
 
+  // Stabil: identity tidak berubah antar render → Sidebar effect tidak memicu close-loop
+  const handleCloseSidebar = useCallback(() => setSidebarOpen(false), []);
+
   const breadcrumbs = getBreadcrumbs(pathname);
 
   /* ── Marquee teks ── */
@@ -106,7 +109,7 @@ export default function AppShell({ children }) {
         {/* Sidebar Navigation */}
         <Sidebar
           isOpen={sidebarOpen}
-          onClose={() => setSidebarOpen(false)}
+          onClose={handleCloseSidebar}
           collapsed={hydrated && !isMobile && sidebarHidden}
         />
 

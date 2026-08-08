@@ -317,7 +317,6 @@ html.anim-ready .reveal.d4 { transition-delay: 0.24s; }
 .sb-spacer {
   flex-shrink: 0;
   width: var(--sbw);
-  transition: width var(--transition);
 }
 .sb-spacer.hidden,
 .sb-spacer.collapsed {
@@ -401,7 +400,7 @@ html.anim-ready .reveal.d4 { transition-delay: 0.24s; }
   display: flex;
   flex-direction: column;
   z-index: 110;
-  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), width 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
   border-right: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 4px 0 24px rgba(0, 0, 0, 0.12);
 }
@@ -547,7 +546,6 @@ html.anim-ready .reveal.d4 { transition-delay: 0.24s; }
 .sb-link.active {
   background: linear-gradient(90deg, rgba(14, 165, 164, 0.22), rgba(255, 255, 255, 0.05));
   color: #ffffff;
-  border-left: 3px solid var(--teal);
 }
 .sb-link.active .i {
   background: var(--teal);
@@ -1245,7 +1243,7 @@ button, a, [role="button"], select, summary, input[type="checkbox"], input[type=
 .btn:hover { transform: translateY(-1px); }
 .btn:active { transform: translateY(0) scale(0.98); }
 a { transition: color 0.18s ease; }
-.sidebar a, .sidebar button { transition: background 0.2s ease, color 0.2s ease, padding-left 0.2s ease, transform 0.2s ease; }
+.sidebar a, .sidebar button { transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease; }
 
 /* --- Mobile touch & readability --- */
 @media (max-width: 768px) {

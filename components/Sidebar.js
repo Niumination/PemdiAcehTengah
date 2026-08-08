@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -54,9 +54,14 @@ export default function Sidebar({ isOpen, onClose, collapsed }) {
     return () => mq.removeEventListener('change', handler);
   }, []);
 
+  // onClose disimpan di ref → effect tidak bergantung pada identity prop (anti close-loop)
+  const onCloseRef = useRef(onClose);
+  useEffect(() => { onCloseRef.current = onClose; });
+
   useEffect(() => {
-    if (!isDesktop) onClose?.();
-  }, [pathname, isDesktop, onClose]);
+    // Tutup drawer hanya saat navigasi halaman atau berubah mode desktop/mobile
+    if (!isDesktop) onCloseRef.current?.();
+  }, [pathname, isDesktop]);
 
   const isActive = (href) => {
     if (href === '/') return pathname === '/';
