@@ -628,8 +628,7 @@ export default function ModulIndikatorPage() {
                       )}
 
                       {/* ════ Current Evidence Status — validated by PemdiArena ════ */}
-                      {false && (
-                      modul.ind?.bukti_dukung?.length > 0 && (
+                      {modul.ind?.bukti_dukung?.length > 0 && (
                         <div style={{ marginTop: '1rem' }}>
                           {modul.status.lengkap === 0 && modul.status.count > 0 && (
                             <div style={{
@@ -921,7 +920,7 @@ export default function ModulIndikatorPage() {
                           </div>
                           )}
                         </div>
-                      ))}
+                      )}
 
 
                       {/* ════ Quick Actions ════ */}
