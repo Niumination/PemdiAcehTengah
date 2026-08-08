@@ -1,180 +1,50 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Kompilasi bukti final per (indikator, level) — keputusan ketat."""
+"""Kompilasi bukti final per (indikator, level).
+Strategi anti-duplikasi:
+- 1 sumber  -> url_preview = file sumber asli (tanpa file baru)
+- multi     -> kompilasi PDF + kompres halaman scan (jpeg q70, max 2000px)
+"""
 import fitz, os, json
 
-SRC = 'public/bukti-dukung'
-FINAL = 'public/bukti-dukung/final'
+BASE = '/Users/zaryu/Desktop/Niumination/apps/PemdiAcehTengah'
+SRC = os.path.join(BASE, 'public/bukti-dukung')
+FINAL = os.path.join(SRC, 'final')
 
-DECISIONS = {
- 'I1': {
-   1: ('Rancangan dokumen perencanaan IP berisi substansi RAN Pemdi',
-       ['TataKelola_I1_28_RPJMK-2025-2029_2026.pdf', 'TataKelola_I1_18_RPJMD-2025-2029_2026.pdf'],
-       'Dokumen perencanaan daerah (RPJMK 2025-2029) memuat substansi RAN Pemdi pada perencanaan IPPD.'),
-   2: ('Sebagian substansi RAN Pemdi pada perencanaan IP (Renstra/RPJMD)',
-       ['TataKelola_I1_15_Renstra-Diskominfo_2026.pdf', 'TataKelola_I1_16_Renja-Diskominfo_2026.pdf'],
-       'Renstra dan Renja Diskominfo memuat substansi RAN Pemdi pada perencanaan IPPD.'),
-   3: ('Perencanaan dan Anggaran yang mendukung substansi RAN Pemdi (RKA K/L RKAD)',
-       ['TataKelola_I1_12_DPA-0037-TataKelola-SPBE_2026.pdf', 'TataKelola_I1_17_RKA-0037-TataKelola-SPBE_2026.pdf', 'TataKelola_I1_14_DPA-SKPD-Diskominfo_2026.pdf'],
-       'DPA/RKA memuat anggaran program SPBE/Pemdi (kode kegiatan 2.16.03.2.02.0037).'),
-   4: ('Bukti reviu atas penerapan Tata Kelola Transformasi Digital Pemdi',
-       ['TataKelola_I1_22_Laporan-Reviu-Tata-Kelola_2026.pdf', 'TataKelola_I1_19_Berita-Acara-Reviu-Tata-Kelola_2026.pdf'],
-       'Laporan Reviu Tata Kelola Transformasi Digital 2025 + Berita Acara Reviu resmi.'),
- },
- 'I2': {
-   1: ('Substansi sebagian RAN Pemdi pada perencanaan dan Bukti Pelaksanaan Manajemen Layanan Digital',
-       ['TataKelola_I2_01_Perbup-126-Standar-Pelayanan_2019.pdf', 'TataKelola_I2_02_Perbup-73-Pelayanan_2020.pdf'],
-       'Pedoman standar pelayanan dan regulasi pelayanan adminduk online (manajemen layanan digital).'),
-   2: ('Bukti Pelaksanaan Manajemen pada sebagian Layanan Digital Pemerintah',
-       ['TataKelola_I2_02_Perbup-73-Pelayanan_2020.pdf', 'TataKelola_I1_26_Perbup-48-Arsitektur-SPBE-Full_2025.pdf'],
-       'Pelayanan adminduk online sebagai manajemen layanan digital pada sebagian layanan; arsitektur SPBE sebagai referensi.'),
- },
- 'I3': {
-   1: ('Peta Kompetensi dan Bukti penggunaan aplikasi dasar untuk Pemdi',
-       ['Penyelenggara_I3_01_Literasi-Digital-2023_2023.pdf', 'Penyelenggara_I3_02_Perbup-9-SOTK_2025.pdf'],
-       'Publikasi Literasi Digital Sektor Pemerintahan 2023 (pemetaan kompetensi digital ASN) + SOTK Diskominfo.'),
-   2: ('Laporan peningkatan kompetensi digital dan analisis data ASN',
-       ['Penyelenggara_I3_01_Literasi-Digital-2023_2023.pdf'],
-       'Analisis literasi dan kompetensi digital ASN sektor pemerintahan (tabel dan grafik).'),
- },
- 'I4': {
-   1: ('Penetapan Tim Koordinasi Pemerintah Digital Instansi Pemerintah',
-       ['TataKelola_I1_04_SK-Tim-Koordinasi-Pemdi_2026.pdf', 'Penyelenggara_I4_01_Perbup-70-Pedoman-SPBE_2019.pdf'],
-       'SK Bupati 555/395/DISKOMINFO/2026 Tim Koordinasi Pemdi + Perbup 70/2019 Pedoman SPBE.'),
-   2: ('Substansi RAN Pemdi dengan rincian rencana kolaborasi antar Instansi Pemerintah',
-       ['TataKelola_I1_26_Perbup-48-Arsitektur-SPBE-Full_2025.pdf'],
-       'Arsitektur SPBE memuat kerangka kolaborasi keterpaduan layanan lintas OPD.'),
- },
- 'I5': {
-   1: ('Indeks Satu Data Indonesia (SDI) — tahap awal tata kelola data',
-       ['Data_I5_01_Perbup-60-Satu-Data_2022.pdf', 'Data_I5_02_SOP-EPSS_2026.pdf'],
-       'Perbup 60/2022 Satu Data Indonesia + SOP statistik sektoral (dasar tata kelola data).'),
-   2: ('Dokumentasi pelaksanaan tata kelola Satu Data Indonesia',
-       ['Data_I5_01_Perbup-60-Satu-Data_2022.pdf', 'Data_I5_05_SK-Forum-Satu-Data_2025.pdf'],
-       'Perbup 60/2022 + SK Forum Satu Data (penetapan forum, walidata, produsen data).'),
- },
- 'I6': {
-   1: ('Indeks Simpul Jaringan Informasi Geospasial (SJIG) — ketersediaan data geospasial',
-       ['final-src/I06_Data_Peta_RDTR.pdf'],
-       'Dataset Data dan Peta RDTR 2025 pada OpenData — bukti penyelenggaraan data geospasial daerah.'),
-   2: ('Berbagi pakai informasi geospasial (ketersediaan data terstandar)',
-       ['final-src/I06_Data_Peta_RDTR.pdf'],
-       'Dataset geospasial RDTR dipublikasikan via portal OpenData (berbagi pakai).'),
- },
- 'I7': {
-   1: ('Indeks Pembangunan Statistik (EPSS) — penyelenggaraan statistik sektoral',
-       ['Data_I5_02_SOP-EPSS_2026.pdf'],
-       'SOP pengumpulan, analisis, dan diseminasi data statistik sektoral (tanda tangan Kadis Kominfo).'),
-   2: ('Tata kelola penyelenggaraan statistik sektoral (EPSS)',
-       ['Data_I5_02_SOP-EPSS_2026.pdf', 'Data_I5_01_Perbup-60-Satu-Data_2022.pdf'],
-       'SOP statistik sektoral + Perbup SDI (integrasi statistik sektoral dan walidata).'),
- },
- 'I8': {
-   1: ('Uraian kondisi existing tata kelola PDP dan identifikasi kebutuhan',
-       ['Data_I8_01_Perbup-6-Sistem-Pemdi_2025.pdf', 'TataKelola_I2_02_Perbup-73-Pelayanan_2020.pdf'],
-       'Perbup 6/2025 klasifikasi keamanan arsip dan Perbup 73/2020 (pelindungan data adminduk).'),
-   2: ('Dokumentasi Tata Kelola PDP pada sebagian Layanan Digital Pemerintah',
-       ['Data_I8_01_Perbup-6-Sistem-Pemdi_2025.pdf', 'Data_I8_06_Perbup-137-Penyelenggaraan_2019.pdf'],
-       'Perbup 6/2025 + Perbup 137/2019 PPID (informasi dikecualikan dan pelindungan data pribadi).'),
- },
- 'I10': {
-   1: ('Tata kelola dan manajemen keamanan informasi (tahap penyusunan)',
-       ['Data_I8_01_Perbup-6-Sistem-Pemdi_2025.pdf', 'TataKelola_I1_26_Perbup-48-Arsitektur-SPBE-Full_2025.pdf'],
-       'Perbup 6/2025 (klasifikasi keamanan) + Arsitektur SPBE domain keamanan.'),
-   2: ('Penerapan tata kelola manajemen keamanan informasi pada sebagian layanan',
-       ['Data_I8_01_Perbup-6-Sistem-Pemdi_2025.pdf'],
-       'Penerapan klasifikasi keamanan dan hak akses arsip dinamis (Perbup 6/2025).'),
- },
- 'I11': {
-   1: ('Laporan pelaksanaan penerapan teknologi kriptografi (persandian)',
-       ['KeamananSiber_I11_03_Perbup-1-Penataan-Pola-Sandi_2025.pdf', 'KeamananSiber_I11_04_Perbup-2-Penyelenggaraan-Persandian_2025.pdf'],
-       'Perbup 1/2025 penataan pola sandi dan Perbup 2/2025 penyelenggaraan persandian.'),
-   2: ('Penerapan teknologi kriptografi pada sebagian layanan digital',
-       ['KeamananSiber_I11_04_Perbup-2-Penyelenggaraan-Persandian_2025.pdf', 'KeamananSiber_I11_05_Perbup-Sertifikat-Elektronik_2021.pdf'],
-       'Penyelenggaraan persandian + Perbup sertifikat elektronik 2021 (penerapan TTE).'),
- },
- 'I12': {
-   1: ('Dokumentasi penyiapan penanganan insiden siber (CSIRT/TTIS)',
-       ['KeamananSiber_I12_01_SK-CSIRT-Aceh-Tengah_2026.pdf', 'KeamananSiber_I12_02_SK-Tim-CSIRT_2024.pdf'],
-       'SK CSIRT Aceh Tengah 2026 + SK Tim CSIRT 2024 (pembentukan tim tanggap insiden).'),
-   2: ('Penetapan TTIS (Tim Tanggap Insiden Siber)',
-       ['KeamananSiber_I12_01_SK-CSIRT-Aceh-Tengah_2026.pdf'],
-       'SK pembentukan AcehTengah-CSIRT sebagai penetapan TTIS daerah.'),
- },
- 'I13': {
-   1: ('Bukti Pelaksanaan Pengembangan Aplikasi (siklus pengembangan terdokumentasi)',
-       ['Teknologi_I13_05_KAK-Aplikasi-Bapokting_2026.pdf', 'Teknologi_I13_06_Laporan-Aplikasi-Bapokting_2026.pdf', 'Teknologi_I13_10_BAST-Aplikasi-Bapokting_2026.pdf'],
-       'KAK + Laporan + BAST aplikasi Bapokting (siklus pengembangan lengkap).'),
-   2: ('Dokumentasi pembangunan/pengembangan aplikasi Pemerintah Digital',
-       ['Teknologi_I13_13_KAK-Aplikasi-Gemasih_2026.pdf', 'Teknologi_I13_15_Laporan-Aplikasi-Gemasih_2026.pdf', 'Teknologi_I13_11_BAST-Aplikasi-Gemasih_2026.pdf'],
-       'KAK + Laporan + BAST aplikasi Gemasih (pengembangan aplikasi terdokumentasi).'),
-   3: ('Dokumentasi pengembangan aplikasi + Screenshot aplikasi',
-       ['Teknologi_I13_14_KAK-Aplikasi-Lepat_2026.pdf', 'Teknologi_I13_16_Laporan-Aplikasi-Lepat_2026.pdf', 'Teknologi_I13_19_Screenshot-Aplikasi-Lepat_2026.pdf'],
-       'KAK + Laporan + Screenshot aplikasi Lepat (pengembangan dan tampilan aplikasi).'),
- },
- 'I14': {
-   1: ('Infrastruktur Digital pada Arsitektur Teknologi Pemerintah Digital',
-       ['TataKelola_I1_26_Perbup-48-Arsitektur-SPBE-Full_2025.pdf'],
-       'Arsitektur SPBE domain infrastruktur (jaringan intra, pusat data, komputasi awan).'),
-   2: ('Referensi pemanfaatan Infrastruktur Pemerintah Digital',
-       ['TataKelola_I1_26_Perbup-48-Arsitektur-SPBE-Full_2025.pdf'],
-       'Arsitektur SPBE sebagai referensi penyediaan infrastruktur digital (parsial; dokumentasi pemanfaatan belum tersedia publik).'),
- },
- 'I15': {
-   1: ('Proses Bisnis Pemerintah Digital pada Arsitektur Pemerintah Digital',
-       ['TataKelola_I1_26_Perbup-48-Arsitektur-SPBE-Full_2025.pdf'],
-       'Arsitektur SPBE domain proses bisnis (referensi keterpaduan proses bisnis).'),
-   2: ('Pemetaan proses bisnis dan proses bisnis to-be dari SIAP Digital',
-       ['TataKelola_I1_26_Perbup-48-Arsitektur-SPBE-Full_2025.pdf'],
-       'Arsitektur proses bisnis sebagai referensi pemetaan (screenshot SIAP belum tersedia publik).'),
- },
- 'I16': {
-   1: ('Arsitektur Integrasi Aplikasi dan Sistem Penghubung Layanan Pemerintah',
-       ['TataKelola_I1_26_Perbup-48-Arsitektur-SPBE-Full_2025.pdf'],
-       'Arsitektur SPBE domain integrasi aplikasi dan SPLP.'),
-   2: ('Referensi Integrasi Aplikasi Layanan Digital Pemerintah',
-       ['TataKelola_I1_26_Perbup-48-Arsitektur-SPBE-Full_2025.pdf'],
-       'Arsitektur integrasi sebagai referensi (dokumentasi API/UAT belum tersedia publik).'),
- },
- 'I17': {
-   1: ('Portal Layanan Digital Pemerintah pada Instansi Pemerintah',
-       ['Keterpaduan_I17_01_Perbup-30-Penyelenggaraan_2022.pdf', 'TataKelola_I1_26_Perbup-48-Arsitektur-SPBE-Full_2025.pdf'],
-       'Perbup 30/2022 Mal Pelayanan Publik + arsitektur layanan digital (dasar portal).'),
-   2: ('Portal Layanan Digital pada sebagian Layanan Digital Pemerintah',
-       ['Keterpaduan_I17_01_Perbup-30-Penyelenggaraan_2022.pdf', 'Keterpaduan_I17_02_PortalLayanan_2026.pdf'],
-       'Penyelenggaraan MPP + laporan ketersediaan portal layanan digital.'),
- },
- 'I18': {
-   1: ('Arsitektur Data Pemerintah Digital dari SIAP Digital dan kebijakan berbagi pakai data',
-       ['TataKelola_I1_26_Perbup-48-Arsitektur-SPBE-Full_2025.pdf', 'Data_I5_01_Perbup-60-Satu-Data_2022.pdf'],
-       'Arsitektur data SPBE + Perbup 60/2022 (standar data dan berbagi pakai).'),
-   2: ('Pelaksanaan berbagi pakai data melalui Satu Data Indonesia',
-       ['Data_I5_01_Perbup-60-Satu-Data_2022.pdf'],
-       'Perbup SDI mengatur pertukaran data lintas instansi (katalog OpenData 862 dataset aktif).'),
- },
- 'I19': {
-   1: ('Dokumen SLA Layanan Digital dan Pedoman Standar Pelayanan',
-       ['TataKelola_I2_01_Perbup-126-Standar-Pelayanan_2019.pdf', 'Kepuasan_I19_01_Perbup-21-Pedoman_2021.pdf'],
-       'Perbup 126/2019 standar pelayanan (SLA) + Perbup 21/2021 SP4N-LAPOR.'),
-   2: ('Dokumentasi Fasilitas Dukungan Pengguna dan pemantauan SLA pada sebagian layanan',
-       ['Kepuasan_I19_01_Perbup-21-Pedoman_2021.pdf', 'final-src/I19_I20_Hasil_Survei_SKM_2026.pdf'],
-       'SP4N-LAPOR (fasilitas dukungan pengguna) + hasil survei kepuasan (umpan balik layanan).'),
- },
- 'I20': {
-   1: ('Hasil kepuasan pengguna layanan digital dan survei kepuasan masyarakat',
-       ['Kepuasan_I20_02_SKM-Kebayakan_2025.pdf', 'final-src/I19_I20_Hasil_Survei_SKM_2026.pdf'],
-       'Laporan SKM Kebayakan 2025 + Hasil SKM Januari-Mei 2026 (OpenData).'),
-   2: ('Hasil kepuasan pengguna layanan digital dan data transaksi layanan',
-       ['final-src/I19_I20_Hasil_Survei_SKM_2026.pdf', 'Kepuasan_I20_02_SKM-Kebayakan_2025.pdf'],
-       'Publikasi hasil SKM 2026 via portal data terbuka + laporan SKM unit pelayanan.'),
- },
-}
+DECISIONS = json.load(open(os.path.join(os.path.dirname(__file__), 'final-decisions.json')))
+
+def compress_pages(doc, max_px=2000, quality=70):
+    out = fitz.open()
+    for page in doc:
+        w, h = page.rect.width, page.rect.height
+        scale = min(1.0, max_px / max(w, h))
+        if scale < 1.0:
+            pix = page.get_pixmap(matrix=fitz.Matrix(scale, scale), colorspace=fitz.csRGB)
+        else:
+            pix = page.get_pixmap(colorspace=fitz.csRGB)
+        img = pix.tobytes('jpeg', quality)
+        np_ = out.new_page(width=w, height=h)
+        np_.insert_image(np_.rect, stream=img)
+    return out
 
 os.makedirs(FINAL, exist_ok=True)
 results = {}
 errors = []
+created = []
 for ik, levels in DECISIONS.items():
     for lv, (item_nama, srcs, catatan) in levels.items():
+        # 1 sumber: pakai asli
+        if len(srcs) == 1:
+            sp = os.path.join(SRC, srcs[0])
+            if not os.path.exists(sp):
+                errors.append(f"MISS {srcs[0]} (I{ik} L{lv})")
+                continue
+            results[f"{ik}_{lv}"] = {'file': f"/bukti-dukung/{srcs[0]}", 'pages': None,
+                                     'kb': os.path.getsize(sp)//1024, 'item': item_nama,
+                                     'catatan': catatan, 'sumber': srcs}
+            print(f"LINK {ik} L{lv} -> {srcs[0]} ({os.path.getsize(sp)//1024}K)")
+            continue
+        # multi: kompilasi + kompres
         out_name = f"{ik}_L{lv}_Final.pdf"
         out_path = os.path.join(FINAL, out_name)
         merged = fitz.open()
@@ -194,18 +64,33 @@ for ik, levels in DECISIONS.items():
                 ok = False
                 break
         if ok and merged.page_count > 0:
-            sz = merged.page_count
-            merged.save(out_path, deflate=True)
+            # kompres jika >8MB (repo kecil + aturan portal), downscale agresif utk besar
+            merged.save('/tmp/_m_tmp.pdf', deflate=True, garbage=3)
+            size_mb = os.path.getsize('/tmp/_m_tmp.pdf') / 1048576
+            if size_mb > 8:
+                if size_mb > 80:
+                    max_px, quality = 1100, 55
+                elif size_mb > 30:
+                    max_px, quality = 1400, 58
+                else:
+                    max_px, quality = 1600, 62
+                comp = compress_pages(merged, max_px=max_px, quality=quality)
+                comp.save(out_path, deflate=True, garbage=3)
+                comp.close()
+            else:
+                import shutil
+                shutil.copy('/tmp/_m_tmp.pdf', out_path)
+            os.remove('/tmp/_m_tmp.pdf')
             merged.close()
-            kb = os.path.getsize(out_path) // 1024
-            results[f"{ik}_{lv}"] = {'file': f'/bukti-dukung/final/{out_name}', 'pages': sz, 'kb': kb,
-                                     'item': item_nama, 'catatan': catatan, 'sumber': srcs}
-            print(f"OK {ik} L{lv}: {sz} hal, {kb}K - {out_name}")
+            kb = os.path.getsize(out_path)//1024
+            results[f"{ik}_{lv}"] = {'file': f"/bukti-dukung/final/{out_name}", 'pages': None,
+                                     'kb': kb, 'item': item_nama, 'catatan': catatan, 'sumber': srcs}
+            created.append(out_name)
+            print(f"BUILD {ik} L{lv}: {len(srcs)} src -> {kb}K")
         else:
             results[f"{ik}_{lv}"] = None
 
 json.dump(results, open('/tmp/final_evidence.json', 'w'), ensure_ascii=False, indent=1)
-n = sum(1 for v in results.values() if v)
-print(f"\nTotal final: {n} | errors: {len(errors)}")
-for e in errors:
-    print('  !', e)
+print(f"\nTotal: {sum(1 for v in results.values() if v)} | error: {len(errors)}")
+for e in errors: print('  !', e)
+print("Dibuat:", len(created))
