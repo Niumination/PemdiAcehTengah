@@ -114,5 +114,38 @@ d['target_item_bukti'] = total_gt
 d['total_item_manual'] = total_gt - lengkap_count
 d['total_item_eksternal'] = 0
 
+# ── OVERRIDES manual: item GT spesifik yang dapat bukti arsitektur (Perbup 48) ──
+# (pecahan/induk sesuai arahan: Perbup 48 dipertahankan, dipetakan ke item yang
+#  secara eksplisit meminta 'pada Arsitektur ... dari SIAP Digital')
+OVERRIDES = [
+    # (indikator, level, substring nama item GT, url, catatan)
+    ('I1', 4, 'Arsitektur Pemerintah Digital yang selanjutnya menjadi referensi',
+     '/bukti-dukung/TataKelola_I1_26_Perbup-48-Arsitektur-SPBE-Full_2025.pdf',
+     'Perbup 48/2025 Arsitektur SPBE (induk) — arsitektur menjadi referensi pengembangan keterpaduan layanan digital, terintegrasi dengan layanan digital.'),
+    ('I13', 1, 'Aplikasi Pemerintah Digital pada Arsitektur Teknologi Pemerintah Digital',
+     '/bukti-dukung/TataKelola_I1_31_Perbup48-BAB4-Referensi-Arsitektur_2025.pdf',
+     'Ekstrak Perbup 48/2025 BAB IV (Referensi Arsitektur) — domain arsitektur aplikasi SPBE. Catatan mandiri: referensi arsitektur aplikasi sesuai permintaan modul.'),
+    ('I14', 1, 'Infrastruktur Digital pada Arsitektur Teknologi Pemerintah Digital',
+     '/bukti-dukung/TataKelola_I1_32_Perbup48-Domain-Pembina_2025.pdf',
+     'Ekstrak Perbup 48/2025 (BAB IV-V) — domain arsitektur infrastruktur SPBE dan PD pembina. Catatan mandiri: referensi arsitektur infrastruktur (jaringan intra, pusat data).'),
+    ('I15', 1, 'Proses Bisnis Pemerintah Digital untuk mendukung Layanan Digital pada Arsitektur',
+     '/bukti-dukung/TataKelola_I1_30_Perbup48-BAB2-Definisi-Domain_2025.pdf',
+     'Ekstrak Perbup 48/2025 (BAB I-II) — definisi Arsitektur SPBE mencakup integrasi proses bisnis. Catatan mandiri: referensi keterpaduan proses bisnis.'),
+]
+
+for ik, lv, substring, url, catatan in OVERRIDES:
+    for a in d['aspek']:
+        for ind in a.get('indikator', []):
+            if ind.get('id') != ik:
+                continue
+            for b in ind.get('bukti_dukung', []):
+                if b['level'] == lv and substring.lower() in b['nama'].lower():
+                    b['status'] = 'lengkap'
+                    b['url_preview'] = url
+                    b['_ext'] = 'pdf'
+                    b['catatan'] = catatan
+                    lengkap_count += 1
+                    print(f"OVERRIDE {ik} L{lv}: {b['id']} -> {url.split('/')[-1]}")
+
 json.dump(d, open(os.path.join(BASE, 'data/pemdi.json'), 'w'), ensure_ascii=False, indent=1)
-print(f"Total item GT: {total_gt} | Lengkap: {lengkap_count} | Belum: {total_gt - lengkap_count}")
+print(f"\nTotal item GT: {total_gt} | Lengkap: {lengkap_count} | Belum: {total_gt - lengkap_count}")

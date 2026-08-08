@@ -6,7 +6,7 @@
  "baseline_spbe": 2.59,
  "baseline_predikat": "Cukup",
  "total_item_bukti": 232,
- "total_item_manual": 191,
+ "total_item_manual": 210,
  "total_item_eksternal": 0,
  "dasar_hukum": [
   {
@@ -270,8 +270,10 @@
         "Tim Koordinasi Pemdi",
         "seluruh PD"
        ],
-       "status": "belum",
-       "catatan": ""
+       "status": "lengkap",
+       "catatan": "Perbup 48/2025 Arsitektur SPBE (induk) — arsitektur menjadi referensi pengembangan keterpaduan layanan digital, terintegrasi dengan layanan digital.",
+       "url_preview": "/bukti-dukung/TataKelola_I1_26_Perbup-48-Arsitektur-SPBE-Full_2025.pdf",
+       "_ext": "pdf"
       },
       {
        "id": "GT.I1_L5_1",
@@ -833,10 +835,8 @@
         "Bag. Hukum",
         "Diskominfo"
        ],
-       "status": "lengkap",
-       "catatan": "Arsitektur SPBE memuat kerangka kolaborasi keterpaduan layanan lintas OPD.",
-       "url_preview": "/bukti-dukung/TataKelola_I1_26_Perbup-48-Arsitektur-SPBE-Full_2025.pdf",
-       "_ext": "pdf"
+       "status": "belum",
+       "catatan": ""
       },
       {
        "id": "GT.I4_L2_2",
@@ -977,10 +977,8 @@
         "BPS",
         "seluruh PD"
        ],
-       "status": "lengkap",
-       "catatan": "Perbup 60/2022 Satu Data Indonesia + SOP statistik sektoral (dasar tata kelola data).",
-       "url_preview": "/bukti-dukung/final/I5_L1_Final.pdf",
-       "_ext": "pdf"
+       "status": "belum",
+       "catatan": ""
       },
       {
        "id": "GT.I5_L2_1",
@@ -992,10 +990,8 @@
         "BPS",
         "seluruh PD"
        ],
-       "status": "lengkap",
-       "catatan": "Perbup 60/2022 + SK Forum Satu Data (penetapan forum, walidata, produsen data).",
-       "url_preview": "/bukti-dukung/final/I5_L2_Final.pdf",
-       "_ext": "pdf"
+       "status": "belum",
+       "catatan": ""
       },
       {
        "id": "GT.I5_L3_1",
@@ -1037,7 +1033,7 @@
        "catatan": ""
       }
      ],
-     "_l1_lengkap": true
+     "_l1_lengkap": false
     },
     {
      "id": "I6",
@@ -1066,11 +1062,8 @@
         "BIG (Badan Informasi Geospasial)",
         "Dinas PUPR"
        ],
-       "status": "lengkap",
-       "catatan": "Dataset Data dan Peta RDTR 2025 pada OpenData — bukti penyelenggaraan data geospasial daerah.",
-       "url_preview": "/bukti-dukung/final-src/I06_Data_Peta_RDTR.pdf",
-       "_ext": "pdf",
-       "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/data-dan-peta-rdtr-yang-dikelola-di-aceh-tengah-tahun-2025"
+       "status": "belum",
+       "catatan": ""
       },
       {
        "id": "GT.I6_L2_1",
@@ -1081,11 +1074,8 @@
         "BIG (Badan Informasi Geospasial)",
         "Dinas PUPR"
        ],
-       "status": "lengkap",
-       "catatan": "Dataset geospasial RDTR dipublikasikan via portal OpenData (berbagi pakai).",
-       "url_preview": "/bukti-dukung/final-src/I06_Data_Peta_RDTR.pdf",
-       "_ext": "pdf",
-       "url_sumber": "https://opendata.acehtengahkab.go.id/dataset/data-dan-peta-rdtr-yang-dikelola-di-aceh-tengah-tahun-2025"
+       "status": "belum",
+       "catatan": ""
       },
       {
        "id": "GT.I6_L3_1",
@@ -1124,7 +1114,7 @@
        "catatan": ""
       }
      ],
-     "_l1_lengkap": true
+     "_l1_lengkap": false
     },
     {
      "id": "I7",
@@ -1153,10 +1143,8 @@
         "BPS",
         "Bappeda"
        ],
-       "status": "lengkap",
-       "catatan": "SOP pengumpulan, analisis, dan diseminasi data statistik sektoral (tanda tangan Kadis Kominfo).",
-       "url_preview": "/bukti-dukung/Data_I5_02_SOP-EPSS_2026.pdf",
-       "_ext": "pdf"
+       "status": "belum",
+       "catatan": ""
       },
       {
        "id": "GT.I7_L2_1",
@@ -1167,10 +1155,8 @@
         "BPS",
         "Bappeda"
        ],
-       "status": "lengkap",
-       "catatan": "SOP statistik sektoral + Perbup SDI (integrasi statistik sektoral dan walidata).",
-       "url_preview": "/bukti-dukung/final/I7_L2_Final.pdf",
-       "_ext": "pdf"
+       "status": "belum",
+       "catatan": ""
       },
       {
        "id": "GT.I7_L3_1",
@@ -1209,7 +1195,7 @@
        "catatan": ""
       }
      ],
-     "_l1_lengkap": true
+     "_l1_lengkap": false
     },
     {
      "id": "I8",
@@ -1821,10 +1807,8 @@
         "BSSN",
         "Inspektorat"
        ],
-       "status": "lengkap",
-       "catatan": "Perbup 6/2025 (klasifikasi keamanan) + Arsitektur SPBE domain keamanan.",
-       "url_preview": "/bukti-dukung/final/I10_L1_Final.pdf",
-       "_ext": "pdf"
+       "status": "belum",
+       "catatan": ""
       },
       {
        "id": "GT.I10_L2_1",
@@ -1847,10 +1831,8 @@
         "BSSN",
         "Inspektorat"
        ],
-       "status": "lengkap",
-       "catatan": "Penerapan klasifikasi keamanan dan hak akses arsip dinamis (Perbup 6/2025).",
-       "url_preview": "/bukti-dukung/Data_I8_01_Perbup-6-Sistem-Pemdi_2025.pdf",
-       "_ext": "pdf"
+       "status": "belum",
+       "catatan": ""
       },
       {
        "id": "GT.I10_L3_1",
@@ -1889,7 +1871,7 @@
        "catatan": ""
       }
      ],
-     "_l1_lengkap": true
+     "_l1_lengkap": false
     },
     {
      "id": "I11",
@@ -2167,8 +2149,10 @@
        "opd": [
         "Semua OPD"
        ],
-       "status": "belum",
-       "catatan": ""
+       "status": "lengkap",
+       "catatan": "Ekstrak Perbup 48/2025 BAB IV (Referensi Arsitektur) — domain arsitektur aplikasi SPBE. Catatan mandiri: referensi arsitektur aplikasi sesuai permintaan modul.",
+       "url_preview": "/bukti-dukung/TataKelola_I1_31_Perbup48-BAB4-Referensi-Arsitektur_2025.pdf",
+       "_ext": "pdf"
       },
       {
        "id": "GT.I13_L2_1",
@@ -2340,8 +2324,8 @@
         "BAPPEDA"
        ],
        "status": "lengkap",
-       "catatan": "Arsitektur SPBE domain infrastruktur (jaringan intra, pusat data, komputasi awan).",
-       "url_preview": "/bukti-dukung/TataKelola_I1_26_Perbup-48-Arsitektur-SPBE-Full_2025.pdf",
+       "catatan": "Ekstrak Perbup 48/2025 (BAB IV-V) — domain arsitektur infrastruktur SPBE dan PD pembina. Catatan mandiri: referensi arsitektur infrastruktur (jaringan intra, pusat data).",
+       "url_preview": "/bukti-dukung/TataKelola_I1_32_Perbup48-Domain-Pembina_2025.pdf",
        "_ext": "pdf"
       },
       {
@@ -2353,10 +2337,8 @@
         "Kemendigi",
         "BAPPEDA"
        ],
-       "status": "lengkap",
-       "catatan": "Arsitektur SPBE sebagai referensi penyediaan infrastruktur digital (parsial; dokumentasi pemanfaatan belum tersedia publik).",
-       "url_preview": "/bukti-dukung/TataKelola_I1_26_Perbup-48-Arsitektur-SPBE-Full_2025.pdf",
-       "_ext": "pdf"
+       "status": "belum",
+       "catatan": ""
       },
       {
        "id": "GT.I14_L2_2",
@@ -2481,8 +2463,8 @@
         "Semua OPD"
        ],
        "status": "lengkap",
-       "catatan": "Arsitektur SPBE domain proses bisnis (referensi keterpaduan proses bisnis).",
-       "url_preview": "/bukti-dukung/TataKelola_I1_26_Perbup-48-Arsitektur-SPBE-Full_2025.pdf",
+       "catatan": "Ekstrak Perbup 48/2025 (BAB I-II) — definisi Arsitektur SPBE mencakup integrasi proses bisnis. Catatan mandiri: referensi keterpaduan proses bisnis.",
+       "url_preview": "/bukti-dukung/TataKelola_I1_30_Perbup48-BAB2-Definisi-Domain_2025.pdf",
        "_ext": "pdf"
       },
       {
@@ -2510,10 +2492,8 @@
         "Dinas Perpustakaan & Arsip",
         "Semua OPD"
        ],
-       "status": "lengkap",
-       "catatan": "Arsitektur proses bisnis sebagai referensi pemetaan (screenshot SIAP belum tersedia publik).",
-       "url_preview": "/bukti-dukung/TataKelola_I1_26_Perbup-48-Arsitektur-SPBE-Full_2025.pdf",
-       "_ext": "pdf"
+       "status": "belum",
+       "catatan": ""
       },
       {
        "id": "GT.I15_L2_2",
@@ -2671,10 +2651,8 @@
         "Diskominfo",
         "Semua OPD (Pemilik Aplikasi)"
        ],
-       "status": "lengkap",
-       "catatan": "Arsitektur SPBE domain integrasi aplikasi dan SPLP.",
-       "url_preview": "/bukti-dukung/TataKelola_I1_26_Perbup-48-Arsitektur-SPBE-Full_2025.pdf",
-       "_ext": "pdf"
+       "status": "belum",
+       "catatan": ""
       },
       {
        "id": "GT.I16_L1_2",
@@ -2709,10 +2687,8 @@
         "Diskominfo",
         "Semua OPD (Pemilik Aplikasi)"
        ],
-       "status": "lengkap",
-       "catatan": "Arsitektur integrasi sebagai referensi (dokumentasi API/UAT belum tersedia publik).",
-       "url_preview": "/bukti-dukung/TataKelola_I1_26_Perbup-48-Arsitektur-SPBE-Full_2025.pdf",
-       "_ext": "pdf"
+       "status": "belum",
+       "catatan": ""
       },
       {
        "id": "GT.I16_L2_2",
@@ -2787,7 +2763,7 @@
        "catatan": ""
       }
      ],
-     "_l1_lengkap": true
+     "_l1_lengkap": false
     },
     {
      "id": "I17",
@@ -2999,10 +2975,8 @@
         "Bappeda",
         "Kemendigi"
        ],
-       "status": "lengkap",
-       "catatan": "Arsitektur data SPBE + Perbup 60/2022 (standar data dan berbagi pakai).",
-       "url_preview": "/bukti-dukung/final/I18_L1_Final.pdf",
-       "_ext": "pdf"
+       "status": "belum",
+       "catatan": ""
       },
       {
        "id": "GT.I18_L1_2",
@@ -3027,10 +3001,8 @@
         "Bappeda",
         "Kemendigi"
        ],
-       "status": "lengkap",
-       "catatan": "Perbup SDI mengatur pertukaran data lintas instansi (katalog OpenData 862 dataset aktif).",
-       "url_preview": "/bukti-dukung/Data_I5_01_Perbup-60-Satu-Data_2022.pdf",
-       "_ext": "pdf"
+       "status": "belum",
+       "catatan": ""
       },
       {
        "id": "GT.I18_L2_2",
@@ -3124,7 +3096,7 @@
        "catatan": ""
       }
      ],
-     "_l1_lengkap": true
+     "_l1_lengkap": false
     }
    ],
    "item_aktual": 19,
@@ -3169,10 +3141,8 @@
         "Diskominfo",
         "Semua OPD (Penyedia Layanan)"
        ],
-       "status": "lengkap",
-       "catatan": "Perbup 126/2019 standar pelayanan (SLA) + Perbup 21/2021 SP4N-LAPOR.",
-       "url_preview": "/bukti-dukung/final/I19_L1_Final.pdf",
-       "_ext": "pdf"
+       "status": "belum",
+       "catatan": ""
       },
       {
        "id": "GT.I19_L1_2",
@@ -3195,10 +3165,8 @@
         "Diskominfo",
         "Semua OPD (Penyedia Layanan)"
        ],
-       "status": "lengkap",
-       "catatan": "SP4N-LAPOR (fasilitas dukungan pengguna) + hasil survei kepuasan (umpan balik layanan).",
-       "url_preview": "/bukti-dukung/final/I19_L2_Final.pdf",
-       "_ext": "pdf"
+       "status": "belum",
+       "catatan": ""
       },
       {
        "id": "GT.I19_L3_1",
@@ -3273,7 +3241,7 @@
        "catatan": ""
       }
      ],
-     "_l1_lengkap": true
+     "_l1_lengkap": false
     },
     {
      "id": "I20",
@@ -3304,10 +3272,8 @@
         "Bag. Organisasi",
         "seluruh PD penyelenggara layanan"
        ],
-       "status": "lengkap",
-       "catatan": "Laporan SKM Kebayakan 2025 + Hasil SKM Januari-Mei 2026 (OpenData).",
-       "url_preview": "/bukti-dukung/final/I20_L1_Final.pdf",
-       "_ext": "pdf"
+       "status": "belum",
+       "catatan": ""
       },
       {
        "id": "GT.I20_L1_2",
@@ -3358,10 +3324,8 @@
         "Bag. Organisasi",
         "seluruh PD penyelenggara layanan"
        ],
-       "status": "lengkap",
-       "catatan": "Publikasi hasil SKM 2026 via portal data terbuka + laporan SKM unit pelayanan.",
-       "url_preview": "/bukti-dukung/final/I20_L2_Final.pdf",
-       "_ext": "pdf"
+       "status": "belum",
+       "catatan": ""
       },
       {
        "id": "GT.I20_L2_2",
@@ -3598,7 +3562,7 @@
        "catatan": ""
       }
      ],
-     "_l1_lengkap": true
+     "_l1_lengkap": false
     }
    ],
    "item_aktual": 15,
