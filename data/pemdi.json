@@ -1990,10 +1990,8 @@
         "BSSN",
         "Inspektorat"
        ],
-       "status": "lengkap",
-       "catatan": "SK CSIRT Aceh Tengah 2026 + SK Tim CSIRT 2024 (pembentukan tim tanggap insiden).",
-       "url_preview": "/bukti-dukung/final/I12_L1_Final.pdf",
-       "_ext": "pdf"
+       "status": "belum",
+       "catatan": "Dikosongkan 8 Ags 2026: SK CSIRT 2026 + SK Tim 2024 = penetapan tim, bukan \"dokumentasi pelaksanaan penanganan insiden\" yang diminta modul. Draf \"Laporan Penanganan Insiden Siber & Register Insiden Jan-Jun 2026\" (workspace) = jenis persis tapi placeholder [LAMBANG] -> perlu difinalisasi Bidang Persandian Diskominfo."
       },
       {
        "id": "GT.I12_L1_2",
@@ -2017,9 +2015,12 @@
         "Inspektorat"
        ],
        "status": "lengkap",
-       "catatan": "SK pembentukan AcehTengah-CSIRT sebagai penetapan TTIS daerah.",
+       "catatan": "Keputusan Bupati No. 070/273/DISKOMINFO/2025 tentang Penunjukan/Penetapan Tim Tanggap Insiden Siber (AcehTengah-CSIRT) + lampiran Keputusan No. 070/696/DISKOMINFO/2024 (pembentukan TTIS CSIRT).",
        "url_preview": "/bukti-dukung/KeamananSiber_I12_01_SK-CSIRT-Aceh-Tengah_2026.pdf",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "url_lampiran": [
+        "/bukti-dukung/KeamananSiber_I12_02_SK-Tim-CSIRT_2024.pdf"
+       ]
       },
       {
        "id": "GT.I12_L2_2",
