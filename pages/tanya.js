@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import faqData from '@/data/faq.json';
+import { MotifEmun } from '@/components/motif/KerawangMotifs';
 import { sanitizeHtml } from '@/lib/sanitize';
 
 /* ---------- helpers ---------- */
@@ -100,11 +101,14 @@ export default function TanyaPage() {
       </Head>
 
       {/* ====== HERO ====== */}
-      <section data-reveal className="chat-hero">
-        <div className="container">
+      <section data-reveal className="chat-hero" style={{ position: 'relative', overflow: 'hidden' }}>
+        <div aria-hidden="true" style={{ position: 'absolute', top: -18, right: 6, opacity: 0.5, pointerEvents: 'none' }}>
+          <MotifEmun size={280} />
+        </div>
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <Link href="/" className="back-link">← Beranda</Link>
           <div style={{ marginTop: '1rem' }}>
-            <h1>Tanya Jawab</h1>
+            <h1 className="gold-head">Tanya Jawab</h1>
             <p>Asisten virtual Pemdi Aceh Tengah — tanyakan apa saja tentang layanan dan portal ini</p>
           </div>
         </div>

@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import faq from '@/data/faq.json';
 import layanan from '@/data/layanan.json';
+import { MotifEmun, MotifUlen } from '@/components/motif/KerawangMotifs';
 
 export default function BantuanPage() {
   const allServices = layanan.kategori.flatMap(k => k.layanan);
@@ -13,11 +14,17 @@ export default function BantuanPage() {
         <meta name="description" content="Pusat bantuan portal Pemdi Aceh Tengah — FAQ, SLA layanan, kontak helpdesk, dan SP4N LAPOR." />
       </Head>
 
-      <section data-reveal className="hero-bantuan">
-        <div className="container">
+      <section data-reveal className="hero-bantuan" style={{ position: 'relative', overflow: 'hidden' }}>
+        <div aria-hidden="true" style={{ position: 'absolute', top: -18, right: 6, opacity: 0.5, pointerEvents: 'none' }}>
+          <MotifEmun size={280} />
+        </div>
+        <div aria-hidden="true" style={{ position: 'absolute', bottom: -10, left: 10, opacity: 0.32, pointerEvents: 'none' }}>
+          <MotifUlen size={80} />
+        </div>
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <Link href="/" className="back-link">← Beranda</Link>
           <div style={{ marginTop: '1rem' }}>
-            <h1>🆘 Pusat Bantuan</h1>
+            <h1 className="gold-head">🆘 Pusat Bantuan</h1>
             <p>FAQ, SLA layanan, kontak helpdesk, dan status sistem</p>
           </div>
         </div>

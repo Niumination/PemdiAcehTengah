@@ -2,6 +2,7 @@ import { useState, useMemo, useRef, useEffect } from 'react';
 import React from 'react';
 import Head from 'next/head';
 import Fuse from 'fuse.js';
+import { MotifEmun } from '@/components/motif/KerawangMotifs';
 import buildSearchIndex from '@/lib/search-index';
 
 const fuseOptions = {
@@ -72,9 +73,12 @@ export default function Cari({ items }) {
         <meta name="description" content="Pencarian global portal Pemdi Aceh Tengah — cari OPD, layanan publik, FAQ, dan indikator Pemdi." />
       </Head>
 
-      <section data-reveal style={{ padding: '3rem 0 1.5rem', background: 'var(--hero-grad)', color: '#fff' }}>
-        <div className="container">
-          <h1 style={{ margin: '0 0 0.75rem', fontSize: '1.75rem' }}>🔍 Pencarian</h1>
+      <section data-reveal style={{ padding: '3rem 0 1.5rem', background: 'var(--hero-grad)', color: '#fff', position: 'relative', overflow: 'hidden' }}>
+        <div aria-hidden="true" style={{ position: 'absolute', top: -24, right: 10, opacity: 0.5, pointerEvents: 'none' }}>
+          <MotifEmun size={320} />
+        </div>
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+          <h1 className="gold-head" style={{ margin: '0 0 0.75rem', fontSize: '1.75rem' }}>🔍 Pencarian</h1>
           <p style={{ opacity: 0.85, marginBottom: '1.25rem', fontSize: '0.9375rem' }}>
             Cari OPD, layanan publik, FAQ, dan indikator Pemdi — {statistik} item tersedia
           </p>

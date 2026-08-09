@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useState, useMemo } from 'react';
 import SlaBadge from '@/components/SlaBadge';
+import { MotifEmun, MotifTapak, KerawangDivider } from '@/components/motif/KerawangMotifs';
 import { formatAngka, formatDesimal, gabung } from '@/lib/format';
 import layananData from '@/data/layanan.json';
 import ServiceCard from '@/components/ServiceCard';
@@ -57,6 +58,12 @@ export default function LayananPage() {
         position: 'relative',
         overflow: 'hidden',
       }}>
+        <div aria-hidden="true" style={{ position: 'absolute', top: -18, right: 6, opacity: 0.5, pointerEvents: 'none' }}>
+          <MotifEmun size={300} />
+        </div>
+        <div aria-hidden="true" style={{ position: 'absolute', bottom: -12, left: 10, opacity: 0.32, pointerEvents: 'none' }}>
+          <MotifTapak size={120} />
+        </div>
         <div style={{ position: 'relative', zIndex: 1 }}>
           <Link href="/" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none', fontSize: '0.875rem' }}
             onMouseEnter={e => e.target.style.color = '#fff'}
@@ -64,7 +71,7 @@ export default function LayananPage() {
             ← Beranda
           </Link>
           <div style={{ marginTop: '1rem' }}>
-            <h1 style={{ color: '#fff', fontSize: '2rem', marginBottom: '0.5rem' }}>Layanan Publik</h1>
+            <h1 className="gold-head" style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>Layanan Publik</h1>
             <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1rem' }}>
               Direktori {formatAngka(ringkasan.total_layanan)} layanan publik di {formatAngka(ringkasan.total_kategori)} kategori — Pemerintah Kabupaten Aceh Tengah
             </p>
