@@ -400,7 +400,7 @@ export default function PemdiPage() {
                 items: (ind.bukti_dukung || []).filter(b => b.level === lv),
               }));
               return (
-                <div key={ind.id} data-reveal style={{ padding: '20px', borderRadius: '14px', border: '1px solid var(--line)', background: 'var(--surface)' }}>
+                <div key={ind.id} style={{ padding: '20px', borderRadius: '14px', border: '1px solid var(--line)', background: 'var(--surface)' }}>
                   {/* Header indikator */}
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '12px', flexWrap: 'wrap', marginBottom: '14px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
