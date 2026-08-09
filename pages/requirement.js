@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { useState, useEffect } from 'react'
 import panduanBukti from '@/data/panduan-bukti-l1.json'
+import { MotifEmun, MotifRante } from '@/components/motif/KerawangMotifs'
 
 export default function Requirement() {
   const [requirements, setRequirements] = useState(null)
@@ -43,11 +44,17 @@ export default function Requirement() {
         position: 'relative',
         overflow: 'hidden',
       }}>
+        <div aria-hidden="true" style={{ position: 'absolute', top: -18, right: 6, opacity: 0.5, pointerEvents: 'none' }}>
+          <MotifEmun size={300} />
+        </div>
+        <div aria-hidden="true" style={{ position: 'absolute', bottom: -12, left: 10, opacity: 0.32, pointerEvents: 'none' }}>
+          <MotifRante size={170} />
+        </div>
         <div style={{ position: 'relative', zIndex: 1 }}>
           <div className="pill" style={{ marginBottom: '0.75rem', background: 'rgba(255,255,255,0.15)', color: '#fff', border: '1px solid rgba(255,255,255,0.3)' }}>
             DOKUMEN PERENCANAAN
           </div>
-          <h1 style={{ color: '#fff', fontSize: '2rem', marginBottom: '0.5rem' }}>
+          <h1 className="gold-head" style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>
             Requirement Peta Proses Bisnis
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1rem', maxWidth: '600px' }}>

@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { MotifEmun, MotifTapak } from '@/components/motif/KerawangMotifs';
 
 export default function KebijakanPrivasi() {
   return (
@@ -14,16 +15,24 @@ export default function KebijakanPrivasi() {
 
       {/* ============ HERO ============ */}
       <section data-reveal className="section-hero-privasi" style={{
-        background: 'linear-gradient(135deg, #004098 0%, #002060 100%)',
+        background: 'var(--hero-grad)',
         color: 'white',
         padding: '2.5rem 0 2rem',
+        position: 'relative',
+        overflow: 'hidden',
       }}>
-        <div className="container">
+        <div aria-hidden="true" style={{ position: 'absolute', top: -18, right: 6, opacity: 0.5, pointerEvents: 'none' }}>
+          <MotifEmun size={280} />
+        </div>
+        <div aria-hidden="true" style={{ position: 'absolute', bottom: -12, left: 10, opacity: 0.32, pointerEvents: 'none' }}>
+          <MotifTapak size={110} />
+        </div>
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <Link href="/" className="back-link" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none', fontSize: '0.875rem' }}>
             ← Beranda
           </Link>
           <div style={{ marginTop: '1rem' }}>
-            <h1 style={{ color: 'white', fontSize: '2rem', marginBottom: '0.5rem' }}>
+            <h1 className="gold-head" style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>
               Kebijakan Privasi & Perlindungan Data Pribadi
             </h1>
             <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1rem' }}>
