@@ -143,11 +143,11 @@ export default function PemdiPage() {
   const [pilihAspek, setPilihAspek] = useState(null); // filter aspek di bilah kiri
 
   const handleAspekClick = useCallback((aspekId) => {
-    const selectedAspek = aspek.find(a => a.id === aspekId);
-    if (selectedAspek && selectedAspek.indikator.length > 0) {
-      setPilihInd(selectedAspek.indikator[0].id); // Set ke indikator pertama dari aspek
-    }
-  }, [aspek]);
+      const selectedAspek = pemdiData.aspek.find(a => a.id === aspekId);
+      if (selectedAspek && selectedAspek.indikator.length > 0) {
+        setPilihInd(selectedAspek.indikator[0].id); // Set ke indikator pertama dari aspek
+      }
+    }, []); // No dependencies needed for useCallback as pemdiData is static
 
   // Muat catatan mandiri dari localStorage
   useEffect(() => {
