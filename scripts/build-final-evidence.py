@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """Kompilasi bukti final per (indikator, level).
-Strategi anti-duplikasi:
-- 1 sumber  -> url_preview = file sumber asli (tanpa file baru)
-- multi     -> kompilasi PDF + kompres halaman scan (jpeg q70, max 2000px)
+FIX KUALITAS (v2):
+- Render baseline 150dpi (matrix 2.1x) — teks tajam, bukan 72dpi blur
+- Kompres hanya jika >45MB (aturan portal eval 50MB), downscale bertahap
+- jpeg q78 (seimbang kualitas/ukuran)
 """
-import fitz, os, json
+import fitz, os, json, shutil
 
 BASE = '/Users/zaryu/Desktop/Niumination/apps/PemdiAcehTengah'
 SRC = os.path.join(BASE, 'public/bukti-dukung')
@@ -13,19 +14,29 @@ FINAL = os.path.join(SRC, 'final')
 
 DECISIONS = json.load(open(os.path.join(os.path.dirname(__file__), 'final-decisions.json')))
 
-def compress_pages(doc, max_px=2000, quality=70):
+def raster_page(page, scale, quality):
+    """Render halaman ke gambar raster (JPEG) dengan skala tertentu."""
+    w, h = page.rect.width, page.rect.height
+    pix = page.get_pixmap(matrix=fitz.Matrix(scale, scale), colorspace=fitz.csRGB, alpha=False)
+    img = pix.tobytes('jpeg', quality)
+    np_ = fitz.open().new_page(width=w, height=h)
+    np_.insert_image(np_.rect, stream=img)
+    return np_
+
+def compress_pages(doc, scale, quality):
+    """Raster semua halaman dengan skala konsisten."""
     out = fitz.open()
     for page in doc:
-        w, h = page.rect.width, page.rect.height
-        scale = min(1.0, max_px / max(w, h))
-        if scale < 1.0:
-            pix = page.get_pixmap(matrix=fitz.Matrix(scale, scale), colorspace=fitz.csRGB)
-        else:
-            pix = page.get_pixmap(colorspace=fitz.csRGB)
-        img = pix.tobytes('jpeg', quality)
-        np_ = out.new_page(width=w, height=h)
-        np_.insert_image(np_.rect, stream=img)
+        np_ = raster_page(page, scale, quality)
+        out.insert_pdf(np_)
     return out
+
+def should_raster(doc, threshold_mb=45):
+    """Cek ukuran asli — raster hanya jika > threshold."""
+    doc.save('/tmp/_size_check.pdf', deflate=True, garbage=3)
+    mb = os.path.getsize('/tmp/_size_check.pdf') / 1048576
+    os.remove('/tmp/_size_check.pdf')
+    return mb > threshold_mb
 
 os.makedirs(FINAL, exist_ok=True)
 results = {}
@@ -44,7 +55,7 @@ for ik, levels in DECISIONS.items():
                                      'catatan': catatan, 'sumber': srcs}
             print(f"LINK {ik} L{lv} -> {srcs[0]} ({os.path.getsize(sp)//1024}K)")
             continue
-        # multi: kompilasi + kompres
+        # multi: kompilasi
         out_name = f"{ik}_L{lv}_Final.pdf"
         out_path = os.path.join(FINAL, out_name)
         merged = fitz.open()
@@ -64,23 +75,22 @@ for ik, levels in DECISIONS.items():
                 ok = False
                 break
         if ok and merged.page_count > 0:
-            # kompres jika >8MB (repo kecil + aturan portal), downscale agresif utk besar
-            merged.save('/tmp/_m_tmp.pdf', deflate=True, garbage=3)
-            size_mb = os.path.getsize('/tmp/_m_tmp.pdf') / 1048576
-            if size_mb > 8:
-                if size_mb > 80:
-                    max_px, quality = 1100, 55
-                elif size_mb > 30:
-                    max_px, quality = 1400, 58
-                else:
-                    max_px, quality = 1600, 62
-                comp = compress_pages(merged, max_px=max_px, quality=quality)
+            if should_raster(merged):
+                # Raster hanya file besar (>45MB): 150dpi baseline, turun jika masih besar
+                scale, quality = 2.1, 78
+                comp = compress_pages(merged, scale, quality)
                 comp.save(out_path, deflate=True, garbage=3)
+                # Jika masih >48MB, turunkan kualitas
+                if os.path.getsize(out_path) / 1048576 > 48:
+                    comp.close()
+                    comp = compress_pages(merged, 1.6, 65)
+                    comp.save(out_path, deflate=True, garbage=3)
                 comp.close()
             else:
-                import shutil
+                # Salin asli (tanpa raster — kualitas 100%)
+                merged.save('/tmp/_m_tmp.pdf', deflate=True, garbage=3)
                 shutil.copy('/tmp/_m_tmp.pdf', out_path)
-            os.remove('/tmp/_m_tmp.pdf')
+                os.remove('/tmp/_m_tmp.pdf')
             merged.close()
             kb = os.path.getsize(out_path)//1024
             results[f"{ik}_{lv}"] = {'file': f"/bukti-dukung/final/{out_name}", 'pages': None,

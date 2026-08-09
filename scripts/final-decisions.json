@@ -56,23 +56,6 @@
    "Pelayanan adminduk online sebagai manajemen layanan digital pada sebagian layanan; arsitektur SPBE sebagai referensi."
   ]
  },
- "I3": {
-  "1": [
-   "Peta Kompetensi dan Bukti penggunaan aplikasi dasar untuk Pemdi",
-   [
-    "Penyelenggara_I3_01_Literasi-Digital-2023_2023.pdf",
-    "Penyelenggara_I3_02_Perbup-9-SOTK_2025.pdf"
-   ],
-   "Publikasi Literasi Digital Sektor Pemerintahan 2023 (pemetaan kompetensi digital ASN) + SOTK Diskominfo."
-  ],
-  "2": [
-   "Laporan peningkatan kompetensi digital dan analisis data ASN",
-   [
-    "Penyelenggara_I3_01_Literasi-Digital-2023_2023.pdf"
-   ],
-   "Analisis literasi dan kompetensi digital ASN sektor pemerintahan (tabel dan grafik)."
-  ]
- },
  "I4": {
   "1": [
    "Penetapan Tim Koordinasi Pemerintah Digital Instansi Pemerintah",
@@ -81,59 +64,6 @@
     "Penyelenggara_I4_01_Perbup-70-Pedoman-SPBE_2019.pdf"
    ],
    "SK Bupati 555/395/DISKOMINFO/2026 Tim Koordinasi Pemdi + Perbup 70/2019 Pedoman SPBE."
-  ]
- },
- "I8": {
-  "1": [
-   "Uraian kondisi existing tata kelola PDP dan identifikasi kebutuhan",
-   [
-    "Data_I8_01_Perbup-6-Sistem-Pemdi_2025.pdf",
-    "TataKelola_I2_02_Perbup-73-Pelayanan_2020.pdf"
-   ],
-   "Perbup 6/2025 klasifikasi keamanan arsip dan Perbup 73/2020 (pelindungan data adminduk)."
-  ],
-  "2": [
-   "Dokumentasi Tata Kelola PDP pada sebagian Layanan Digital Pemerintah",
-   [
-    "Data_I8_01_Perbup-6-Sistem-Pemdi_2025.pdf",
-    "Data_I8_06_Perbup-137-Penyelenggaraan_2019.pdf"
-   ],
-   "Perbup 6/2025 + Perbup 137/2019 PPID (informasi dikecualikan dan pelindungan data pribadi)."
-  ]
- },
- "I11": {
-  "1": [
-   "Laporan pelaksanaan penerapan teknologi kriptografi (persandian)",
-   [
-    "KeamananSiber_I11_03_Perbup-1-Penataan-Pola-Sandi_2025.pdf",
-    "KeamananSiber_I11_04_Perbup-2-Penyelenggaraan-Persandian_2025.pdf"
-   ],
-   "Perbup 1/2025 penataan pola sandi dan Perbup 2/2025 penyelenggaraan persandian."
-  ],
-  "2": [
-   "Penerapan teknologi kriptografi pada sebagian layanan digital",
-   [
-    "KeamananSiber_I11_04_Perbup-2-Penyelenggaraan-Persandian_2025.pdf",
-    "KeamananSiber_I11_05_Perbup-Sertifikat-Elektronik_2021.pdf"
-   ],
-   "Penyelenggaraan persandian + Perbup sertifikat elektronik 2021 (penerapan TTE)."
-  ]
- },
- "I12": {
-  "1": [
-   "Dokumentasi penyiapan penanganan insiden siber (CSIRT/TTIS)",
-   [
-    "KeamananSiber_I12_01_SK-CSIRT-Aceh-Tengah_2026.pdf",
-    "KeamananSiber_I12_02_SK-Tim-CSIRT_2024.pdf"
-   ],
-   "SK CSIRT Aceh Tengah 2026 + SK Tim CSIRT 2024 (pembentukan tim tanggap insiden)."
-  ],
-  "2": [
-   "Penetapan TTIS (Tim Tanggap Insiden Siber)",
-   [
-    "KeamananSiber_I12_01_SK-CSIRT-Aceh-Tengah_2026.pdf"
-   ],
-   "SK pembentukan AcehTengah-CSIRT sebagai penetapan TTIS daerah."
   ]
  },
  "I13": {
@@ -163,24 +93,6 @@
     "Teknologi_I13_19_Screenshot-Aplikasi-Lepat_2026.pdf"
    ],
    "KAK + Laporan + Screenshot aplikasi Lepat (pengembangan dan tampilan aplikasi)."
-  ]
- },
- "I14": {
-  "1": [
-   "Infrastruktur Digital pada Arsitektur Teknologi Pemerintah Digital dari SIAP Digital",
-   [
-    "TataKelola_I1_32_Perbup48-Domain-Pembina_2025.pdf"
-   ],
-   "Ekstrak Perbup 48/2025 (BAB IV-V) — domain arsitektur infrastruktur SPBE dan perangkat daerah pembina. Catatan mandiri: referensi arsitektur infrastruktur (jaringan intra, pusat data, komputasi awan) sesuai permintaan modul."
-  ]
- },
- "I15": {
-  "1": [
-   "Proses Bisnis Pemerintah Digital untuk mendukung Layanan Digital pada Arsitektur Pemerintah Digital dari SIAP Digital",
-   [
-    "TataKelola_I1_30_Perbup48-BAB2-Definisi-Domain_2025.pdf"
-   ],
-   "Ekstrak Perbup 48/2025 (BAB I-II) — definisi Arsitektur SPBE mencakup integrasi proses bisnis. Catatan mandiri: referensi keterpaduan proses bisnis sesuai permintaan modul."
   ]
  },
  "I17": {
