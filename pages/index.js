@@ -5,12 +5,39 @@ import GlossaryTooltip from '@/components/GlossaryTooltip';
 import OPDTable from '@/components/OPDTable';
 import SpbeGauge from '@/components/SpbeGauge';
 import ServiceFinder from '@/components/ServiceFinder';
-import TimelineRoadmap from '@/components/TimelineRoadmap';
 import DashboardSKM from '@/components/DashboardSKM';
-import { formatAngka, formatDesimal } from '@/lib/format';
+import { MotifEmun, MarqueeBudaya } from '@/components/motif/KerawangMotifs';
+import useCountUp from '@/hooks/useCountUp';
+import useInView from '@/hooks/useInView';
+import { formatDesimal } from '@/lib/format';
 import pemdiData from '@/data/pemdi.json';
 import layananData from '@/data/layanan.json';
 import portalData from '@/data/opd.json';
+
+/* ── CountStat: angka KPI dengan count-up saat masuk viewport ── */
+function CountStat({ value, decimals = 0, color, style }) {
+  const [ref, display] = useCountUp(value, { decimals });
+  return (
+    <span ref={ref} className="countup" style={{ color, ...style }}>{display}</span>
+  );
+}
+
+/* ── AnimatedBar: progress bar menyala saat masuk viewport (Pucuk Rebung) ── */
+function AnimatedBar({ pct, color }) {
+  const [ref, inView] = useInView({ threshold: 0.3 });
+  return (
+    <div ref={ref} style={{ height: '6px', background: 'var(--line)', borderRadius: '3px', overflow: 'hidden' }}>
+      <div
+        className={`reveal-bar ${inView ? 'in-view' : ''}`}
+        style={{
+          height: '100%',
+          width: `${pct}%`,
+          background: color || 'var(--primary)',
+        }}
+      />
+    </div>
+  );
+}
 
 const popularQuickQueries = [
   { label: '🆔 KTP-el & Kartu Keluarga', query: 'KTP' },
@@ -67,7 +94,10 @@ export default function Home() {
       </Head>
 
       {/* ============ 1. DUAL-PERSPECTIVE EXECUTIVE HERO ============ */}
-      <section className="hero reveal" id="hero">
+      <section className="hero aurora reveal" id="hero" style={{ position: 'relative' }}>
+        <MotifEmun size={340} style={{ position: 'absolute', top: -30, right: -20, opacity: 0.5 }} />
+        <MotifEmun size={200} style={{ position: 'absolute', bottom: -20, left: 30, opacity: 0.3 }} />
+        <div style={{ position: 'relative', zIndex: 2 }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px', marginBottom: '16px' }}>
           <span className="pill">
             🏛️ Portal Resmi Pemerintah Kabupaten Aceh Tengah
@@ -77,7 +107,7 @@ export default function Home() {
           </span>
         </div>
 
-        <h1>Pusat Akses Layanan Publik &amp; Transparansi Kinerja Digital Pemda</h1>
+        <h1 className="gold-head">Pusat Akses Layanan Publik &amp; Transparansi Kinerja Digital Pemda</h1>
         <p>
           Integrasi <strong>25 Layanan Terpadu</strong> di <strong>52 Perangkat Daerah</strong>. Memantau progres transformasi <GlossaryTooltip id="pemdi">Pemdi</GlossaryTooltip> &amp; <GlossaryTooltip id="spbe">SPBE</GlossaryTooltip> secara terbuka demi pelayanan yang hemat, pasti, dan bebas pungli.
         </p>
@@ -140,6 +170,7 @@ export default function Home() {
             💬 Buat Pengaduan / Lacak Status Tiket →
           </button>
         </div>
+        </div>
       </section>
 
       {/* ============ 2. EXECUTIVE LIVE METRICS TICKER ============ */}
@@ -147,35 +178,39 @@ export default function Home() {
         <div className="stats">
           <div className="stat glow-card reveal" style={{ borderColor: 'var(--gold)' }}>
             <div className="ic">🚀</div>
-            <div className="n" style={{ color: 'var(--gold-deep)' }}>{formatDesimal(pemdiData.indeks_aktual ?? 0)}</div>
+            <div className="n">
+              <CountStat value={pemdiData.indeks_aktual ?? 0} decimals={2} color="var(--gold-deep)" />
+            </div>
             <div className="l">Indeks Pemdi dari Bukti (target ≥ 2,50)</div>
           </div>
 
           <div className="stat glow-card reveal d1">
             <div className="ic">📊</div>
-            <div className="n">{formatDesimal(spbe.indeks)}</div>
+            <div className="n"><CountStat value={spbe.indeks} decimals={2} /></div>
             <div className="l">Indeks SPBE 2025 (Baseline Cukup)</div>
           </div>
 
           <div className="stat glow-card reveal d2">
             <div className="ic">🏛️</div>
-            <div className="n">{formatAngka(ringkasan.total_opd)}</div>
+            <div className="n"><CountStat value={ringkasan.total_opd} /></div>
             <div className="l">52 Perangkat Daerah</div>
           </div>
 
           <div className="stat glow-card reveal d3">
             <div className="ic">📋</div>
-            <div className="n">{formatAngka(totalLayanan)}</div>
+            <div className="n"><CountStat value={totalLayanan} /></div>
             <div className="l">Layanan Terpadu SLA</div>
           </div>
 
           <div className="stat glow-card reveal d4">
             <div className="ic">👥</div>
-            <div className="n">{formatAngka(ringkasan.total_asn)}</div>
+            <div className="n"><CountStat value={ringkasan.total_asn} /></div>
             <div className="l">Jumlah SDM ASN</div>
           </div>
         </div>
       </section>
+
+      <MarqueeBudaya />
 
       {/* ============ 3. CITIZEN TASK HUB ("Apa yang Ingin Anda Lakukan Hari Ini?") ============ */}
       <section style={{ marginBottom: '44px' }} id="layanan-warga">
@@ -188,7 +223,7 @@ export default function Home() {
         </div>
 
         <div className="qa-grid">
-          <Link href="/layanan" className="qa-card glow-card reveal">
+          <Link href="/layanan" className="qa-card kerawang-card reveal">
             <div className="ic" style={{ background: 'var(--primary-50)', color: 'var(--primary)' }}>
               📋
             </div>
@@ -199,7 +234,7 @@ export default function Home() {
 
           <button
             type="button"
-            className="qa-card glow-card reveal d1"
+            className="qa-card kerawang-card reveal d1"
             onClick={() => window.dispatchEvent(new CustomEvent('pemdi:open-lapor'))}
             style={{ textAlign: 'left', font: 'inherit', background: 'var(--surface)', border: '1px solid var(--line)' }}
           >
@@ -211,7 +246,7 @@ export default function Home() {
             <span className="go">Buat Laporan / Lacak →</span>
           </button>
 
-          <Link href="/skm" className="qa-card glow-card reveal d2">
+          <Link href="/skm" className="qa-card kerawang-card reveal d2">
             <div className="ic" style={{ background: 'var(--ok-bg)', color: 'var(--ok)' }}>
               📝
             </div>
@@ -220,7 +255,7 @@ export default function Home() {
             <span className="go">Isi Survei SKM →</span>
           </Link>
 
-          <Link href="/faq" className="qa-card glow-card reveal d3">
+          <Link href="/faq" className="qa-card kerawang-card reveal d3">
             <div className="ic" style={{ background: 'var(--warn-bg)', color: 'var(--warn)' }}>
               🤖
             </div>
@@ -299,15 +334,7 @@ export default function Home() {
                       Nilai: {formatDesimal(a.nilai)} / Target {formatDesimal(a.target)}
                     </span>
                   </div>
-                  <div style={{ height: '6px', background: 'var(--line)', borderRadius: '3px', overflow: 'hidden' }}>
-                    <div
-                      style={{
-                        height: '100%',
-                        width: `${Math.min(100, (a.nilai / a.target) * 100)}%`,
-                        background: a.nilai >= a.target ? 'var(--ok)' : 'var(--primary)',
-                      }}
-                    />
-                  </div>
+                  <AnimatedBar pct={Math.min(100, (a.nilai / a.target) * 100)} color={a.nilai >= a.target ? 'var(--ok)' : 'var(--primary)'} />
                 </div>
               ))}
             </div>
