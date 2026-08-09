@@ -17,7 +17,7 @@ for f in ['Kepuasan_I19_01_Perbup-21-Pedoman_2021.pdf',
           'Kepuasan_I20_02_SKM-Kebayakan_2025.pdf',
           'TataKelola_I2_01_Perbup-126-Standar-Pelayanan_2019.pdf',
           'TataKelola_I2_05_Pedoman-Pengaduan-RSUD_2026.pdf']:
-    src = os.path.join('arsip-bukti-dukung/bukti-dukung', f)
+    src = os.path.join('arsip-bukti-dukung/rujukan-opd', f)
     if os.path.exists(src):
         shutil.move(src, os.path.join(PUB, f))
         print(f"pindah: {f}")

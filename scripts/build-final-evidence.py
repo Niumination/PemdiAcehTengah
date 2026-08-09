@@ -9,10 +9,19 @@ FIX KUALITAS (v2):
 import fitz, os, json, shutil
 
 BASE = '/Users/zaryu/Desktop/Niumination/apps/PemdiAcehTengah'
-SRC = os.path.join(BASE, 'public/bukti-dukung')
-FINAL = os.path.join(SRC, 'final')
+PUB = os.path.join(BASE, 'public/bukti-dukung')          # file TAMPIL (referensi langsung)
+SRC_K = os.path.join(BASE, 'arsip-bukti-dukung/sumber-kompilasi')  # sumber kompilasi (tidak deploy)
+FINAL = os.path.join(PUB, 'final')
 
 DECISIONS = json.load(open(os.path.join(os.path.dirname(__file__), 'final-decisions.json')))
+
+def resolve(name):
+    """Cari file sumber: public dulu (file LINK/tampil), lalu sumber-kompilasi."""
+    for base in (PUB, SRC_K):
+        p = os.path.join(base, name)
+        if os.path.exists(p):
+            return p
+    return None
 
 def raster_page(page, scale, quality):
     """Render halaman ke gambar raster (JPEG) dengan skala tertentu."""
@@ -46,8 +55,8 @@ for ik, levels in DECISIONS.items():
     for lv, (item_nama, srcs, catatan) in levels.items():
         # 1 sumber: pakai asli
         if len(srcs) == 1:
-            sp = os.path.join(SRC, srcs[0])
-            if not os.path.exists(sp):
+            sp = resolve(srcs[0])
+            if not sp:
                 errors.append(f"MISS {srcs[0]} (I{ik} L{lv})")
                 continue
             results[f"{ik}_{lv}"] = {'file': f"/bukti-dukung/{srcs[0]}", 'pages': None,
@@ -61,8 +70,8 @@ for ik, levels in DECISIONS.items():
         merged = fitz.open()
         ok = True
         for s in srcs:
-            sp = os.path.join(SRC, s)
-            if not os.path.exists(sp):
+            sp = resolve(s)
+            if not sp:
                 errors.append(f"MISS {s} untuk {ik} L{lv}")
                 ok = False
                 break
