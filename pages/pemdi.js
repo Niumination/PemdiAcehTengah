@@ -396,8 +396,8 @@ export default function PemdiPage() {
             {(() => {
               const aktifInd = pilihInd
                 ? aspek.flatMap(a => a.indikator).find(i => i.id === pilihInd)
-                : null;
-              const ind = aktifInd || aspek[0]?.indikator?.[0];
+                : null; // Remove || aspek[0]?.indikator?.[0];
+              const ind = aktifInd;
               if (!ind) {
                 return (
                   <div style={{ padding: '40px', textAlign: 'center', color: 'var(--muted)', border: '1px dashed var(--line)', borderRadius: '14px' }}>
