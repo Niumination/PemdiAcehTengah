@@ -1330,3 +1330,238 @@ a { transition: color 0.18s ease; }
   outline-offset: 2px;
   border-radius: 4px;
 }
+/* ════════════════════════════════════════════════════════════════════
+   12. KERAWANG GAYO — Injeksi Budaya (Fase 0 Foundation)
+   "Ker" = daya pikir · "Rawang" = bayangan alam
+   Warna sakral: using(kuning)=keadilan · ijo(hijau)=musyawarah ·
+   ilang(merah)=keberanian · poteh(putih)=kesucian · item(hitam)=bumi
+   ════════════════════════════════════════════════════════════════════ */
+:root {
+  --kg-hitam:  #0E1220;   /* item — dasar kain hitam tanah */
+  --kg-kuning: #D4A83C;   /* using — kuning padi (keadilan & kemakmuran) */
+  --kg-hijau:  #2E7D5B;   /* ijo — musyawarah, kejayaan, ketekunan */
+  --kg-merah:  #B3402E;   /* ilang — keberanian menegakkan kebenaran */
+  --kg-putih:  #F7F4EC;   /* poteh — kesucian, kebijaksanaan */
+  --kg-emas:   #C6A75E;   /* emas pelengkap (existing gold) */
+
+  /* Override halus: hero jadi hitam tanah + aurora kuning gayo */
+  --hero-grad: radial-gradient(1000px 420px at 88% -18%, rgba(212,168,60,0.28), transparent 55%),
+               radial-gradient(720px 300px at 4% 112%, rgba(46,125,91,0.22), transparent 55%),
+               radial-gradient(560px 240px at 55% 40%, rgba(212,168,60,0.10), transparent 60%),
+               linear-gradient(135deg, #0E1220 0%, #151B2E 55%, #0A0E1A 100%);
+  --sidebar-grad: linear-gradient(180deg, #151B2E 0%, #0A0E1A 100%);
+  --glass-bg: rgba(255,255,255,0.72);
+  --glass-border: rgba(255,255,255,0.5);
+  --glass-shadow: 0 20px 45px -18px rgba(14,18,32,0.22);
+}
+
+[data-theme="dark"] {
+  --glass-bg: rgba(20,28,46,0.66);
+  --glass-border: rgba(255,255,255,0.09);
+  --glass-shadow: 0 20px 45px -18px rgba(0,0,0,0.6);
+}
+
+/* ── Gradient mesh / aurora animasi (60fps: transform+opacity only) ── */
+.aurora {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.aurora::before,
+.aurora::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.5;
+  z-index: -1;
+  pointer-events: none;
+}
+.aurora::before {
+  width: 55vw; height: 55vw;
+  background: radial-gradient(circle, rgba(212,168,60,0.34), transparent 65%);
+  top: -22vw; right: -12vw;
+  animation: aurora-drift 22s ease-in-out infinite alternate;
+}
+.aurora::after {
+  width: 48vw; height: 48vw;
+  background: radial-gradient(circle, rgba(46,125,91,0.26), transparent 65%);
+  bottom: -20vw; left: -10vw;
+  animation: aurora-drift 28s ease-in-out infinite alternate-reverse;
+}
+@keyframes aurora-drift {
+  from { transform: translate3d(0,0,0) scale(1); }
+  to   { transform: translate3d(6vw, 4vw, 0) scale(1.12); }
+}
+
+/* ── Glass card + gradient border (conic) — tren 2025-2026 ── */
+.glass-card {
+  position: relative;
+  background: var(--glass-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--glass-shadow);
+  overflow: hidden;
+}
+.glass-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(from var(--angle, 0deg), transparent 0%, rgba(212,168,60,0.55) 18%, transparent 38%, rgba(46,125,91,0.4) 62%, transparent 82%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  animation: border-spin 6s linear infinite;
+  pointer-events: none;
+}
+.glass-card:hover::before { opacity: 0.9; }
+@property --angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+@keyframes border-spin {
+  to { --angle: 360deg; }
+}
+
+/* ── Kartu Kerawang: corner pucuk rebung (segitiga → teguh) ── */
+.kerawang-card {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: var(--surface);
+  transition: transform 0.28s cubic-bezier(0.16,1,0.3,1), box-shadow 0.28s ease, border-color 0.28s ease;
+}
+.kerawang-card:hover { transform: translateY(-4px); box-shadow: var(--sh-lg); border-color: color-mix(in srgb, var(--kg-kuning) 40%, var(--line)); }
+.kerawang-card::before {
+  content: '';
+  position: absolute;
+  top: -1px; left: 22px;
+  width: 0; height: 0;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-top: 9px solid var(--kg-kuning);
+  opacity: 0.8;
+}
+
+/* ── Divider kerawang pagar/puter tali ── */
+.kr-divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 30px 0;
+  color: var(--kg-kuning);
+}
+.kr-divider::before, .kr-divider::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, var(--kg-kuning) 0 7px, transparent 7px 13px, var(--kg-hijau) 13px 20px, transparent 20px 26px);
+  opacity: 0.55;
+}
+
+/* ── Marquee budaya (motif + filosofi) ── */
+.kr-marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  border-block: 1px solid var(--line);
+  padding: 9px 0;
+  background: var(--surface-2);
+}
+.kr-marquee-track {
+  display: inline-block;
+  white-space: nowrap;
+  animation: kr-marquee 30s linear infinite;
+  will-change: transform;
+}
+.kr-marquee:hover .kr-marquee-track { animation-play-state: paused; }
+.kr-marquee-track span {
+  display: inline-block;
+  padding-right: 48px;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-secondary);
+}
+.kr-marquee-track span i { color: var(--kg-kuning); font-style: normal; }
+@keyframes kr-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── Count-up angka (text via hook; underline progress) ── */
+.countup {
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+}
+
+/* ── Progress bar masuk saat scroll ── */
+.reveal-bar {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal-bar.in-view { transform: scaleX(1); }
+
+/* ── Emun drift (awan) — SVG animateTransform di komponen, fallback CSS ── */
+.emun-drift { animation: emun-drift 26s ease-in-out infinite alternate; }
+@keyframes emun-drift {
+  from { transform: translate3d(0,0,0); }
+  to   { transform: translate3d(34px, 14px, 0); }
+}
+
+/* ── Heading gold gradient (kuning gayo) ── */
+.gold-head {
+  background: linear-gradient(92deg, var(--kg-kuning) 0%, var(--kg-emas) 45%, #E7C877 70%, var(--kg-kuning) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gold-shimmer 7s linear infinite;
+}
+@keyframes gold-shimmer { to { background-position: -200% center; } }
+
+/* ── Motif SVG container (opacity rendah, dekoratif) ── */
+.kr-motif-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  z-index: 0;
+}
+[data-theme="dark"] .kr-motif-bg { opacity: 0.08; }
+
+/* ── Pattern nusantara pendukung (kawung — kesempurnaan) ── */
+.nusantara-pattern {
+  background-image: radial-gradient(circle at 1px 1px, var(--kg-kuning) 1px, transparent 1.8px);
+  background-size: 26px 26px;
+  opacity: 0.14;
+}
+
+/* Light mode: primary tombol pertahankan navy (kontras AA), aksen emas gayo */
+.kg-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: color-mix(in srgb, var(--kg-kuning) 14%, transparent);
+  color: var(--kg-kuning);
+  border: 1px solid color-mix(in srgb, var(--kg-kuning) 38%, transparent);
+}
+[data-theme="dark"] .kg-chip { color: #E7C877; }
+
+/* Responsive motif layer */
+@media (max-width: 768px) {
+  .aurora::before { width: 90vw; height: 90vw; }
+  .aurora::after { width: 80vw; height: 80vw; }
+  .glass-card { border-radius: var(--r); }
+}

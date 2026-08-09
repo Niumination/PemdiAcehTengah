@@ -156,6 +156,16 @@ export default function PemdiPage() {
     }
   }, [aspek]); // Depend on aspek
 
+  // Indikator aktif di detail panel — dihitung di level komponen (bukan di dalam JSX callback)
+  const aktifInd = useMemo(() => {
+    if (!pilihInd && aspek.length > 0 && aspek[0].indikator.length > 0) {
+      return aspek[0].indikator[0]; // Default: indikator pertama dari aspek pertama
+    }
+    return pilihInd
+      ? aspek.flatMap(a => a.indikator).find(i => i.id === pilihInd)
+      : null;
+  }, [pilihInd, aspek]);
+
   // Muat catatan mandiri dari localStorage
   useEffect(() => {
     const saved = {};
@@ -394,9 +404,6 @@ export default function PemdiPage() {
           {/* ── Panel kanan: detail indikator ── */}
           <div className="checklist-detail" style={{ minWidth: 0 }}>
             {(() => {
-              const aktifInd = pilihInd
-                ? aspek.flatMap(a => a.indikator).find(i => i.id === pilihInd)
-                : null; // Remove || aspek[0]?.indikator?.[0];
               const ind = aktifInd;
               if (!ind) {
                 return (
