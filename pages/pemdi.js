@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useCallback } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import DetailModal from '@/components/DetailModal';
@@ -142,6 +142,13 @@ export default function PemdiPage() {
   const [pilihInd, setPilihInd] = useState(null); // indikator aktif di accordion checklist
   const [pilihAspek, setPilihAspek] = useState(null); // filter aspek di bilah kiri
 
+  const handleAspekClick = useCallback((aspekId) => {
+    const selectedAspek = aspek.find(a => a.id === aspekId);
+    if (selectedAspek && selectedAspek.indikator.length > 0) {
+      setPilihInd(selectedAspek.indikator[0].id); // Set ke indikator pertama dari aspek
+    }
+  }, [aspek]);
+
   // Muat catatan mandiri dari localStorage
   useEffect(() => {
     const saved = {};
@@ -253,7 +260,7 @@ export default function PemdiPage() {
           {aspek.map((a, ai) => {
             const pct = Math.min(100, (a.nilai / a.target) * 100);
             return (
-              <div key={a.id} className="glow-card" style={{ padding: '22px', cursor: 'pointer', '--i': ai }} onClick={() => setModalAspek(a)}>
+              <div key={a.id} className="glow-card" style={{ padding: '22px', cursor: 'pointer', '--i': ai }} onClick={() => handleAspekClick(a.id)}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '12px', marginBottom: '10px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                     <div style={{ width: 34, height: 34, borderRadius: '8px', background: 'var(--primary-50)', color: 'var(--primary)', display: 'grid', placeItems: 'center', fontWeight: 800, fontSize: '0.9rem' }}>{a.id}</div>

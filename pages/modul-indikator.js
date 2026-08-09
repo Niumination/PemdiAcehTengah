@@ -665,9 +665,6 @@ export default function ModulIndikatorPage() {
                                 {mode.label}
                               </button>
                             ))}
-                            <span style={{ fontSize: '0.65rem', color: 'var(--muted)', marginLeft: 'auto' }}>
-                              {buktiMapping.stats?.terpetakan}/{buktiMapping.stats?.total_bukti} bukti terpetakan
-                            </span>
                           </div>
 
                           {(viewMode[modul.nomor] || 'level') === 'level' ? (
