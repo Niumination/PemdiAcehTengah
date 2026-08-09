@@ -7,6 +7,7 @@ import Footer from './Footer';
 import ScrollTop from './ScrollTop';
 import LaporWidget from './LaporWidget';
 import RatingWidget from './RatingWidget';
+import { MotifEmun, MotifUlen, KerawangDivider } from './motif/KerawangMotifs';
 
 const breadcrumbLabels = {
   '/': 'Beranda Portal',
@@ -119,15 +120,18 @@ export default function AppShell({ children }) {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', paddingTop: 'calc(var(--gov-strip-h) + env(safe-area-inset-top))' }}>
-      {/* Official Government Strip — Marquee Running Text */}
+      {/* Official Government Strip — Marquee Running Text + Motif Ulen */}
       <div className="gov-strip" role="banner">
         <span className="gov-strip-flag" aria-hidden="true">🇮🇩</span>
+        <MotifUlen size={18} style={{ marginLeft: 8 }} />
         <div className="gov-strip-marquee">
           <div className="gov-strip-marquee-track" aria-label={marqueeText}>
             <span>{marqueeText}</span>
             <span>{marqueeText}</span>
           </div>
         </div>
+        <MotifUlen size={18} />
+        <span className="gov-strip-flag" aria-hidden="true">🇮🇩</span>
       </div>
 
       <div style={{ display: 'flex', flex: 1, minHeight: 0 }}>
@@ -205,9 +209,11 @@ export default function AppShell({ children }) {
           {/* Accessible Skip Link */}
           <a href="#main-content" className="skip-link">Lompat ke konten utama</a>
 
-          {/* Main Content Area */}
-          <main id="main-content" className="content">
-            {children}
+          {/* Main Content Area — page transition fade-up via key remount */}
+          <main id="main-content" className="content" key={pathname} style={{ flex: 1 }}>
+            <div style={{ animation: 'fade-up 0.5s cubic-bezier(0.16,1,0.3,1) both' }}>
+              {children}
+            </div>
           </main>
 
           <Footer />

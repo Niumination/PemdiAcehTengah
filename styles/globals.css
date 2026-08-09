@@ -350,12 +350,12 @@ html.anim-ready .reveal.d4 { transition-delay: 0.24s; }
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--line);
   min-height: 54px;
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--kg-kuning) 30%, transparent), 0 1px 3px rgba(0,0,0,0.04);
   transition: box-shadow 0.3s ease, background 0.3s ease;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
 }
 /* Floating shadow when scrolled past sidebar */
 .main:has(.content[tabindex]:not(:empty)) .topbar {
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--kg-kuning) 30%, transparent), 0 4px 20px rgba(0,0,0,0.08);
 }
 
 /* Sidebar toggle button in topbar — desktop */

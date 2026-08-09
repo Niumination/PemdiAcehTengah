@@ -195,6 +195,9 @@ export default function Sidebar({ isOpen, onClose, collapsed }) {
             </div>
           </div>
           <div className="sb-foot-text">Walidata: Diskominfo Kab. Aceh Tengah</div>
+          <div style={{ fontSize: '9.5px', lineHeight: 1.5, padding: '6px 10px', color: 'var(--primary-200)', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+            ✦ Kerawang Gayo — <em>“alang tulung beret bebantu”</em>: tolong-menolong, kekokohan &amp; keterpaduan
+          </div>
         </div>
       </aside>
 

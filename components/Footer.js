@@ -1,15 +1,20 @@
 import Sp4nBanner from './Sp4nBanner';
+import { KerawangDivider, MotifPucukRebung } from './motif/KerawangMotifs';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
     <footer className="gov-footer">
+      <KerawangDivider aria-hidden="true" />
       <div className="container">
         <div className="footer-grid">
           {/* Column 1: Brand & Executive Authority */}
           <div className="footer-brand">
-            <h4>Pemdi Aceh Tengah</h4>
+            <h4 style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+              <MotifPucukRebung size={26} />
+              Pemdi Aceh Tengah
+            </h4>
             <p>
               Portal Digital Resmi Pemerintah Kabupaten Aceh Tengah.
               Transformasi menuju Pemerintah Digital (Pemdi) berdasarkan 
@@ -17,6 +22,11 @@ export default function Footer() {
             </p>
             <p style={{ marginTop: '12px', fontSize: '0.8125rem' }}>
               <strong>Walidata Resmi Data Sektoral:</strong> Dinas Komunikasi dan Informatika (Diskominfo) Kab. Aceh Tengah.
+            </p>
+            <p style={{ marginTop: '12px', fontSize: '0.72rem', fontStyle: 'italic', color: 'var(--muted)' }}>
+              <span style={{ color: 'var(--kg-kuning)' }}>“Ratip musara anguk, nyawa musara peluk,</span>
+              {' '}alang tulung beret bebantu — persatuan yang kukuh, saling menopang bagai &ldquo;Rante&rdquo;, keterpaduan
+              kerawang Gayo dalam pelayanan publik.
             </p>
           </div>
 
