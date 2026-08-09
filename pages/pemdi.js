@@ -142,12 +142,19 @@ export default function PemdiPage() {
   const [pilihInd, setPilihInd] = useState(null); // indikator aktif di accordion checklist
   const [pilihAspek, setPilihAspek] = useState(null); // filter aspek di bilah kiri
 
+  // Inisialisasi pilihInd ke indikator pertama dari aspek pertama saat komponen mount
+  useEffect(() => {
+    if (aspek.length > 0 && aspek[0].indikator.length > 0) {
+      setPilihInd(aspek[0].indikator[0].id);
+    }
+  }, [aspek]);
+
   const handleAspekClick = useCallback((aspekId) => {
-      const selectedAspek = pemdiData.aspek.find(a => a.id === aspekId);
-      if (selectedAspek && selectedAspek.indikator.length > 0) {
-        setPilihInd(selectedAspek.indikator[0].id); // Set ke indikator pertama dari aspek
-      }
-    }, []); // No dependencies needed for useCallback as pemdiData is static
+    const selectedAspek = aspek.find(a => a.id === aspekId); // Gunakan 'aspek' dari prop/state
+    if (selectedAspek && selectedAspek.indikator.length > 0) {
+      setPilihInd(selectedAspek.indikator[0].id); // Set ke indikator pertama dari aspek
+    }
+  }, [aspek]); // Depend on aspek
 
   // Muat catatan mandiri dari localStorage
   useEffect(() => {
