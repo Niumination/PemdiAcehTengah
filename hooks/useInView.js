@@ -1,7 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 
 /**
- * useInView — IntersectionObserver hook (60fps, hormati reduced-motion).
+ * useInView — IntersectionObserver hook ANTI-GAGAL.
+ * - prefers-reduced-motion → langsung true (konten tetap terlihat).
+ * - Tidak ada IO / ref null → langsung true.
+ * - Fallback timeout 3s → paksa true (IO diblokir oleh lingkungan apapun).
  * @param {Object} opts { threshold, rootMargin, once }
  * @returns {[ref, inView]}
  */
@@ -10,14 +13,16 @@ export default function useInView({ threshold = 0.15, rootMargin = '0px 0px -40p
   const [inView, setInView] = useState(false);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
+    if (typeof window === 'undefined') return;
 
-    if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) {
       setInView(true);
       return;
     }
-    if (!('IntersectionObserver' in window)) {
+
+    const el = ref.current;
+    if (!el || !('IntersectionObserver' in window)) {
       setInView(true);
       return;
     }
@@ -36,7 +41,13 @@ export default function useInView({ threshold = 0.15, rootMargin = '0px 0px -40p
       { threshold, rootMargin }
     );
     io.observe(el);
-    return () => io.disconnect();
+
+    const timer = setTimeout(() => setInView(true), 3000);
+
+    return () => {
+      io.disconnect();
+      clearTimeout(timer);
+    };
   }, [threshold, rootMargin, once]);
 
   return [ref, inView];

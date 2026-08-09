@@ -1,19 +1,13 @@
 import Head from 'next/head'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import panduanBukti from '@/data/panduan-bukti-l1.json'
+import requirementData from '@/data/requirement.json'
 import { MotifEmun, MotifRante } from '@/components/motif/KerawangMotifs'
 
 export default function Requirement() {
-  const [requirements, setRequirements] = useState(null)
+  const [requirements, setRequirements] = useState(requirementData)
   const [activeCategory, setActiveCategory] = useState(null)
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    fetch('/api/requirement')
-      .then(r => r.json())
-      .then(d => { setRequirements(d); setLoading(false) })
-      .catch(e => { console.error(e); setLoading(false) })
-  }, [])
+  const [loading, setLoading] = useState(false)
 
   if (loading) return (
     <div style={{ maxWidth: 960, margin: '0 auto', padding: '40px 20px', textAlign: 'center', color: 'var(--muted)' }}>

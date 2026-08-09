@@ -1,0 +1,889 @@
+{
+ "summary": [
+  {
+   "category": "A. Dokumen Regulasi & Strategis",
+   "icon": "📜",
+   "count": 7,
+   "priority": "WAJIB",
+   "kebutuhan": "Setdakab, Bappeda, Bagian Hukum",
+   "description": "Dasar hukum, RPJPD, Renstra, Renja, LAKIP"
+  },
+  {
+   "category": "B. Struktur Organisasi 38 OPD",
+   "icon": "🏛️",
+   "count": 12,
+   "priority": "WAJIB",
+   "kebutuhan": "BKPSDM, Diskominfo",
+   "description": "SOTK, Anjab, ABK, Tupoksi, Matriks Urusan"
+  },
+  {
+   "category": "C. RPJMD & Renstra",
+   "icon": "🎯",
+   "count": 8,
+   "priority": "WAJIB",
+   "kebutuhan": "Bappeda",
+   "description": "Qanun RPJMD, Logframe, 17 Prioritas HAMAS, IKU"
+  },
+  {
+   "category": "D. Proses Bisnis per OPD",
+   "icon": "⚙️",
+   "count": 10,
+   "priority": "WAJIB",
+   "kebutuhan": "Seluruh 38 OPD",
+   "description": "SIPOC, flowchart, wawancara langsung 38 Kepala OPD"
+  },
+  {
+   "category": "E. Data Layanan Publik",
+   "icon": "🤝",
+   "count": 6,
+   "priority": "WAJIB",
+   "kebutuhan": "DPM-PTSP, OPD terkait",
+   "description": "Standar Pelayanan, Maklumat, MPP, IKM, Pengaduan"
+  },
+  {
+   "category": "F. Data SPBE & TIK",
+   "icon": "💻",
+   "count": 7,
+   "priority": "WAJIB",
+   "kebutuhan": "Diskominfo",
+   "description": "Arsitektur SPBE, Peta Rencana, Master Plan TIK"
+  },
+  {
+   "category": "G. SOP Existing",
+   "icon": "📋",
+   "count": 5,
+   "priority": "WAJIB",
+   "kebutuhan": "Bagian Organisasi, OPD",
+   "description": "Kumpulan SOP, Gap analysis, SOP prioritas"
+  },
+  {
+   "category": "H. Akses API / Sistem Digital",
+   "icon": "🔌",
+   "count": 10,
+   "priority": "SANGAT DIBUTUHKAN",
+   "kebutuhan": "Diskominfo, OPD terkait",
+   "description": "SIPD, e-Keurani, e-Musrenbang, SP4N-LAPOR, Satu Data"
+  },
+  {
+   "category": "I. Data Kecamatan (14)",
+   "icon": "🗺️",
+   "count": 5,
+   "priority": "PENTING",
+   "kebutuhan": "Kecamatan",
+   "description": "Tupoksi, desa/kampung, layanan, demografis, ekonomi"
+  },
+  {
+   "category": "J. Data Kepegawaian",
+   "icon": "👥",
+   "count": 4,
+   "priority": "PENTING",
+   "kebutuhan": "BKPSDM",
+   "description": "Distribusi ASN, kompetensi, diklat, tipologi"
+  },
+  {
+   "category": "K. Data Keuangan & Aset",
+   "icon": "💰",
+   "count": 4,
+   "priority": "PENTING",
+   "kebutuhan": "BPKAD",
+   "description": "Struktur APBD, pagu indikatif, aset, PAD"
+  },
+  {
+   "category": "L. Template & Tools",
+   "icon": "🧰",
+   "count": 5,
+   "priority": "PENDUKUNG",
+   "kebutuhan": "Internal",
+   "description": "Template Simalungun ✅, Permenpan 19 ✅, BPMN tool"
+  }
+ ],
+ "categories": [
+  {
+   "id": "A",
+   "icon": "📜",
+   "name": "Dokumen Regulasi & Strategis",
+   "description": "Landasan hukum dan dokumen perencanaan yang menjadi acuan penyusunan PPB. Selaras dengan Peta Dokumen Kunci Bukti Dukung Pemdi.",
+   "items": [
+    {
+     "no": "A1",
+     "data": "Qanun / Perbup tentang Peta Proses Bisnis (jika sudah ada)",
+     "fungsi": "Dasar hukum PPB",
+     "format": "PDF/DOC",
+     "sumber": "Bagian Hukum Setdakab",
+     "dokumenKunci": "#27"
+    },
+    {
+     "no": "A2",
+     "data": "SK Tim Reformasi Birokrasi Internal (RBI)",
+     "fungsi": "Tim penyusun PPB",
+     "format": "PDF/DOC",
+     "sumber": "Bagian Organisasi Setdakab",
+     "dokumenKunci": "#5"
+    },
+    {
+     "no": "A3",
+     "data": "Roadmap Reformasi Birokrasi 2025-2030",
+     "fungsi": "Acuan target RB",
+     "format": "PDF/DOC",
+     "sumber": "Bagian Organisasi",
+     "dokumenKunci": "#1"
+    },
+    {
+     "no": "A4",
+     "data": "RPJPD Aceh Tengah (2005-2025 / 2025-2045)",
+     "fungsi": "Visi jangka panjang",
+     "format": "PDF/DOC",
+     "sumber": "Bappeda",
+     "dokumenKunci": "#1"
+    },
+    {
+     "no": "A5",
+     "data": "Renstra Kabupaten 2025-2030",
+     "fungsi": "Strategi pembangunan",
+     "format": "PDF/DOC",
+     "sumber": "Bappeda",
+     "dokumenKunci": "#1"
+    },
+    {
+     "no": "A6",
+     "data": "Renja tahun berjalan (2026)",
+     "fungsi": "Rencana kerja tahunan",
+     "format": "PDF/DOC",
+     "sumber": "Bappeda",
+     "dokumenKunci": "#1"
+    },
+    {
+     "no": "A7",
+     "data": "Laporan Kinerja (LAKIP) 2025",
+     "fungsi": "Evaluasi kinerja",
+     "format": "PDF/DOC",
+     "sumber": "Setdakab/Bappeda",
+     "dokumenKunci": "#1"
+    }
+   ]
+  },
+  {
+   "id": "B",
+   "icon": "🏛️",
+   "name": "Struktur Organisasi 38 OPD",
+   "description": "Data kelembagaan dan tugas pokok fungsi yang menjadi dasar identifikasi proses bisnis.",
+   "items": [
+    {
+     "no": "B1",
+     "data": "Daftar 38 OPD + 14 Kecamatan (confirmed)",
+     "fungsi": "Basis pemetaan",
+     "format": "spreadsheet",
+     "sumber": "BKPSDM",
+     "dokumenKunci": "#27"
+    },
+    {
+     "no": "B2",
+     "data": "SK SOTK (Struktur Organisasi Tugas Kerja)",
+     "fungsi": "Mengetahui tupoksi",
+     "format": "PDF",
+     "sumber": "Bagian Organisasi",
+     "dokumenKunci": "#9"
+    },
+    {
+     "no": "B3",
+     "data": "Struktur organisasi per OPD (eselon III, IV)",
+     "fungsi": "Pemetaan jabatan",
+     "format": "Diagram/PDF",
+     "sumber": "BKPSDM",
+     "dokumenKunci": "#9"
+    },
+    {
+     "no": "B4",
+     "data": "Analisis Jabatan (Anjab) per OPD",
+     "fungsi": "Daftar posisi",
+     "format": "DOC/PDF",
+     "sumber": "BKPSDM",
+     "dokumenKunci": "#9"
+    },
+    {
+     "no": "B5",
+     "data": "Analisis Beban Kerja (ABK) per OPD",
+     "fungsi": "Beban kerja unit",
+     "format": "DOC/PDF",
+     "sumber": "BKPSDM",
+     "dokumenKunci": "#9"
+    },
+    {
+     "no": "B6",
+     "data": "Tupoksi masing-masing OPD (dokumen resmi)",
+     "fungsi": "Dasar identifikasi proses",
+     "format": "PDF/DOC",
+     "sumber": "Setdakab/OPD",
+     "dokumenKunci": "#27"
+    },
+    {
+     "no": "B7",
+     "data": "Matriks 24 Urusan Konkuren → OPD penanggung jawab",
+     "fungsi": "Level 1 mapping",
+     "format": "spreadsheet",
+     "sumber": "Bappeda",
+     "dokumenKunci": "#27"
+    },
+    {
+     "no": "B8",
+     "data": "Uraian tugas setiap bidang/bidang dalam OPD",
+     "fungsi": "Detail breakdown",
+     "format": "DOC/PDF",
+     "sumber": "Masing-masing OPD",
+     "dokumenKunci": "#27"
+    },
+    {
+     "no": "B9",
+     "data": "Alur koordinasi antar OPD (jika ada)",
+     "fungsi": "Relasi antar OPD",
+     "format": "Diagram",
+     "sumber": "Setdakab",
+     "dokumenKunci": "#16"
+    },
+    {
+     "no": "B10",
+     "data": "Struktur Bagian/Subbagian di Setdakab",
+     "fungsi": "Mekanisme koordinasi",
+     "format": "DOC/PDF",
+     "sumber": "Setdakab",
+     "dokumenKunci": "#9"
+    },
+    {
+     "no": "B11",
+     "data": "Daftar UPTD per Dinas",
+     "fungsi": "Unit pelaksana teknis",
+     "format": "DOC/PDF",
+     "sumber": "OPD terkait",
+     "dokumenKunci": "#27"
+    },
+    {
+     "no": "B12",
+     "data": "Daftar jabatan fungsional (JF) dan struktural",
+     "fungsi": "Siapa pemilik proses",
+     "format": "spreadsheet",
+     "sumber": "BKPSDM",
+     "dokumenKunci": "#9"
+    }
+   ]
+  },
+  {
+   "id": "C",
+   "icon": "🎯",
+   "name": "RPJMD & Renstra",
+   "description": "Dokumen perencanaan strategis yang menjadi sumber penjabaran Level 0 dan Level 1 PPB. Selaras dengan Dokumen Kunci #1.",
+   "items": [
+    {
+     "no": "C1",
+     "data": "Qanun RPJMD No. 4/2025 (dokumen LENGKAP)",
+     "fungsi": "VISI-MISI → Level 0",
+     "format": "PDF",
+     "sumber": "Bappeda",
+     "dokumenKunci": "#1"
+    },
+    {
+     "no": "C2",
+     "data": "Matriks logframe RPJMD (Visi-Misi-Tujuan-Sasaran-Indikator-Program)",
+     "fungsi": "Pohon kinerja → Proses",
+     "format": "spreadsheet",
+     "sumber": "Bappeda",
+     "dokumenKunci": "#1"
+    },
+    {
+     "no": "C3",
+     "data": "17 Sasaran Prioritas HAMAS (dokumen resmi)",
+     "fungsi": "Strategi prioritas",
+     "format": "DOC/PDF",
+     "sumber": "Bappeda/Bag Protokol",
+     "dokumenKunci": "#1"
+    },
+    {
+     "no": "C4",
+     "data": "Indikator Kinerja Utama (IKU) daerah",
+     "fungsi": "KPI level daerah",
+     "format": "spreadsheet",
+     "sumber": "Bappeda",
+     "dokumenKunci": "#1"
+    },
+    {
+     "no": "C5",
+     "data": "Renstra masing-masing 38 OPD",
+     "fungsi": "Visi-misi OPD → Level 1-2",
+     "format": "PDF/DOC",
+     "sumber": "Masing-masing OPD",
+     "dokumenKunci": "#1"
+    },
+    {
+     "no": "C6",
+     "data": "Renja OPD tahun 2025 dan 2026",
+     "fungsi": "Rencana tahunan",
+     "format": "PDF/DOC",
+     "sumber": "Masing-masing OPD",
+     "dokumenKunci": "#1"
+    },
+    {
+     "no": "C7",
+     "data": "IKU per OPD",
+     "fungsi": "Indikator kinerja per OPD",
+     "format": "spreadsheet",
+     "sumber": "Masing-masing OPD",
+     "dokumenKunci": "#1"
+    },
+    {
+     "no": "C8",
+     "data": "PK (Perjanjian Kinerja) 2026",
+     "fungsi": "Target tahunan OPD",
+     "format": "DOC/PDF",
+     "sumber": "Masing-masing OPD",
+     "dokumenKunci": "#1"
+    }
+   ]
+  },
+  {
+   "id": "D",
+   "icon": "⚙️",
+   "name": "Proses Bisnis per OPD",
+   "description": "Data primer identifikasi proses bisnis yang harus dikumpulkan langsung dari 38 OPD melalui wawancara dan FGD. Selaras dengan Dokumen Kunci #27.",
+   "items": [
+    {
+     "no": "D1",
+     "data": "Daftar proses bisnis yang SUDAH ada di masing-masing OPD",
+     "fungsi": "Baseline",
+     "format": "DOC/XLS/Diagram",
+     "sumber": "Masing-masing OPD",
+     "dokumenKunci": "#27"
+    },
+    {
+     "no": "D2",
+     "data": "PPB yang sudah disusun sebelumnya (jika ada)",
+     "fungsi": "Jangan ulang kerja",
+     "format": "Diagram/PDF",
+     "sumber": "Masing-masing OPD",
+     "dokumenKunci": "#27"
+    },
+    {
+     "no": "D3",
+     "data": "Bagan alir (flowchart) proses kerja existing",
+     "fungsi": "Input → Proses → Output",
+     "format": "Diagram/PDF",
+     "sumber": "Masing-masing OPD",
+     "dokumenKunci": "#27"
+    },
+    {
+     "no": "D4",
+     "data": "Matriks proses per bidang/subbidang",
+     "fungsi": "Siapa mengerjakan apa",
+     "format": "DOC/XLS",
+     "sumber": "Masing-masing OPD",
+     "dokumenKunci": "#27"
+    },
+    {
+     "no": "D5",
+     "data": "Supplier & Input setiap proses",
+     "fungsi": "Siapa pemasok data?",
+     "format": "wawancara",
+     "sumber": "OPD terkait",
+     "dokumenKunci": "#27"
+    },
+    {
+     "no": "D6",
+     "data": "Output & Customer setiap proses",
+     "fungsi": "Ke mana hasil proses?",
+     "format": "wawancara",
+     "sumber": "OPD terkait",
+     "dokumenKunci": "#27"
+    },
+    {
+     "no": "D7",
+     "data": "Waktu siklus setiap proses",
+     "fungsi": "Durasi proses",
+     "format": "data lapangan",
+     "sumber": "OPD terkait",
+     "dokumenKunci": "#27"
+    },
+    {
+     "no": "D8",
+     "data": "Volume transaksi per proses (bulanan/tahunan)",
+     "fungsi": "Skala proses",
+     "format": "data statistik",
+     "sumber": "OPD terkait",
+     "dokumenKunci": "#27"
+    },
+    {
+     "no": "D9",
+     "data": "Wawancara minimal dengan 38 Kepala OPD / Kabid perencanaan",
+     "fungsi": "Verifikasi proses",
+     "format": "Notes",
+     "sumber": "OPD",
+     "dokumenKunci": "#27"
+    },
+    {
+     "no": "D10",
+     "data": "FGD (Focus Group Discussion) lintas OPD",
+     "fungsi": "Validasi relasi antar OPD",
+     "format": "Notes",
+     "sumber": "Setdakab/Organisasi",
+     "dokumenKunci": "#7"
+    }
+   ]
+  },
+  {
+   "id": "E",
+   "icon": "🤝",
+   "name": "Data Layanan Publik",
+   "description": "Data layanan yang diberikan pemerintah ke masyarakat, menjadi dasar identifikasi proses inti (core process). Selaras dengan Dokumen Kunci #29 & #31.",
+   "items": [
+    {
+     "no": "E1",
+     "data": "Daftar layanan publik per OPD",
+     "fungsi": "Jenis layanan ke masyarakat",
+     "format": "DOC/XLS",
+     "sumber": "Masing-masing OPD",
+     "dokumenKunci": "#29"
+    },
+    {
+     "no": "E2",
+     "data": "Standar Pelayanan (SP) per layanan",
+     "fungsi": "Waktu & biaya layanan",
+     "format": "PDF/DOC",
+     "sumber": "DPM-PTSP",
+     "dokumenKunci": "#29"
+    },
+    {
+     "no": "E3",
+     "data": "Maklumat Pelayanan",
+     "fungsi": "Janji layanan",
+     "format": "PDF/DOC",
+     "sumber": "DPM-PTSP",
+     "dokumenKunci": "#29"
+    },
+    {
+     "no": "E4",
+     "data": "Data MPP (Mal Pelayanan Publik)",
+     "fungsi": "Layanan terpadu",
+     "format": "DOC/XLS",
+     "sumber": "DPM-PTSP",
+     "dokumenKunci": "#29"
+    },
+    {
+     "no": "E5",
+     "data": "Indeks Kepuasan Masyarakat (IKM) / SKM",
+     "fungsi": "Tingkat kepuasan",
+     "format": "XLS/DOC",
+     "sumber": "DPM-PTSP",
+     "dokumenKunci": "#31"
+    },
+    {
+     "no": "E6",
+     "data": "Data pengaduan (SP4N-LAPOR)",
+     "fungsi": "Keluhan masyarakat",
+     "format": "XLS",
+     "sumber": "DPM-PTSP",
+     "dokumenKunci": "#30"
+    }
+   ]
+  },
+  {
+   "id": "F",
+   "icon": "💻",
+   "name": "Data SPBE & TIK",
+   "description": "Data Sistem Pemerintahan Berbasis Elektronik yang menjadi acuan digitalisasi proses bisnis. Selaras dengan Peta Dokumen Kunci Bukti Dukung Pemdi.",
+   "items": [
+    {
+     "no": "F1",
+     "data": "Dokumen Arsitektur SPBE (Perpres 132/2022)",
+     "fungsi": "Domain proses bisnis dalam SPBE",
+     "format": "PDF",
+     "sumber": "Diskominfo",
+     "dokumenKunci": "#3"
+    },
+    {
+     "no": "F2",
+     "data": "Peta Rencana SPBE 2025-2030",
+     "fungsi": "Target digitalisasi",
+     "format": "PDF",
+     "sumber": "Diskominfo",
+     "dokumenKunci": "#2"
+    },
+    {
+     "no": "F3",
+     "data": "Master Plan TIK / IT Master Plan",
+     "fungsi": "Infrastruktur digital",
+     "format": "PDF",
+     "sumber": "Diskominfo",
+     "dokumenKunci": "#3"
+    },
+    {
+     "no": "F4",
+     "data": "Domain Proses Bisnis dalam SPBE (indikator 11-14)",
+     "fungsi": "Nilai kematangan proses",
+     "format": "Data SPBE",
+     "sumber": "Diskominfo",
+     "dokumenKunci": "#27"
+    },
+    {
+     "no": "F5",
+     "data": "Data aplikasi/sistem yang sudah berjalan",
+     "fungsi": "Aplikasi existing",
+     "format": "spreadsheet",
+     "sumber": "Diskominfo",
+     "dokumenKunci": "#25"
+    },
+    {
+     "no": "F6",
+     "data": "Arsitektur integrasi SIAT (Sistem Informasi Aceh Terintegrasi)",
+     "fungsi": "Ekosistem digital Aceh",
+     "format": "PDF",
+     "sumber": "Diskominfo",
+     "dokumenKunci": "#28"
+    },
+    {
+     "no": "F7",
+     "data": "Akses ke dashboard e-Keurani",
+     "fungsi": "Data kepegawaian",
+     "format": "API/Web",
+     "sumber": "BKPSDM",
+     "dokumenKunci": "#25"
+    }
+   ]
+  },
+  {
+   "id": "G",
+   "icon": "📋",
+   "name": "SOP Existing",
+   "description": "SOP yang sudah berjalan sebagai dasar penyusunan proses bisnis to-be. Selaras dengan Dokumen Kunci #8 (manajemen layanan) & #27 (proses bisnis).",
+   "items": [
+    {
+     "no": "G1",
+     "data": "Kumpulan SOP existing seluruh OPD",
+     "fungsi": "Baseline SOP",
+     "format": "PDF/DOC",
+     "sumber": "Bagian Organisasi, OPD",
+     "dokumenKunci": "#8"
+    },
+    {
+     "no": "G2",
+     "data": "Gap analysis SOP vs proses bisnis",
+     "fungsi": "Kesenjangan SOP",
+     "format": "XLS",
+     "sumber": "Internal",
+     "dokumenKunci": "#27"
+    },
+    {
+     "no": "G3",
+     "data": "SOP prioritas (layanan publik)",
+     "fungsi": "SOP inti",
+     "format": "PDF/DOC",
+     "sumber": "OPD terkait",
+     "dokumenKunci": "#8"
+    },
+    {
+     "no": "G4",
+     "data": "SOP/IK manajemen layanan digital",
+     "fungsi": "Manajemen layanan (5 domain)",
+     "format": "PDF/DOC",
+     "sumber": "Diskominfo",
+     "dokumenKunci": "#8"
+    },
+    {
+     "no": "G5",
+     "data": "SOP penanganan insiden & keamanan",
+     "fungsi": "Keamanan siber",
+     "format": "PDF/DOC",
+     "sumber": "Diskominfo",
+     "dokumenKunci": "#23"
+    }
+   ]
+  },
+  {
+   "id": "H",
+   "icon": "🔌",
+   "name": "Akses API / Sistem Digital",
+   "description": "Akses ke sistem digital daerah dan nasional untuk integrasi data. Selaras dengan Dokumen Kunci #18 (interoperabilitas data) & #28 (integrasi aplikasi).",
+   "items": [
+    {
+     "no": "H1",
+     "data": "Akses SIPD (Sistem Informasi Pemerintah Daerah)",
+     "fungsi": "Perencanaan & keuangan",
+     "format": "API/Web",
+     "sumber": "Bappeda/BPKAD",
+     "dokumenKunci": "#18"
+    },
+    {
+     "no": "H2",
+     "data": "Akses e-Keurani",
+     "fungsi": "Kepegawaian",
+     "format": "API/Web",
+     "sumber": "BKPSDM",
+     "dokumenKunci": "#18"
+    },
+    {
+     "no": "H3",
+     "data": "Akses e-Musrenbang",
+     "fungsi": "Perencanaan partisipatif",
+     "format": "API/Web",
+     "sumber": "Bappeda",
+     "dokumenKunci": "#18"
+    },
+    {
+     "no": "H4",
+     "data": "Akses SP4N-LAPOR",
+     "fungsi": "Pengaduan",
+     "format": "API/Web",
+     "sumber": "DPM-PTSP",
+     "dokumenKunci": "#30"
+    },
+    {
+     "no": "H5",
+     "data": "Portal Satu Data Indonesia / data.go.id",
+     "fungsi": "Data nasional",
+     "format": "API/Web",
+     "sumber": "Diskominfo",
+     "dokumenKunci": "#18"
+    },
+    {
+     "no": "H6",
+     "data": "API aplikasi per OPD (jika ada)",
+     "fungsi": "Integrasi data",
+     "format": "API",
+     "sumber": "OPD terkait",
+     "dokumenKunci": "#28"
+    },
+    {
+     "no": "H7",
+     "data": "Sistem Penghubung Layanan (interoperabilitas)",
+     "fungsi": "Data sharing",
+     "format": "API",
+     "sumber": "Diskominfo",
+     "dokumenKunci": "#28"
+    },
+    {
+     "no": "H8",
+     "data": "Geoportal / Web GIS daerah",
+     "fungsi": "Data spasial",
+     "format": "API/Web",
+     "sumber": "Diskominfo/Bappeda",
+     "dokumenKunci": "#18"
+    },
+    {
+     "no": "H9",
+     "data": "Akses e-office / Srikandi",
+     "fungsi": "Persuratan",
+     "format": "API/Web",
+     "sumber": "Diskominfo",
+     "dokumenKunci": "#15"
+    },
+    {
+     "no": "H10",
+     "data": "Dashboard helpdesk/SLA",
+     "fungsi": "Layanan dukungan",
+     "format": "API/Web",
+     "sumber": "Diskominfo",
+     "dokumenKunci": "#30"
+    }
+   ]
+  },
+  {
+   "id": "I",
+   "icon": "🗺️",
+   "name": "Data Kecamatan (14)",
+   "description": "Data 14 kecamatan untuk pemetaan proses bisnis level kewilayahan.",
+   "items": [
+    {
+     "no": "I1",
+     "data": "Tupoksi Kecamatan (dokumen resmi)",
+     "fungsi": "Tugas kecamatan",
+     "format": "PDF/DOC",
+     "sumber": "Kecamatan",
+     "dokumenKunci": "#27"
+    },
+    {
+     "no": "I2",
+     "data": "Daftar desa/kampung per kecamatan",
+     "fungsi": "Wilayah binaan",
+     "format": "XLS",
+     "sumber": "Kecamatan",
+     "dokumenKunci": "#27"
+    },
+    {
+     "no": "I3",
+     "data": "Daftar layanan kecamatan",
+     "fungsi": "Layanan kewilayahan",
+     "format": "DOC",
+     "sumber": "Kecamatan",
+     "dokumenKunci": "#29"
+    },
+    {
+     "no": "I4",
+     "data": "Data demografis per kecamatan",
+     "fungsi": "Karakteristik penduduk",
+     "format": "XLS",
+     "sumber": "Kecamatan/Dukcapil",
+     "dokumenKunci": "#18"
+    },
+    {
+     "no": "I5",
+     "data": "Data ekonomi per kecamatan",
+     "fungsi": "Potensi ekonomi",
+     "format": "XLS",
+     "sumber": "Kecamatan/BPS",
+     "dokumenKunci": "#18"
+    }
+   ]
+  },
+  {
+   "id": "J",
+   "icon": "👥",
+   "name": "Data Kepegawaian",
+   "description": "Data ASN untuk pemetaan kompetensi dan beban kerja. Selaras dengan Dokumen Kunci #9 (peta kompetensi digital ASN) & #10 (diklat).",
+   "items": [
+    {
+     "no": "J1",
+     "data": "Distribusi ASN per OPD",
+     "fungsi": "Sebaran pegawai",
+     "format": "XLS",
+     "sumber": "BKPSDM",
+     "dokumenKunci": "#9"
+    },
+    {
+     "no": "J2",
+     "data": "Peta kompetensi digital ASN",
+     "fungsi": "Kompetensi digital",
+     "format": "DOC/XLS",
+     "sumber": "BKPSDM",
+     "dokumenKunci": "#9"
+    },
+    {
+     "no": "J3",
+     "data": "Rekap diklat/pelatihan digital",
+     "fungsi": "Riwayat pelatihan",
+     "format": "XLS",
+     "sumber": "BKPSDM",
+     "dokumenKunci": "#10"
+    },
+    {
+     "no": "J4",
+     "data": "Tipologi jabatan (struktural/fungsional)",
+     "fungsi": "Klasifikasi jabatan",
+     "format": "XLS",
+     "sumber": "BKPSDM",
+     "dokumenKunci": "#9"
+    }
+   ]
+  },
+  {
+   "id": "K",
+   "icon": "💰",
+   "name": "Data Keuangan & Aset",
+   "description": "Data anggaran dan aset untuk pemetaan proses bisnis berbasis sumber daya. Selaras dengan Dokumen Kunci #4 (KAK/RKA/DPA).",
+   "items": [
+    {
+     "no": "K1",
+     "data": "Struktur APBD 2026",
+     "fungsi": "Pagu per program",
+     "format": "XLS",
+     "sumber": "BPKAD",
+     "dokumenKunci": "#4"
+    },
+    {
+     "no": "K2",
+     "data": "Pagu indikatif per OPD",
+     "fungsi": "Anggaran OPD",
+     "format": "XLS",
+     "sumber": "BPKAD",
+     "dokumenKunci": "#4"
+    },
+    {
+     "no": "K3",
+     "data": "Data aset daerah",
+     "fungsi": "Aset per OPD",
+     "format": "XLS",
+     "sumber": "BPKAD",
+     "dokumenKunci": "#4"
+    },
+    {
+     "no": "K4",
+     "data": "KAK/RKA/DPA kegiatan prioritas",
+     "fungsi": "Rincian anggaran",
+     "format": "PDF",
+     "sumber": "BPKAD/OPD",
+     "dokumenKunci": "#4"
+    }
+   ]
+  },
+  {
+   "id": "L",
+   "icon": "🧰",
+   "name": "Template & Tools",
+   "description": "Template dan tools yang sudah disiapkan untuk penyusunan PPB.",
+   "items": [
+    {
+     "no": "L1",
+     "data": "Template Simalungun (rencana aksi PPB)",
+     "fungsi": "Template PPB",
+     "format": "XLS",
+     "sumber": "Internal",
+     "dokumenKunci": "#27"
+    },
+    {
+     "no": "L2",
+     "data": "Permenpan RB No. 19 Tahun 2018",
+     "fungsi": "Pedoman PPB",
+     "format": "PDF",
+     "sumber": "Internal",
+     "dokumenKunci": "#27"
+    },
+    {
+     "no": "L3",
+     "data": "BPMN tool (bpmn.io / draw.io)",
+     "fungsi": "Diagram proses",
+     "format": "Tool",
+     "sumber": "Internal",
+     "dokumenKunci": "#27"
+    },
+    {
+     "no": "L4",
+     "data": "Template dokumentasi rapat tim koordinasi",
+     "fungsi": "Notulen & BA",
+     "format": "DOC",
+     "sumber": "Internal",
+     "dokumenKunci": "#7"
+    },
+    {
+     "no": "L5",
+     "data": "Pedoman Peta Proses Bisnis Pemdi (PermenPANRB 8/2026)",
+     "fungsi": "Acuan Pemdi",
+     "format": "PDF",
+     "sumber": "Internal",
+     "dokumenKunci": "#1"
+    }
+   ]
+  }
+ ],
+ "outputs": [
+  {
+   "no": 1,
+   "title": "Peta Proses Bisnis Level 0",
+   "description": "Visi-misi-tujuan-sasaran Bupati/Wakil Bupati 2025-2029 yang dijabarkan menjadi proses bisnis utama daerah."
+  },
+  {
+   "no": 2,
+   "title": "Peta Proses Bisnis Level 1",
+   "description": "Pemetaan 24 urusan konkuren → proses bisnis tingkat OPD (38 OPD + 14 Kecamatan)."
+  },
+  {
+   "no": 3,
+   "title": "Peta Proses Bisnis Level 2",
+   "description": "Detail proses bisnis per bidang/subbidang dalam OPD — SIPOC, flowchart, SOP."
+  },
+  {
+   "no": 4,
+   "title": "Integrasi dengan Arsitektur SPBE",
+   "description": "Proses bisnis selaras dengan domain proses bisnis pada Arsitektur SPBE (SIAP Digital) — Dokumen Kunci #3."
+  },
+  {
+   "no": 5,
+   "title": "Rekomendasi Perbaikan Proses",
+   "description": "Gap analysis as-is vs to-be + usulan simplifikasi proses — Dokumen Kunci #27."
+  }
+ ]
+}

@@ -5,33 +5,45 @@ function easeOutExpo(t) {
 }
 
 /**
- * useCountUp — animasi angka naik saat elemen masuk viewport.
- * Tanpa dependency eksternal; hormati prefers-reduced-motion (langsung ke target).
+ * useCountUp — angka count-up yang ANTI-GAGAL.
  *
- * @param {number} target     nilai akhir
- * @param {Object} opts       { duration(ms), decimals, start (mulai saat inView) }
+ * Prinsip:
+ *  1. SSR/hydration pertama menampilkan TARGET (bukan 0) → aman untuk SEO,
+ *     aksesibilitas, dan pengguna tanpa JS.
+ *  2. Tiga jalur menuju nilai akhir:
+ *     a. prefers-reduced-motion  → langsung target (tanpa animasi).
+ *     b. IntersectionObserver    → animasi 0 → target saat masuk viewport.
+ *     c. Fallback timeout 2.5s   → paksa target (IO gagal/blocked/hidden tab).
+ *  3. Tidak ada kondisi di mana angka 0 tampil permanen.
+ *
+ * @param {number} target  nilai akhir
+ * @param {Object} opts    { duration(ms), decimals }
  * @returns {[ref, displayValue]}
  */
-export default function useCountUp(target, { duration = 1400, decimals = 0, start = true } = {}) {
-  const [value, setValue] = useState(0);
+export default function useCountUp(target, { duration = 1400, decimals = 0 } = {}) {
+  // State awal = target (render pertama & hydration match dengan SSR)
+  const [value, setValue] = useState(target);
   const ref = useRef(null);
   const [inView, setInView] = useState(false);
-  const startedRef = useRef(false);
+  const [playing, setPlaying] = useState(false);
 
-  // IntersectionObserver ringan (tanpa dependency ke useInView agar mandiri)
+  // 1) Observasi viewport + jalur cepat (reduced / no-IO) + fallback timeout
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) {
+      setValue(target);
+      setPlaying(false);
+      return;
+    }
+
     const el = ref.current;
-    if (!el) return;
-    if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (!el || !('IntersectionObserver' in window)) {
       setValue(target);
-      setInView(true);
       return;
     }
-    if (!('IntersectionObserver' in window)) {
-      setValue(target);
-      setInView(true);
-      return;
-    }
+
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -41,17 +53,30 @@ export default function useCountUp(target, { duration = 1400, decimals = 0, star
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.1 }
     );
     io.observe(el);
-    return () => io.disconnect();
+
+    // Fallback: apa pun yang terjadi, nilai akhir pasti muncul ≤ 2.5 detik
+    const timer = setTimeout(() => {
+      setInView(true);
+      setValue(target);
+    }, 2500);
+
+    return () => {
+      io.disconnect();
+      clearTimeout(timer);
+    };
   }, [target]);
 
+  // 2) Animasi count-up ketika masuk viewport
   useEffect(() => {
-    if (!inView || !start || startedRef.current) return;
-    startedRef.current = true;
+    if (!inView || playing) return;
+    setPlaying(true);
 
-    if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const reduced =
+      typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) {
       setValue(target);
       return;
     }
@@ -66,7 +91,7 @@ export default function useCountUp(target, { duration = 1400, decimals = 0, star
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [inView, start, target, duration]);
+  }, [inView, playing, target, duration]);
 
   const display = Number.isFinite(value)
     ? value.toLocaleString('id-ID', { minimumFractionDigits: decimals, maximumFractionDigits: decimals })
