@@ -207,7 +207,7 @@ Commit terbaru ada 3, **semua di branch `fix/full-audit-award-redesign`** (belum
 | Item | Perubahan |
 |------|-----------|
 | `public/bukti-dukung/` | **Di-flatten**: 8 subfolder (00-manifest s/d 07-eksternal) dihapus — semua 39 file langsung di root `public/bukti-dukung/`. 2 file portal hilang (`TD_13_02`/`TD_13_05` DPA) disalin dari `~/Documents/REAL-PEMDI-DATA DUKUNG/`. |
-| `public/bukti-dukung/*` | **Rename 39 file** → format `Aspek_I#_NoUrut_Nama_Tahun.ext` (Aspek disingkat: TataKelola/Penyelenggara/Data/KeamananSiber/Teknologi/Keterpaduan/Kepuasan; NoUrut = urutan item per indikator level 1→5; Nama disingkat; Tahun = tahun dokumen). Contoh: `TataKelola_I1_01_Perbup-48-Arsitektur-SPBE_2025.pdf`. Script: `scripts/rename-bukti-dukung.py` (re-run aman). |
+| `public/bukti-dukung/*` | **Rename 39 file** → format `Aspek_I#_NoUrut_Nama_Tahun.ext` (Aspek disingkat: TataKelola/Penyelenggara/Data/KeamananSiber/Teknologi/Keterpaduan/Kepuasan; NoUrut = urutan item per indikator level 1→5; Nama disingkat; Tahun = tahun dokumen). Contoh: `TataKelola_I1_01_Perbup-48-Arsitektur-SPBE_2025.pdf`. |
 | `data/pemdi.json` | **103 referensi path** (`url_preview`/`url_sumber`, termasuk raw GitHub) di-update ke nama baru. Backup: `pemdi.json.bak-rename`. |
 
 ## 🧹 Update Data — 6 Agu 2026 (Kelengkapan Level 1 — Aturan Penilaian Berjenjang)
@@ -236,7 +236,6 @@ User mengoreksi: banyak bukti existing TIDAK nyambung dengan kriteria & panduan 
 | `public/bukti-dukung/` | +2 file: `Keterpaduan_I17_02_Screenshot-Portal_2026.png`, `Keterpaduan_I17_03_Daftar-Layanan-Portal_2026.png` (screenshot portal pemdi + direktori layanan). `KeamananSiber_I9_02_Laporan-Pengawasan-Kinerja_2026.xlsx` → belum-lengkap (I9 jadi hidden). Indeks KAMI → kembali root (I10 tampil). |
 | `_l1_lengkap` | Recomputed dgn bukti **utama saja**: TAMPIL 12 (I1,I2,I5,I6,I7,I10,I11,I15,I16,I17,I18,I20) · HIDDEN 8 (I3,I4,I8,I9,I12,I13,I14,I19). I9 baru hidden; I10/I11/I17 baru tampil dgn bukti benar. |
 | `pages/modul-indikator.js` + `pages/pemdi.js` | Badge "🔹 Pendukung" di tabel existing & grid per level. Statistik: 84/177 bukti tampil, 41 lengkap. |
-| `scripts/sesuaikan-bukti-kriteria.py` | Script penyesuaian (re-run aman; backup `pemdi.json.bak-kriteria`). |
 
 > Aturan baru: **kelengkapan level dihitung hanya dari bukti _peran=utama**. Bukti pendukung tetap tampil (transparansi) tapi tidak menghitung. I17 sekarang benar: URL + screenshot + daftar layanan (utama) + Perbup 30/48/73 (pendukung).
 
