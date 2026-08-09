@@ -2145,7 +2145,10 @@
        "status": "lengkap",
        "catatan": "KAK + Laporan + BAST aplikasi Bapokting (siklus pengembangan lengkap).",
        "url_preview": "/bukti-dukung/final/I13_L1_Final.pdf",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "url_lampiran": [
+        "/bukti-dukung/Teknologi_I13_21_Screenshot-Aplikasi-Bapokting_2026.pdf"
+       ]
       },
       {
        "id": "GT.I13_L1_2",
@@ -2184,7 +2187,10 @@
        "status": "lengkap",
        "catatan": "KAK + Laporan + BAST aplikasi Gemasih (pengembangan aplikasi terdokumentasi).",
        "url_preview": "/bukti-dukung/final/I13_L2_Final.pdf",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "url_lampiran": [
+        "/bukti-dukung/Teknologi_I13_22_Screenshot-Aplikasi-Gemasih_2026.pdf"
+       ]
       },
       {
        "id": "GT.I13_L2_2",
@@ -2219,9 +2225,12 @@
         "Semua OPD"
        ],
        "status": "lengkap",
-       "catatan": "KAK + Laporan + Screenshot aplikasi Lepat (pengembangan dan tampilan aplikasi).",
+       "catatan": "KAK + Laporan + Screenshot aplikasi Lepat (pengembangan dan tampilan aplikasi). + BAST serah terima aplikasi Lepat (No. 900/201/DISKOMINFO-BAST/2026, 20 Mei 2026)",
        "url_preview": "/bukti-dukung/final/I13_L3_Final.pdf",
-       "_ext": "pdf"
+       "_ext": "pdf",
+       "url_lampiran": [
+        "/bukti-dukung/Teknologi_I13_20_BAST-Aplikasi-Lepat_2026.pdf"
+       ]
       },
       {
        "id": "GT.I13_L3_2",
