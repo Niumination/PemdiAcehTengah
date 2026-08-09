@@ -179,7 +179,9 @@ export default function PemdiPage() {
         total += st.count; lengkap += st.lengkap; proses += st.proses; belum += st.belum;
       }
     }
-    return { total, lengkap, proses, belum };
+    // Gap = item yang belum lengkap (target tercapai jika semua item lengkap)
+    const gap = Math.max(0, total - lengkap);
+    return { total, lengkap, proses, belum, gap };
   }, [aspek]);
 
   return (
@@ -304,7 +306,7 @@ export default function PemdiPage() {
             ⬜ {statGlobal.belum} Belum
           </span>
           <span className="stat-badge" style={{ background: 'var(--primary-bg, #e3edff)', color: 'var(--primary)' }}>
-            🎯 Gap: {Math.max(0, pemdiData.target_item_bukti - statGlobal.total)} item
+            🎯 Gap: {statGlobal.gap} item
           </span>
         </div>
 
@@ -337,7 +339,7 @@ export default function PemdiPage() {
             </div>
             <div style={{ overflowY: 'auto', flex: 1 }}>
               {aspek
-                .filter(a => !pilihAspek || a.id === pilihAspek)
+                .filter(a => !pilihAspek || String(a.id) === String(pilihAspek))
                 .flatMap(a => a.indikator.map(ind => ({ ind, a })))
                 .map(({ ind, a }) => {
                   const st = hitungStatusInd(ind);

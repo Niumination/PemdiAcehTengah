@@ -375,7 +375,7 @@ export default function ModulIndikatorPage() {
               {merged.reduce((s, m) => s + m.status.lengkap, 0)} selesai
             </span>
             <span className="stat-badge" style={{ background: 'var(--surface-2)', color: 'var(--muted)' }}>
-              Gap: {(pemdiData.target_item_bukti || 0) - merged.reduce((s, m) => s + m.status.count, 0)} item
+              Gap: {merged.reduce((s, m) => s + m.status.belum, 0)} item
             </span>
           </div>
         </div>
