@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { useMemo, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { MotifEmun, KerawangDivider } from '@/components/motif/KerawangMotifs';
 
 // ── Data ──
 import moduls from '@/data/modul-indikator.json';
@@ -344,20 +345,23 @@ export default function ModulIndikatorPage() {
       </Head>
 
       {/* ════════ HERO ════════ */}
-      <section className="hero">
+      <section className="hero aurora">
         <div className="container">
+          <MotifEmun size={260} style={{ position: 'absolute', top: -16, right: 10, opacity: 0.45 }} />
+          <div style={{ position: 'relative', zIndex: 2 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '1rem' }}>
             <Link href="/pemdi" className="back-link" style={{ flexShrink: 0 }}>
               ← Halaman Pemdi
             </Link>
           </div>
           <div style={{ marginTop: '1rem' }}>
-            <h1>📋 Modul Indikator Pemdi</h1>
+            <h1 className="gold-head">📋 Modul Indikator Pemdi</h1>
             <p style={{ color: 'var(--muted)', marginTop: '0.25rem', maxWidth: 640 }}>
               Panduan penyusunan bukti dukung untuk 20 indikator Pemerintah Digital
               berdasarkan PermenPANRB 8/2026. Dilengkapi penanggung jawab, level kriteria,
               dan rekomendasi pengumpulan bukti sesuai kondisi Pemkab Aceh Tengah.
             </p>
+          </div>
           </div>
 
           {/* ════ Stat Bar ════ */}
@@ -428,6 +432,7 @@ export default function ModulIndikatorPage() {
           </div>
 
           {/* ════════ MODUL LIST ════════ */}
+          <KerawangDivider label="Daftar Modul Indikator" icon="🧭" style={{ margin: '6px 0 18px' }} />
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
             {filtered.map(modul => {
               const warnaAspek = pemdiData.aspek.find(a => a.nama === modul.aspek) || {};

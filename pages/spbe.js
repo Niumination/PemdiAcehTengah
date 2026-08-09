@@ -2,6 +2,16 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { formatDesimal } from '@/lib/format';
 import portalData from '@/data/opd.json';
+import { MotifUlen, MotifTapak, KerawangDivider } from '@/components/motif/KerawangMotifs';
+import useCountUp from '@/hooks/useCountUp';
+
+/* ── CountStat lokal ── */
+function CountStat({ value, decimals = 0, color, style }) {
+  const [ref, display] = useCountUp(value, { decimals });
+  return (
+    <span ref={ref} className="countup" style={{ color, ...style }}>{display}</span>
+  );
+}
 
 /* ── Helpers ── */
 function getLevel(value) {
@@ -75,11 +85,13 @@ export default function SpbePage({ data }) {
         position: 'relative',
         overflow: 'hidden',
       }}>
+        <MotifUlen size={110} style={{ position: 'absolute', top: -14, right: 24, opacity: 0.5 }} />
+        <MotifTapak size={80} style={{ position: 'absolute', bottom: -10, left: 20, opacity: 0.35 }} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', opacity: 0.7, marginBottom: '0.5rem' }}>
             Kabupaten Aceh Tengah · {spbe.tahun}
           </div>
-          <h1 style={{ fontSize: '1.75rem', fontWeight: 700, marginBottom: '0.75rem', lineHeight: 1.2 }}>
+          <h1 className="gold-head" style={{ fontSize: '1.75rem', fontWeight: 700, marginBottom: '0.75rem', lineHeight: 1.2 }}>
             Indeks Sistem Pemerintahan Berbasis Elektronik (SPBE)
           </h1>
           <p style={{ fontSize: '0.9rem', opacity: 0.85, maxWidth: 600, lineHeight: 1.6 }}>
@@ -96,7 +108,9 @@ export default function SpbePage({ data }) {
             flexWrap: 'wrap',
           }}>
             <div style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '3rem', fontWeight: 800, lineHeight: 1 }}>{formatDesimal(indeks)}</div>
+              <div style={{ fontSize: '3rem', fontWeight: 800, lineHeight: 1 }}>
+                <CountStat value={indeks} decimals={2} />
+              </div>
               <div style={{ fontSize: '0.75rem', opacity: 0.7, marginTop: '0.25rem' }}>dari 5.00</div>
             </div>
             <div style={{ width: 1, height: 50, background: 'rgba(255,255,255,0.2)' }} />
@@ -116,9 +130,7 @@ export default function SpbePage({ data }) {
 
       {/* DOMAIN SCORES */}
       <section style={{ marginBottom: '2rem' }}>
-        <h2 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--ink)' }}>
-          Nilai per Domain
-        </h2>
+        <KerawangDivider label="Nilai per Domain" icon="📊" style={{ margin: '6px 0 18px' }} />
         <div className="grid-2" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',

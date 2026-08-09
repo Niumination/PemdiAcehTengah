@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useState } from 'react';
 import DetailModal from '@/components/DetailModal';
+import { MotifEmun, MotifRante, KerawangDivider } from '@/components/motif/KerawangMotifs';
 import { formatAngka, formatDesimal, gabung } from '@/lib/format';
 import slugify from '@/lib/slugify';
 import portalData from '@/data/opd.json';
@@ -32,6 +33,8 @@ export default function PetaProsesBisnis({ data }) {
         position: 'relative',
         overflow: 'hidden',
       }}>
+        <MotifEmun size={300} style={{ position: 'absolute', top: -20, right: 6, opacity: 0.5 }} />
+        <MotifRante size={180} style={{ position: 'absolute', bottom: -10, left: 12, opacity: 0.35 }} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <Link href="/" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none', fontSize: '0.875rem' }}
             onMouseEnter={e => e.target.style.color = '#fff'}
@@ -39,7 +42,7 @@ export default function PetaProsesBisnis({ data }) {
             ← Beranda
           </Link>
           <div style={{ marginTop: '1rem' }}>
-            <h1 style={{ color: '#fff', fontSize: '2rem', marginBottom: '0.5rem' }}>Peta Proses Bisnis (PPB)</h1>
+            <h1 className="gold-head" style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>Peta Proses Bisnis (PPB)</h1>
             <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1rem' }}>
               Hierarki proses bisnis Pemerintah Kabupaten Aceh Tengah — 3 level sesuai
               Permenpan RB 19/2018 tentang Penyusunan Peta Proses Bisnis Instansi Pemerintah.

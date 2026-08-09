@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import DashboardSKM from '@/components/DashboardSKM';
+import { MotifTapak, MotifUlen, KerawangDivider } from '@/components/motif/KerawangMotifs';
 
 export default function DashboardKepuasan() {
   return (
@@ -22,6 +23,8 @@ export default function DashboardKepuasan() {
         position: 'relative',
         overflow: 'hidden',
       }}>
+        <MotifUlen size={100} style={{ position: 'absolute', top: -12, right: 20, opacity: 0.5 }} />
+        <MotifTapak size={150} style={{ position: 'absolute', bottom: -20, left: 10, opacity: 0.35 }} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <Link href="/" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none', fontSize: '0.875rem' }}
             onMouseEnter={e => e.target.style.color = '#fff'}
@@ -29,7 +32,7 @@ export default function DashboardKepuasan() {
             ← Beranda
           </Link>
           <div style={{ marginTop: '1rem' }}>
-            <h1 style={{ color: '#fff', fontSize: '2rem', marginBottom: '0.5rem' }}>Dashboard Kepuasan Pengguna</h1>
+            <h1 className="gold-head" style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>Dashboard Kepuasan Pengguna</h1>
             <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1rem' }}>
               Transparansi hasil Survei Kepuasan Masyarakat (SKM) dan umpan balik pengguna
               — bagian dari pemenuhan <strong>Indikator I20 (Pengelolaan Kepuasan Pengguna)</strong> PermenPANRB 8/2026.
@@ -37,6 +40,8 @@ export default function DashboardKepuasan() {
           </div>
         </div>
       </section>
+
+      <KerawangDivider label="Hasil Survei & Skor" icon="📈" />
 
       <section className="section">
         <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>

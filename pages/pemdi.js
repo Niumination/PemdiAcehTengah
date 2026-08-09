@@ -3,6 +3,8 @@ import Head from 'next/head';
 import Link from 'next/link';
 import DetailModal from '@/components/DetailModal';
 import TopographicBackdrop from '@/components/TopographicBackdrop';
+import { MotifEmun, MotifTapak, KerawangDivider } from '@/components/motif/KerawangMotifs';
+import useCountUp from '@/hooks/useCountUp';
 import { formatDesimal } from '@/lib/format';
 import pemdiData from '@/data/pemdi.json';
 import modulData from '@/data/modul-indikator.json';
@@ -126,6 +128,14 @@ function defaultCatatan(ind) {
   return `Catatan Mandiri ${ind.id} — ${ind.nama}\n\nBukti dukung disusun untuk memenuhi kriteria indikator ${ind.id} (${ind.nama}).\nDokumen yang dilampirkan:\n${buktis || '- (belum ada bukti)'}\n\nCatatan ini dilampirkan saat unggah bukti dukung di portal eval.spbe.go.id.`;
 }
 
+/* ── CountStat lokal: angka KPI dengan count-up saat masuk viewport ── */
+function CountStat({ value, decimals = 0, color, style }) {
+  const [ref, display] = useCountUp(value, { decimals });
+  return (
+    <span ref={ref} className="countup" style={{ color, ...style }}>{display}</span>
+  );
+}
+
 export default function PemdiPage() {
   const { aspek, target_indeks, target_predikat, baseline_spbe } = pemdiData;
   const indeks = hitungIndeks(aspek);
@@ -227,9 +237,11 @@ export default function PemdiPage() {
         }}
       >
         <TopographicBackdrop opacity={0.08} />
+        <MotifEmun size={320} style={{ position: 'absolute', top: -24, right: -18, opacity: 0.5 }} />
+        <MotifTapak size={120} style={{ position: 'absolute', bottom: -16, left: 24, opacity: 0.35 }} />
         <div style={{ position: 'relative', zIndex: 2 }}>
           <span className="pill">⚖️ PermenPANRB No. 8 Tahun 2026</span>
-          <h1 style={{ color: '#ffffff', fontSize: 'clamp(22px, 3vw, 34px)', margin: '8px 0 12px' }}>
+          <h1 className="gold-head" style={{ fontSize: 'clamp(22px, 3vw, 34px)', margin: '8px 0 12px' }}>
             Indeks Kematangan Pemerintah Digital (Pemdi) 2026
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.9)', maxWidth: '680px', lineHeight: 1.6, fontSize: '0.98rem' }}>
@@ -244,12 +256,16 @@ export default function PemdiPage() {
         <div className="grid-3" data-reveal-stagger>
           <div className="glow-card" style={{ padding: '20px', textAlign: 'center', '--i': 0 }}>
             <div style={{ fontSize: '0.78rem', color: 'var(--muted)', textTransform: 'uppercase', fontWeight: 700, letterSpacing: '0.05em' }}>Baseline SPBE 2025</div>
-            <div style={{ fontSize: '2.2rem', fontWeight: 800, color: 'var(--gold-deep)', fontFamily: 'var(--font-mono)', margin: '6px 0' }}>{formatDesimal(baseline_spbe)}</div>
+            <div style={{ fontSize: '2.2rem', fontWeight: 800, margin: '6px 0' }}>
+              <CountStat value={baseline_spbe} decimals={2} color="var(--gold-deep)" />
+            </div>
             <span className="badge badge-yellow">Level Kematangan Cukup</span>
           </div>
           <div className="glow-card" style={{ padding: '20px', textAlign: 'center', '--i': 1, borderColor: 'var(--primary)' }}>
             <div style={{ fontSize: '0.78rem', color: 'var(--primary)', textTransform: 'uppercase', fontWeight: 800, letterSpacing: '0.05em' }}>Indeks Pemdi (dari Bukti Dukung)</div>
-            <div style={{ fontSize: '2.2rem', fontWeight: 800, color: 'var(--primary)', fontFamily: 'var(--font-mono)', margin: '6px 0' }}>{formatDesimal(indeks)}</div>
+            <div style={{ fontSize: '2.2rem', fontWeight: 800, margin: '6px 0' }}>
+              <CountStat value={indeks} decimals={2} color="var(--primary)" />
+            </div>
             <span className={`badge ${predikat.bg}`} style={{ color: predikat.warna }}>Predikat {predikat.label}</span>
             <div style={{ fontSize: '0.68rem', color: 'var(--muted)', marginTop: '6px' }}>
               Dihitung dari {statGlobal.lengkap} bukti lengkap · {statGlobal.total} item · target {pemdiData.target_item_bukti}
@@ -257,11 +273,15 @@ export default function PemdiPage() {
           </div>
           <div className="glow-card" style={{ padding: '20px', textAlign: 'center', '--i': 2 }}>
             <div style={{ fontSize: '0.78rem', color: 'var(--muted)', textTransform: 'uppercase', fontWeight: 700, letterSpacing: '0.05em' }}>Target Evaluasi 2026</div>
-            <div style={{ fontSize: '2.2rem', fontWeight: 800, color: 'var(--ok)', fontFamily: 'var(--font-mono)', margin: '6px 0' }}>≥ {formatDesimal(target_indeks)}</div>
+            <div style={{ fontSize: '2.2rem', fontWeight: 800, margin: '6px 0' }}>
+              ≥ <CountStat value={target_indeks} decimals={2} color="var(--ok)" />
+            </div>
             <span className="badge badge-green">Gap Analysis: {formatDesimal(gap)} Poin</span>
           </div>
         </div>
       </section>
+
+      <KerawangDivider label="7 Aspek Evaluasi" icon="🛡️" />
 
       {/* 7 Aspek Detailed Grid */}
       <section style={{ marginBottom: '40px' }}>
@@ -305,6 +325,7 @@ export default function PemdiPage() {
 
       
       {/* ════════ CHECKLIST BUKTI DUKUNG — accordion kiri-kanan ════════ */}
+      <KerawangDivider label="Checklist Upload Bukti" icon="📦" />
       <section data-reveal style={{ marginBottom: '40px' }}>
         <div className="sec-head">
           <div>
