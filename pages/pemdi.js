@@ -161,11 +161,8 @@ export default function PemdiPage() {
 
   const handleAspekClick = useCallback((aspekId) => {
     const selectedAspek = aspek.find(a => a.id === aspekId); // Gunakan 'aspek' dari prop/state
-    if (selectedAspek) {
-      if (selectedAspek.indikator?.length > 0) {
-        setPilihInd(selectedAspek.indikator[0].id); // Set ke indikator pertama dari aspek
-      }
-      setModalAspek(selectedAspek); // Buka panel detail aspek (Lihat Detail →)
+    if (selectedAspek && selectedAspek.indikator.length > 0) {
+      setPilihInd(selectedAspek.indikator[0].id); // Set ke indikator pertama dari aspek
     }
   }, [aspek]); // Depend on aspek
 

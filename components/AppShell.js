@@ -110,17 +110,7 @@ export default function AppShell({ children }) {
       { threshold: 0.1, rootMargin: '0px 0px -32px 0px' }
     );
     els.forEach((el) => io.observe(el));
-    // Anti-gagal: force reveal semua elemen setelah 2,5s — mencegah konten
-    // "hilang" di screenshot/print atau bila IO tidak pernah trigger
-    const fallbackTimer = setTimeout(() => {
-      document.querySelectorAll('[data-reveal], [data-reveal-stagger]').forEach((el) => {
-        el.classList.add('is-visible');
-      });
-    }, 2500);
-    return () => {
-      io.disconnect();
-      clearTimeout(fallbackTimer);
-    };
+    return () => io.disconnect();
   }, [pathname]);
 
   const breadcrumbs = getBreadcrumbs(pathname);
