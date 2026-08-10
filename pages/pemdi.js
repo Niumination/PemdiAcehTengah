@@ -161,8 +161,13 @@ export default function PemdiPage() {
 
   const handleAspekClick = useCallback((aspekId) => {
     const selectedAspek = aspek.find(a => a.id === aspekId); // Gunakan 'aspek' dari prop/state
-    if (selectedAspek && selectedAspek.indikator.length > 0) {
-      setPilihInd(selectedAspek.indikator[0].id); // Set ke indikator pertama dari aspek
+    if (selectedAspek) {
+      // Buka side panel detail aspek (klik kartu di section Matrix Indikator)
+      setModalAspek(selectedAspek);
+      // Sinkronkan checklist: pilih indikator pertama dari aspek tsb
+      if (selectedAspek.indikator?.length > 0) {
+        setPilihInd(selectedAspek.indikator[0].id);
+      }
     }
   }, [aspek]); // Depend on aspek
 
@@ -592,8 +597,9 @@ export default function PemdiPage() {
         `}</style>
       </section>
 
-{/* Side Panel Detail Aspek & Indikator */}
-      <DetailModal title={modalAspek ? `Aspek ${modalAspek.id}: ${modalAspek.nama}` : ''} open={!!modalAspek} onClose={() => setModalAspek(null)} maxWidth={680}>
+{/* Side Panel Detail Aspek & Indikator — hanya dirender saat terbuka */}
+      {modalAspek && (
+      <DetailModal title={`Aspek ${modalAspek.id}: ${modalAspek.nama}`} open onClose={() => setModalAspek(null)} maxWidth={680}>
         {modalAspek && (
           <div>
             <p style={{ fontSize: '0.9rem', color: 'var(--ink-secondary)', marginBottom: '16px', lineHeight: 1.6 }}>{modalAspek.deskripsi}</p>
@@ -634,11 +640,13 @@ export default function PemdiPage() {
           </div>
         )}
       </DetailModal>
+      )}
 
-      {/* Side Panel Preview Bukti Dukung */}
+      {/* Side Panel Preview Bukti Dukung — hanya dirender saat terbuka */}
+      {preview && (
       <DetailModal
-        title={preview ? `👁️ Preview Bukti: ${preview.id}` : ''}
-        open={!!preview}
+        title={`👁️ Preview Bukti: ${preview.id}`}
+        open
         onClose={() => setPreview(null)}
         maxWidth={1000}
       >
@@ -681,6 +689,7 @@ export default function PemdiPage() {
           </div>
         )}
       </DetailModal>
+      )}
     </>
   );
 }

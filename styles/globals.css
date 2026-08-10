@@ -1003,7 +1003,7 @@ input:focus, select:focus, textarea:focus {
   visibility:visible;opacity:1;
 }
 .sp-panel{
-  position:fixed;top:calc(var(--gov-strip-h) + 54px); /* strip + topbar */
+  position:fixed;top:0; /* full tinggi halaman — tidak ada ruang kosong di atas */
   right:0;bottom:0;
   width:480px;max-width:90vw;
   background:var(--surface);color:var(--ink);
@@ -1256,15 +1256,8 @@ a { transition: color 0.18s ease; }
   .lapor-fab { bottom: calc(1rem + env(safe-area-inset-bottom)) !important; }
 }
 
-/* --- Hormati preferensi reduced-motion --- */
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
+/* --- Reduced-motion: semua animasi tetap berjalan (keputusan konten) --- */
+/* Media query prefers-reduced-motion sengaja TIDAK dipakai — semua animasi aktif. */
 
 /* ════════════ ANIMASI SISTEM — scroll reveal, stagger, micro-interaction ════════════ */
 /* Dipicu oleh [data-reveal] via IntersectionObserver di AppShell (60fps: transform/opacity only) */

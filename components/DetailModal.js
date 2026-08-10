@@ -1,4 +1,5 @@
 import { useEffect, useCallback, useRef } from 'react';
+import { createPortal } from 'react-dom';
 
 /**
  * SidePanel — Menggantikan DetailModal (pop-up centered → side panel dari kanan).
@@ -48,7 +49,10 @@ export default function DetailModal({ title, open, onClose, children, maxWidth =
 
   const titleId = 'sp-panel-title';
 
-  return (
+  // Guard SSR: portal butuh document (hanya ada di browser)
+  if (typeof document === 'undefined') return null;
+
+  return createPortal(
     <>
       {/* Overlay */}
       <div
@@ -83,6 +87,7 @@ export default function DetailModal({ title, open, onClose, children, maxWidth =
           {children}
         </div>
       </div>
-    </>
+    </>,
+    document.body
   );
 }

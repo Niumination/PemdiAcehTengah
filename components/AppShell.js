@@ -89,12 +89,11 @@ export default function AppShell({ children }) {
   const handleCloseSidebar = useCallback(() => setSidebarOpen(false), []);
 
   /* ── Scroll reveal global: [data-reveal] & [data-reveal-stagger] ──
-     IntersectionObserver — 60fps (transform/opacity), hormati prefers-reduced-motion */
+     IntersectionObserver — 60fps (transform/opacity), semua animasi aktif */
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const els = document.querySelectorAll('[data-reveal], [data-reveal-stagger]');
-    if (reduce || !('IntersectionObserver' in window)) {
+    if (!('IntersectionObserver' in window)) {
       els.forEach((el) => el.classList.add('is-visible'));
       return;
     }
