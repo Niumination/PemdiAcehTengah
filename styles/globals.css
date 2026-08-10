@@ -1256,8 +1256,22 @@ a { transition: color 0.18s ease; }
   .lapor-fab { bottom: calc(1rem + env(safe-area-inset-bottom)) !important; }
 }
 
-/* --- Reduced-motion: semua animasi tetap berjalan (keputusan konten) --- */
-/* Media query prefers-reduced-motion sengaja TIDAK dipakai — semua animasi aktif. */
+/* --- Hormati preferensi reduced-motion --- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  /* Running text (info resmi) tetap berjalan — bukan dekorasi */
+  .gov-strip-marquee-track {
+    animation: marquee-scroll 28s linear infinite !important;
+  }
+  .kr-marquee-track {
+    animation: kr-marquee 30s linear infinite !important;
+  }
+}
 
 /* ════════════ ANIMASI SISTEM — scroll reveal, stagger, micro-interaction ════════════ */
 /* Dipicu oleh [data-reveal] via IntersectionObserver di AppShell (60fps: transform/opacity only) */
