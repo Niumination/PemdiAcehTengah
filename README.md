@@ -169,12 +169,15 @@ SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
 
 # Admin
 ADMIN_TOKEN=your_admin_token
+ADMIN_PASSWORD=your_admin_password
 
 # Security
 TURNSTILE_SECRET_KEY=your_turnstile_secret
 IP_HASH_SALT=pemdi-aceh-tengah
 SITE_ORIGIN=https://pemdi-aceh-tengah.vercel.app
 ```
+
+> ⚠️ `.env.local` ter-ignore oleh git (`.gitignore` baris `.env*.local`) — jangan pernah commit. Variabel `VERCEL_OIDC_TOKEN` dipakai khusus untuk deploy via CLI (`vercel deploy --prod`), bukan untuk runtime.
 
 ## 🔧 Teknologi
 
