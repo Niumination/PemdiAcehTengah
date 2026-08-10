@@ -1296,6 +1296,16 @@ a { transition: color 0.18s ease; }
   transform: none;
 }
 
+/* Print / PDF / screenshot: jangan sembunyikan konten reveal */
+@media print {
+  [data-reveal],
+  [data-reveal-stagger] > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
 /* Micro-interaction: kartu (transform/opacity — aman 60fps) */
 .card, [class*="card"] {
   transition:
