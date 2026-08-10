@@ -60,7 +60,9 @@ export default function AppShell({ children }) {
   const pathname = router.pathname;
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [sidebarHidden, setSidebarHidden] = useState(true); // desktop hide/show — default hidden
+  // Navigasi utama tetap terlihat di desktop agar halaman dan layanan mudah ditemukan.
+  // Pengguna masih dapat meringkasnya lewat tombol di topbar.
+  const [sidebarHidden, setSidebarHidden] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [hydrated, setHydrated] = useState(false);
   const [showLapor, setShowLapor] = useState(false);
@@ -84,6 +86,18 @@ export default function AppShell({ children }) {
     window.addEventListener('pemdi:open-lapor', openLapor);
     return () => window.removeEventListener('pemdi:open-lapor', openLapor);
   }, []);
+
+  // Shortcut yang sudah dikomunikasikan pada sidebar: ⌘/Ctrl + K menuju pencarian global.
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
+        event.preventDefault();
+        router.push('/cari');
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [router]);
 
   // Stabil: identity tidak berubah antar render → Sidebar effect tidak memicu close-loop
   const handleCloseSidebar = useCallback(() => setSidebarOpen(false), []);
@@ -190,18 +204,22 @@ export default function AppShell({ children }) {
               </ol>
             </nav>
 
-            {/* Actions Bar */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            {/* Actions Bar — aksi utama tersedia dari semua halaman */}
+            <div className="topbar-actions">
+              <Link href="/cari" className="btn btn-secondary btn-sm topbar-search" aria-label="Cari informasi di portal">
+                <span aria-hidden="true">⌕</span>
+                <span className="topbar-search-label">Cari</span>
+              </Link>
               <ThemeToggle />
 
               <button
                 type="button"
-                className="btn btn-primary btn-sm"
+                className="btn btn-primary btn-sm topbar-lapor"
                 onClick={() => setShowLapor(true)}
                 aria-label="Buka formulir pengaduan Lapor"
               >
-                <span>📢</span>
-                <span>Lapor Warga</span>
+                <span aria-hidden="true">📢</span>
+                <span className="topbar-lapor-label">Lapor Warga</span>
               </button>
             </div>
           </header>

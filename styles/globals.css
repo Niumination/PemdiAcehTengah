@@ -358,6 +358,17 @@ html.anim-ready .reveal.d4 { transition-delay: 0.24s; }
   box-shadow: 0 1px 0 color-mix(in srgb, var(--kg-kuning) 30%, transparent), 0 4px 20px rgba(0,0,0,0.08);
 }
 
+/* Aksi ringkas yang konsisten pada seluruh halaman */
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.topbar-search {
+  min-height: 32px;
+}
+
 /* Sidebar toggle button in topbar — desktop */
 .sb-toggle-btn {
   display: flex;
@@ -1141,6 +1152,13 @@ input:focus, select:focus, textarea:focus {
 
 @media (max-width: 900px) {
   :root { --sbw: 0px; }
+  .topbar { padding: 8px 16px; gap: 8px; }
+  .topbar nav ol li:not(:last-child) { display: none; }
+  .topbar nav ol li:last-child { overflow: hidden; text-overflow: ellipsis; }
+  .topbar-actions { gap: 6px; }
+  .topbar-search { min-width: 38px; padding: 6px 10px; }
+  .topbar-search-label, .topbar-lapor-label { display: none; }
+  .topbar-lapor { min-width: 38px; padding: 6px 10px; }
   .sb-spacer { display: none; }
   .grid-2, .grid-3 { grid-template-columns: 1fr; }
   .stats { grid-template-columns: repeat(2, 1fr); }
