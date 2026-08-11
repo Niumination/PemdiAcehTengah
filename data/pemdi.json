@@ -2203,9 +2203,12 @@
         "Semua OPD"
        ],
        "status": "lengkap",
-       "catatan": "Renstra Diskominfo 2025-2029 + Renja TA 2026 - substansi RAN Pemdi pada perencanaan IPPD. Satu set dokumen dengan I1/I2 (wajar multi-indikator: modul I13 juga meminta substansi RAN Pemdi pada perencanaan).",
-       "url_preview": "/bukti-dukung/final/I13_L12_Substansi-RAN_2026.pdf",
-       "_ext": "pdf"
+       "catatan": "Diganti dari Renstra Diskominfo (duplikat L1) → Penjelasan Substansi RAN Pemdi pada RENSTRA BAPPEDA 2025-2029 (bukti perencanaan instansi lebih luas) + Renstra Bappeda sebagai lampiran. Per audit 2026-08-11.",
+       "url_preview": "/bukti-dukung/final/I13_L2_Penjelasan-Substansi-RAN-Bappeda_2026.pdf",
+       "_ext": "pdf",
+       "url_lampiran": [
+        "/bukti-dukung/final/I13_L2_Renstra-Bappeda_2025.pdf"
+       ]
       },
       {
        "id": "GT.I13_L2_3",
@@ -3145,7 +3148,7 @@
    ],
    "item_aktual": 19,
    "item_gap": 7,
-   "nilai_aktual": 0.27
+   "nilai_aktual": 0.26666666666666666
   },
   {
    "id": 7,
@@ -3203,8 +3206,8 @@
         "Diskominfo",
         "Semua OPD (Penyedia Layanan)"
        ],
-       "status": "lengkap",
-       "catatan": "SLA per layanan (waktu proses tiap layanan di portal) - dokumen SLA per-proses layanan digital. Satu set dengan SLA Layanan Digital (L1-1), klaim berbeda (per-layanan vs keseluruhan).",
+       "status": "proses",
+       "catatan": "Diturunkan ke proses: file yang ada hanya daftar SLA per layanan, belum SLA per-proses sesuai modul. Per audit 2026-08-11.",
        "url_preview": "/bukti-dukung/final/I19_L1_SLA-Layanan-Digital_2026.pdf",
        "_ext": "pdf"
       },
@@ -3217,8 +3220,8 @@
         "Diskominfo",
         "Semua OPD (Penyedia Layanan)"
        ],
-       "status": "lengkap",
-       "catatan": "Fasilitas Dukungan Pengguna (FDP): sistem pengaduan SP4N-LAPOR (Perbup 21/2021) + pedoman penanganan pengaduan RSUD + pemantauan SLA 25 layanan di portal - dipenuhi pada sebagian layanan.",
+       "status": "proses",
+       "catatan": "Diturunkan ke proses: file hanya daftar SLA, tidak ada dokumentasi fasilitas dukungan pengguna + sistem pemantauan SLA. Per audit 2026-08-11.",
        "url_preview": "/bukti-dukung/final/I19_L1_SLA-Layanan-Digital_2026.pdf",
        "url_lampiran": [
         "/bukti-dukung/Kepuasan_I19_01_Perbup-21-Pedoman_2021.pdf",
@@ -3300,7 +3303,7 @@
       }
      ],
      "_l1_lengkap": false,
-     "nilai_aktual": 2
+     "nilai_aktual": 0
     },
     {
      "id": "I20",
@@ -3350,8 +3353,8 @@
         "Bag. Organisasi",
         "seluruh PD penyelenggara layanan"
        ],
-       "status": "lengkap",
-       "catatan": "Data transaksi layanan digital: 25 layanan di 7 sektor (portal Pemdi) + hasil survei kepuasan periode Jan-Mei 2026 (5 periode).",
+       "status": "proses",
+       "catatan": "Diturunkan ke proses: file yang ada hasil SKM, bukan data jumlah transaksi layanan digital 1 tahun. Per audit 2026-08-11.",
        "url_preview": "/bukti-dukung/final/I20_L1_SKM-Online_2026.pdf",
        "_ext": "pdf"
       },
@@ -3391,8 +3394,8 @@
         "Bag. Organisasi",
         "seluruh PD penyelenggara layanan"
        ],
-       "status": "lengkap",
-       "catatan": "SKM Online (L2): hasil kepuasan melalui portal - IKM Jan-Mei 2026 dipublikasikan via OpenData (dasar pengelolaan kepuasan berkelanjutan).",
+       "status": "proses",
+       "catatan": "Diturunkan ke proses: modul L2 minta widget/fitur umpan balik di layanan digital, file yang ada hanya hasil SKM. Per audit 2026-08-11.",
        "url_preview": "/bukti-dukung/final/I20_L1_SKM-Online_2026.pdf",
        "_ext": "pdf"
       },
@@ -3637,12 +3640,12 @@
    ],
    "item_aktual": 15,
    "item_gap": 4,
-   "nilai_aktual": 0.8
+   "nilai_aktual": 0.0
   }
  ],
  "target_item_bukti": 232,
  "indeks_terkini": 1.92,
- "indeks_aktual": 0.44,
- "indeks_label": "Indeks dari Bukti Dukung Terverifikasi",
+ "indeks_aktual": 0.24,
+ "indeks_label": "Dihitung dari 29 bukti lengkap · 232 item · target 2.5",
  "indeks_sumber": "Dihitung dari 32 bukti lengkap · 232 item"
 }
