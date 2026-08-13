@@ -135,7 +135,7 @@ function getBuktiBaru() {
   const out = [];
   for (const a of pemdiData.aspek) {
     for (const ind of a.indikator) {
-      if (ind._l1_lengkap === false) continue; // L1 belum lengkap → sembunyikan
+      // All indicators shown — no _l1_lengkap filter
       for (const b of ind.bukti_dukung || []) {
         if (b._sumber_baru) {
           out.push({ ...b, _indikator: ind.id, _namaIndikator: ind.nama });
