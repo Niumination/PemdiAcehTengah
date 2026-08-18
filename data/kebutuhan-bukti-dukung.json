@@ -1,0 +1,1937 @@
+{
+ "judul": "Matriks Kebutuhan Bukti Dukung Pemdi — Level 1 & 2",
+ "sumber": "Analisis Bukti Dukung Kematangan Pemerintah Digital (Level 1 & 2) — NotebookLM, ekstraksi 20 PPTX Modul Indikator Pemdi (docs/analisis-bukti-dukung-l1-l2.md)",
+ "panduan": "docs/Panduan_Peningkatan_Indeks_Pemdi_Aceh_Tengah.md (Bab 6 — Panduan Teknis Pengumpulan Bukti Dukung per Indikator)",
+ "dibangun": "2026-08-18",
+ "cakupan": {
+  "indikator": 16,
+  "tidak_dibahas": [
+   "I5 (SDI — eksternal)",
+   "I6 (SJIG — eksternal)",
+   "I7 (EPSS — eksternal)",
+   "I18 (strategi tim)"
+  ],
+  "level": [
+   1,
+   2
+  ],
+  "total_kebutuhan": 48
+ },
+ "status_indikasi": {
+  "ket": "Status dipetakan otomatis (fuzzy-match) ke bukti dukung existing di data/pemdi.json — indikatif, tetap perlu verifikasi substansi kriteria level.",
+  "lengkap": 10,
+  "proses": 0,
+  "belum": 19,
+  "perlu_verifikasi": 19
+ },
+ "catatan_implementasi": "Untuk bukti dukung arsitektur (I1, I13, I14, I15), sangat krusial bagi operator Aceh Tengah untuk melakukan pengisian di portal SIAP Digital (SIA v3) secara berkala karena bukti utamanya adalah screenshot dari sistem tersebut.",
+ "indikator": [
+  {
+   "indikator": "I1",
+   "nama": "Tingkat Kematangan Tata Kelola Pemerintah Digital",
+   "judul_sumber": "Tata Kelola Pemerintah Digital (Perencanaan & Penganggaran)",
+   "aspek": "Tata Kelola dan Manajemen",
+   "aspek_singkat": "Tata Kelola",
+   "bobot": 5,
+   "pic": {
+    "lead": "BAPPEDA (Koordinator Pokja Tata Kelola & Manajemen)",
+    "support": [
+     "Diskominfo (Kabid Layanan E-Gov)",
+     "Bag. Organisasi",
+     "Tim Koordinasi Pemdi",
+     "seluruh PD"
+    ],
+    "tim": "Tim Tata Kelola & Manajemen Pemdi"
+   },
+   "catatan_grup": null,
+   "nilai_saat_ini": 1,
+   "target_indikator": 2.5,
+   "level": [
+    {
+     "level": 1,
+     "kebutuhan": [
+      {
+       "no": 1,
+       "bukti": "Rancangan dokumen perencanaan (Draft RPJMD 2025-2029 atau Draft Renja Diskominfo) yang mulai mencantumkan narasi substansi Rencana Aksi Nasional (RAN) Pemerintah Digital",
+       "kondisi": "Dokumen masih berstatus draft (rancangan) dan belum ditetapkan secara resmi",
+       "modul_item": "Rancangan dokumen perencanaan Instansi Pemerintah yang berisi substansi Rencana Aksi Nasional Pemerintah Digital pada perencanaan Instansi Pemerintah dalam tahap penyusunan",
+       "modul_match": 0.69,
+       "status_indikasi": "lengkap",
+       "status_match": 1.0,
+       "status_via": "modul",
+       "bukti_terkait": [
+        {
+         "id": "GT.I1_L1_1",
+         "nama": "Rancangan dokumen perencanaan Instansi Pemerintah yang berisi substansi Rencana Aksi Nasional Pemerintah Digital pada perencanaan Instansi Pemerintah dalam tahap penyusunan.",
+         "status": "lengkap"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "level": 2,
+     "kebutuhan": [
+      {
+       "no": 1,
+       "bukti": "Salinan dokumen perencanaan resmi (RPJMD/Renstra) yang telah memuat substansi RAN Pemdi secara parsial",
+       "kondisi": null,
+       "modul_item": null,
+       "modul_match": 0.37,
+       "status_indikasi": null,
+       "status_match": 0.0,
+       "status_via": null,
+       "bukti_terkait": []
+      },
+      {
+       "no": 2,
+       "bukti": "Screenshot pengisian Arsitektur Mikro Aceh Tengah pada portal SIAP Digital (sebagian Layanan Digital)",
+       "kondisi": null,
+       "modul_item": "Pengisian Arsitektur Pemerintah Digital pada sebagian Layanan Digital Pemerintah melalui SIAP Digital",
+       "modul_match": 0.75,
+       "status_indikasi": "belum",
+       "status_match": 1.0,
+       "status_via": "modul",
+       "bukti_terkait": [
+        {
+         "id": "GT.I1_L2_2",
+         "nama": "Pengisian Arsitektur Pemerintah Digital pada sebagian Layanan Digital Pemerintah melalui SIAP Digital.",
+         "status": "belum"
+        }
+       ]
+      },
+      {
+       "no": 3,
+       "bukti": "Dokumen RKA/RKAD yang menunjukkan alokasi anggaran khusus untuk kegiatan Pemerintah Digital",
+       "kondisi": null,
+       "modul_item": null,
+       "modul_match": 0.42,
+       "status_indikasi": null,
+       "status_match": 0.0,
+       "status_via": null,
+       "bukti_terkait": []
+      }
+     ]
+    }
+   ],
+   "panduan_bab6": {
+    "target": "nilai 2,0 (Cukup/Emerging)",
+    "dokumen": [
+     {
+      "dokumen": "Dokumen Arsitektur Pemdi (lokal)",
+      "format": "PDF resmi",
+      "pic": "Diskominfo",
+      "cara": "Susun baru mengacu template KemenPANRB; minimal mencakup visi digital, peta aplikasi, infrastruktur"
+     },
+     {
+      "dokumen": "Rencana Aksi Pemdi Kabupaten",
+      "format": "PDF/Word",
+      "pic": "Diskominfo + Bappeda",
+      "cara": "Sinkronisasi dengan RPJMD; jadikan lampiran Renstra Diskominfo"
+     },
+     {
+      "dokumen": "SK Tim Pengelola Arsitektur Pemdi",
+      "format": "PDF",
+      "pic": "Setda/Sekda",
+      "cara": "Terbitkan SK baru setelah PermenPANRB 8/2026 berlaku"
+     },
+     {
+      "dokumen": "Dokumen referensi perencanaan OPD yang mengacu Arsitektur Pemdi",
+      "format": "PDF",
+      "pic": "Minimal 2 OPD",
+      "cara": "Renstra OPD yang mencantumkan referensi Arsitektur Pemdi"
+     }
+    ]
+   }
+  },
+  {
+   "indikator": "I2",
+   "nama": "Tingkat Kematangan Manajemen Layanan Digital Pemerintah",
+   "judul_sumber": "Manajemen Layanan Digital Pemerintah",
+   "aspek": "Tata Kelola dan Manajemen",
+   "aspek_singkat": "Tata Kelola",
+   "bobot": 5,
+   "pic": {
+    "lead": "BAPPEDA (Koordinator Pokja Tata Kelola & Manajemen)",
+    "support": [
+     "Diskominfo",
+     "BPKD",
+     "Bagian Organisasi"
+    ],
+    "tim": "Tim Manajemen Layanan Digital"
+   },
+   "catatan_grup": null,
+   "nilai_saat_ini": 2,
+   "target_indikator": 2.0,
+   "level": [
+    {
+     "level": 1,
+     "kebutuhan": [
+      {
+       "no": 1,
+       "bukti": "Uraian atau catatan persiapan pelaksanaan Manajemen SPBE (Risiko, Perubahan, Pengetahuan, dll.) yang mengacu pada substansi RAN Pemdi",
+       "kondisi": null,
+       "modul_item": null,
+       "modul_match": 0.16,
+       "status_indikasi": null,
+       "status_match": 0.0,
+       "status_via": null,
+       "bukti_terkait": []
+      },
+      {
+       "no": 2,
+       "bukti": "Bukti pelaksanaan manajemen layanan sesuai kebutuhan internal (bersifat sementara/ad-hoc)",
+       "kondisi": "Bukti tambahan",
+       "modul_item": "Bukti Pelaksanaan Manajemen pada Layanan Digital Pemerintah sesuai dengan kebutuhan internal",
+       "modul_match": 0.78,
+       "status_indikasi": "lengkap",
+       "status_match": 0.99,
+       "status_via": "modul",
+       "bukti_terkait": [
+        {
+         "id": "GT.I2_L1_2",
+         "nama": "Bukti Pelaksanaan Manajemen pada Layanan Digital Pemerintah sesuai dengan kebutuhan internal.",
+         "status": "lengkap"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "level": 2,
+     "kebutuhan": [
+      {
+       "no": 1,
+       "bukti": "Dokumen bukti pelaksanaan manajemen pada sebagian layanan digital (misalnya: Daftar Register Risiko awal untuk Aplikasi Srikandi)",
+       "kondisi": null,
+       "modul_item": "Bukti Pelaksanaan Manajemen pada sebagian Layanan Digital Pemerintah",
+       "modul_match": 0.86,
+       "status_indikasi": "lengkap",
+       "status_match": 0.99,
+       "status_via": "modul",
+       "bukti_terkait": [
+        {
+         "id": "GT.I2_L2_1",
+         "nama": "Bukti Pelaksanaan Manajemen pada sebagian Layanan Digital Pemerintah.",
+         "status": "lengkap"
+        }
+       ]
+      },
+      {
+       "no": 2,
+       "bukti": "Kertas kerja Manajemen Pengetahuan atau Manajemen Perubahan yang mulai diisi (Format formulir 1.1 - 1.3)",
+       "kondisi": null,
+       "modul_item": null,
+       "modul_match": 0.38,
+       "status_indikasi": null,
+       "status_match": 0.0,
+       "status_via": null,
+       "bukti_terkait": []
+      }
+     ]
+    }
+   ],
+   "panduan_bab6": {
+    "target": "nilai 2,0 (Cukup/Emerging)",
+    "dokumen": [
+     {
+      "dokumen": "SOP Manajemen Risiko layanan digital",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Disusun oleh Diskominfo; minimal 1 SOP"
+     },
+     {
+      "dokumen": "SOP Manajemen Perubahan layanan digital",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Prosedur jika ada perubahan sistem"
+     },
+     {
+      "dokumen": "Dokumentasi Manajemen Pengetahuan (wiki/knowledge base)",
+      "format": "Screenshot + URL",
+      "pic": null,
+      "cara": "Buat di Confluence, Notion, atau sistem internal"
+     },
+     {
+      "dokumen": "Laporan review/evaluasi manajemen layanan",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Minimal 1 laporan per tahun"
+     }
+    ]
+   }
+  },
+  {
+   "indikator": "I3",
+   "nama": "Tingkat Kematangan Sumber Daya Manusia Pemerintah Digital",
+   "judul_sumber": "Sumber Daya Manusia Pemerintah Digital",
+   "aspek": "Penyelenggara",
+   "aspek_singkat": "Penyelenggara",
+   "bobot": 5,
+   "pic": {
+    "lead": "BKPSDM (Koordinator Pokja Penyelenggara – SDM)",
+    "support": [
+     "Bagian Organisasi",
+     "Diskominfo"
+    ],
+    "tim": "Tim Pengembangan SDM Digital"
+   },
+   "catatan_grup": null,
+   "nilai_saat_ini": 0,
+   "target_indikator": 2.0,
+   "level": [
+    {
+     "level": 1,
+     "kebutuhan": [
+      {
+       "no": 1,
+       "bukti": "Draft Peta Kompetensi Digital ASN Aceh Tengah",
+       "kondisi": null,
+       "modul_item": "Peta Kompetensi untuk pelaksanaan Pemerintah Digital",
+       "modul_match": 0.6,
+       "status_indikasi": "belum",
+       "status_match": 0.99,
+       "status_via": "modul",
+       "bukti_terkait": [
+        {
+         "id": "GT.I3_L1_1",
+         "nama": "Peta Kompetensi untuk pelaksanaan Pemerintah Digital.",
+         "status": "belum"
+        }
+       ]
+      },
+      {
+       "no": 2,
+       "bukti": "Screenshot penggunaan aplikasi dasar seperti persuratan elektronik (Srikandi) atau aplikasi manajemen tugas oleh ASN",
+       "kondisi": null,
+       "modul_item": null,
+       "modul_match": 0.49,
+       "status_indikasi": null,
+       "status_match": 0.0,
+       "status_via": null,
+       "bukti_terkait": []
+      },
+      {
+       "no": 3,
+       "bukti": "Dokumentasi pembentukan komunitas belajar informal (grup diskusi WhatsApp/Telegram teknis)",
+       "kondisi": null,
+       "modul_item": "Dokumentasi pelaksanaan komunitas belajar",
+       "modul_match": 0.75,
+       "status_indikasi": "belum",
+       "status_match": 0.99,
+       "status_via": "modul",
+       "bukti_terkait": [
+        {
+         "id": "GT.I3_L1_3",
+         "nama": "Dokumentasi pelaksanaan komunitas belajar.",
+         "status": "belum"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "level": 2,
+     "kebutuhan": [
+      {
+       "no": 1,
+       "bukti": "Laporan peningkatan kompetensi (Sertifikat pelatihan literasi digital) bagi minimal 50% ASN pengelola",
+       "kondisi": null,
+       "modul_item": "Laporan peningkatan kompetensi digital",
+       "modul_match": 1.0,
+       "status_indikasi": "belum",
+       "status_match": 0.99,
+       "status_via": "modul",
+       "bukti_terkait": [
+        {
+         "id": "GT.I3_L2_2",
+         "nama": "Laporan peningkatan kompetensi digital.",
+         "status": "belum"
+        }
+       ]
+      },
+      {
+       "no": 2,
+       "bukti": "Laporan partisipasi ASN pada platform pembelajaran nasional seperti Digitalent Komdigi",
+       "kondisi": null,
+       "modul_item": "Laporan penggunaan pembelajaran digital nasional",
+       "modul_match": 0.6,
+       "status_indikasi": "belum",
+       "status_match": 0.99,
+       "status_via": "modul",
+       "bukti_terkait": [
+        {
+         "id": "GT.I3_L2_4",
+         "nama": "Laporan penggunaan pembelajaran digital nasional.",
+         "status": "belum"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "panduan_bab6": {
+    "target": "nilai 2,0 (Cukup/Emerging)",
+    "dokumen": [
+     {
+      "dokumen": "Data jumlah ASN pengelola TIK per OPD",
+      "format": "Excel/PDF",
+      "pic": null,
+      "cara": "Dari SIASN; minta ke BKPSDM"
+     },
+     {
+      "dokumen": "Sertifikat pelatihan digital ASN",
+      "format": "PDF (scan)",
+      "pic": null,
+      "cara": "Dari BKN Online, SRIKANDI, atau LAN"
+     },
+     {
+      "dokumen": "Laporan pelatihan/bimtek digital yang diikuti",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Surat Tugas + Sertifikat + Laporan"
+     },
+     {
+      "dokumen": "SK penetapan SDM pengelola TIK per OPD",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Terbitkan SK Kepala OPD masing-masing"
+     },
+     {
+      "dokumen": "Rekapitulasi kompetensi digital ASN",
+      "format": "Excel/PDF",
+      "pic": null,
+      "cara": "Buat matriks kompetensi; koordinasi dengan BKPSDM"
+     }
+    ]
+   }
+  },
+  {
+   "indikator": "I4",
+   "nama": "Tingkat Kematangan Kolaborasi Pemerintah Digital",
+   "judul_sumber": "Kolaborasi Pemerintah Digital",
+   "aspek": "Penyelenggara",
+   "aspek_singkat": "Penyelenggara",
+   "bobot": 5,
+   "pic": {
+    "lead": "Bag. Organisasi (Koordinator Pokja Penyelenggara – Kolaborasi)",
+    "support": [
+     "BKPSDM",
+     "Bag. Hukum",
+     "Diskominfo"
+    ],
+    "tim": "Tim Kolaborasi & Kemitraan Pemdi"
+   },
+   "catatan_grup": null,
+   "nilai_saat_ini": 0,
+   "target_indikator": 2.5,
+   "level": [
+    {
+     "level": 1,
+     "kebutuhan": [
+      {
+       "no": 1,
+       "bukti": "SK Bupati tentang Penetapan Tim Koordinasi SPBE/Pemdi Kabupaten Aceh Tengah",
+       "kondisi": null,
+       "modul_item": "Penetapan Tim Koordinasi Pemerintah Digital Instansi Pemerintah",
+       "modul_match": 0.52,
+       "status_indikasi": "lengkap",
+       "status_match": 1.0,
+       "status_via": "modul",
+       "bukti_terkait": [
+        {
+         "id": "GT.I4_L1_1",
+         "nama": "Penetapan Tim Koordinasi Pemerintah Digital Instansi Pemerintah.",
+         "status": "lengkap"
+        }
+       ]
+      },
+      {
+       "no": 2,
+       "bukti": "Undangan dan notulensi rapat kolaborasi internal antar OPD (misal: Rapat Diskominfo dengan Dukcapil)",
+       "kondisi": null,
+       "modul_item": null,
+       "modul_match": 0.35,
+       "status_indikasi": null,
+       "status_match": 0.0,
+       "status_via": null,
+       "bukti_terkait": []
+      }
+     ]
+    },
+    {
+     "level": 2,
+     "kebutuhan": [
+      {
+       "no": 1,
+       "bukti": "Rincian rencana aksi kolaborasi antar instansi yang tertuang dalam RKPD Aceh Tengah tahun berjalan",
+       "kondisi": null,
+       "modul_item": "Substansi Rencana Aksi Nasional Pemerintah Digital pada perencanaan Instansi Pemerintah dengan rincian rencana kolaborasi antar Instansi Pemerintah dalam menerapkan Pemerintah Digital",
+       "modul_match": 0.5,
+       "status_indikasi": "belum",
+       "status_match": 1.0,
+       "status_via": "modul",
+       "bukti_terkait": [
+        {
+         "id": "GT.I4_L2_1",
+         "nama": "Substansi Rencana Aksi Nasional Pemerintah Digital pada perencanaan Instansi Pemerintah dengan rincian rencana kolaborasi antar Instansi Pemerintah dalam menerapkan Pemerintah Digital.",
+         "status": "belum"
+        }
+       ]
+      },
+      {
+       "no": 2,
+       "bukti": "Dokumen MoU atau PKS (Perjanjian Kerja Sama) antar instansi pemerintah terkait pertukaran data atau pemanfaatan sistem bersama",
+       "kondisi": null,
+       "modul_item": null,
+       "modul_match": 0.42,
+       "status_indikasi": null,
+       "status_match": 0.0,
+       "status_via": null,
+       "bukti_terkait": []
+      }
+     ]
+    }
+   ],
+   "panduan_bab6": {
+    "target": "nilai 2,5 (nilai ini sudah ada modalnya — Tim Koordinasi nilai 3)",
+    "dokumen": [
+     {
+      "dokumen": "SK Tim Koordinasi SPBE/Pemdi yang masih berlaku",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Sudah ada; perbarui jika expired"
+     },
+     {
+      "dokumen": "Notulen rapat koordinasi digital lintas OPD",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Dokumentasikan setiap rapat rutin"
+     },
+     {
+      "dokumen": "MoU/PKS kolaborasi digital dengan instansi lain",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Misal: dengan Diskominfo Provinsi, Unimal, dll."
+     },
+     {
+      "dokumen": "Laporan pelaksanaan Forum Koordinasi Pemdi",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Buat forum resmi minimal 2x/tahun"
+     }
+    ]
+   }
+  },
+  {
+   "indikator": "I8",
+   "nama": "Tingkat Kematangan Pelindungan Data Pribadi",
+   "judul_sumber": "Pelindungan Data Pribadi (PDP)",
+   "aspek": "Data",
+   "aspek_singkat": "Data",
+   "bobot": 4,
+   "pic": {
+    "lead": "Diskominfo – Bid. Statistik & Persandian",
+    "support": [
+     "Bagian Hukum",
+     "Inspektorat",
+     "seluruh PD"
+    ],
+    "tim": "Tim Pelindungan Data Pribadi"
+   },
+   "catatan_grup": null,
+   "nilai_saat_ini": 0,
+   "target_indikator": 2.0,
+   "level": [
+    {
+     "level": 1,
+     "kebutuhan": [
+      {
+       "no": 1,
+       "bukti": "Dokumen uraian kondisi eksisting (self-assessment) yang menyatakan belum adanya tata kelola PDP formal, namun sudah mengidentifikasi kebutuhan penunjukan DPO",
+       "kondisi": null,
+       "modul_item": "Dokumentasi uraian penunjukan Pejabat/Petugas PDP (DPO)",
+       "modul_match": 0.57,
+       "status_indikasi": null,
+       "status_match": 0.0,
+       "status_via": null,
+       "bukti_terkait": []
+      }
+     ]
+    },
+    {
+     "level": 2,
+     "kebutuhan": [
+      {
+       "no": 1,
+       "bukti": "SK penunjukan Pejabat/Petugas PDP (Data Protection Officer) di lingkungan Pemkab Aceh Tengah",
+       "kondisi": null,
+       "modul_item": "Dokumen penunjukkan Pejabat/Petugas PDP (DPO)",
+       "modul_match": 0.55,
+       "status_indikasi": "belum",
+       "status_match": 1.0,
+       "status_via": "modul",
+       "bukti_terkait": [
+        {
+         "id": "GT.I8_L2_3",
+         "nama": "Dokumen penunjukkan Pejabat/Petugas PDP (DPO) (SK penunjukan, surat tugas, atau SOTK).",
+         "status": "belum"
+        }
+       ]
+      },
+      {
+       "no": 2,
+       "bukti": "Dokumen kebijakan privasi (Privacy Notice) yang dipublikasikan pada website resmi atau aplikasi milik daerah",
+       "kondisi": null,
+       "modul_item": null,
+       "modul_match": 0.48,
+       "status_indikasi": null,
+       "status_match": 0.0,
+       "status_via": null,
+       "bukti_terkait": []
+      }
+     ]
+    }
+   ],
+   "panduan_bab6": {
+    "target": "nilai 2,0 (Cukup)",
+    "dokumen": [
+     {
+      "dokumen": "SK Pejabat/Petugas Pelindung Data Pribadi (PPDP)",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Terbitkan SK baru; mengacu UU PDP No. 27/2022"
+     },
+     {
+      "dokumen": "Kebijakan/SOP Pemrosesan Data Pribadi",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Susun kebijakan internal; konsultasi ke Kemendigi"
+     },
+     {
+      "dokumen": "Laporan sosialisasi PDP kepada ASN",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Dokumentasikan bimtek/sosialisasi UU PDP"
+     },
+     {
+      "dokumen": "Strategi Implementasi PDP instansi",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Dokumen rencana aksi PDP"
+     }
+    ]
+   }
+  },
+  {
+   "indikator": "I9",
+   "nama": "Tingkat Kematangan Pelaksanaan Audit Keamanan Pemdi & Teknologi Pemdi",
+   "judul_sumber": "Audit Keamanan Pemerintah Digital",
+   "aspek": "Keamanan Pemerintah Digital Siber",
+   "aspek_singkat": "Keamanan Siber",
+   "bobot": 4,
+   "pic": {
+    "lead": "Inspektorat (Koordinator Pokja Keamanan – Audit)",
+    "support": [
+     "Diskominfo (Fungsi Persandian)"
+    ],
+    "tim": "Tim Audit Keamanan TIK"
+   },
+   "catatan_grup": null,
+   "nilai_saat_ini": 0,
+   "target_indikator": 2.0,
+   "level": [
+    {
+     "level": 1,
+     "kebutuhan": [
+      {
+       "no": 1,
+       "bukti": "SK Pembentukan Tim Audit TIK/Keamanan internal",
+       "kondisi": null,
+       "modul_item": "Penetapan Tim Audit yang ditetapkan oleh Koordinator Pemerintah Digital di setiap Instansi Pemerintah",
+       "modul_match": 0.5,
+       "status_indikasi": "lengkap",
+       "status_match": 0.89,
+       "status_via": "modul",
+       "bukti_terkait": [
+        {
+         "id": "GT.I9_L1_1",
+         "nama": "Penetapan Tim Audit yang ditetapkan oleh Koordinator Pemerintah Digital di setiap IPPD.",
+         "status": "lengkap"
+        }
+       ]
+      },
+      {
+       "no": 2,
+       "bukti": "Dokumen Perencanaan Audit (Audit Plan) yang memuat daftar layanan digital yang akan diaudit",
+       "kondisi": null,
+       "modul_item": "Dokumen Perencanaan Audit Instansi Pemerintah",
+       "modul_match": 0.6,
+       "status_indikasi": "belum",
+       "status_match": 0.75,
+       "status_via": "modul",
+       "bukti_terkait": [
+        {
+         "id": "GT.I9_L1_2",
+         "nama": "Dokumen Perencanaan Audit IPPD.",
+         "status": "belum"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "level": 2,
+     "kebutuhan": [
+      {
+       "no": 1,
+       "bukti": "Laporan Hasil Audit Keamanan internal terhadap salah satu aplikasi prioritas daerah (misal: Portal Berita Daerah atau JDIH)",
+       "kondisi": null,
+       "modul_item": "Laporan Hasil Audit Internal Keamanan Pemerintah Digital dan Teknologi Pemerintah Digital Internal",
+       "modul_match": 0.62,
+       "status_indikasi": "belum",
+       "status_match": 1.0,
+       "status_via": "modul",
+       "bukti_terkait": [
+        {
+         "id": "GT.I9_L2_1",
+         "nama": "Laporan Hasil Audit Internal Keamanan Pemerintah Digital dan Teknologi Pemerintah Digital Internal.",
+         "status": "belum"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "panduan_bab6": {
+    "target": "nilai 2,0 (Cukup) — dari baseline nilai 1",
+    "dokumen": [
+     {
+      "dokumen": "SK Tim Audit TIK/Keamanan Siber",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Terbitkan SK; libatkan Inspektorat + Diskominfo"
+     },
+     {
+      "dokumen": "Laporan Audit Keamanan Internal (minimal 1 layanan)",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Lakukan audit sederhana dengan checklist BSSN"
+     },
+     {
+      "dokumen": "Rencana Audit TIK tahunan",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Susun jadwal audit; masukkan dalam program kerja"
+     },
+     {
+      "dokumen": "Tindak lanjut hasil audit",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Catat temuan dan perbaikan"
+     }
+    ]
+   }
+  },
+  {
+   "indikator": "I10",
+   "nama": "Tingkat Kematangan Keamanan Siber (IKASANDI)",
+   "judul_sumber": "Keamanan Pemerintah Digital (IKASANDI)",
+   "aspek": "Keamanan Pemerintah Digital Siber",
+   "aspek_singkat": "Keamanan Siber",
+   "bobot": 4,
+   "pic": {
+    "lead": "Diskominfo – Bid. Statistik & Persandian",
+    "support": [
+     "BSSN",
+     "Inspektorat"
+    ],
+    "tim": "Tim Keamanan Siber"
+   },
+   "catatan_grup": null,
+   "nilai_saat_ini": 0,
+   "target_indikator": 2.0,
+   "level": [
+    {
+     "level": 1,
+     "kebutuhan": [
+      {
+       "no": 1,
+       "bukti": "Sertifikat atau dokumen nilai IKASANDI Aceh Tengah pada area terkait (Keamanan Siber) dengan skor di rentang 0 - 1,5",
+       "kondisi": "Berlaku untuk kelompok I10-I12",
+       "modul_item": "Nilai IKASANDI pada area Keamanan Siber 0 <= IKASANDI < 1,50",
+       "modul_match": 0.83,
+       "status_indikasi": "belum",
+       "status_match": 0.97,
+       "status_via": "modul",
+       "bukti_terkait": [
+        {
+         "id": "GT.I10_L1_1",
+         "nama": "1. Nilai IKASANDI pada area Keamanan Siber. 0 < IKASANDI < 1,5.",
+         "status": "belum"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "level": 2,
+     "kebutuhan": [
+      {
+       "no": 1,
+       "bukti": "Dokumen Identifikasi Infrastruktur Informasi Vital (IIV) daerah yang dikirimkan ke BSSN",
+       "kondisi": "Berlaku untuk kelompok I10-I12",
+       "modul_item": "Dokumentasi Identifikasi Infrastruktur Informasi Vital",
+       "modul_match": 0.8,
+       "status_indikasi": "belum",
+       "status_match": 0.8,
+       "status_via": "modul",
+       "bukti_terkait": [
+        {
+         "id": "GT.I10_L2_1",
+         "nama": "Dokumentasi Identifikasi Infrastruktur Informasi Vital*. (* Dokumentasi Identifikasi IIV dapat berupa surat dari Instansi Pemerintah ke BSSN terkait pelaksanaan identifikasi IIV, laporan hasil identifikasi mandiri, atau laporan hasil pelaksanaan verifikasi).",
+         "status": "belum"
+        }
+       ]
+      },
+      {
+       "no": 2,
+       "bukti": "Sertifikat nilai IKASANDI pada area Keamanan Siber dengan rentang 1,5 - 2,5",
+       "kondisi": "Berlaku untuk kelompok I10-I12",
+       "modul_item": "Nilai IKASANDI pada area Keamanan Siber 1,50 <= IKASANDI < 2,50",
+       "modul_match": 0.71,
+       "status_indikasi": "belum",
+       "status_match": 0.98,
+       "status_via": "modul",
+       "bukti_terkait": [
+        {
+         "id": "GT.I10_L2_2",
+         "nama": "Nilai IKASANDI pada area Keamanan Siber. 1,50 < IKASANDI < 2,50.",
+         "status": "belum"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "panduan_bab6": {
+    "target": "nilai 2,0 (Cukup)",
+    "dokumen": [
+     {
+      "dokumen": "Kebijakan Keamanan Informasi (SMKI)",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Buat dokumen kebijakan; bisa mengacu SNI ISO 27001"
+     },
+     {
+      "dokumen": "Hasil penilaian IKASANDI",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Ikut penilaian BSSN atau self-assessment"
+     },
+     {
+      "dokumen": "Daftar Infrastruktur Informasi Vital",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Identifikasi server, aplikasi kritis kabupaten"
+     },
+     {
+      "dokumen": "SOP penanganan insiden keamanan",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Minimal SOP dasar"
+     }
+    ]
+   }
+  },
+  {
+   "indikator": "I11",
+   "nama": "Tingkat Kematangan Penerapan Kriptografi untuk Keamanan Data (IKASANDI)",
+   "judul_sumber": "Kriptografi (IKASANDI)",
+   "aspek": "Keamanan Pemerintah Digital Siber",
+   "aspek_singkat": "Keamanan Siber",
+   "bobot": 3,
+   "pic": {
+    "lead": "Diskominfo – Bid. Statistik & Persandian",
+    "support": [
+     "BSSN"
+    ],
+    "tim": "Tim Kriptografi & TTE"
+   },
+   "catatan_grup": null,
+   "nilai_saat_ini": 0,
+   "target_indikator": 1.5,
+   "level": [
+    {
+     "level": 1,
+     "kebutuhan": [
+      {
+       "no": 1,
+       "bukti": "Sertifikat atau dokumen nilai IKASANDI Aceh Tengah pada area terkait (Persandian/Kriptografi) dengan skor di rentang 0 - 1,5",
+       "kondisi": "Berlaku untuk kelompok I10-I12",
+       "modul_item": null,
+       "modul_match": 0.36,
+       "status_indikasi": null,
+       "status_match": 0.0,
+       "status_via": null,
+       "bukti_terkait": []
+      }
+     ]
+    },
+    {
+     "level": 2,
+     "kebutuhan": [
+      {
+       "no": 1,
+       "bukti": "Sertifikat nilai IKASANDI pada area Persandian dengan rentang 1,5 - 2,5",
+       "kondisi": "Berlaku untuk kelompok I10-I12",
+       "modul_item": null,
+       "modul_match": 0.34,
+       "status_indikasi": null,
+       "status_match": 0.0,
+       "status_via": null,
+       "bukti_terkait": []
+      }
+     ]
+    }
+   ],
+   "panduan_bab6": {
+    "target": "nilai 1,5 (Cukup)",
+    "dokumen": [
+     {
+      "dokumen": "Kebijakan penggunaan kriptografi",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Pastikan semua layanan web menggunakan HTTPS/TLS"
+     },
+     {
+      "dokumen": "Screenshot penerapan HTTPS pada layanan digital",
+      "format": "Screenshot",
+      "pic": null,
+      "cara": "Cek SSL certificate semua website resmi"
+     },
+     {
+      "dokumen": "Dokumentasi enkripsi data sensitif",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Dokumentasikan penggunaan enkripsi di database"
+     }
+    ]
+   }
+  },
+  {
+   "indikator": "I12",
+   "nama": "Tingkat Kematangan Kapabilitas Penanganan Insiden Siber (IKASANDI)",
+   "judul_sumber": "Penanganan Insiden Siber (IKASANDI)",
+   "aspek": "Keamanan Pemerintah Digital Siber",
+   "aspek_singkat": "Keamanan Siber",
+   "bobot": 4,
+   "pic": {
+    "lead": "Diskominfo – Bid. Statistik & Persandian",
+    "support": [
+     "BSSN",
+     "Inspektorat"
+    ],
+    "tim": "Tim CSIRT/TTIS Kabupaten"
+   },
+   "catatan_grup": null,
+   "nilai_saat_ini": 0,
+   "target_indikator": 2.0,
+   "level": [
+    {
+     "level": 1,
+     "kebutuhan": [
+      {
+       "no": 1,
+       "bukti": "Sertifikat atau dokumen nilai IKASANDI Aceh Tengah pada area terkait (kapabilitas penanganan insiden siber) dengan skor di rentang 0 - 1,5",
+       "kondisi": "Berlaku untuk kelompok I10-I12",
+       "modul_item": "Dokumentasi pelaksanaan penanganan insiden",
+       "modul_match": 0.5,
+       "status_indikasi": "belum",
+       "status_match": 0.99,
+       "status_via": "modul",
+       "bukti_terkait": [
+        {
+         "id": "GT.I12_L1_1",
+         "nama": "Dokumentasi pelaksanaan penanganan insiden.",
+         "status": "belum"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "level": 2,
+     "kebutuhan": [
+      {
+       "no": 1,
+       "bukti": "SK Pembentukan Tim Tanggap Insiden Siber (TTIS/CSIRT) Aceh Tengah yang teregistrasi di BSSN",
+       "kondisi": "Ditandai khusus \"(I12)\" pada dokumen sumber",
+       "modul_item": "Penetapan TTIS",
+       "modul_match": 1.0,
+       "status_indikasi": "lengkap",
+       "status_match": 0.97,
+       "status_via": "modul",
+       "bukti_terkait": [
+        {
+         "id": "GT.I12_L2_1",
+         "nama": "Penetapan TTIS.",
+         "status": "lengkap"
+        }
+       ]
+      },
+      {
+       "no": 2,
+       "bukti": "Sertifikat nilai IKASANDI kapabilitas penanganan insiden dengan rentang 1,5 - 2,5",
+       "kondisi": "Berlaku untuk kelompok I10-I12",
+       "modul_item": null,
+       "modul_match": 0.49,
+       "status_indikasi": "belum",
+       "status_match": 0.63,
+       "status_via": "langsung",
+       "bukti_terkait": [
+        {
+         "id": "GT.I12_L2_2",
+         "nama": "Nilai IKASANDI pada area Penanganan Insiden Siber. 1,50 < IKASANDI < 2,50.",
+         "status": "belum"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "panduan_bab6": {
+    "target": "nilai 2,0 (Cukup)",
+    "dokumen": [
+     {
+      "dokumen": "SK Pembentukan TTIS/CSIRT",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Daftarkan ke BSSN; buat SK kabupaten"
+     },
+     {
+      "dokumen": "SOP penanganan insiden siber",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Mengacu panduan BSSN"
+     },
+     {
+      "dokumen": "Laporan penanganan insiden (jika pernah terjadi)",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Catat dan dokumentasikan setiap insiden"
+     },
+     {
+      "dokumen": "Bukti keanggotaan/koordinasi dengan TTIS Nasional",
+      "format": "Screenshot/PDF",
+      "pic": null,
+      "cara": "Daftar di portal BSSN"
+     }
+    ]
+   }
+  },
+  {
+   "indikator": "I13",
+   "nama": "Tingkat Kematangan Aplikasi Pemerintah Digital",
+   "judul_sumber": "Aplikasi Pemerintah Digital",
+   "aspek": "Teknologi Digital",
+   "aspek_singkat": "Teknologi",
+   "bobot": 5,
+   "pic": {
+    "lead": "Diskominfo – Bid. Layanan E-Government (Koordinator Pokja Teknologi Digital)",
+    "support": [
+     "Semua OPD"
+    ],
+    "tim": "Tim Aplikasi & Sistem Informasi"
+   },
+   "catatan_grup": null,
+   "nilai_saat_ini": 1,
+   "target_indikator": 2.0,
+   "level": [
+    {
+     "level": 1,
+     "kebutuhan": [
+      {
+       "no": 1,
+       "bukti": "Dokumentasi siklus pengembangan aplikasi (SDLC) sederhana atau bukti konsultasi unit kerja dengan Diskominfo saat ingin membangun aplikasi",
+       "kondisi": null,
+       "modul_item": "Bukti Pelaksanaan Pengembangan Aplikasi",
+       "modul_match": 0.75,
+       "status_indikasi": "lengkap",
+       "status_match": 1.0,
+       "status_via": "modul",
+       "bukti_terkait": [
+        {
+         "id": "GT.I13_L1_1",
+         "nama": "Bukti Pelaksanaan Pengembangan Aplikasi**, yang mencakup: Dokumentasi siklus pengembangan aplikasi (formal & terdokumentasi), Bukti konsultasi dengan unit pengelola TIK, Notulensi pembahasan antara unit pengusul dan pengelola TIK, Bukti koordinasi dan kesepakatan pengembangan aplikasi.",
+         "status": "lengkap"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "level": 2,
+     "kebutuhan": [
+      {
+       "no": 1,
+       "bukti": "Screenshot Domain Aplikasi Aceh Tengah pada portal SIAP Digital",
+       "kondisi": null,
+       "modul_item": null,
+       "modul_match": 0.46,
+       "status_indikasi": null,
+       "status_match": 0.0,
+       "status_via": null,
+       "bukti_terkait": []
+      },
+      {
+       "no": 2,
+       "bukti": "Laporan hasil reviu aplikasi oleh Diskominfo untuk menjaga keselarasan dengan arsitektur teknologi",
+       "kondisi": null,
+       "modul_item": "Laporan hasil reviu Unit Pengelola Layanan Digital",
+       "modul_match": 0.5,
+       "status_indikasi": "belum",
+       "status_match": 0.86,
+       "status_via": "modul",
+       "bukti_terkait": [
+        {
+         "id": "GT.I13_L2_3",
+         "nama": "Laporan hasil reviu Unit Pengelola Layanan Digital**, berupa Laporan Reviu yang sudah tertera pada Risalah Rapat disertakan dokumentasi dan bukti hadir.",
+         "status": "belum"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "panduan_bab6": {
+    "target": "nilai 2,0 (Cukup) — dari baseline nilai 1",
+    "dokumen": [
+     {
+      "dokumen": "Inventaris aplikasi yang digunakan (daftar lengkap)",
+      "format": "Excel/PDF",
+      "pic": null,
+      "cara": "Buat daftar semua aplikasi; cantumkan status, fungsi, pengelola"
+     },
+     {
+      "dokumen": "Rencana pengembangan aplikasi (roadmap)",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Susun roadmap 2 tahun ke depan"
+     },
+     {
+      "dokumen": "Dokumen SDLC minimal 1 aplikasi prioritas",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Analisis kebutuhan, rancangan, implementasi, testing, evaluasi"
+     },
+     {
+      "dokumen": "Kebijakan internal pembangunan aplikasi",
+      "format": "PDF",
+      "pic": null,
+      "cara": "SK Kepala Daerah atau Kadiskominfo"
+     }
+    ]
+   }
+  },
+  {
+   "indikator": "I14",
+   "nama": "Tingkat Kematangan Infrastruktur Pemerintah Digital",
+   "judul_sumber": "Infrastruktur Pemerintah Digital",
+   "aspek": "Teknologi Digital",
+   "aspek_singkat": "Teknologi",
+   "bobot": 5,
+   "pic": {
+    "lead": "Diskominfo – Bid. Layanan E-Government",
+    "support": [
+     "Kemendigi",
+     "BAPPEDA"
+    ],
+    "tim": "Tim Infrastruktur TIK"
+   },
+   "catatan_grup": null,
+   "nilai_saat_ini": 0,
+   "target_indikator": 2.0,
+   "level": [
+    {
+     "level": 1,
+     "kebutuhan": [
+      {
+       "no": 1,
+       "bukti": "Screenshot topologi jaringan intra Pemkab Aceh Tengah atau screenshot dasbor pusat data yang digunakan",
+       "kondisi": null,
+       "modul_item": null,
+       "modul_match": 0.43,
+       "status_indikasi": "belum",
+       "status_match": 0.64,
+       "status_via": "langsung",
+       "bukti_terkait": [
+        {
+         "id": "GT.I14_L1_3",
+         "nama": "Screenshot Topologi Jaringan Intra IPPD atau Pusat Data yang digunakan dengan terhubung ke ekosistem Pemdi dengan Jaringan Intra Pemerintah.",
+         "status": "belum"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "level": 2,
+     "kebutuhan": [
+      {
+       "no": 1,
+       "bukti": "Laporan pemanfaatan infrastruktur digital (misal: penggunaan cloud/virtual server) pada sebagian layanan",
+       "kondisi": null,
+       "modul_item": "Laporan pemantauan pemanfaatan infrastruktur Pemerintah Digital pada sebagian Layanan Digital Instansi Pemerintah yang berisikan matriks pemanfaatan infrastruktur Pemerintah Digital",
+       "modul_match": 0.6,
+       "status_indikasi": "belum",
+       "status_match": 0.88,
+       "status_via": "modul",
+       "bukti_terkait": [
+        {
+         "id": "GT.I14_L2_1",
+         "nama": "Laporan pemanfaatan Infrastruktur Pemerintah digital pada sebagian Layanan Digital IPPD.",
+         "status": "belum"
+        }
+       ]
+      },
+      {
+       "no": 2,
+       "bukti": "Screenshot Domain Infrastruktur pada portal SIAP Digital",
+       "kondisi": null,
+       "modul_item": null,
+       "modul_match": 0.0,
+       "status_indikasi": null,
+       "status_match": 0.0,
+       "status_via": null,
+       "bukti_terkait": []
+      }
+     ]
+    }
+   ],
+   "panduan_bab6": {
+    "target": "nilai 2,0 (Cukup)",
+    "dokumen": [
+     {
+      "dokumen": "Inventaris infrastruktur TIK kabupaten",
+      "format": "Excel/PDF",
+      "pic": null,
+      "cara": "Data center lokal, jaringan, server"
+     },
+     {
+      "dokumen": "Dokumentasi koneksi ke PDNS/data center nasional",
+      "format": "PDF/Screenshot",
+      "pic": null,
+      "cara": "Koordinasi dengan Kemendigi"
+     },
+     {
+      "dokumen": "Bukti layanan berbasis cloud (minimal 1)",
+      "format": "Screenshot/PDF",
+      "pic": null,
+      "cara": "Daftar aplikasi yang hosting di PDNS atau cloud"
+     },
+     {
+      "dokumen": "Rencana migrasi ke cloud/PDNS",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Susun roadmap migrasi"
+     }
+    ]
+   }
+  },
+  {
+   "indikator": "I15",
+   "nama": "Tingkat Kematangan Keterpaduan Proses Bisnis Lintas Sektor",
+   "judul_sumber": "Keterpaduan Proses Bisnis Lintas Sektor",
+   "aspek": "Keterpaduan",
+   "aspek_singkat": "Keterpaduan",
+   "bobot": 4,
+   "pic": {
+    "lead": "Bag. Organisasi (Koordinator Pokja Keterpaduan)",
+    "support": [
+     "Diskominfo",
+     "Bappeda",
+     "Dinas Perpustakaan & Arsip",
+     "Semua OPD"
+    ],
+    "tim": "Tim Proses Bisnis & Tata Laksana"
+   },
+   "catatan_grup": null,
+   "nilai_saat_ini": 0,
+   "target_indikator": 2.5,
+   "level": [
+    {
+     "level": 1,
+     "kebutuhan": [
+      {
+       "no": 1,
+       "bukti": "Screenshot pemetaan proses bisnis awal pada portal SIAP Digital yang menunjukkan hubungan antar unit kerja",
+       "kondisi": null,
+       "modul_item": "Proses Bisnis Pemerintah Digital untuk mendukung Layanan Digital pada Arsitektur Pemerintah Digital dari SIAP Digital",
+       "modul_match": 0.5,
+       "status_indikasi": "lengkap",
+       "status_match": 1.0,
+       "status_via": "modul",
+       "bukti_terkait": [
+        {
+         "id": "GT.I15_L1_1",
+         "nama": "Proses Bisnis Pemerintah Digital untuk mendukung Layanan Digital pada Arsitektur Pemerintah Digital dari SIAP Digital.",
+         "status": "lengkap"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "level": 2,
+     "kebutuhan": [
+      {
+       "no": 1,
+       "bukti": "Diagram proses bisnis \"To-be\" (rencana masa depan) yang mendukung keterpaduan layanan lintas OPD (misal: alur pengurusan perizinan terpadu)",
+       "kondisi": null,
+       "modul_item": "Proses bisnis to-be yang mendukung keterpaduan Layanan Digital Pemerintah",
+       "modul_match": 0.75,
+       "status_indikasi": "belum",
+       "status_match": 0.99,
+       "status_via": "modul",
+       "bukti_terkait": [
+        {
+         "id": "GT.I15_L2_2",
+         "nama": "Proses bisnis to-be yang mendukung keterpaduan Layanan Digital Pemerintah.",
+         "status": "belum"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "panduan_bab6": {
+    "target": "nilai 2,5 (Baik)",
+    "dokumen": [
+     {
+      "dokumen": "Peta proses bisnis layanan digital",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Susun proses bisnis layanan prioritas (PTSP, kependudukan, dll.)"
+     },
+     {
+      "dokumen": "Dokumentasi simplifikasi proses bisnis",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Bukti pengurangan prosedur, birokrasi berbasis digital"
+     },
+     {
+      "dokumen": "SOP layanan digital terintegrasi",
+      "format": "PDF",
+      "pic": null,
+      "cara": "SOP yang mencantumkan alur digital end-to-end"
+     },
+     {
+      "dokumen": "Dokumentasi penggunaan arsip digital",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Bukti pemanfaatan SRIKANDI atau sistem arsip digital"
+     }
+    ]
+   }
+  },
+  {
+   "indikator": "I16",
+   "nama": "Tingkat Kematangan Integrasi Aplikasi",
+   "judul_sumber": "Integrasi Aplikasi",
+   "aspek": "Keterpaduan",
+   "aspek_singkat": "Keterpaduan",
+   "bobot": 4,
+   "pic": {
+    "lead": "Bag. Organisasi",
+    "support": [
+     "Diskominfo",
+     "Semua OPD (Pemilik Aplikasi)"
+    ],
+    "tim": "Tim Integrasi Sistem & API"
+   },
+   "catatan_grup": null,
+   "nilai_saat_ini": 0,
+   "target_indikator": 2.5,
+   "level": [
+    {
+     "level": 1,
+     "kebutuhan": [
+      {
+       "no": 1,
+       "bukti": "Matriks integrasi aplikasi (excel/tabel) yang mencantumkan aplikasi apa saja yang sudah/akan dihubungkan",
+       "kondisi": null,
+       "modul_item": null,
+       "modul_match": 0.44,
+       "status_indikasi": null,
+       "status_match": 0.0,
+       "status_via": null,
+       "bukti_terkait": []
+      }
+     ]
+    },
+    {
+     "level": 2,
+     "kebutuhan": [
+      {
+       "no": 1,
+       "bukti": "Laporan pelaksanaan integrasi pada sebagian layanan yang mencakup dokumentasi rapat integrasi dan bukti pertukaran data antar sistem",
+       "kondisi": null,
+       "modul_item": "Laporan pelaksanaan integrasi aplikasi pada sebagian layanan yang berisikan uraian pelaksanaan dan matriks pemantauan Integrasi Aplikasi",
+       "modul_match": 0.64,
+       "status_indikasi": "belum",
+       "status_match": 1.0,
+       "status_via": "modul",
+       "bukti_terkait": [
+        {
+         "id": "GT.I16_L2_2",
+         "nama": "Laporan pelaksanaan integrasi aplikasi pada sebagian layanan yang berisikan uraian pelaksanaan dan matriks pemantauan Integrasi Aplikasi.",
+         "status": "belum"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "panduan_bab6": {
+    "target": "nilai 2,5 (Baik)",
+    "dokumen": [
+     {
+      "dokumen": "Dokumentasi integrasi aplikasi via API/SPLe",
+      "format": "PDF/Screenshot",
+      "pic": null,
+      "cara": "SIMPEG, SIMKEU, SIPD, dll. yang sudah terintegrasi"
+     },
+     {
+      "dokumen": "Daftar aplikasi yang sudah terintegrasi",
+      "format": "Excel",
+      "pic": null,
+      "cara": "Buat matriks integrasi"
+     },
+     {
+      "dokumen": "Bukti koneksi ke platform nasional (SATU SEHAT, NIK, dll.)",
+      "format": "Screenshot",
+      "pic": null,
+      "cara": "Aplikasi yang menggunakan autentikasi nasional"
+     }
+    ]
+   }
+  },
+  {
+   "indikator": "I17",
+   "nama": "Tingkat Kematangan Portal Layanan Digital Pemerintah",
+   "judul_sumber": "Portal Layanan Digital Pemerintah",
+   "aspek": "Keterpaduan",
+   "aspek_singkat": "Keterpaduan",
+   "bobot": 4,
+   "pic": {
+    "lead": "Bag. Organisasi",
+    "support": [
+     "Diskominfo",
+     "Semua OPD (Penyedia Layanan)"
+    ],
+    "tim": "Tim Portal & Layanan Digital"
+   },
+   "catatan_grup": null,
+   "nilai_saat_ini": 1,
+   "target_indikator": 2.5,
+   "level": [
+    {
+     "level": 1,
+     "kebutuhan": [
+      {
+       "no": 1,
+       "bukti": "Alamat URL (link) dan tampilan antarmuka portal layanan publik resmi Kabupaten Aceh Tengah",
+       "kondisi": null,
+       "modul_item": null,
+       "modul_match": 0.4,
+       "status_indikasi": null,
+       "status_match": 0.0,
+       "status_via": null,
+       "bukti_terkait": []
+      }
+     ]
+    },
+    {
+     "level": 2,
+     "kebutuhan": [
+      {
+       "no": 1,
+       "bukti": "Dokumen rencana pengembangan portal yang berbasis siklus hidup pengguna (life cycle), misal: menu khusus \"Layanan Pernikahan\" atau \"Layanan Kelahiran\"",
+       "kondisi": null,
+       "modul_item": "Portal Layanan Digital Pemerintah pada Instansi Pemerintah pada sebagian Layanan Digital Pemerintah berbasis siklus hidup",
+       "modul_match": 0.56,
+       "status_indikasi": "lengkap",
+       "status_match": 1.0,
+       "status_via": "modul",
+       "bukti_terkait": [
+        {
+         "id": "GT.I17_L2_2",
+         "nama": "Portal Layanan Digital Pemerintah pada Instansi Pemerintah pada sebagian Layanan Digital Pemerintah berbasis siklus hidup.",
+         "status": "lengkap"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "panduan_bab6": {
+    "target": "nilai 2,5 (Baik)",
+    "dokumen": [
+     {
+      "dokumen": "URL Portal Pelayanan Publik resmi",
+      "format": "Screenshot + URL",
+      "pic": null,
+      "cara": "Website resmi kabupaten + SP4N LAPOR + portal layanan"
+     },
+     {
+      "dokumen": "Jumlah layanan yang terintegrasi di portal",
+      "format": "Excel",
+      "pic": null,
+      "cara": "Inventaris layanan di portal"
+     },
+     {
+      "dokumen": "Bukti koneksi ke Portal Nasional (JDIH, SP4N LAPOR)",
+      "format": "Screenshot",
+      "pic": null,
+      "cara": "Pastikan JDIH dan SP4N LAPOR aktif"
+     },
+     {
+      "dokumen": "Statistik penggunaan portal (jumlah pengunjung/transaksi)",
+      "format": "PDF/Screenshot",
+      "pic": null,
+      "cara": "Dari Google Analytics atau sistem log"
+     }
+    ]
+   }
+  },
+  {
+   "indikator": "I19",
+   "nama": "Tingkat Kematangan Fasilitas Dukungan Pengguna Layanan Digital Pemerintah",
+   "judul_sumber": "Fasilitas Dukungan Pengguna",
+   "aspek": "Kepuasan Pengguna Layanan Digital Pemerintah",
+   "aspek_singkat": "Kepuasan",
+   "bobot": 10,
+   "pic": {
+    "lead": "DPMPTSP (Koordinator Pokja Kepuasan – Fasilitas Dukungan Pengguna)",
+    "support": [
+     "Diskominfo",
+     "Semua OPD (Penyedia Layanan)"
+    ],
+    "tim": "Tim Dukungan Pengguna & Helpdesk"
+   },
+   "catatan_grup": null,
+   "nilai_saat_ini": 0,
+   "target_indikator": 2.5,
+   "level": [
+    {
+     "level": 1,
+     "kebutuhan": [
+      {
+       "no": 1,
+       "bukti": "Dokumen standar Service Level Agreement (SLA) awal yang ditetapkan oleh Diskominfo untuk layanan digital daerah",
+       "kondisi": null,
+       "modul_item": null,
+       "modul_match": 0.4,
+       "status_indikasi": "lengkap",
+       "status_match": 0.86,
+       "status_via": "langsung",
+       "bukti_terkait": [
+        {
+         "id": "GT.I19_L1_1",
+         "nama": "Dokumen Service Level Agreement (SLA) Layanan Digital.",
+         "status": "lengkap"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "level": 2,
+     "kebutuhan": [
+      {
+       "no": 1,
+       "bukti": "Screenshot sistem ticketing pengaduan atau fitur tracking kendala layanan yang dapat dipantau oleh pengguna",
+       "kondisi": null,
+       "modul_item": null,
+       "modul_match": 0.4,
+       "status_indikasi": null,
+       "status_match": 0.0,
+       "status_via": null,
+       "bukti_terkait": []
+      }
+     ]
+    }
+   ],
+   "panduan_bab6": {
+    "target": "nilai 2,5 (Baik)",
+    "dokumen": [
+     {
+      "dokumen": "Dokumentasi helpdesk/contact center layanan digital",
+      "format": "Screenshot + URL",
+      "pic": null,
+      "cara": "SP4N LAPOR, WhatsApp resmi, telepon pengaduan"
+     },
+     {
+      "dokumen": "SOP Layanan dengan SLA tertulis",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Terbit SLA untuk tiap layanan digital utama"
+     },
+     {
+      "dokumen": "Sistem pemantauan SLA (dashboard/log)",
+      "format": "Screenshot",
+      "pic": null,
+      "cara": "Tool pemantauan: uptime robot, Google Looker, dll."
+     },
+     {
+      "dokumen": "Laporan pemenuhan SLA",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Buat laporan bulanan/triwulanan"
+     },
+     {
+      "dokumen": "Bukti integrasi helpdesk ke sistem nasional",
+      "format": "Screenshot",
+      "pic": null,
+      "cara": "SP4N LAPOR, SAPA WARGA, atau sistem pusat"
+     }
+    ]
+   }
+  },
+  {
+   "indikator": "I20",
+   "nama": "Tingkat Kematangan Pengelolaan Kepuasan Pengguna Layanan Digital Pemerintah",
+   "judul_sumber": "Kepuasan Pengguna",
+   "aspek": "Kepuasan Pengguna Layanan Digital Pemerintah",
+   "aspek_singkat": "Kepuasan",
+   "bobot": 15,
+   "pic": {
+    "lead": "DPMPTSP (Koordinator Pokja Kepuasan – Pengelolaan Kepuasan Pengguna)",
+    "support": [
+     "Diskominfo",
+     "Bag. Organisasi",
+     "seluruh PD penyelenggara layanan"
+    ],
+    "tim": "Tim Kepuasan Pengguna & SKM"
+   },
+   "catatan_grup": null,
+   "nilai_saat_ini": 0,
+   "target_indikator": 3.0,
+   "level": [
+    {
+     "level": 1,
+     "kebutuhan": [
+      {
+       "no": 1,
+       "bukti": "Link website atau aplikasi daerah yang sudah memasang Survei Kepuasan Masyarakat (SKM) Online sesuai pedoman",
+       "kondisi": null,
+       "modul_item": null,
+       "modul_match": 0.27,
+       "status_indikasi": null,
+       "status_match": 0.0,
+       "status_via": null,
+       "bukti_terkait": []
+      }
+     ]
+    },
+    {
+     "level": 2,
+     "kebutuhan": [
+      {
+       "no": 1,
+       "bukti": "Adanya widget umpan balik sederhana (pop-up rating/bintang) di layanan digital",
+       "kondisi": null,
+       "modul_item": null,
+       "modul_match": 0.29,
+       "status_indikasi": null,
+       "status_match": 0.0,
+       "status_via": null,
+       "bukti_terkait": []
+      },
+      {
+       "no": 2,
+       "bukti": "Laporan tindak lanjut atas masukan pengguna (misal: notulensi rapat perbaikan fitur aplikasi berdasarkan keluhan warga)",
+       "kondisi": null,
+       "modul_item": null,
+       "modul_match": 0.31,
+       "status_indikasi": null,
+       "status_match": 0.0,
+       "status_via": null,
+       "bukti_terkait": []
+      }
+     ]
+    }
+   ],
+   "panduan_bab6": {
+    "target": "nilai 3,0 (Baik) — ini indikator TERPENTING",
+    "dokumen": [
+     {
+      "dokumen": "Laporan SKM (Survei Kepuasan Masyarakat) Online",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Gunakan aplikasi SKM Online Kemenpan atau survei daring resmi"
+     },
+     {
+      "dokumen": "Screenshot widget/tombol feedback di layanan digital",
+      "format": "Screenshot",
+      "pic": null,
+      "cara": "Tambahkan tombol rating di semua website layanan"
+     },
+     {
+      "dokumen": "Dashboard publik hasil survei kepuasan",
+      "format": "Screenshot + URL",
+      "pic": null,
+      "cara": "Buat dashboard sederhana di website; bisa pakai Google Data Studio"
+     },
+     {
+      "dokumen": "Notulen/laporan tindak lanjut masukan pengguna",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Dokumentasikan respons atas pengaduan/saran"
+     },
+     {
+      "dokumen": "Laporan mystery shopper layanan digital",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Tunjuk tim internal untuk menguji layanan secara anonim"
+     },
+     {
+      "dokumen": "Bukti pelibatan CSO/komunitas",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Notulen forum konsultasi publik"
+     },
+     {
+      "dokumen": "Bukti survei menyasar kelompok rentan",
+      "format": "PDF",
+      "pic": null,
+      "cara": "Laporan survei yang mencakup penyandang disabilitas, lansia, perempuan"
+     },
+     {
+      "dokumen": "Dokumentasi pemanfaatan AI/analisis sentimen",
+      "format": "Screenshot",
+      "pic": null,
+      "cara": "Opsional untuk nilai 3,5; gunakan analisis teks pengaduan"
+     },
+     {
+      "dokumen": "Kegiatan",
+      "format": "PIC",
+      "pic": null,
+      "cara": "Output"
+     },
+     {
+      "dokumen": "Terbitkan SK Tim Asesor Internal baru sesuai PermenPANRB 8/2026",
+      "format": "Sekda",
+      "pic": null,
+      "cara": "SK ditandatangani"
+     },
+     {
+      "dokumen": "Susun Arsitektur Pemdi Kabupaten Aceh Tengah",
+      "format": "Diskominfo + Bappeda",
+      "pic": null,
+      "cara": "Dokumen Arsitektur"
+     },
+     {
+      "dokumen": "Susun Rencana Aksi Pemdi",
+      "format": "Diskominfo + Bappeda",
+      "pic": null,
+      "cara": "Dokumen RA Pemdi"
+     },
+     {
+      "dokumen": "Inventarisasi seluruh aplikasi dan infrastruktur",
+      "format": "Diskominfo",
+      "pic": null,
+      "cara": "Daftar inventaris"
+     },
+     {
+      "dokumen": "Terbitkan SK Walidata",
+      "format": "Sekda/Bupati",
+      "pic": null,
+      "cara": "SK Walidata"
+     },
+     {
+      "dokumen": "Terbitkan SK PPDP (Pelindung Data Pribadi)",
+      "format": "Kepala OPD",
+      "pic": null,
+      "cara": "SK PPDP"
+     },
+     {
+      "dokumen": "Sosialisasi PermenPANRB 8/2026 ke seluruh OPD",
+      "format": "Diskominfo",
+      "pic": null,
+      "cara": "Laporan sosialisasi"
+     },
+     {
+      "dokumen": "Kegiatan",
+      "format": "PIC",
+      "pic": null,
+      "cara": "Output"
+     },
+     {
+      "dokumen": "Susun SOP Manajemen Risiko TIK",
+      "format": "Diskominfo + Inspektorat",
+      "pic": null,
+      "cara": "Dokumen SOP"
+     },
+     {
+      "dokumen": "Lakukan audit keamanan internal (1 layanan)",
+      "format": "Tim Audit",
+      "pic": null,
+      "cara": "Laporan Audit"
+     },
+     {
+      "dokumen": "Aktifkan CSIRT/TTIS kabupaten",
+      "format": "Diskominfo",
+      "pic": null,
+      "cara": "SK CSIRT + bukti aktivitas"
+     },
+     {
+      "dokumen": "Pasang widget feedback di semua portal layanan",
+      "format": "Diskominfo",
+      "pic": null,
+      "cara": "Screenshot semua portal"
+     },
+     {
+      "dokumen": "Mulai pelaksanaan SKM Online",
+      "format": "Semua OPD",
+      "pic": null,
+      "cara": "Laporan SKM"
+     },
+     {
+      "dokumen": "Ikut EPSS dari BPS",
+      "format": "Diskominfo + BPS",
+      "pic": null,
+      "cara": "Laporan EPSS"
+     },
+     {
+      "dokumen": "Daftar/perbarui di portal Satu Data Indonesia",
+      "format": "Diskominfo + Bappeda",
+      "pic": null,
+      "cara": "Bukti keaktifan SDI"
+     },
+     {
+      "dokumen": "Kegiatan",
+      "format": "PIC",
+      "pic": null,
+      "cara": "Output"
+     },
+     {
+      "dokumen": "Kompilasi semua bukti dukung per indikator",
+      "format": "Pelaksana Entri Data",
+      "pic": null,
+      "cara": "Folder bukti terorganisir"
+     },
+     {
+      "dokumen": "Simulasi Penilaian Mandiri internal",
+      "format": "Tim Asesor",
+      "pic": null,
+      "cara": "Nilai simulasi + catatan"
+     },
+     {
+      "dokumen": "Perbaikan berdasarkan simulasi",
+      "format": "Semua PIC",
+      "pic": null,
+      "cara": "Dokumen diperbaiki"
+     },
+     {
+      "dokumen": "Pelatihan menghadapi Penilaian Interviu",
+      "format": "Semua Tim Asesor",
+      "pic": null,
+      "cara": "Simulasi tanya jawab"
+     },
+     {
+      "dokumen": "Publikasikan dashboard kepuasan masyarakat",
+      "format": "Diskominfo",
+      "pic": null,
+      "cara": "URL dashboard live"
+     },
+     {
+      "dokumen": "Kegiatan",
+      "format": "PIC",
+      "pic": null,
+      "cara": "Output"
+     },
+     {
+      "dokumen": "Input data ke aplikasi evaluasi KemenPANRB",
+      "format": "Pelaksana Entri Data",
+      "pic": null,
+      "cara": "Submit mandiri"
+     },
+     {
+      "dokumen": "Penilaian Dokumen oleh Tim Asesor Eksternal",
+      "format": "Eksternal",
+      "pic": null,
+      "cara": "Nilai dokumen"
+     },
+     {
+      "dokumen": "Penilaian Interviu",
+      "format": "Semua Tim",
+      "pic": null,
+      "cara": "Nilai interviu"
+     },
+     {
+      "dokumen": "Tindak lanjut jika ada permintaan perbaikan",
+      "format": "Semua PIC",
+      "pic": null,
+      "cara": "Dokumen tambahan"
+     },
+     {
+      "dokumen": "Terima laporan hasil Indeks Pemdi",
+      "format": "Sekda",
+      "pic": null,
+      "cara": "Laporan resmi"
+     },
+     {
+      "dokumen": "Aspek",
+      "format": "Estimasi Baseline (dari SPBE 2025)",
+      "pic": null,
+      "cara": "Target Fase 4"
+     },
+     {
+      "dokumen": "Tata Kelola & Manajemen",
+      "format": "1,5",
+      "pic": null,
+      "cara": "2,0"
+     },
+     {
+      "dokumen": "Penyelenggara",
+      "format": "2,5",
+      "pic": null,
+      "cara": "2,5"
+     },
+     {
+      "dokumen": "Data",
+      "format": "1,5",
+      "pic": null,
+      "cara": "2,0"
+     },
+     {
+      "dokumen": "Keamanan Pemdi",
+      "format": "1,0",
+      "pic": null,
+      "cara": "2,0"
+     },
+     {
+      "dokumen": "Teknologi Pemdi",
+      "format": "1,0",
+      "pic": null,
+      "cara": "2,0"
+     },
+     {
+      "dokumen": "Keterpaduan Layanan",
+      "format": "2,5",
+      "pic": null,
+      "cara": "2,5"
+     },
+     {
+      "dokumen": "Kepuasan Pengguna",
+      "format": "3,5",
+      "pic": null,
+      "cara": "3,0"
+     }
+    ]
+   }
+  }
+ ]
+}

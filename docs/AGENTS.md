@@ -10,6 +10,7 @@ Dokumentasi proyek Portal Digital Aceh Tengah. Berisi riset teknis, Panduan stra
 | `docs/riset-data-aceh-tengah.md` | 10,5 KB / 255 lines | **Data spesifik Aceh Tengah** — visi-misi HAMAS, 8 misi, RPJMD Qanun No. 4/2025, struktur OPD (urusan konkuren 24+8), SPBE baseline 2023-2025, program transformasi digital (Satu Data, MPP, SIAT) |
 | `docs/Panduan_Peningkatan_Indeks_Pemdi_Aceh_Tengah.md` | 37,8 KB / 848 lines | **Panduan strategis dari Diskominfo** — ringkasan SPBE 2025 Aceh Tengah (2,59), perubahan kerangka SPBE→Pemdi, struktur 7 aspek 20 indikator + bobot, analisis gap & prioritas 🔴🟡🟢, role per OPD, panduan teknis bukti dukung per indikator, roadmap 4 fase (12 bulan), target realistis 2,50-2,70, template SK & checklist |
 | `docs/permenpanrb 8 2026.pdf` | 1,0 MB | **PERATURAN RESMI** — PermenPANRB No. 8 Tahun 2026 tentang Evaluasi Kinerja Pemerintah Digital. Diteken Menteri Rini Widyantini 1 Juni 2026, diundangkan 5 Juni 2026. Menggantikan Permenpan 59/2020. Berisi: 12 pasal + Lampiran Pedoman (46 halaman) — 7 aspek, 20 indikator lengkap dengan kriteria tiap level kematangan (1-5) + rumus perhitungan + proses evaluasi (Mandiri→Dokumen→Interviu→Visitasi) |
+| `docs/analisis-bukti-dukung-l1-l2.md` | ~9 KB | **MATRIKS KEBUTUHAN BUKTI DUKUNG L1-L2 (19 Agu 2026)** — dokumen sumber dari Diskominfo (NotebookLM, ekstraksi 20 PPTX Modul Indikator Pemdi). 16 indikator × Level 1-2 = 48 butir kebutuhan bukti + catatan implementasi SIAP Digital (SIA v3). Sumber kanonik `data/kebutuhan-bukti-dukung.json` (dibangun `scripts/build-kebutuhan-bukti.py`), ditampilkan di `/modul-indikator#matriks-kebutuhan`. I5/I6/I7/I18 (eksternal) tidak dibahas. |
 | `docs/Indeks SPBE Aceh Tengah 2025.pdf` | 1,6 MB | **LAPORAN RESMI** — Hasil Pemantauan SPBE 2025 Kab. Aceh Tengah dari KemenPANRB. Indeks 2,59 (Cukup), data 47 indikator lintas 4 domain |
 
 ## docs.old/ — Legacy Documentation
@@ -37,6 +38,7 @@ Dua file riset utama ada di `docs/` (sudah dipindahkan dari root untuk konsisten
 ## File-File di docs/
 
 - `Panduan_Peningkatan_Indeks_Pemdi_Aceh_Tengah.md` — panduan strategis 848 lines
+- `analisis-bukti-dukung-l1-l2.md` — matriks kebutuhan bukti dukung L1-L2 (sumber NotebookLM, 19 Agu 2026)
 - `permenpanrb 8 2026.pdf` — regulasi baru 2026 (1.0 MB)
 - `Indeks SPBE Aceh Tengah 2025.pdf` — laporan resmi (1.6 MB)
 - `AGENTS.md` — **file ini**

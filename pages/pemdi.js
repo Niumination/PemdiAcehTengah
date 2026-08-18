@@ -10,6 +10,7 @@ import pemdiData from '@/data/pemdi.json';
 import modulData from '@/data/modul-indikator.json';
 import dokumenKunci from '@/data/dokumen-kunci.json';
 import buktiMapping from '@/data/bukti-dokumen-mapping.json';
+import kebutuhanData from '@/data/kebutuhan-bukti-dukung.json';
 import {
   LEVEL_LABEL,
   LEVEL_NAMA_RESMI,
@@ -461,6 +462,13 @@ export default function PemdiPage() {
           <span className="stat-badge" style={{ background: 'var(--primary-bg, #e3edff)', color: 'var(--primary)' }}>
             🎯 Gap: {statGlobal.gap} item
           </span>
+          <Link
+            href="/modul-indikator#matriks-kebutuhan"
+            className="stat-badge"
+            style={{ background: 'var(--ok-bg)', color: 'var(--ok)', textDecoration: 'none' }}
+          >
+            📌 Matriks kebutuhan L1–L2: {kebutuhanData.cakupan.total_kebutuhan} butir · {kebutuhanData.status_indikasi.lengkap} indikasi lengkap →
+          </Link>
         </div>
 
         {/* Accordion kiri-kanan */}
