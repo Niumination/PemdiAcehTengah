@@ -1,20 +1,25 @@
 import { useState } from 'react';
 import pemdiData from '@/data/pemdi.json';
+import { predikatPemdi } from '@/lib/pemdiNilai';
 
 const aspekIcons = ['🏛️', '👥', '📊', '🔒', '💻', '🔗', '😊'];
 const BASE = pemdiData.aspek.map(a => a.nilai);
 const WEIGHTS = pemdiData.aspek.map(a => a.bobot);
 const TARGET = pemdiData.target_indeks;
 
+// Indeks Pemdi = Σ(wAspek × Nilai Aspek) — rumus resmi PermenPANRB 8/2026
 function calcIndeks(vals) {
   const wSum = WEIGHTS.reduce((s, w) => s + w, 0);
   return Math.round(vals.reduce((s, v, i) => s + v * (WEIGHTS[i] / wSum), 0) * 100) / 100;
 }
 
+// Predikat sesuai Tabel 4 PermenPANRB 8/2026 (via lib/pemdiNilai.js)
 function predikat(n) {
-  if (n >= 3) return { label: 'Baik', cls: 'st-ok' };
-  if (n >= 2) return { label: 'Cukup', cls: 'st-warn' };
-  return { label: 'Perlu Perbaikan', cls: 'st-bad' };
+  const p = predikatPemdi(n);
+  if (!p) return { label: '—', cls: 'st-bad' };
+  if (n >= 2.5) return { label: p.label, cls: 'st-ok' };
+  if (n >= 1.5) return { label: p.label, cls: 'st-warn' };
+  return { label: p.label, cls: 'st-bad' };
 }
 
 export default function PemdiCalculator() {

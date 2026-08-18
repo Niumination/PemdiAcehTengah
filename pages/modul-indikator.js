@@ -9,6 +9,7 @@ import moduls from '@/data/modul-indikator.json';
 import pemdiData from '@/data/pemdi.json';
 import dokumenKunci from '@/data/dokumen-kunci.json';
 import buktiMapping from '@/data/bukti-dokumen-mapping.json';
+import { LEVEL_LABEL, LEVEL_NAMA_RESMI } from '@/lib/pemdiNilai';
 
 // ── Helpers ──
 function cariIndikator(id) {
@@ -38,7 +39,7 @@ const STATUS_META = {
   lengkap: { icon: '✅', label: 'Lengkap',    color: 'var(--ok)', bg: 'var(--ok-bg)' },
 };
 
-const LEVEL_LABEL = { 0: 'Baseline', 1: 'Initiate', 2: 'Emerging', 3: 'Established', 4: 'Leading', 5: 'Transformative' };
+// LEVEL_LABEL & LEVEL_NAMA_RESMI di-import dari lib/pemdiNilai.js (nama level resmi PermenPANRB 8/2026)
 const LEVEL_WARNA = { 0: 'var(--muted)', 1: '#ef4444', 2: '#f59e0b', 3: '#3b82f6', 4: '#10b981', 5: '#8b5cf6' };
 
 function hitungStatus(ind) {
@@ -540,8 +541,8 @@ export default function ModulIndikatorPage() {
                                     color: '#fff', fontWeight: 700, fontSize: '0.72rem',
                                     borderRadius: '6px', padding: '0.15rem 0.45rem', lineHeight: 1.5,
                                   }}>L{lk.level}</span>
-                                  <span style={{ fontSize: '0.78rem', fontWeight: 600, color: 'var(--text)' }}>
-                                    {LEVEL_LABEL[lk.level] || `Level ${lk.level}`}
+                                  <span style={{ fontSize: '0.78rem', fontWeight: 600, color: 'var(--text)' }} title={LEVEL_NAMA_RESMI[lk.level] || ''}>
+                                    L{lk.level} · {LEVEL_LABEL[lk.level] || `Level ${lk.level}`}
                                   </span>
                                 </div>
                                 <div style={{ padding: '0.75rem', fontSize: '0.8rem', lineHeight: 1.6, color: 'var(--text)', overflowWrap: 'break-word' }}>

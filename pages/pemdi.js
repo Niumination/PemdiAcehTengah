@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect, useCallback } from 'react';
+import { useState, useMemo, useEffect, useCallback, Fragment } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import DetailModal from '@/components/DetailModal';
@@ -10,6 +10,14 @@ import pemdiData from '@/data/pemdi.json';
 import modulData from '@/data/modul-indikator.json';
 import dokumenKunci from '@/data/dokumen-kunci.json';
 import buktiMapping from '@/data/bukti-dokumen-mapping.json';
+import {
+  LEVEL_LABEL,
+  LEVEL_NAMA_RESMI,
+  indeksPemdi,
+  nilaiIndikator,
+  predikatPemdi,
+  statistikBukti,
+} from '@/lib/pemdiNilai';
 
 // ── Konstanta visual (sama dengan halaman modul-indikator agar konsisten) ──
 const STATUS_META = {
@@ -17,20 +25,7 @@ const STATUS_META = {
   proses:  { icon: '🔄', label: 'Proses',    color: 'var(--warn)', bg: 'var(--warn-bg)' },
   lengkap: { icon: '✅', label: 'Lengkap',    color: 'var(--ok)', bg: 'var(--ok-bg)' },
 };
-const LEVEL_LABEL = { 0: 'Baseline', 1: 'Initiate', 2: 'Emerging', 3: 'Established', 4: 'Leading', 5: 'Transformative' };
 const LEVEL_WARNA = { 0: 'var(--muted)', 1: '#ef4444', 2: '#f59e0b', 3: '#3b82f6', 4: '#10b981', 5: '#8b5cf6' };
-
-function hitungIndeks(aspek) {
-  const totalBobot = aspek.reduce((s, a) => s + a.bobot, 0);
-  const tertimbang = aspek.reduce((s, a) => s + a.nilai * (a.bobot / totalBobot), 0);
-  return Math.round(tertimbang * 100) / 100;
-}
-
-function getPredikat(nilai) {
-  if (nilai >= 3.0) return { label: 'Baik', warna: 'var(--ok)', bg: 'var(--ok-bg)' };
-  if (nilai >= 2.0) return { label: 'Cukup', warna: 'var(--gold)', bg: 'var(--gold-light)' };
-  return { label: 'Perlu Perbaikan', warna: 'var(--bad)', bg: 'var(--bad-bg)' };
-}
 
 // ── Helpers checklist ──
 function hitungStatusInd(ind) {
@@ -137,9 +132,12 @@ function CountStat({ value, decimals = 0, color, style }) {
 }
 
 export default function PemdiPage() {
-  const { aspek, target_indeks, target_predikat, baseline_spbe } = pemdiData;
-  const indeks = hitungIndeks(aspek);
-  const predikat = getPredikat(indeks);
+  const { aspek, target_indeks, target_predikat, baseline_spbe, perhitungan, proyeksi } = pemdiData;
+  // ── Perhitungan capaian sesuai PermenPANRB 8/2026 (lib/pemdiNilai.js) ──
+  const hasil = useMemo(() => indeksPemdi(aspek, 'aktual'), [aspek]);
+  const hasilTarget = useMemo(() => indeksPemdi(aspek, 'target'), [aspek]);
+  const indeks = hasil.indeks;
+  const predikat = predikatPemdi(indeks);
   const gap = Math.max(0, target_indeks - indeks);
   // Jumlah bukti yang TAMPIL (indikator _l1_lengkap !== false)
   const totalTampil = aspek.reduce((s, a) => s + a.indikator.reduce((s2, i) =>
@@ -210,18 +208,7 @@ export default function PemdiPage() {
   };
 
   // Statistik global checklist
-  const statGlobal = useMemo(() => {
-    let total = 0, lengkap = 0, proses = 0, belum = 0;
-    for (const a of aspek) {
-      for (const ind of a.indikator) {
-        const st = hitungStatusInd(ind);
-        total += st.count; lengkap += st.lengkap; proses += st.proses; belum += st.belum;
-      }
-    }
-    // Gap = item yang belum lengkap (target tercapai jika semua item lengkap)
-    const gap = Math.max(0, total - lengkap);
-    return { total, lengkap, proses, belum, gap };
-  }, [aspek]);
+  const statGlobal = useMemo(() => statistikBukti(aspek), [aspek]);
 
   return (
     <>
@@ -267,13 +254,15 @@ export default function PemdiPage() {
             <span className="badge badge-yellow">Level Kematangan Cukup</span>
           </div>
           <div className="glow-card" style={{ padding: '20px', textAlign: 'center', '--i': 1, borderColor: 'var(--primary)' }}>
-            <div style={{ fontSize: '0.78rem', color: 'var(--primary)', textTransform: 'uppercase', fontWeight: 800, letterSpacing: '0.05em' }}>Indeks Pemdi (dari Bukti Dukung)</div>
+            <div style={{ fontSize: '0.78rem', color: 'var(--primary)', textTransform: 'uppercase', fontWeight: 800, letterSpacing: '0.05em' }}>Indeks Pemdi — Capaian Terverifikasi</div>
             <div style={{ fontSize: '2.2rem', fontWeight: 800, margin: '6px 0' }}>
               <CountStat value={indeks} decimals={2} color="var(--primary)" />
             </div>
-            <span className={`badge ${predikat.bg}`} style={{ color: predikat.warna }}>Predikat {predikat.label}</span>
+            <span className="badge badge-blue" title={predikat?.alias} style={{ color: 'var(--primary)' }}>
+              Predikat: {predikat?.label}
+            </span>
             <div style={{ fontSize: '0.68rem', color: 'var(--muted)', marginTop: '6px' }}>
-              Dihitung dari {statGlobal.lengkap} bukti lengkap · {statGlobal.total} item · target {pemdiData.target_item_bukti}
+              Rumus resmi PermenPANRB 8/2026 · dari {statGlobal.lengkap} bukti lengkap · {statGlobal.total} item
             </div>
           </div>
           <div className="glow-card" style={{ padding: '20px', textAlign: 'center', '--i': 2 }}>
@@ -283,6 +272,120 @@ export default function PemdiPage() {
             </div>
             <span className="badge badge-green">Gap Analysis: {formatDesimal(gap)} Poin</span>
           </div>
+        </div>
+      </section>
+
+      {/* ════════ PANEL PERHITUNGAN CAPAIAN NILAI — rumus resmi PermenPANRB 8/2026 ════════ */}
+      <section data-reveal style={{ marginBottom: '32px' }}>
+        <div className="sec-head">
+          <div>
+            <div className="eyebrow">Tolak Ukur Resmi</div>
+            <h2>🧮 Perhitungan Capaian Indeks Pemdi</h2>
+            <p>
+              Dihitung dengan rumus resmi pada Lampiran PermenPANRB No. 8 Tahun 2026 (Pedoman Evaluasi
+              Kinerja Pemdi — Bagian B &ldquo;Metode Penghitungan Indeks Pemdi&rdquo;, hlm. -37- s.d. -39-).
+              Nilai tiap indikator = tingkat kematangan 1–5 berbasis kelengkapan bukti dukung.
+            </p>
+          </div>
+        </div>
+
+        <div
+          className="glow-card"
+          style={{ padding: '22px', overflow: 'hidden' }}
+        >
+          {/* Rumus */}
+          <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', marginBottom: '18px' }}>
+            {[
+              { label: 'Indeks Aspek', rumus: 'Indeks Aspek_i = Σ (wIj × NIj) ÷ wAi' },
+              { label: 'Indeks Pemdi', rumus: 'Indeks Pemdi = Σ (wAspek_i × Indeks Aspek_i)' },
+            ].map(r => (
+              <div key={r.label} style={{ flex: '1 1 260px', padding: '10px 14px', background: 'var(--surface-2)', borderRadius: '10px', border: '1px solid var(--line)' }}>
+                <div style={{ fontSize: '0.68rem', fontWeight: 800, color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{r.label}</div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', marginTop: '4px' }}>{r.rumus}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Tabel perhitungan */}
+          <div style={{ overflowX: 'auto' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.78rem', minWidth: '640px' }}>
+              <thead>
+                <tr style={{ background: 'var(--surface-2)' }}>
+                  <th style={{ padding: '8px 10px', textAlign: 'left', borderBottom: '2px solid var(--line)' }}>Aspek / Indikator</th>
+                  <th style={{ padding: '8px 10px', textAlign: 'center', borderBottom: '2px solid var(--line)', width: 70 }}>Bobot</th>
+                  <th style={{ padding: '8px 10px', textAlign: 'center', borderBottom: '2px solid var(--line)', width: 90 }}>Nilai (1–5)</th>
+                  <th style={{ padding: '8px 10px', textAlign: 'center', borderBottom: '2px solid var(--line)', width: 90 }}>w × N</th>
+                </tr>
+              </thead>
+              <tbody>
+                {hasil.rincian.map(a => (
+                  <Fragment key={a.id}>
+                    {a.rincianIndikator.map((r, ri) => {
+                      const ind = aspek.find(x => x.id === a.id)?.indikator.find(i => i.id === r.id);
+                      const menunggu = nilaiIndikator(ind || {}).menunggu;
+                      return (
+                        <tr key={r.id} style={{ borderBottom: '1px solid var(--line)' }}>
+                          <td style={{ padding: '6px 10px' }}>
+                            <span className="badge badge-blue" style={{ marginRight: 6 }}>{r.id}</span>
+                            {r.nama}
+                            {menunggu && (
+                              <em style={{ marginLeft: 6, fontSize: '0.66rem', color: 'var(--warn)' }} title="Nilai minimum 1 dipakai sementara selama skor sistem nasional (SDI/SJIG/EPSS) belum tersedia">
+                                ⏳ menunggu nilai eksternal
+                              </em>
+                            )}
+                          </td>
+                          <td style={{ padding: '6px 10px', textAlign: 'center', fontFamily: 'var(--font-mono)' }}>{r.bobot}%</td>
+                          <td style={{ padding: '6px 10px', textAlign: 'center', fontFamily: 'var(--font-mono)', fontWeight: 700, color: LEVEL_WARNA[r.nilai] || 'var(--muted)' }} title={LEVEL_NAMA_RESMI[r.nilai] || ''}>
+                            {r.nilai === 0 ? '0 *' : formatDesimal(r.nilai, r.nilai % 1 ? 1 : 0)}
+                          </td>
+                          <td style={{ padding: '6px 10px', textAlign: 'center', fontFamily: 'var(--font-mono)', color: 'var(--muted)' }}>{formatDesimal(r.hasil, 2)}</td>
+                        </tr>
+                      );
+                    })}
+                    <tr style={{ background: 'var(--surface-2)', borderBottom: '2px solid var(--line)' }}>
+                      <td style={{ padding: '8px 10px', fontWeight: 800 }}>
+                        ➜ Indeks Aspek {a.id} — {a.singkat} <span style={{ fontWeight: 400, color: 'var(--muted)' }}>(Σ wI×NI ÷ wA = {formatDesimal(a.rincianIndikator.reduce((s, r) => s + r.hasil, 0), 2)} ÷ {a.bobot})</span>
+                      </td>
+                      <td style={{ padding: '8px 10px', textAlign: 'center', fontFamily: 'var(--font-mono)' }}>{a.bobot}%</td>
+                      <td colSpan={2} style={{ padding: '8px 10px', textAlign: 'center', fontFamily: 'var(--font-mono)', fontWeight: 800, color: 'var(--primary)' }}>
+                        {formatDesimal(a.indeksAspek, 2)} → kontribusi {formatDesimal(a.kontribusi, 3)}
+                      </td>
+                    </tr>
+                  </Fragment>
+                ))}
+                <tr style={{ background: 'var(--primary-bg, #e3edff)' }}>
+                  <td style={{ padding: '10px', fontWeight: 800, color: 'var(--primary)' }}>INDEKS PEMDI — CAPAIAN TERVERIFIKASI</td>
+                  <td style={{ padding: '10px', textAlign: 'center', fontFamily: 'var(--font-mono)' }}>100%</td>
+                  <td colSpan={2} style={{ padding: '10px', textAlign: 'center', fontFamily: 'var(--font-mono)', fontWeight: 800, fontSize: '0.95rem', color: 'var(--primary)' }}>
+                    {formatDesimal(indeks, 2)} — Predikat: {predikat?.label}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          {/* Tolak ukur & proyeksi */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', gap: '10px', marginTop: '16px' }}>
+            {[
+              { label: 'Capaian terverifikasi saat ini', nilai: indeks, ket: `${statGlobal.lengkap}/${statGlobal.total} bukti lengkap`, warna: 'var(--primary)' },
+              { label: 'Proyeksi bila seluruh target indikator tercapai', nilai: hasilTarget.indeks, ket: 'Target indikator Panduan Bab 4.2 — dihitung rumus resmi', warna: 'var(--gold-deep, #b8860b)' },
+              { label: 'Skenario Panduan Bab 8.5 (semua fase)', nilai: proyeksi?.skenario_panduan_bab8_5?.cukup ?? 2.375, ket: 'Predikat Cukup (Membangun)', warna: 'var(--warn)' },
+              { label: 'Skenario kerja keras Kepuasan Pengguna', nilai: proyeksi?.skenario_panduan_bab8_5?.baik ?? 2.5, ket: `Target resmi ≥ ${formatDesimal(target_indeks, 2)} — Predikat Baik`, warna: 'var(--ok)' },
+            ].map(k => (
+              <div key={k.label} style={{ padding: '12px 14px', border: '1px solid var(--line)', borderRadius: '10px', background: 'var(--surface-2)' }}>
+                <div style={{ fontSize: '0.66rem', textTransform: 'uppercase', fontWeight: 800, letterSpacing: '0.05em', color: 'var(--muted)' }}>{k.label}</div>
+                <div style={{ fontSize: '1.5rem', fontWeight: 800, fontFamily: 'var(--font-mono)', color: k.warna, margin: '4px 0' }}>{formatDesimal(k.nilai, 2)}</div>
+                <div style={{ fontSize: '0.68rem', color: 'var(--muted)' }}>{k.ket}</div>
+              </div>
+            ))}
+          </div>
+
+          <p style={{ fontSize: '0.68rem', color: 'var(--muted)', marginTop: '12px', lineHeight: 1.6 }}>
+            * Nilai 0 = belum ada bukti Level 1 yang lengkap (bukan nilai evaluasi resmi — skala kuesioner dimulai dari 1).
+            Nilai indikator dihitung dari level kontinu yang seluruh bukti utamanya ber-status lengkap; indikator eksternal
+            (I5 SDI · I6 SJIG · I7 EPSS · I18) memakai nilai minimum 1 selama skor sistem nasional belum tersedia.
+            Bobot mengacu Tabel 1 PermenPANRB 8/2026. {perhitungan?.diperbarui ? `Diperbarui: ${perhitungan.diperbarui}.` : ''}
+          </p>
         </div>
       </section>
 
@@ -455,9 +558,14 @@ export default function PemdiPage() {
                       <strong style={{ fontSize: '0.98rem', color: 'var(--text)' }}>{ind.nama}</strong>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-                      <span style={{ fontWeight: 800, fontFamily: 'var(--font-mono)', fontSize: '0.9rem', color: 'var(--primary)' }}>
-                        Nilai {formatDesimal(ind.nilai, 1)} / {formatDesimal(ind.target, 1)}
+                      <span style={{ fontWeight: 800, fontFamily: 'var(--font-mono)', fontSize: '0.9rem', color: 'var(--primary)' }} title={LEVEL_NAMA_RESMI[ind.nilai] || ''}>
+                        Nilai {formatDesimal(ind.nilai, ind.nilai % 1 ? 1 : 0)} / {formatDesimal(ind.target, 1)}
                       </span>
+                      {ind.eksternal?.aktif && (
+                        <span className="stat-badge" style={{ background: 'var(--warn-bg)', color: 'var(--warn)', fontSize: '0.66rem' }} title={ind.eksternal.sistem}>
+                          ⏳ Eksternal
+                        </span>
+                      )}
                       <span className="stat-badge" style={{ background: 'var(--ok-bg)', color: 'var(--ok)', fontSize: '0.68rem' }}>✅ {st.lengkap}</span>
                       <span className="stat-badge" style={{ background: 'var(--surface-2)', color: 'var(--muted)', fontSize: '0.68rem' }}>⬜ {st.belum}</span>
                       <Link href={`/modul-indikator?modul=${ind.id.replace('I', '')}`} style={{ fontSize: '0.72rem', fontWeight: 600, color: 'var(--primary)', textDecoration: 'none', padding: '3px 10px', borderRadius: '6px', background: 'var(--primary-bg)', border: '1px solid var(--primary-line)' }}>
