@@ -49,7 +49,7 @@ export default function PemdiCalculator() {
             <span className="calc-bobot">{a.bobot}%</span>
           </div>
           <input
-            type="range" min="1" max="5" step="0.1"
+            type="range" min="0" max="5" step="0.1"
             value={vals[i]}
             onChange={e => setVal(i, parseFloat(e.target.value))}
             className="calc-slider"

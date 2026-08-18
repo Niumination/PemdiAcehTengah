@@ -748,7 +748,7 @@
     ],
     "tim": "Tim Keamanan Siber"
    },
-   "catatan_grup": null,
+   "catatan_grup": "I10, I11, I12 dikelompokkan dalam satu bagian \"Keamanan Siber & Kriptografi (IKASANDI)\"",
    "nilai_saat_ini": 0,
    "target_indikator": 2.0,
    "level": [
@@ -858,7 +858,7 @@
     ],
     "tim": "Tim Kriptografi & TTE"
    },
-   "catatan_grup": null,
+   "catatan_grup": "bagian kelompok \"Keamanan Siber & Kriptografi (IKASANDI)\"",
    "nilai_saat_ini": 0,
    "target_indikator": 1.5,
    "level": [
@@ -934,7 +934,7 @@
     ],
     "tim": "Tim CSIRT/TTIS Kabupaten"
    },
-   "catatan_grup": null,
+   "catatan_grup": "bagian kelompok \"Keamanan Siber & Kriptografi (IKASANDI)\"",
    "nilai_saat_ini": 0,
    "target_indikator": 2.0,
    "level": [
@@ -1713,222 +1713,6 @@
       "format": "Screenshot",
       "pic": null,
       "cara": "Opsional untuk nilai 3,5; gunakan analisis teks pengaduan"
-     },
-     {
-      "dokumen": "Kegiatan",
-      "format": "PIC",
-      "pic": null,
-      "cara": "Output"
-     },
-     {
-      "dokumen": "Terbitkan SK Tim Asesor Internal baru sesuai PermenPANRB 8/2026",
-      "format": "Sekda",
-      "pic": null,
-      "cara": "SK ditandatangani"
-     },
-     {
-      "dokumen": "Susun Arsitektur Pemdi Kabupaten Aceh Tengah",
-      "format": "Diskominfo + Bappeda",
-      "pic": null,
-      "cara": "Dokumen Arsitektur"
-     },
-     {
-      "dokumen": "Susun Rencana Aksi Pemdi",
-      "format": "Diskominfo + Bappeda",
-      "pic": null,
-      "cara": "Dokumen RA Pemdi"
-     },
-     {
-      "dokumen": "Inventarisasi seluruh aplikasi dan infrastruktur",
-      "format": "Diskominfo",
-      "pic": null,
-      "cara": "Daftar inventaris"
-     },
-     {
-      "dokumen": "Terbitkan SK Walidata",
-      "format": "Sekda/Bupati",
-      "pic": null,
-      "cara": "SK Walidata"
-     },
-     {
-      "dokumen": "Terbitkan SK PPDP (Pelindung Data Pribadi)",
-      "format": "Kepala OPD",
-      "pic": null,
-      "cara": "SK PPDP"
-     },
-     {
-      "dokumen": "Sosialisasi PermenPANRB 8/2026 ke seluruh OPD",
-      "format": "Diskominfo",
-      "pic": null,
-      "cara": "Laporan sosialisasi"
-     },
-     {
-      "dokumen": "Kegiatan",
-      "format": "PIC",
-      "pic": null,
-      "cara": "Output"
-     },
-     {
-      "dokumen": "Susun SOP Manajemen Risiko TIK",
-      "format": "Diskominfo + Inspektorat",
-      "pic": null,
-      "cara": "Dokumen SOP"
-     },
-     {
-      "dokumen": "Lakukan audit keamanan internal (1 layanan)",
-      "format": "Tim Audit",
-      "pic": null,
-      "cara": "Laporan Audit"
-     },
-     {
-      "dokumen": "Aktifkan CSIRT/TTIS kabupaten",
-      "format": "Diskominfo",
-      "pic": null,
-      "cara": "SK CSIRT + bukti aktivitas"
-     },
-     {
-      "dokumen": "Pasang widget feedback di semua portal layanan",
-      "format": "Diskominfo",
-      "pic": null,
-      "cara": "Screenshot semua portal"
-     },
-     {
-      "dokumen": "Mulai pelaksanaan SKM Online",
-      "format": "Semua OPD",
-      "pic": null,
-      "cara": "Laporan SKM"
-     },
-     {
-      "dokumen": "Ikut EPSS dari BPS",
-      "format": "Diskominfo + BPS",
-      "pic": null,
-      "cara": "Laporan EPSS"
-     },
-     {
-      "dokumen": "Daftar/perbarui di portal Satu Data Indonesia",
-      "format": "Diskominfo + Bappeda",
-      "pic": null,
-      "cara": "Bukti keaktifan SDI"
-     },
-     {
-      "dokumen": "Kegiatan",
-      "format": "PIC",
-      "pic": null,
-      "cara": "Output"
-     },
-     {
-      "dokumen": "Kompilasi semua bukti dukung per indikator",
-      "format": "Pelaksana Entri Data",
-      "pic": null,
-      "cara": "Folder bukti terorganisir"
-     },
-     {
-      "dokumen": "Simulasi Penilaian Mandiri internal",
-      "format": "Tim Asesor",
-      "pic": null,
-      "cara": "Nilai simulasi + catatan"
-     },
-     {
-      "dokumen": "Perbaikan berdasarkan simulasi",
-      "format": "Semua PIC",
-      "pic": null,
-      "cara": "Dokumen diperbaiki"
-     },
-     {
-      "dokumen": "Pelatihan menghadapi Penilaian Interviu",
-      "format": "Semua Tim Asesor",
-      "pic": null,
-      "cara": "Simulasi tanya jawab"
-     },
-     {
-      "dokumen": "Publikasikan dashboard kepuasan masyarakat",
-      "format": "Diskominfo",
-      "pic": null,
-      "cara": "URL dashboard live"
-     },
-     {
-      "dokumen": "Kegiatan",
-      "format": "PIC",
-      "pic": null,
-      "cara": "Output"
-     },
-     {
-      "dokumen": "Input data ke aplikasi evaluasi KemenPANRB",
-      "format": "Pelaksana Entri Data",
-      "pic": null,
-      "cara": "Submit mandiri"
-     },
-     {
-      "dokumen": "Penilaian Dokumen oleh Tim Asesor Eksternal",
-      "format": "Eksternal",
-      "pic": null,
-      "cara": "Nilai dokumen"
-     },
-     {
-      "dokumen": "Penilaian Interviu",
-      "format": "Semua Tim",
-      "pic": null,
-      "cara": "Nilai interviu"
-     },
-     {
-      "dokumen": "Tindak lanjut jika ada permintaan perbaikan",
-      "format": "Semua PIC",
-      "pic": null,
-      "cara": "Dokumen tambahan"
-     },
-     {
-      "dokumen": "Terima laporan hasil Indeks Pemdi",
-      "format": "Sekda",
-      "pic": null,
-      "cara": "Laporan resmi"
-     },
-     {
-      "dokumen": "Aspek",
-      "format": "Estimasi Baseline (dari SPBE 2025)",
-      "pic": null,
-      "cara": "Target Fase 4"
-     },
-     {
-      "dokumen": "Tata Kelola & Manajemen",
-      "format": "1,5",
-      "pic": null,
-      "cara": "2,0"
-     },
-     {
-      "dokumen": "Penyelenggara",
-      "format": "2,5",
-      "pic": null,
-      "cara": "2,5"
-     },
-     {
-      "dokumen": "Data",
-      "format": "1,5",
-      "pic": null,
-      "cara": "2,0"
-     },
-     {
-      "dokumen": "Keamanan Pemdi",
-      "format": "1,0",
-      "pic": null,
-      "cara": "2,0"
-     },
-     {
-      "dokumen": "Teknologi Pemdi",
-      "format": "1,0",
-      "pic": null,
-      "cara": "2,0"
-     },
-     {
-      "dokumen": "Keterpaduan Layanan",
-      "format": "2,5",
-      "pic": null,
-      "cara": "2,5"
-     },
-     {
-      "dokumen": "Kepuasan Pengguna",
-      "format": "3,5",
-      "pic": null,
-      "cara": "3,0"
      }
     ]
    }

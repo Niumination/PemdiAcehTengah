@@ -76,9 +76,9 @@ def parse_sumber(text):
             continue
         if cur is None:
             continue
-        m = re.match(r"^\*Catatan sumber: (.+)\*$',?", line.strip())
+        m = re.match(r"^\*Catatan sumber: (.*)\*$", line.strip())
         if m:
-            cur["catatan_grup"] = m.group(1)
+            cur["catatan_grup"] = m.group(1).rstrip(".").strip()
             continue
         m = re.match(r"^### L([12]) — .+$", line.strip())
         if m:
@@ -104,6 +104,9 @@ def parse_panduan(text):
         m = re.match(r"Indikator (\d+) — (.+?) \(Bobot (\d+)%\)", b.splitlines()[0].strip())
         if not m:
             continue
+        # Batasi blok sampai heading H2 berikutnya (## 7./8./9.) supaya tabel
+        # Bab 7-8 (Kegiatan|PIC|Output, dst.) tidak bocor ke blok indikator.
+        b = re.split(r"^## ", b, flags=re.M)[0]
         nomor = int(m.group(1))
         tm = re.search(r"\*\*Target Aceh Tengah: (nilai [^*]+?)\*\*", b)
         target = tm.group(1).strip() if tm else None

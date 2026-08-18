@@ -64,16 +64,22 @@ function rekomendasiInd(ind, kriteriaFn) {
   const st = hitungStatusInd(ind);
   const nilai = ind.nilai || 0;
   const target = ind.target || 0;
+  const eksternal = ind.eksternal?.aktif === true;
 
   // 1. Level berikutnya untuk naik nilai
-  if (nilai < 5) {
+  if (eksternal) {
+    reco.push({
+      icon: '⏳',
+      teks: `Indikator eksternal — nilai menunggu ${ind.eksternal.sistem} (pembina: ${ind.eksternal.pembina}). Nilai ${formatDesimal(nilai, nilai % 1 ? 1 : 0)} saat ini adalah asumsi minimum skala; koordinasikan dengan instansi pembina untuk mendapatkan skor resmi.`,
+    });
+  } else if (nilai < 5) {
     const next = nilai + 1;
     const krit = kriteriaFn(next);
     if (target > nilai) {
       reco.push({
         icon: '📈',
         level: next,
-        teks: `Nilai saat ini ${formatDesimal(nilai, 1)} < target ${formatDesimal(target, 1)} — lengkapi bukti Level ${next} (${LEVEL_LABEL[next]}) agar naik.`,
+        teks: `Nilai saat ini ${formatDesimal(nilai, nilai % 1 ? 1 : 0)} < target ${formatDesimal(target, 1)} — lengkapi bukti Level ${next} (${LEVEL_LABEL[next]}) agar naik.`,
         kriteria: krit,
       });
     } else {
@@ -86,11 +92,13 @@ function rekomendasiInd(ind, kriteriaFn) {
     }
   }
 
-  // 2. Level tanpa bukti sama sekali (1..level berikutnya)
-  for (let lv = 1; lv <= Math.min(nilai + 1, 5); lv++) {
-    const ada = (ind.bukti_dukung || []).some(b => b.level === lv);
-    if (!ada) {
-      reco.push({ icon: '🆕', level: lv, teks: `Level ${lv} (${LEVEL_LABEL[lv]}) belum punya bukti sama sekali.`, kriteria: kriteriaFn(lv) });
+  // 2. Level tanpa bukti sama sekali (1..level berikutnya) — hanya indikator berbasis bukti lokal
+  if (!eksternal) {
+    for (let lv = 1; lv <= Math.min(nilai + 1, 5); lv++) {
+      const ada = (ind.bukti_dukung || []).some(b => b.level === lv);
+      if (!ada) {
+        reco.push({ icon: '🆕', level: lv, teks: `Level ${lv} (${LEVEL_LABEL[lv]}) belum punya bukti sama sekali.`, kriteria: kriteriaFn(lv) });
+      }
     }
   }
 
@@ -451,7 +459,7 @@ export default function PemdiPage() {
         {/* Stat global checklist */}
         <div className="stat-row" style={{ flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.25rem' }}>
           <span className="stat-badge" style={{ background: 'var(--surface-2)', color: 'var(--muted)' }}>
-            📦 {statGlobal.total} bukti ({pemdiData.total_item_bukti} item)
+            📦 {statGlobal.total} item bukti dukung
           </span>
           <span className="stat-badge" style={{ background: 'var(--ok-bg)', color: 'var(--ok)' }}>
             ✅ {statGlobal.lengkap} Lengkap
@@ -728,7 +736,7 @@ export default function PemdiPage() {
                         <span className="badge badge-blue">{ind.id}</span>
                         <strong style={{ fontSize: '0.9rem', color: 'var(--ink)' }}>{ind.nama}</strong>
                       </div>
-                      <span style={{ fontWeight: 800, fontFamily: 'var(--font-mono)', fontSize: '0.9rem', color: 'var(--primary)' }}>Nilai: {formatDesimal(ind.nilai, 1)} / Target {formatDesimal(ind.target, 1)}</span>
+                      <span style={{ fontWeight: 800, fontFamily: 'var(--font-mono)', fontSize: '0.9rem', color: 'var(--primary)' }}>Nilai: {formatDesimal(ind.nilai, ind.nilai % 1 ? 1 : 0)} / Target {formatDesimal(ind.target, 1)}</span>
                     </div>
                     <p style={{ fontSize: '0.82rem', color: 'var(--ink-secondary)', marginBottom: '10px', lineHeight: 1.5 }}>{ind.deskripsi}</p>
                     {ind.penanggung_jawab && (

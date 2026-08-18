@@ -4,7 +4,7 @@
 
 > **Sumber:** NotebookLM (notebook *Modul-Pemdi*, 21 sources) — hasil analisis & ekstraksi 20 PPTX Modul Indikator Pemdi sesuai PermenPANRB No. 8 Tahun 2026. Nomor sitasi slide dari dokumen asli telah dirapikan; substansi dipertahankan apa adanya.
 >
-> **Cakupan:** 15 indikator penilaian mandiri — Level 1 (Kurang/Initiate) dan Level 2 (Cukup/Emerging). Indikator eksternal I5 (SDI), I6 (SJIG), I7 (EPSS), dan I18 tidak dibahas pada dokumen sumber.
+> **Cakupan:** 16 indikator penilaian mandiri — Level 1 (Kurang/Initiate) dan Level 2 (Cukup/Emerging). Indikator eksternal I5 (SDI), I6 (SJIG), I7 (EPSS), dan I18 tidak dibahas pada dokumen sumber.
 >
 > **Fungsi di portal:** dokumen ini adalah sumber kanonik matriks kebutuhan bukti dukung (`data/kebutuhan-bukti-dukung.json`, dibangun oleh `scripts/build-kebutuhan-bukti.py`) dan ditampilkan di halaman `/modul-indikator` bagian *Matriks Kebutuhan Bukti Dukung*.
 

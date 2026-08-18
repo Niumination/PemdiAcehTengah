@@ -110,7 +110,10 @@ def main():
             nilai, menunggu = nilai_indikator(ind)
             ind["nilai"] = nilai
             ind["nilai_aktual"] = nilai
-            ind["_nilai_menunggu_eksternal"] = menunggu or None
+            if menunggu:
+                ind["_nilai_menunggu_eksternal"] = True
+            else:
+                ind.pop("_nilai_menunggu_eksternal", None)
             ind["sumber"] = (
                 f"{ind['eksternal']['sistem']} — {'menunggu nilai eksternal' if menunggu else 'tersedia'}"
                 if ind.get("eksternal", {}).get("aktif")

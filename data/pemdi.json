@@ -327,8 +327,7 @@
       }
      ],
      "_l1_lengkap": true,
-     "nilai_aktual": 1,
-     "_nilai_menunggu_eksternal": null
+     "nilai_aktual": 1
     },
     {
      "id": "I2",
@@ -435,8 +434,7 @@
       }
      ],
      "_l1_lengkap": true,
-     "nilai_aktual": 2,
-     "_nilai_menunggu_eksternal": null
+     "nilai_aktual": 2
     }
    ],
    "item_aktual": 12,
@@ -775,8 +773,7 @@
       }
      ],
      "_l1_lengkap": true,
-     "nilai_aktual": 0,
-     "_nilai_menunggu_eksternal": null
+     "nilai_aktual": 0
     },
     {
      "id": "I4",
@@ -946,8 +943,7 @@
       }
      ],
      "_l1_lengkap": true,
-     "nilai_aktual": 0,
-     "_nilai_menunggu_eksternal": null
+     "nilai_aktual": 0
     }
    ],
    "item_aktual": 2,
@@ -1718,8 +1714,7 @@
       }
      ],
      "_l1_lengkap": true,
-     "nilai_aktual": 0,
-     "_nilai_menunggu_eksternal": null
+     "nilai_aktual": 0
     }
    ],
    "item_aktual": 0,
@@ -1825,8 +1820,7 @@
       }
      ],
      "_l1_lengkap": false,
-     "nilai_aktual": 0,
-     "_nilai_menunggu_eksternal": null
+     "nilai_aktual": 0
     },
     {
      "id": "I10",
@@ -1920,8 +1914,7 @@
       }
      ],
      "_l1_lengkap": false,
-     "nilai_aktual": 0,
-     "_nilai_menunggu_eksternal": null
+     "nilai_aktual": 0
     },
     {
      "id": "I11",
@@ -2008,8 +2001,7 @@
       }
      ],
      "_l1_lengkap": true,
-     "nilai_aktual": 0,
-     "_nilai_menunggu_eksternal": null
+     "nilai_aktual": 0
     },
     {
      "id": "I12",
@@ -2132,8 +2124,7 @@
       }
      ],
      "_l1_lengkap": true,
-     "nilai_aktual": 0,
-     "_nilai_menunggu_eksternal": null
+     "nilai_aktual": 0
     }
    ],
    "item_aktual": 2,
@@ -2327,8 +2318,7 @@
       }
      ],
      "_l1_lengkap": true,
-     "nilai_aktual": 1,
-     "_nilai_menunggu_eksternal": null
+     "nilai_aktual": 1
     },
     {
      "id": "I14",
@@ -2484,8 +2474,7 @@
       }
      ],
      "_l1_lengkap": true,
-     "nilai_aktual": 0,
-     "_nilai_menunggu_eksternal": null
+     "nilai_aktual": 0
     }
    ],
    "item_aktual": 7,
@@ -2696,8 +2685,7 @@
       }
      ],
      "_l1_lengkap": true,
-     "nilai_aktual": 0,
-     "_nilai_menunggu_eksternal": null
+     "nilai_aktual": 0
     },
     {
      "id": "I16",
@@ -2839,8 +2827,7 @@
       }
      ],
      "_l1_lengkap": false,
-     "nilai_aktual": 0,
-     "_nilai_menunggu_eksternal": null
+     "nilai_aktual": 0
     },
     {
      "id": "I17",
@@ -3027,8 +3014,7 @@
       }
      ],
      "_l1_lengkap": true,
-     "nilai_aktual": 1,
-     "_nilai_menunggu_eksternal": null
+     "nilai_aktual": 1
     },
     {
      "id": "I18",
@@ -3349,8 +3335,7 @@
       }
      ],
      "_l1_lengkap": false,
-     "nilai_aktual": 0,
-     "_nilai_menunggu_eksternal": null
+     "nilai_aktual": 0
     },
     {
      "id": "I20",
@@ -3682,8 +3667,7 @@
       }
      ],
      "_l1_lengkap": false,
-     "nilai_aktual": 0,
-     "_nilai_menunggu_eksternal": null
+     "nilai_aktual": 0
     }
    ],
    "item_aktual": 2,

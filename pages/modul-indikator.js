@@ -1095,7 +1095,8 @@ export default function ModulIndikatorPage() {
                                         )}
                                         {gt && (
                                           <div style={{ fontSize: '0.66rem', color: 'var(--primary)', marginTop: '0.15rem' }}>
-                                            🔗 {gt.id} — {gt.nama.slice(0, 90)}{gt.nama.length > 90 ? '…' : ''}
+                                            🔗 {gt.id} — {gt.nama.replace(/^\d+\.\s*/, '').slice(0, 90)}
+                                            {gt.nama.replace(/^\d+\.\s*/, '').length > 90 ? '…' : ''}
                                           </div>
                                         )}
                                       </td>
