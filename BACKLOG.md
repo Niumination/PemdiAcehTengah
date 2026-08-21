@@ -6,6 +6,8 @@
 
 ## ✅ Completed
 
+- [x] **Capaian nilai sesuai rumus resmi PermenPANRB 8/2026** — lib/pemdiNilai.js (Indeks Aspek Σ(wI×N)/wA; Indeks Σ(wA×IA); predikat Tabel 4; indikator eksternal I5/I6/I7/I18 field `eksternal`); /pemdi panel perhitungan + 4 kartu tolak ukur; indeks terverifikasi 0,38; proyeksi target 2,29 & skenario 2,375/2,50 — 19 Agu 2026
+- [x] **Matriks Kebutuhan Bukti Dukung L1-L2** — docs/analisis-bukti-dukung-l1-l2.md (sumber NotebookLM dari Diskominfo) → data/kebutuhan-bukti-dukung.json (48 butir × 16 indikator; 10 lengkap · 19 belum · 19 perlu verifikasi) → section /modul-indikator#matriks-kebutuhan + tabel Panduan Bab 6 — 19 Agu 2026
 - [x] **6 Quick Win 100%** — 52 OPD, 70 pages, 0 ESLint warnings — @pemdi-aceh-tengah
 - [x] **Redesign UI Fase 0–5 (Kerawang Gayo)** — @pemdi-aceh-tengah
   - Fase 0: Tokens + motif SVG Kerawang Gayo, hook useMemo fix di /pemdi

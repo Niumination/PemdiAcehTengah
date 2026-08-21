@@ -181,7 +181,7 @@ export default function Home() {
             <div className="n">
               <CountStat value={pemdiData.indeks_aktual ?? 0} decimals={2} color="var(--gold-deep)" />
             </div>
-            <div className="l">Indeks Pemdi dari Bukti (target ≥ 2,50)</div>
+            <div className="l">Indeks Pemdi Terverifikasi (target ≥ 2,50)</div>
           </div>
 
           <div className="stat glow-card reveal d1">

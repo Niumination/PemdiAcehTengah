@@ -10,7 +10,8 @@ Halaman Next.js — entry points untuk user. SSR/SSG hybrid dengan data dari fil
 | Route | File | Fungsi | Komponen Kunci |
 |-------|------|--------|----------------|
 | `/` | `index.js` | **Beranda** — AwardHero premium, QuickActions, SPBE gauge, OPD table, rekomendasi, LaporanStatus, TopographicBackdrop | AwardHero, QuickActions, OPDTable, SpbeGauge, ProbisSection, Rekomendasi, SlaBadge, LaporWidget, LaporanStatus, TopographicBackdrop, Header, Footer |
-| `/pemdi` | `pemdi.js` | **Dashboard Pemdi** — 7 aspek 20 indikator, RadarChart SVG, storytelling, ProgressBarVisual, TimelineRoadmap, TopographicBackdrop | DetailModal, DataBadge, ProgressBarVisual, TimelineRoadmap, TopographicBackdrop |
+| `/pemdi` | `pemdi.js` | **Dashboard Pemdi** — 7 aspek 20 indikator, capaian terverifikasi rumus resmi (lib/pemdiNilai.js), panel 🧮 perhitungan + tolak ukur, checklist bukti per indikator, catatan mandiri | DetailModal, TopographicBackdrop, KerawangMotifs, useCountUp |
+| `/modul-indikator` | `modul-indikator.js` | **Modul Indikator + Matriks Kebutuhan Bukti** — 20 modul kriteria L1-L5 (ground truth NotebookLM), bukti existing per level/dokumen kunci, section 📌 matriks kebutuhan L1-L2 (data/kebutuhan-bukti-dukung.json) | KerawangMotifs |
 | `/opd/[slug]` | `opd/[slug].js` | Detail per OPD — 52 halaman statis (SSG) | OPDTable, SlaBadge |
 | `/layanan` | `layanan.js` | **Direktori layanan** — 27 layanan, 7 kategori, ServiceFinder interaktif | ServiceFinder, ServiceCard, SlaBadge |
 | `/probis` | `probis.js` | Peta Proses Bisnis Level 0-1-2 interaktif (78 proses) | DetailModal |
@@ -47,6 +48,8 @@ data/opd.json ──► api/opd.js (REST)
               ──► opd/[slug].js (getStaticPaths + getStaticProps)
               
 data/pemdi.json ──► pemdi.js (import langsung)
+data/kebutuhan-bukti-dukung.json ──► modul-indikator.js (matriks kebutuhan L1-L2)
+lib/pemdiNilai.js ──► pemdi.js, modul-indikator.js, PemdiCalculator (rumus resmi + predikat Tabel 4)
 data/layanan.json ──► layanan.js
 data/faq.json ────► faq.js, tanya.js, cari.js
 data/skm.json ────► skm.js
