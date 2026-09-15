@@ -27,8 +27,9 @@ Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah. Transformasi menuju Peme
 | **Path Alias** | `@/*` (via `jsconfig.json`) — ex: `@/components/Header` |
 | **Font** | Inter (government professional, GOV.UK-inspired) |
 || **Data Source** | Hybrid: `data/*.json` (OPD, SPBE, ProBis, SKM, Pemdi) + Supabase (SKM responses, admin logs). Client: `lib/supabaseAdmin.js` |
-|| **Komponen** | 30 komponen React (20 existing + 10 Sprint Redesign) — lihat `components/AGENTS.md` |
-|| **Halaman** | 16 route pages + 7 API routes + 2 lib helpers — lihat `pages/AGENTS.md` |
+| **Komponen** | 39 komponen React — lihat `components/AGENTS.md` |
+| **Halaman** | 23 route pages + 11 API routes — lihat `pages/AGENTS.md` |
+| **Lib** | `lib/pemdiNilai.js` (rumus PermenPANRB 8/2026), `lib/rate-limit-db.js`, `lib/search-index.js`, `lib/slugify.js`, `lib/format.js` — lihat `lib/AGENTS.md` |
 || **Status** | 🟢 **DOX Clean** — semua komponen terverifikasi real, 0 gap dokumentasi |
 | **Remote** | `git@github.com:Niumination/PemdiAcehTengah.git` |
 | **Production** | https://pemdi-aceh-tengah.vercel.app |
@@ -44,8 +45,10 @@ Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah. Transformasi menuju Peme
 || **PWA** | `manifest.json`, icons (192/512 PNG + maskable-512 + apple-touch + SVG), `theme_color: #004098`, `display: standalone`, scope root, +orientation portrait |
 || **Security** | CSP headers (Supabase, Google Fonts), rate limiting, IP hashing (SHA-256), admin Bearer auth. `lib/security.js` |
 || **Admin Dashboard** | `/admin` — protected by `ADMIN_TOKEN` env (Bearer auth). Admin APIs: `/api/admin/laporan` (PATCH status), `/api/admin/skm` (GET all) |
-|| **HEAD** | `be9fdb0` — Fix: restore missing stats row, Tutorial 404 → FAQ, render Footer di AppShell |
-|| **Env Vars** | `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `ADMIN_TOKEN`, `IP_HASH_SALT` |
+| **HEAD** | `0369891` feat: capaian nilai sesuai rumus resmi PermenPANRB 8/2026 + matriks kebutuhan bukti dukung L1-L2 (NotebookLM) |
+| **Env Vars** | `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `ADMIN_TOKEN`, `IP_HASH_SALT` |
+| **Indeks Pemdi** | **0.38** (rumus PermenPANRB 8/2026, predikat Tabel 4) — target 2,50+ |
+| **Total bukti dukung** | **232** (`data/pemdi.json`: `total_item_bukti` = 232, `total_item_manual` = 199, `target` = 232) |
 
 ## Framework Regulasi — DUA KERANGKA BERBEDA
 
