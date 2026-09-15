@@ -45,10 +45,10 @@ Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah. Transformasi menuju Peme
 || **PWA** | `manifest.json`, icons (192/512 PNG + maskable-512 + apple-touch + SVG), `theme_color: #004098`, `display: standalone`, scope root, +orientation portrait |
 || **Security** | CSP headers (Supabase, Google Fonts), rate limiting, IP hashing (SHA-256), admin Bearer auth. `lib/security.js` |
 || **Admin Dashboard** | `/admin` — protected by `ADMIN_TOKEN` env (Bearer auth). Admin APIs: `/api/admin/laporan` (PATCH status), `/api/admin/skm` (GET all) |
-| **HEAD** | `0369891` feat: capaian nilai sesuai rumus resmi PermenPANRB 8/2026 + matriks kebutuhan bukti dukung L1-L2 (NotebookLM) |
+| **HEAD** | `d77c42e` feat(bukti): 18 bukti final lolos-evaluasi tahap interview (I1/I2/I3/I4/I11/I12/I13/I17/I20) |
 | **Env Vars** | `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `ADMIN_TOKEN`, `IP_HASH_SALT` |
 | **Indeks Pemdi** | **0.38** (rumus PermenPANRB 8/2026, predikat Tabel 4) — target 2,50+ |
-| **Total bukti dukung** | **232** (`data/pemdi.json`: `total_item_bukti` = 232, `total_item_manual` = 199, `target` = 232) |
+| **Total bukti dukung** | **250** (`data/pemdi.json`: 47 lengkap / 4 proses / 199 belum; +18 final lolos-evaluasi di `public/bukti-dukung/final/`) |
 
 ## Framework Regulasi — DUA KERANGKA BERBEDA
 
