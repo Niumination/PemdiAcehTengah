@@ -135,7 +135,7 @@ export default function AppShell({ children }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', paddingTop: 'calc(var(--gov-strip-h) + env(safe-area-inset-top))' }}>
       {/* Official Government Strip — Marquee Running Text + Motif Ulen */}
-      <div className="gov-strip" role="banner">
+      <div className="gov-strip" aria-label="Informasi portal">
         <span className="gov-strip-flag" aria-hidden="true">🇮🇩</span>
         <MotifUlen size={18} style={{ marginLeft: 8 }} />
         <div className="gov-strip-marquee">

@@ -10,7 +10,6 @@ Transformasi menuju **Pemerintah Digital (Pemdi)** — open source government te
 [![Vercel](https://img.shields.io/badge/Deploy-Vercel-000?logo=vercel)](https://vercel.com)
 [![DOX](https://img.shields.io/badge/🧭%20DOX-Self--Documenting-1d70b8)](https://github.com/agent0ai/dox)
 [![Database: Supabase](https://img.shields.io/badge/Database-Supabase-3ECF8E)](https://supabase.com)
-[![Anti-Bot: Cloudflare Turnstile](https://img.shields.io/badge/Anti--Bot-Cloudflare%20Turnstile-F38020)](https://www.cloudflare.com/products/turnstile/)
 
 ---
 
@@ -24,9 +23,10 @@ Transformasi menuju **Pemerintah Digital (Pemdi)** — open source government te
 
 | Indikator | Nilai |
 |-----------|-------|
-| **Indeks Pemdi Baseline** | ~1.84 |
+| **Indeks Pemdi (capaian terverifikasi)** | **0,38** — dari 47/250 bukti lengkap (rumus resmi PermenPANRB 8/2026) |
 | **Target Pemdi 2026** | 2.50 (Baik) |
-| **Indeks SPBE 2025** | 2,59 (Cukup) |
+| **Indeks SPBE 2025** | 2,59 (Cukup) — baseline konversi |
+| **Total bukti dukung terpetakan** | 250 item (47 lengkap · 4 proses · 199 belum) |
 | **7 Aspek** | Tata Kelola, SDM Digital, Data, Keamanan, Teknologi, Keterpaduan, Kepuasan |
 | **20 Indikator** | I1–I20 — dari Tata Kelola hingga Pengelolaan Kepuasan |
 | **Perangkat Daerah** | 38 Instansi + 14 Kecamatan |
@@ -38,12 +38,17 @@ Transformasi menuju **Pemerintah Digital (Pemdi)** — open source government te
 |---------|-----|-----------|
 | Beranda | `/` | Dashboard utama — Pemdi badge, SPBE gauge, Peta Proses Bisnis, fitur publik |
 | Indeks Pemdi | `/pemdi` | Dashboard Pemdi penuh — radar chart, 7 aspek cards + modal detail indikator, SPBE vs Pemdi |
-| Peta Proses Bisnis | `/probis` | PPB 3 level — Visi-Misi, 24 Urusan, Proses Bisnis OPD + DetailModal misi |
-| Direktori Layanan | `/layanan` | 27 layanan publik dalam 7 kategori — status, biaya, SLA, syarat |
-| Survei Kepuasan | `/skm` | Survei SKM online — 8 dimensi × 24 pertanyaan, simpan ke Supabase |
+| Peta Proses Bisnis | `/probis` | PPB 3 level — 8 Misi, 35 Urusan, 78 Proses Bisnis OPD + DetailModal misi |
+| Direktori Layanan | `/layanan` | 25 layanan publik dalam 7 kategori — status, biaya, SLA, syarat |
+| Survei Kepuasan | `/skm` | Survei SKM online — 8 dimensi (skala 1–4), 43 unit layanan, simpan ke Supabase |
 | Tanya Jawab | `/faq` | FAQ seputar layanan, portal, SPBE, dan Pemdi |
 | Chatbot Asisten | `/tanya` | Asisten virtual — cari jawaban dari FAQ |
 | Pencarian Global | `/cari` | Pencarian OPD, layanan, FAQ dengan Fuse.js |
+| Dashboard Kepuasan | `/dashboard-kepuasan` | Dashboard publik hasil SKM + rating halaman (Indikator I20) |
+| Modul Indikator | `/modul-indikator` | 20 modul kriteria L1–L5 + matriks kebutuhan bukti L1–L2 |
+| Glosarium | `/glosarium` | Kamus istilah digital pemerintahan |
+| Pusat Bantuan | `/bantuan` | Panduan penggunaan portal + FAQ |
+| Kebijakan Privasi | `/kebijakan-privasi` | Kebijakan perlindungan data pribadi (UU PDP) |
 | Dashboard Admin | `/admin` | Dashboard Admin — lihat data SKM & laporan warga (login required) |
 | Requirements PPB | `/requirement` | 83 item kebutuhan data/API untuk PPB real |
 | Detail OPD | `/opd/[slug]` | Halaman detail tiap PD (52 halaman statis) |
@@ -53,9 +58,14 @@ Transformasi menuju **Pemerintah Digital (Pemdi)** — open source government te
 | Endpoint | Method | Fungsi | Auth |
 |----------|--------|--------|------|
 | `/api/opd` | GET | Daftar lengkap OPD (52 entries) | — |
-| `/api/spbe` | GET | Data SPBE 2025 (4 domain, 47 indikator) | — |
+| `/api/spbe` | GET | Data SPBE 2025 (indeks 2,59 + 4 domain + rekomendasi) | — |
 | `/api/requirement` | GET | 83 requirements PPB (12 kategori, 3 fase) | — |
-| `/api/lapor` | POST, PATCH | Kirim & update laporan warga → Supabase | — |
+| `/api/lapor` | POST, PATCH | Kirim & update laporan warga → Supabase | PATCH: Bearer |
+| `/api/lapor/status` | GET | Tracking status laporan by ID (rate-limit) | — |
+| `/api/feedback` | GET, POST | Rating halaman ★ → Supabase | — |
+| `/api/skm/stats` | GET | Statistik SKM (per dimensi/unit/tren) | — |
+| `/api/proxy-pdf` | GET | Proxy PDF JDIH (whitelist host) | — |
+| `/api/health` | GET | Health check app + DB — pantau via uptime monitor | — |
 | `/api/skm` | GET, POST | Survei Kepuasan Masyarakat → Supabase | — |
 | `/api/admin/skm` | GET | Data SKM — admin only | Bearer Token |
 | `/api/admin/laporan` | GET | Data laporan warga — admin only, filter status | Bearer Token |
@@ -69,7 +79,7 @@ PemdiAcehTengah/
 │   ├── pemdi.js          # Dashboard Indeks Pemdi (7 aspek × 20 indikator)
 │   ├── probis.js         # Peta Proses Bisnis 3 level
 │   ├── layanan.js        # Direktori layanan publik
-│   ├── skm.js            # Survei Kepuasan Masyarakat (24 pertanyaan)
+│   ├── skm.js            # Survei Kepuasan Masyarakat (8 dimensi skala 1–4)
 │   ├── faq.js            # Tanya jawab (FAQ interaktif)
 │   ├── tanya.js          # Chatbot asisten virtual
 │   ├── cari.js           # Pencarian global (OPD, layanan, FAQ)
@@ -85,30 +95,37 @@ PemdiAcehTengah/
 │       └── admin/        # 🆕 Admin-only API
 │           ├── skm.js    # GET /api/admin/skm
 │           └── laporan.js# GET /api/admin/laporan
-├── components/           # React komponen
-│   ├── Header.js, Footer.js, Layout.js
-│   ├── OPDTable.js, ProbisSection.js, SpbeGauge.js
-│   ├── Rekomendasi.js, ScrollTop.js
-│   ├── DataBadge.js      # Badge progress dinamis
-│   ├── DetailModal.js    # Modal overlay interaktif
-│   ├── ExpandablePanel.js# Panel accordion
-│   ├── SlaBadge.js       # 🆕 Badge SLA visual
-│   └── LaporWidget.js    # 🆕 FAB Lapor/Saran — form + tracking ID
-├── lib/                  # 🆕 Utility libraries
-│   ├── adminAuth.js      # Admin authentication — Bearer token via env
+├── components/           # React komponen (20 aktif)
+│   ├── AppShell.js       # Shell global — sidebar, topbar, breadcrumb
+│   ├── Sidebar.js, Footer.js, ThemeToggle.js, ScrollTop.js
+│   ├── OPDTable.js, SpbeGauge.js, SlaBadge.js
+│   ├── ServiceFinder.js, ServiceCard.js, DashboardSKM.js
+│   ├── DetailModal.js, TopographicBackdrop.js, GlossaryTooltip.js
+│   ├── LaporWidget.js    # FAB Lapor/Saran — form + tracking ID
+│   ├── RatingWidget.js, SkmPrompt.js, Sp4nBanner.js, TrackerStatus.js
+│   └── motif/KerawangMotifs.js  # Motif budaya Gayo
+├── lib/                  # Utility libraries (9 modul — lihat lib/AGENTS.md)
+│   ├── adminAuth.js      # Admin auth — Bearer, constant-time compare
 │   ├── supabaseAdmin.js  # Supabase admin client — server-only
-│   ├── security.js       # 🆕 Turnstile, rate-limit, sanitasi, hashing
-│   ├── format.js         # 🆕 Format angka & teks (Indonesia locale)
-│   └── search-index.js   # 🆕 Search index builder — Fuse.js corpus
-├── styles/globals.css    # CSS Global — GOV.UK-inspired
+│   ├── security.js       # Sanitasi, IP-hash, rate-limit, ID generator
+│   ├── rate-limit-db.js  # Rate limiter atomic (RPC Supabase)
+│   ├── pemdiNilai.js     # Rumus resmi PermenPANRB 8/2026 (teruji unit test)
+│   ├── sanitize.js       # Sanitizer HTML allowlist ketat
+│   ├── format.js         # Format angka & teks (locale id-ID)
+│   ├── slugify.js        # Slug URL konsisten
+│   └── search-index.js   # Search index builder — Fuse.js corpus
+├── styles/globals.css    # CSS Global — Gayo Civic Digital v3
+├── test/                 # Unit test (node:test) — rumus Pemdi + regresi data
+├── audit/                # Laporan audit (menyeluruh 2026-09-17 + riwayat)
 ├── data/
 │   ├── opd.json          # Data OPD, SPBE, PPB, rekomendasi
 │   ├── pemdi.json        # Data 7 aspek × 20 indikator Pemdi
-│   ├── layanan.json      # Data 27 layanan publik
+│   ├── layanan.json      # Data 25 layanan publik (7 kategori)
 │   ├── faq.json          # Data FAQ
 │   └── skm.json          # Data pertanyaan SKM
-├── db/                   # 🆕 Database schema
-│   └── schema.sql        # Supabase schema — tabel skm & laporan
+├── db/                   # Database schema Supabase
+│   ├── schema.sql        # Tabel skm/laporan/rating_feedback + view + RPC agregat
+│   └── rate-limit-schema.sql  # Tabel rate_limits + RPC atomic bump_rate_limit
 ├── MASTERPLAN.md         # Master plan pengembangan
 ├── docs/                 # Dokumentasi proyek
 └── public/               # Aset statis
@@ -137,7 +154,7 @@ Fitur admin dan keamanan yang diimplementasikan:
 |-------|--------|
 | **Auth Admin** | Bearer Token via env `ADMIN_TOKEN` — lihat `lib/adminAuth.js` |
 | **Rate Limiting** | Per-IP: SKM 3×/5 menit, Lapor 5×/menit — `lib/security.js` |
-| **Anti-Bot** | Cloudflare Turnstile verification di form SKM & Lapor |
+| **Anti-Spam** | Rate limit atomic per-IP via Supabase RPC + validasi ketat + sanitasi (Turnstile: **belum diimplementasikan** — direncanakan) |
 | **Sanitasi Input** | Strip HTML tags, length limit, regex validation |
 | **IP Hashing** | SHA-256 hash disimpan, bukan IP mentah — `lib/security.js` |
 | **Database** | Supabase — service role key (env), server-only |
@@ -172,7 +189,6 @@ ADMIN_TOKEN=your_admin_token
 ADMIN_PASSWORD=your_admin_password
 
 # Security
-TURNSTILE_SECRET_KEY=your_turnstile_secret
 IP_HASH_SALT=pemdi-aceh-tengah
 SITE_ORIGIN=https://pemdi-aceh-tengah.vercel.app
 ```
@@ -183,7 +199,6 @@ SITE_ORIGIN=https://pemdi-aceh-tengah.vercel.app
 
 - **Framework**: Next.js 14 (Fullstack — frontend + backend API)
 - **Database**: Supabase (PostgreSQL) — persist SKM & laporan warga
-- **Anti-Bot**: Cloudflare Turnstile — CAPTCHA-free spam protection
 - **Search**: Fuse.js — client-side fuzzy search
 - **Sitemap**: next-sitemap — auto-generate sitemap.xml
 - **Deploy**: Vercel (Free Tier)
@@ -210,14 +225,26 @@ SITE_ORIGIN=https://pemdi-aceh-tengah.vercel.app
 
 | Fitur | Status |
 |-------|--------|
-| SKM Online (24 pertanyaan, 44 unit) | ✅ |
+| SKM Online (8 dimensi, 43 unit layanan) | ✅ |
 | Lapor Warga (FAB widget + Supabase) | ✅ |
 | Dashboard Admin (SKM + laporan) | ✅ |
-| Cloudflare Turnstile anti-bot | ✅ |
+| Rate limiting atomic + health endpoint | ✅ |
 | Pencarian Global (Fuse.js) | ✅ |
 | Chatbot Asisten (/tanya) | ✅ |
 | Supabase Database Integration | ✅ |
+| Unit test rumus Pemdi (16 pin regresi, `npm test`) | ✅ |
 | API Rate Limiting & Security | ✅ |
+
+## 🤖 Agent Skills (autoskills)
+
+Repo ini membawa [autoskills](https://github.com/midudev/autoskills) — 11 skill best-practice di `.agents/skills/` (ter-commit, lock: `skills-lock.json`) yang otomatis terdeteksi stack: **React, Next.js (3 skill), Supabase, Node.js (2 skill), frontend (SEO, a11y, design)**.
+
+```bash
+npx autoskills          # deteksi & pasang/update skill untuk stack ini
+npx autoskills -y -a claude-code   # + symlink ke .claude/skills (lokal)
+```
+
+Skill ini adalah standar kerja yang sama dengan checklist audit `audit/CHECKLIST_AUTOSKILLS_2026-09-17.md`.
 
 ## 🤝 Kontribusi
 

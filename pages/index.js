@@ -242,7 +242,7 @@ export default function Home() {
               💬
             </div>
             <h3>Pengaduan &amp; Tiket Lapor</h3>
-            <p>Sampaikan keluhan atau saran dan dapatkan ID tiket pelacakan real-time (`LAPOR-20260715-XXXXXX`).</p>
+            <p>Sampaikan keluhan atau saran dan dapatkan ID tiket pelacakan real-time (contoh: LAPOR-20260715-A1B2C3D4E5F6).</p>
             <span className="go">Buat Laporan / Lacak →</span>
           </button>
 

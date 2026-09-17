@@ -46,8 +46,9 @@ export default function AdminPage() {
   const [laporanCount, setLaporanCount] = useState(0);
   const [skmCount, setSkmCount] = useState(0);
   const [updating, setUpdating] = useState(null);
-
-  const token = typeof window !== 'undefined' ? sessionStorage.getItem('admin_token') : null;
+  // Token dibaca via state (bukan saat render) — hindari akses sessionStorage
+  // di badan render (skill react-best-practices; juga aman dari hydration edge)
+  const [token, setToken] = useState(null);
 
   const fetchLaporan = useCallback(async () => {
     if (!token) return;
@@ -55,7 +56,7 @@ export default function AdminPage() {
       const res = await fetch('/api/admin/laporan', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
-      if (res.status === 401) { setLoggedIn(false); sessionStorage.removeItem('admin_token'); return; }
+      if (res.status === 401) { setLoggedIn(false); setToken(null); sessionStorage.removeItem('admin_token'); return; }
       const json = await res.json();
       if (json.data) { setLaporan(json.data); setLaporanCount(json.total); }
     } catch (e) { setError('Gagal memuat laporan: ' + e.message); }
@@ -67,7 +68,7 @@ export default function AdminPage() {
       const res = await fetch('/api/admin/skm', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
-      if (res.status === 401) { setLoggedIn(false); sessionStorage.removeItem('admin_token'); return; }
+      if (res.status === 401) { setLoggedIn(false); setToken(null); sessionStorage.removeItem('admin_token'); return; }
       const json = await res.json();
       if (json.data) { setSkm(json.data); setSkmCount(json.total); }
     } catch (e) { setError('Gagal memuat SKM: ' + e.message); }
@@ -75,8 +76,8 @@ export default function AdminPage() {
 
   useEffect(() => {
     const saved = sessionStorage.getItem('admin_token');
-    if (saved) setLoggedIn(true);
-    else setLoggedIn(false);
+    setToken(saved);
+    setLoggedIn(Boolean(saved));
   }, []);
 
   useEffect(() => {
@@ -96,6 +97,7 @@ export default function AdminPage() {
       if (res.status === 401) { setLoginError('Token salah!'); return; }
       // Simpan password sebagai token Bearer
       sessionStorage.setItem('admin_token', password);
+      setToken(password);
       setLoggedIn(true);
     } catch {
       setLoginError('Gagal terhubung ke server.');
@@ -168,7 +170,7 @@ export default function AdminPage() {
           <div>
             <h1 style={{ color: '#fff', fontSize: '1.25rem', fontWeight: 700, margin: 0 }}>📊 Admin — Pemdi Aceh Tengah</h1>
           </div>
-          <button onClick={() => { setLoggedIn(false); sessionStorage.removeItem('admin_token'); }}
+          <button onClick={() => { setLoggedIn(false); setToken(null); sessionStorage.removeItem('admin_token'); }}
             className="btn btn-outline btn-sm"
             style={{ color: '#fff', borderColor: 'rgba(255,255,255,0.4)', background: 'rgba(255,255,255,0.1)' }}>
             Keluar

@@ -1,9 +1,14 @@
-const domains = [
-  { key: 'kebijakan_spbe', name: '1. Kebijakan SPBE', value: 2.80, max: 5.0, desc: 'Perda/Qanun & Aturan Pelaksana' },
-  { key: 'tata_kelola_spbe', name: '2. Tata Kelola SPBE', value: 2.50, max: 5.0, desc: 'Arsitektur, Peta Rencana & Tim' },
-  { key: 'manajemen_spbe', name: '3. Manajemen SPBE', value: 1.00, max: 5.0, desc: 'Keamanan, Risik, & SDM Digital' },
-  { key: 'layanan_spbe', name: '4. Layanan SPBE', value: 3.40, max: 5.0, desc: 'Portal Layanan Administrasi & Publik' },
-];
+// Meta label domain — nilai TIDAK di-hardcode; sumber tunggal: data/opd.json
+// via prop `domain` (dikirim pages/index.js dari portalData.spbe.domain).
+// Perbaikan 2026-09-17 (pemeriksaan ulang): sebelumnya nilai domain di-hardcode
+// (2.80/2.50/1.00/3.40) dan BEDA dengan data/opd.json (2.30/1.70/1.00/3.75)
+// sehingga beranda dan halaman /spbe menampilkan angka berbeda ke publik.
+const DOMAIN_META = {
+  kebijakan_spbe: { name: '1. Kebijakan SPBE', desc: 'Perda/Qanun & Aturan Pelaksana' },
+  tata_kelola_spbe: { name: '2. Tata Kelola SPBE', desc: 'Arsitektur, Peta Rencana & Tim' },
+  manajemen_spbe: { name: '3. Manajemen SPBE', desc: 'Keamanan, Risiko, & SDM Digital' },
+  layanan_spbe: { name: '4. Layanan SPBE', desc: 'Portal Layanan Administrasi & Publik' },
+};
 
 function getLevelBadge(val) {
   if (val >= 3.5) return { cls: 'badge-green', label: 'Sangat Baik' };
@@ -11,9 +16,13 @@ function getLevelBadge(val) {
   return { cls: 'badge-red', label: 'Perlu Perbaikan' };
 }
 
-export default function SpbeGauge({ nilai = 2.59 }) {
+export default function SpbeGauge({ nilai = 2.59, domain = {} }) {
   const levelInfo = getLevelBadge(nilai);
   const percentage = (nilai / 5.0) * 100;
+
+  const domains = Object.entries(DOMAIN_META)
+    .filter(([key]) => domain[key] !== undefined)
+    .map(([key, meta]) => ({ key, ...meta, value: Number(domain[key]), max: 5.0 }));
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>

@@ -1,6 +1,10 @@
 import opdData from '@/data/opd.json';
 
 export default function handler(req, res) {
+  // Data statis dari JSON — hanya berubah saat deploy.
+  // Cache CDN 1 jam + stale-while-revalidate 1 hari (skill: next-cache)
+  res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');
+
   const { search, level, jenis, limit } = req.query;
 
   let data = [...opdData.opd.daftar];

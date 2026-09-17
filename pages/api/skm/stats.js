@@ -23,6 +23,9 @@ export default async function handler(req, res) {
     return res.status(405).json({ success: false, error: 'Metode tidak diizinkan' });
   }
 
+  // Statistik boleh stale 60 detik di CDN + SWR 5 menit (skill: next-cache)
+  res.setHeader('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=300');
+
   if (!isSupabaseReady) {
     // Fallback: return data dummy untuk development
     return res.status(200).json({ success: true, data: dummyData() });
@@ -34,26 +37,54 @@ export default async function handler(req, res) {
       .from('skm_ringkasan')
       .select('*')
       .single();
+    if (err1) console.warn('[skm/stats] skm_ringkasan error:', err1.message);
 
-    // 2. Per dimensi — rata-rata tiap dimensi
+    // 2. Per dimensi — 1 RPC agregat (jika fungsi skm_stats_dimensi sudah
+    //    terpasang dari db/schema.sql), fallback: SATU query 8 kolom lalu
+    //    hitung di JS. Menggantikan loop 8× full-table-select (audit A-3
+    //    2026-09-17 yang membuat endpoint lambat & makin parah seiring
+    //    jumlah responden tumbuh).
     let perDimensi = {};
-    for (const d of DIMENSI) {
-      const { data } = await supabaseAdmin
+    const { data: aggData, error: errAgg } = await supabaseAdmin
+      .rpc('skm_stats_dimensi');
+
+    if (!errAgg && aggData && typeof aggData === 'object' && !Array.isArray(aggData)) {
+      for (const d of DIMENSI) {
+        const v = aggData[d];
+        if (v && typeof v.rata_rata !== 'undefined') {
+          perDimensi[d] = { label: DIMENSI_LABEL[d], rata_rata: Number(v.rata_rata), count: Number(v.count || 0) };
+        }
+      }
+    } else if (errAgg && errAgg.code !== 'PGRST202') {
+      console.warn('[skm/stats] RPC skm_stats_dimensi error:', errAgg.message);
+    }
+
+    if (Object.keys(perDimensi).length === 0) {
+      const { data: rows, error: errRows } = await supabaseAdmin
         .from('skm')
-        .select(d, { count: 'exact', head: false });
-      if (data && data.length > 0) {
-        const sum = data.reduce((acc, row) => acc + Number(row[d]), 0);
-        perDimensi[d] = { label: DIMENSI_LABEL[d], rata_rata: parseFloat((sum / data.length).toFixed(2)), count: data.length };
+        .select('persyaratan,prosedur,waktu,biaya,produk,kompetensi,perilaku,sarana');
+      if (errRows) {
+        console.warn('[skm/stats] select skm error:', errRows.message);
+      } else {
+        for (const d of DIMENSI) {
+          const vals = (rows || []).map((r) => Number(r[d])).filter((v) => Number.isFinite(v));
+          if (vals.length > 0) {
+            const sum = vals.reduce((a, b) => a + b, 0);
+            perDimensi[d] = { label: DIMENSI_LABEL[d], rata_rata: Math.round((sum / vals.length) * 100) / 100, count: vals.length };
+          }
+        }
       }
     }
 
     // 3. Per unit pelayanan
     const { data: perUnit, error: err2 } = await supabaseAdmin
       .rpc('skm_per_unit_stats');
+    if (err2) console.warn('[skm/stats] skm_per_unit_stats error:', err2.message);
 
     // 4. Tren bulanan (6 bulan terakhir)
     const { data: tren, error: err3 } = await supabaseAdmin
       .rpc('skm_tren_bulanan', { bulan_terakhir: 6 });
+    if (err3) console.warn('[skm/stats] skm_tren_bulanan error:', err3.message);
 
     // 5. Rating website dari rating_feedback
     let ratingWebsite = { rata_rata: 0, total: 0, distribusi: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 } };
@@ -61,6 +92,7 @@ export default async function handler(req, res) {
       const { data: ratingData, error: err4 } = await supabaseAdmin
         .from('rating_feedback')
         .select('rating');
+      if (err4) console.warn('[skm/stats] rating_feedback error:', err4.message);
       if (ratingData && ratingData.length > 0) {
         const sum = ratingData.reduce((acc, r) => acc + r.rating, 0);
         ratingWebsite.rata_rata = parseFloat((sum / ratingData.length).toFixed(2));
@@ -68,7 +100,7 @@ export default async function handler(req, res) {
         ratingWebsite.distribusi = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
         ratingData.forEach(r => { ratingWebsite.distribusi[r.rating]++; });
       }
-    } catch {}
+    } catch (e) { console.warn('[skm/stats] rating loop error:', e.message); }
 
     return res.status(200).json({
       success: true,

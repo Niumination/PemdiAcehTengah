@@ -4,28 +4,14 @@
 
 # ============ Kontak Keamanan (Security Contact) ============
 # Laporkan kerentanan keamanan portal Pemdi Aceh Tengah
-Contact: https://pemdi-aceh-tengah.vercel.app/kontak
 Contact: mailto:keamanan@acehtengahkab.go.id
-
-# ============ Enkripsi (Encryption) ============
-# Kunci publik PGP untuk laporan terenkripsi
-Encryption: https://pemdi-aceh-tengah.vercel.app/pgp-key.txt
-
-# ============ Penghargaan / Ucapan Terima Kasih ============
-# Kami menghargai peneliti keamanan yang melaporkan kerentanan secara bertanggung jawab
-Acknowledgments: https://pemdi-aceh-tengah.vercel.app/
+Contact: https://pemdi-aceh-tengah.vercel.app/lapor
 
 # ============ Kebijakan Keamanan (Security Policy) ============
 # Baca kebijakan keamanan dan perlindungan data kami
 Policy: https://pemdi-aceh-tengah.vercel.app/kebijakan-privasi
 
-# ============ Bahasa / Languages ============
-# Indonesia (default), English
-Preferred-Languages: id, en
-
-# ============ Tanggal Kadaluarsa ============
-# Token ini valid hingga akhir tahun 2026
-Expires: 2026-12-31T23:59:00.000Z
-
-# ============ Canonical URL ============
-Canonical: https://pemdi-aceh-tengah.vercel.app/.well-known/security.txt
+# Catatan: sebelumnya file ini menunjuk /kontak dan /pgp-key.txt
+# yang tidak pernah ada (404) — diperbaiki pada audit 2026-09-17.
+# Tambahkan kembali baris Encryption: setelah kunci PGP benar-benar
+# dipublikasikan di URL yang valid.

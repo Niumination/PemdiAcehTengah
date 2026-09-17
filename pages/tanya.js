@@ -75,7 +75,7 @@ export default function TanyaPage() {
     setTimeout(() => {
       setMengetik(false);
       if (best && best.score >= 0.2) {
-        setMessages(prev => [...prev, { role: 'bot', text: best.jawab, kategori: best.kategori }]);
+        setMessages(prev => [...prev, { role: 'bot', text: best.jawab, kategori: best.kategori, isHtml: true }]);
       } else {
         setMessages(prev => [...prev, {
           role: 'bot',

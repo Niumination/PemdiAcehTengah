@@ -54,7 +54,7 @@ export default function DashboardKepuasan() {
               <Link href="/skm" style={{ color: 'var(--primary)', textDecoration: 'underline' }}>
                 /skm
               </Link>{' '}
-              — 8 dimensi penilaian (skala 1–4), 41 unit pelayanan. Rating umpan balik cepat
+              — 8 dimensi penilaian (skala 1–4), 43 unit pelayanan. Rating umpan balik cepat
               melalui tombol ★ di pojok kanan bawah setiap halaman.
             </div>
           </div>

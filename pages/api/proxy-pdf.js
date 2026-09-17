@@ -28,10 +28,19 @@ export default async function handler(req, res) {
       });
     }
 
-    const contentType = response.headers.get('content-type') || 'application/pdf';
+    // Whitelist content-type (audit S-5 2026-09-17): jangan passthrough
+    // content-type dari upstream — HTML yang di-render same-origin di iframe
+    // bisa jadi vektor stored-XSS.
+    const contentType = response.headers.get('content-type') || '';
+    if (!contentType.toLowerCase().includes('application/pdf')) {
+      return res.status(415).json({
+        error: `Sumber bukan PDF (content-type: ${contentType || 'tidak diketahui'})`,
+      });
+    }
+
     const buffer = Buffer.from(await response.arrayBuffer());
 
-    res.setHeader('Content-Type', contentType);
+    res.setHeader('Content-Type', 'application/pdf');
     res.setHeader('Content-Disposition', 'inline; filename="preview.pdf"');
     res.setHeader('Content-Length', buffer.length);
     // Hapus header yang bisa ngeblok rendering

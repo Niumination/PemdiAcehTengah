@@ -78,7 +78,7 @@ export default function LaporPage() {
             <p>
               Setiap laporan mendapatkan ID unik ({' '}
               <code style={{ background: 'var(--gray-100)', padding: '0.125rem 0.375rem', borderRadius: 4, fontSize: '0.75rem' }}>
-                LAPOR-20260615-XXXXXX
+                LAPOR-20260615-A1B2C3D4E5F6
               </code>{' '}
               ) yang bisa digunakan untuk memantau status tindak lanjut.
             </p>
@@ -341,7 +341,7 @@ function CekStatus() {
             <input
               className="cek-input"
               type="text"
-              placeholder="LAPOR-20260615-XXXXXX"
+              placeholder="LAPOR-20260615-A1B2C3D4E5F6"
               value={id}
               onChange={e => setId(e.target.value)}
               autoComplete="off"
@@ -361,7 +361,7 @@ function CekStatus() {
           <div>
             <div className="cek-error-title">Laporan Tidak Ditemukan</div>
             <div className="cek-error-desc">{error}</div>
-            <p className="cek-error-tip">Periksa kembali ID Anda. Format: <code>LAPOR-YYYYMMDD-XXXXXX</code></p>
+            <p className="cek-error-tip">Periksa kembali ID Anda. Format: <code>LAPOR-YYYYMMDD-12 karakter</code></p>
           </div>
         </div>
       )}

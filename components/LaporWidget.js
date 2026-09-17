@@ -195,7 +195,7 @@ export default function LaporWidget({ externalOpen, onExternalClose, hideFab }) 
                     type="text"
                     className="lapor-input"
                     style={{ flex: 1 }}
-                    placeholder="Contoh: LAPOR-20260614-XXXXXX"
+                    placeholder="Contoh: LAPOR-20260614-A1B2C3D4E5F6"
                     value={tracking.input}
                     onChange={e => setTracking(s => ({ ...s, input: e.target.value, hasil: null, error: null }))}
                     disabled={tracking.loading}
