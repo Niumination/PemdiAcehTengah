@@ -44,7 +44,12 @@
 ## 🟡 P2 — Active
 
 - [ ] **Mengejar bukti dukung 2026** — gap 203/250 item (47 lengkap, 19%). Prioritas bobot: Kepuasan 25% → Data/Keamanan/Keterpaduan 15% → dll. PIC OPD per indikator sudah tampil di /pemdi
-- [ ] **Sprint A–C (lihat audit/EKSEKUSI_11_SKILLS_2026-09-17.md)** — A: pulihkan Supabase + monitor + dedup api/requirement.js (hardcode 192 baris → import JSON); B: next/font, bundle /pemdi & /modul-indikator <140 kB, SSR dashboard, audit kontras; C: Next 15, repo slimming, audit log admin
+- [x] **Sprint A6** — api/requirement.js dedup ke data/requirement.json (respons identik) + 4 pin test — 18 Sep 2026
+- [x] **Sprint A7** — Sidebar: /lapor /tanya /bantuan /kebijakan-privasi ≤1 klik — 18 Sep 2026
+- [x] **Sprint A1 (DB)** — Supabase aktif kembali (un-pause); live terverifikasi 200. Sisa: jalankan SQL RPC baru (bump_rate_limit, skm_stats_dimensi, RLS) — 18 Sep 2026
+- [ ] **Sprint A (pemilik)** — A2 uptime monitor (pasca-merge), A3 commit ci.yml, A4 deskripsi repo, A5 rotasi ADMIN_PASSWORD
+- [ ] **Sprint B** — next/font, bundle /pemdi & /modul-indikator <140 kB, SSR dashboard, audit kontras
+- [ ] **Sprint C** — Next 15 (+React 19), repo slimming, audit log admin
 - [ ] **Backup ritme git** — push ke origin tiap akhir sesi kerja (sempat tertinggal 3 commit; sudah disinkronkan 10 Agu 2026)
 
 ## 🔄 Future

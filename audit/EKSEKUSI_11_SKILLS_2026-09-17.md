@@ -168,3 +168,22 @@ Review kualitatif terhadap sistem desain **"Gayo Civic Digital"**:
 - A11y: `role="banner"` gov-strip dihapus (1 banner landmark) · SkmPrompt `role="status" aria-live="polite"` ✓ (toast dirender client-side setelah 3 pageview — sesuai desain)
 - admin.js: token via state (5 jalur setter: mount/login/logout/401×2) ✓
 - `package.json`: `engines.node >=20` ✓ · lint 0 error · 16/16 test · build 72/72 halaman ✓
+
+---
+
+## UPDATE SPRINT A — 18 Sep 2026 (WIB)
+
+**A1 ✅ (sebagian besar):** Project Supabase diaktifkan kembali oleh pemilik (sempat pause). Verifikasi live (cache-busted):
+- `GET /api/skm` → **200** `{"total_responden":2,"rata_skala_4":3.81,"ikm_0_100":95.31}` — view `skm_ringkasan` hidup ✓
+- `GET /api/feedback` → **200** `{"total":0,...}` — tabel `rating_feedback` ada ✓
+- Sisa A1: jalankan SQL baru di Supabase SQL Editor (`db/schema.sql` + `db/rate-limit-schema.sql` — RPC `bump_rate_limit`, `skm_stats_dimensi`, RLS `rate_limits`). Kode baru punya fallback, jadi aman kapan saja sebelum/sesudah merge deploy.
+
+**A6 ✅:** `pages/api/requirement.js` — 192 baris data hardcoded → `import requirementData from '@/data/requirement.json'` (diverifikasi **identik byte-per-byte** dengan respons lama sebelum refactor; kini satu sumber bersama `pages/requirement.js`) + 4 pin test baru `test/requirement.test.mjs` (12 kategori · 83 item · `count`=`items` per kategori · 5 output).
+
+**A7 ✅:** Sidebar — Grup I bertambah: *Lacak Status Laporan* (`/lapor`), *Chat Tanya-Jawab* (`/tanya`), *Pusat Bantuan* (`/bantuan`); Grup III bertambah: *Kebijakan Privasi* (`/kebijakan-privasi`). Semua 20 rute kini ≤ 1 klik dari sidebar.
+
+**Menunggu pemilik repo (setelah merge):**
+- A2 — uptime monitor: daftarkan **setelah merge+deploy** (endpoint `/api/health` baru ada di branch ini, belum di produksi)
+- A3 — commit `.github/workflows/ci.yml` (Node 22 + `npm test`) yang sudah disiapkan
+- A4 — deskripsi repo GitHub (hapus "Bukan Portal Resmi")
+- A5 — rotasi `ADMIN_PASSWORD` di env Vercel
