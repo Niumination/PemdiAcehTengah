@@ -20,7 +20,7 @@ export default function SkmPrompt() {
   if (!show) return null;
 
   return (
-    <div className="skm-toast" role="alert">
+    <div className="skm-toast" role="status" aria-live="polite">
       <span>📝 Ada waktu 2 menit? <strong>Ikut survei kepuasan kami</strong></span>
       <Link href="/skm" className="skm-toast-cta" onClick={() => setShow(false)}>
         Isi Survei →

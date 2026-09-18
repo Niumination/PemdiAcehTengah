@@ -5,10 +5,10 @@ import { useState } from 'react';
 import { MotifEmun, MotifUlen } from '@/components/motif/KerawangMotifs';
 
 const SKALA_WARNA = {
-  4: '#00703c',
-  3: '#e65100',
-  2: '#d4351c',
-  1: '#c62828',
+  4: 'var(--skala-4)',
+  3: 'var(--skala-3)',
+  2: 'var(--skala-2)',
+  1: 'var(--skala-1)',
 };
 
 export default function SKMPage() {
@@ -162,7 +162,7 @@ export default function SKMPage() {
                           key={n}
                           type="button"
                           className={`skor-btn ${skor[d.id] === n ? 'selected' : ''}`}
-                          style={skor[d.id] === n ? { background: SKALA_WARNA[n], borderColor: SKALA_WARNA[n], color: 'white' } : {}}
+                          style={skor[d.id] === n ? { background: SKALA_WARNA[n], borderColor: SKALA_WARNA[n], color: 'var(--on-accent)' } : {}}
                           onClick={() => setSkor({ ...skor, [d.id]: n })}
                         >{n}</button>
                       ))}

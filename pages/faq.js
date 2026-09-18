@@ -7,6 +7,17 @@ import { sanitizeHtml } from '@/lib/sanitize';
 
 const FEEDBACK_KEY = 'pemdi_faq_fb';
 
+// FAQPage structured data (skill: seo) — jawaban di-strip tag HTML agar aman
+// untuk JSON-LD; sumber tunggal tetap data/faq.json (15 Q&A).
+const stripTags = (t) => String(t).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+const faqJsonLd = faq.kategori.flatMap((k) =>
+  k.pertanyaan.map((q) => ({
+    '@type': 'Question',
+    name: q.tanya,
+    acceptedAnswer: { '@type': 'Answer', text: stripTags(q.jawab) },
+  }))
+);
+
 export default function FAQPage() {
   const [buka, setBuka] = useState(null);
   const [cari, setCari] = useState('');
@@ -45,6 +56,16 @@ export default function FAQPage() {
       <Head>
         <title>FAQ — Pemdi Aceh Tengah</title>
         <meta name="description" content="Pertanyaan umum seputar Pemerintah Digital Aceh Tengah — portal, layanan, SPBE, Pemdi, dan teknis." />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: faqJsonLd,
+            }),
+          }}
+        />
       </Head>
 
       <section data-reveal style={{

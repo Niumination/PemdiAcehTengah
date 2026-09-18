@@ -415,9 +415,9 @@ function EmptyState() {
 function getColor(val, max) {
   if (!val) return 'var(--gray-400)';
   const pct = val / max;
-  if (pct >= 0.7) return '#059669';
-  if (pct >= 0.5) return '#d97706';
-  return '#dc2626';
+  if (pct >= 0.7) return '#047857';
+  if (pct >= 0.5) return '#b45309';
+  return '#b91c1c';
 }
 
 function formatBulan(bulanStr) {

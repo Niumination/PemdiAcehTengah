@@ -19,9 +19,37 @@
 - [x] **Fix QA anti-fail** — useCountUp/useInView (SSR target, fallback timeout), requirement.js CSR→SSR, data/requirement.json — console production 0 error
 - [x] **Ground Truth NotebookLM** — 20 indikator (I1–I20), 222 item data dukung di `data/modul-indikator.json`; I5/I6/I7/I18 dikosongkan sesuai strategi (auto-scored + rawan tolak)
 
+## ✅ Completed — Hardening Audit 2026-09-17
+- [x] **Audit menyeluruh repo + 7 branch + live web** — autoskills checklist + ponytail + premortem (arsip internal pemilik)
+- [x] **Ponytail: hapus 22 dead code (2.241 baris)** — 18 komponen + 2 motif + lib/cors + lib/safeRichText; DOX pass 4 file AGENTS.md + README sinkron
+- [x] **Rate limiter atomic** — RPC `bump_rate_limit` (db/rate-limit-schema.sql), hapus cache 2 dtk yang bisa ditembus
+- [x] **Sanitizer diperkuat** — tag dibangun ulang, blokir `javascript:`/`data:` URI & entitas (audit S-1)
+- [x] **Admin auth constant-time** (crypto.timingSafeEqual) + rate-limit `/api/lapor/status` + ID lapor 12-hex
+- [x] **`/api/health`** — 200/503 untuk uptime monitor (backend live sempat mati tanpa terdeteksi)
+- [x] **`/api/skm/stats` tanpa N+1** — RPC `skm_stats_dimensi` + fallback 1 query
+- [x] **16 unit test rumus Pemdi** (`npm test`, CI Node 22) — pin indeks 0,38 · proyeksi 2,29 · 250/47/4/199
+- [x] **SEO**: canonical + og:url dinamis; og-image PNG 1,6 MB → JPG 166 KB; crest-pemdi.png 1 MB (tak terpakai) dihapus
+- [x] **proxy-pdf whitelist content-type**; security.txt diperbaiki (rujukan 404 dihapus); CSP connect-src diperketat
+- [x] **Higien git**: 6 branch stale dihapus; sitemap/robots (hasil generate) keluar dari git
+
+## ✅ Completed — Eksekusi 11 Skills autoskills (2026-09-17)
+- [x] 11 skill dijalankan sebagai review pass — ringkasan di CHANGELOG.md (laporan lengkap arsip internal)
+- [x] react: admin.js token via state (bukan read saat render); Footer year init-once + suppressHydrationWarning
+- [x] a11y: SkmPrompt role=status + aria-live polite; gov-strip bukan lagi banner ganda
+- [x] seo: header HSTS; FAQPage JSON-LD 15 Q&A di /faq
+- [x] cache: CDN cache /api/opd & /api/spbe (1j/SWR 1h) & /api/skm/stats (60d/SWR 5m); requirement.js sudah punya (duplikat dihapus)
+- [x] supabase: RLS rate_limits (db/rate-limit-schema.sql)
+- [x] nodejs: engines node>=20
+
 ## 🟡 P2 — Active
 
-- [ ] **Mengejar bukti dukung 2026** — gap 199/232 item (33 lengkap, 14%). Prioritas bobot: Kepuasan 25% → Data/Keamanan/Keterpaduan 15% → dll. PIC OPD per indikator sudah tampil di /pemdi
+- [ ] **Mengejar bukti dukung 2026** — gap 203/250 item (47 lengkap, 19%). Prioritas bobot: Kepuasan 25% → Data/Keamanan/Keterpaduan 15% → dll. PIC OPD per indikator sudah tampil di /pemdi
+- [x] **Sprint A6** — api/requirement.js dedup ke data/requirement.json (respons identik) + 4 pin test — 18 Sep 2026
+- [x] **Sprint A7** — Sidebar: /lapor /tanya /bantuan /kebijakan-privasi ≤1 klik — 18 Sep 2026
+- [x] **Sprint A1 (DB)** — Supabase aktif kembali (un-pause); live terverifikasi 200. Sisa: jalankan SQL RPC baru (bump_rate_limit, skm_stats_dimensi, RLS) — 18 Sep 2026
+- [ ] **Sprint A (pemilik)** — A2 uptime monitor (pasca-merge), A3 commit ci.yml, A4 deskripsi repo, A5 rotasi ADMIN_PASSWORD
+- [x] **Sprint B** — B1 font self-host (0 request Google Fonts) · B2 /pemdi 174→114 kB & /modul-indikator 172→113 kB · B3 SSR+ISR ringkasan kepuasan · B4 kontras 30 PASS/0 FAIL · B5 13 token warna + dark override — 18 Sep 2026
+- [ ] **Sprint C** — Next 15 (+React 19), repo slimming, audit log admin
 - [ ] **Backup ritme git** — push ke origin tiap akhir sesi kerja (sempat tertinggal 3 commit; sudah disinkronkan 10 Agu 2026)
 
 ## 🔄 Future
@@ -30,4 +58,4 @@
 
 ---
 
-*Terakhir diperbarui: 10 Agu 2026 — Sinkronisasi git + backlog + dokumentasi env*
+*Terakhir diperbarui: 18 Sep 2026 — Sprint B + audit pre-merge selesai; ringkasan di CHANGELOG.md*

@@ -80,10 +80,10 @@ function cariRelated(daftar, opd, limit = 6) {
    ============================================= */
 const LEVEL_META = {
   Staf:      { color: 'var(--primary)', icon: '🏛️', label: 'Staf Ahli/Setda' },
-  Badan:     { color: '#0277bd', icon: '📊', label: 'Badan' },
-  Dinas:     { color: '#2e7d32', icon: '🏢', label: 'Dinas' },
-  Lembaga:   { color: '#e65100', icon: '🏫', label: 'Lembaga' },
-  Kecamatan: { color: '#6a1b9a', icon: '📍', label: 'Kecamatan' },
+  Badan:     { color: 'var(--level-badan)', icon: '📊', label: 'Badan' },
+  Dinas:     { color: 'var(--level-dinas)', icon: '🏢', label: 'Dinas' },
+  Lembaga:   { color: 'var(--level-lembaga)', icon: '🏫', label: 'Lembaga' },
+  Kecamatan: { color: 'var(--level-kecamatan)', icon: '📍', label: 'Kecamatan' },
 };
 
 /* =============================================

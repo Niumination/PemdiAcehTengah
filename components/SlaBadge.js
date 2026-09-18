@@ -15,7 +15,7 @@ export default function SlaBadge({ sla, compact = false, showLabel = true, size 
   const pct = Math.min(Math.max(isNaN(percent) ? 0 : percent, 0), 100);
 
   // Colour thresholds
-  const color = pct >= 90 ? '#00703c' : pct >= 80 ? '#e65100' : '#c62828';
+  const color = pct >= 90 ? '#00703c' : pct >= 80 ? '#c2410c' : '#c62828';
   const bg = pct >= 90 ? '#e8f5e9' : pct >= 80 ? '#fff3e0' : '#ffebee';
   const barBg = pct >= 90 ? '#a5d6a7' : pct >= 80 ? '#ffcc80' : '#ef9a9a';
 

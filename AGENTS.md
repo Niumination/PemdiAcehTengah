@@ -22,15 +22,15 @@ Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah. Transformasi menuju Peme
 
 | Atribut | Nilai |
 |---------|-------|
-| **Stack** | Next.js 14.2.35, React 18.2.0, Vercel |
-| **Config** | `next.config.js` → standalone output, reactStrictMode, images unoptimized |
+| **Stack** | Next.js 14.2.35, React 18.3.1, Vercel |
+| **Config** | `next.config.js` → security headers (CSP ketat dsb.), reactStrictMode, images unoptimized |
 | **Path Alias** | `@/*` (via `jsconfig.json`) — ex: `@/components/Header` |
-| **Font** | Inter (government professional, GOV.UK-inspired) |
+| **Font** | Plus Jakarta Sans (Google Fonts, `display=swap` — lihat `_document.js`) |
 || **Data Source** | Hybrid: `data/*.json` (OPD, SPBE, ProBis, SKM, Pemdi) + Supabase (SKM responses, admin logs). Client: `lib/supabaseAdmin.js` |
-| **Komponen** | 39 komponen React — lihat `components/AGENTS.md` |
-| **Halaman** | 23 route pages + 11 API routes — lihat `pages/AGENTS.md` |
+| **Komponen** | 20 komponen React aktif — lihat `components/AGENTS.md` (22 dead code dihapus saat hardening 2026-09-17) |
+| **Halaman** | 20 route pages + 12 API routes — lihat `pages/AGENTS.md` |
 | **Lib** | `lib/pemdiNilai.js` (rumus PermenPANRB 8/2026), `lib/rate-limit-db.js`, `lib/search-index.js`, `lib/slugify.js`, `lib/format.js` — lihat `lib/AGENTS.md` |
-|| **Status** | 🟢 **DOX Clean** — semua komponen terverifikasi real, 0 gap dokumentasi |
+|| **Status** | 🟢 **DOX Clean** — diverifikasi ulang 2026-09-17: 20/20 komponen aktif terimpor, dokumen sinkron kode |
 | **Remote** | `git@github.com:Niumination/PemdiAcehTengah.git` |
 | **Production** | https://pemdi-aceh-tengah.vercel.app |
 | **License** | MIT |
@@ -42,10 +42,11 @@ Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah. Transformasi menuju Peme
 | **Restrukturisasi OPD** | 7 pemisahan OPD, 1 OPD baru (Dinas Perkebunan) — RSUD Datu Beru & KORPRI tidak lagi sebagai OPD |
 | **Jargon** | HAMAS (Haili Yoga + Muchsin Hasan), 17 sasaran prioritas |
 | **Program Unggulan** | Aceh Tengah Satu Data (AWS + Komdigi), MPP, Satu OPD Satu Inovasi |
-|| **PWA** | `manifest.json`, icons (192/512 PNG + maskable-512 + apple-touch + SVG), `theme_color: #004098`, `display: standalone`, scope root, +orientation portrait |
+|| **PWA** | `manifest.json`, icons (192/512 PNG + maskable-512 + apple-touch + SVG), `theme_color: #1F2A44`, `display: standalone`, scope root, +orientation portrait |
 || **Security** | CSP headers (Supabase, Google Fonts), rate limiting, IP hashing (SHA-256), admin Bearer auth. `lib/security.js` |
 || **Admin Dashboard** | `/admin` — protected by `ADMIN_TOKEN` env (Bearer auth). Admin APIs: `/api/admin/laporan` (PATCH status), `/api/admin/skm` (GET all) |
-| **HEAD** | `d77c42e` feat(bukti): 18 bukti final lolos-evaluasi tahap interview (I1/I2/I3/I4/I11/I12/I13/I17/I20) |
+| **HEAD** | audit & hardening 2026-09-17: 22 dead code dihapus, 16 unit test rumus Pemdi, rate-limit atomic, `/api/health`, sanitizer & adminAuth diperkuat, canonical+og:url, og-image.jpg 166 KB (sebelumnya PNG 1,6 MB) |
+| **Agent Skills** | `.agents/skills/` — 11 skill autoskills (React · Next.js · Supabase · Node · SEO · a11y · design) + `skills-lock.json` — pasang ulang: `npx autoskills` |
 | **Env Vars** | `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `ADMIN_TOKEN`, `IP_HASH_SALT` |
 | **Indeks Pemdi** | **0.38** (rumus PermenPANRB 8/2026, predikat Tabel 4) — target 2,50+ |
 | **Total bukti dukung** | **250** (`data/pemdi.json`: 47 lengkap / 4 proses / 199 belum; +18 final lolos-evaluasi di `public/bukti-dukung/final/`) |
@@ -72,7 +73,7 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 | `README.md` | Gambaran umum, cara deploy, badge DOX |
 | `CONTRIBUTING.md` | Panduan kontribusi — data/kode/issues |
 | `AGENTS.md` | **File ini** — DOX root |
-| `package.json` | Dependencies: next 14.1.0, react 18.2.0 |
+| `package.json` | Dependencies: next 14.2.35, react 18.3.1 · `npm test` = node --test (Node 22) |
 | `next.config.js` | Standalone output, reactStrictMode, unoptimized images |
 | `jsconfig.json` | Path alias `@/*` |
 | `.gitignore` | node_modules, .next, .env, *.old, build |
@@ -84,15 +85,14 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 | `styles/` | CSS globals — **Gayo Civic Digital v3**, CSS variables, hero award gradient, dark mode |
 | `data/` | Data statis JSON (OPD, SPBE, ProBis, SKM, Pemdi) + glosarium |
 | `docs/` | Dokumentasi, PDF, riset |
-| `docs.old/` | Legacy docs — referensi historis (tidak diindex DOX) |
 | `lib/` | Supabase client (`supabaseAdmin.js`), security helpers (`security.js`), admin auth (`adminAuth.js`) |
 | `pages/admin.js` | Admin Dashboard — authenticate via ADMIN_TOKEN (Bearer) |
 | `pages/api/admin/` | Admin API routes: `laporan.js` (PATCH status pengaduan), `skm.js` (GET semua SKM) |
-| `public/manifest.json` | PWA manifest — standalone, theme_color #004098, icons 192+512+maskable+apple-touch |
+| `public/manifest.json` | PWA manifest — standalone, theme_color #1F2A44, icons 192+512+maskable+apple-touch |
 | `public/icons/` | PWA icons — `icon-192.png`, `icon-512.png`, `icon-maskable-512.png`, `apple-touch-icon.png`, `icon.svg`, `192.svg` |
 | `public/crest-pemdi.svg` | Lambang daerah Aceh Tengah (crest) |
 | `desain/` | UI/UX redesign assets — prototype HTML, panduan desain, glosarium istilah, design guide |
-| `audit/` | Audit reports — hasil verifikasi perbaikan v2, laporan audit |
+| `CHANGELOG.md` | Ringkasan perubahan publik (dokumen kerja internal ada di arsip privat pemilik) |
 
 ## Global Rules
 
@@ -106,21 +106,21 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 8. **Bahasa**: Dokumentasi dan konten portal dalam Bahasa Indonesia.
 9. **Admin auth**: Dashboard `/admin` dan API `/api/admin/*` dilindungi Bearer token dari `ADMIN_TOKEN` env var (default: `admin` untuk dev). Lihat `lib/adminAuth.js`.
 10. **PWA**: Progressive Web App via `public/manifest.json` + icons. `_app.js` includes manifest link + theme-color meta + Vercel Analytics.
-11. **Security headers**: Semua route via `next.config.js` — CSP (allow Supabase, Google Fonts), X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy. Rate limiting + IP hashing di `lib/security.js`.
+11. **Security headers**: Semua route via `next.config.js` — CSP (Google Fonts; client tidak memanggil Supabase langsung sejak 2026-09-17), X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy. Rate limiting atomic + IP hashing di `lib/security.js`. Health check `/api/health` untuk uptime monitor.
 
 ## Child DOX Index
 
 | Path | Scope |
 |------|-------|
-| `pages/AGENTS.md` | 15 halaman Next.js (index, glosarium, layanan, pemdi, spbe, probis, skm, faq, cari, tanya, opd/index, opd/[slug], admin, requirement, 404) + 6 API routes — indexing, routing, data flow |
-| `pages/api/AGENTS.md` | REST API: opd, spbe, requirement, lapor, skm, admin — GET read + POST write. Admin auth via ADMIN_TOKEN (Bearer). Lihat `lib/adminAuth.js` |
-| `components/AGENTS.md` | **20 komponen real** — Accordion, AppShell, DataBadge, DetailModal, Explainer, Footer, GlossaryTooltip, Header, LaporWidget, Modal, OPDTable, ProbisSection, Rekomendasi, ScrollTop, Section, Sidebar, SlaBadge, SpbeGauge, Stepper, ThemeToggle |
+| `pages/AGENTS.md` | 20 route halaman + 12 API routes (termasuk /api/health, /api/feedback, /api/lapor/status, /api/skm/stats, /api/proxy-pdf) — indexing, routing, data flow |
+| `pages/api/AGENTS.md` | REST API: opd, spbe, requirement, lapor (+status), skm (+stats), feedback, proxy-pdf, health, admin — GET read + POST write. Admin auth via ADMIN_PASSWORD/ADMIN_TOKEN (Bearer, constant-time). Lihat `lib/adminAuth.js` |
+| `components/AGENTS.md` | **20 komponen aktif** — AppShell, Sidebar, Footer, ThemeToggle, ScrollTop, LaporWidget, RatingWidget, SkmPrompt, Sp4nBanner, OPDTable, SpbeGauge, ServiceFinder, ServiceCard, SlaBadge, DashboardSKM, DetailModal, TopographicBackdrop, GlossaryTooltip, TrackerStatus, motif/KerawangMotifs |
 | `styles/AGENTS.md` | **Gayo Civic Digital v3** — CSS variables: `--gov-blue`, `--lake-cyan`, `--gayo-gold`, `--coffee-brown`, `--forest-green`. Hero award gradient. Dark mode. 799 baris. |
 | `data/AGENTS.md` | Struktur data: opd.json (52 OPD, 78 PPB ✅), pemdi.json (7 aspek, 20 indikator), layanan.json, skm.json, faq.json |
 | `STRATEGI_PEMDIACEHTENGAH.md` | **Dokumen perencanaan strategis (file ini)** — 4 fase, quick wins, risiko, metrik |
-| `lib/AGENTS.md` | Supabase client (`supabaseAdmin.js`), security helpers (`security.js` — CSP, rate limiting, IP hashing), admin auth (`adminAuth.js`) |
+| `lib/AGENTS.md` | 9 modul — pemdiNilai (rumus resmi, teruji 16 unit test), security, rate-limit-db (RPC atomic), adminAuth (constant-time), supabaseAdmin (server-only), sanitize (allowlist ketat), search-index, format, slugify |
 | `pages/admin` | Admin Dashboard — laporan (pengaduan), SKM management. Protected by ADMIN_TOKEN (Bearer auth) |
-| `public/AGENTS.md` | PWA assets: manifest.json, icons (192/512 PNG + maskable-512 + apple-touch + SVG), favicon, crest-pemdi |
+| `public/AGENTS.md` | PWA assets: manifest.json, icons (192/512 PNG + maskable-512 + apple-touch + SVG), favicon, crest-pemdi.svg, og-image.jpg |
 
 ## User Preferences
 

@@ -7,6 +7,8 @@
 **Status:** 🔵 Masterplan — Menunggu persetujuan stakeholder
 **Penanggung Jawab:** Diskominfo Kabupaten Aceh Tengah
 
+> ⚠️ **Catatan status (17 Sep 2026):** dokumen ini adalah **cetak biru historis per Juni 2026** — sebagian angka baseline di dalamnya (mis. indeks Pemdi awal) sudah tidak mutakhir. Angka resmi terkini: `AGENTS.md` (root) dan `data/*.json` — capaian terverifikasi indeks Pemdi **0,38** (47/250 bukti lengkap, rumus resmi PermenPANRB 8/2026).
+
 **Riwayat Perubahan:**
 | Versi | Tanggal | Perubahan |
 |-------|---------|-----------|

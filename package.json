@@ -3,11 +3,15 @@
   "version": "1.0.0",
   "description": "Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah — Transformasi Menuju Pemerintah Digital (Pemdi)",
   "private": true,
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "test": "node --test",
     "postbuild": "next-sitemap"
   },
   "dependencies": {

@@ -35,13 +35,13 @@ REST API endpoints — serverless functions di Next.js. Digunakan untuk operasi 
 ### `POST /api/lapor` — Kirim laporan
 **Request:**
 ```json
-{ "kategori": "saran|keluhan|pertanyaan|apresiasi|bug|lainnya|layanan|portal|pungli", "pesan": "string (min 5)", "kontak": "string (opsional)", "halaman": "string (opsional)", "turnstileToken": "string (opsional)" }
+{ "kategori": "saran|keluhan|pertanyaan|apresiasi|bug|lainnya|layanan|portal|pungli", "pesan": "string (min 5)", "kontak": "string (opsional)", "halaman": "string (opsional)" }
 ```
 **Response (201):**
 ```json
 { "success": true, "tersimpan": true, "data": { "id": "LAPOR-...", "kategori": "...", "status": "baru", "dibuat": "..." } }
 ```
-**Keamanan:** sanitasi HTML, rate-limit 5/menit/IP, Turnstile anti-bot, hash IP.
+**Keamanan:** sanitasi input, rate-limit atomic 5/menit/IP (RPC `bump_rate_limit`), hash IP SHA-256.
 
 ### `PATCH /api/lapor` — Update status laporan
 Digunakan oleh admin untuk mengubah status laporan.
@@ -75,7 +75,7 @@ Digunakan oleh admin untuk mengubah status laporan.
 ### `POST /api/skm` — Kirim survei
 **Request:**
 ```json
-{ "persyaratan": 1-4, "prosedur": 1-4, "waktu": 1-4, "biaya": 1-4, "produk": 1-4, "kompetensi": 1-4, "perilaku": 1-4, "sarana": 1-4, "layanan": "string (unit pelayanan)", "saran": "string (opsional)", "turnstileToken": "string (opsional)" }
+{ "persyaratan": 1-4, "prosedur": 1-4, "waktu": 1-4, "biaya": 1-4, "produk": 1-4, "kompetensi": 1-4, "perilaku": 1-4, "sarana": 1-4, "layanan": "string (unit pelayanan)", "saran": "string (opsional)" }
 ```
 **Response (201):** `{ "success": true, "tersimpan": true, "note": "Terima kasih! ..." }`
 **Keamanan:** sanitasi, rate-limit 3/5 menit/IP, validasi nilai 1-4 per unsur, hash IP.
@@ -110,7 +110,7 @@ Endpoint `/api/admin/*` dan `PATCH /api/lapor` memerlukan autentikasi admin via 
 ## Notes
 - **POST routes** menggunakan Supabase — butuh env `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY`
 - **Tanpa Supabase:** API tetap hidup → return 503 dengan pesan jelas
-- **Keamanan:** Setiap route punya rate-limit per IP + sanitasi input + Turnstile verification
+- **Keamanan:** Setiap route tulis punya rate-limit atomic per IP + sanitasi input (Turnstile: belum diimplementasikan — lihat README)
 - **Admin auth:** Bearer token dari env `ADMIN_TOKEN` — dicek di `lib/adminAuth.js`
 - **Upgrade:** Eksekusi `db/schema.sql` di Supabase SQL Editor untuk setup database
 

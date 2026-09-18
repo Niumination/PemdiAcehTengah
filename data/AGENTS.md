@@ -1,6 +1,6 @@
 # Data — DOX
 
-Single source of truth: `data/opd.json`. Struktur data mencakup metadata, OPD (52 entries), SPBE (47 indikator), Peta Proses Bisnis (Level 0-2, 78 proses), Rekomendasi (8 item), dan pemdi.json (7 aspek × 20 indikator).
+Single source of truth: `data/opd.json`. Struktur data mencakup metadata, OPD (52 entries), SPBE (indeks 2,59 + 4 domain + rekomendasi prioritas), Peta Proses Bisnis (Level 0-2, 78 proses), Rekomendasi (7 item), dan pemdi.json (7 aspek × 20 indikator).
 
 ## Source Data
 
@@ -54,7 +54,7 @@ Data berasal dari **e-Keurani BKPSDM** (sumber tunggal terharmonisasi):
 - **Lembaga Lainnya** (7): MPU (13), MAG (8), MPD (6), Baitul Mal (6), Korpri (7), RSUD Datu Beru (466), Kesbangpol (15)
 - **Kecamatan** (14): Bebesen, Lut Tawar, Kebayakan, Bintang, Pegasing, Bies, Linge, Atu Lintang, Rusip Antara, Jagong Jeget, Silih Nara, Celala, Ketol, Kute Panang
 
-### SPBE (47 Indikator — Format Lama Permenpan 59/2020)
+### SPBE (Indeks & 4 Domain — format lama Permenpan 59/2020; rincian 47 indikator ada di docs PDF laporan resmi)
 
 **Baseline 2025 (akan diganti ke framework Pemdi Permenpan 8/2026)**:
 
@@ -83,7 +83,7 @@ Permenpan 8/2026 TIDAK menggantikan Permenpan 19/2018 untuk PPB. Keduanya tetap 
 
 ### Rekomendasi (Array)
 
-8 item prioritas perbaikan berdasarkan analisis baseline SPBE 2025.
+7 item prioritas perbaikan berdasarkan analisis baseline SPBE 2025.
 
 ## Framework Pemdi — Permenpan 8/2026
 

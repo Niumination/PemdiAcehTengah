@@ -1,8 +1,11 @@
 import Sp4nBanner from './Sp4nBanner';
 import { KerawangDivider, MotifPucukRebung } from './motif/KerawangMotifs';
 
+// Dievaluasi sekali per load (skill react: init-once) — bukan di tiap render.
+// suppressHydrationWarning menutup edge pergantian tahun (SSG build vs client).
+const currentYear = new Date().getFullYear();
+
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="gov-footer">
@@ -109,7 +112,7 @@ export default function Footer() {
 
         {/* Footer Bottom Bar */}
         <div className="footer-bottom">
-          <span>
+          <span suppressHydrationWarning>
             &copy; {currentYear} Pemerintah Kabupaten Aceh Tengah.
             Open Source Government Technology berlisensi{' '}
             <a href="https://github.com/Niumination/PemdiAcehTengah/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">

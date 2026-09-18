@@ -77,3 +77,34 @@ returns table (bulan text, rata_rata numeric, jumlah bigint) language sql stable
   group by date_trunc('month', dibuat)
   order by bulan
 $$;
+
+-- ============================================================
+-- Agregat dimensi SKM dalam SATU panggilan (dipakai
+-- /api/skm/stats via supabase.rpc('skm_stats_dimensi')) —
+-- menggantikan 8 query terpisah (audit A-3 2026-09-17).
+-- Output: { "persyaratan": {"rata_rata": x, "count": n}, ... }
+-- ============================================================
+CREATE OR REPLACE FUNCTION public.skm_stats_dimensi()
+RETURNS JSON
+LANGUAGE SQL
+STABLE
+AS $$
+  SELECT COALESCE(
+    json_object_agg(d, json_build_object('rata_rata', r, 'count', c)),
+    '{}'::json
+  )
+  FROM (
+    SELECT d, ROUND(AVG(v)::NUMERIC, 2) AS r, COUNT(*)::BIGINT AS c
+    FROM (
+      SELECT 'persyaratan' AS d, persyaratan AS v FROM public.skm
+      UNION ALL SELECT 'prosedur',  prosedur  FROM public.skm
+      UNION ALL SELECT 'waktu',     waktu     FROM public.skm
+      UNION ALL SELECT 'biaya',     biaya     FROM public.skm
+      UNION ALL SELECT 'produk',    produk    FROM public.skm
+      UNION ALL SELECT 'kompetensi', kompetensi FROM public.skm
+      UNION ALL SELECT 'perilaku',  perilaku  FROM public.skm
+      UNION ALL SELECT 'sarana',    sarana    FROM public.skm
+    ) x
+    GROUP BY d
+  ) t;
+$$;

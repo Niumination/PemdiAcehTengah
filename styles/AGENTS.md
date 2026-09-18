@@ -4,7 +4,7 @@
 Global CSS — satu file sumber untuk seluruh tampilan portal. **v3 — Gayo Civic Digital.**
 
 ## Ownership
-- `globals.css` — Satu-satunya file CSS. ~39 KB / 799 baris. Semua styling di sini.
+- `globals.css` — Satu-satunya file CSS utama. ~56 KB / 1.591 baris. Semua styling di sini.
 - **TIDAK ada file CSS lain.** No module CSS, no Tailwind. Period.
 
 ## Local Contracts

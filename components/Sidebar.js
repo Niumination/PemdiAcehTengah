@@ -11,8 +11,11 @@ const menuGroups = [
     items: [
       { label: 'Direktori Layanan', href: '/layanan', icon: '📋', badge: '25 SLA' },
       { label: 'Pengaduan & Lapor', href: '#', icon: '💬', isModal: true, badge: 'SP4N' },
+      { label: 'Lacak Status Laporan', href: '/lapor', icon: '🔎' },
       { label: 'Survei Kepuasan (SKM)', href: '/skm', icon: '📝' },
       { label: 'Tanya Assistant & FAQ', href: '/faq', icon: '🤖' },
+      { label: 'Chat Tanya-Jawab', href: '/tanya', icon: '🗨️' },
+      { label: 'Pusat Bantuan', href: '/bantuan', icon: '🆘' },
     ],
   },
   {

@@ -10,9 +10,6 @@ import { MotifEmun, MarqueeBudaya } from '@/components/motif/KerawangMotifs';
 import useCountUp from '@/hooks/useCountUp';
 import useInView from '@/hooks/useInView';
 import { formatDesimal } from '@/lib/format';
-import pemdiData from '@/data/pemdi.json';
-import layananData from '@/data/layanan.json';
-import portalData from '@/data/opd.json';
 
 /* ── CountStat: angka KPI dengan count-up saat masuk viewport ── */
 function CountStat({ value, decimals = 0, color, style }) {
@@ -47,7 +44,7 @@ const popularQuickQueries = [
   { label: '🔍 Lacak Status Tiket', query: 'Status' },
 ];
 
-export default function Home() {
+export default function Home({ pemdiData, layananData, portalData }) {
   const opd = portalData.opd;
   const spbe = portalData.spbe;
   const ringkasan = opd.ringkasan;
@@ -242,7 +239,7 @@ export default function Home() {
               💬
             </div>
             <h3>Pengaduan &amp; Tiket Lapor</h3>
-            <p>Sampaikan keluhan atau saran dan dapatkan ID tiket pelacakan real-time (`LAPOR-20260715-XXXXXX`).</p>
+            <p>Sampaikan keluhan atau saran dan dapatkan ID tiket pelacakan real-time (contoh: LAPOR-20260715-A1B2C3D4E5F6).</p>
             <span className="go">Buat Laporan / Lacak →</span>
           </button>
 
@@ -418,4 +415,15 @@ export default function Home() {
       </section>
     </>
   );
+}
+
+/* Data dikirim via getStaticProps (Sprint B2) — JSON keluar dari client bundle. */
+export async function getStaticProps() {
+  return {
+    props: {
+      pemdiData: (await import('@/data/pemdi.json')).default,
+      layananData: (await import('@/data/layanan.json')).default,
+      portalData: (await import('@/data/opd.json')).default,
+    },
+  };
 }
