@@ -119,7 +119,7 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 | `data/AGENTS.md` | Struktur data: opd.json (52 OPD, 78 PPB ✅), pemdi.json (7 aspek, 20 indikator), layanan.json, skm.json, faq.json |
 | `STRATEGI_PEMDIACEHTENGAH.md` | **Dokumen perencanaan strategis (file ini)** — 4 fase, quick wins, risiko, metrik |
 | `lib/AGENTS.md` | 9 modul — pemdiNilai (rumus resmi, teruji 16 unit test), security, rate-limit-db (RPC atomic), adminAuth (constant-time), supabaseAdmin (server-only), sanitize (allowlist ketat), search-index, format, slugify |
-| `pages/admin` | Admin Dashboard — laporan (pengaduan), SKM management. Protected by ADMIN_TOKEN (Bearer auth) |
+| `pages/admin` | Admin Dashboard — laporan (pengaduan), SKM management. Protected by `ADMIN_PASSWORD` (Bearer auth) |
 | `public/AGENTS.md` | PWA assets: manifest.json, icons (192/512 PNG + maskable-512 + apple-touch + SVG), favicon, crest-pemdi.svg, og-image.jpg |
 
 ## User Preferences
