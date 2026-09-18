@@ -26,11 +26,11 @@ Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah. Transformasi menuju Peme
 | **Config** | `next.config.js` → security headers (CSP ketat dsb.), reactStrictMode, images unoptimized |
 | **Path Alias** | `@/*` (via `jsconfig.json`) — ex: `@/components/Header` |
 | **Font** | Plus Jakarta Sans (Google Fonts, `display=swap` — lihat `_document.js`) |
-|| **Data Source** | Hybrid: `data/*.json` (OPD, SPBE, ProBis, SKM, Pemdi) + Supabase (SKM responses, admin logs). Client: `lib/supabaseAdmin.js` |
+| **Data Source** | Hybrid: `data/*.json` (OPD, SPBE, ProBis, SKM, Pemdi) + Supabase (SKM responses, admin logs). Client: `lib/supabaseAdmin.js` |
 | **Komponen** | 20 komponen React aktif — lihat `components/AGENTS.md` (22 dead code dihapus saat hardening 2026-09-17) |
 | **Halaman** | 20 route pages + 12 API routes — lihat `pages/AGENTS.md` |
 | **Lib** | `lib/pemdiNilai.js` (rumus PermenPANRB 8/2026), `lib/rate-limit-db.js`, `lib/search-index.js`, `lib/slugify.js`, `lib/format.js` — lihat `lib/AGENTS.md` |
-|| **Status** | 🟢 **DOX Clean** — diverifikasi ulang 2026-09-17: 20/20 komponen aktif terimpor, dokumen sinkron kode |
+| **Status** | 🟢 **DOX Clean** — diverifikasi ulang 2026-09-17: 20/20 komponen aktif terimpor, dokumen sinkron kode |
 | **Remote** | `git@github.com:Niumination/PemdiAcehTengah.git` |
 | **Production** | https://pemdi-aceh-tengah.vercel.app |
 | **License** | MIT |
@@ -42,10 +42,10 @@ Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah. Transformasi menuju Peme
 | **Restrukturisasi OPD** | 7 pemisahan OPD, 1 OPD baru (Dinas Perkebunan) — RSUD Datu Beru & KORPRI tidak lagi sebagai OPD |
 | **Jargon** | HAMAS (Haili Yoga + Muchsin Hasan), 17 sasaran prioritas |
 | **Program Unggulan** | Aceh Tengah Satu Data (AWS + Komdigi), MPP, Satu OPD Satu Inovasi |
-|| **PWA** | `manifest.json`, icons (192/512 PNG + maskable-512 + apple-touch + SVG), `theme_color: #1F2A44`, `display: standalone`, scope root, +orientation portrait |
-|| **Security** | CSP headers (Supabase, Google Fonts), rate limiting, IP hashing (SHA-256), admin Bearer auth. `lib/security.js` |
-|| **Admin Dashboard** | `/admin` — protected by `ADMIN_PASSWORD` env (Bearer auth). Admin APIs: `/api/admin/laporan` (PATCH status), `/api/admin/skm` (GET all) |
-| **HEAD** | audit & hardening 2026-09-17: 22 dead code dihapus, 16 unit test rumus Pemdi, rate-limit atomic, `/api/health`, sanitizer & adminAuth diperkuat, canonical+og:url, og-image.jpg 166 KB (sebelumnya PNG 1,6 MB) |
+| **PWA** | `manifest.json`, icons (192/512 PNG + maskable-512 + apple-touch + SVG), `theme_color: #1F2A44`, `display: standalone`, scope root, +orientation portrait |
+| **Security** | CSP headers (Supabase, Google Fonts), rate limiting, IP hashing (SHA-256), admin Bearer auth. `lib/security.js` |
+| **Admin Dashboard** | `/admin` — protected by `ADMIN_PASSWORD` env (Bearer auth). Admin APIs: `/api/admin/laporan` (PATCH status), `/api/admin/skm` (GET all) |
+| **HEAD** | `20841e9` (19 Sep 2026) — 22 dead code dihapus, **20 tes** (16 rumus Pemdi + 4 requirement), rate-limit atomic + RPC Supabase, `/api/health`, sanitizer & `adminAuth` diperkuat, canonical+og:url, og-image.jpg 166 KB. Ringkasan lengkap: seksi **Status Sekarang** |
 | **Agent Skills** | `.agents/skills/` — 11 skill autoskills (React · Next.js · Supabase · Node · SEO · a11y · design) + `skills-lock.json` — pasang ulang: `npx autoskills` |
 | **Env Vars** | `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `ADMIN_PASSWORD` (Vercel *sensitive*), `IP_HASH_SALT` — `ADMIN_TOKEN` legacy dihapus 18 Sep 2026 |
 | **Indeks Pemdi** | **0.38** (rumus PermenPANRB 8/2026, predikat Tabel 4) — target 2,50+ |
@@ -76,6 +76,7 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 | `package.json` | Dependencies: next 14.2.35, react 18.3.1 · `npm test` = node --test (Node 22) |
 | `next.config.js` | Standalone output, reactStrictMode, unoptimized images |
 | `jsconfig.json` | Path alias `@/*` |
+| `.github/workflows/ci.yml` | CI (Node 20): `npm ci` → lint → **`npm test`** (20 tes) → build. Gerbang mutu setiap push/PR ke `main` |
 | `.gitignore` | node_modules, .next, .env, *.old, build |
 | `docs/riset-peta-proses-bisnis-permenpan-19-2018.md` | Riset lengkap framework PPB (408 lines) — Permenpan 19/2018, BPMN, template, contoh daerah |
 | `docs/riset-data-aceh-tengah.md` | Riset data Aceh Tengah (255 lines) — visi misi, RPJMD, OPD, urusan konkuren, SPBE, transformasi digital |
@@ -118,7 +119,7 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 | `styles/AGENTS.md` | **Gayo Civic Digital v3** — CSS variables: `--gov-blue`, `--lake-cyan`, `--gayo-gold`, `--coffee-brown`, `--forest-green`. Hero award gradient. Dark mode. 799 baris. |
 | `data/AGENTS.md` | Struktur data: opd.json (52 OPD, 78 PPB ✅), pemdi.json (7 aspek, 20 indikator), layanan.json, skm.json, faq.json |
 | `STRATEGI_PEMDIACEHTENGAH.md` | **Dokumen perencanaan strategis (file ini)** — 4 fase, quick wins, risiko, metrik |
-| `lib/AGENTS.md` | 9 modul — pemdiNilai (rumus resmi, teruji 16 unit test), security, rate-limit-db (RPC atomic), adminAuth (constant-time), supabaseAdmin (server-only), sanitize (allowlist ketat), search-index, format, slugify |
+| `lib/AGENTS.md` | 9 modul — pemdiNilai (rumus resmi; diuji di `test/pemdiNilai.test.mjs`, 16 dari 20 tes suite), security, rate-limit-db (RPC atomic), adminAuth (constant-time), supabaseAdmin (server-only), sanitize (allowlist ketat), search-index, format, slugify |
 | `pages/admin` | Admin Dashboard — laporan (pengaduan), SKM management. Protected by `ADMIN_PASSWORD` (Bearer auth) |
 | `public/AGENTS.md` | PWA assets: manifest.json, icons (192/512 PNG + maskable-512 + apple-touch + SVG), favicon, crest-pemdi.svg, og-image.jpg |
 
@@ -148,18 +149,28 @@ Gap sebelumnya (Sprint Redesign Award Level + Trust Infrastructure) sudah diimpl
 | CORS & XSS helpers | `lib/cors.js`, `lib/safeRichText.js` | ✅ | 14 Jun 2026 |
 | RFC 9116 | `.well-known/security.txt` | ✅ | 14 Jun 2026 |
 
-**Total komponen sekarang: 30 komponen real** (20 existing + 10 baru). **16 halaman + 7 API routes + 2 lib baru + 1 security.txt.**
+**Angka terkini (diverifikasi 19 Sep 2026) — tabel di atas adalah catatan historis Sprint Juni 2026, bukan angka aktif:**
 
-## Recent Commits — P0-P1-P3 (Juni 2026)
-Commit terbaru ada 3, **semua di branch `fix/full-audit-award-redesign`** (belum merge ke main):
+- **20 komponen aktif** di `components/` (22 dead code dihapus saat hardening 17 Sep 2026)
+- **20 route halaman + 12 API route**
+- **9 modul** di `lib/`
+- **20 tes** (`test/pemdiNilai.test.mjs` 16 + `test/requirement.test.mjs` 4) — dijalankan CI dan `npm test`
 
-| Commit | What | Files Changed |
-|--------|------|---------------|
-| `6849aaa` P3 | **Gayo Civic Digital CSS v3** — `--gov-blue, --lake-cyan, --gayo-gold` CSS vars, hero premium gradient | `pages/index.js`, `styles/globals.css` |
-| `f9baa01` P1 | **Tracking laporan** — GET /api/lapor?id=xxx, LaporWidget tracking tab | `pages/api/lapor.js`, `components/LaporWidget.js`, `pages/index.js` |
-| `d124b2e` P0 | **Security + bugfixes** — XSS di tanya.js, cari.js, faq.js, ESLint | `pages/tanya.js`, `pages/cari.js`, `pages/faq.js`, `.eslintrc.json` |
+> Angka lama pada dokumen ini ("30 komponen", "16 halaman + 7 API route") tidak lagi berlaku dan sudah dikoreksi 19 Sep 2026.
 
-⚠️ **Branch `fix/sprint-redesign-award-level` tidak pernah ada di repo ini.** HEAD sebenarnya `6849aaa` di branch `fix/full-audit-award-redesign`. Semua AGENTS.md yang menyebut 65 pages / AwardHero / QuickActions dll adalah **dokumentasi yang melenceng (drift)** — harus diperbaiki ke realita.
+## Status Sekarang — 19 Sep 2026
+
+**Repo:** branch `main` · `git@github.com:Niumination/PemdiAcehTengah.git` · produksi `https://pemdi-aceh-tengah.vercel.app` · working tree bersih, semua commit ter-push.
+
+| Milestone | Ringkasan |
+|-----------|-----------|
+| **Hardening 17 Sep 2026** | 22 dead code dihapus, 20 tes (`node --test`) ditambahkan, rate limiting atomic (`lib/rate-limit-db.js` + RPC Supabase), `/api/health`, sanitizer & `adminAuth` diperkuat, canonical + `og:url`, `og-image.jpg` 166 KB (dari 1,6 MB) |
+| **Merge PR #5 — 18 Sep 2026** | Kontribusi eksternal arena.ai di-*squash* ke `96e018a`: `audit/` dikeluarkan dari repo (arsip privat pemilik), `.gitignore` diperbaiki (`data/*.bak-*`), `/api/health` tidak lagi membocorkan `error.message` ke respons |
+| **CI — 18 Sep 2026** | `.github/workflows/ci.yml`: `npm ci` → lint → **`npm test`** → build (Node 20). Menjadi gerbang mutu untuk setiap push/PR |
+| **Infrastruktur data — 18–19 Sep 2026** | `db/schema.sql`, `db/rate-limit-schema.sql`, `db/rate-limit-cleanup.sql` (pg_cron `bersihkan-rate-limits`, 10:17 WIB); RLS aktif di 4 tabel; kredensial admin dirotasi (`ADMIN_PASSWORD` baru, `ADMIN_TOKEN` dihapus) |
+| **DOX pass — 19 Sep 2026** | Seluruh `ADMIN_TOKEN` → `ADMIN_PASSWORD`; angka dokumen diselaraskan dengan kenyataan repo; klaim drift lama dibersihkan |
+
+> **Catatan:** dokumen ini pernah memuat klaim yang melenceng (65 halaman, 30 komponen, HEAD `6849aaa` di branch Juni 2026). Semua sudah dibersihkan 19 Sep 2026 — bila menemukan pola serupa, itu bug dokumentasi: koreksi ke kenyataan repo, jangan diikuti.
 
 ## Closeout Checklist
 
