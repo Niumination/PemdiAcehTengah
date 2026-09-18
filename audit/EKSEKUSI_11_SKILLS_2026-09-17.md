@@ -206,3 +206,37 @@ Review kualitatif terhadap sistem desain **"Gayo Civic Digital"**:
 **B5 ✅ Token warna:** 13 var di `:root` + dark override — `LEVEL_META` (`opd/[slug].js`), `TrackerStatus.js` (8 hex), `SKALA_WARNA` (`skm.js`) kini memakai token. `LEVEL_WARNA` tetap literal (dipakai concat alpha `${warna}18`) — tokenisasi penuh menunggu migrasi `color-mix()` (dicatat backlog).
 
 **Verifikasi:** lint 0 error · **20/20 test** · build sukses (72/72 halaman, `/dashboard-kepuasan` ISR 60 dtk) · smoke 6 rute 200 · font preload & 0 fonts pihak ketiga · warna baru terbukti di SSR `/pemdi` + bundle client/server kedua halaman.
+
+## UPDATE AUDIT PRE-MERGE (PASS-3) — 18 Sep 2026
+
+> Audit menyeluruh PR #5 sebelum merge ke main: "temukan kesalahan, perbaiki, pastikan aman saat merge" — bukan hanya test biasa, semua jalur yang berpotensi error/crash/tidak valid dicek.
+
+### Diverifikasi bersih (tanpa temuan)
+
+| Pemeriksaan | Hasil |
+|---|---|
+| Topologi merge | `origin/main` = `cb00062` = merge-base; branch 3 commit di depan, 0 di belakang → **merge = fast-forward murni, mustahil konflik** |
+| CSP evolusi | `style-src` tetap `'unsafe-inline'` (inline-style React SSR aman); **`connect-src 'self'` terbukti aman** — nol panggilan browser langsung ke Supabase (semua via API route same-origin; proxy-pdf = fetch server-side, tak terikat CSP); HSTS baru |
+| B3 sumber data | Identik dengan `/api/skm/stats` (view `skm_ringkasan`, kolom sama) — angka nol saat build lokal murni karena env absen (sandbox tanpa `.env.local`); di Vercel (env ada) → angka riil |
+| Rate-limit pra-SQL | Rantai fallback 3 tingkat (RPC `bump_rate_limit` → legacy read-upsert → in-memory) — tidak crash sebelum pemilik menjalankan `db/*.sql` |
+| Integritas font | sha256 `89b3fb38…` **byte-identik dengan upstream google/fonts** + OFL.txt ter-commit |
+| Scan rahasia | Diff PR 25.997 baris: bersih (hanya contoh kode di `.agents/skills/*.md` & input `type=password`) |
+| Aset terhapus | `crest-pemdi.png`/`og-image.png` tanpa referensi menggantung (svg/jpg pengganti aktif) |
+| Dependensi | Nol perubahan deps vs main; hanya `engines node>=20` + script `test` |
+| Layering CSS | 3 blok `:root` = disengaja (utama · media-query `--sbw` · gradien redesain) — blok 1396 hanya `--hero-grad/--sidebar-grad`, **tidak menimpa token B4/B5** |
+| proxy-pdf SSRF | Allowlist `https://jdih.acehtengahkab.go.id/` |
+| Clean-room | `npm ci` → lint 0 → **20/20 test** → build 72/72 → smoke **23 rute** (21 halaman+robots+sitemap 200 · OPD dinamis 200 · slug tak-valid **404**) → API matriks error-path (**400/401/405/503 sesuai desain, nol 500**) → log server bersih |
+
+### Ditemukan & diperbaiki (4 temuan)
+
+1. **Artefak build ter-track** — `.gitignore` (commit hardening) menyatakan `public/robots.txt`+`sitemap*.xml` "jangan commit", tapi 3 file masih ter-track (dan `4e8db51` bahkan ikut commit perubahan timestamp sitemap). → `git rm --cached` ketiganya; `postbuild next-sitemap` meregenerasi otomatis tiap deploy (config ada, exclude `/admin`+`/api`).
+2. **7 lokasi kontras teks gagal** (pra-ada, dalam cakupan PR — lolos dari B4 yang fokus warna level/status): glosarium *Penilaian* `#e65100→#c2410c` (putih-di-atas 3,79→5,18) & *Layanan* `#28a197→#007073` (3,17→5,89); `layanan.js` getSlaWarna+angka stat `#e65100→#c2410c`; SlaBadge tier-tengah `#e65100→#c2410c` (di atas `#fff3e0` ~2,9→4,72); `probis` .level-2 `#e65100→#c2410c`; DashboardSKM getColor `#059669/#d97706/#dc2626→#047857/#b45309/#b91c1c`.
+3. **`var(--danger, #e63946)`** di modul-indikator — `--danger` tak pernah terdefinisi → fallback 4,0:1 dipakai selamanya → dialihkan ke token `--status-bad` (fallback `#b91c1c`); fallback `--warn` juga dikoreksi `#f59e0b→#b45309`.
+4. **3 endpoint API tanpa method guard** — `/api/opd`, `/api/spbe`, `/api/requirement` menjawab **200 + data untuk POST/PUT/DELETE** apa pun → guard `OPTIONS→200 · non-GET→405 + Allow: GET` (pola konsisten `skm/stats`); kontrak GET terverifikasi utuh (52 OPD, keys requirement sama, pin test aman).
+
+### Diperiksa & dibiarkan (keputusan sadar)
+
+- `pages/tanya.js` palet GOV.UK — kontras lolos (`#1d70b8` 5,17:1) — dibiarkan.
+- Urutan 503-sebelum-validasi di `feedback/skm` (env absen) — desain pra-ada, benar di produksi.
+- `skm/stats` menolak HEAD (405) — pra-ada, tidak dipakai monitor.
+- Gradien progress-bar `#10b981→#059669` (non-teks, 3:1) — lolos sebagai grafik non-teks.

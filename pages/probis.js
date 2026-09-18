@@ -305,7 +305,7 @@ export default function PetaProsesBisnis({ data }) {
         }
         .level-0 { background: #1565c0; border-color: #1565c0; }
         .level-1 { background: #2e7d32; border-color: #2e7d32; }
-        .level-2 { background: #e65100; border-color: #e65100; }
+        .level-2 { background: #c2410c; border-color: #c2410c; }
         .ppb-section-desc { color: var(--muted); margin: 0; font-size: 0.9375rem; }
         .ppb-section-source { font-size: 0.75rem; color: var(--muted); margin: 0.25rem 0 0; }
 

@@ -1,6 +1,13 @@
 import spbeData from '@/data/opd.json';
 
 export default function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  if (req.method === 'OPTIONS') return res.status(200).end();
+  if (req.method !== 'GET') {
+    res.setHeader('Allow', 'GET');
+    return res.status(405).json({ error: 'Metode tidak diizinkan' });
+  }
+
   // Data statis dari JSON — hanya berubah saat deploy.
   // Cache CDN 1 jam + stale-while-revalidate 1 hari (skill: next-cache)
   res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');

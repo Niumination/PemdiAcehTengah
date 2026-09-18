@@ -1321,8 +1321,8 @@ function formatKriteria(text) {
             {dokumenKunci.dokumen.map((doc) => {
               const open = bukaDokumen === doc.no;
               const prioritasWarna = doc.prioritas.toLowerCase().includes('tertinggi')
-                ? 'var(--danger, #e63946)' : doc.prioritas.toLowerCase().includes('tinggi')
-                ? 'var(--warn, #f59e0b)' : 'var(--muted)';
+                ? 'var(--status-bad, #b91c1c)' : doc.prioritas.toLowerCase().includes('tinggi')
+                ? 'var(--warn, #b45309)' : 'var(--muted)';
               return (
                 <div key={doc.no} style={{
                   border: '1px solid var(--border)', borderRadius: '10px',

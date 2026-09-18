@@ -7,10 +7,10 @@ import { MotifEmun, MotifPucukRebung } from '@/components/motif/KerawangMotifs';
 function getKategoriWarna(kategori) {
   const warnaMap = {
     'Konsep': '#1d70b8',
-    'Penilaian': '#e65100',
+    'Penilaian': '#c2410c',
     'Tata Kelola': '#00703c',
     'Umum': '#6b7280',
-    'Layanan': '#28a197',
+    'Layanan': '#007073',
     'Regulasi': '#6f42c1',
   };
   return warnaMap[kategori] || '#6b7280';

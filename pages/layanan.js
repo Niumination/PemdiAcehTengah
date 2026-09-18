@@ -38,7 +38,7 @@ export default function LayananPage() {
     : 0;
   const slaTinggi = slaAngka.filter(v => v >= 90).length;
   function getSlaWarna(pct) {
-    return pct >= 90 ? '#00703c' : pct >= 80 ? '#e65100' : '#c62828';
+    return pct >= 90 ? '#00703c' : pct >= 80 ? '#c2410c' : '#c62828';
   }
 
   return (
@@ -147,7 +147,7 @@ export default function LayananPage() {
               <div style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>Bisa Online</div>
             </div>
             <div className="card" style={{ padding: '1rem', textAlign: 'center', '--i': 2 }}>
-              <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#e65100' }}>{formatAngka(ringkasan.layanan_offline)}</div>
+              <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#c2410c' }}>{formatAngka(ringkasan.layanan_offline)}</div>
               <div style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>Datang Langsung</div>
             </div>
             <div className="card" style={{ padding: '1rem', textAlign: 'center', '--i': 3 }}>
