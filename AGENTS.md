@@ -187,7 +187,7 @@ Gap sebelumnya (Sprint Redesign Award Level + Trust Infrastructure) sudah diimpl
 
 | Tanggal | Item | Ukuran | Tindakan | Alasan |
 |---------|------|:------:|:--------:|--------|
-| 30 Jul | `docs/modul-indikator/` | 501 MB | ✅ Dihapus | 1.535 raw PNG exports PPTX — konten sudah diekstrak ke `data/modul-indikator.json`. Sudah di `.gitignore` sejak awal. |
+| 30 Jul | `docs/modul-indikator/` | 501 MB | ✅ Dihapus — **revisi 19 Sep 2026:** folder ada kembali (501 MB / 1.555 berkas `.pptx.md` + `_images/` hasil ekstraksi ulang; `git ls-files` = 0, tetap git-ignored, tidak pernah masuk repo). | 1.535 raw PNG exports PPTX — konten sudah diekstrak ke `data/modul-indikator.json`. Sudah di `.gitignore` sejak awal. |
 | 30 Jul | `pages/pemdi.js` — bukti dukung section | 715 baris | ✅ Dihapus | Semua 57 bukti dukung direset ke "belum" karena belum sesuai kriteria level. Lihat commit `ca17535`. |
 | — | `public/bukti-dukung/` (31 MB, 42 file → **39 file flat**) | ⏳ **Ditunda** | — | Masih disimpan untuk dipakai nanti saat semua bukti dukung sudah diverifikasi sesuai kriteria level masing-masing indikator. Jangan hapus sampai proses verifikasi selesai. (6 Agu: di-flatten — semua file langsung di `public/bukti-dukung/`, tanpa subfolder.) |
 

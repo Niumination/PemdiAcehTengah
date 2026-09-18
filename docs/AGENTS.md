@@ -41,4 +41,12 @@ Dua file riset utama ada di `docs/` (sudah dipindahkan dari root untuk konsisten
 - `analisis-bukti-dukung-l1-l2.md` — matriks kebutuhan bukti dukung L1-L2 (sumber NotebookLM, 19 Agu 2026)
 - `permenpanrb 8 2026.pdf` — regulasi baru 2026 (1.0 MB)
 - `Indeks SPBE Aceh Tengah 2025.pdf` — laporan resmi (1.6 MB)
+- `plan-v0.md` — perencanaan awal proyek (v0, **diarsipkan**) — path/`portal/` sudah usang; DOX root + `MASTERPLAN.md` sumber kebenaran terkini
+- `requirement-peta-proses-bisnis.md` — daftar kebutuhan PPB; sumber kanonik `data/requirement.json` (12 kategori / 83 item), diuji `test/requirement.test.mjs`
+- `paparan-sekda.md` — bahan paparan ke Sekretaris Daerah
+- `draft-sk-tim-pemda.md` — draf SK Tim Pemerintah Digital
+- `RENCANA-INJEKSI-BUDAYA-GAYO.md` — rencana injeksi konten budaya Gayo di frontend
+- `Jumlah Perangkat Daerah.docx` — data OPD/ASN dari Diskominfo (sumber angka 4.507 ASN)
 - `AGENTS.md` — **file ini**
+
+> **`docs/modul-indikator/`** — 501 MB / 1.555 berkas hasil ekstraksi 20 PPTX (`.pptx.md` + `_images/`), **git-ignored** (`git ls-files` = 0). Bukan bagian repo; jangan di-commit. Konten yang dipakai portal ada di `data/modul-indikator.json`.
