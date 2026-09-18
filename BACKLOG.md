@@ -47,7 +47,9 @@
 - [x] **Sprint A6** — api/requirement.js dedup ke data/requirement.json (respons identik) + 4 pin test — 18 Sep 2026
 - [x] **Sprint A7** — Sidebar: /lapor /tanya /bantuan /kebijakan-privasi ≤1 klik — 18 Sep 2026
 - [x] **Sprint A1 (DB)** — Supabase aktif kembali (un-pause); live terverifikasi 200. SQL RPC baru **DITERAPKAN** 18 Sep 2026: `bump_rate_limit`, `skm_stats_dimensi`, `rate_limits` + RLS (dicek pemilik di SQL Editor: 4 fungsi + RLS aktif) — 18 Sep 2026
-- [ ] **Sprint A (pemilik)** — A2 uptime monitor (pasca-merge), A4 deskripsi repo, A5 rotasi ADMIN_PASSWORD
+- [x] **A5 rotasi ADMIN_PASSWORD** — 18 Sep 2026: nilai lama (16 char) diganti 64 hex dan disimpan di vault lokal (bukan repo); kini bertipe *sensitive* di Vercel sehingga tidak bisa dibaca lagi dari dashboard/CLI. `ADMIN_TOKEN` (legacy 10 char — jalur fallback `ADMIN_PASSWORD || ADMIN_TOKEN`) **DIHAPUS**. Cadangan nilai lama ada di vault untuk rollback
+- [x] **A2 uptime monitor (sebagian)** — 18 Sep 2026: cron watchdog Hermes tiap 15 menit (skrip `pemdi-health-watch.sh`, job `20481acb6f2b`): diam bila sehat, alert ke Telegram bila `/api/health` bukan 200 atau DB bukan "ok". Monitor eksternal 24/7 (UptimeRobot) tetap disarankan — cron ini hanya hidup saat Mac menyala
+- [ ] **Sprint A (pemilik)** — A4 deskripsi repo
 - [x] **A8 pembersih `rate_limits`** — `db/rate-limit-cleanup.sql` dijalankan di Supabase SQL Editor 18 Sep 2026: pg_cron `bersihkan-rate-limits` terdaftar (jobid 1, active true, harian 03:17 UTC = 10:17 WIB). Verifikasi saat pemasangan: tabel 1 baris, 0 kadaluarsa
 - [x] **Sprint B** — B1 font self-host (0 request Google Fonts) · B2 /pemdi 174→114 kB & /modul-indikator 172→113 kB · B3 SSR+ISR ringkasan kepuasan · B4 kontras 30 PASS/0 FAIL · B5 13 token warna + dark override — 18 Sep 2026
 - [ ] **Sprint C** — Next 15 (+React 19), repo slimming, audit log admin

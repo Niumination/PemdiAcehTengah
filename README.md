@@ -152,7 +152,7 @@ Fitur admin dan keamanan yang diimplementasikan:
 
 | Aspek | Detail |
 |-------|--------|
-| **Auth Admin** | Bearer Token via env `ADMIN_TOKEN` — lihat `lib/adminAuth.js` |
+| **Auth Admin** | Bearer token via env `ADMIN_PASSWORD` (Vercel *sensitive*, Production) — lihat `lib/adminAuth.js` |
 | **Rate Limiting** | Per-IP: SKM 3×/5 menit, Lapor 5×/menit — `lib/security.js` |
 | **Anti-Spam** | Rate limit atomic per-IP via Supabase RPC + validasi ketat + sanitasi (Turnstile: **belum diimplementasikan** — direncanakan) |
 | **Sanitasi Input** | Strip HTML tags, length limit, regex validation |
@@ -160,7 +160,7 @@ Fitur admin dan keamanan yang diimplementasikan:
 | **Database** | Supabase — service role key (env), server-only |
 | **CORS** | Terbatas ke `SITE_ORIGIN` atau wildcard untuk publik |
 
-> **Admin credentials**: Token admin dikonfigurasi via environment variable `ADMIN_TOKEN` di `.env.local`. Lihat `.env.local` untuk referensi.
+> **Admin credentials**: token admin dikonfigurasi lewat environment variable `ADMIN_PASSWORD` di Vercel (Produksi, bertipe *sensitive* — nilainya tidak bisa dibaca kembali dari dashboard/CLI). Variable lama `ADMIN_TOKEN` **dihapus 18 Sep 2026**; nilai lamanya tidak berlaku lagi.
 
 ## 🚀 Deploy di Vercel
 
@@ -184,8 +184,7 @@ Buat file `.env.local` dengan variabel berikut:
 SUPABASE_URL=your_supabase_url
 SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
 
-# Admin
-ADMIN_TOKEN=your_admin_token
+# Admin (satu kredensial saja — ADMIN_TOKEN legacy dihapus 18 Sep 2026)
 ADMIN_PASSWORD=your_admin_password
 
 # Security

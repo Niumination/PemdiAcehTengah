@@ -68,7 +68,7 @@ Supabase (service role, SERVER-ONLY) ──► api/lapor.js, api/lapor/status.js
 - **SSG** untuk halaman statis (`/opd/[slug]` — 52 halaman, `fallback: false`)
 - **getStaticProps** untuk data besar & search index (`index.js`, `cari.js`)
 - **API routes** untuk data dinamis & server-side (Supabase tidak pernah diakses dari client)
-- **Admin API** memerlukan Bearer token (`ADMIN_PASSWORD` / `ADMIN_TOKEN` env) — compare constant-time
+- **Admin API** memerlukan Bearer token (env `ADMIN_PASSWORD`; `ADMIN_TOKEN` legacy dihapus 18 Sep 2026) — compare constant-time
 - **Rate limit** semua endpoint tulis publik + `/api/lapor/status` (RPC atomic `bump_rate_limit`)
 - **Health**: `GET /api/health` → 200 sehat / 503 gagal — pantau dengan uptime monitor
 

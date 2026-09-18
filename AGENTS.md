@@ -44,10 +44,10 @@ Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah. Transformasi menuju Peme
 | **Program Unggulan** | Aceh Tengah Satu Data (AWS + Komdigi), MPP, Satu OPD Satu Inovasi |
 || **PWA** | `manifest.json`, icons (192/512 PNG + maskable-512 + apple-touch + SVG), `theme_color: #1F2A44`, `display: standalone`, scope root, +orientation portrait |
 || **Security** | CSP headers (Supabase, Google Fonts), rate limiting, IP hashing (SHA-256), admin Bearer auth. `lib/security.js` |
-|| **Admin Dashboard** | `/admin` — protected by `ADMIN_TOKEN` env (Bearer auth). Admin APIs: `/api/admin/laporan` (PATCH status), `/api/admin/skm` (GET all) |
+|| **Admin Dashboard** | `/admin` — protected by `ADMIN_PASSWORD` env (Bearer auth). Admin APIs: `/api/admin/laporan` (PATCH status), `/api/admin/skm` (GET all) |
 | **HEAD** | audit & hardening 2026-09-17: 22 dead code dihapus, 16 unit test rumus Pemdi, rate-limit atomic, `/api/health`, sanitizer & adminAuth diperkuat, canonical+og:url, og-image.jpg 166 KB (sebelumnya PNG 1,6 MB) |
 | **Agent Skills** | `.agents/skills/` — 11 skill autoskills (React · Next.js · Supabase · Node · SEO · a11y · design) + `skills-lock.json` — pasang ulang: `npx autoskills` |
-| **Env Vars** | `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `ADMIN_TOKEN`, `IP_HASH_SALT` |
+| **Env Vars** | `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `ADMIN_PASSWORD` (Vercel *sensitive*), `IP_HASH_SALT` — `ADMIN_TOKEN` legacy dihapus 18 Sep 2026 |
 | **Indeks Pemdi** | **0.38** (rumus PermenPANRB 8/2026, predikat Tabel 4) — target 2,50+ |
 | **Total bukti dukung** | **250** (`data/pemdi.json`: 47 lengkap / 4 proses / 199 belum; +18 final lolos-evaluasi di `public/bukti-dukung/final/`) |
 
@@ -86,7 +86,7 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 | `data/` | Data statis JSON (OPD, SPBE, ProBis, SKM, Pemdi) + glosarium |
 | `docs/` | Dokumentasi, PDF, riset |
 | `lib/` | Supabase client (`supabaseAdmin.js`), security helpers (`security.js`), admin auth (`adminAuth.js`) |
-| `pages/admin.js` | Admin Dashboard — authenticate via ADMIN_TOKEN (Bearer) |
+| `pages/admin.js` | Admin Dashboard — authenticate via ADMIN_PASSWORD (Bearer) |
 | `pages/api/admin/` | Admin API routes: `laporan.js` (PATCH status pengaduan), `skm.js` (GET semua SKM) |
 | `public/manifest.json` | PWA manifest — standalone, theme_color #1F2A44, icons 192+512+maskable+apple-touch |
 | `public/icons/` | PWA icons — `icon-192.png`, `icon-512.png`, `icon-maskable-512.png`, `apple-touch-icon.png`, `icon.svg`, `192.svg` |
