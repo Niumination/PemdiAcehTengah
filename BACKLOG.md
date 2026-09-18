@@ -48,6 +48,7 @@
 - [x] **Sprint A7** — Sidebar: /lapor /tanya /bantuan /kebijakan-privasi ≤1 klik — 18 Sep 2026
 - [x] **Sprint A1 (DB)** — Supabase aktif kembali (un-pause); live terverifikasi 200. SQL RPC baru **DITERAPKAN** 18 Sep 2026: `bump_rate_limit`, `skm_stats_dimensi`, `rate_limits` + RLS (dicek pemilik di SQL Editor: 4 fungsi + RLS aktif) — 18 Sep 2026
 - [ ] **Sprint A (pemilik)** — A2 uptime monitor (pasca-merge), A4 deskripsi repo, A5 rotasi ADMIN_PASSWORD
+- [ ] **A8 pembersih `rate_limits`** — jalankan `db/rate-limit-cleanup.sql` di Supabase SQL Editor (pg_cron harian 03:17 UTC = 10:17 WIB). Tanpa ini tabel tumbuh tanpa batas; dampak lambat (bukan urgensi keamanan) — 18 Sep 2026
 - [x] **Sprint B** — B1 font self-host (0 request Google Fonts) · B2 /pemdi 174→114 kB & /modul-indikator 172→113 kB · B3 SSR+ISR ringkasan kepuasan · B4 kontras 30 PASS/0 FAIL · B5 13 token warna + dark override — 18 Sep 2026
 - [ ] **Sprint C** — Next 15 (+React 19), repo slimming, audit log admin
 - [ ] **Backup ritme git** — push ke origin tiap akhir sesi kerja (sempat tertinggal 3 commit; sudah disinkronkan 10 Agu 2026)
