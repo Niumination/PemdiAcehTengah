@@ -49,7 +49,7 @@ Digunakan oleh admin untuk mengubah status laporan.
 ```json
 { "id": "LAPOR-...", "status": "baru|diproses|selesai|ditolak" }
 ```
-**Headers:** `Authorization: Bearer <ADMIN_TOKEN>`
+**Headers:** `Authorization: Bearer <ADMIN_PASSWORD>`
 **Response (200):** `{ "success": true, "tersimpan": true }`
 **Keamanan:** memerlukan Bearer token admin — dicek via `requireAdmin()` dari `lib/adminAuth.js`.
 
@@ -87,13 +87,13 @@ Digunakan oleh admin untuk mengubah status laporan.
 ### `GET /api/admin/laporan` — Daftar laporan (admin)
 **Response (200):** `{ "data": [...], "total": number }`
 **Query params:** `status` (filter), `limit` (default 100), `offset` (default 0)
-**Headers:** `Authorization: Bearer <ADMIN_TOKEN>`
+**Headers:** `Authorization: Bearer <ADMIN_PASSWORD>`
 **Keamanan:** Admin-only — validasi Bearer token via `requireAdmin()`.
 
 ### `GET /api/admin/skm` — Data SKM (admin)
 **Response (200):** `{ "data": [...], "total": number }`
 **Query params:** `limit` (default 100), `offset` (default 0)
-**Headers:** `Authorization: Bearer <ADMIN_TOKEN>`
+**Headers:** `Authorization: Bearer <ADMIN_PASSWORD>`
 **Keamanan:** Admin-only — validasi Bearer token via `requireAdmin()`.
 
 ## Admin Authentication
@@ -102,8 +102,8 @@ Endpoint `/api/admin/*` dan `PATCH /api/lapor` memerlukan autentikasi admin via 
 
 | Mekanisme | Detail |
 |-----------|--------|
-| **Header** | `Authorization: Bearer <ADMIN_TOKEN>` |
-| **Token** | Nilai env `ADMIN_TOKEN` (fallback: `'admin'` untuk development) |
+| **Header** | `Authorization: Bearer <ADMIN_PASSWORD>` |
+| **Token** | Nilai env `ADMIN_PASSWORD` — Vercel *sensitive*, Production. Bila tidak diset, semua permintaan admin **ditolak** (tidak ada token default). `ADMIN_TOKEN` legacy dihapus 18 Sep 2026 |
 | **Validasi** | `lib/adminAuth.js` — `requireAdmin(req)` |
 | **Gagal** | HTTP 401 `{ error: 'Unauthorized', loginUrl: '/admin?login=1' }` |
 
@@ -111,7 +111,7 @@ Endpoint `/api/admin/*` dan `PATCH /api/lapor` memerlukan autentikasi admin via 
 - **POST routes** menggunakan Supabase — butuh env `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY`
 - **Tanpa Supabase:** API tetap hidup → return 503 dengan pesan jelas
 - **Keamanan:** Setiap route tulis punya rate-limit atomic per IP + sanitasi input (Turnstile: belum diimplementasikan — lihat README)
-- **Admin auth:** Bearer token dari env `ADMIN_TOKEN` — dicek di `lib/adminAuth.js`
+- **Admin auth:** Bearer token dari env `ADMIN_PASSWORD` (Vercel *sensitive*; `ADMIN_TOKEN` legacy dihapus 18 Sep 2026) — dicek di `lib/adminAuth.js`
 - **Upgrade:** Eksekusi `db/schema.sql` di Supabase SQL Editor untuk setup database
 
 ## Verification
@@ -119,7 +119,7 @@ Endpoint `/api/admin/*` dan `PATCH /api/lapor` memerlukan autentikasi admin via 
 curl https://pemdi-aceh-tengah.vercel.app/api/opd                → HTTP 200 + JSON
 curl https://pemdi-aceh-tengah.vercel.app/api/spbe               → HTTP 200 + JSON indeks
 curl https://pemdi-aceh-tengah.vercel.app/api/skm                → HTTP 200 + JSON ringkasan (jika Supabase ready)
-curl -H "Authorization: Bearer <ADMIN_TOKEN>" https://pemdi-aceh-tengah.vercel.app/api/admin/laporan   → HTTP 200 + JSON (admin)
-curl -H "Authorization: Bearer <ADMIN_TOKEN>" https://pemdi-aceh-tengah.vercel.app/api/admin/skm       → HTTP 200 + JSON (admin)
-curl -X PATCH -H "Authorization: Bearer <ADMIN_TOKEN>" -H "Content-Type: application/json"   -d '{"id":"LAPOR-test","status":"diproses"}'   https://pemdi-aceh-tengah.vercel.app/api/lapor                  → HTTP 200 + JSON (admin)
+curl -H "Authorization: Bearer <ADMIN_PASSWORD>" https://pemdi-aceh-tengah.vercel.app/api/admin/laporan   → HTTP 200 + JSON (admin)
+curl -H "Authorization: Bearer <ADMIN_PASSWORD>" https://pemdi-aceh-tengah.vercel.app/api/admin/skm       → HTTP 200 + JSON (admin)
+curl -X PATCH -H "Authorization: Bearer <ADMIN_PASSWORD>" -H "Content-Type: application/json"   -d '{"id":"LAPOR-test","status":"diproses"}'   https://pemdi-aceh-tengah.vercel.app/api/lapor                  → HTTP 200 + JSON (admin)
 ```
