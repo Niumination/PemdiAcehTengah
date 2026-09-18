@@ -116,7 +116,7 @@ PemdiAcehTengah/
 │   └── search-index.js   # Search index builder — Fuse.js corpus
 ├── styles/globals.css    # CSS Global — Gayo Civic Digital v3
 ├── test/                 # Unit test (node:test) — rumus Pemdi + regresi data
-├── audit/                # Laporan audit (menyeluruh 2026-09-17 + riwayat)
+├── CHANGELOG.md          # Ringkasan perubahan (changelog publik)
 ├── data/
 │   ├── opd.json          # Data OPD, SPBE, PPB, rekomendasi
 │   ├── pemdi.json        # Data 7 aspek × 20 indikator Pemdi
@@ -244,7 +244,7 @@ npx autoskills          # deteksi & pasang/update skill untuk stack ini
 npx autoskills -y -a claude-code   # + symlink ke .claude/skills (lokal)
 ```
 
-Skill ini adalah standar kerja yang sama dengan checklist audit `audit/CHECKLIST_AUTOSKILLS_2026-09-17.md`.
+Skill ini adalah standar kerja yang sama dengan checklist autoskills yang dipakai tim (arsip internal).
 
 ## 🤝 Kontribusi
 

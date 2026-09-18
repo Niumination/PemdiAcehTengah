@@ -18,11 +18,13 @@ export default async function handler(req, res) {
   const started = Date.now();
 
   if (!isSupabaseReady) {
+    // Detail (nama env var) hanya untuk log server — jangan ke respons publik (review PR #5)
+    console.error('[health] DB not configured: SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY belum diset');
     return res.status(503).json({
       status: 'unhealthy',
       app: 'ok',
       db: 'not_configured',
-      detail: 'SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY belum diset',
+      detail: 'database not configured',
       latencyMs: 0,
       checkedAt: new Date().toISOString(),
     });
@@ -33,11 +35,13 @@ export default async function handler(req, res) {
     .select('id', { count: 'exact', head: true });
 
   if (error) {
+    // Pesan error DB asli hanya di log server — respons ke klien generik (review PR #5)
+    console.error('[health] DB check error:', error.message);
     return res.status(503).json({
       status: 'unhealthy',
       app: 'ok',
       db: 'error',
-      detail: error.message,
+      detail: 'database unavailable',
       latencyMs: Date.now() - started,
       checkedAt: new Date().toISOString(),
     });

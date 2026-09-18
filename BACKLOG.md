@@ -20,7 +20,7 @@
 - [x] **Ground Truth NotebookLM** — 20 indikator (I1–I20), 222 item data dukung di `data/modul-indikator.json`; I5/I6/I7/I18 dikosongkan sesuai strategi (auto-scored + rawan tolak)
 
 ## ✅ Completed — Hardening Audit 2026-09-17
-- [x] **Audit menyeluruh repo + 7 branch + live web** — `audit/AUDIT_MENYELURUH_2026-09-17.md` (autoskills checklist + ponytail + premortem)
+- [x] **Audit menyeluruh repo + 7 branch + live web** — autoskills checklist + ponytail + premortem (arsip internal pemilik)
 - [x] **Ponytail: hapus 22 dead code (2.241 baris)** — 18 komponen + 2 motif + lib/cors + lib/safeRichText; DOX pass 4 file AGENTS.md + README sinkron
 - [x] **Rate limiter atomic** — RPC `bump_rate_limit` (db/rate-limit-schema.sql), hapus cache 2 dtk yang bisa ditembus
 - [x] **Sanitizer diperkuat** — tag dibangun ulang, blokir `javascript:`/`data:` URI & entitas (audit S-1)
@@ -33,7 +33,7 @@
 - [x] **Higien git**: 6 branch stale dihapus; sitemap/robots (hasil generate) keluar dari git
 
 ## ✅ Completed — Eksekusi 11 Skills autoskills (2026-09-17)
-- [x] 11 skill dijalankan sebagai review pass — laporan: `audit/EKSEKUSI_11_SKILLS_2026-09-17.md`
+- [x] 11 skill dijalankan sebagai review pass — ringkasan di CHANGELOG.md (laporan lengkap arsip internal)
 - [x] react: admin.js token via state (bukan read saat render); Footer year init-once + suppressHydrationWarning
 - [x] a11y: SkmPrompt role=status + aria-live polite; gov-strip bukan lagi banner ganda
 - [x] seo: header HSTS; FAQPage JSON-LD 15 Q&A di /faq
@@ -58,4 +58,4 @@
 
 ---
 
-*Terakhir diperbarui: 18 Sep 2026 — Sprint B selesai (performa & kualitas); rincian di audit/EKSEKUSI_11_SKILLS_2026-09-17.md*
+*Terakhir diperbarui: 18 Sep 2026 — Sprint B + audit pre-merge selesai; ringkasan di CHANGELOG.md*

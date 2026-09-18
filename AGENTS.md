@@ -92,7 +92,7 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 | `public/icons/` | PWA icons — `icon-192.png`, `icon-512.png`, `icon-maskable-512.png`, `apple-touch-icon.png`, `icon.svg`, `192.svg` |
 | `public/crest-pemdi.svg` | Lambang daerah Aceh Tengah (crest) |
 | `desain/` | UI/UX redesign assets — prototype HTML, panduan desain, glosarium istilah, design guide |
-| `audit/` | Audit reports — hasil verifikasi perbaikan v2, laporan audit |
+| `CHANGELOG.md` | Ringkasan perubahan publik (dokumen kerja internal ada di arsip privat pemilik) |
 
 ## Global Rules
 
