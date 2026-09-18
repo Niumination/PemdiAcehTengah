@@ -104,7 +104,7 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 6. **Deployment**: Vercel production branch `main`. Deploy via Vercel CLI atau push ke GitHub.
 7. **No API keys / secrets** di repo — semua placeholder `YOUR_API_KEY`.
 8. **Bahasa**: Dokumentasi dan konten portal dalam Bahasa Indonesia.
-9. **Admin auth**: Dashboard `/admin` dan API `/api/admin/*` dilindungi Bearer token dari `ADMIN_TOKEN` env var (default: `admin` untuk dev). Lihat `lib/adminAuth.js`.
+9. **Admin auth**: Dashboard `/admin` dan API `/api/admin/*` dilindungi Bearer token dari env `ADMIN_PASSWORD` (Vercel *sensitive*, Production). **Tidak ada token default** — bila env tidak diset, seluruh permintaan admin ditolak. `ADMIN_TOKEN` legacy dihapus 18 Sep 2026. Lihat `lib/adminAuth.js`.
 10. **PWA**: Progressive Web App via `public/manifest.json` + icons. `_app.js` includes manifest link + theme-color meta + Vercel Analytics.
 11. **Security headers**: Semua route via `next.config.js` — CSP (Google Fonts; client tidak memanggil Supabase langsung sejak 2026-09-17), X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy. Rate limiting atomic + IP hashing di `lib/security.js`. Health check `/api/health` untuk uptime monitor.
 
@@ -113,7 +113,7 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 | Path | Scope |
 |------|-------|
 | `pages/AGENTS.md` | 20 route halaman + 12 API routes (termasuk /api/health, /api/feedback, /api/lapor/status, /api/skm/stats, /api/proxy-pdf) — indexing, routing, data flow |
-| `pages/api/AGENTS.md` | REST API: opd, spbe, requirement, lapor (+status), skm (+stats), feedback, proxy-pdf, health, admin — GET read + POST write. Admin auth via ADMIN_PASSWORD/ADMIN_TOKEN (Bearer, constant-time). Lihat `lib/adminAuth.js` |
+| `pages/api/AGENTS.md` | REST API: opd, spbe, requirement, lapor (+status), skm (+stats), feedback, proxy-pdf, health, admin — GET read + POST write. Admin auth via `ADMIN_PASSWORD` (Bearer, constant-time; `ADMIN_TOKEN` legacy dihapus 18 Sep 2026). Lihat `lib/adminAuth.js` |
 | `components/AGENTS.md` | **20 komponen aktif** — AppShell, Sidebar, Footer, ThemeToggle, ScrollTop, LaporWidget, RatingWidget, SkmPrompt, Sp4nBanner, OPDTable, SpbeGauge, ServiceFinder, ServiceCard, SlaBadge, DashboardSKM, DetailModal, TopographicBackdrop, GlossaryTooltip, TrackerStatus, motif/KerawangMotifs |
 | `styles/AGENTS.md` | **Gayo Civic Digital v3** — CSS variables: `--gov-blue`, `--lake-cyan`, `--gayo-gold`, `--coffee-brown`, `--forest-green`. Hero award gradient. Dark mode. 799 baris. |
 | `data/AGENTS.md` | Struktur data: opd.json (52 OPD, 78 PPB ✅), pemdi.json (7 aspek, 20 indikator), layanan.json, skm.json, faq.json |
