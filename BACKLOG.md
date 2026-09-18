@@ -48,7 +48,7 @@
 - [x] **Sprint A7** — Sidebar: /lapor /tanya /bantuan /kebijakan-privasi ≤1 klik — 18 Sep 2026
 - [x] **Sprint A1 (DB)** — Supabase aktif kembali (un-pause); live terverifikasi 200. Sisa: jalankan SQL RPC baru (bump_rate_limit, skm_stats_dimensi, RLS) — 18 Sep 2026
 - [ ] **Sprint A (pemilik)** — A2 uptime monitor (pasca-merge), A3 commit ci.yml, A4 deskripsi repo, A5 rotasi ADMIN_PASSWORD
-- [ ] **Sprint B** — next/font, bundle /pemdi & /modul-indikator <140 kB, SSR dashboard, audit kontras
+- [x] **Sprint B** — B1 font self-host (0 request Google Fonts) · B2 /pemdi 174→114 kB & /modul-indikator 172→113 kB · B3 SSR+ISR ringkasan kepuasan · B4 kontras 30 PASS/0 FAIL · B5 13 token warna + dark override — 18 Sep 2026
 - [ ] **Sprint C** — Next 15 (+React 19), repo slimming, audit log admin
 - [ ] **Backup ritme git** — push ke origin tiap akhir sesi kerja (sempat tertinggal 3 commit; sudah disinkronkan 10 Agu 2026)
 
@@ -58,4 +58,4 @@
 
 ---
 
-*Terakhir diperbarui: 10 Agu 2026 — Sinkronisasi git + backlog + dokumentasi env*
+*Terakhir diperbarui: 18 Sep 2026 — Sprint B selesai (performa & kualitas); rincian di audit/EKSEKUSI_11_SKILLS_2026-09-17.md*

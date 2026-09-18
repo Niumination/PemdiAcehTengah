@@ -6,10 +6,10 @@ export default function TrackerStatus({ status, dibuat, diperbarui, compact }) {
   ];
 
   const statusConfig = {
-    baru: { color: '#2563eb', bg: 'var(--info-bg)', dot: '#2563eb', label: 'Baru', icon: '📥' },
-    diproses: { color: '#d97706', bg: 'var(--warn-bg)', dot: '#d97706', label: 'Diproses', icon: '🔧' },
-    selesai: { color: '#059669', bg: 'var(--ok-bg)', dot: '#059669', label: 'Selesai', icon: '✅' },
-    ditolak: { color: '#dc2626', bg: 'var(--bad-bg)', dot: '#dc2626', label: 'Ditolak', icon: '❌' },
+    baru: { color: 'var(--status-info)', bg: 'var(--info-bg)', dot: 'var(--status-info)', label: 'Baru', icon: '📥' },
+    diproses: { color: 'var(--status-warn)', bg: 'var(--warn-bg)', dot: 'var(--status-warn)', label: 'Diproses', icon: '🔧' },
+    selesai: { color: 'var(--status-ok)', bg: 'var(--ok-bg)', dot: 'var(--status-ok)', label: 'Selesai', icon: '✅' },
+    ditolak: { color: 'var(--status-bad)', bg: 'var(--bad-bg)', dot: 'var(--status-bad)', label: 'Ditolak', icon: '❌' },
   };
 
   const cfg = statusConfig[status] || statusConfig.baru;
@@ -96,7 +96,7 @@ export default function TrackerStatus({ status, dibuat, diperbarui, compact }) {
         {isDitolak && (
           <div className="tracker-step">
             <div className="tracker-dot-wrap">
-              <div className="tracker-dot" style={{ background: '#dc2626', borderColor: '#dc2626', width: '16px', height: '16px' }} />
+              <div className="tracker-dot" style={{ background: 'var(--status-bad)', borderColor: 'var(--status-bad)', width: '16px', height: '16px' }} />
             </div>
             <div className="tracker-content">
               <div className="tracker-step-label">❌ Ditolak</div>

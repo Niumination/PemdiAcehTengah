@@ -2,8 +2,33 @@ import Head from 'next/head';
 import Link from 'next/link';
 import DashboardSKM from '@/components/DashboardSKM';
 import { MotifTapak, MotifUlen, KerawangDivider } from '@/components/motif/KerawangMotifs';
+import { supabaseAdmin, isSupabaseReady } from '@/lib/supabaseAdmin';
 
-export default function DashboardKepuasan() {
+/**
+ * Sprint B3 (2026-09-18): ringkasan SKM dirender server-side (ISR 60 detik)
+ * sehingga angka terlihat tanpa JavaScript dan oleh crawler — menutup temuan
+ * SEO "thin content". Grafik interaktif tetap client-side (DashboardSKM).
+ */
+export async function getStaticProps() {
+  let ringkasan = { total_responden: 0, rata_skala_4: 0, ikm_0_100: 0 };
+  try {
+    if (isSupabaseReady) {
+      const { data } = await supabaseAdmin.from('skm_ringkasan').select('*').single();
+      if (data) {
+        ringkasan = {
+          total_responden: data.total_responden || 0,
+          rata_skala_4: data.rata_skala_4 || 0,
+          ikm_0_100: data.ikm_0_100 || 0,
+        };
+      }
+    }
+  } catch (e) {
+    console.warn('[dashboard-kepuasan] skm_ringkasan error:', e.message);
+  }
+  return { props: { ringkasan }, revalidate: 60 };
+}
+
+export default function DashboardKepuasan({ ringkasan }) {
   return (
     <>
       <Head>
@@ -45,6 +70,32 @@ export default function DashboardKepuasan() {
 
       <section className="section">
         <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
+          {/* Ringkasan SSR (B3) — terlihat tanpa JavaScript & oleh crawler */}
+          <div className="ssr-ringkasan-strip">
+            <div className="ssr-stat">
+              <span className="ssr-stat-label">👥 Total Responden</span>
+              <strong className="ssr-stat-value">{ringkasan.total_responden}</strong>
+            </div>
+            <div className="ssr-stat">
+              <span className="ssr-stat-label">📊 Rata-rata SKM</span>
+              <strong className="ssr-stat-value">
+                {Number(ringkasan.rata_skala_4).toLocaleString('id-ID', { maximumFractionDigits: 2 })} / 4,00
+              </strong>
+            </div>
+            <div className="ssr-stat">
+              <span className="ssr-stat-label">🎯 Indeks Kepuasan (IKM)</span>
+              <strong className="ssr-stat-value">
+                {Number(ringkasan.ikm_0_100).toLocaleString('id-ID', { maximumFractionDigits: 1 })} / 100
+              </strong>
+            </div>
+          </div>
+          {ringkasan.total_responden === 0 && (
+            <p className="ssr-empty-note">
+              Belum ada responden survei pada periode ini — angka diperbarui otomatis setiap 60 detik
+              setelah survei pertama masuk melalui halaman <Link href="/skm">/skm</Link>.
+            </p>
+          )}
+
           {/* Info banner */}
           <div className="dash-info-banner">
             <div className="dash-info-icon">ℹ️</div>

@@ -1,9 +1,23 @@
 import '@/styles/globals.css';
+import localFont from 'next/font/local';
 import AppShell from '@/components/AppShell';
 import SkmPrompt from '@/components/SkmPrompt';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { Analytics } from '@vercel/analytics/react';
+
+/**
+ * Sprint B1 (2026-09-18): Plus Jakarta Sans di-self-host via next/font/local
+ * (variable TTF 400–800, lihat fonts/OFL.txt). Menggantikan 3 <link> Google
+ * Fonts di _document → nol request pihak ketiga, nol render-blocking, font
+ * fallback otomatis, dan CSP style-src/font-src cukup 'self'.
+ */
+const plusJakartaSans = localFont({
+  src: '../fonts/PlusJakartaSans-Variable.ttf',
+  weight: '400 800',
+  display: 'swap',
+  variable: '--font-pjs',
+});
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://pemdi-aceh-tengah.vercel.app';
 
@@ -48,10 +62,12 @@ export default function App({ Component, pageProps }) {
           }) }}
         />
       </Head>
-      <AppShell>
-        <Component {...pageProps} />
-      </AppShell>
-      <SkmPrompt />
+      <div className={plusJakartaSans.variable}>
+        <AppShell>
+          <Component {...pageProps} />
+        </AppShell>
+        <SkmPrompt />
+      </div>
       <Analytics />
     </>
   );

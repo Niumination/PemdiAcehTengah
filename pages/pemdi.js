@@ -6,11 +6,6 @@ import TopographicBackdrop from '@/components/TopographicBackdrop';
 import { MotifEmun, MotifTapak, KerawangDivider } from '@/components/motif/KerawangMotifs';
 import useCountUp from '@/hooks/useCountUp';
 import { formatDesimal } from '@/lib/format';
-import pemdiData from '@/data/pemdi.json';
-import modulData from '@/data/modul-indikator.json';
-import dokumenKunci from '@/data/dokumen-kunci.json';
-import buktiMapping from '@/data/bukti-dokumen-mapping.json';
-import kebutuhanData from '@/data/kebutuhan-bukti-dukung.json';
 import {
   LEVEL_LABEL,
   LEVEL_NAMA_RESMI,
@@ -26,7 +21,20 @@ const STATUS_META = {
   proses:  { icon: '🔄', label: 'Proses',    color: 'var(--warn)', bg: 'var(--warn-bg)' },
   lengkap: { icon: '✅', label: 'Lengkap',    color: 'var(--ok)', bg: 'var(--ok-bg)' },
 };
-const LEVEL_WARNA = { 0: 'var(--muted)', 1: '#ef4444', 2: '#f59e0b', 3: '#3b82f6', 4: '#10b981', 5: '#8b5cf6' };
+// Palet level (B4): nilai literal (dipakai dengan concat alpha `${warna}18`)
+//  — dipilih agar kontras WCAG >= 5:1 vs putih & putih di atasnya (audit kontras 2026-09-18)
+const LEVEL_WARNA = { 0: 'var(--muted)', 1: '#b91c1c', 2: '#ab5708', 3: '#1d4ed8', 4: '#047857', 5: '#6d28d9' };
+
+/* ── CountStat lokal: angka KPI dengan count-up saat masuk viewport ── */
+function CountStat({ value, decimals = 0, color, style }) {
+  const [ref, display] = useCountUp(value, { decimals });
+  return (
+    <span ref={ref} className="countup" style={{ color, ...style }}>{display}</span>
+  );
+}
+
+export default function PemdiPage({ pemdiData, modulData, dokumenKunci, buktiMapping, kebutuhanData }) {
+  const { aspek, target_indeks, target_predikat, baseline_spbe, perhitungan, proyeksi } = pemdiData;
 
 // ── Helpers checklist ──
 function hitungStatusInd(ind) {
@@ -131,17 +139,6 @@ function defaultCatatan(ind) {
     .join('\n');
   return `Catatan Mandiri ${ind.id} — ${ind.nama}\n\nBukti dukung disusun untuk memenuhi kriteria indikator ${ind.id} (${ind.nama}).\nDokumen yang dilampirkan:\n${buktis || '- (belum ada bukti)'}\n\nCatatan ini dilampirkan saat unggah bukti dukung di portal eval.spbe.go.id.`;
 }
-
-/* ── CountStat lokal: angka KPI dengan count-up saat masuk viewport ── */
-function CountStat({ value, decimals = 0, color, style }) {
-  const [ref, display] = useCountUp(value, { decimals });
-  return (
-    <span ref={ref} className="countup" style={{ color, ...style }}>{display}</span>
-  );
-}
-
-export default function PemdiPage() {
-  const { aspek, target_indeks, target_predikat, baseline_spbe, perhitungan, proyeksi } = pemdiData;
   // ── Perhitungan capaian sesuai PermenPANRB 8/2026 (lib/pemdiNilai.js) ──
   const hasil = useMemo(() => indeksPemdi(aspek, 'aktual'), [aspek]);
   const hasilTarget = useMemo(() => indeksPemdi(aspek, 'target'), [aspek]);
@@ -816,4 +813,18 @@ export default function PemdiPage() {
       )}
     </>
   );
+}
+
+/* Data dikirim via getStaticProps (Sprint B2) — JSON keluar dari client bundle,
+   pindah ke __NEXT_DATA__ yang di-generate saat build. */
+export async function getStaticProps() {
+  return {
+    props: {
+      pemdiData: (await import('@/data/pemdi.json')).default,
+      modulData: (await import('@/data/modul-indikator.json')).default,
+      dokumenKunci: (await import('@/data/dokumen-kunci.json')).default,
+      buktiMapping: (await import('@/data/bukti-dokumen-mapping.json')).default,
+      kebutuhanData: (await import('@/data/kebutuhan-bukti-dukung.json')).default,
+    },
+  };
 }

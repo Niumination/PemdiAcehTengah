@@ -187,3 +187,22 @@ Review kualitatif terhadap sistem desain **"Gayo Civic Digital"**:
 - A3 — commit `.github/workflows/ci.yml` (Node 22 + `npm test`) yang sudah disiapkan
 - A4 — deskripsi repo GitHub (hapus "Bukan Portal Resmi")
 - A5 — rotasi `ADMIN_PASSWORD` di env Vercel
+
+## UPDATE SPRINT B — 18 Sep 2026 (WIB)
+
+**B1 ✅ Font self-host:** `next/font/local` dengan `fonts/PlusJakartaSans-Variable.ttf` (176 KB, wght 400–800, OFL) hasil sparse-clone `github.com/google/fonts` (raw.githubusercontent & jsdelivr terblokir sandbox). Token `--font-pjs` → `--font-body` di globals.css; 3 `<link>` Google Fonts dihapus dari `_document.js`; CSP `style-src`/`font-src` kini `'self'` saja. Smoke: preload `/_next/static/media/*.p.ttf` ✓, **0 request** fonts.googleapis/gstatic ✓.
+
+**B2 ✅ Bundle <140 kB:** `pages/pemdi.js`, `pages/modul-indikator.js`, `pages/index.js` — import JSON pindah ke `getStaticProps` (`await import('@/data/*.json')`); helper module-scope jadi closure di dalam komponen. Hasil first-load JS: `/pemdi` **174→114 kB (−34%)**, `/modul-indikator` **172→113 kB**, `/` 118 kB (kini ● SSG), `/requirement` 116 kB, `/cari` 114 kB; shared 112 kB. `__NEXT_DATA__` SSR memuat semua prop (7 aspek · 20 modul · 48 kebutuhan) — konten identik, "0,38" tetap ter-render.
+
+**B3 ✅ SSR ringkasan kepuasan:** `pages/dashboard-kepuasan.js` + `getStaticProps` (ISR 60 dtk) baca view `skm_ringkasan` via `supabaseAdmin` → strip statistik `.ssr-ringkasan-strip` (9 stat) ter-render di HTML awal + fallback nol saat tabel kosong (terverifikasi smoke: prop `ringkasan {total_responden:0,...}` + `.ssr-empty-note`). Crawler kini melihat angka tanpa menunggu JS.
+
+**B4 ✅ Kontras WCAG (audit terkomputasi + perbaikan):** Audit luminance/rasio seluruh pasangan warna dinamis → perbaikan:
+- `LEVEL_WARNA` (`pemdi.js` + `modul-indikator.js`, harus identik): `#ef4444/#f59e0b/#3b82f6/#10b981/#8b5cf6` → **`#b91c1c/#ab5708/#1d4ed8/#047857/#6d28d9`** — Level 2 **2,15:1→5,1:1**, Level 4 **2,54:1→5,5:1**; semua level ≥4,5:1 sebagai teks di putih maupun putih di atasnya (dipakai dua arah).
+- Token B5 light diperbaiki: `--level-badan #01579b`, `--level-lembaga/--skala-3 #c2410c`, `--status-ok #047857`, `--status-warn #b45309`, `--status-bad #b91c1c` (badge Lembaga 3,37→4,55; skala-3 3,79→5,18; tracker diproses 3,07→4,51 · selesai 3,60→4,84 · ditolak 4,41→5,30).
+- **Dark-theme override baru** (≥6:1 di surface #141C2E): `--level-*`/`--status-*`/`--skala-*` versi terang + token `--on-accent` (#fff light / #0b101c dark) untuk teks di atas warna aksent (`skm.js` tombol skala terpilih).
+- Skor akhir audit: **30 PASS ≥4,5:1 · 0 FAIL** (1 pasang 4,46 khusus badge tint L2 diperbaiki → `#ab5708` 4,54).
+- `pages/tanya.js` palet GOV.UK-ish dibiarkan (kontrasnya memadai; migrasi token menunggu sentuhan berikutnya).
+
+**B5 ✅ Token warna:** 13 var di `:root` + dark override — `LEVEL_META` (`opd/[slug].js`), `TrackerStatus.js` (8 hex), `SKALA_WARNA` (`skm.js`) kini memakai token. `LEVEL_WARNA` tetap literal (dipakai concat alpha `${warna}18`) — tokenisasi penuh menunggu migrasi `color-mix()` (dicatat backlog).
+
+**Verifikasi:** lint 0 error · **20/20 test** · build sukses (72/72 halaman, `/dashboard-kepuasan` ISR 60 dtk) · smoke 6 rute 200 · font preload & 0 fonts pihak ketiga · warna baru terbukti di SSR `/pemdi` + bundle client/server kedua halaman.

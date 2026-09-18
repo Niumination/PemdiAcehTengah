@@ -94,7 +94,24 @@
   --gov-strip-h: 36px;
 
   /* Typography */
-  --font-body: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: var(--font-pjs), "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; /* var(--font-pjs) dari next/font/local (B1) */
+
+  /* ── Sprint B5 (2026-09-18): token warna level OPD & status —
+     migrasi dari hex hardcode di komponen (opd/[slug], TrackerStatus, skm) ── */
+  --level-badan: #01579b;
+  --level-dinas: #2e7d32;
+  --level-lembaga: #c2410c;
+  --level-kecamatan: #6a1b9a;
+  --status-info: #2563eb;
+  --status-ok: #047857;
+  --status-warn: #b45309;
+  --status-bad: #b91c1c;
+  --skala-4: #00703c;
+  --skala-3: #c2410c;
+  --skala-2: #d4351c;
+  --skala-1: #c62828;
+  --on-accent: #ffffff;
+
   --font-mono: "JetBrains Mono", "Fira Code", "Consolas", monospace;
 
   /* Aliases — compat untuk modul-indikator & probis */
@@ -161,6 +178,21 @@
   /* Search / highlight */
   --mark-bg: #f59e0b;
   --mark-color: #000;
+  /* Sprint B4/B5: override dark — level/status/skala versi terang
+     (kontras >= 6:1 di atas surface gelap #141C2E; audit kontras 2026-09-18) */
+  --level-badan: #38bdf8;
+  --level-dinas: #4ade80;
+  --level-lembaga: #fb923c;
+  --level-kecamatan: #c084fc;
+  --status-info: #60a5fa;
+  --status-ok: #34d399;
+  --status-warn: #fbbf24;
+  --status-bad: #f87171;
+  --skala-4: #4ade80;
+  --skala-3: #fbbf24;
+  --skala-2: #f87171;
+  --skala-1: #f87171;
+  --on-accent: #0b101c;
 }
 
 /* ============ 2. RESET & BASE ============ */
@@ -1589,4 +1621,43 @@ a { transition: color 0.18s ease; }
   .aurora::before { width: 90vw; height: 90vw; }
   .aurora::after { width: 80vw; height: 80vw; }
   .glass-card { border-radius: var(--r); }
+}
+
+/* ── Ringkasan SSR dashboard-kepuasan (Sprint B3) ── */
+.ssr-ringkasan-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+.ssr-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xs, 10px);
+  padding: 0.9rem 1rem;
+}
+.ssr-stat-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.ssr-stat-value {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.ssr-empty-note {
+  font-size: 0.8125rem;
+  color: var(--muted);
+  background: var(--surface-2);
+  border: 1px dashed var(--line);
+  border-radius: var(--r-xs, 10px);
+  padding: 0.75rem 1rem;
+  margin: 0 0 1.25rem;
 }

@@ -16,9 +16,7 @@ export default function Document() {
         <meta name="twitter:card" content="summary_large_image" />
         <link rel="icon" href="/icons/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400..800&display=swap" />
+        {/* Font Plus Jakarta Sans di-self-host via next/font/local — lihat _app.js (Sprint B1) */}
       </Head>
       <body>
         {/* Inline script for theme FOUC prevention — runs before any paint */}
