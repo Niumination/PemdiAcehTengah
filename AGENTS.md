@@ -75,6 +75,7 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 | `MASTERPLAN.md` | Masterplan Pemdi Aceh Tengah 2026–2029 (40 KB) — **sumber kebenaran perencanaan**, dirujuk dari seksi Read Before Editing |
 | `BACKLOG.md` | Sub-backlog proyek (7 KB) — status task & item terbuka; satu sumber prioritas kerja |
 | `RENCANA_PERUBAHAN_LENGKAP.md` | Rencana perubahan menyeluruh (14 KB) — termasuk rencana CI; catatan: **rencana**, bukan status aktif (CI sudah terpasang 18 Sep 2026 di `.github/workflows/ci.yml`) |
+| `PRD_PORTAL_PEMDI.md` | **PRD v1.0 (14 Jun 2026, 28 KB / 743 baris)** — Product Requirements Document portal; acuan produk awal. Untuk kondisi terkini: DOX ini + `MASTERPLAN.md` |
 | `AGENTS.md` | **File ini** — DOX root |
 | `package.json` | Dependencies: next 14.2.35, react 18.3.1 · `npm test` = node --test (Node 22) |
 | `next.config.js` | Standalone output, reactStrictMode, unoptimized images |
