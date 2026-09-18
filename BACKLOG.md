@@ -27,7 +27,7 @@
 - [x] **Admin auth constant-time** (crypto.timingSafeEqual) + rate-limit `/api/lapor/status` + ID lapor 12-hex
 - [x] **`/api/health`** — 200/503 untuk uptime monitor (backend live sempat mati tanpa terdeteksi)
 - [x] **`/api/skm/stats` tanpa N+1** — RPC `skm_stats_dimensi` + fallback 1 query
-- [x] **16 unit test rumus Pemdi** (`npm test`, CI Node 22) — pin indeks 0,38 · proyeksi 2,29 · 250/47/4/199
+- [x] **20 tes regresi** (`npm test`) — **kini dijalankan CI** (langkah `Test`, Node 20); sebelumnya workflow hanya lint+build sehingga tes tidak pernah dieksekusi otomatis — pin indeks 0,38 · proyeksi 2,29 · 250/47/4/199
 - [x] **SEO**: canonical + og:url dinamis; og-image PNG 1,6 MB → JPG 166 KB; crest-pemdi.png 1 MB (tak terpakai) dihapus
 - [x] **proxy-pdf whitelist content-type**; security.txt diperbaiki (rujukan 404 dihapus); CSP connect-src diperketat
 - [x] **Higien git**: 6 branch stale dihapus; sitemap/robots (hasil generate) keluar dari git
@@ -46,8 +46,8 @@
 - [ ] **Mengejar bukti dukung 2026** — gap 203/250 item (47 lengkap, 19%). Prioritas bobot: Kepuasan 25% → Data/Keamanan/Keterpaduan 15% → dll. PIC OPD per indikator sudah tampil di /pemdi
 - [x] **Sprint A6** — api/requirement.js dedup ke data/requirement.json (respons identik) + 4 pin test — 18 Sep 2026
 - [x] **Sprint A7** — Sidebar: /lapor /tanya /bantuan /kebijakan-privasi ≤1 klik — 18 Sep 2026
-- [x] **Sprint A1 (DB)** — Supabase aktif kembali (un-pause); live terverifikasi 200. Sisa: jalankan SQL RPC baru (bump_rate_limit, skm_stats_dimensi, RLS) — 18 Sep 2026
-- [ ] **Sprint A (pemilik)** — A2 uptime monitor (pasca-merge), A3 commit ci.yml, A4 deskripsi repo, A5 rotasi ADMIN_PASSWORD
+- [x] **Sprint A1 (DB)** — Supabase aktif kembali (un-pause); live terverifikasi 200. SQL RPC baru **DITERAPKAN** 18 Sep 2026: `bump_rate_limit`, `skm_stats_dimensi`, `rate_limits` + RLS (dicek pemilik di SQL Editor: 4 fungsi + RLS aktif) — 18 Sep 2026
+- [ ] **Sprint A (pemilik)** — A2 uptime monitor (pasca-merge), A4 deskripsi repo, A5 rotasi ADMIN_PASSWORD
 - [x] **Sprint B** — B1 font self-host (0 request Google Fonts) · B2 /pemdi 174→114 kB & /modul-indikator 172→113 kB · B3 SSR+ISR ringkasan kepuasan · B4 kontras 30 PASS/0 FAIL · B5 13 token warna + dark override — 18 Sep 2026
 - [ ] **Sprint C** — Next 15 (+React 19), repo slimming, audit log admin
 - [ ] **Backup ritme git** — push ke origin tiap akhir sesi kerja (sempat tertinggal 3 commit; sudah disinkronkan 10 Agu 2026)
