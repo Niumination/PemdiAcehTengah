@@ -137,7 +137,7 @@ export default function LayananPage() {
       {/* ============ STATS ============ */}
       <section className="section" style={{ padding: '1.5rem 0' }}>
         <div className="container">
-          <div className="grid grid-4" style={{ gap: '0.75rem' }} data-reveal-stagger>
+          <div className="grid grid-4 layanan-stats" style={{ gap: '0.75rem' }} data-reveal-stagger>
             <div className="card" style={{ padding: '1rem', textAlign: 'center', '--i': 0 }}>
               <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--primary)' }}>{formatAngka(ringkasan.total_layanan)}</div>
               <div style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>Total Layanan</div>

@@ -1778,3 +1778,55 @@ a { transition: color 0.18s ease; }
 }
 .collapse-sec[open] > summary.collapse-sum::after { transform: rotate(180deg); }
 .collapse-sec[open] > summary.collapse-sum { margin-bottom: 18px; }
+
+/* ════════════ /layanan — mobile ringkas tapi padat informasi (19 Sep 2026) ════════════ */
+/* Diukur pada produksi sebelum perbaikan (viewport 390px):
+   tinggi halaman 8.746px (~10 layar) · 25 kartu rata-rata 168px, deskripsi
+   117px/kartu (33% tinggi halaman) · 8 chip filter setinggi 200px (320px: 356px)
+   · grid statistik 4 kartu menumpuk 1 kolom · filter tidak dapat dijangkau
+   setelah menggulir 2 layar. Perbaikan hanya berlaku di layar sempit —
+   tata letak desktop tidak berubah. */
+@media (max-width: 768px) {
+  /* 1. Deskripsi kartu: 2 baris saja. Teks utuh tetap tersedia lewat kartu
+        yang sudah dapat diklik/expand (aria-expanded sudah ada di ServiceCard). */
+  .service-card .service-desc,
+  .service-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  /* Kartu yang sudah dibuka (aria-expanded=true) menampilkan deskripsi penuh —
+     jangan sampai clamp ini menyembunyikan teks yang memang diminta pengguna. */
+  .service-card[aria-expanded="true"] .service-desc {
+    display: block;
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+    overflow: visible;
+  }
+  /* 2. Kartu lebih padat: kurangi padding, rapatkan isi. */
+  .service-card { padding: 14px !important; }
+  .service-card .service-name { font-size: 0.9rem !important; margin-bottom: 2px !important; }
+  /* 3. Filter kategori: satu baris yang bisa digeser, bukan dinding chip. */
+  .sf-tags {
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 6px;
+    scrollbar-width: thin;
+  }
+  .sf-tag { flex: 0 0 auto; white-space: nowrap; }
+  /* 4. Pencarian melekat di bawah topbar supaya filter selalu terjangkau. */
+  .sf-search {
+    position: sticky;
+    top: calc(var(--gov-strip-h, 36px) + env(safe-area-inset-top, 0px) + 61px);
+    z-index: 30;
+    background: var(--bg);
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+  /* 5. Statistik halaman ini: 2x2, bukan 4 baris. (Kelas khusus — hanya /layanan.) */
+  .layanan-stats { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .layanan-stats > * { padding: 0.75rem 0.6rem !important; }
+}
