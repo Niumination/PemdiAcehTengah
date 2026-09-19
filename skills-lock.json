@@ -21,11 +21,6 @@
       "sourceType": "autoskills-registry",
       "computedHash": "22d9bba45864c4ae8acca9f6430290634343b7de91005d090e0ba201bdbbb5da"
     },
-    "next-cache-components": {
-      "source": "vercel-labs/next-skills",
-      "sourceType": "autoskills-registry",
-      "computedHash": "82a02f95879e9adf1a5a89f9ca2f51813e41ff3bab3c723cc8905f5a926bdd30"
-    },
     "next-upgrade": {
       "source": "vercel-labs/next-skills",
       "sourceType": "autoskills-registry",

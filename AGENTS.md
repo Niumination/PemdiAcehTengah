@@ -46,7 +46,7 @@ Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah. Transformasi menuju Peme
 | **Security** | CSP headers (Supabase, Google Fonts), rate limiting, IP hashing (SHA-256), admin Bearer auth. `lib/security.js` |
 | **Admin Dashboard** | `/admin` — protected by `ADMIN_PASSWORD` env (Bearer auth). Admin APIs: `/api/admin/laporan` (PATCH status), `/api/admin/skm` (GET all) |
 | **HEAD** | `20841e9` (19 Sep 2026) — 22 dead code dihapus, **20 tes** (16 rumus Pemdi + 4 requirement), rate-limit atomic + RPC Supabase, `/api/health`, sanitizer & `adminAuth` diperkuat, canonical+og:url, og-image.jpg 166 KB. Ringkasan lengkap: seksi **Status Sekarang** |
-| **Agent Skills** | `.agents/skills/` — 11 skill autoskills (React · Next.js · Supabase · Node · SEO · a11y · design) + `skills-lock.json` — pasang ulang: `npx autoskills` |
+| **Agent Skills** | `.agents/skills/` — **10** skill autoskills (React · Next.js · Supabase · Node · SEO · a11y · design). Lock file ada di **root repo**: `skills-lock.json` (10 entri, masing-masing `source` + `computedHash`). Pasang ulang: `npx autoskills` — ⚠️ registry masih menyediakan `next-cache-components` (**Next.js 16+ only**, sedangkan proyek ini di 14.2.35): keluarkan lagi bila terpasang ulang, sampai proyek benar-benar naik versi. |
 | **Env Vars** | `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `ADMIN_PASSWORD` (Vercel *sensitive*), `IP_HASH_SALT` — `ADMIN_TOKEN` legacy dihapus 18 Sep 2026 |
 | **Indeks Pemdi** | **0.38** (rumus PermenPANRB 8/2026, predikat Tabel 4) — target 2,50+ |
 | **Total bukti dukung** | **250** (`data/pemdi.json`: 47 lengkap / 4 proses / 199 belum; +18 final lolos-evaluasi di `public/bukti-dukung/final/`) |
