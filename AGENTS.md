@@ -126,6 +126,7 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 | `lib/AGENTS.md` | 9 modul — pemdiNilai (rumus resmi; diuji di `test/pemdiNilai.test.mjs`, 16 dari 20 tes suite), security, rate-limit-db (RPC atomic), adminAuth (constant-time), supabaseAdmin (server-only), sanitize (allowlist ketat), search-index, format, slugify |
 | `pages/admin` | Admin Dashboard — laporan (pengaduan), SKM management. Protected by `ADMIN_PASSWORD` (Bearer auth) |
 | `public/AGENTS.md` | PWA assets: manifest.json, icons (192/512 PNG + maskable-512 + apple-touch + SVG), favicon, crest-pemdi.svg, og-image.jpg |
+| **`REPOSISI-PEMDI.md`** | **Arah reposisi Opsi B (adopsi selektif)** — B1 Kokpit Pemdi (internal), B2 Dasbor Transparansi (publik), B3 Komponen terintegrasi. Baca ini dulu sebelum kerja selanjutnya |
 
 ## User Preferences
 
