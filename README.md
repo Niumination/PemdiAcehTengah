@@ -236,7 +236,9 @@ SITE_ORIGIN=https://pemdi-aceh-tengah.vercel.app
 
 ## 🤖 Agent Skills (autoskills)
 
-Repo ini membawa [autoskills](https://github.com/midudev/autoskills) — 11 skill best-practice di `.agents/skills/` (ter-commit, lock: `skills-lock.json`) yang otomatis terdeteksi stack: **React, Next.js (3 skill), Supabase, Node.js (2 skill), frontend (SEO, a11y, design)**.
+Repo ini membawa [autoskills](https://github.com/midudev/autoskills) — **10 skill** best-practice di `.agents/skills/` (ter-commit; lock file ada di **root repo**: `skills-lock.json`) yang otomatis terdeteksi dari stack: **React, Next.js (2 skill), Supabase, Node.js (2 skill), frontend (SEO, a11y, design)**.
+
+> ⚠️ `next-cache-components` (Next.js 16+: PPR, `use cache`, `cacheLife`, `cacheTag`) **dikeluarkan 19 Sep 2026** — proyek ini berjalan di Next.js 14.2.35, jadi API tersebut belum tersedia. Bila `npx autoskills` memasangnya kembali, keluarkan lagi sampai proyek benar-benar naik versi. `next-upgrade` tetap dipertahankan (panduan upgrade, versi-agnostik).
 
 ```bash
 npx autoskills          # deteksi & pasang/update skill untuk stack ini
