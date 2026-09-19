@@ -1805,8 +1805,46 @@ a { transition: color 0.18s ease; }
     line-clamp: unset;
     overflow: visible;
   }
-  /* 2. Kartu lebih padat: kurangi padding, rapatkan isi. */
-  .service-card { padding: 14px !important; }
+  /* 2. AKAR MASALAH: kartu memakai tata letak 3 kolom (flex row) dari desktop.
+        Terukur di 390px: judul terjepit 89px, deskripsi hanya 72px lebar
+        (≈8 karakter per baris), badge 63px — isi kartu saling menumpuk.
+        Di layar sempit kartu diturunkan menjadi satu kolom. */
+  .service-card {
+    display: block;
+    padding: 14px !important;
+  }
+  .service-card > div:first-child {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  /* blok judul mengambil sisa lebar */
+  .service-card > div:first-child > div:nth-child(2) {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .service-card > div:first-child > .service-status,
+  .service-card > div:first-child > span {
+    margin-left: auto;
+  }
+  .service-category {
+    display: inline-block;
+    margin-top: 4px;
+  }
+  .service-desc {
+    width: auto !important;
+    margin: 6px 0 10px !important;
+  }
+  /* baris meta (waktu + SLA) memakai lebar penuh, bukan kolom 63px */
+  .service-card > div:last-child {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    width: auto !important;
+  }
   .service-card .service-name { font-size: 0.9rem !important; margin-bottom: 2px !important; }
   /* 3. Filter kategori: satu baris yang bisa digeser, bukan dinding chip. */
   .sf-tags {
