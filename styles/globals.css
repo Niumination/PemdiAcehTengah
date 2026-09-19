@@ -1667,43 +1667,58 @@ a { transition: color 0.18s ease; }
    .theme-tg 40x23 · nav header 44x14 · .sf-tag 28 · .hbtn 23 · .link-more 22
    · tombol kategori 30 · .bukti-act 58x15 · select 37 · footer li 15.
    Standar minimum: 44px (Apple HIG) / 48dp (Material). Hanya di layar sempit —
-   tata letak desktop tidak berubah. */
+   tata letak desktop tidak berubah.
+
+   Catatan implementasi (iterasi 2 — percobaan pertama gagal sebagian):
+   1. `min-height` TIDAK berlaku pada elemen `display: inline` → anchor wajib
+      dijadikan `inline-flex` lebih dulu; itu sebabnya nav 14px tetap 14px.
+   2. Selektor elemen (`button`) kalah spesifisitas dari kelas (`.btn` 42px)
+      → kelas yang punya tinggi eksplisit dienumerasi ulang di bawah.
+   3. Anchor bergaya kartu (mis. `a.service-card`) tidak terpengaruh karena
+      kelasnya menang; anchor di dalam paragraf dikembalikan ke `inline`. */
 @media (max-width: 768px) {
-  .theme-tg,
-  .mobile-menu-btn,
-  .modal-close {
-    min-width: 44px;
+  a,
+  button,
+  [role="button"],
+  select,
+  summary,
+  input[type="submit"],
+  input[type="button"] {
     min-height: 44px;
-  }
-  header a,
-  header button,
-  nav a,
-  .gov-nav a,
-  .gov-header a {
-    min-height: 44px;
-  }
-  .gov-nav a,
-  .gov-header a,
-  .footer-col a,
-  .gov-footer a,
-  .footer-gov a {
     display: inline-flex;
     align-items: center;
   }
+  /* Tautan naratif di dalam paragraf tetap inline — bukan kontrol berdiri sendiri */
+  p a,
+  .prose a {
+    display: inline;
+    min-height: 0;
+  }
+  /* Kelas dengan tinggi eksplisit: menang karena berada di akhir berkas */
+  .btn,
+  .hbtn,
+  .link-more,
+  .sf-tag,
+  .stat-badge,
+  .skip-link,
+  .bukti-act {
+    min-height: 44px;
+  }
+  /* Kontrol ikon: persegi & isi terpusat */
+  .theme-tg,
+  .mobile-menu-btn,
+  .modal-close,
+  .bukti-act,
+  .scroll-top {
+    min-width: 44px;
+    justify-content: center;
+  }
+  /* Chip / kartu aksi tetap tersusun rapi saat tingginya naik */
+  .quick-action-card,
+  .qa-card,
+  .sf-tag,
   .bukti-act {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    min-width: 44px;
-    min-height: 44px;
-    padding: 0 6px;
-  }
-  button,
-  .sf-tag,
-  .hbtn,
-  .link-more,
-  select,
-  summary {
-    min-height: 44px;
   }
 }
