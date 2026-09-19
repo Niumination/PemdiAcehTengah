@@ -1,4 +1,5 @@
 # PRD — Portal Pemerintah Digital (Pemdi) Kabupaten Aceh Tengah
+> **Status:** dokumen historis (14 Jun 2026) — rencana awal, bukan status aktif. kondisi terkini: `AGENTS.md` + `docs/rencana-mobile-ux-tahap-2.md`.
 
 | Metadata | |
 |----------|---------|

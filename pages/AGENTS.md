@@ -77,9 +77,9 @@ Supabase (service role, SERVER-ONLY) ──► api/lapor.js, api/lapor/status.js
 - Route naming: kebab-case
 - styled-jsx dihindari (unreliable di Next 14 + Strict Mode + conditional mount)
 - Error handling: setiap halaman harus graceful fallback
-- **Test**: perubahan pada lib/pemdiNilai.js atau data/pemdi.json wajib `npm test` hijau (16 pin regresi termasuk indeks 0,38 & 250 bukti)
+- **Test**: perubahan pada lib/pemdiNilai.js atau data/pemdi.json wajib `npm test` hijau (16 pin rumus termasuk indeks 0,38 & 250 bukti, dari 20 tes suite)
 
 ## Verification
 - `npm run lint` — 0 error (4 warning `<img>` di modul-indikator dikenal)
-- `npm test` — 16/16 pass
+- `npm test` — 20/20 pass (16 rumus Pemdi + 4 requirement)
 - `npm run build` — sukses, semua route ter-generate

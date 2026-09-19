@@ -19,6 +19,14 @@
 - [x] **Fix QA anti-fail** — useCountUp/useInView (SSR target, fallback timeout), requirement.js CSR→SSR, data/requirement.json — console production 0 error
 - [x] **Ground Truth NotebookLM** — 20 indikator (I1–I20), 222 item data dukung di `data/modul-indikator.json`; I5/I6/I7/I18 dikosongkan sesuai strategi (auto-scored + rawan tolak)
 
+## ✅ Completed — UI/UX & Mobile 2026-09-19
+
+- [x] **Audit UI/UX live 11 rute × 3 viewport** (camofox, karena browser tool Hermes gagal) — register temuan + 9 temuan palsu yang saya batalkan sendiri; metode disimpan di skill `pemdi-uiux-refinement`
+- [x] **T2 perbaikan cepat** — tautan footer PDF PermenPANRB 404 → tersedia di portal (`public/docs/`); tap target mobile <44px di 28/25/24 kontrol → **0** di 5 halaman utama
+- [x] **P1–P6 perbaikan terukur** — token `--primary-bg` (9 pemakaian, 0 definisi → tema gelap 1,15→6,40); kontras label OPD 2,56→5,51 & badge 4,23→5,06; payload beranda 233 KB→135 KB (`__NEXT_DATA__` 129→34 KB); panel rumus internal `/pemdi` dilipat `<details>`; marquee berhenti di mobile; 26 referensi gambar mati dibuang; `borderLeft` side-tab → `borderTop`; `transition: width` → `scaleX` (SpbeGauge/SlaBadge)
+- [x] **`/layanan` mobile** — akar: kartu memakai tata letak 3 kolom desktop (judul 89px, deskripsi 72px, badge 63px) → jadi satu kolom (194/296/296px); deskripsi 2 baris dilepas saat kartu dibuka; chip filter 200→50px dapat digeser; blok cari filter melekat; statistik 2×2
+- [x] **Rencana tahap lanjut** — `docs/rencana-mobile-ux-tahap-2.md` (9 item T2-1…T2-9, belum dieksekusi)
+
 ## ✅ Completed — Hardening Audit 2026-09-17
 - [x] **Audit menyeluruh repo + 7 branch + live web** — autoskills checklist + ponytail + premortem (arsip internal pemilik)
 - [x] **Ponytail: hapus 22 dead code (2.241 baris)** — 18 komponen + 2 motif + lib/cors + lib/safeRichText; DOX pass 4 file AGENTS.md + README sinkron
@@ -33,7 +41,7 @@
 - [x] **Higien git**: 6 branch stale dihapus; sitemap/robots (hasil generate) keluar dari git
 
 ## ✅ Completed — Eksekusi 11 Skills autoskills (2026-09-17)
-- [x] 11 skill dijalankan sebagai review pass — ringkasan di CHANGELOG.md (laporan lengkap arsip internal)
+- [x] 11 skill dijalankan sebagai review pass — ringkasan di CHANGELOG.md (laporan lengkap arsip internal). *Catatan 19 Sep 2026: kini **10** autoskill setelah `next-cache-components` (Next.js 16+ only) dikeluarkan.*
 - [x] react: admin.js token via state (bukan read saat render); Footer year init-once + suppressHydrationWarning
 - [x] a11y: SkmPrompt role=status + aria-live polite; gov-strip bukan lagi banner ganda
 - [x] seo: header HSTS; FAQPage JSON-LD 15 Q&A di /faq
@@ -62,4 +70,4 @@
 
 ---
 
-*Terakhir diperbarui: 18 Sep 2026 — Sprint B + audit pre-merge selesai; ringkasan di CHANGELOG.md*
+*Terakhir diperbarui: 19 Sep 2026 — audit UI/UX, perbaikan T2+P1–P6, `/layanan` mobile selesai; rencana tahap lanjut di `docs/rencana-mobile-ux-tahap-2.md`*

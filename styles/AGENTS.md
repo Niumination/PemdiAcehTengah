@@ -64,6 +64,18 @@ Blok `@media (max-width: 768px)` di akhir `globals.css` memaksa tinggi minimum *
 Alasan terukur (produksi, viewport 390px, sebelum perbaikan): `.theme-tg` 40×23 · nav header 44×14 · `.bukti-act` 58×15 · `.sf-tag` 28 · tombol kategori 30 · `.hbtn` 23 · `.link-more` 22 · `select` 37.
 **Aturan untuk perubahan berikutnya:** kontrol interaktif baru wajib ≥44px di layar ≤768px; jangan menambah `padding: 0` pada tombol ikon/teks tanpa memberi area sentuh.
 
+### Kontrak Mobile `/layanan` (19 Sep 2026)
+Blok `@media (max-width: 768px)` di akhir `globals.css` mengatur halaman Direktori Layanan:
+`.service-card` → `display: block` (kartu satu kolom; desktop tetap 3 kolom), header kartu membungkus,
+deskripsi 2 baris (`-webkit-line-clamp`) yang **dilepas** saat `.service-card[aria-expanded="true"]`,
+`.sf-tags` satu baris dapat digeser (`flex-wrap: nowrap` + `overflow-x: auto`), `.sf-search` **melekat**
+di `top: calc(var(--gov-strip-h) + safe-area + 61px)`, dan `.layanan-stats` 2×2.
+Angka sebelum perbaikan: halaman 8.746px, kartu 168px, judul 89px, deskripsi 72px, chip 200px.
+
+### Panel yang bisa dilipat
+`.collapse-sec` (> `summary.collapse-sum`) — dipakai `/pemdi` untuk panel rumus internal. Native `<details>`
+(accessible, keyboard), target sentuh summary ≥44px.
+
 ### Component Class Map
 *(Catatan 19 Sep 2026: entri bertanda ⚠️ menyebut komponen yang sudah **dihapus** pada hardening 17 Sep 2026 — kelasnya mungkin masih ada di CSS sebagai warisan; verifikasi di `globals.css` sebelum dipakai.)*
 

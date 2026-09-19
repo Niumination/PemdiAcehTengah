@@ -1,5 +1,6 @@
 # Rencana Perubahan Lengkap — PemdiAcehTengah
 
+> **Status:** dokumen historis (15 Jul 2026) — rencana awal, bukan status aktif. sebagian sudah dikerjakan; kondisi terkini: `AGENTS.md`.
 > **Project:** Portal Pemda Aceh Tengah — https://pemdi-aceh-tengah.vercel.app
 > **Basis:** V1 Snapshot (PemdiAcehTengah-V1.zip) + Produksi Saat Ini
 > **Tanggal:** 15 Juli 2026

@@ -20,5 +20,5 @@ Utility server-side & shared — murni fungsi, tanpa React.
 ## Key Rules
 - **Jangan pernah** mengimpor `supabaseAdmin.js` dari komponen client (service-role key)
 - **Jangan pernah** render string HTML tanpa `sanitizeHtml`
-- Perubahan `pemdiNilai.js` wajib `npm test` hijau (16 pin regresi: indeks 0,38 · proyeksi 2,29 · 250/47/4/199 bukti)
+- Perubahan `pemdiNilai.js` wajib `npm test` hijau (16 pin rumus — dari 20 tes suite: indeks 0,38 · proyeksi 2,29 · 250/47/4/199 bukti)
 - SQL pendukung: `db/schema.sql` (tabel + view + RPC `skm_per_unit_stats`, `skm_tren_bulanan`, `skm_stats_dimensi`), `db/rate-limit-schema.sql` (tabel + RPC `bump_rate_limit`)

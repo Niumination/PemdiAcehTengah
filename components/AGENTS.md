@@ -44,5 +44,11 @@ React component library — reusable UI building blocks, props-driven.
 ### DetailModal (`DetailModal.js`)
 - **Props**: `{ title, children, onClose, isOpen }`
 
+## Kontrak Mobile (19 Sep 2026)
+
+- **ServiceCard** — di `≤768px` kartu tampil **satu kolom** (desktop: baris 3 kolom). Deskripsi dibatasi 2 baris dan **dilepas otomatis** saat kartu dibuka (`aria-expanded="true"`) — jangan menambah clamp tanpa mekanisme buka, agar teks penuh tidak hilang.
+- **SpbeGauge / SlaBadge** — bar kemajuan memakai `transform: scaleX()` (bukan animasi `width`) supaya tidak memicu layout. DashboardSKM sengaja dibiarkan `width` karena label persennya diposisikan terhadap lebar bar.
+- **Tombol bukti di `/pemdi`** memakai kelas `.bukti-act` (target sentuh ≥44px di mobile) + `aria-label`.
+
 ## Status
 🟢 **DOX Clean** — 20/20 komponen dalam tabel ini terverifikasi diimpor minimal satu halaman/komponen aktif (cek: grep impor per file).

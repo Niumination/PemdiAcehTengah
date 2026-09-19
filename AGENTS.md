@@ -45,7 +45,7 @@ Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah. Transformasi menuju Peme
 | **PWA** | `manifest.json`, icons (192/512 PNG + maskable-512 + apple-touch + SVG), `theme_color: #1F2A44`, `display: standalone`, scope root, +orientation portrait |
 | **Security** | CSP headers (Supabase, Google Fonts), rate limiting, IP hashing (SHA-256), admin Bearer auth. `lib/security.js` |
 | **Admin Dashboard** | `/admin` — protected by `ADMIN_PASSWORD` env (Bearer auth). Admin APIs: `/api/admin/laporan` (PATCH status), `/api/admin/skm` (GET all) |
-| **HEAD** | `20841e9` (19 Sep 2026) — 22 dead code dihapus, **20 tes** (16 rumus Pemdi + 4 requirement), rate-limit atomic + RPC Supabase, `/api/health`, sanitizer & `adminAuth` diperkuat, canonical+og:url, og-image.jpg 166 KB. Ringkasan lengkap: seksi **Status Sekarang** |
+| **HEAD** | `64ecb2c` (19 Sep 2026) — audit UI/UX live + perbaikan: tautan PDF footer 404 → tersedia, tap target mobile ≥44px (0 sisa), token `--primary-bg` (tema gelap), kontras teks kecil, payload beranda 233→135 KB, `/layanan` mobile satu kolom. Sebelumnya: 22 dead code dihapus, **20 tes** (16 rumus Pemdi + 4 requirement), rate-limit atomic + RPC Supabase, `/api/health`. Ringkasan lengkap: seksi **Status Sekarang** |
 | **Agent Skills** | `.agents/skills/` — **10** skill autoskills (React · Next.js · Supabase · Node · SEO · a11y · design). Lock file ada di **root repo**: `skills-lock.json` (10 entri, masing-masing `source` + `computedHash`). Pasang ulang: `npx autoskills` — ⚠️ registry masih menyediakan `next-cache-components` (**Next.js 16+ only**, sedangkan proyek ini di 14.2.35): keluarkan lagi bila terpasang ulang, sampai proyek benar-benar naik versi. |
 | **Env Vars** | `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `ADMIN_PASSWORD` (Vercel *sensitive*), `IP_HASH_SALT` — `ADMIN_TOKEN` legacy dihapus 18 Sep 2026 |
 | **Indeks Pemdi** | **0.38** (rumus PermenPANRB 8/2026, predikat Tabel 4) — target 2,50+ |
@@ -103,7 +103,7 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 
 1. **Data flow**: `data/opd.json` → `getStaticProps` di pages → props ke components. API routes juga baca dari file yang sama.
 2. **Hybrid data**: Static JSON (`data/*.json`) untuk konten publik (OPD, SPBE, ProBis, Pemdi, SKM) + Supabase untuk data dinamis (SKM responses, admin logs). Supabase admin client di `lib/supabaseAdmin.js`. Env vars: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`.
-3. **CSS architecture**: Satu file `styles/globals.css` — **Gayo Civic Digital v3** (bukan GOV.UK). CSS variables untuk design tokens: `--lake-cyan`, `--gayo-gold`, `--coffee-brown`, `--forest-green`. Hero award gradient multi-layer. Dark mode built-in. Layout max-width 1180px. Inter font.
+3. **CSS architecture**: Satu file `styles/globals.css` (1.709 baris) — palet **Luxury Navy/Beige/Gold** sejak 8 Agu 2026: `--primary` #1F2A44, `--bg` #F5F1E8, `--gold` #C6A75E, `--teal`, `--warn`, `--muted` #5E6980. Font **Plus Jakarta Sans self-host** (`next/font/local`, bukan Google Fonts/Inter). Tema gelap via `[data-theme="dark"]` + toggle manual (default terang). Layout max-width 1180px. Kontrak tap target mobile ≥44px. Detail token: `styles/AGENTS.md`.
 4. **Components**: Semua di `components/` — reusable, props-driven. Layout component wrapping.
 5. **API routes**: RESTful, JSON response, read from `data/opd.json`.
 6. **Deployment**: Vercel production branch `main`. Deploy via Vercel CLI atau push ke GitHub.

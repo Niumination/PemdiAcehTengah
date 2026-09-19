@@ -1,5 +1,6 @@
 # Strategi Pemdi Aceh Tengah — Rencana Implementasi Nyata
 
+> **Status:** dokumen historis (10 Jun 2026) — rencana awal, bukan status aktif. kondisi terkini: `AGENTS.md`.
 > Dokumen strategis untuk portal https://pemdi-aceh-tengah.vercel.app
 > Berdasarkan: Permenpan RB 8/2026, Permenpan 19/2018, Panduan Peningkatan Indeks Pemdi (Diskominfo), riset best practices 6 kabupaten/kota
 > Disusun: 10 Juni 2026
