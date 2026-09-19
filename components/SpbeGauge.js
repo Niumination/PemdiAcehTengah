@@ -90,10 +90,12 @@ export default function SpbeGauge({ nilai = 2.59, domain = {} }) {
                 <div
                   style={{
                     height: '100%',
-                    width: `${pct}%`,
+                    width: '100%',
                     background: d.value >= 3.0 ? 'var(--ok)' : d.value >= 2.0 ? 'var(--gold)' : 'var(--bad)',
                     borderRadius: '4px',
-                    transition: 'width 0.6s ease',
+                    transform: `scaleX(${pct / 100})`,
+                    transformOrigin: 'left',
+                    transition: 'transform 0.6s ease',   /* P6: animasi layout → compositor */
                   }}
                 />
               </div>

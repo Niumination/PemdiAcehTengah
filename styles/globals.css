@@ -13,7 +13,8 @@
   --gray-200: var(--line);
   --gray-300: var(--line);
   --gray-400: var(--muted);
-  --gray-500: var(--muted-light);
+  --gray-500: var(--muted);     /* P2: dulu --muted-light (#99A2B8) — 9 pemakaian sebagai warna TEKS,
+                                   termasuk label OPD 11px di /layanan (kontras 2,56 di atas putih) */
   --gray-600: var(--ink-secondary);
   --gray-700: var(--ink);
   --gray-800: var(--ink);
@@ -21,6 +22,10 @@
   --white: var(--surface);
   --radius: var(--r);
   --primary-light: var(--primary-50);
+  /* P1 audit UI/UX 19 Sep 2026: token ini dipakai 9x di pemdi.js/modul-indikator.js
+     tapi tidak pernah didefinisikan → fallback hardcoded #e3edff ikut terpakai,
+     termasuk di tema gelap. Diikat ke --primary-50 yang sudah punya nilai per tema. */
+  --primary-bg: var(--primary-50);
 
   /* Search / highlight — visible in both light & dark */
   --mark-bg: #fef08a;
@@ -45,7 +50,7 @@
   /* Neutrals & Surfaces — Warm Beige */
   --ink: #1F2A44;
   --ink-secondary: #48536B;
-  --muted: #6A7590;
+  --muted: #5E6980;             /* P2: digelapkan dari #6A7590 — badge 11,5px di #F8F5ED hanya 4,23 (AA perlu 4,5) */
   --muted-light: #99A2B8;
   --line: #DFD9CB;
   --line-2: #EBE6DA;
@@ -1724,3 +1729,52 @@ a { transition: color 0.18s ease; }
     align-items: center;
   }
 }
+
+/* ════════════ P2e — tombol primer di tema gelap (audit UI/UX 19 Sep 2026) ════════════ */
+/* Di tema gelap --primary = Soft Gold #C6A75E, sedangkan .btn-primary memaksa
+   color:#ffffff !important → kontras 2,31 (AA perlu 4,5). Teks diganti tinta gelap. */
+[data-theme="dark"] .btn-primary,
+[data-theme="dark"] .btn-primary:hover,
+[data-theme="dark"] .btn-primary:focus-visible {
+  color: #0B101C !important;
+}
+
+/* ════════════ P4 — hentikan marquee di layar sempit (audit UI/UX 19 Sep 2026) ════════════ */
+/* Di mobile dua pita berjalan (info resmi + pita budaya) terus bergerak di atas
+   setiap halaman. Teksnya tetap tampil, hanya animasinya dihentikan. */
+@media (max-width: 768px) {
+  .gov-strip-marquee-track,
+  .kr-marquee-track {
+    animation: none !important;
+    transform: none !important;
+  }
+  .gov-strip-marquee { overflow-x: auto; }
+  .kr-marquee { overflow-x: auto; }
+}
+
+/* ════════════ P3b/P4b — panel yang bisa dilipat (audit UI/UX 19 Sep 2026) ════════════ */
+/* Blok rumus/notasi internal (w_i, NI_j, nomor halaman lampiran) tidak perlu
+   tampil penuh untuk warga; halaman jadi lebih pendek dan tetap bisa dibuka. */
+.collapse-sec > summary.collapse-sum {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 14px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--ink);
+}
+.collapse-sec > summary.collapse-sum::-webkit-details-marker { display: none; }
+.collapse-sec > summary.collapse-sum::after {
+  content: '▾';
+  margin-left: auto;
+  transition: transform 0.2s ease;
+}
+.collapse-sec[open] > summary.collapse-sum::after { transform: rotate(180deg); }
+.collapse-sec[open] > summary.collapse-sum { margin-bottom: 18px; }

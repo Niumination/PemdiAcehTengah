@@ -392,7 +392,7 @@ export default function Requirement() {
         }
         .req-detail-arrow {
           font-size: 0.8rem;
-          color: var(--muted-light);
+          color: var(--muted);
           transition: transform 0.3s;
         }
         .req-detail-arrow.up { transform: rotate(180deg); }

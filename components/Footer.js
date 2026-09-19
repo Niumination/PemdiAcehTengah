@@ -27,7 +27,7 @@ export default function Footer() {
               <strong>Walidata Resmi Data Sektoral:</strong> Dinas Komunikasi dan Informatika (Diskominfo) Kab. Aceh Tengah.
             </p>
             <p style={{ marginTop: '12px', fontSize: '0.72rem', fontStyle: 'italic', color: 'var(--muted)' }}>
-              <span style={{ color: 'var(--kg-kuning)' }}>“Ratip musara anguk, nyawa musara peluk,</span>
+              <span style={{ color: 'var(--gold-deep)' }}>“Ratip musara anguk, nyawa musara peluk,</span>
               {' '}alang tulung beret bebantu — persatuan yang kukuh, saling menopang bagai &ldquo;Rante&rdquo;, keterpaduan
               kerawang Gayo dalam pelayanan publik.
             </p>

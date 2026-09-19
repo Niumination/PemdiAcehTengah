@@ -157,14 +157,14 @@ export default function Home({ pemdiData, layananData, portalData }) {
         {/* Dual CTA Actions */}
         <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
           <Link href="/layanan" className="hbtn solid">
-            📋 Jelajahi Direktori 25 Layanan Publik
+            Jelajahi Direktori 25 Layanan Publik
           </Link>
           <button
             type="button"
             className="hbtn ghost"
             onClick={() => window.dispatchEvent(new CustomEvent('pemdi:open-lapor'))}
           >
-            💬 Buat Pengaduan / Lacak Status Tiket →
+            Buat Pengaduan / Lacak Status Tiket →
           </button>
         </div>
         </div>
@@ -421,7 +421,15 @@ export default function Home({ pemdiData, layananData, portalData }) {
 export async function getStaticProps() {
   return {
     props: {
-      pemdiData: (await import('@/data/pemdi.json')).default,
+      // P3 (audit UI/UX 19 Sep 2026): kirim HANYA field yang dipakai beranda.
+      // Sebelumnya seluruh data/pemdi.json (~101 KB, mayoritas array `aspek` berisi
+      // 20 indikator dengan seluruh bukti dukungnya) ikut ke __NEXT_DATA__ di setiap
+      // kunjungan beranda. Beranda hanya memakai: indeks_aktual, dan per aspek
+      // id/nama/nilai/target (lihat aspek.map di bawah).
+      pemdiData: await import('@/data/pemdi.json').then(({ default: p }) => ({
+        indeks_aktual: p.indeks_aktual,
+        aspek: p.aspek.map(({ id, nama, nilai, target }) => ({ id, nama, nilai, target })),
+      })),
       layananData: (await import('@/data/layanan.json')).default,
       portalData: (await import('@/data/opd.json')).default,
     },

@@ -282,7 +282,8 @@ function defaultCatatan(ind) {
       </section>
 
       {/* ════════ PANEL PERHITUNGAN CAPAIAN NILAI — rumus resmi PermenPANRB 8/2026 ════════ */}
-      <section data-reveal style={{ marginBottom: '32px' }}>
+      <details data-reveal className="collapse-sec" style={{ marginBottom: '32px' }}>
+        <summary className="collapse-sum">Tolak Ukur Resmi — perhitungan & rumus indeks (buka untuk melihat)</summary>
         <div className="sec-head">
           <div>
             <div className="eyebrow">Tolak Ukur Resmi</div>
@@ -393,7 +394,7 @@ function defaultCatatan(ind) {
             Bobot mengacu Tabel 1 PermenPANRB 8/2026. {perhitungan?.diperbarui ? `Diperbarui: ${perhitungan.diperbarui}.` : ''}
           </p>
         </div>
-      </section>
+      </details>
 
       <KerawangDivider label="7 Aspek Evaluasi" icon="🛡️" />
 
@@ -521,7 +522,7 @@ function defaultCatatan(ind) {
                         padding: '11px 14px', fontFamily: 'inherit',
                         background: aktif ? 'var(--primary-bg, #e3edff)' : 'var(--surface)',
                         borderBottom: '1px solid var(--line)',
-                        borderLeft: aktif ? '3px solid var(--primary)' : '3px solid transparent',
+                        borderTop: aktif ? '3px solid var(--primary)' : '3px solid transparent',
                       }}
                     >
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>

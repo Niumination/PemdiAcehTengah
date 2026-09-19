@@ -34,7 +34,7 @@ export default function TrackerStatus({ status, dibuat, diperbarui, compact }) {
   return (
     <div className="tracker-container">
       {/* Current status banner */}
-      <div className="tracker-banner" style={{ background: cfg.bg, borderLeft: `4px solid ${cfg.color}` }}>
+      <div className="tracker-banner" style={{ background: cfg.bg, borderTop: `4px solid ${cfg.color}` }}>
         <span className="tracker-banner-icon">{cfg.icon}</span>
         <div>
           <div className="tracker-banner-status" style={{ color: cfg.color }}>{cfg.label}</div>

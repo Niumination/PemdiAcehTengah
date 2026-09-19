@@ -30,7 +30,7 @@ export default function SlaBadge({ sla, compact = false, showLabel = true, size 
         <div className="slabadge-bar">
           <div
             className="slabadge-fill"
-            style={{ width: `${pct}%`, background: color }}
+            style={{ width: '100%', transform: `scaleX(${pct / 100})`, background: color }}
           />
         </div>
       </div>
@@ -82,7 +82,9 @@ export default function SlaBadge({ sla, compact = false, showLabel = true, size 
         .slabadge-fill {
           height: 100%;
           border-radius: 2px;
-          transition: width 0.5s ease;
+          transition: transform 0.5s ease;   /* P6: animasi layout → compositor */
+          transform-origin: left;
+          width: 100%;
         }
       `}</style>
     </div>

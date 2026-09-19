@@ -1651,6 +1651,8 @@ function formatKriteria(text) {
             </table>
           </div>
 
+          {/* P5 (audit UI/UX 19 Sep 2026): blok ini selalu kosong — 26 aset /docs/bukti/*
+              tidak pernah ada. Disembunyikan; hapus bloknya bila aset disediakan. */}
           {/* Screenshot bukti */}
           <div>
             <p style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text)', marginBottom: '0.75rem' }}>
@@ -1759,20 +1761,15 @@ function formatKriteria(text) {
             </table>
           </div>
 
+          {/* P5 (audit UI/UX 19 Sep 2026): blok ini selalu kosong — 26 aset /docs/bukti/*
+              tidak pernah ada. Disembunyikan; hapus bloknya bila aset disediakan. */}
           {/* Screenshot bukti */}
-          <div>
+          <div style={{ display: 'none' }} aria-hidden="true">
             <p style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text)', marginBottom: '0.75rem' }}>
               📸 Bukti Visual dari Dokumen Pendukung:
             </p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1rem' }}>
               {[
-                { src: '/docs/bukti/renstra-tujuan-sasaran.png', title: 'RENSTRA — Tujuan & Sasaran (Bab III)', desc: 'I1/I2/I4: Indeks SPBE target 2,6→2,9 sebagai sasaran strategis transformasi digital' },
-                { src: '/docs/bukti/renstra-program-aplikasi.png', title: 'RENSTRA — Program Aplikasi Informatika', desc: 'I13: Program pengelolaan aplikasi informatika (Indeks SPBE 2,88→2,96)' },
-                { src: '/docs/bukti/renja-program_spbe.png', title: 'Renja 2026 — Program Tata Kelola SPBE', desc: 'I1: Kegiatan koordinasi kebijakan tata kelola SPBE — 7 dokumen, Rp 150 jt' },
-                { src: '/docs/bukti/dpa-ringkasan_program.png', title: 'DPA 2026 — Ringkasan Program', desc: 'I1/I17: Anggaran portal terpadu Rp 90 jt, tata kelola SPBE Rp 154,6 jt' },
-                { src: '/docs/bukti/dpa-subkegiatan_0037.png', title: 'DPA — Sub Kegiatan Tata Kelola SPBE', desc: 'I1/I15: Keluaran 7 dokumen kebijakan SPBE (arsitektur, peta rencana, proses bisnis)' },
-                { src: '/docs/bukti/rka-rincian_belanja.png', title: 'RKA — Rincian Belanja SPBE', desc: 'I1: Rincian belanja operasional Rp 154,6 jt (belanja barang, jasa, perjalanan)' },
-                { src: '/docs/bukti/realisasi-rkpd.png', title: 'Capaian Realisasi RKPD 2025', desc: 'I1/I7/I20: Indeks SPBE realisasi 2,59; IPS 2,97; kepuasan 60% — kategori Sangat Tinggi' },
               ].map((img, i) => (
                 <div key={i} style={{
                   border: '1px solid var(--border)', borderRadius: '10px', overflow: 'hidden',
@@ -1795,7 +1792,8 @@ function formatKriteria(text) {
           </div>
 
           {/* ─── Screenshot Bukti Dukung Eksternal (1 sumber: lokal) ─── */}
-          <div style={{ marginTop: '2.5rem' }}>
+          {/* P5: idem blok di atas — daftar screenshot eksternal kosong. */}
+          <div style={{ marginTop: '2.5rem', display: 'none' }} aria-hidden="true">
             <p style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text)', marginBottom: '0.4rem' }}>
               📸 Bukti Visual Dokumen Eksternal (JDIH & OpenData):
             </p>
@@ -1804,25 +1802,6 @@ function formatKriteria(text) {
             </p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1rem' }}>
               {[
-                { src: '/docs/bukti/perbup-48-arsitektur-spbe.png', title: 'Perbup 48/2025 — Arsitektur SPBE', desc: 'I1/I2/I4/I9/I10/I11/I12/I13/I14/I15/I16/I17/I18: Arsitektur SPBE sebagai referensi tata kelola Pemdi' },
-                { src: '/docs/bukti/perbup-6-sistem-pemdi.png', title: 'Perbup 6/2025 — Sistem Pemerintahan Digital', desc: 'I8/I10: Sistem Pemerintahan Berbasis Elektronik (184 hal)' },
-                { src: '/docs/bukti/perbup-60-satu-data.png', title: 'Perbup 60/2022 — Satu Data', desc: 'I5/I7/I18: Penyelenggaraan Satu Data Indonesia' },
-                { src: '/docs/bukti/perbup-126-penyelenggaraan.png', title: 'Perbup 126/2019 — Penyelenggaraan', desc: 'I2/I19: Penyelenggaraan e-Government & layanan' },
-                { src: '/docs/bukti/perbup-73-pelayanan.png', title: 'Perbup 73/2020 — Pelayanan', desc: 'I2/I8/I17: Pelayanan publik & manajemen layanan digital' },
-                { src: '/docs/bukti/perbup-9-sotk.png', title: 'Perbup 9/2025 — SOTK', desc: 'I3/I13: Susunan Organisasi & Tata Kerja' },
-                { src: '/docs/bukti/perbup-70-pedoman.png', title: 'Perbup 70/2019 — Pedoman Sistem', desc: 'I4: Pedoman Sistem Pemerintahan' },
-                { src: '/docs/bukti/perbup-8-rencana.png', title: 'Perbup 8/2022 — Rencana', desc: 'I1: Rencana pembangunan & transformasi digital' },
-                { src: '/docs/bukti/perbup-137-penyelenggaraan.png', title: 'Perbup 137/2019 — Pedoman PDP', desc: 'I8: Pedoman penyelenggaraan pelindungan data pribadi' },
-                { src: '/docs/bukti/perbup-30-penyelenggaraan.png', title: 'Perbup 30/2022 — Penyelenggaraan', desc: 'I17: Penyelenggaraan portal & layanan digital' },
-                { src: '/docs/bukti/perbup-21-pedoman.png', title: 'Perbup 21/2021 — Pedoman', desc: 'I19: Pedoman fasilitas dukungan pengguna' },
-                { src: '/docs/bukti/literasi-digital-2023.png', title: 'Publikasi Literasi Digital 2023', desc: 'I3: Hasil literasi digital sektor pemerintahan' },
-                { src: '/docs/bukti/sop-epss.png', title: 'SOP EPSS (Diskominfo)', desc: 'I5/I7: SOP Pengumpulan & analisis data statistik' },
-                { src: '/docs/bukti/laporan-reviu-kinerja.png', title: 'Laporan Reviu Kinerja 2025', desc: 'I1: Laporan hasil reviu laporan kinerja Aceh Tengah' },
-                { src: '/docs/bukti/laporan-pengawasan-kinerja.png', title: 'Laporan Pengawasan Kinerja 2025', desc: 'I9: Laporan hasil pengawasan kinerja pemerintah daerah' },
-                { src: '/docs/bukti/hasil-survei-kepuasan.png', title: 'Hasil Survei Kepuasan Masyarakat', desc: 'I19/I20: Hasil SKM Kab. Aceh Tengah (Januari-Mei 2026)' },
-                { src: '/docs/bukti/data-peta-rdtr.png', title: 'Data & Peta RDTR', desc: 'I6: Data dan peta rencana detail tata ruang' },
-                { src: '/docs/bukti/pedoman-pengaduan-rsud.png', title: 'Pedoman Pengaduan RSUD', desc: 'I2: Pedoman penanganan pengaduan/keluhan RSUD Datu Beru' },
-                { src: '/docs/bukti/skm-kebayakan-2025.png', title: 'SKM Kec. Kebayakan 2025', desc: 'I20: Laporan survei kepuasan masyarakat Kebayakan' },
               ].map((img, i) => (
                 <div key={i} style={{
                   border: '1px solid var(--border)', borderRadius: '10px', overflow: 'hidden',

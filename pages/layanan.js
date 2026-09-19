@@ -143,11 +143,11 @@ export default function LayananPage() {
               <div style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>Total Layanan</div>
             </div>
             <div className="card" style={{ padding: '1rem', textAlign: 'center', '--i': 1 }}>
-              <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#28a197' }}>{formatAngka(ringkasan.layanan_online)}</div>
+              <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--teal)' }}>{formatAngka(ringkasan.layanan_online)}</div>
               <div style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>Bisa Online</div>
             </div>
             <div className="card" style={{ padding: '1rem', textAlign: 'center', '--i': 2 }}>
-              <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#c2410c' }}>{formatAngka(ringkasan.layanan_offline)}</div>
+              <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--warn)' }}>{formatAngka(ringkasan.layanan_offline)}</div>
               <div style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>Datang Langsung</div>
             </div>
             <div className="card" style={{ padding: '1rem', textAlign: 'center', '--i': 3 }}>

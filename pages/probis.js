@@ -258,7 +258,7 @@ export default function PetaProsesBisnis({ data }) {
         {/* ============ REGULATORY FRAMEWORK ============ */}
         <section className="ppb-section">
           <div className="ppb-section-header">
-            <div className="ppb-level-badge" style={{ background: '#37474f', borderColor: '#37474f' }}>Reg</div>
+            <div className="ppb-level-badge" style={{ background: 'var(--primary-deep)', borderColor: 'var(--primary-deep)' }}>Reg</div>
             <div>
               <h2>Kerangka Regulasi PPB</h2>
               <p className="ppb-section-desc">Dasar hukum penyusunan Peta Proses Bisnis</p>
