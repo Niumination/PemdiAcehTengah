@@ -173,6 +173,7 @@ Gap sebelumnya (Sprint Redesign Award Level + Trust Infrastructure) sudah diimpl
 | **CI — 18 Sep 2026** | `.github/workflows/ci.yml`: `npm ci` → lint → **`npm test`** → build (Node 20). Menjadi gerbang mutu untuk setiap push/PR |
 | **Infrastruktur data — 18–19 Sep 2026** | `db/schema.sql`, `db/rate-limit-schema.sql`, `db/rate-limit-cleanup.sql` (pg_cron `bersihkan-rate-limits`, 10:17 WIB); RLS aktif di 4 tabel; kredensial admin dirotasi (`ADMIN_PASSWORD` baru, `ADMIN_TOKEN` dihapus) |
 | **DOX pass — 19 Sep 2026** | Seluruh `ADMIN_TOKEN` → `ADMIN_PASSWORD`; angka dokumen diselaraskan dengan kenyataan repo; klaim drift lama dibersihkan |
+| **Audit UI/UX live — 19 Sep 2026** | Audit produksi 11 rute × 3 viewport (1440/768/390) via camofox: (1) tautan footer `PermenPANRB 8/2026` balik 404 → PDF disalin ke `public/docs/permenpanrb-8-2026.pdf` (sha256 identik) + href diperbarui; (2) tap target mobile di bawah standar (`.theme-tg` 23px, `.bukti-act` 15px, nav 14px, chip 28–30px) → blok `@media (max-width: 768px)` di `globals.css` (min 44px) + `aria-label` pada tombol bukti di `/pemdi`. Terverifikasi: tanpa overflow horizontal level halaman, tabel terbungkus `.tbl-wrap` (scrollable), tidak ada gambar rusak, tidak ada tombol tanpa nama aksesibel |
 
 > **Catatan:** dokumen ini pernah memuat klaim yang melenceng (65 halaman, 30 komponen, HEAD `6849aaa` di branch Juni 2026). Semua sudah dibersihkan 19 Sep 2026 — bila menemukan pola serupa, itu bug dokumentasi: koreksi ke kenyataan repo, jangan diikuti.
 

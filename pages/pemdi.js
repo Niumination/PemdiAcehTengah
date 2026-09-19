@@ -628,11 +628,14 @@ function defaultCatatan(ind) {
                                     {dkNos.length > 0 && <span style={{ color: 'var(--primary)', fontWeight: 700 }}> #{dkNos.join(', #')}</span>}
                                     {b.url_preview && (b._ext === 'url' ? (
                                       <a href={b.url_preview} target="_blank" rel="noopener noreferrer"
+                                        className="bukti-act" aria-label={`Buka tautan bukti: ${b.nama}`}
                                         style={{ color: 'var(--primary)', textDecoration: 'underline', fontSize: '0.68rem', marginLeft: '4px' }}>
                                         🌐 buka
                                       </a>
                                     ) : (
                                       <button
+                                        className="bukti-act"
+                                        aria-label={`Preview bukti: ${b.nama}`}
                                         onClick={() => setPreview({ id: b.id, nama: b.nama, detail: b.detail || '', level, status: b.status, url: b.url_preview, dkNos, indId: ind.id, indNama: ind.nama })}
                                         style={{ border: 'none', background: 'transparent', color: 'var(--primary)', textDecoration: 'underline', cursor: 'pointer', fontSize: '0.68rem', padding: 0, marginLeft: '4px' }}
                                       >
@@ -642,6 +645,8 @@ function defaultCatatan(ind) {
                                     {(b.url_lampiran || []).map((l, li) => (
                                       <button
                                         key={li}
+                                        className="bukti-act"
+                                        aria-label={`Preview lampiran ${li + 1} dari ${b.nama}`}
                                         onClick={() => setPreview({ id: b.id, nama: `${b.nama} — lampiran ${li + 1}`, detail: b.detail || '', level, status: b.status, url: l, dkNos, indId: ind.id, indNama: ind.nama })}
                                         style={{ border: 'none', background: 'transparent', color: 'var(--muted)', textDecoration: 'underline', cursor: 'pointer', fontSize: '0.68rem', padding: 0, marginLeft: '4px' }}
                                         title={`Lampiran ${li + 1}`}

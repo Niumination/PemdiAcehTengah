@@ -1661,3 +1661,49 @@ a { transition: color 0.18s ease; }
   padding: 0.75rem 1rem;
   margin: 0 0 1.25rem;
 }
+
+/* ════════════ TAP TARGET SENTUH ≥44px — audit UI/UX 19 Sep 2026 ════════════ */
+/* Diukur pada produksi (viewport 390px) sebelum perbaikan:
+   .theme-tg 40x23 · nav header 44x14 · .sf-tag 28 · .hbtn 23 · .link-more 22
+   · tombol kategori 30 · .bukti-act 58x15 · select 37 · footer li 15.
+   Standar minimum: 44px (Apple HIG) / 48dp (Material). Hanya di layar sempit —
+   tata letak desktop tidak berubah. */
+@media (max-width: 768px) {
+  .theme-tg,
+  .mobile-menu-btn,
+  .modal-close {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  header a,
+  header button,
+  nav a,
+  .gov-nav a,
+  .gov-header a {
+    min-height: 44px;
+  }
+  .gov-nav a,
+  .gov-header a,
+  .footer-col a,
+  .gov-footer a,
+  .footer-gov a {
+    display: inline-flex;
+    align-items: center;
+  }
+  .bukti-act {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0 6px;
+  }
+  button,
+  .sf-tag,
+  .hbtn,
+  .link-more,
+  select,
+  summary {
+    min-height: 44px;
+  }
+}

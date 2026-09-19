@@ -57,7 +57,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="/docs/permenpanrb%208%202026.pdf" target="_blank" rel="noopener noreferrer">
+                <a href="/docs/permenpanrb-8-2026.pdf" target="_blank" rel="noopener noreferrer">
                   📄 PermenPANRB No. 8/2026 (Pemdi)
                 </a>
               </li>
