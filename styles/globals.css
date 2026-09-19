@@ -1696,6 +1696,8 @@ a { transition: color 0.18s ease; }
   }
   /* Kelas dengan tinggi eksplisit: menang karena berada di akhir berkas */
   .btn,
+  .btn-sm,
+  .btn.btn-sm,
   .hbtn,
   .link-more,
   .sf-tag,
