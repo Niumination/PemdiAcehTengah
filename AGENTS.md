@@ -30,7 +30,7 @@ Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah. Transformasi menuju Peme
 | **Komponen** | 20 komponen React aktif — lihat `components/AGENTS.md` (22 dead code dihapus saat hardening 2026-09-17) |
 | **Halaman** | 20 route pages + 12 API routes — lihat `pages/AGENTS.md` |
 | **Lib** | `lib/pemdiNilai.js` (rumus PermenPANRB 8/2026), `lib/rate-limit-db.js`, `lib/search-index.js`, `lib/slugify.js`, `lib/format.js` — lihat `lib/AGENTS.md` |
-| **Status** | 🟢 **DOX Clean** — diverifikasi ulang 2026-09-17: 20/20 komponen aktif terimpor, dokumen sinkron kode |
+| **Status** | ⏸️ **Reposisi Opsi B** (20 Sep 2026) — lihat `REPOSISI-PEMDI.md`. Bukan "Portal Resmi Layanan Digital"; tiga produk: B1 Kokpit Pemdi (internal), B2 Dasbor Transparansi (publik), B3 komponen terintegrasi ke Alpukat Gayo. DOX Clean sebagai kode (diverifikasi 2026-09-17: 20/20 komponen aktif terimpor) |
 | **Remote** | `git@github.com:Niumination/PemdiAcehTengah.git` |
 | **Production** | https://pemdi-aceh-tengah.vercel.app |
 | **License** | MIT |
