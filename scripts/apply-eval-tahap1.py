@@ -25,9 +25,6 @@ PDF_DIR = os.path.join(ROOT, "public", "bukti-dukung", "final")
 TANGGAL = "2026-09-20"
 
 DITERIMA = sorted(f[:-4] for f in os.listdir(PDF_DIR) if re.fullmatch(r"I\d+-L\d-\d{2}\.pdf", f))
-REVISI = ["I1-L2-02", "I4-L1-02", "I4-L2-02", "I12-L1-02", "I13-L1-02"]
-
-# Catatan hasil asesor per kode (diterima) — label ringkas berkas yang dikirim
 LABEL = {
     "I1-L1-01": "Peta Rencana Pemdi 2025-2029 (rancangan awal memuat substansi RAN Pemdi)",
     "I1-L2-01": "Qanun RPJMD Kabupaten Aceh Tengah 2025-2029",
@@ -48,14 +45,33 @@ LABEL = {
     "I20-L1-01": "SKM Online Triwulan II 2026 — 52 unit layanan",
     "I20-L1-02": "Rekap transaksi/respons SKM Online Triwulan II 2026",
 }
-CATATAN_REVISI = {
-    "I1-L2-02": "Asesor: bukti pengisian Arsitektur Pemdi pada SIAP Digital belum memadai — lampirkan tangkapan layar SIAP Digital yang menunjukkan layanan Aceh Tengah terisi (domain proses bisnis, layanan, data, aplikasi, infrastruktur).",
-    "I4-L1-02": "Asesor: perlu dokumen perencanaan yang eksplisit memuat rencana kolaborasi antar PD dalam penerapan Pemdi (bukan hanya SK tim) — sertakan matriks kolaborasi lintas PD.",
-    "I4-L2-02": "Asesor: bukti kolaborasi antar Instansi Pemerintah (lintas kab/kota/provinsi/pusat) belum memadai — sertakan MoU/PKS/undangan-notulen kegiatan lintas instansi.",
-    "I12-L1-02": "Asesor: nilai/instrumen IKASANDI area Penanganan Insiden Siber belum dilampirkan — sertakan hasil self-assessment IKASANDI dari BSSN.",
-    "I13-L1-02": "Asesor: substansi Rencana Aksi Pemdi terkait pembangunan/pengembangan aplikasi belum terlihat dalam dokumen perencanaan — tandai halaman Renstra/Renja yang memuat program aplikasi.",
-}
 
+# Catatan asesor AKTUAL dari eval.spbe.go.id (disalin 20 Sep 2026). jenis:
+#   tidak_tepat      → berkas diunggah tapi substansi salah  (susun ulang dokumen yang benar)
+#   belum_diunggah   → butir dinilai, tidak ada berkas         (buat & unggah)
+#   otomatis_ditolak → ditolak karena level sebelumnya ditolak (selesaikan level bawah dulu)
+REVISI_DETAIL = {
+    "I1-L2-02":  ("tidak_tepat", "Bukti dukung yang disampaikan tidak tepat yaitu bukti pelaksanaan pembahasan evaluasi kinerja pemerintah digital, semestinya adalah kegiatan kolaboratif yang dilaksanakan di bawah koordinasi Tim Koordinasi Pemerintah Digital dalam penyusunan perencanaan pemerintah digital pemerintah daerah."),
+    "I4-L1-02":  ("tidak_tepat", "Dalam bukti dukung yang diberikan berupa RKA Diskominfo, belum terdapat item kegiatan terkait rencana kolaborasi antar unit kerja dalam penerapan pemerintah digital."),
+    "I4-L2-02":  ("otomatis_ditolak", "Otomatis ditolak karena tingkat kematangan sebelumnya ditolak."),
+    "I8-L1-01":  ("belum_diunggah", "Dokumen pendukung/evidence terkait belum tersedia dan belum diunggah."),
+    "I9-L1-01":  ("tidak_tepat", "Bukti dukung yang diberikan tidak tepat berupa SK Tim Asesor Internal Evaluasi Kinerja Pemdi, semestinya berupa SK Tim Auditor Internal Pemerintah Digital pemerintah daerah."),
+    "I10-L1-01": ("tidak_tepat", "Bukti dukung yang diberikan tidak sesuai yaitu Indeks KAMI tahun 2023, semestinya adalah hasil penilaian IKASANDI yang dilaksanakan maksimal 1 tahun terakhir."),
+    "I12-L1-02": ("belum_diunggah", "Dokumen pendukung/evidence terkait belum tersedia dan belum diunggah."),
+    "I12-L2-01": ("otomatis_ditolak", "Otomatis ditolak karena tingkat kematangan sebelumnya ditolak."),
+    "I13-L1-02": ("tidak_tepat", "Pada dokumen RKA/DPA yang diberikan belum ditemukan program/kegiatan terkait Pengembangan Aplikasi."),
+    "I13-L2-01": ("belum_diunggah", "Dokumen pendukung/evidence terkait belum tersedia dan belum diunggah."),
+    "I13-L2-02": ("belum_diunggah", "Dokumen pendukung/evidence terkait belum tersedia dan belum diunggah."),
+    "I13-L3-01": ("belum_diunggah", "Dokumen pendukung/evidence terkait belum tersedia dan belum diunggah."),
+    "I14-L1-01": ("belum_diunggah", "Dokumen pendukung/evidence terkait belum tersedia dan belum diunggah."),
+    "I14-L1-02": ("belum_diunggah", "Dokumen pendukung/evidence terkait belum tersedia dan belum diunggah."),
+    "I15-L1-01": ("tidak_tepat", "Bukti dukung yang disampaikan tidak tepat berupa penjelasan pasal terkait Arsitektur SPBE, semestinya penyusunan arsitektur proses bisnis yang sudah diimplementasikan pada SIAP Digital."),
+    "I16-L1-01": ("belum_diunggah", "Dokumen pendukung/evidence terkait belum tersedia dan belum diunggah."),
+    "I19-L1-02": ("tidak_tepat", "Bukti dukung yang diberikan tidak tepat berupa daftar layanan dan SLA-nya, semestinya adalah dasbor pemantauan SLA layanan digital pemerintah daerah."),
+    "I20-L1-03": ("belum_diunggah", "Dokumen pendukung/evidence terkait belum tersedia dan belum diunggah."),
+    "I20-L1-04": ("belum_diunggah", "Dokumen pendukung/evidence terkait belum tersedia dan belum diunggah."),
+}
+REVISI = list(REVISI_DETAIL)
 
 def kode_to_id(kode):
     m = re.fullmatch(r"I(\d+)-L(\d)-(\d{2})", kode)
@@ -109,7 +125,9 @@ def main():
         else:
             item.pop("url_preview", None)
             item.pop("_ext", None)
-            item["catatan"] = CATATAN_REVISI.get(kode, "Hasil asesor: revisi — berkas revisi belum disiapkan.")
+            jenis, cat = REVISI_DETAIL[kode]
+            item["catatan"] = cat
+            item["eval"]["jenis"] = jenis
         item.pop("_arsip", None)
 
     for k in DITERIMA:
@@ -134,6 +152,7 @@ def main():
         "revisi": len(REVISI),
         "kode_diterima": DITERIMA,
         "kode_revisi": REVISI,
+        "revisi_per_jenis": {j: sorted(k for k, (jj, _) in REVISI_DETAIL.items() if jj == j) for j in ("tidak_tepat", "belum_diunggah", "otomatis_ditolak")},
         "indikator_disentuh": sorted({kode_to_id(k)[1] for k in DITERIMA + REVISI}, key=lambda s: int(s[1:])),
         "konvensi_kode": "I{indikator}-L{level}-{nomor urut butir bukti di dalam level pada Modul Indikator}",
     }

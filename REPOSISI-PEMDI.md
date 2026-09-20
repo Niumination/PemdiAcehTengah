@@ -149,12 +149,12 @@ Sebelum adopsi resmi dalam bentuk apa pun:
 
 | Item | Nilai |
 |------|-------|
-| Bukti diunggah | 23 |
+| Butir dinilai asesor | 37 |
 | **Diterima** | 18 — I1 (L1-01, L2-01, L2-03) · I2 (L1-01, L1-02) · I3 (L1-01, L1-02) · I4 (L1-01, L1-03) · I11 (L1-01) · I12 (L1-01) · I13 (L1-01) · I17 (L1-01, L1-02, L2-01, L2-02) · I20 (L1-01, L1-02) |
-| **Revisi** | 5 — I1-L2-02 · I4-L1-02 · I4-L2-02 · I12-L1-02 · I13-L1-02 (berkas tidak disimpan di repo; ditandai 🔁 di web) |
+| **Revisi** | 19 — ❌ tidak tepat (7): I1-L2-02 · I4-L1-02 · I9-L1-01 · I10-L1-01 · I13-L1-02 · I15-L1-01 · I19-L1-02 · 📭 belum diunggah (10): I8-L1-01 · I12-L1-02 · I13-L2-01 · I13-L2-02 · I13-L3-01 · I14-L1-01 · I14-L1-02 · I16-L1-01 · I20-L1-03 · I20-L1-04 · ⛔ ditolak otomatis (2): I4-L2-02 · I12-L2-01 (catatan asesor asli di data; ditandai 🔁 di web) |
 | Indeks simulasi | 0,35 (hanya bukti diterima; bukan nilai resmi) |
 | Konvensi kode | `I{indikator}-L{level}-{NN}` — NN = nomor urut butir di dalam level pada Modul Indikator |
-| Langkah berikut | Halaman `/requirement` (Draf Bukti Dukung Prioritas): P0 unggah ulang 5 revisi · P1 38 butir gap level berikut (I20 L1, I2 L2, I4 L1, I19 L1, I10 L1, I12 L1 … urut daya ungkit) |
+| Langkah berikut | Halaman `/requirement` (Draf Bukti Dukung Prioritas): P0 tindak lanjut 19 revisi (prioritaskan 7 'tidak tepat' di L1: I9, I10, I15, I19, I4, I13) · P1 38 butir gap level berikut (I20 L1, I2 L2, I4 L1, I19 L1, I10 L1, I12 L1 … urut daya ungkit) |
 
 ## 7. Catatan Implementasi
 

@@ -6,7 +6,7 @@
  "baseline_spbe": 2.59,
  "baseline_predikat": "Cukup",
  "total_item_bukti": 232,
- "total_item_manual": 190,
+ "total_item_manual": 183,
  "total_item_eksternal": 0,
  "dasar_hukum": [
   {
@@ -77,7 +77,7 @@
    }
   ]
  },
- "catatan": "STATUS TAHAP 1 (sinkron 2026-09-20): 18 bukti DITERIMA asesor, 5 REVISI, 0 proses, 19 draf lokal belum diunggah, 190 belum ada (total 232 item). Nilai indikator = level kontinu yang seluruh butir bukti utamanya DITERIMA. Indikator eksternal I5/I6/I7/I18 memakai nilai minimum 1 selama skor eksternal belum tersedia.",
+ "catatan": "STATUS TAHAP 1 (sinkron 2026-09-20): 18 bukti DITERIMA asesor, 19 REVISI, 0 proses, 12 draf lokal belum diunggah, 183 belum ada (total 232 item). Nilai indikator = level kontinu yang seluruh butir bukti utamanya DITERIMA. Indikator eksternal I5/I6/I7/I18 memakai nilai minimum 1 selama skor eksternal belum tersedia.",
  "aspek": [
   {
    "id": 1,
@@ -169,13 +169,14 @@
         "seluruh PD"
        ],
        "status": "revisi",
-       "catatan": "Asesor: bukti pengisian Arsitektur Pemdi pada SIAP Digital belum memadai — lampirkan tangkapan layar SIAP Digital yang menunjukkan layanan Aceh Tengah terisi (domain proses bisnis, layanan, data, aplikasi, infrastruktur).",
+       "catatan": "Bukti dukung yang disampaikan tidak tepat yaitu bukti pelaksanaan pembahasan evaluasi kinerja pemerintah digital, semestinya adalah kegiatan kolaboratif yang dilaksanakan di bawah koordinasi Tim Koordinasi Pemerintah Digital dalam penyusunan perencanaan pemerintah digital pemerintah daerah.",
        "eval": {
         "tahap": 1,
         "kode": "I1-L2-02",
         "hasil": "revisi",
         "portal": "eval.spbe.go.id",
-        "tanggal": "2026-09-20"
+        "tanggal": "2026-09-20",
+        "jenis": "tidak_tepat"
        }
       },
       {
@@ -880,13 +881,14 @@
         "Diskominfo"
        ],
        "status": "revisi",
-       "catatan": "Asesor: perlu dokumen perencanaan yang eksplisit memuat rencana kolaborasi antar PD dalam penerapan Pemdi (bukan hanya SK tim) — sertakan matriks kolaborasi lintas PD.",
+       "catatan": "Dalam bukti dukung yang diberikan berupa RKA Diskominfo, belum terdapat item kegiatan terkait rencana kolaborasi antar unit kerja dalam penerapan pemerintah digital.",
        "eval": {
         "tahap": 1,
         "kode": "I4-L1-02",
         "hasil": "revisi",
         "portal": "eval.spbe.go.id",
-        "tanggal": "2026-09-20"
+        "tanggal": "2026-09-20",
+        "jenis": "tidak_tepat"
        }
       },
       {
@@ -935,13 +937,14 @@
         "Diskominfo"
        ],
        "status": "revisi",
-       "catatan": "Asesor: bukti kolaborasi antar Instansi Pemerintah (lintas kab/kota/provinsi/pusat) belum memadai — sertakan MoU/PKS/undangan-notulen kegiatan lintas instansi.",
+       "catatan": "Otomatis ditolak karena tingkat kematangan sebelumnya ditolak.",
        "eval": {
         "tahap": 1,
         "kode": "I4-L2-02",
         "hasil": "revisi",
         "portal": "eval.spbe.go.id",
-        "tanggal": "2026-09-20"
+        "tanggal": "2026-09-20",
+        "jenis": "otomatis_ditolak"
        }
       },
       {
@@ -1348,8 +1351,16 @@
         "Inspektorat",
         "seluruh PD"
        ],
-       "status": "belum",
-       "catatan": "Dikosongkan 8 Ags 2026: Perbup 6/2025 (klasifikasi keamanan arsip) + Perbup 73/2020 (adminduk) + Perbup 137/2019 (PPID) adalah regulasi umum, bukan dokumen PDP spesifik yang diminta modul (uraian kondisi existing PDP / privacy notice + screenshot kebijakan). Rawan ditolak. Butuh dokumen PDP sesuai UU 27/2022 dari OPD."
+       "status": "revisi",
+       "catatan": "Dokumen pendukung/evidence terkait belum tersedia dan belum diunggah.",
+       "eval": {
+        "tahap": 1,
+        "kode": "I8-L1-01",
+        "hasil": "revisi",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20",
+        "jenis": "belum_diunggah"
+       }
       },
       {
        "id": "GT.I8_L1_2",
@@ -1839,9 +1850,16 @@
        "opd": [
         "Diskominfo (Fungsi Persandian)"
        ],
-       "status": "draf",
-       "catatan": "SK Bupati No. 555/432/DISKOMINFO/2026 tentang Penunjukan/Penetapan Tim Asesor Internal Evaluasi Kinerja Pemerintah Digital (Pemdi) - menimbang Pasal 5 PermenPANRB 8/2026. Tim lengkap per POKJA aspek.",
-       "_arsip": "/bukti-dukung/KeamananSiber_I9_01_SK-Tim-Asesor-Internal-Pemdi_2026.pdf"
+       "status": "revisi",
+       "catatan": "Bukti dukung yang diberikan tidak tepat berupa SK Tim Asesor Internal Evaluasi Kinerja Pemdi, semestinya berupa SK Tim Auditor Internal Pemerintah Digital pemerintah daerah.",
+       "eval": {
+        "tahap": 1,
+        "kode": "I9-L1-01",
+        "hasil": "revisi",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20",
+        "jenis": "tidak_tepat"
+       }
       },
       {
        "id": "GT.I9_L1_2",
@@ -1929,8 +1947,16 @@
         "BSSN",
         "Inspektorat"
        ],
-       "status": "belum",
-       "catatan": ""
+       "status": "revisi",
+       "catatan": "Bukti dukung yang diberikan tidak sesuai yaitu Indeks KAMI tahun 2023, semestinya adalah hasil penilaian IKASANDI yang dilaksanakan maksimal 1 tahun terakhir.",
+       "eval": {
+        "tahap": 1,
+        "kode": "I10-L1-01",
+        "hasil": "revisi",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20",
+        "jenis": "tidak_tepat"
+       }
       },
       {
        "id": "GT.I10_L2_1",
@@ -2141,13 +2167,14 @@
         "Inspektorat"
        ],
        "status": "revisi",
-       "catatan": "Asesor: nilai/instrumen IKASANDI area Penanganan Insiden Siber belum dilampirkan — sertakan hasil self-assessment IKASANDI dari BSSN.",
+       "catatan": "Dokumen pendukung/evidence terkait belum tersedia dan belum diunggah.",
        "eval": {
         "tahap": 1,
         "kode": "I12-L1-02",
         "hasil": "revisi",
         "portal": "eval.spbe.go.id",
-        "tanggal": "2026-09-20"
+        "tanggal": "2026-09-20",
+        "jenis": "belum_diunggah"
        }
       },
       {
@@ -2159,12 +2186,19 @@
         "BSSN",
         "Inspektorat"
        ],
-       "status": "draf",
-       "catatan": "Keputusan Bupati No. 070/273/DISKOMINFO/2025 tentang Penunjukan/Penetapan Tim Tanggap Insiden Siber (AcehTengah-CSIRT) + lampiran Keputusan No. 070/696/DISKOMINFO/2024 (pembentukan TTIS CSIRT).",
+       "status": "revisi",
+       "catatan": "Otomatis ditolak karena tingkat kematangan sebelumnya ditolak.",
        "url_lampiran": [
         "/bukti-dukung/KeamananSiber_I12_02_SK-Tim-CSIRT_2024.pdf"
        ],
-       "_arsip": "/bukti-dukung/KeamananSiber_I12_01_SK-CSIRT-Aceh-Tengah_2026.pdf"
+       "eval": {
+        "tahap": 1,
+        "kode": "I12-L2-01",
+        "hasil": "revisi",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20",
+        "jenis": "otomatis_ditolak"
+       }
       },
       {
        "id": "GT.I12_L2_2",
@@ -2296,13 +2330,14 @@
         "Semua OPD"
        ],
        "status": "revisi",
-       "catatan": "Asesor: substansi Rencana Aksi Pemdi terkait pembangunan/pengembangan aplikasi belum terlihat dalam dokumen perencanaan — tandai halaman Renstra/Renja yang memuat program aplikasi.",
+       "catatan": "Pada dokumen RKA/DPA yang diberikan belum ditemukan program/kegiatan terkait Pengembangan Aplikasi.",
        "eval": {
         "tahap": 1,
         "kode": "I13-L1-02",
         "hasil": "revisi",
         "portal": "eval.spbe.go.id",
-        "tanggal": "2026-09-20"
+        "tanggal": "2026-09-20",
+        "jenis": "tidak_tepat"
        }
       },
       {
@@ -2325,12 +2360,19 @@
        "opd": [
         "Semua OPD"
        ],
-       "status": "draf",
-       "catatan": "KAK + Laporan + BAST aplikasi Gemasih (pengembangan aplikasi terdokumentasi).",
+       "status": "revisi",
+       "catatan": "Dokumen pendukung/evidence terkait belum tersedia dan belum diunggah.",
        "url_lampiran": [
         "/bukti-dukung/Teknologi_I13_22_Screenshot-Aplikasi-Gemasih_2026.pdf"
        ],
-       "_arsip": "/bukti-dukung/final/I13_L2_Final.pdf"
+       "eval": {
+        "tahap": 1,
+        "kode": "I13-L2-01",
+        "hasil": "revisi",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20",
+        "jenis": "belum_diunggah"
+       }
       },
       {
        "id": "GT.I13_L2_2",
@@ -2340,12 +2382,19 @@
        "opd": [
         "Semua OPD"
        ],
-       "status": "draf",
-       "catatan": "Diganti dari Renstra Diskominfo (duplikat L1) → Penjelasan Substansi RAN Pemdi pada RENSTRA BAPPEDA 2025-2029 (bukti perencanaan instansi lebih luas) + Renstra Bappeda sebagai lampiran. Per audit 2026-08-11.",
+       "status": "revisi",
+       "catatan": "Dokumen pendukung/evidence terkait belum tersedia dan belum diunggah.",
        "url_lampiran": [
         "/bukti-dukung/final/I13_L2_Renstra-Bappeda_2025.pdf"
        ],
-       "_arsip": "/bukti-dukung/final/I13_L2_Penjelasan-Substansi-RAN-Bappeda_2026.pdf"
+       "eval": {
+        "tahap": 1,
+        "kode": "I13-L2-02",
+        "hasil": "revisi",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20",
+        "jenis": "belum_diunggah"
+       }
       },
       {
        "id": "GT.I13_L2_3",
@@ -2366,12 +2415,19 @@
        "opd": [
         "Semua OPD"
        ],
-       "status": "draf",
-       "catatan": "KAK + Laporan + Screenshot aplikasi Lepat (pengembangan dan tampilan aplikasi). + BAST serah terima aplikasi Lepat (No. 900/201/DISKOMINFO-BAST/2026, 20 Mei 2026)",
+       "status": "revisi",
+       "catatan": "Dokumen pendukung/evidence terkait belum tersedia dan belum diunggah.",
        "url_lampiran": [
         "/bukti-dukung/Teknologi_I13_20_BAST-Aplikasi-Lepat_2026.pdf"
        ],
-       "_arsip": "/bukti-dukung/final/I13_L3_Final.pdf"
+       "eval": {
+        "tahap": 1,
+        "kode": "I13-L3-01",
+        "hasil": "revisi",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20",
+        "jenis": "belum_diunggah"
+       }
       },
       {
        "id": "GT.I13_L3_2",
@@ -2459,8 +2515,16 @@
         "Kemendigi",
         "BAPPEDA"
        ],
-       "status": "belum",
-       "catatan": ""
+       "status": "revisi",
+       "catatan": "Dokumen pendukung/evidence terkait belum tersedia dan belum diunggah.",
+       "eval": {
+        "tahap": 1,
+        "kode": "I14-L1-01",
+        "hasil": "revisi",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20",
+        "jenis": "belum_diunggah"
+       }
       },
       {
        "id": "GT.I14_L1_2",
@@ -2471,8 +2535,16 @@
         "Kemendigi",
         "BAPPEDA"
        ],
-       "status": "belum",
-       "catatan": ""
+       "status": "revisi",
+       "catatan": "Dokumen pendukung/evidence terkait belum tersedia dan belum diunggah.",
+       "eval": {
+        "tahap": 1,
+        "kode": "I14-L1-02",
+        "hasil": "revisi",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20",
+        "jenis": "belum_diunggah"
+       }
       },
       {
        "id": "GT.I14_L1_3",
@@ -2635,9 +2707,16 @@
         "Dinas Perpustakaan & Arsip",
         "Semua OPD"
        ],
-       "status": "draf",
-       "catatan": "Ekstrak Perbup 48/2025 (BAB I-II) — definisi Arsitektur SPBE mencakup integrasi proses bisnis. Catatan mandiri: referensi keterpaduan proses bisnis.",
-       "_arsip": "/bukti-dukung/TataKelola_I1_30_Perbup48-BAB2-Definisi-Domain_2025.pdf"
+       "status": "revisi",
+       "catatan": "Bukti dukung yang disampaikan tidak tepat berupa penjelasan pasal terkait Arsitektur SPBE, semestinya penyusunan arsitektur proses bisnis yang sudah diimplementasikan pada SIAP Digital.",
+       "eval": {
+        "tahap": 1,
+        "kode": "I15-L1-01",
+        "hasil": "revisi",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20",
+        "jenis": "tidak_tepat"
+       }
       },
       {
        "id": "GT.I15_L1_2",
@@ -2824,8 +2903,16 @@
         "Diskominfo",
         "Semua OPD (Pemilik Aplikasi)"
        ],
-       "status": "belum",
-       "catatan": ""
+       "status": "revisi",
+       "catatan": "Dokumen pendukung/evidence terkait belum tersedia dan belum diunggah.",
+       "eval": {
+        "tahap": 1,
+        "kode": "I16-L1-01",
+        "hasil": "revisi",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20",
+        "jenis": "belum_diunggah"
+       }
       },
       {
        "id": "GT.I16_L1_2",
@@ -3377,9 +3464,16 @@
         "Diskominfo",
         "Semua OPD (Penyedia Layanan)"
        ],
-       "status": "draf",
-       "catatan": "Diturunkan ke proses: file yang ada hanya daftar SLA per layanan, belum SLA per-proses sesuai modul. Per audit 2026-08-11.",
-       "_arsip": "/bukti-dukung/final/I19_L1_SLA-Layanan-Digital_2026.pdf"
+       "status": "revisi",
+       "catatan": "Bukti dukung yang diberikan tidak tepat berupa daftar layanan dan SLA-nya, semestinya adalah dasbor pemantauan SLA layanan digital pemerintah daerah.",
+       "eval": {
+        "tahap": 1,
+        "kode": "I19-L1-02",
+        "hasil": "revisi",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20",
+        "jenis": "tidak_tepat"
+       }
       },
       {
        "id": "GT.I19_L2_1",
@@ -3551,8 +3645,16 @@
         "Bag. Organisasi",
         "seluruh PD penyelenggara layanan"
        ],
-       "status": "belum",
-       "catatan": ""
+       "status": "revisi",
+       "catatan": "Dokumen pendukung/evidence terkait belum tersedia dan belum diunggah.",
+       "eval": {
+        "tahap": 1,
+        "kode": "I20-L1-03",
+        "hasil": "revisi",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20",
+        "jenis": "belum_diunggah"
+       }
       },
       {
        "id": "GT.I20_L1_4",
@@ -3564,8 +3666,16 @@
         "Bag. Organisasi",
         "seluruh PD penyelenggara layanan"
        ],
-       "status": "belum",
-       "catatan": ""
+       "status": "revisi",
+       "catatan": "Dokumen pendukung/evidence terkait belum tersedia dan belum diunggah.",
+       "eval": {
+        "tahap": 1,
+        "kode": "I20-L1-04",
+        "hasil": "revisi",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20",
+        "jenis": "belum_diunggah"
+       }
       },
       {
        "id": "GT.I20_L2_1",
@@ -3829,7 +3939,7 @@
  "indeks_terkini": 0.35,
  "indeks_aktual": 0.35,
  "indeks_label": "Simulasi Penilaian Mandiri — bukan nilai resmi asesor",
- "indeks_sumber": "Rumus resmi PermenPANRB 8/2026 (Lampiran, hlm. -37- s.d. -39-) · hanya bukti DITERIMA di eval.spbe.go.id yang dihitung (18 diterima · 5 revisi · 19 draf lokal · 190 belum · 232 item)",
+ "indeks_sumber": "Rumus resmi PermenPANRB 8/2026 (Lampiran, hlm. -37- s.d. -39-) · hanya bukti DITERIMA di eval.spbe.go.id yang dihitung (18 diterima · 19 revisi · 12 draf lokal · 183 belum · 232 item)",
  "perhitungan": {
   "rumus_aspek": "Indeks Aspek_i = Σ(wIj × NIj) / wAi",
   "rumus_indeks": "Indeks Pemdi = Σ(wAspek_i × Indeks Aspek_i)",
@@ -3852,9 +3962,9 @@
   "portal": "https://eval.spbe.go.id",
   "tanggal_sinkron": "2026-09-20",
   "status": "Tahap 1 selesai dinilai — menunggu jadwal unggah revisi & tahap berikutnya",
-  "diunggah": 23,
+  "diunggah": 37,
   "diterima": 18,
-  "revisi": 5,
+  "revisi": 19,
   "kode_diterima": [
    "I1-L1-01",
    "I1-L2-01",
@@ -3879,18 +3989,66 @@
    "I1-L2-02",
    "I4-L1-02",
    "I4-L2-02",
+   "I8-L1-01",
+   "I9-L1-01",
+   "I10-L1-01",
    "I12-L1-02",
-   "I13-L1-02"
+   "I12-L2-01",
+   "I13-L1-02",
+   "I13-L2-01",
+   "I13-L2-02",
+   "I13-L3-01",
+   "I14-L1-01",
+   "I14-L1-02",
+   "I15-L1-01",
+   "I16-L1-01",
+   "I19-L1-02",
+   "I20-L1-03",
+   "I20-L1-04"
   ],
+  "revisi_per_jenis": {
+   "tidak_tepat": [
+    "I1-L2-02",
+    "I10-L1-01",
+    "I13-L1-02",
+    "I15-L1-01",
+    "I19-L1-02",
+    "I4-L1-02",
+    "I9-L1-01"
+   ],
+   "belum_diunggah": [
+    "I12-L1-02",
+    "I13-L2-01",
+    "I13-L2-02",
+    "I13-L3-01",
+    "I14-L1-01",
+    "I14-L1-02",
+    "I16-L1-01",
+    "I20-L1-03",
+    "I20-L1-04",
+    "I8-L1-01"
+   ],
+   "otomatis_ditolak": [
+    "I12-L2-01",
+    "I4-L2-02"
+   ]
+  },
   "indikator_disentuh": [
    "I1",
    "I2",
    "I3",
    "I4",
+   "I8",
+   "I9",
+   "I10",
    "I11",
    "I12",
    "I13",
+   "I14",
+   "I15",
+   "I16",
    "I17",
+   "I19",
    "I20"
   ],
   "konvensi_kode": "I{indikator}-L{level}-{nomor urut butir bukti di dalam level pada Modul Indikator}"

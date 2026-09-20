@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { MotifEmun, KerawangDivider } from '@/components/motif/KerawangMotifs';
 
 // ── Data ──
-import { LEVEL_LABEL, LEVEL_NAMA_RESMI, STATUS_META, statistikIndikator } from '@/lib/pemdiNilai';
+import { LEVEL_LABEL, LEVEL_NAMA_RESMI, STATUS_META, REVISI_JENIS, statistikIndikator } from '@/lib/pemdiNilai';
 
 export default function ModulIndikatorPage({ moduls, pemdiData, dokumenKunci, buktiMapping, kebutuhanData }) {
   const router = useRouter();
@@ -716,7 +716,7 @@ function formatKriteria(text) {
                                       )}
                                       {bd.nama}
                                       {bd.status === 'revisi' && bd.catatan && (
-                                        <div style={{ fontSize: '0.68rem', color: STATUS_META.revisi.color, marginTop: '0.2rem', fontWeight: 600 }}>🔁 {bd.catatan}</div>
+                                        <div style={{ fontSize: '0.68rem', color: STATUS_META.revisi.color, marginTop: '0.2rem', fontWeight: 600 }}>{REVISI_JENIS[bd.eval?.jenis]?.icon || '🔁'} {REVISI_JENIS[bd.eval?.jenis]?.label || 'Revisi'}: {bd.catatan}</div>
                                       )}
                                       {bd._peran === 'pendukung' && (
                                         <span style={{

@@ -24,10 +24,10 @@ Transformasi menuju **Pemerintah Digital (Pemdi)** — open source government te
 | Indikator | Nilai |
 |-----------|-------|
 | **Indeks Pemdi (simulasi mandiri)** | **0,35** — hanya 18 bukti **diterima asesor** Tahap 1 eval.spbe.go.id yang dihitung (rumus resmi PermenPANRB 8/2026) — *bukan nilai resmi* |
-| **Penilaian Tahap 1 (eval.spbe.go.id)** | 23 bukti diunggah → **18 diterima · 5 revisi** (I1-L2-02, I4-L1-02, I4-L2-02, I12-L1-02, I13-L1-02) — sinkron 20 Sep 2026 |
+| **Penilaian Tahap 1 (eval.spbe.go.id)** | 37 butir dinilai → **18 diterima · 19 revisi** (19 butir: 7 bukti tidak tepat · 10 belum diunggah · 2 ditolak otomatis — I1, I4, I8, I9, I10, I12, I13, I14, I15, I16, I19, I20) — sinkron 20 Sep 2026 |
 | **Target Pemdi 2026** | 2.50 (Baik) |
 | **Indeks SPBE 2025** | 2,59 (Cukup) — baseline konversi |
-| **Total butir bukti dukung** | 232 item (18 diterima · 5 revisi · 19 draf lokal · 190 belum) |
+| **Total butir bukti dukung** | 232 item (18 diterima · 19 revisi · 12 draf lokal · 183 belum) |
 | **7 Aspek** | Tata Kelola, SDM Digital, Data, Keamanan, Teknologi, Keterpaduan, Kepuasan |
 | **20 Indikator** | I1–I20 — dari Tata Kelola hingga Pengelolaan Kepuasan |
 | **Perangkat Daerah** | 38 Instansi + 14 Kecamatan |
@@ -51,7 +51,7 @@ Transformasi menuju **Pemerintah Digital (Pemdi)** — open source government te
 | Pusat Bantuan | `/bantuan` | Panduan penggunaan portal + FAQ |
 | Kebijakan Privasi | `/kebijakan-privasi` | Kebijakan perlindungan data pribadi (UU PDP) |
 | Dashboard Admin | `/admin` | Dashboard Admin — lihat data SKM & laporan warga (login required) |
-| Draf Bukti Dukung | `/requirement` | **Draf Bukti Dukung Prioritas** — 5 revisi asesor + 38 butir gap level berikut (diurutkan daya ungkit) dengan contoh modul & template; tab kedua: 83 kebutuhan data PPB |
+| Draf Bukti Dukung | `/requirement` | **Draf Bukti Dukung Prioritas** — 19 revisi asesor + 38 butir gap level berikut (diurutkan daya ungkit) dengan contoh modul & template; tab kedua: 83 kebutuhan data PPB |
 | Detail OPD | `/opd/[slug]` | Halaman detail tiap PD (52 halaman statis) |
 
 ### API Endpoints

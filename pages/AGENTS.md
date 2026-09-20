@@ -25,7 +25,7 @@ Halaman Next.js Pages Router — entry points untuk user. SSG untuk konten stati
 | `/bantuan` | `bantuan.js` | Pusat bantuan — FAQ + layanan | — |
 | `/lapor` | `lapor.js` | Lapor & pengaduan — form + tracking ID + SP4N banner | TrackerStatus, Sp4nBanner, LaporWidget |
 | `/dashboard-kepuasan` | `dashboard-kepuasan.js` | Dashboard publik hasil SKM + rating (I20) | DashboardSKM |
-| `/requirement` | `requirement.js` | **Draf Bukti Dukung Prioritas** — tab Pemdi (5 revisi asesor + 38 butir gap, dari `draf-bukti-prioritas.json`) · tab PPB (83 requirements, 12 kategori) · panduan L1 | KerawangMotifs |
+| `/requirement` | `requirement.js` | **Draf Bukti Dukung Prioritas** — tab Pemdi (19 revisi asesor + 38 butir gap, dari `draf-bukti-prioritas.json`) · tab PPB (83 requirements, 12 kategori) · panduan L1 | KerawangMotifs |
 | `/admin` | `admin.js` | Admin dashboard — login Bearer, laporan + SKM | — |
 | `/kebijakan-privasi` | `kebijakan-privasi.js` | Kebijakan Privasi & Perlindungan Data (UU PDP) | — |
 | `/404` | `404.js` | Halaman tidak ditemukan | — |
@@ -77,7 +77,7 @@ Supabase (service role, SERVER-ONLY) ──► api/lapor.js, api/lapor/status.js
 - Route naming: kebab-case
 - styled-jsx dihindari (unreliable di Next 14 + Strict Mode + conditional mount)
 - Error handling: setiap halaman harus graceful fallback
-- **Test**: perubahan pada lib/pemdiNilai.js atau data/pemdi.json wajib `npm test` hijau (16 pin rumus termasuk indeks 0,35 & 232 bukti (18/5/0/19/190), dari 20 tes suite)
+- **Test**: perubahan pada lib/pemdiNilai.js atau data/pemdi.json wajib `npm test` hijau (16 pin rumus termasuk indeks 0,35 & 232 bukti (18/19/0/12/183), dari 20 tes suite)
 - **Status bukti**: gunakan `STATUS_META`/`statistikIndikator` dari `lib/pemdiNilai.js` — jangan definisikan ulang di halaman. `/requirement` = **Draf Bukti Dukung Prioritas** (tab `pemdi`, data `draf-bukti-prioritas.json`) + tab `ppb` (83 kebutuhan PPB, data `requirement.json`)
 
 ## Verification

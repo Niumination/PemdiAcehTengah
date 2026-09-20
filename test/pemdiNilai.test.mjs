@@ -159,11 +159,11 @@ test('REGRESI: proyeksi mode target = 2,29 (Panduan Bab 4.2)', () => {
   assert.ok(Math.abs(hasil.indeks - 2.29) < 0.005, `terhitung ${hasil.indeks}`);
 });
 
-test('REGRESI: 232 item bukti — 18 diterima · 5 revisi · 0 proses · 19 draf · 190 belum', () => {
+test('REGRESI: 232 item bukti — 18 diterima · 19 revisi · 0 proses · 12 draf · 183 belum', () => {
   const stat = statistikBukti(pemdi.aspek);
   assert.deepEqual(
     { total: stat.total, diterima: stat.diterima, revisi: stat.revisi, proses: stat.proses, draf: stat.draf, belum: stat.belum },
-    { total: 232, diterima: 18, revisi: 5, proses: 0, draf: 19, belum: 190 },
+    { total: 232, diterima: 18, revisi: 19, proses: 0, draf: 12, belum: 183 },
   );
 });
 

@@ -50,7 +50,7 @@ for a in pemdi["aspek"]:
             if b["status"] == "revisi":
                 revisi.append({
                     "kode": b["eval"]["kode"], "id": b["id"], "indikator": ind["id"], "indikator_nama": ind["nama"],
-                    "aspek": a["singkat"], "level": b["level"], "butir": b["nama"], "catatan_asesor": b.get("catatan", ""),
+                    "aspek": a["singkat"], "level": b["level"], "butir": b["nama"], "catatan_asesor": b.get("catatan", ""), "jenis": b["eval"].get("jenis", "tidak_tepat"),
                     "pic": pic, "contoh_modul": contoh_modul(ind["id"], b["level"]),
                     "template": template_panduan(ind["id"], b["level"]),
                     "dampak": "Menghapus status revisi; prasyarat agar Level %d dapat dinilai penuh." % b["level"],
@@ -78,7 +78,8 @@ for a in pemdi["aspek"]:
         })
 
 gap.sort(key=lambda g: (-g["daya_ungkit"], g["butir_kurang"], int(g["indikator"][1:])))
-revisi.sort(key=lambda r: (int(r["indikator"][1:]), r["level"], r["kode"]))
+URUT = {"tidak_tepat": 0, "belum_diunggah": 1, "otomatis_ditolak": 2}
+revisi.sort(key=lambda r: (URUT[r["jenis"]], int(r["indikator"][1:]), r["level"], r["kode"]))
 
 out = {
     "judul": "Draf Bukti Dukung Prioritas — Tahap 2 Evaluasi Pemdi",
@@ -87,6 +88,7 @@ out = {
     "penilaian_tahap1": pemdi.get("penilaian_tahap1"),
     "ringkas": {
         "revisi": len(revisi),
+        "revisi_per_jenis": {j: sum(1 for r in revisi if r["jenis"] == j) for j in URUT},
         "indikator_gap": len(gap),
         "butir_gap": sum(g["butir_kurang"] for g in gap),
         "indeks_simulasi": pemdi.get("indeks_aktual"),

@@ -10,6 +10,7 @@ import {
   LEVEL_LABEL,
   LEVEL_NAMA_RESMI,
   STATUS_META,
+  REVISI_JENIS,
   indeksPemdi,
   nilaiIndikator,
   predikatPemdi,
@@ -635,7 +636,7 @@ function defaultCatatan(ind) {
                                     )}
                                     {b.nama}
                                     {b.status === 'revisi' && b.catatan && (
-                                      <div style={{ fontSize: '0.64rem', color: STATUS_META.revisi.color, marginTop: '2px' }}>🔁 {b.catatan}</div>
+                                      <div style={{ fontSize: '0.64rem', color: STATUS_META.revisi.color, marginTop: '2px' }}>{REVISI_JENIS[b.eval?.jenis]?.icon || '🔁'} <strong>{REVISI_JENIS[b.eval?.jenis]?.label || 'Revisi'}:</strong> {b.catatan}</div>
                                     )}
                                     {b._peran === 'pendukung' && (
                                       <span style={{ fontSize: '0.6rem', color: 'var(--muted)', border: '1px solid var(--border)', borderRadius: '3px', padding: '0 4px', marginLeft: '4px' }}>

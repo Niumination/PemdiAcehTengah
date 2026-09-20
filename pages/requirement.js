@@ -5,7 +5,7 @@ import panduanBukti from '@/data/panduan-bukti-l1.json'
 import requirementData from '@/data/requirement.json'
 import drafPrioritas from '@/data/draf-bukti-prioritas.json'
 import { MotifEmun, MotifRante } from '@/components/motif/KerawangMotifs'
-import { STATUS_META, LEVEL_LABEL } from '@/lib/pemdiNilai'
+import { STATUS_META, LEVEL_LABEL, REVISI_JENIS } from '@/lib/pemdiNilai'
 
 const LEVEL_WARNA = { 0: 'var(--muted)', 1: '#b91c1c', 2: '#ab5708', 3: '#1d4ed8', 4: '#047857', 5: '#6d28d9' }
 
@@ -102,8 +102,10 @@ export default function Requirement() {
             <div className="req-summary">
               <h2 className="section-title" style={{ borderTopColor: 'var(--bad)' }}>🔁 P0 — Revisi Asesor (unggah ulang paling cepat)</h2>
               <p className="lead-note">
-                {drafPrioritas.ringkas.revisi} butir dinyatakan <strong>REVISI</strong> pada Tahap 1. Berkas lama tidak disimpan di repo —
-                susun ulang sesuai catatan asesor, lalu unggah kembali dengan kode yang sama.
+                {drafPrioritas.ringkas.revisi} butir dinyatakan <strong>REVISI</strong> pada Tahap 1 — catatan asesor disalin apa adanya dari eval.spbe.go.id.
+                Tiga jenis dengan tindak lanjut berbeda:
+                {' '}{Object.entries(REVISI_JENIS).map(([k, v]) => <span key={k} className="jenis-chip">{v.icon} {v.label} ({drafPrioritas.ringkas.revisi_per_jenis?.[k] ?? 0})</span>)}.
+                Berkas lama tidak disimpan di repo — unggah ulang memakai kode yang sama.
                 Status revisi juga ditandai di <Link href="/pemdi">Kokpit Pemdi</Link> dan <Link href="/modul-indikator">Modul Indikator</Link>.
               </p>
               <div className="rev-grid">
@@ -115,7 +117,11 @@ export default function Requirement() {
                       <span className="rev-ind">{r.indikator} · {r.aspek}</span>
                     </div>
                     <div className="rev-butir">{r.butir}</div>
-                    <div className="rev-cat">🔁 <strong>Catatan asesor:</strong> {r.catatan_asesor}</div>
+                    <div className="rev-cat">
+                      <div className="jenis-chip" style={{ marginBottom: 4 }}>{REVISI_JENIS[r.jenis]?.icon} {REVISI_JENIS[r.jenis]?.label}</div>
+                      <div>🔁 <strong>Catatan asesor:</strong> {r.catatan_asesor}</div>
+                      <div style={{ marginTop: 4, color: 'var(--text)' }}>➡️ <strong>Tindak lanjut:</strong> {REVISI_JENIS[r.jenis]?.tindak}</div>
+                    </div>
                     {r.contoh_modul.length > 0 && (
                       <details className="rev-det">
                         <summary>📄 Contoh bukti menurut Modul Indikator (L{r.level})</summary>
@@ -726,6 +732,7 @@ export default function Requirement() {
         .rev-ind { font-size: 0.7rem; color: var(--muted); margin-left: auto; }
         .rev-butir { font-weight: 600; font-size: 0.86rem; line-height: 1.4; }
         .rev-cat { font-size: 0.78rem; line-height: 1.5; padding: 8px 10px; border-radius: 8px; background: var(--bad-bg, #fde8e8); color: var(--bad, #b91c1c); }
+        .jenis-chip { display: inline-block; font-size: 0.68rem; font-weight: 700; padding: 1px 8px; border-radius: 100px; background: var(--surface); border: 1px solid var(--line); color: var(--text); margin-right: 4px; }
         .rev-det summary { font-size: 0.76rem; font-weight: 700; color: var(--primary); cursor: pointer; }
         .rev-det ul { margin: 6px 0 0; padding-left: 18px; font-size: 0.76rem; color: var(--muted); line-height: 1.5; }
         .rev-tpl { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
