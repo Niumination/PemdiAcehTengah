@@ -3,14 +3,10 @@ import Link from 'next/link';
 import { formatDesimal } from '@/lib/format';
 import portalData from '@/data/opd.json';
 import { MotifUlen, MotifTapak, KerawangDivider } from '@/components/motif/KerawangMotifs';
-import useCountUp from '@/hooks/useCountUp';
 
 /* ── CountStat lokal ── */
 function CountStat({ value, decimals = 0, color, style }) {
-  const [ref, display] = useCountUp(value, { decimals });
-  return (
-    <span ref={ref} className="countup" style={{ color, ...style }}>{display}</span>
-  );
+  return <span className="countup" style={{ color, ...style }}>{formatDesimal(value ?? 0, decimals)}</span>;
 }
 
 /* ── Helpers ── */

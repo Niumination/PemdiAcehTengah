@@ -3,6 +3,13 @@
 Semua perubahan penting proyek ini didokumentasikan di file ini.
 Ringkasan publik tanpa detail internal; dokumen kerja lengkap disimpan pemilik repo di lokasi privat.
 
+## 2026-09-20 — Hapus Kosmetik Animasi (kelayakan produksi & performa)
+
+- **Dihapus**: blob aurora bergerak (2× `blur(70px)` animasi tak berujung), garis topografi SVG acak (`TopographicBackdrop`, ±40 path per render), awan Emun melayang, kilau emas judul (`gold-shimmer`), pita berjalan atas & pita motif (marquee), border conic berputar (`glass-card`), animasi masuk `fade-up` pada semua kartu/grid, scroll-reveal `IntersectionObserver` global, angka *count-up*, bar progres *reveal*, `backdrop-filter: blur` pada topbar lengket & hero, transform *lift* saat hover.
+- **Dipertahankan**: transisi warna/bayangan ≤0,3 detik, panel rating (0,25 detik), fokus ring aksesibel. Konten `[data-reveal]` kini selalu terlihat (tak lagi bergantung JS untuk muncul).
+- Pita atas kini statis dan tidak lagi berbunyi "Portal Resmi" (prasyarat K7 reposisi).
+- Bundle: `/` 118→117 kB, `/pemdi` 117→115 kB; CSS 39,1→34,9 kB; `hooks/useCountUp.js`, `hooks/useInView.js`, `components/TopographicBackdrop.js` dihapus.
+
 ## 2026-09-20 — Sinkron Hasil Penilaian Tahap 1 (eval.spbe.go.id) & Reposisi Konten
 
 - **Status bukti mengikuti hasil asesor.** Vokabuler baru `diterima · revisi · proses · draf · belum` menggantikan `lengkap`; hanya bukti yang **diterima** asesor dihitung dalam indeks. Tahap 1: 37 butir dinilai → 18 diterima, 19 revisi (7 bukti tidak tepat, 10 belum diunggah, 2 ditolak otomatis) — catatan asesor disalin apa adanya dari portal dan tampil di setiap butir.

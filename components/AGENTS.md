@@ -26,7 +26,6 @@ React component library — reusable UI building blocks, props-driven.
 | **SlaBadge** | `SlaBadge.js` | Badge SLA visual | `ServiceCard.js`, dll. |
 | **DashboardSKM** | `DashboardSKM.js` | Dashboard hasil SKM + rating — fetch `/api/skm/stats` | `index.js`, `dashboard-kepuasan.js` |
 | **DetailModal** | `DetailModal.js` | Modal detail aspek/indikator Pemdi | `pemdi.js`, `probis.js` |
-| **TopographicBackdrop** | `TopographicBackdrop.js` | SVG backdrop topografi dekoratif | `index.js`, `pemdi.js` |
 | **GlossaryTooltip** | `GlossaryTooltip.js` | Tooltip definisi istilah (data/glosarium.json) | `index.js`, `faq.js`, `glosarium.js` |
 | **TrackerStatus** | `TrackerStatus.js` | Stepper status laporan (baru→diproses→selesai) | `lapor.js` |
 | **motif/KerawangMotifs** | `motif/KerawangMotifs.js` | Motif Gayo (Emun, Ulen, Rante, Tapak, Puter, Pucuk Rebung, divider, marquee budaya) | lintas halaman |

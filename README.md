@@ -102,12 +102,12 @@ PemdiAcehTengah/
 │       └── admin/        # 🆕 Admin-only API
 │           ├── skm.js    # GET /api/admin/skm
 │           └── laporan.js# GET /api/admin/laporan
-├── components/           # React komponen (21 aktif)
+├── components/           # React komponen (20 aktif)
 │   ├── AppShell.js       # Shell global — sidebar, topbar, breadcrumb
 │   ├── Sidebar.js, Footer.js, ThemeToggle.js, ScrollTop.js
 │   ├── OPDTable.js, SpbeGauge.js, SlaBadge.js
 │   ├── ServiceFinder.js, ServiceCard.js, DashboardSKM.js
-│   ├── DetailModal.js, TopographicBackdrop.js, GlossaryTooltip.js
+│   ├── DetailModal.js, GlossaryTooltip.js
 │   ├── LaporWidget.js    # FAB Lapor/Saran — form + tracking ID
 │   ├── RatingWidget.js, SkmPrompt.js, Sp4nBanner.js, TrackerStatus.js
 │   └── motif/KerawangMotifs.js  # Motif budaya Gayo

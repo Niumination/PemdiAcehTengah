@@ -90,7 +90,6 @@ Angka sebelum perbaikan: halaman 8.746px, kartu 168px, judul 89px, deskripsi 72p
 | ⚠️ QuickActions *(dihapus)* | `.quick-actions`, `.quick-action-card`, `.qa-icon`, `.qa-label`, `.qa-desc` |
 | ServiceCard | `.service-card`, `.service-icon`, `.service-name`, `.service-desc`, `.sla-badge` |
 | ServiceFinder | `.service-finder`, `.sf-search`, `.sf-tags`, `.sf-tag`, `.sf-tag-active`, `.sf-results` |
-| TopographicBackdrop | `.topo-bg`, `.topo-overlay` |
 | ⚠️ LaporanStatus *(dihapus)* | `.lapor-status-root`, `.lapor-card`, `.lapor-timeline`, `.lapor-step`, `.step-dot`, `.step-dot-active`, `.step-dot-complete`, `.step-label` |
 | ⚠️ Toast *(dihapus)* | `.toast-root`, `.toast-inner`, `.toast-success`, `.toast-error` |
 | ⚠️ ProgressBarVisual *(dihapus)* | `.progress-root`, `.progress-bar`, `.progress-fill`, `.progress-label` |
@@ -133,3 +132,11 @@ Semua komponen baru menggunakan **inline styles + CSS variables** (styled-jsx di
 
 ## Child DOX Index
 Tidak ada child — leaf node. Single file.
+
+
+## Kebijakan motion (sejak 20 Sep 2026 — produksi)
+
+- **Tidak ada** animasi tak berujung (`infinite`), blob/blur besar, `backdrop-filter`, marquee, parallax, 3D transform, count-up, atau scroll-reveal. Semua telah dihapus karena tidak layak produksi & berat di perangkat kelas menengah.
+- Yang diizinkan: `transition` warna/bayangan/border ≤0,3 s, micro-interaction ≤3 px (hover tombol/bintang), animasi masuk satu kali ≤0,3 s untuk overlay (panel rating).
+- `[data-reveal]`/`[data-reveal-stagger]` di JSX kini tidak berefek (CSS memaksa `opacity:1`); atribut boleh dibiarkan atau dibersihkan bertahap.
+- Jangan tambahkan kembali `hooks/useCountUp`, `hooks/useInView`, `TopographicBackdrop` tanpa keputusan pemilik.

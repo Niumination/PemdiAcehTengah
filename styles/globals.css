@@ -330,24 +330,15 @@ html.anim-ready .reveal.d4 { transition-delay: 0.24s; }
   position: relative;
 }
 .gov-strip-marquee-track {
-  display: inline-flex;
-  align-items: center;
-  gap: 48px;
-  animation: marquee-scroll 28s linear infinite;
-  will-change: transform;
+  display: block;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .gov-strip-marquee-track span {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-}
-@keyframes marquee-scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-/* Pause on hover */
-.gov-strip:hover .gov-strip-marquee-track {
-  animation-play-state: paused;
 }
 
 
@@ -382,9 +373,7 @@ html.anim-ready .reveal.d4 { transition-delay: 0.24s; }
   align-items: center;
   gap: 12px;
   padding: 10px 24px;
-  background: color-mix(in srgb, var(--surface) 88%, transparent);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: var(--surface);
   border-bottom: 1px solid var(--line);
   min-height: 54px;
   box-shadow: 0 1px 0 color-mix(in srgb, var(--kg-kuning) 30%, transparent), 0 1px 3px rgba(0,0,0,0.04);
@@ -714,7 +703,6 @@ html.anim-ready .reveal.d4 { transition-delay: 0.24s; }
 .glow-card:hover {
   border-color: var(--primary);
   box-shadow: var(--sh-lg);
-  transform: translateY(-2px);
 }
 
 .hero {
@@ -745,9 +733,7 @@ html.anim-ready .reveal.d4 { transition-delay: 0.24s; }
   gap: 6px;
   padding: 5px 14px;
   border-radius: var(--r-full);
-  background: rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.18);
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: #ffffff;
   font-size: 0.78rem;
@@ -757,9 +743,7 @@ html.anim-ready .reveal.d4 { transition-delay: 0.24s; }
 
 /* Hero Search Console */
 .hero-search-box {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.18);
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: var(--r);
   padding: 8px 12px;
@@ -1042,8 +1026,6 @@ input:focus, select:focus, textarea:focus {
 .sp-overlay{
   position:fixed;inset:0;z-index:1001;
   background:rgba(0,0,0,.4);
-  backdrop-filter:blur(3px);
-  -webkit-backdrop-filter:blur(3px);
   visibility:hidden;opacity:0;
   transition:opacity 0.25s ease, visibility 0.25s ease;
 }
@@ -1239,7 +1221,6 @@ input:focus, select:focus, textarea:focus {
 }
 .scroll-top:hover {
   background: var(--primary-dark, #1F2A44);
-  transform: translateY(-2px);
 }
 .scroll-top:active {
   transform: scale(0.94);
@@ -1268,35 +1249,18 @@ button, a, [role="button"], select, summary, input[type="checkbox"], input[type=
 /* --- Focus ring aksesibel (keyboard) --- */
 :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 3px; }
 
-/* --- Motion: entrance (fade-up + stagger) --- */
-@keyframes fade-up { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
-
-.hero, .stat, .card, .qa-item,
-.grid-2 > *, .grid-3 > *, .grid-4 > *, .stats > * {
-  animation: fade-up 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-.hero { animation-duration: 0.7s; }
-.stats > :nth-child(2), .grid-2 > :nth-child(2), .grid-3 > :nth-child(2), .grid-4 > :nth-child(2) { animation-delay: 70ms; }
-.stats > :nth-child(3), .grid-2 > :nth-child(3), .grid-3 > :nth-child(3), .grid-4 > :nth-child(3) { animation-delay: 140ms; }
-.stats > :nth-child(4), .grid-2 > :nth-child(4), .grid-3 > :nth-child(4), .grid-4 > :nth-child(4) { animation-delay: 210ms; }
-.grid-2 > :nth-child(5), .grid-3 > :nth-child(5), .grid-4 > :nth-child(5) { animation-delay: 280ms; }
-.grid-2 > :nth-child(6), .grid-3 > :nth-child(6), .grid-4 > :nth-child(6) { animation-delay: 350ms; }
 
 /* --- Hover polish desktop --- */
 .card, .stat {
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
 }
 .card:hover, .stat:hover {
-  transform: translateY(-3px);
   border-color: color-mix(in srgb, var(--gold) 45%, var(--line));
   box-shadow: var(--sh);
 }
 .btn {
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
 }
-.btn:hover { transform: translateY(-1px); }
-.btn:active { transform: translateY(0) scale(0.98); }
 a { transition: color 0.18s ease; }
 .sidebar a, .sidebar button { transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease; }
 
@@ -1319,44 +1283,14 @@ a { transition: color 0.18s ease; }
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  /* Running text (info resmi) tetap berjalan — bukan dekorasi */
-  .gov-strip-marquee-track {
-    animation: marquee-scroll 28s linear infinite !important;
-  }
-  .kr-marquee-track {
-    animation: kr-marquee 30s linear infinite !important;
-  }
 }
 
 /* ════════════ ANIMASI SISTEM — scroll reveal, stagger, micro-interaction ════════════ */
 /* Dipicu oleh [data-reveal] via IntersectionObserver di AppShell (60fps: transform/opacity only) */
-[data-reveal] {
-  opacity: 0;
-  transform: translateY(22px);
-  transition:
-    opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-  transition-delay: var(--reveal-delay, 0ms);
-  will-change: opacity, transform;
-}
-[data-reveal].is-visible {
-  opacity: 1;
-  transform: none;
-}
+[data-reveal], [data-reveal].is-visible { opacity: 1; transform: none; }
 
 /* Stagger anak kartu dalam grid — delay bertahap via --i (set inline per item) */
-[data-reveal-stagger] > * {
-  opacity: 0;
-  transform: translateY(18px);
-  transition:
-    opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
-  transition-delay: calc(var(--i, 0) * 70ms);
-}
-[data-reveal-stagger].is-visible > * {
-  opacity: 1;
-  transform: none;
-}
+[data-reveal-stagger] > * { opacity: 1; transform: none; }
 
 /* Micro-interaction: kartu (transform/opacity — aman 60fps) */
 .card, [class*="card"] {
@@ -1423,69 +1357,11 @@ a { transition: color 0.18s ease; }
   --glass-shadow: 0 20px 45px -18px rgba(0,0,0,0.6);
 }
 
-/* ── Gradient mesh / aurora animasi (60fps: transform+opacity only) ── */
+/* ── Hero (aurora): latar statis, tanpa blob/animasi ── */
 .aurora {
   position: relative;
   overflow: hidden;
   isolation: isolate;
-}
-.aurora::before,
-.aurora::after {
-  content: '';
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(70px);
-  opacity: 0.5;
-  z-index: -1;
-  pointer-events: none;
-}
-.aurora::before {
-  width: 55vw; height: 55vw;
-  background: radial-gradient(circle, rgba(212,168,60,0.34), transparent 65%);
-  top: -22vw; right: -12vw;
-  animation: aurora-drift 22s ease-in-out infinite alternate;
-}
-.aurora::after {
-  width: 48vw; height: 48vw;
-  background: radial-gradient(circle, rgba(46,125,91,0.26), transparent 65%);
-  bottom: -20vw; left: -10vw;
-  animation: aurora-drift 28s ease-in-out infinite alternate-reverse;
-}
-@keyframes aurora-drift {
-  from { transform: translate3d(0,0,0) scale(1); }
-  to   { transform: translate3d(6vw, 4vw, 0) scale(1.12); }
-}
-
-/* ── Glass card + gradient border (conic) — tren 2025-2026 ── */
-.glass-card {
-  position: relative;
-  background: var(--glass-bg);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--r-lg);
-  box-shadow: var(--glass-shadow);
-  overflow: hidden;
-}
-.glass-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: conic-gradient(from var(--angle, 0deg), transparent 0%, rgba(212,168,60,0.55) 18%, transparent 38%, rgba(46,125,91,0.4) 62%, transparent 82%);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  animation: border-spin 6s linear infinite;
-  pointer-events: none;
-}
-.glass-card:hover::before { opacity: 0.9; }
-@property --angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
-@keyframes border-spin {
-  to { --angle: 360deg; }
 }
 
 /* ── Kartu Kerawang: corner pucuk rebung (segitiga → teguh) ── */
@@ -1496,7 +1372,7 @@ a { transition: color 0.18s ease; }
   background: var(--surface);
   transition: transform 0.28s cubic-bezier(0.16,1,0.3,1), box-shadow 0.28s ease, border-color 0.28s ease;
 }
-.kerawang-card:hover { transform: translateY(-4px); box-shadow: var(--sh-lg); border-color: color-mix(in srgb, var(--kg-kuning) 40%, var(--line)); }
+.kerawang-card:hover { box-shadow: var(--sh-lg); border-color: color-mix(in srgb, var(--kg-kuning) 40%, var(--line)); }
 .kerawang-card::before {
   content: '';
   position: absolute;
@@ -1535,10 +1411,7 @@ a { transition: color 0.18s ease; }
 .kr-marquee-track {
   display: inline-block;
   white-space: nowrap;
-  animation: kr-marquee 30s linear infinite;
-  will-change: transform;
 }
-.kr-marquee:hover .kr-marquee-track { animation-play-state: paused; }
 .kr-marquee-track span {
   display: inline-block;
   padding-right: 48px;
@@ -1548,10 +1421,6 @@ a { transition: color 0.18s ease; }
   color: var(--ink-secondary);
 }
 .kr-marquee-track span i { color: var(--kg-kuning); font-style: normal; }
-@keyframes kr-marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
 
 /* ── Count-up angka (text via hook; underline progress) ── */
 .countup {
@@ -1562,19 +1431,8 @@ a { transition: color 0.18s ease; }
 }
 
 /* ── Progress bar masuk saat scroll ── */
-.reveal-bar {
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 1s cubic-bezier(0.16,1,0.3,1);
-}
-.reveal-bar.in-view { transform: scaleX(1); }
+.reveal-bar, .reveal-bar.in-view { transform: none; }
 
-/* ── Emun drift (awan) — SVG animateTransform di komponen, fallback CSS ── */
-.emun-drift { animation: emun-drift 26s ease-in-out infinite alternate; }
-@keyframes emun-drift {
-  from { transform: translate3d(0,0,0); }
-  to   { transform: translate3d(34px, 14px, 0); }
-}
 
 /* ── Heading gold gradient (kuning gayo) ── */
 .gold-head {
@@ -1583,9 +1441,7 @@ a { transition: color 0.18s ease; }
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: gold-shimmer 7s linear infinite;
 }
-@keyframes gold-shimmer { to { background-position: -200% center; } }
 
 /* ── Motif SVG container (opacity rendah, dekoratif) ── */
 .kr-motif-bg {
@@ -1737,19 +1593,6 @@ a { transition: color 0.18s ease; }
 [data-theme="dark"] .btn-primary:hover,
 [data-theme="dark"] .btn-primary:focus-visible {
   color: #0B101C !important;
-}
-
-/* ════════════ P4 — hentikan marquee di layar sempit (audit UI/UX 19 Sep 2026) ════════════ */
-/* Di mobile dua pita berjalan (info resmi + pita budaya) terus bergerak di atas
-   setiap halaman. Teksnya tetap tampil, hanya animasinya dihentikan. */
-@media (max-width: 768px) {
-  .gov-strip-marquee-track,
-  .kr-marquee-track {
-    animation: none !important;
-    transform: none !important;
-  }
-  .gov-strip-marquee { overflow-x: auto; }
-  .kr-marquee { overflow-x: auto; }
 }
 
 /* ════════════ P3b/P4b — panel yang bisa dilipat (audit UI/UX 19 Sep 2026) ════════════ */

@@ -2,10 +2,8 @@ import { useState, useMemo, useEffect, useCallback, Fragment } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import DetailModal from '@/components/DetailModal';
-import TopographicBackdrop from '@/components/TopographicBackdrop';
 import CatatanTujuan from '@/components/CatatanTujuan';
 import { MotifEmun, MotifTapak, KerawangDivider } from '@/components/motif/KerawangMotifs';
-import useCountUp from '@/hooks/useCountUp';
 import { formatDesimal } from '@/lib/format';
 import {
   LEVEL_LABEL,
@@ -26,10 +24,7 @@ const LEVEL_WARNA = { 0: 'var(--muted)', 1: '#b91c1c', 2: '#ab5708', 3: '#1d4ed8
 
 /* ── CountStat lokal: angka KPI dengan count-up saat masuk viewport ── */
 function CountStat({ value, decimals = 0, color, style }) {
-  const [ref, display] = useCountUp(value, { decimals });
-  return (
-    <span ref={ref} className="countup" style={{ color, ...style }}>{display}</span>
-  );
+  return <span className="countup" style={{ color, ...style }}>{formatDesimal(value ?? 0, decimals)}</span>;
 }
 
 export default function PemdiPage({ pemdiData, modulData, dokumenKunci, buktiMapping, kebutuhanData }) {
@@ -230,7 +225,6 @@ function defaultCatatan(ind) {
           borderRadius: 'var(--r-lg)', marginBottom: '28px', position: 'relative', overflow: 'hidden',
         }}
       >
-        <TopographicBackdrop opacity={0.08} />
         <MotifEmun size={320} style={{ position: 'absolute', top: -24, right: -18, opacity: 0.5 }} />
         <MotifTapak size={120} style={{ position: 'absolute', bottom: -16, left: 24, opacity: 0.35 }} />
         <div style={{ position: 'relative', zIndex: 2 }}>

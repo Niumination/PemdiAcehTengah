@@ -18,9 +18,9 @@ const MERAH = '#B3402E';
 const INK = 'currentColor';
 
 /** Emun Berangkat — gumpalan awan geometris (simbol kesatuan yang dinamis) */
-export function MotifEmun({ size = 120, animated = true, className = '', ...rest }) {
+export function MotifEmun({ size = 120, animated = false, className = '', ...rest }) {
   return (
-    <svg width={size} height={size * 0.6} viewBox="0 0 200 120" fill="none" aria-hidden="true" className={`${animated ? 'emun-drift' : ''} ${className}`} {...rest}>
+    <svg width={size} height={size * 0.6} viewBox="0 0 200 120" fill="none" aria-hidden="true" className={className} {...rest}>
       <g stroke={INK} strokeWidth="3" strokeLinecap="round">
         <path d="M30 70 Q50 30 82 50 Q104 28 130 48 Q158 34 172 60 Q188 70 170 78 L40 78 Q22 76 30 70Z" fill={`${WARN}22`} />
         <path d="M60 90 Q78 72 100 84 Q120 68 142 84 Q156 78 158 90 L64 90Z" fill={`${HIJAU}1e`} />
@@ -153,11 +153,10 @@ export function MarqueeBudaya({ items, style }) {
     'Ulen — kekuatan & penerangan',
   ];
   const list = items || defaultItems;
-  const track = [...list, ...list].join('  ✦  ');
+  const track = list.join('  ✦  ');
   return (
     <div className="kr-marquee" style={style} aria-hidden="true">
       <div className="kr-marquee-track">
-        <span><i>✦</i> {track}</span>
         <span><i>✦</i> {track}</span>
       </div>
     </div>

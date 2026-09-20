@@ -102,46 +102,20 @@ export default function AppShell({ children }) {
   // Stabil: identity tidak berubah antar render → Sidebar effect tidak memicu close-loop
   const handleCloseSidebar = useCallback(() => setSidebarOpen(false), []);
 
-  /* ── Scroll reveal global: [data-reveal] & [data-reveal-stagger] ──
-     IntersectionObserver — 60fps (transform/opacity), hormati prefers-reduced-motion */
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const els = document.querySelectorAll('[data-reveal], [data-reveal-stagger]');
-    if (reduce || !('IntersectionObserver' in window)) {
-      els.forEach((el) => el.classList.add('is-visible'));
-      return;
-    }
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            io.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -32px 0px' }
-    );
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
-  }, [pathname]);
-
   const breadcrumbs = getBreadcrumbs(pathname);
 
-  /* ── Marquee teks ── */
-  const marqueeText = 'Portal Resmi Pemerintah Kabupaten Aceh Tengah — Menuju Pemerintah Digital (Pemdi)';
+  /* ── Teks pita atas (statis, tanpa animasi) — bukan 'Portal Resmi' (prasyarat K7 REPOSISI-PEMDI.md) ── */
+  const stripText = 'Kokpit Pemdi Kabupaten Aceh Tengah — Perangkat kerja Tim Asesor Internal · Evaluasi Kinerja Pemerintah Digital (PermenPANRB 8/2026)';
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', paddingTop: 'calc(var(--gov-strip-h) + env(safe-area-inset-top))' }}>
-      {/* Official Government Strip — Marquee Running Text + Motif Ulen */}
+      {/* Pita informasi atas — statis + Motif Ulen */}
       <div className="gov-strip" aria-label="Informasi portal">
         <span className="gov-strip-flag" aria-hidden="true">🇮🇩</span>
         <MotifUlen size={18} style={{ marginLeft: 8 }} />
         <div className="gov-strip-marquee">
-          <div className="gov-strip-marquee-track" aria-label={marqueeText}>
-            <span>{marqueeText}</span>
-            <span>{marqueeText}</span>
+          <div className="gov-strip-marquee-track" title={stripText}>
+            <span>{stripText}</span>
           </div>
         </div>
         <MotifUlen size={18} />

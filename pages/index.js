@@ -7,25 +7,18 @@ import SpbeGauge from '@/components/SpbeGauge';
 import ServiceFinder from '@/components/ServiceFinder';
 import DashboardSKM from '@/components/DashboardSKM';
 import { MotifEmun, MarqueeBudaya } from '@/components/motif/KerawangMotifs';
-import useCountUp from '@/hooks/useCountUp';
-import useInView from '@/hooks/useInView';
 import { formatDesimal } from '@/lib/format';
 
 /* ── CountStat: angka KPI dengan count-up saat masuk viewport ── */
 function CountStat({ value, decimals = 0, color, style }) {
-  const [ref, display] = useCountUp(value, { decimals });
-  return (
-    <span ref={ref} className="countup" style={{ color, ...style }}>{display}</span>
-  );
+  return <span className="countup" style={{ color, ...style }}>{formatDesimal(value ?? 0, decimals)}</span>;
 }
 
-/* ── AnimatedBar: progress bar menyala saat masuk viewport (Pucuk Rebung) ── */
+/* ── Bar progres statis ── */
 function AnimatedBar({ pct, color }) {
-  const [ref, inView] = useInView({ threshold: 0.3 });
   return (
-    <div ref={ref} style={{ height: '6px', background: 'var(--line)', borderRadius: '3px', overflow: 'hidden' }}>
+    <div style={{ height: '6px', background: 'var(--line)', borderRadius: '3px', overflow: 'hidden' }}>
       <div
-        className={`reveal-bar ${inView ? 'in-view' : ''}`}
         style={{
           height: '100%',
           width: `${pct}%`,
