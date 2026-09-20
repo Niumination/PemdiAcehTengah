@@ -10,7 +10,7 @@ Halaman Next.js Pages Router — entry points untuk user. SSG untuk konten stati
 | Route | File | Fungsi | Komponen Kunci |
 |-------|------|--------|----------------|
 | `/` | `index.js` | **Beranda** — hero KPI count-up (Pemdi/SPBE/OPD/layanan/ASN), ServiceFinder, gauge SPBE, tabel OPD, DashboardSKM | OPDTable, SpbeGauge, ServiceFinder, DashboardSKM, GlossaryTooltip, KerawangMotifs, useCountUp, useInView |
-| `/pemdi` | `pemdi.js` | **Dashboard Pemdi** — 7 aspek × 20 indikator, capaian terverifikasi rumus resmi (lib/pemdiNilai.js), panel 🧮 perhitungan + tolak ukur, checklist bukti per indikator | DetailModal, TopographicBackdrop, KerawangMotifs, useCountUp |
+| `/pemdi` | `pemdi.js` | **Kokpit Pemdi (B1)** — 7 aspek × 20 indikator, **Simulasi Penilaian Mandiri** (hanya bukti `diterima`; lib/pemdiNilai.js), hero menampilkan ringkasan Tahap 1 eval.spbe.go.id, checklist bukti berkode `I#-L#-##` + baris 🔁 revisi dengan catatan asesor | DetailModal, TopographicBackdrop, KerawangMotifs, useCountUp |
 | `/modul-indikator` | `modul-indikator.js` | **Modul Indikator + Matriks Kebutuhan Bukti** — 20 modul kriteria L1–L5 (ground truth), bukti per level, matriks kebutuhan L1–L2 | KerawangMotifs |
 | `/opd` | `opd/index.js` | Indeks 52 Perangkat Daerah + layanan per OPD | OPDTable, KerawangMotifs |
 | `/opd/[slug]` | `opd/[slug].js` | Detail per OPD — 52 halaman statis (SSG, `fallback: false`) | KerawangMotifs (via hero class) |
@@ -25,7 +25,7 @@ Halaman Next.js Pages Router — entry points untuk user. SSG untuk konten stati
 | `/bantuan` | `bantuan.js` | Pusat bantuan — FAQ + layanan | — |
 | `/lapor` | `lapor.js` | Lapor & pengaduan — form + tracking ID + SP4N banner | TrackerStatus, Sp4nBanner, LaporWidget |
 | `/dashboard-kepuasan` | `dashboard-kepuasan.js` | Dashboard publik hasil SKM + rating (I20) | DashboardSKM |
-| `/requirement` | `requirement.js` | 83 requirements PPB, 12 kategori | — |
+| `/requirement` | `requirement.js` | **Draf Bukti Dukung Prioritas** — tab Pemdi (5 revisi asesor + 38 butir gap, dari `draf-bukti-prioritas.json`) · tab PPB (83 requirements, 12 kategori) · panduan L1 | KerawangMotifs |
 | `/admin` | `admin.js` | Admin dashboard — login Bearer, laporan + SKM | — |
 | `/kebijakan-privasi` | `kebijakan-privasi.js` | Kebijakan Privasi & Perlindungan Data (UU PDP) | — |
 | `/404` | `404.js` | Halaman tidak ditemukan | — |
@@ -77,7 +77,8 @@ Supabase (service role, SERVER-ONLY) ──► api/lapor.js, api/lapor/status.js
 - Route naming: kebab-case
 - styled-jsx dihindari (unreliable di Next 14 + Strict Mode + conditional mount)
 - Error handling: setiap halaman harus graceful fallback
-- **Test**: perubahan pada lib/pemdiNilai.js atau data/pemdi.json wajib `npm test` hijau (16 pin rumus termasuk indeks 0,38 & 250 bukti, dari 20 tes suite)
+- **Test**: perubahan pada lib/pemdiNilai.js atau data/pemdi.json wajib `npm test` hijau (16 pin rumus termasuk indeks 0,35 & 232 bukti (18/5/0/19/190), dari 20 tes suite)
+- **Status bukti**: gunakan `STATUS_META`/`statistikIndikator` dari `lib/pemdiNilai.js` — jangan definisikan ulang di halaman. `/requirement` = **Draf Bukti Dukung Prioritas** (tab `pemdi`, data `draf-bukti-prioritas.json`) + tab `ppb` (83 kebutuhan PPB, data `requirement.json`)
 
 ## Verification
 - `npm run lint` — 0 error (4 warning `<img>` di modul-indikator dikenal)

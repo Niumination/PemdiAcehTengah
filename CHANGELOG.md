@@ -3,6 +3,15 @@
 Semua perubahan penting proyek ini didokumentasikan di file ini.
 Ringkasan publik tanpa detail internal; dokumen kerja lengkap disimpan pemilik repo di lokasi privat.
 
+## 2026-09-20 — Sinkron Hasil Penilaian Tahap 1 (eval.spbe.go.id) & Reposisi Konten
+
+- **Status bukti mengikuti hasil asesor.** Vokabuler baru `diterima · revisi · proses · draf · belum` menggantikan `lengkap`; hanya bukti yang **diterima** asesor dihitung dalam indeks. Tahap 1: 23 bukti diunggah → 18 diterima, 5 revisi (I1-L2-02, I4-L1-02, I4-L2-02, I12-L1-02, I13-L1-02).
+- **Label "Indeks Terverifikasi" dihapus** (prasyarat K8 `REPOSISI-PEMDI.md`) → "Simulasi Penilaian Mandiri — bukan nilai resmi asesor". Indeks simulasi 0,38 → **0,35** (33 butir yang belum pernah dinilai asesor diturunkan ke `draf`).
+- **Kode bukti `I#-L#-##`** (Indikator-Level-nomor urut butir modul) ditampilkan di `/pemdi` dan `/modul-indikator`; 18 PDF diterima dapat dipratinjau; butir revisi ditandai 🔁 merah dengan catatan asesor dan tab filter khusus.
+- **`/requirement` direposisi** menjadi **Draf Bukti Dukung Prioritas**: P0 revisi asesor + P1 gap ke level berikut (38 butir, diurutkan daya ungkit) dengan contoh Modul Indikator, template draf L1, kode rencana berkas, dan PIC. Kebutuhan data PPB (83 item) tetap tersedia pada tab kedua.
+- Beranda: kartu indeks berlabel simulasi + ringkasan diterima/revisi Tahap 1. Sidebar: "Requirements Data" → "Draf Bukti Dukung".
+- Skrip: `scripts/apply-eval-tahap1.py` (sinkron hasil portal, idempoten) · `scripts/build-draf-prioritas.py` (→ `data/draf-bukti-prioritas.json`); `hitung-capaian-pemdi.py` dan tes regresi diselaraskan (20 tes hijau).
+
 ## 2026-09-19 — Aksesibilitas & Mobile
 
 - Tautan regulasi PermenPANRB 8/2026 di footer diperbaiki (sebelumnya mengarah ke berkas yang tidak disajikan → 404); dokumen kini tersedia di portal.

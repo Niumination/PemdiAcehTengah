@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { MotifEmun, KerawangDivider } from '@/components/motif/KerawangMotifs';
 
 // ── Data ──
-import { LEVEL_LABEL, LEVEL_NAMA_RESMI } from '@/lib/pemdiNilai';
+import { LEVEL_LABEL, LEVEL_NAMA_RESMI, STATUS_META, statistikIndikator } from '@/lib/pemdiNilai';
 
 export default function ModulIndikatorPage({ moduls, pemdiData, dokumenKunci, buktiMapping, kebutuhanData }) {
   const router = useRouter();
@@ -25,18 +25,14 @@ function hitungStatusL1(indId) {
   const ind = cariIndikator(indId);
   if (!ind) return '0 item';
   const l1 = (ind.bukti_dukung || []).filter(b => b.level === 1);
-  const lkp = l1.filter(b => b._peran !== 'pendukung' && b.status === 'lengkap').length;
+  const lkp = l1.filter(b => b._peran !== 'pendukung' && b.status === 'diterima').length;
   const items = moduls.modules
     .find(x => x.indikator_id === indId)?.level_kriteria
     ?.find(lk => lk.level === 1)?.bukti_dukung?.length || 0;
   return `${lkp}/${items} item Level 1 terpenuhi`;
 }
 
-const STATUS_META = {
-  belum:   { icon: '⬜', label: 'Belum',     color: 'var(--muted)', bg: 'var(--surface-2)' },
-  proses:  { icon: '🔄', label: 'Proses',    color: 'var(--warn)', bg: 'var(--warn-bg)' },
-  lengkap: { icon: '✅', label: 'Lengkap',    color: 'var(--ok)', bg: 'var(--ok-bg)' },
-};
+// STATUS_META (diterima/revisi/proses/draf/belum) di-import dari lib/pemdiNilai.js
 
 // LEVEL_LABEL & LEVEL_NAMA_RESMI di-import dari lib/pemdiNilai.js (nama level resmi PermenPANRB 8/2026)
 // Palet level (B4): nilai literal (dipakai dengan concat alpha `${warna}18`)
@@ -44,14 +40,8 @@ const STATUS_META = {
 const LEVEL_WARNA = { 0: 'var(--muted)', 1: '#b91c1c', 2: '#ab5708', 3: '#1d4ed8', 4: '#047857', 5: '#6d28d9' };
 
 function hitungStatus(ind) {
-  if (!ind?.bukti_dukung) return { count: 0, lengkap: 0, proses: 0, belum: 0 };
-  const bd = ind.bukti_dukung;
-  return {
-    count: bd.length,
-    lengkap: bd.filter(b => b.status === 'lengkap').length,
-    proses: bd.filter(b => b.status === 'proses').length,
-    belum: bd.filter(b => b.status === 'belum' || !b.status).length,
-  };
+  const st = statistikIndikator(ind);
+  return { ...st, count: st.total };
 }
 
 // ── Mapping helper: bukti existing → dokumen kunci ──
@@ -73,13 +63,13 @@ function groupBuktiByDokumen(indId, buktis) {
     const dkNos = getDokumenForBukti(indId, b.id);
     if (dkNos.length === 0) {
       // Bukti tanpa mapping → grup "Tanpa Dokumen Kunci"
-      if (!groups.has(0)) groups.set(0, { no: 0, nama: 'Tanpa Dokumen Kunci', buktis: [], lengkap: 0, total: 0 });
+      if (!groups.has(0)) groups.set(0, { no: 0, nama: 'Tanpa Dokumen Kunci', buktis: [], diterima: 0, total: 0 });
       groups.get(0).buktis.push(b);
     } else {
       for (const no of dkNos) {
         if (!groups.has(no)) {
           const info = getDokumenInfo(no);
-          groups.set(no, { no, nama: info?.nama || `Dokumen #${no}`, buktis: [], lengkap: 0, total: 0 });
+          groups.set(no, { no, nama: info?.nama || `Dokumen #${no}`, buktis: [], diterima: 0, total: 0 });
         }
         groups.get(no).buktis.push(b);
       }
@@ -88,8 +78,8 @@ function groupBuktiByDokumen(indId, buktis) {
   // Hitung status
   for (const g of groups.values()) {
     g.total = g.buktis.length;
-    g.lengkap = g.buktis.filter(b => b.status === 'lengkap').length;
-    g.status = g.lengkap === g.total && g.total > 0 ? 'lengkap' : g.lengkap > 0 ? 'sebagian' : 'belum';
+    g.diterima = g.buktis.filter(b => b.status === 'diterima').length;
+    g.status = g.diterima === g.total && g.total > 0 ? 'lengkap' : g.diterima > 0 ? 'sebagian' : 'belum';
   }
   // Urutkan: dokumen kunci (1..31) dulu, "Tanpa" terakhir
   return [...groups.values()].sort((a, b) => {
@@ -150,8 +140,8 @@ function getBuktiBaru() {
 
 function hitungBuktiBaru() {
   const all = getBuktiBaru();
-  const proses = all.filter(b => b.status === 'proses').length;
-  const belum = all.filter(b => b.status === 'belum').length;
+  const proses = all.filter(b => b.status === 'proses' || b.status === 'diterima' || b.status === 'revisi').length;
+  const belum = all.filter(b => b.status === 'belum' || b.status === 'draf').length;
   const dkSet = new Set();
   for (const b of all) for (const no of (b._dokumen_kunci || [])) dkSet.add(no);
   return { total: all.length, proses, belum, dokumen: dkSet.size };
@@ -321,8 +311,9 @@ function formatKriteria(text) {
         m.indikator_id?.toLowerCase().includes(q)
       );
     }
-    if (tabFilter === 'perlu') list = list.filter(m => m.status.hidden || m.status.belum > 0 || m.status.proses > 0);
-    if (tabFilter === 'selesai') list = list.filter(m => m.status.lengkap === m.status.count && m.status.count > 0);
+    if (tabFilter === 'revisi') list = list.filter(m => m.status.revisi > 0);
+    if (tabFilter === 'perlu') list = list.filter(m => m.status.hidden || m.status.belum > 0 || m.status.proses > 0 || m.status.draf > 0 || m.status.revisi > 0);
+    if (tabFilter === 'selesai') list = list.filter(m => m.status.diterima === m.status.count && m.status.count > 0);
     return list;
   }, [merged, aspekFilter, levelFilter, cari, tabFilter]);
 
@@ -359,8 +350,8 @@ function formatKriteria(text) {
             <h1 className="gold-head">📋 Modul Indikator Pemdi</h1>
             <p style={{ color: 'var(--muted)', marginTop: '0.25rem', maxWidth: 640 }}>
               Panduan penyusunan bukti dukung untuk 20 indikator Pemerintah Digital
-              berdasarkan PermenPANRB 8/2026. Dilengkapi penanggung jawab, level kriteria,
-              dan rekomendasi pengumpulan bukti sesuai kondisi Pemkab Aceh Tengah.
+              berdasarkan PermenPANRB 8/2026 — status tiap butir mengikuti <strong>hasil penilaian asesor</strong> di
+              eval.spbe.go.id (Tahap 1). Kode bukti <code>I#-L#-##</code> = Indikator-Level-nomor urut butir.
             </p>
           </div>
           </div>
@@ -368,20 +359,18 @@ function formatKriteria(text) {
           {/* ════ Stat Bar ════ */}
           <div className="stat-row" style={{ marginTop: '1.5rem', flexWrap: 'wrap', gap: '0.5rem' }}>
             <span className="stat-badge">
-              {merged.filter(m => m.status.lengkap === m.status.count && m.status.count > 0).length}/{merged.length} indikator lengkap
+              {merged.reduce((s, m) => s + m.status.count, 0)} butir bukti · {merged.length} indikator
             </span>
-            <span className="stat-badge">
-              {merged.reduce((s, m) => s + m.status.count, 0)}/{pemdiData.target_item_bukti || merged.reduce((s, m) => s + m.status.count, 0)} bukti dukung
-            </span>
-            <span className="stat-badge" style={{ background: 'var(--warn-bg)', color: 'var(--warn)' }}>
-              {merged.reduce((s, m) => s + m.status.belum, 0)} perlu dikerjakan
-            </span>
-            <span className="stat-badge" style={{ background: 'var(--ok-bg)', color: 'var(--ok)' }}>
-              {merged.reduce((s, m) => s + m.status.lengkap, 0)} selesai
-            </span>
-            <span className="stat-badge" style={{ background: 'var(--surface-2)', color: 'var(--muted)' }}>
-              Gap: {merged.reduce((s, m) => s + m.status.belum, 0)} item
-            </span>
+            {['diterima', 'revisi', 'draf', 'belum'].map(k => (
+              <span key={k} className="stat-badge" style={{ background: STATUS_META[k].bg, color: STATUS_META[k].color }} title={STATUS_META[k].ket}>
+                {STATUS_META[k].icon} {merged.reduce((s, m) => s + (m.status[k] || 0), 0)} {STATUS_META[k].label}
+              </span>
+            ))}
+            {pemdiData.penilaian_tahap1 && (
+              <span className="stat-badge" style={{ background: 'var(--primary-bg, #e3edff)', color: 'var(--primary)' }}>
+                📤 Tahap 1 eval.spbe.go.id: {pemdiData.penilaian_tahap1.diunggah} diunggah · sinkron {pemdiData.penilaian_tahap1.tanggal_sinkron}
+              </span>
+            )}
           </div>
         </div>
       </section>
@@ -416,8 +405,9 @@ function formatKriteria(text) {
           <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
             {[
               { key: 'semua', label: `Semua (${merged.length})` },
-              { key: 'perlu', label: `Perlu Dikerjakan (${merged.filter(m => m.status.belum > 0 || m.status.proses > 0).length})` },
-              { key: 'selesai', label: `Selesai (${merged.filter(m => m.status.lengkap === m.status.count && m.status.count > 0).length})` },
+              { key: 'revisi', label: `🔁 Revisi Asesor (${merged.filter(m => m.status.revisi > 0).length})` },
+              { key: 'perlu', label: `Perlu Dikerjakan (${merged.filter(m => m.status.belum > 0 || m.status.proses > 0 || m.status.draf > 0 || m.status.revisi > 0).length})` },
+              { key: 'selesai', label: `Selesai (${merged.filter(m => m.status.diterima === m.status.count && m.status.count > 0).length})` },
             ].map(tab => (
               <button key={tab.key} onClick={() => setTabFilter(tab.key)}
                 style={{
@@ -484,14 +474,14 @@ function formatKriteria(text) {
                           }}>
                             <div style={{
                               height: '100%', borderRadius: '2px',
-                              width: `${(modul.status.lengkap / modul.status.count) * 100}%`,
+                              width: `${(modul.status.diterima / modul.status.count) * 100}%`,
                               background: 'linear-gradient(90deg, #10b981, #059669)',
                               transformOrigin: 'left',
                               animation: 'fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
                             }} />
                           </div>
                           <span style={{ fontSize: '0.7rem', color: 'var(--muted)' }}>
-                            {modul.status.lengkap}/{modul.status.count} bukti
+                            {modul.status.diterima}/{modul.status.count} diterima{modul.status.revisi > 0 ? ` · 🔁 ${modul.status.revisi} revisi` : ''}
                           </span>
                         </div>
                       )}
@@ -637,14 +627,24 @@ function formatKriteria(text) {
                       {/* ════ Current Evidence Status — validated by PemdiArena ════ */}
                       {modul.ind?.bukti_dukung?.length > 0 && (
                         <div style={{ marginTop: '1rem' }}>
-                          {modul.status.lengkap === 0 && modul.status.count > 0 && (
+                          {modul.status.revisi > 0 && (
+                            <div style={{
+                              padding: '0.75rem', borderRadius: '8px', marginBottom: '0.5rem',
+                              background: STATUS_META.revisi.bg, border: `1px solid ${STATUS_META.revisi.color}`,
+                              fontSize: '0.8rem', color: STATUS_META.revisi.color,
+                            }}>
+                              🔁 <strong>{modul.status.revisi} bukti dinyatakan REVISI oleh asesor</strong> — perbaiki sesuai catatan pada tabel di bawah,
+                              lalu unggah ulang di eval.spbe.go.id. Lihat draf perbaikan di <Link href="/requirement" style={{ color: 'inherit', fontWeight: 700 }}>Draf Bukti Dukung →</Link>
+                            </div>
+                          )}
+                          {modul.status.diterima === 0 && modul.status.count > 0 && (
                             <div style={{
                               padding: '0.75rem', borderRadius: '8px',
                               background: 'var(--warn-bg)', border: '1px solid var(--warn)',
                               fontSize: '0.8rem', color: 'var(--warn)',
                             }}>
-                              ⚠️ <strong>Belum ada bukti dukung yang dinyatakan Lengkap</strong> —
-                              bukti existing & baru masih perlu diverifikasi ulang sesuai kriteria level masing-masing indikator.
+                              ⚠️ <strong>Belum ada bukti yang diterima asesor</strong> pada indikator ini —
+                              butir Level 1 belum diunggah/dinilai di eval.spbe.go.id, sehingga nilai simulasi masih 0.
                             </div>
                           )}
                           <h4 style={{ fontSize: '0.85rem', fontWeight: 700, marginBottom: '0.5rem', color: 'var(--text)' }}>
@@ -700,7 +700,7 @@ function formatKriteria(text) {
                                 const dkNos = getDokumenForBukti(modul.ind.id, bd.id);
                                 const isDup = deteksiDuplikat(modul.ind.bukti_dukung).has(bd.id);
                                 return (
-                                  <tr key={bd.id} style={{ borderBottom: '1px solid var(--border)' }}>
+                                  <tr key={bd.id} style={{ borderBottom: '1px solid var(--border)', background: bd.status === 'revisi' ? STATUS_META.revisi.bg : undefined }}>
                                     <td style={tdStyle}>
                                       <span style={{
                                         padding: '0.15rem 0.4rem', borderRadius: '4px',
@@ -710,7 +710,14 @@ function formatKriteria(text) {
                                       }}>L{bd.level}</span>
                                     </td>
                                     <td style={{ ...tdStyle, fontWeight: 500 }}>
+                                      {bd.eval?.kode && (
+                                        <code style={{ fontSize: '0.64rem', fontWeight: 800, color: sm.color, border: `1px solid ${sm.color}`, borderRadius: '3px', padding: '0 4px', marginRight: '0.4rem' }}
+                                          title={`Kode bukti di eval.spbe.go.id (Tahap ${bd.eval.tahap}) — hasil: ${sm.label}`}>{bd.eval.kode}</code>
+                                      )}
                                       {bd.nama}
+                                      {bd.status === 'revisi' && bd.catatan && (
+                                        <div style={{ fontSize: '0.68rem', color: STATUS_META.revisi.color, marginTop: '0.2rem', fontWeight: 600 }}>🔁 {bd.catatan}</div>
+                                      )}
                                       {bd._peran === 'pendukung' && (
                                         <span style={{
                                           display: 'inline-block', marginLeft: '0.4rem', padding: '0.1rem 0.4rem',
@@ -837,7 +844,7 @@ function formatKriteria(text) {
                                       fontSize: '0.65rem', padding: '0.15rem 0.5rem', borderRadius: '10px',
                                       background: stBg, color: stColor, fontWeight: 600, whiteSpace: 'nowrap',
                                     }}>
-                                      {group.lengkap}/{group.total} lengkap
+                                      {group.diterima}/{group.total} diterima
                                     </span>
                                   </div>
                                   <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.75rem' }}>
@@ -1201,7 +1208,7 @@ function formatKriteria(text) {
             <strong> portal evaluasi PEMDI (eval.spbe.go.id)</strong> kode <code>PG_04</code> & <code>TD_13</code> (SK Tim
             Koordinasi, DPA/RKA, rapat koordinasi, KAK & laporan aplikasi Bapokting) dan dokumen Diskominfo 2026 yang
             ditemukan di Documents (Indeks KAMI, Perbup persandian, SK Forum Satu Data, RPJMD, Renstra, Renja, DPA, RKA).
-            Masih perlu verifikasi kesesuaian kriteria level sebelum dianggap lengkap.
+            Status mengikuti hasil asesor eval.spbe.go.id; butir yang belum diunggah berstatus Draf/Belum.
           </p>
 
           {/* Stat mini */}
@@ -1210,7 +1217,7 @@ function formatKriteria(text) {
               {hitungBuktiBaru().total} bukti baru
             </span>
             <span className="stat-badge" style={{ background: 'var(--warn-bg)', color: 'var(--warn)' }}>
-              {hitungBuktiBaru().proses} di-portal eval
+              {hitungBuktiBaru().proses} sudah dinilai di portal eval
             </span>
             <span className="stat-badge" style={{ background: 'var(--surface-2)', color: 'var(--muted)' }}>
               {hitungBuktiBaru().belum} belum diunggah

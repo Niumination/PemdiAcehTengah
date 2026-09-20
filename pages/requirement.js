@@ -1,13 +1,21 @@
 import Head from 'next/head'
 import { useState } from 'react'
+import Link from 'next/link'
 import panduanBukti from '@/data/panduan-bukti-l1.json'
 import requirementData from '@/data/requirement.json'
+import drafPrioritas from '@/data/draf-bukti-prioritas.json'
 import { MotifEmun, MotifRante } from '@/components/motif/KerawangMotifs'
+import { STATUS_META, LEVEL_LABEL } from '@/lib/pemdiNilai'
+
+const LEVEL_WARNA = { 0: 'var(--muted)', 1: '#b91c1c', 2: '#ab5708', 3: '#1d4ed8', 4: '#047857', 5: '#6d28d9' }
 
 export default function Requirement() {
   const [requirements, setRequirements] = useState(requirementData)
   const [activeCategory, setActiveCategory] = useState(null)
   const [loading, setLoading] = useState(false)
+  const [tab, setTab] = useState('pemdi') // 'pemdi' = Draf Bukti Dukung Prioritas · 'ppb' = Kebutuhan Data PPB
+  const [bukaGap, setBukaGap] = useState(null)
+  const t1 = drafPrioritas.penilaian_tahap1
 
   if (loading) return (
     <div style={{ maxWidth: 960, margin: '0 auto', padding: '40px 20px', textAlign: 'center', color: 'var(--muted)' }}>
@@ -24,8 +32,8 @@ export default function Requirement() {
   return (
     <>
       <Head>
-        <title>Requirement Peta Proses Bisnis — Pemdi Aceh Tengah</title>
-        <meta name="description" content="Daftar kebutuhan data, API, dan akses untuk penyusunan Peta Proses Bisnis Aceh Tengah berdasarkan Permenpan RB 19/2018" />
+        <title>Draf Bukti Dukung Prioritas — Kokpit Pemdi Aceh Tengah</title>
+        <meta name="description" content="Daftar bukti dukung Pemdi yang harus segera disusun untuk tahap evaluasi berikutnya di eval.spbe.go.id — revisi asesor & gap level, dilengkapi contoh/draf. Termasuk kebutuhan data Peta Proses Bisnis (Permenpan 19/2018)." />
       </Head>
 
       {/* HERO */}
@@ -46,29 +54,165 @@ export default function Requirement() {
         </div>
         <div style={{ position: 'relative', zIndex: 1 }}>
           <div className="pill" style={{ marginBottom: '0.75rem', background: 'rgba(255,255,255,0.15)', color: '#fff', border: '1px solid rgba(255,255,255,0.3)' }}>
-            DOKUMEN PERENCANAAN
+            KOKPIT PEMDI · PERSIAPAN TAHAP BERIKUTNYA
           </div>
           <h1 className="gold-head" style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>
-            Requirement Peta Proses Bisnis
+            Draf Bukti Dukung Prioritas
           </h1>
-          <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1rem', maxWidth: '600px' }}>
-            Kabupaten Aceh Tengah — Berdasarkan Permenpan RB No. 19 Tahun 2018
+          <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1rem', maxWidth: '640px' }}>
+            Bukti yang harus <strong>segera disusun</strong> setelah hasil Tahap 1 di eval.spbe.go.id: revisi asesor & butir
+            yang menahan kenaikan level, lengkap dengan contoh dari Modul Indikator dan draf/template yang sudah ada.
           </p>
-          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginTop: '1rem' }}>
-            <span className="card" style={{ padding: '0.5rem 0.75rem', background: 'rgba(255,255,255,0.12)', border: 'none', fontSize: '0.8rem' }}>
-              📅 Juni 2026
+          <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap', marginTop: '1rem' }}>
+            <span className="card" style={{ padding: '0.5rem 0.75rem', background: 'rgba(239,68,68,0.3)', border: 'none', fontSize: '0.8rem' }}>
+              🔁 {drafPrioritas.ringkas.revisi} revisi asesor
             </span>
             <span className="card" style={{ padding: '0.5rem 0.75rem', background: 'rgba(255,255,255,0.12)', border: 'none', fontSize: '0.8rem' }}>
-              📋 {requirements.summary?.reduce((s, c) => s + c.count, 0) || '-'} Item Kebutuhan
+              🎯 {drafPrioritas.ringkas.butir_gap} butir gap · {drafPrioritas.ringkas.indikator_gap} indikator
             </span>
             <span className="card" style={{ padding: '0.5rem 0.75rem', background: 'rgba(255,255,255,0.12)', border: 'none', fontSize: '0.8rem' }}>
-              🏛️ {requirements.summary?.length || '-'} Kategori
+              📈 Simulasi {drafPrioritas.ringkas.indeks_simulasi?.toFixed(2)} → {drafPrioritas.ringkas.indeks_jika_semua_gap_l_berikut?.toFixed(2)} bila semua gap diterima
             </span>
+            {t1 && (
+              <span className="card" style={{ padding: '0.5rem 0.75rem', background: 'rgba(255,255,255,0.12)', border: 'none', fontSize: '0.8rem' }}>
+                📅 Sinkron {t1.tanggal_sinkron}
+              </span>
+            )}
           </div>
         </div>
       </section>
 
       <div className="page-container">
+        {/* Tab switch */}
+        <div className="tab-row" role="tablist">
+          {[
+            { key: 'pemdi', label: '📝 Draf Bukti Dukung Pemdi', sub: 'revisi + gap level · prioritas' },
+            { key: 'ppb', label: '🗺️ Kebutuhan Data PPB', sub: `${requirements.summary?.reduce((s, c) => s + c.count, 0)} item · Permenpan 19/2018` },
+          ].map(x => (
+            <button key={x.key} role="tab" aria-selected={tab === x.key} className={`tab-btn ${tab === x.key ? 'on' : ''}`} onClick={() => setTab(x.key)}>
+              <span>{x.label}</span>
+              <small>{x.sub}</small>
+            </button>
+          ))}
+        </div>
+
+        {tab === 'pemdi' && (
+          <>
+            {/* ─── P0: REVISI ASESOR ─── */}
+            <div className="req-summary">
+              <h2 className="section-title" style={{ borderTopColor: 'var(--bad)' }}>🔁 P0 — Revisi Asesor (unggah ulang paling cepat)</h2>
+              <p className="lead-note">
+                {drafPrioritas.ringkas.revisi} butir dinyatakan <strong>REVISI</strong> pada Tahap 1. Berkas lama tidak disimpan di repo —
+                susun ulang sesuai catatan asesor, lalu unggah kembali dengan kode yang sama.
+                Status revisi juga ditandai di <Link href="/pemdi">Kokpit Pemdi</Link> dan <Link href="/modul-indikator">Modul Indikator</Link>.
+              </p>
+              <div className="rev-grid">
+                {drafPrioritas.revisi.map(r => (
+                  <div key={r.kode} className="rev-card">
+                    <div className="rev-head">
+                      <code className="rev-kode">{r.kode}</code>
+                      <span className="lvl" style={{ color: LEVEL_WARNA[r.level], background: `${LEVEL_WARNA[r.level]}18` }}>L{r.level} · {LEVEL_LABEL[r.level]}</span>
+                      <span className="rev-ind">{r.indikator} · {r.aspek}</span>
+                    </div>
+                    <div className="rev-butir">{r.butir}</div>
+                    <div className="rev-cat">🔁 <strong>Catatan asesor:</strong> {r.catatan_asesor}</div>
+                    {r.contoh_modul.length > 0 && (
+                      <details className="rev-det">
+                        <summary>📄 Contoh bukti menurut Modul Indikator (L{r.level})</summary>
+                        <ul>{r.contoh_modul.map((c, i) => <li key={i}>{c}</li>)}</ul>
+                      </details>
+                    )}
+                    {r.template.length > 0 && (
+                      <div className="rev-tpl">
+                        {r.template.map((t, i) => (
+                          <a key={i} href={t.file} target="_blank" rel="noopener noreferrer" className="panduan-link">📎 {t.judul}</a>
+                        ))}
+                      </div>
+                    )}
+                    <div className="rev-foot">👤 PIC: <strong>{r.pic}</strong> · <Link href={`/modul-indikator?modul=${r.indikator.replace('I', '')}`}>Modul {r.indikator} →</Link></div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* ─── P1: GAP LEVEL BERIKUT ─── */}
+            <div className="req-summary">
+              <h2 className="section-title">🎯 P1 — Gap ke Level Berikutnya (diurutkan daya ungkit)</h2>
+              <p className="lead-note">
+                Nilai indikator hanya naik bila <strong>seluruh</strong> butir pada level berikutnya diterima asesor. Daftar ini menunjukkan
+                butir yang masih kurang per indikator; <em>daya ungkit</em> = bobot indikator ÷ jumlah butir yang kurang — kerjakan dari atas.
+                Kolom kode adalah <strong>kode rencana</strong> untuk penamaan berkas saat unggah (<code>I#-L#-##</code>).
+              </p>
+              <div className="gap-list">
+                {drafPrioritas.gap.map((g, gi) => {
+                  const open = bukaGap === g.indikator
+                  return (
+                    <div key={g.indikator} className={`gap-item ${open ? 'open' : ''}`}>
+                      <button className="gap-head" onClick={() => setBukaGap(open ? null : g.indikator)} aria-expanded={open}>
+                        <span className="gap-rank">#{gi + 1}</span>
+                        <span className="badge badge-blue">{g.indikator}</span>
+                        <span className="gap-nama">{g.indikator_nama}</span>
+                        <span className="lvl" style={{ color: LEVEL_WARNA[g.level_target], background: `${LEVEL_WARNA[g.level_target]}18` }}>
+                          {g.nilai_sekarang} → L{g.level_target}
+                        </span>
+                        <span className="gap-meta">{g.butir_kurang}/{g.butir_total} butir kurang · bobot {g.bobot}% · +{g.kenaikan_indeks.toFixed(2)} indeks</span>
+                        <span className={`req-detail-arrow ${open ? 'up' : ''}`}>▼</span>
+                      </button>
+                      {open && (
+                        <div className="gap-body">
+                          <div className="gap-pic">👤 PIC: <strong>{g.pic}</strong> · Aspek {g.aspek} · <Link href={`/modul-indikator?modul=${g.indikator.replace('I', '')}`}>Modul {g.indikator} →</Link></div>
+                          <table className="req-table">
+                            <thead><tr><th style={{ width: 110 }}>Kode rencana</th><th>Butir bukti (Modul Indikator)</th><th style={{ width: 100 }}>Status</th><th>Catatan / arsip lokal</th></tr></thead>
+                            <tbody>
+                              {g.butir.map(b => {
+                                const sm = STATUS_META[b.status] || STATUS_META.belum
+                                return (
+                                  <tr key={b.id}>
+                                    <td><code>{b.kode_rencana}</code></td>
+                                    <td>{b.nama}</td>
+                                    <td><span className="st" style={{ color: sm.color, background: sm.bg }}>{sm.icon} {sm.label}</span></td>
+                                    <td style={{ fontSize: '0.78rem', color: 'var(--muted)' }}>
+                                      {b.catatan}
+                                      {b.arsip_lokal && <div>🗄️ Arsip draf: <code>{b.arsip_lokal.split('/').pop()}</code> (belum diunggah)</div>}
+                                    </td>
+                                  </tr>
+                                )
+                              })}
+                            </tbody>
+                          </table>
+                          {g.contoh_modul.length > 0 && (
+                            <details className="rev-det" open>
+                              <summary>📄 Contoh bukti menurut Modul Indikator (L{g.level_target})</summary>
+                              <ul>{g.contoh_modul.map((c, i) => <li key={i}>{c}</li>)}</ul>
+                            </details>
+                          )}
+                          {g.template.length > 0 && (
+                            <div className="rev-tpl">
+                              <span style={{ fontSize: '0.72rem', color: 'var(--muted)' }}>Draf/template tersedia:</span>
+                              {g.template.map((t, i) => (
+                                <a key={i} href={t.file} target="_blank" rel="noopener noreferrer" className="panduan-link">📎 {t.judul}</a>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  )
+                })}
+              </div>
+              <p className="lead-note" style={{ marginTop: 12 }}>
+                Indikator eksternal (I5 SDI · I6 SJIG · I7 EPSS · I18) tidak ada dalam daftar — nilainya ditarik dari sistem instansi pembina,
+                koordinasikan melalui Bappeda/BPS/BIG (lihat Prioritas 2 di <code>REPOSISI-PEMDI.md</code>).
+              </p>
+            </div>
+          </>
+        )}
+
+        {tab === 'ppb' && (<>
+        <div className="ppb-intro">
+          <strong>🗺️ Kebutuhan Data Peta Proses Bisnis</strong> — Permenpan RB 19/2018 · disusun Juni 2026 · {requirements.summary?.length} kategori ·
+          {' '}{requirements.summary?.reduce((s, c) => s + c.count, 0)} item. Relevan untuk indikator <strong>I15</strong> (Proses Bisnis Pemdi) — PPB yang ditetapkan menjadi lampiran Arsitektur.
+        </div>
         {/* Summary Cards */}
         <div className="req-summary">
           <h2 className="section-title">Ringkasan Kebutuhan</h2>
@@ -222,7 +366,10 @@ export default function Requirement() {
           </div>
         </div>
 
+        </>)}
+
         {/* 📘 Panduan Penyusunan Bukti Dukung Level 1 */}
+        {tab === 'pemdi' && (
         <div className="req-panduan">
           <h2 className="section-title">📘 Panduan Penyusunan Bukti Dukung Level 1 (Pemdi 2026)</h2>
           <div className="panduan-notice">
@@ -234,7 +381,7 @@ export default function Requirement() {
           <div className="panduan-stats">
             <span className="panduan-stat"><strong>{panduanBukti.indikator.length}</strong> Indikator</span>
             <span className="panduan-stat"><strong>{panduanBukti.indikator.reduce((s, i) => s + i.dokumen.length, 0)}</strong> Dokumen Panduan</span>
-            <span className="panduan-stat"><strong>{panduanBukti.indikator.filter(i => i.dokumen.some(d => d.status === 'lengkap')).length}</strong> Indikator dengan Dokumen Final</span>
+            <span className="panduan-stat"><strong>{panduanBukti.indikator.filter(i => i.dokumen.some(d => d.status === 'lengkap')).length}</strong> Indikator dengan Dokumen Siap Unggah</span>
             <span className="panduan-stat"><strong>Level 1</strong> Cakupan</span>
           </div>
 
@@ -253,7 +400,7 @@ export default function Requirement() {
                     <div key={i} className="panduan-doc">
                       <div className="panduan-doc-head">
                         <span className={`panduan-status ${d.status}`}>
-                          {d.status === 'lengkap' ? '✅ Final' : d.status === 'proses' ? '🔄 Draf' : '📎 Lampiran'}
+                          {d.status === 'lengkap' ? '📝 Siap unggah' : d.status === 'proses' ? '🔄 Draf' : '📎 Lampiran'}
                         </span>
                         <span className="panduan-jenis">{d.jenis}</span>
                       </div>
@@ -275,9 +422,11 @@ export default function Requirement() {
           </div>
         </div>
 
+        )}
+
         {/* Footer */}
         <div className="req-footer">
-          <p>Dokumen ini akan terus diupdate seiring perkembangan pengumpulan data.</p>
+          <p>Daftar prioritas dibangun otomatis dari <code>data/pemdi.json</code> ({drafPrioritas.dibangun}) — jalankan <code>scripts/build-draf-prioritas.py</code> setelah sinkron hasil eval.spbe.go.id.</p>
           <p>File markdown lengkap: <code>docs/requirement-peta-proses-bisnis.md</code></p>
           <p>Repo: <a href="https://github.com/Niumination/PemdiAcehTengah">github.com/Niumination/PemdiAcehTengah</a></p>
         </div>
@@ -559,6 +708,40 @@ export default function Requirement() {
           background: var(--bg-subtle); color: var(--muted);
         }
         .panduan-status.lengkap { background: #e6f4ea; color: #1B7A3D; }
+        /* ── Tab & prioritas Pemdi ── */
+        .tab-row { display: flex; gap: 8px; margin: 0 0 24px; flex-wrap: wrap; }
+        .tab-btn { flex: 1 1 240px; min-height: 56px; text-align: left; padding: 10px 14px; border-radius: 10px; cursor: pointer;
+          border: 1px solid var(--line); background: var(--surface); color: var(--text); font-family: inherit; display: flex; flex-direction: column; gap: 2px; }
+        .tab-btn span { font-weight: 700; font-size: 0.92rem; }
+        .tab-btn small { color: var(--muted); font-size: 0.72rem; }
+        .tab-btn.on { border-color: var(--primary); background: var(--primary-bg, #e3edff); box-shadow: inset 0 3px 0 var(--primary); }
+        .lead-note { font-size: 0.86rem; color: var(--muted); line-height: 1.6; margin: -8px 0 16px; }
+        .lead-note a { color: var(--primary); font-weight: 600; }
+        .ppb-intro { font-size: 0.86rem; color: var(--muted); line-height: 1.6; padding: 12px 14px; border: 1px dashed var(--line); border-radius: 10px; margin-bottom: 24px; background: var(--surface-2); }
+        .rev-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
+        .rev-card { border: 1px solid var(--bad, #b91c1c); border-left-width: 5px; border-radius: 10px; padding: 14px; background: var(--surface); display: flex; flex-direction: column; gap: 8px; }
+        .rev-head { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+        .rev-kode { font-weight: 800; font-size: 0.8rem; color: var(--bad, #b91c1c); border: 1px solid currentColor; border-radius: 4px; padding: 1px 6px; }
+        .lvl { font-size: 0.66rem; font-weight: 800; padding: 2px 8px; border-radius: 100px; white-space: nowrap; }
+        .rev-ind { font-size: 0.7rem; color: var(--muted); margin-left: auto; }
+        .rev-butir { font-weight: 600; font-size: 0.86rem; line-height: 1.4; }
+        .rev-cat { font-size: 0.78rem; line-height: 1.5; padding: 8px 10px; border-radius: 8px; background: var(--bad-bg, #fde8e8); color: var(--bad, #b91c1c); }
+        .rev-det summary { font-size: 0.76rem; font-weight: 700; color: var(--primary); cursor: pointer; }
+        .rev-det ul { margin: 6px 0 0; padding-left: 18px; font-size: 0.76rem; color: var(--muted); line-height: 1.5; }
+        .rev-tpl { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+        .rev-foot { font-size: 0.72rem; color: var(--muted); margin-top: auto; }
+        .rev-foot a { color: var(--primary); font-weight: 600; }
+        .gap-list { display: flex; flex-direction: column; gap: 8px; }
+        .gap-item { border: 1px solid var(--line); border-radius: 10px; background: var(--surface); overflow: hidden; }
+        .gap-item.open { border-color: var(--primary); }
+        .gap-head { width: 100%; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 12px 14px; border: none; background: transparent; cursor: pointer; text-align: left; font-family: inherit; color: var(--text); min-height: 44px; }
+        .gap-rank { font-weight: 800; color: var(--gold-deep, #b8860b); font-family: var(--font-mono); font-size: 0.8rem; }
+        .gap-nama { font-weight: 600; font-size: 0.86rem; flex: 1 1 260px; }
+        .gap-meta { font-size: 0.72rem; color: var(--muted); }
+        .gap-body { padding: 0 14px 14px; display: flex; flex-direction: column; gap: 10px; }
+        .gap-pic { font-size: 0.76rem; color: var(--muted); }
+        .gap-pic a { color: var(--primary); font-weight: 600; }
+        .st { font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; white-space: nowrap; }
         .panduan-status.proses { background: #fff3e0; color: #b26a00; }
         .panduan-jenis { font-size: 0.62rem; color: var(--muted); }
         .panduan-doc-title { font-size: 0.75rem; font-weight: 600; color: var(--ink); line-height: 1.4; }

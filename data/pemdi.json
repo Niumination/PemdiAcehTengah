@@ -5,8 +5,8 @@
  "target_predikat": "Baik",
  "baseline_spbe": 2.59,
  "baseline_predikat": "Cukup",
- "total_item_bukti": 250,
- "total_item_manual": 199,
+ "total_item_bukti": 232,
+ "total_item_manual": 190,
  "total_item_eksternal": 0,
  "dasar_hukum": [
   {
@@ -77,7 +77,7 @@
    }
   ]
  },
- "catatan": "STATUS: 47 item bukti lengkap, 4 proses, 199 belum (total 250). Nilai indikator = level kontinu semua-bukti-lengkap (bukti utama). Indikator eksternal I5/I6/I7/I18 memakai nilai minimum 1 selama skor eksternal belum tersedia.",
+ "catatan": "STATUS TAHAP 1 (sinkron 2026-09-20): 18 bukti DITERIMA asesor, 5 REVISI, 0 proses, 19 draf lokal belum diunggah, 190 belum ada (total 232 item). Nilai indikator = level kontinu yang seluruh butir bukti utamanya DITERIMA. Indikator eksternal I5/I6/I7/I18 memakai nilai minimum 1 selama skor eksternal belum tersedia.",
  "aspek": [
   {
    "id": 1,
@@ -87,8 +87,8 @@
    "warna": "#1d70b8",
    "deskripsi": "Kesiapan tata kelola Pemerintah Digital dan pengelolaan layanan digital pemerintah — mencakup perencanaan, penganggaran, arsitektur, dan manajemen risiko",
    "target": 2.25,
-   "nilai": 1.5,
-   "total_item": 25,
+   "nilai": 1.0,
+   "total_item": 20,
    "koordinator": "BAPPEDA",
    "indikator": [
     {
@@ -98,7 +98,7 @@
      "nilai": 1,
      "target": 2.5,
      "bobot": 5,
-     "sumber": "Bukti dukung terverifikasi (12/17 item)",
+     "sumber": "Bukti diterima asesor (3/14 item)",
      "kontribusi_portal": "Dokumentasi kebijakan, rencana aksi, arsitektur dipublikasikan melalui portal",
      "penanggung_jawab": {
       "lead": "BAPPEDA (Koordinator Pokja Tata Kelola & Manajemen)",
@@ -122,9 +122,16 @@
         "Tim Koordinasi Pemdi",
         "seluruh PD"
        ],
-       "status": "lengkap",
-       "catatan": "Draf Peta Rencana Pemdi 2025-2029 (rancangan awal memuat substansi RAN Pemdi, konsep pembahasan Tim Koordinasi) + dokumentasi proses penyusunan (undangan, daftar hadir, notulen) + penjelasan substansi RAN Pemdi pada RPJMK. Catatan: draf perlu finalisasi paraf/stempel sebelum unggah final ke portal.",
-       "url_preview": "/bukti-dukung/final/I1_L1_Final.pdf",
+       "status": "diterima",
+       "catatan": "Peta Rencana Pemdi 2025-2029 (rancangan awal memuat substansi RAN Pemdi)",
+       "eval": {
+        "tahap": 1,
+        "kode": "I1-L1-01",
+        "hasil": "diterima",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20"
+       },
+       "url_preview": "/bukti-dukung/final/I1-L1-01.pdf",
        "_ext": "pdf"
       },
       {
@@ -138,9 +145,16 @@
         "Tim Koordinasi Pemdi",
         "seluruh PD"
        ],
-       "status": "lengkap",
-       "catatan": "Qanun RPJMK Aceh Tengah 2025-2029 (dokumen perencanaan daerah final memuat substansi RAN Pemdi) + Renstra dan Renja Diskominfo.",
-       "url_preview": "/bukti-dukung/final/I1_L2_Final.pdf",
+       "status": "diterima",
+       "catatan": "Qanun RPJMD Kabupaten Aceh Tengah 2025-2029",
+       "eval": {
+        "tahap": 1,
+        "kode": "I1-L2-01",
+        "hasil": "diterima",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20"
+       },
+       "url_preview": "/bukti-dukung/final/I1-L2-01.pdf",
        "_ext": "pdf"
       },
       {
@@ -154,8 +168,15 @@
         "Tim Koordinasi Pemdi",
         "seluruh PD"
        ],
-       "status": "belum",
-       "catatan": ""
+       "status": "revisi",
+       "catatan": "Asesor: bukti pengisian Arsitektur Pemdi pada SIAP Digital belum memadai — lampirkan tangkapan layar SIAP Digital yang menunjukkan layanan Aceh Tengah terisi (domain proses bisnis, layanan, data, aplikasi, infrastruktur).",
+       "eval": {
+        "tahap": 1,
+        "kode": "I1-L2-02",
+        "hasil": "revisi",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20"
+       }
       },
       {
        "id": "GT.I1_L2_3",
@@ -168,9 +189,16 @@
         "Tim Koordinasi Pemdi",
         "seluruh PD"
        ],
-       "status": "lengkap",
-       "catatan": "Dipilah dari paket konsolidasi 9 hal → undangan+acara+materi (hal 1-5) untuk klaim proses L2. Per pemilahan 2026-08-11.",
-       "url_preview": "/bukti-dukung/final/I1_L2_Konsolidasi-Proses.pdf",
+       "status": "diterima",
+       "catatan": "Dokumentasi konsolidasi Tim Koordinasi Pemdi (undangan, daftar hadir, notulen)",
+       "eval": {
+        "tahap": 1,
+        "kode": "I1-L2-03",
+        "hasil": "diterima",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20"
+       },
+       "url_preview": "/bukti-dukung/final/I1-L2-03.pdf",
        "_ext": "pdf"
       },
       {
@@ -184,10 +212,9 @@
         "Tim Koordinasi Pemdi",
         "seluruh PD"
        ],
-       "status": "lengkap",
+       "status": "draf",
        "catatan": "DPA/RKA sub kegiatan 2.16.03.2.02.0037 (Koordinasi Tata Kelola SPBE) + DPA Pengolahan Data - anggaran program SPBE/Pemdi pada perencanaan IPPD.",
-       "url_preview": "/bukti-dukung/final/I1_L24_Anggaran-SPBE_2026.pdf",
-       "_ext": "pdf"
+       "_arsip": "/bukti-dukung/final/I1_L24_Anggaran-SPBE_2026.pdf"
       },
       {
        "id": "GT.I1_L3_1",
@@ -200,10 +227,9 @@
         "Tim Koordinasi Pemdi",
         "seluruh PD"
        ],
-       "status": "lengkap",
+       "status": "draf",
        "catatan": "Qanun RPJMK 2025-2029 + Renstra Diskominfo + Renja Diskominfo - substansi RAN Pemdi pada perencanaan IPPD (seluruh). Satu set dokumen dengan L2-1, klaim level berbeda (sebagian vs seluruh).",
-       "url_preview": "/bukti-dukung/final/I1_L31_Perencanaan-Full_2026.pdf",
-       "_ext": "pdf"
+       "_arsip": "/bukti-dukung/final/I1_L31_Perencanaan-Full_2026.pdf"
       },
       {
        "id": "GT.I1_L3_2",
@@ -230,10 +256,9 @@
         "Tim Koordinasi Pemdi",
         "seluruh PD"
        ],
-       "status": "lengkap",
+       "status": "draf",
        "catatan": "Dipilah dari paket konsolidasi 9 hal → full termasuk daftar hadir + notulen untuk klaim L3. Per pemilahan 2026-08-11.",
-       "url_preview": "/bukti-dukung/final/I1_L3_Konsolidasi-Full-Notulen.pdf",
-       "_ext": "pdf"
+       "_arsip": "/bukti-dukung/final/I1_L3_Konsolidasi-Full-Notulen.pdf"
       },
       {
        "id": "GT.I1_L3_4",
@@ -246,10 +271,9 @@
         "Tim Koordinasi Pemdi",
         "seluruh PD"
        ],
-       "status": "lengkap",
+       "status": "draf",
        "catatan": "DPA/RKA memuat anggaran program SPBE/Pemdi (kode kegiatan 2.16.03.2.02.0037).",
-       "url_preview": "/bukti-dukung/final/I1_L3_Final.pdf",
-       "_ext": "pdf"
+       "_arsip": "/bukti-dukung/final/I1_L3_Final.pdf"
       },
       {
        "id": "GT.I1_L4_1",
@@ -262,10 +286,9 @@
         "Tim Koordinasi Pemdi",
         "seluruh PD"
        ],
-       "status": "lengkap",
+       "status": "draf",
        "catatan": "Laporan Reviu Tata Kelola Transformasi Digital 2025 + Berita Acara Reviu resmi.",
-       "url_preview": "/bukti-dukung/final/I1_L4_Final.pdf",
-       "_ext": "pdf"
+       "_arsip": "/bukti-dukung/final/I1_L4_Final.pdf"
       },
       {
        "id": "GT.I1_L4_2",
@@ -278,10 +301,9 @@
         "Tim Koordinasi Pemdi",
         "seluruh PD"
        ],
-       "status": "lengkap",
+       "status": "draf",
        "catatan": "Perbup 48/2025 Arsitektur SPBE (induk) — arsitektur menjadi referensi pengembangan keterpaduan layanan digital, terintegrasi dengan layanan digital.",
-       "url_preview": "/bukti-dukung/TataKelola_I1_26_Perbup-48-Arsitektur-SPBE-Full_2025.pdf",
-       "_ext": "pdf"
+       "_arsip": "/bukti-dukung/TataKelola_I1_26_Perbup-48-Arsitektur-SPBE-Full_2025.pdf"
       },
       {
        "id": "GT.I1_L5_1",
@@ -324,51 +346,6 @@
        ],
        "status": "belum",
        "catatan": ""
-      },
-      {
-       "id": "GT.I1_L1_2",
-       "level": 1,
-       "nama": "Peta Rencana Pemdi 2025-2029 (rancangan awal, substansi RAN)",
-       "detail": "Bukti dukung final — lolos evaluasi, tahap interview",
-       "opd": [
-        "Diskominfo",
-        "Tim Koordinasi Pemdi"
-       ],
-       "status": "lengkap",
-       "catatan": "Disusun Tim Koordinasi Pemdi; rancangan awal memuat substansi RAN Pemdi.",
-       "url_preview": "/bukti-dukung/final/I1-L1-01.pdf",
-       "_ext": "pdf",
-       "_eval_final": true
-      },
-      {
-       "id": "GT.I1_L2_5",
-       "level": 2,
-       "nama": "Qanun RPJMD Kabupaten Aceh Tengah 2025-2029",
-       "detail": "Bukti dukung final — lolos evaluasi, tahap interview",
-       "opd": [
-        "Diskominfo",
-        "Tim Koordinasi Pemdi"
-       ],
-       "status": "lengkap",
-       "catatan": "Dokumen perencanaan daerah memuat arah transformasi digital.",
-       "url_preview": "/bukti-dukung/final/I1-L2-01.pdf",
-       "_ext": "pdf",
-       "_eval_final": true
-      },
-      {
-       "id": "GT.I1_L2_6",
-       "level": 2,
-       "nama": "Renstra Diskominfo 2025-2029",
-       "detail": "Bukti dukung final — lolos evaluasi, tahap interview",
-       "opd": [
-        "Diskominfo",
-        "Tim Koordinasi Pemdi"
-       ],
-       "status": "lengkap",
-       "catatan": "Rencana strategis PD memuat program transformasi digital.",
-       "url_preview": "/bukti-dukung/final/I1-L2-03.pdf",
-       "_ext": "pdf",
-       "_eval_final": true
       }
      ],
      "_l1_lengkap": true,
@@ -378,10 +355,10 @@
      "id": "I2",
      "nama": "Tingkat Kematangan Manajemen Layanan Digital Pemerintah",
      "deskripsi": "Pengelolaan siklus hidup layanan digital — perencanaan, implementasi, monitoring, dan evaluasi layanan",
-     "nilai": 2,
+     "nilai": 1,
      "target": 2.0,
      "bobot": 5,
-     "sumber": "Bukti dukung terverifikasi (5/8 item)",
+     "sumber": "Bukti diterima asesor (2/6 item)",
      "kontribusi_portal": "Portal sebagai platform manajemen layanan digital terpadu",
      "penanggung_jawab": {
       "lead": "BAPPEDA (Koordinator Pokja Tata Kelola & Manajemen)",
@@ -403,9 +380,16 @@
         "BPKD",
         "Bagian Organisasi"
        ],
-       "status": "lengkap",
-       "catatan": "Dipilah dari kompilasi Renstra+Renja 86 hal → Renstra 2025-2029 (hal 1-54) untuk klaim manajemen layanan. Per pemilahan 2026-08-11.",
-       "url_preview": "/bukti-dukung/final/I2_L1_Renstra-Diskominfo-2025-2029.pdf",
+       "status": "diterima",
+       "catatan": "Qanun RPJMD 2025-2029 + Renstra Diskominfo (substansi RAN Pemdi)",
+       "eval": {
+        "tahap": 1,
+        "kode": "I2-L1-01",
+        "hasil": "diterima",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20"
+       },
+       "url_preview": "/bukti-dukung/final/I2-L1-01.pdf",
        "_ext": "pdf"
       },
       {
@@ -418,9 +402,16 @@
         "BPKD",
         "Bagian Organisasi"
        ],
-       "status": "lengkap",
-       "catatan": "Pedoman standar pelayanan dan regulasi pelayanan adminduk online (manajemen layanan digital).",
-       "url_preview": "/bukti-dukung/final/I2_L1_Final.pdf",
+       "status": "diterima",
+       "catatan": "Laporan manajemen layanan digital internal Jan–Jun 2026",
+       "eval": {
+        "tahap": 1,
+        "kode": "I2-L1-02",
+        "hasil": "diterima",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20"
+       },
+       "url_preview": "/bukti-dukung/final/I2-L1-02.pdf",
        "_ext": "pdf"
       },
       {
@@ -433,10 +424,9 @@
         "BPKD",
         "Bagian Organisasi"
        ],
-       "status": "lengkap",
+       "status": "draf",
        "catatan": "Pelayanan adminduk online sebagai manajemen layanan digital pada sebagian layanan; arsitektur SPBE sebagai referensi.",
-       "url_preview": "/bukti-dukung/final/I2_L2_Final.pdf",
-       "_ext": "pdf"
+       "_arsip": "/bukti-dukung/final/I2_L2_Final.pdf"
       },
       {
        "id": "GT.I2_L3_1",
@@ -476,45 +466,15 @@
        ],
        "status": "belum",
        "catatan": ""
-      },
-      {
-       "id": "GT.I2_L1_3",
-       "level": 1,
-       "nama": "Qanun RPJMD Kabupaten Aceh Tengah 2025-2029",
-       "detail": "Bukti dukung final — lolos evaluasi, tahap interview",
-       "opd": [
-        "Diskominfo",
-        "Tim Koordinasi Pemdi"
-       ],
-       "status": "lengkap",
-       "catatan": "Dokumen sama mendukung I1 & I2 (pola multi-level, valid).",
-       "url_preview": "/bukti-dukung/final/I2-L1-01.pdf",
-       "_ext": "pdf",
-       "_eval_final": true
-      },
-      {
-       "id": "GT.I2_L1_4",
-       "level": 1,
-       "nama": "Laporan manajemen layanan digital internal Jan-Jun 2026",
-       "detail": "Bukti dukung final — lolos evaluasi, tahap interview",
-       "opd": [
-        "Diskominfo",
-        "Tim Koordinasi Pemdi"
-       ],
-       "status": "lengkap",
-       "catatan": "Laporan pelaksanaan layanan digital internal Diskominfo.",
-       "url_preview": "/bukti-dukung/final/I2-L1-02.pdf",
-       "_ext": "pdf",
-       "_eval_final": true
       }
      ],
      "_l1_lengkap": true,
-     "nilai_aktual": 2
+     "nilai_aktual": 1
     }
    ],
-   "item_aktual": 17,
-   "item_gap": 8,
-   "nilai_aktual": 1.5
+   "item_aktual": 5,
+   "item_gap": 15,
+   "nilai_aktual": 1.0
   },
   {
    "id": 2,
@@ -525,7 +485,7 @@
    "deskripsi": "Kompetensi sumber daya manusia dan kolaborasi lintas OPD dalam penyelenggaraan Pemerintah Digital",
    "target": 2.25,
    "nilai": 0.0,
-   "total_item": 40,
+   "total_item": 36,
    "koordinator": "BKPSDM; Bag. Organisasi; Bag. Hukum",
    "indikator": [
     {
@@ -535,7 +495,7 @@
      "nilai": 0,
      "target": 2.0,
      "bobot": 5,
-     "sumber": "Bukti dukung terverifikasi (2/27 item)",
+     "sumber": "Bukti diterima asesor (2/25 item)",
      "kontribusi_portal": "Materi literasi digital, panduan penggunaan layanan digital",
      "penanggung_jawab": {
       "lead": "BKPSDM (Koordinator Pokja Penyelenggara – SDM)",
@@ -555,8 +515,17 @@
         "Bagian Organisasi",
         "Diskominfo"
        ],
-       "status": "belum",
-       "catatan": ""
+       "status": "diterima",
+       "catatan": "Dokumen peta kompetensi digital ASN (16 hlm.)",
+       "eval": {
+        "tahap": 1,
+        "kode": "I3-L1-01",
+        "hasil": "diterima",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20"
+       },
+       "url_preview": "/bukti-dukung/final/I3-L1-01.pdf",
+       "_ext": "pdf"
       },
       {
        "id": "GT.I3_L1_2",
@@ -567,8 +536,17 @@
         "Bagian Organisasi",
         "Diskominfo"
        ],
-       "status": "belum",
-       "catatan": "Dikosongkan 8 Ags 2026: Literasi Digital 2023 = survei statistik, bukan bukti \"penggunaan aplikasi dasar\" (L1-2) / \"peningkatan kompetensi\" (L2-2) - rawan ditolak. Butuh dokumen dari BKPSDM."
+       "status": "diterima",
+       "catatan": "Laporan pemanfaatan aplikasi kerja digital + rekap pengguna",
+       "eval": {
+        "tahap": 1,
+        "kode": "I3-L1-02",
+        "hasil": "diterima",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20"
+       },
+       "url_preview": "/bukti-dukung/final/I3-L1-02.pdf",
+       "_ext": "pdf"
       },
       {
        "id": "GT.I3_L1_3",
@@ -845,36 +823,6 @@
        ],
        "status": "belum",
        "catatan": ""
-      },
-      {
-       "id": "GT.I3_L1_6",
-       "level": 1,
-       "nama": "Dokumen Penyelenggara/SDM L1 (scan, 16 halaman)",
-       "detail": "Bukti dukung final — lolos evaluasi, tahap interview",
-       "opd": [
-        "Diskominfo",
-        "Tim Koordinasi Pemdi"
-       ],
-       "status": "lengkap",
-       "catatan": "Dokumen hasil scan; verifikasi isi manual saat interview.",
-       "url_preview": "/bukti-dukung/final/I3-L1-01.pdf",
-       "_ext": "pdf",
-       "_eval_final": true
-      },
-      {
-       "id": "GT.I3_L1_7",
-       "level": 1,
-       "nama": "Laporan pemanfaatan aplikasi kerja digital + rekap pengguna",
-       "detail": "Bukti dukung final — lolos evaluasi, tahap interview",
-       "opd": [
-        "Diskominfo",
-        "Tim Koordinasi Pemdi"
-       ],
-       "status": "lengkap",
-       "catatan": "Rekap pengguna aktif di lingkungan Pemkab Aceh Tengah.",
-       "url_preview": "/bukti-dukung/final/I3-L1-02.pdf",
-       "_ext": "pdf",
-       "_eval_final": true
       }
      ],
      "_l1_lengkap": true,
@@ -887,7 +835,7 @@
      "nilai": 0,
      "target": 2.5,
      "bobot": 5,
-     "sumber": "Bukti dukung terverifikasi (4/13 item)",
+     "sumber": "Bukti diterima asesor (2/11 item)",
      "kontribusi_portal": "Publikasi data bersama, fitur kolaborasi lintas OPD",
      "penanggung_jawab": {
       "lead": "Bag. Organisasi (Koordinator Pokja Penyelenggara – Kolaborasi)",
@@ -909,9 +857,16 @@
         "Bag. Hukum",
         "Diskominfo"
        ],
-       "status": "lengkap",
-       "catatan": "Keputusan Bupati No. 555/395/DISKOMINFO/2026 tentang Penetapan Tim Koordinasi Pemerintah Digital (Pemdi) - versi resmi text-based, lebih tajam dari scan sebelumnya.",
-       "url_preview": "/bukti-dukung/TataKelola_I1_33_SK-Tim-Koordinasi-Pemdi-Resmi_2026.pdf",
+       "status": "diterima",
+       "catatan": "SK Bupati 555/395/2026 Tim Koordinasi Pemdi",
+       "eval": {
+        "tahap": 1,
+        "kode": "I4-L1-01",
+        "hasil": "diterima",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20"
+       },
+       "url_preview": "/bukti-dukung/final/I4-L1-01.pdf",
        "_ext": "pdf"
       },
       {
@@ -924,8 +879,15 @@
         "Bag. Hukum",
         "Diskominfo"
        ],
-       "status": "belum",
-       "catatan": ""
+       "status": "revisi",
+       "catatan": "Asesor: perlu dokumen perencanaan yang eksplisit memuat rencana kolaborasi antar PD dalam penerapan Pemdi (bukan hanya SK tim) — sertakan matriks kolaborasi lintas PD.",
+       "eval": {
+        "tahap": 1,
+        "kode": "I4-L1-02",
+        "hasil": "revisi",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20"
+       }
       },
       {
        "id": "GT.I4_L1_3",
@@ -937,9 +899,16 @@
         "Bag. Hukum",
         "Diskominfo"
        ],
-       "status": "lengkap",
-       "catatan": "Paket kegiatan kolaborasi antar perangkat daerah: undangan dan susunan acara Rapat Koordinasi Transformasi Digital (25-26 Jun 2026, lintas OPD) + notulen Orientasi Penyusunan Dokumen Perencanaan memuat agenda substansi RAN Pemdi (9 Jan 2025, Bappeda) + daftar hadir. Sesuai modul: undangan, notulensi, dokumentasi kegiatan kolaborasi.",
-       "url_preview": "/bukti-dukung/final/I4_L13_Kolaborasi-OPD_2026.pdf",
+       "status": "diterima",
+       "catatan": "Dokumentasi kolaborasi antar perangkat daerah (9 hlm.)",
+       "eval": {
+        "tahap": 1,
+        "kode": "I4-L1-03",
+        "hasil": "diterima",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20"
+       },
+       "url_preview": "/bukti-dukung/final/I4-L1-03.pdf",
        "_ext": "pdf"
       },
       {
@@ -965,8 +934,15 @@
         "Bag. Hukum",
         "Diskominfo"
        ],
-       "status": "belum",
-       "catatan": ""
+       "status": "revisi",
+       "catatan": "Asesor: bukti kolaborasi antar Instansi Pemerintah (lintas kab/kota/provinsi/pusat) belum memadai — sertakan MoU/PKS/undangan-notulen kegiatan lintas instansi.",
+       "eval": {
+        "tahap": 1,
+        "kode": "I4-L2-02",
+        "hasil": "revisi",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20"
+       }
       },
       {
        "id": "GT.I4_L3_1",
@@ -1045,44 +1021,14 @@
        ],
        "status": "belum",
        "catatan": ""
-      },
-      {
-       "id": "GT.I4_L1_4",
-       "level": 1,
-       "nama": "SK Bupati 555/395/2026 Tim Koordinasi Pemdi",
-       "detail": "Bukti dukung final — lolos evaluasi, tahap interview",
-       "opd": [
-        "Diskominfo",
-        "Tim Koordinasi Pemdi"
-       ],
-       "status": "lengkap",
-       "catatan": "Penetapan Tim Koordinasi Pemerintah Digital.",
-       "url_preview": "/bukti-dukung/final/I4-L1-01.pdf",
-       "_ext": "pdf",
-       "_eval_final": true
-      },
-      {
-       "id": "GT.I4_L1_5",
-       "level": 1,
-       "nama": "Dokumen Tata Kelola L1 (scan, 9 halaman)",
-       "detail": "Bukti dukung final — lolos evaluasi, tahap interview",
-       "opd": [
-        "Diskominfo",
-        "Tim Koordinasi Pemdi"
-       ],
-       "status": "lengkap",
-       "catatan": "Dokumen hasil scan; verifikasi isi manual saat interview.",
-       "url_preview": "/bukti-dukung/final/I4-L1-03.pdf",
-       "_ext": "pdf",
-       "_eval_final": true
       }
      ],
      "_l1_lengkap": true,
      "nilai_aktual": 0
     }
    ],
-   "item_aktual": 6,
-   "item_gap": 34,
+   "item_aktual": 4,
+   "item_gap": 32,
    "nilai_aktual": 0.0
   },
   {
@@ -1380,7 +1326,7 @@
      "nilai": 0,
      "target": 2.0,
      "bobot": 4,
-     "sumber": "Bukti dukung terverifikasi (0/35 item)",
+     "sumber": "Bukti diterima asesor (0/35 item)",
      "kontribusi_portal": "Kebijakan privasi, mekanisme consent, form PDP compliant",
      "penanggung_jawab": {
       "lead": "Diskominfo – Bid. Statistik & Persandian",
@@ -1864,8 +1810,8 @@
    "warna": "#859900",
    "deskripsi": "Audit keamanan, keamanan siber (IKASANDI), kriptografi, dan penanganan insiden siber",
    "target": 1.9,
-   "nilai": 0.0,
-   "total_item": 28,
+   "nilai": 0.2,
+   "total_item": 26,
    "koordinator": "Inspektorat; Diskominfo – Bid. Statistik & Persandian",
    "indikator": [
     {
@@ -1875,7 +1821,7 @@
      "nilai": 0,
      "target": 2.0,
      "bobot": 4,
-     "sumber": "Bukti dukung terverifikasi (1/6 item)",
+     "sumber": "Bukti diterima asesor (0/6 item)",
      "kontribusi_portal": "Log audit, rekomendasi keamanan",
      "penanggung_jawab": {
       "lead": "Inspektorat (Koordinator Pokja Keamanan – Audit)",
@@ -1893,10 +1839,9 @@
        "opd": [
         "Diskominfo (Fungsi Persandian)"
        ],
-       "status": "lengkap",
+       "status": "draf",
        "catatan": "SK Bupati No. 555/432/DISKOMINFO/2026 tentang Penunjukan/Penetapan Tim Asesor Internal Evaluasi Kinerja Pemerintah Digital (Pemdi) - menimbang Pasal 5 PermenPANRB 8/2026. Tim lengkap per POKJA aspek.",
-       "url_preview": "/bukti-dukung/KeamananSiber_I9_01_SK-Tim-Asesor-Internal-Pemdi_2026.pdf",
-       "_ext": "pdf"
+       "_arsip": "/bukti-dukung/KeamananSiber_I9_01_SK-Tim-Asesor-Internal-Pemdi_2026.pdf"
       },
       {
        "id": "GT.I9_L1_2",
@@ -1964,7 +1909,7 @@
      "nilai": 0,
      "target": 2.0,
      "bobot": 4,
-     "sumber": "Bukti dukung terverifikasi (0/6 item)",
+     "sumber": "Bukti diterima asesor (0/6 item)",
      "kontribusi_portal": "HTTPS, CSP, OWASP compliance, security headers",
      "penanggung_jawab": {
       "lead": "Diskominfo – Bid. Statistik & Persandian",
@@ -2055,10 +2000,10 @@
      "id": "I11",
      "nama": "Tingkat Kematangan Penerapan Kriptografi untuk Keamanan Data (IKASANDI)",
      "deskripsi": "Penggunaan enkripsi dan tanda tangan digital dalam layanan Pemdi",
-     "nilai": 0,
+     "nilai": 1,
      "target": 1.5,
      "bobot": 3,
-     "sumber": "Bukti dukung terverifikasi (1/7 item)",
+     "sumber": "Bukti diterima asesor (1/6 item)",
      "kontribusi_portal": "HTTPS, enkripsi data pengguna",
      "penanggung_jawab": {
       "lead": "Diskominfo – Bid. Statistik & Persandian",
@@ -2076,8 +2021,17 @@
        "opd": [
         "BSSN"
        ],
-       "status": "belum",
-       "catatan": "Dikosongkan 8 Ags 2026: Perbup 1/2025, Perbup 2/2025, Perbup Sertifikat Elektronik 2021 = regulasi, bukan \"laporan pelaksanaan penerapan teknologi kriptografi\" yang diminta modul. Rawan ditolak. Butuh laporan dari Diskominfo Bidang Persandian (ada draf kerja di workspace: Inventarisasi Aset Dienkripsi & Laporan Awal Kriptografi 2026 — perlu difinalisasi logo/TTD)."
+       "status": "diterima",
+       "catatan": "Inventarisasi aset enkripsi + laporan awal kriptografi 2026",
+       "eval": {
+        "tahap": 1,
+        "kode": "I11-L1-01",
+        "hasil": "diterima",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20"
+       },
+       "url_preview": "/bukti-dukung/final/I11-L1-01.pdf",
+       "_ext": "pdf"
       },
       {
        "id": "GT.I11_L2_1",
@@ -2133,25 +2087,10 @@
        ],
        "status": "belum",
        "catatan": ""
-      },
-      {
-       "id": "GT.I11_L1_2",
-       "level": 1,
-       "nama": "Inventarisasi aset enkripsi + laporan awal kriptografi 2026",
-       "detail": "Bukti dukung final — lolos evaluasi, tahap interview",
-       "opd": [
-        "Diskominfo",
-        "Tim Koordinasi Pemdi"
-       ],
-       "status": "lengkap",
-       "catatan": "Laporan awal penerapan kriptografi untuk keamanan data.",
-       "url_preview": "/bukti-dukung/final/I11-L1-01.pdf",
-       "_ext": "pdf",
-       "_eval_final": true
       }
      ],
      "_l1_lengkap": true,
-     "nilai_aktual": 0
+     "nilai_aktual": 1
     },
     {
      "id": "I12",
@@ -2160,7 +2099,7 @@
      "nilai": 0,
      "target": 2.0,
      "bobot": 4,
-     "sumber": "Bukti dukung terverifikasi (2/9 item)",
+     "sumber": "Bukti diterima asesor (1/8 item)",
      "kontribusi_portal": "Dokumentasi prosedur, contact person",
      "penanggung_jawab": {
       "lead": "Diskominfo – Bid. Statistik & Persandian",
@@ -2180,8 +2119,17 @@
         "BSSN",
         "Inspektorat"
        ],
-       "status": "belum",
-       "catatan": "Dikosongkan 8 Ags 2026: SK CSIRT 2026 + SK Tim 2024 = penetapan tim, bukan \"dokumentasi pelaksanaan penanganan insiden\" yang diminta modul. Draf \"Laporan Penanganan Insiden Siber & Register Insiden Jan-Jun 2026\" (workspace) = jenis persis tapi placeholder [LAMBANG] -> perlu difinalisasi Bidang Persandian Diskominfo."
+       "status": "diterima",
+       "catatan": "Laporan penanganan insiden siber + register Jan–Jun 2026",
+       "eval": {
+        "tahap": 1,
+        "kode": "I12-L1-01",
+        "hasil": "diterima",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20"
+       },
+       "url_preview": "/bukti-dukung/final/I12-L1-01.pdf",
+       "_ext": "pdf"
       },
       {
        "id": "GT.I12_L1_2",
@@ -2192,8 +2140,15 @@
         "BSSN",
         "Inspektorat"
        ],
-       "status": "belum",
-       "catatan": ""
+       "status": "revisi",
+       "catatan": "Asesor: nilai/instrumen IKASANDI area Penanganan Insiden Siber belum dilampirkan — sertakan hasil self-assessment IKASANDI dari BSSN.",
+       "eval": {
+        "tahap": 1,
+        "kode": "I12-L1-02",
+        "hasil": "revisi",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20"
+       }
       },
       {
        "id": "GT.I12_L2_1",
@@ -2204,13 +2159,12 @@
         "BSSN",
         "Inspektorat"
        ],
-       "status": "lengkap",
+       "status": "draf",
        "catatan": "Keputusan Bupati No. 070/273/DISKOMINFO/2025 tentang Penunjukan/Penetapan Tim Tanggap Insiden Siber (AcehTengah-CSIRT) + lampiran Keputusan No. 070/696/DISKOMINFO/2024 (pembentukan TTIS CSIRT).",
-       "url_preview": "/bukti-dukung/KeamananSiber_I12_01_SK-CSIRT-Aceh-Tengah_2026.pdf",
-       "_ext": "pdf",
        "url_lampiran": [
         "/bukti-dukung/KeamananSiber_I12_02_SK-Tim-CSIRT_2024.pdf"
-       ]
+       ],
+       "_arsip": "/bukti-dukung/KeamananSiber_I12_01_SK-CSIRT-Aceh-Tengah_2026.pdf"
       },
       {
        "id": "GT.I12_L2_2",
@@ -2271,30 +2225,15 @@
        ],
        "status": "belum",
        "catatan": ""
-      },
-      {
-       "id": "GT.I12_L1_3",
-       "level": 1,
-       "nama": "Laporan penanganan insiden siber + register Jan-Jun 2026",
-       "detail": "Bukti dukung final — lolos evaluasi, tahap interview",
-       "opd": [
-        "Diskominfo",
-        "Tim Koordinasi Pemdi"
-       ],
-       "status": "lengkap",
-       "catatan": "Register insiden keamanan informasi periode berjalan.",
-       "url_preview": "/bukti-dukung/final/I12-L1-01.pdf",
-       "_ext": "pdf",
-       "_eval_final": true
       }
      ],
      "_l1_lengkap": true,
      "nilai_aktual": 0
     }
    ],
-   "item_aktual": 4,
+   "item_aktual": 2,
    "item_gap": 24,
-   "nilai_aktual": 0.0
+   "nilai_aktual": 0.2
   },
   {
    "id": 5,
@@ -2304,18 +2243,18 @@
    "warna": "#6f42c1",
    "deskripsi": "Kesiapan aplikasi dan infrastruktur teknologi digital pendukung Pemdi",
    "target": 2.0,
-   "nilai": 0.5,
-   "total_item": 24,
+   "nilai": 0.0,
+   "total_item": 23,
    "koordinator": "Kabid TIK; Kabid Layanan E-Government – Diskominfo",
    "indikator": [
     {
      "id": "I13",
      "nama": "Tingkat Kematangan Aplikasi Pemerintah Digital",
      "deskripsi": "Ketersediaan, kualitas, dan keterpaduan aplikasi pendukung Pemdi",
-     "nilai": 1,
+     "nilai": 0,
      "target": 2.0,
      "bobot": 5,
-     "sumber": "Bukti dukung terverifikasi (7/13 item)",
+     "sumber": "Bukti diterima asesor (1/12 item)",
      "kontribusi_portal": "✅ Portal PemdiAcehTengah adalah aplikasi Pemdi utama yang sudah live",
      "penanggung_jawab": {
       "lead": "Diskominfo – Bid. Layanan E-Government (Koordinator Pokja Teknologi Digital)",
@@ -2333,13 +2272,20 @@
        "opd": [
         "Semua OPD"
        ],
-       "status": "lengkap",
-       "catatan": "KAK + Laporan + BAST aplikasi Bapokting (siklus pengembangan lengkap).",
-       "url_preview": "/bukti-dukung/final/I13_L1_Final.pdf",
-       "_ext": "pdf",
+       "status": "diterima",
+       "catatan": "Dokumentasi pengembangan aplikasi (KAK, BA, screenshot)",
        "url_lampiran": [
         "/bukti-dukung/Teknologi_I13_21_Screenshot-Aplikasi-Bapokting_2026.pdf"
-       ]
+       ],
+       "eval": {
+        "tahap": 1,
+        "kode": "I13-L1-01",
+        "hasil": "diterima",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20"
+       },
+       "url_preview": "/bukti-dukung/final/I13-L1-01.pdf",
+       "_ext": "pdf"
       },
       {
        "id": "GT.I13_L1_2",
@@ -2349,10 +2295,15 @@
        "opd": [
         "Semua OPD"
        ],
-       "status": "lengkap",
-       "catatan": "Dipilah dari kompilasi Renstra+Renja 86 hal → Renja 2025 (hal 55-72) untuk klaim program aplikasi. Per pemilahan 2026-08-11.",
-       "url_preview": "/bukti-dukung/final/I13_L1_Renja-2025-Program-Aplikasi.pdf",
-       "_ext": "pdf"
+       "status": "revisi",
+       "catatan": "Asesor: substansi Rencana Aksi Pemdi terkait pembangunan/pengembangan aplikasi belum terlihat dalam dokumen perencanaan — tandai halaman Renstra/Renja yang memuat program aplikasi.",
+       "eval": {
+        "tahap": 1,
+        "kode": "I13-L1-02",
+        "hasil": "revisi",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20"
+       }
       },
       {
        "id": "GT.I13_L1_3",
@@ -2362,10 +2313,9 @@
        "opd": [
         "Semua OPD"
        ],
-       "status": "lengkap",
+       "status": "draf",
        "catatan": "Ekstrak Perbup 48/2025 BAB IV (Referensi Arsitektur) — domain arsitektur aplikasi SPBE. Catatan mandiri: referensi arsitektur aplikasi sesuai permintaan modul.",
-       "url_preview": "/bukti-dukung/TataKelola_I1_31_Perbup48-BAB4-Referensi-Arsitektur_2025.pdf",
-       "_ext": "pdf"
+       "_arsip": "/bukti-dukung/TataKelola_I1_31_Perbup48-BAB4-Referensi-Arsitektur_2025.pdf"
       },
       {
        "id": "GT.I13_L2_1",
@@ -2375,13 +2325,12 @@
        "opd": [
         "Semua OPD"
        ],
-       "status": "lengkap",
+       "status": "draf",
        "catatan": "KAK + Laporan + BAST aplikasi Gemasih (pengembangan aplikasi terdokumentasi).",
-       "url_preview": "/bukti-dukung/final/I13_L2_Final.pdf",
-       "_ext": "pdf",
        "url_lampiran": [
         "/bukti-dukung/Teknologi_I13_22_Screenshot-Aplikasi-Gemasih_2026.pdf"
-       ]
+       ],
+       "_arsip": "/bukti-dukung/final/I13_L2_Final.pdf"
       },
       {
        "id": "GT.I13_L2_2",
@@ -2391,13 +2340,12 @@
        "opd": [
         "Semua OPD"
        ],
-       "status": "lengkap",
+       "status": "draf",
        "catatan": "Diganti dari Renstra Diskominfo (duplikat L1) → Penjelasan Substansi RAN Pemdi pada RENSTRA BAPPEDA 2025-2029 (bukti perencanaan instansi lebih luas) + Renstra Bappeda sebagai lampiran. Per audit 2026-08-11.",
-       "url_preview": "/bukti-dukung/final/I13_L2_Penjelasan-Substansi-RAN-Bappeda_2026.pdf",
-       "_ext": "pdf",
        "url_lampiran": [
         "/bukti-dukung/final/I13_L2_Renstra-Bappeda_2025.pdf"
-       ]
+       ],
+       "_arsip": "/bukti-dukung/final/I13_L2_Penjelasan-Substansi-RAN-Bappeda_2026.pdf"
       },
       {
        "id": "GT.I13_L2_3",
@@ -2418,13 +2366,12 @@
        "opd": [
         "Semua OPD"
        ],
-       "status": "lengkap",
+       "status": "draf",
        "catatan": "KAK + Laporan + Screenshot aplikasi Lepat (pengembangan dan tampilan aplikasi). + BAST serah terima aplikasi Lepat (No. 900/201/DISKOMINFO-BAST/2026, 20 Mei 2026)",
-       "url_preview": "/bukti-dukung/final/I13_L3_Final.pdf",
-       "_ext": "pdf",
        "url_lampiran": [
         "/bukti-dukung/Teknologi_I13_20_BAST-Aplikasi-Lepat_2026.pdf"
-       ]
+       ],
+       "_arsip": "/bukti-dukung/final/I13_L3_Final.pdf"
       },
       {
        "id": "GT.I13_L3_2",
@@ -2480,25 +2427,10 @@
        ],
        "status": "belum",
        "catatan": ""
-      },
-      {
-       "id": "GT.I13_L1_4",
-       "level": 1,
-       "nama": "Dokumen Teknologi L1 (scan, 8 halaman)",
-       "detail": "Bukti dukung final — lolos evaluasi, tahap interview",
-       "opd": [
-        "Diskominfo",
-        "Tim Koordinasi Pemdi"
-       ],
-       "status": "lengkap",
-       "catatan": "Dokumen hasil scan; verifikasi isi manual saat interview.",
-       "url_preview": "/bukti-dukung/final/I13-L1-01.pdf",
-       "_ext": "pdf",
-       "_eval_final": true
       }
      ],
      "_l1_lengkap": true,
-     "nilai_aktual": 1
+     "nilai_aktual": 0
     },
     {
      "id": "I14",
@@ -2507,7 +2439,7 @@
      "nilai": 0,
      "target": 2.0,
      "bobot": 5,
-     "sumber": "Bukti dukung terverifikasi (1/11 item)",
+     "sumber": "Bukti diterima asesor (0/11 item)",
      "kontribusi_portal": "Dokumentasi infrastruktur, SLA layanan",
      "penanggung_jawab": {
       "lead": "Diskominfo – Bid. Layanan E-Government",
@@ -2563,10 +2495,9 @@
         "Kemendigi",
         "BAPPEDA"
        ],
-       "status": "lengkap",
+       "status": "draf",
        "catatan": "Ekstrak Perbup 48/2025 (BAB IV-V) — domain arsitektur infrastruktur SPBE dan PD pembina. Catatan mandiri: referensi arsitektur infrastruktur (jaringan intra, pusat data).",
-       "url_preview": "/bukti-dukung/TataKelola_I1_32_Perbup48-Domain-Pembina_2025.pdf",
-       "_ext": "pdf"
+       "_arsip": "/bukti-dukung/TataKelola_I1_32_Perbup48-Domain-Pembina_2025.pdf"
       },
       {
        "id": "GT.I14_L2_1",
@@ -2657,9 +2588,9 @@
      "nilai_aktual": 0
     }
    ],
-   "item_aktual": 8,
-   "item_gap": 16,
-   "nilai_aktual": 0.5
+   "item_aktual": 1,
+   "item_gap": 22,
+   "nilai_aktual": 0.0
   },
   {
    "id": 6,
@@ -2669,8 +2600,8 @@
    "warna": "#e65100",
    "deskripsi": "Keterpaduan proses bisnis, integrasi aplikasi, portal layanan, dan interoperabilitas data lintas sektor",
    "target": 2.4,
-   "nilai": 0.4667,
-   "total_item": 49,
+   "nilai": 0.7333,
+   "total_item": 45,
    "koordinator": "Bag. Organisasi; BAPPEDA; Diskominfo (E-Gov, TIK, Statistik & Persandian)",
    "indikator": [
     {
@@ -2680,7 +2611,7 @@
      "nilai": 0,
      "target": 2.5,
      "bobot": 4,
-     "sumber": "Bukti dukung terverifikasi (1/12 item)",
+     "sumber": "Bukti diterima asesor (0/12 item)",
      "kontribusi_portal": "✅ Halaman /probis — PPB 3 level terintegrasi",
      "penanggung_jawab": {
       "lead": "Bag. Organisasi (Koordinator Pokja Keterpaduan)",
@@ -2704,10 +2635,9 @@
         "Dinas Perpustakaan & Arsip",
         "Semua OPD"
        ],
-       "status": "lengkap",
+       "status": "draf",
        "catatan": "Ekstrak Perbup 48/2025 (BAB I-II) — definisi Arsitektur SPBE mencakup integrasi proses bisnis. Catatan mandiri: referensi keterpaduan proses bisnis.",
-       "url_preview": "/bukti-dukung/TataKelola_I1_30_Perbup48-BAB2-Definisi-Domain_2025.pdf",
-       "_ext": "pdf"
+       "_arsip": "/bukti-dukung/TataKelola_I1_30_Perbup48-BAB2-Definisi-Domain_2025.pdf"
       },
       {
        "id": "GT.I15_L1_2",
@@ -2874,7 +2804,7 @@
      "nilai": 0,
      "target": 2.5,
      "bobot": 4,
-     "sumber": "Bukti dukung terverifikasi (0/10 item)",
+     "sumber": "Bukti diterima asesor (0/10 item)",
      "kontribusi_portal": "API endpoint Pemdi untuk integrasi data",
      "penanggung_jawab": {
       "lead": "Bag. Organisasi",
@@ -3013,10 +2943,10 @@
      "id": "I17",
      "nama": "Tingkat Kematangan Portal Layanan Digital Pemerintah",
      "deskripsi": "Ketersediaan portal terpadu yang menjadi titik akses utama layanan digital pemerintah daerah",
-     "nilai": 1,
+     "nilai": 2,
      "target": 2.5,
      "bobot": 4,
-     "sumber": "Bukti dukung terverifikasi (7/17 item)",
+     "sumber": "Bukti diterima asesor (4/13 item)",
      "kontribusi_portal": "✅ INI PORTAL KITA — kontribusi langsung dan terukur",
      "penanggung_jawab": {
       "lead": "Bag. Organisasi",
@@ -3036,9 +2966,16 @@
         "Diskominfo",
         "Semua OPD (Penyedia Layanan)"
        ],
-       "status": "lengkap",
-       "catatan": "Perbup 30/2022 Penyelenggaraan MPP + screenshot portal layanan digital (acehtengahkab.go.id) + daftar layanan portal - bukti keberadaan portal layanan digital pada instansi pemerintah daerah.",
-       "url_preview": "/bukti-dukung/final/I17_L1_Portal-Instansi_2026.pdf",
+       "status": "diterima",
+       "catatan": "Rencana Aksi Super App Alpukat Gayo (portal layanan digital)",
+       "eval": {
+        "tahap": 1,
+        "kode": "I17-L1-01",
+        "hasil": "diterima",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20"
+       },
+       "url_preview": "/bukti-dukung/final/I17-L1-01.pdf",
        "_ext": "pdf"
       },
       {
@@ -3050,10 +2987,17 @@
         "Diskominfo",
         "Semua OPD (Penyedia Layanan)"
        ],
-       "status": "lengkap",
-       "catatan": "Portal resmi Pemerintah Kabupaten Aceh Tengah (acehtengahkab.go.id) - portal layanan digital pada IPPD, aktif.",
-       "url_preview": "https://acehtengahkab.go.id",
-       "_ext": "url"
+       "status": "diterima",
+       "catatan": "Portal layanan digital IPPD + matriks integrasi aplikasi",
+       "url_preview": "/bukti-dukung/final/I17-L1-02.pdf",
+       "_ext": "pdf",
+       "eval": {
+        "tahap": 1,
+        "kode": "I17-L1-02",
+        "hasil": "diterima",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20"
+       }
       },
       {
        "id": "GT.I17_L2_1",
@@ -3064,8 +3008,17 @@
         "Diskominfo",
         "Semua OPD (Penyedia Layanan)"
        ],
-       "status": "belum",
-       "catatan": ""
+       "status": "diterima",
+       "catatan": "Rencana layanan digital yang dipadukan pada portal (Rencana Aksi Alpukat Gayo)",
+       "eval": {
+        "tahap": 1,
+        "kode": "I17-L2-01",
+        "hasil": "diterima",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20"
+       },
+       "url_preview": "/bukti-dukung/final/I17-L2-01.pdf",
+       "_ext": "pdf"
       },
       {
        "id": "GT.I17_L2_2",
@@ -3076,13 +3029,20 @@
         "Diskominfo",
         "Semua OPD (Penyedia Layanan)"
        ],
-       "status": "lengkap",
-       "catatan": "Perbup 30/2022 + laporan ketersediaan portal layanan digital (sebagian layanan) + lampiran dokumen portal layanan digital daerah.",
-       "url_preview": "/bukti-dukung/final/I17_L2_Final.pdf",
-       "_ext": "pdf",
+       "status": "diterima",
+       "catatan": "Tangkapan layar portal terpadu (siklus hidup ASN & publik)",
        "url_lampiran": [
         "/bukti-dukung/Keterpaduan_I17_02_PortalLayanan_2026.pdf"
-       ]
+       ],
+       "eval": {
+        "tahap": 1,
+        "kode": "I17-L2-02",
+        "hasil": "diterima",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20"
+       },
+       "url_preview": "/bukti-dukung/final/I17-L2-02.pdf",
+       "_ext": "pdf"
       },
       {
        "id": "GT.I17_L3_1",
@@ -3191,70 +3151,10 @@
        ],
        "status": "belum",
        "catatan": ""
-      },
-      {
-       "id": "GT.I17_L1_3",
-       "level": 1,
-       "nama": "Rencana Aksi Super App Alpukat Gayo (portal layanan digital)",
-       "detail": "Bukti dukung final — lolos evaluasi, tahap interview",
-       "opd": [
-        "Diskominfo",
-        "Tim Koordinasi Pemdi"
-       ],
-       "status": "lengkap",
-       "catatan": "Action plan pengembangan & integrasi portal layanan digital daerah.",
-       "url_preview": "/bukti-dukung/final/I17-L1-01.pdf",
-       "_ext": "pdf",
-       "_eval_final": true
-      },
-      {
-       "id": "GT.I17_L1_4",
-       "level": 1,
-       "nama": "Laporan & matriks integrasi aplikasi + SDLC",
-       "detail": "Bukti dukung final — lolos evaluasi, tahap interview",
-       "opd": [
-        "Diskominfo",
-        "Tim Koordinasi Pemdi"
-       ],
-       "status": "lengkap",
-       "catatan": "Matriks integrasi aplikasi + dokumentasi SDLC dan repository.",
-       "url_preview": "/bukti-dukung/final/I17-L1-02.pdf",
-       "_ext": "pdf",
-       "_eval_final": true
-      },
-      {
-       "id": "GT.I17_L2_3",
-       "level": 2,
-       "nama": "Rencana Aksi Super App Alpukat Gayo (portal layanan digital)",
-       "detail": "Bukti dukung final — lolos evaluasi, tahap interview",
-       "opd": [
-        "Diskominfo",
-        "Tim Koordinasi Pemdi"
-       ],
-       "status": "lengkap",
-       "catatan": "Dokumen sama mendukung L1 & L2 (pola multi-level, valid).",
-       "url_preview": "/bukti-dukung/final/I17-L2-01.pdf",
-       "_ext": "pdf",
-       "_eval_final": true
-      },
-      {
-       "id": "GT.I17_L2_4",
-       "level": 2,
-       "nama": "Halaman utama portal integrasi (screenshot)",
-       "detail": "Bukti dukung final — lolos evaluasi, tahap interview",
-       "opd": [
-        "Diskominfo",
-        "Tim Koordinasi Pemdi"
-       ],
-       "status": "lengkap",
-       "catatan": "Tangkapan layar portal integrasi: siklus hidup ASN & publik.",
-       "url_preview": "/bukti-dukung/final/I17-L2-02.pdf",
-       "_ext": "pdf",
-       "_eval_final": true
       }
      ],
      "_l1_lengkap": true,
-     "nilai_aktual": 1
+     "nilai_aktual": 2
     },
     {
      "id": "I18",
@@ -3418,9 +3318,9 @@
      "_nilai_menunggu_eksternal": true
     }
    ],
-   "item_aktual": 8,
+   "item_aktual": 4,
    "item_gap": 41,
-   "nilai_aktual": 0.4667
+   "nilai_aktual": 0.7333
   },
   {
    "id": 7,
@@ -3431,7 +3331,7 @@
    "deskripsi": "Fasilitas dukungan pengguna dan pengelolaan kepuasan pengguna layanan digital pemerintah",
    "target": 2.8,
    "nilai": 0.0,
-   "total_item": 34,
+   "total_item": 32,
    "koordinator": "DPMPTSP; Diskominfo – Bid. Layanan E-Government",
    "indikator": [
     {
@@ -3441,7 +3341,7 @@
      "nilai": 0,
      "target": 2.5,
      "bobot": 10,
-     "sumber": "Bukti dukung terverifikasi (1/9 item)",
+     "sumber": "Bukti diterima asesor (0/9 item)",
      "kontribusi_portal": "✅ Widget Lapor, halaman FAQ, form SKM, informasi layanan",
      "penanggung_jawab": {
       "lead": "DPMPTSP (Koordinator Pokja Kepuasan – Fasilitas Dukungan Pengguna)",
@@ -3461,13 +3361,12 @@
         "Diskominfo",
         "Semua OPD (Penyedia Layanan)"
        ],
-       "status": "lengkap",
+       "status": "draf",
        "catatan": "Daftar SLA 25 layanan digital di 7 sektor (portal Pemdi, live) + Perbup 126/2019 Pedoman Standar Pelayanan (dasar hukum SLA). Bukti dari sistem yang berjalan.",
-       "url_preview": "/bukti-dukung/final/I19_L1_SLA-Layanan-Digital_2026.pdf",
        "url_lampiran": [
         "/bukti-dukung/TataKelola_I2_01_Perbup-126-Standar-Pelayanan_2019.pdf"
        ],
-       "_ext": "pdf"
+       "_arsip": "/bukti-dukung/final/I19_L1_SLA-Layanan-Digital_2026.pdf"
       },
       {
        "id": "GT.I19_L1_2",
@@ -3478,10 +3377,9 @@
         "Diskominfo",
         "Semua OPD (Penyedia Layanan)"
        ],
-       "status": "proses",
+       "status": "draf",
        "catatan": "Diturunkan ke proses: file yang ada hanya daftar SLA per layanan, belum SLA per-proses sesuai modul. Per audit 2026-08-11.",
-       "url_preview": "/bukti-dukung/final/I19_L1_SLA-Layanan-Digital_2026.pdf",
-       "_ext": "pdf"
+       "_arsip": "/bukti-dukung/final/I19_L1_SLA-Layanan-Digital_2026.pdf"
       },
       {
        "id": "GT.I19_L2_1",
@@ -3492,14 +3390,13 @@
         "Diskominfo",
         "Semua OPD (Penyedia Layanan)"
        ],
-       "status": "proses",
+       "status": "draf",
        "catatan": "Diturunkan ke proses: file hanya daftar SLA, tidak ada dokumentasi fasilitas dukungan pengguna + sistem pemantauan SLA. Per audit 2026-08-11.",
-       "url_preview": "/bukti-dukung/final/I19_L1_SLA-Layanan-Digital_2026.pdf",
        "url_lampiran": [
         "/bukti-dukung/Kepuasan_I19_01_Perbup-21-Pedoman_2021.pdf",
         "/bukti-dukung/TataKelola_I2_05_Pedoman-Pengaduan-RSUD_2026.pdf"
        ],
-       "_ext": "pdf"
+       "_arsip": "/bukti-dukung/final/I19_L1_SLA-Layanan-Digital_2026.pdf"
       },
       {
        "id": "GT.I19_L3_1",
@@ -3584,7 +3481,7 @@
      "nilai": 0,
      "target": 3.0,
      "bobot": 15,
-     "sumber": "Bukti dukung terverifikasi (3/25 item)",
+     "sumber": "Bukti diterima asesor (2/23 item)",
      "kontribusi_portal": "✅ Survei SKM online, dashboard kepuasan, laporan real-time",
      "penanggung_jawab": {
       "lead": "DPMPTSP (Koordinator Pokja Kepuasan – Pengelolaan Kepuasan Pengguna)",
@@ -3606,13 +3503,20 @@
         "Bag. Organisasi",
         "seluruh PD penyelenggara layanan"
        ],
-       "status": "lengkap",
-       "catatan": "SKM Online yang diterapkan Pemkab Aceh Tengah: hasil IKM Jan-Mei 2026 (79-82, OpenData) + laporan SKM Kebayakan 2025 + unit pelayanan peserta. Hasil kepuasan dilihat melalui portal instansi.",
-       "url_preview": "/bukti-dukung/final/I20_L1_SKM-Online_2026.pdf",
+       "status": "diterima",
+       "catatan": "SKM Online Triwulan II 2026 — 52 unit layanan",
        "url_lampiran": [
         "/bukti-dukung/Kepuasan_I19_06_Hasil-Survei-Kepuasan_2026.xlsx",
         "/bukti-dukung/Kepuasan_I20_02_SKM-Kebayakan_2025.pdf"
        ],
+       "eval": {
+        "tahap": 1,
+        "kode": "I20-L1-01",
+        "hasil": "diterima",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20"
+       },
+       "url_preview": "/bukti-dukung/final/I20-L1-01.pdf",
        "_ext": "pdf"
       },
       {
@@ -3625,9 +3529,16 @@
         "Bag. Organisasi",
         "seluruh PD penyelenggara layanan"
        ],
-       "status": "proses",
-       "catatan": "Diturunkan ke proses: file yang ada hasil SKM, bukan data jumlah transaksi layanan digital 1 tahun. Per audit 2026-08-11.",
-       "url_preview": "/bukti-dukung/final/I20_L1_SKM-Online_2026.pdf",
+       "status": "diterima",
+       "catatan": "Rekap transaksi/respons SKM Online Triwulan II 2026",
+       "eval": {
+        "tahap": 1,
+        "kode": "I20-L1-02",
+        "hasil": "diterima",
+        "portal": "eval.spbe.go.id",
+        "tanggal": "2026-09-20"
+       },
+       "url_preview": "/bukti-dukung/final/I20-L1-02.pdf",
        "_ext": "pdf"
       },
       {
@@ -3666,10 +3577,9 @@
         "Bag. Organisasi",
         "seluruh PD penyelenggara layanan"
        ],
-       "status": "proses",
+       "status": "draf",
        "catatan": "Diturunkan ke proses: modul L2 minta widget/fitur umpan balik di layanan digital, file yang ada hanya hasil SKM. Per audit 2026-08-11.",
-       "url_preview": "/bukti-dukung/final/I20_L1_SKM-Online_2026.pdf",
-       "_ext": "pdf"
+       "_arsip": "/bukti-dukung/final/I20_L1_SKM-Online_2026.pdf"
       },
       {
        "id": "GT.I20_L2_2",
@@ -3904,59 +3814,29 @@
        ],
        "status": "belum",
        "catatan": ""
-      },
-      {
-       "id": "GT.I20_L1_5",
-       "level": 1,
-       "nama": "SKM Online Triwulan II 2026 (52 unit layanan)",
-       "detail": "Bukti dukung final — lolos evaluasi, tahap interview",
-       "opd": [
-        "Diskominfo",
-        "Tim Koordinasi Pemdi"
-       ],
-       "status": "lengkap",
-       "catatan": "Survei Kepuasan Masyarakat online periode April-Juni 2026, target 500 respon.",
-       "url_preview": "/bukti-dukung/final/I20-L1-01.pdf",
-       "_ext": "pdf",
-       "_eval_final": true
-      },
-      {
-       "id": "GT.I20_L1_6",
-       "level": 1,
-       "nama": "SKM Online Triwulan II 2026 (rekap unit layanan)",
-       "detail": "Bukti dukung final — lolos evaluasi, tahap interview",
-       "opd": [
-        "Diskominfo",
-        "Tim Koordinasi Pemdi"
-       ],
-       "status": "lengkap",
-       "catatan": "Dokumen sama mendukung slot kedua (pola multi-level, valid).",
-       "url_preview": "/bukti-dukung/final/I20-L1-02.pdf",
-       "_ext": "pdf",
-       "_eval_final": true
       }
      ],
      "_l1_lengkap": false,
      "nilai_aktual": 0
     }
    ],
-   "item_aktual": 4,
+   "item_aktual": 2,
    "item_gap": 30,
    "nilai_aktual": 0.0
   }
  ],
- "target_item_bukti": 250,
- "indeks_terkini": 0.38,
- "indeks_aktual": 0.38,
- "indeks_label": "Capaian terverifikasi dari 47 bukti lengkap · 250 item · target 2.5",
- "indeks_sumber": "Rumus resmi PermenPANRB 8/2026 (Lampiran, hlm. -37- s.d. -39-) · 47 bukti lengkap · 250 item",
+ "target_item_bukti": 232,
+ "indeks_terkini": 0.35,
+ "indeks_aktual": 0.35,
+ "indeks_label": "Simulasi Penilaian Mandiri — bukan nilai resmi asesor",
+ "indeks_sumber": "Rumus resmi PermenPANRB 8/2026 (Lampiran, hlm. -37- s.d. -39-) · hanya bukti DITERIMA di eval.spbe.go.id yang dihitung (18 diterima · 5 revisi · 19 draf lokal · 190 belum · 232 item)",
  "perhitungan": {
   "rumus_aspek": "Indeks Aspek_i = Σ(wIj × NIj) / wAi",
   "rumus_indeks": "Indeks Pemdi = Σ(wAspek_i × Indeks Aspek_i)",
   "sumber_rumus": "PermenPANRB No. 8 Tahun 2026 — Lampiran Pedoman Evaluasi Kinerja Pemdi, Bagian B Metode Penghitungan Indeks Pemdi (hlm. -37- s.d. -39-)",
-  "nilai_indikator": "Tingkat kematangan 1–5 — level kontinu dengan seluruh bukti dukung utama ber-status lengkap",
+  "nilai_indikator": "Tingkat kematangan 1–5 — level kontinu dengan seluruh butir bukti utama ber-status DITERIMA asesor (simulasi mandiri)",
   "indikator_eksternal": "I5 (SDI/Bappenas), I6 (SJIG/BIG), I7 (EPSS/BPS), I18 (strategi tim) — nilai minimum 1 selama `eksternal.nilai` belum diisi",
-  "diperbarui": "2026-09-15"
+  "diperbarui": "2026-09-20"
  },
  "proyeksi": {
   "target_indeks": 2.5,
@@ -3967,5 +3847,52 @@
    "baik": 2.5
   },
   "ket_skenario": "Skenario Panduan Bab 8.5: seluruh fase dijalankan → 2,375 (Cukup); kerja keras kepuasan pengguna (I20 ≥ 3,5) → 2,50 (Baik)"
+ },
+ "penilaian_tahap1": {
+  "portal": "https://eval.spbe.go.id",
+  "tanggal_sinkron": "2026-09-20",
+  "status": "Tahap 1 selesai dinilai — menunggu jadwal unggah revisi & tahap berikutnya",
+  "diunggah": 23,
+  "diterima": 18,
+  "revisi": 5,
+  "kode_diterima": [
+   "I1-L1-01",
+   "I1-L2-01",
+   "I1-L2-03",
+   "I11-L1-01",
+   "I12-L1-01",
+   "I13-L1-01",
+   "I17-L1-01",
+   "I17-L1-02",
+   "I17-L2-01",
+   "I17-L2-02",
+   "I2-L1-01",
+   "I2-L1-02",
+   "I20-L1-01",
+   "I20-L1-02",
+   "I3-L1-01",
+   "I3-L1-02",
+   "I4-L1-01",
+   "I4-L1-03"
+  ],
+  "kode_revisi": [
+   "I1-L2-02",
+   "I4-L1-02",
+   "I4-L2-02",
+   "I12-L1-02",
+   "I13-L1-02"
+  ],
+  "indikator_disentuh": [
+   "I1",
+   "I2",
+   "I3",
+   "I4",
+   "I11",
+   "I12",
+   "I13",
+   "I17",
+   "I20"
+  ],
+  "konvensi_kode": "I{indikator}-L{level}-{nomor urut butir bukti di dalam level pada Modul Indikator}"
  }
 }

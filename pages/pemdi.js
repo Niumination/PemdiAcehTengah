@@ -9,18 +9,15 @@ import { formatDesimal } from '@/lib/format';
 import {
   LEVEL_LABEL,
   LEVEL_NAMA_RESMI,
+  STATUS_META,
   indeksPemdi,
   nilaiIndikator,
   predikatPemdi,
   statistikBukti,
+  statistikIndikator,
 } from '@/lib/pemdiNilai';
 
-// ── Konstanta visual (sama dengan halaman modul-indikator agar konsisten) ──
-const STATUS_META = {
-  belum:   { icon: '⬜', label: 'Belum',     color: 'var(--muted)', bg: 'var(--surface-2)' },
-  proses:  { icon: '🔄', label: 'Proses',    color: 'var(--warn)', bg: 'var(--warn-bg)' },
-  lengkap: { icon: '✅', label: 'Lengkap',    color: 'var(--ok)', bg: 'var(--ok-bg)' },
-};
+// STATUS_META (diterima/revisi/proses/draf/belum) di-import dari lib/pemdiNilai.js — satu sumber untuk /pemdi, /modul-indikator, beranda
 // Palet level (B4): nilai literal (dipakai dengan concat alpha `${warna}18`)
 //  — dipilih agar kontras WCAG >= 5:1 vs putih & putih di atasnya (audit kontras 2026-09-18)
 const LEVEL_WARNA = { 0: 'var(--muted)', 1: '#b91c1c', 2: '#ab5708', 3: '#1d4ed8', 4: '#047857', 5: '#6d28d9' };
@@ -34,18 +31,12 @@ function CountStat({ value, decimals = 0, color, style }) {
 }
 
 export default function PemdiPage({ pemdiData, modulData, dokumenKunci, buktiMapping, kebutuhanData }) {
-  const { aspek, target_indeks, target_predikat, baseline_spbe, perhitungan, proyeksi } = pemdiData;
+  const { aspek, target_indeks, target_predikat, baseline_spbe, perhitungan, proyeksi, penilaian_tahap1: tahap1 } = pemdiData;
 
 // ── Helpers checklist ──
 function hitungStatusInd(ind) {
-  if (!ind?.bukti_dukung) return { count: 0, lengkap: 0, proses: 0, belum: 0 };
-  const bd = ind.bukti_dukung;
-  return {
-    count: bd.length,
-    lengkap: bd.filter(b => b.status === 'lengkap').length,
-    proses: bd.filter(b => b.status === 'proses').length,
-    belum: bd.filter(b => b.status === 'belum' || !b.status).length,
-  };
+  const st = statistikIndikator(ind);
+  return { ...st, count: st.total };
 }
 
 function getDokumenForBukti(indId, buktiId) {
@@ -87,7 +78,7 @@ function rekomendasiInd(ind, kriteriaFn) {
       reco.push({
         icon: '📈',
         level: next,
-        teks: `Nilai saat ini ${formatDesimal(nilai, nilai % 1 ? 1 : 0)} < target ${formatDesimal(target, 1)} — lengkapi bukti Level ${next} (${LEVEL_LABEL[next]}) agar naik.`,
+        teks: `Nilai simulasi ${formatDesimal(nilai, nilai % 1 ? 1 : 0)} < target ${formatDesimal(target, 1)} — seluruh butir Level ${next} (${LEVEL_LABEL[next]}) harus DITERIMA asesor agar naik.`,
         kriteria: krit,
       });
     } else {
@@ -110,9 +101,12 @@ function rekomendasiInd(ind, kriteriaFn) {
     }
   }
 
-  // 3. Bukti ber-status belum/proses — perlu verifikasi
-  if (st.proses > 0) reco.push({ icon: '🔄', teks: `${st.proses} bukti ber-status Proses (sudah diunggah ke portal eval.spbe.go.id) — verifikasi kesesuaian kriteria level.` });
-  if (st.belum > 0) reco.push({ icon: '⬜', teks: `${st.belum} bukti ber-status Belum — lengkapi & unggah ke portal eval.spbe.go.id.` });
+  // 3. Bukti ber-status revisi/proses/draf/belum — tindak lanjut
+  const revisiItems = (ind.bukti_dukung || []).filter(b => b.status === 'revisi');
+  if (revisiItems.length > 0) reco.push({ icon: '🔁', teks: `PRIORITAS — ${revisiItems.length} bukti hasil asesor REVISI (${revisiItems.map(b => b.eval?.kode || b.id).join(', ')}): perbaiki sesuai catatan asesor & unggah ulang di eval.spbe.go.id.` });
+  if (st.proses > 0) reco.push({ icon: '🔄', teks: `${st.proses} bukti sudah diunggah ke eval.spbe.go.id — menunggu hasil asesor.` });
+  if (st.draf > 0) reco.push({ icon: '📝', teks: `${st.draf} bukti masih draf lokal (belum diunggah) — finalisasi (paraf/stempel/tanda tangan) lalu unggah pada tahap berikutnya.` });
+  if (st.belum > 0) reco.push({ icon: '⬜', teks: `${st.belum} butir belum ada dokumen — lihat contoh/draf di halaman Draf Bukti Dukung (/requirement).` });
 
   // 4. Dokumen kunci yang belum ter-cover untuk indikator ini
   const dkInd = (dokumenKunci.dokumen || []).filter(d => (d.indikator || []).includes(ind.id));
@@ -128,14 +122,14 @@ function rekomendasiInd(ind, kriteriaFn) {
     });
   }
 
-  if (reco.length === 0) reco.push({ icon: '✅', teks: 'Semua level yang dibutuhkan sudah punya bukti lengkap.' });
+  if (reco.length === 0) reco.push({ icon: '✅', teks: 'Semua level yang dibutuhkan sudah punya bukti yang diterima asesor.' });
   return reco;
 }
 
 function defaultCatatan(ind) {
   const st = hitungStatusInd(ind);
   const buktis = (ind.bukti_dukung || [])
-    .map(b => `- ${b.nama} (Level ${b.level}, status: ${STATUS_META[b.status]?.label || 'Belum'})`)
+    .map(b => `- ${b.eval?.kode ? `[${b.eval.kode}] ` : ''}${b.nama} (Level ${b.level}, status: ${STATUS_META[b.status]?.label || 'Belum'})`)
     .join('\n');
   return `Catatan Mandiri ${ind.id} — ${ind.nama}\n\nBukti dukung disusun untuk memenuhi kriteria indikator ${ind.id} (${ind.nama}).\nDokumen yang dilampirkan:\n${buktis || '- (belum ada bukti)'}\n\nCatatan ini dilampirkan saat unggah bukti dukung di portal eval.spbe.go.id.`;
 }
@@ -238,14 +232,22 @@ function defaultCatatan(ind) {
         <MotifEmun size={320} style={{ position: 'absolute', top: -24, right: -18, opacity: 0.5 }} />
         <MotifTapak size={120} style={{ position: 'absolute', bottom: -16, left: 24, opacity: 0.35 }} />
         <div style={{ position: 'relative', zIndex: 2 }}>
-          <span className="pill">⚖️ PermenPANRB No. 8 Tahun 2026</span>
+          <span className="pill">⚖️ PermenPANRB No. 8 Tahun 2026 · Kokpit Penilaian Mandiri</span>
           <h1 className="gold-head" style={{ fontSize: 'clamp(22px, 3vw, 34px)', margin: '8px 0 12px' }}>
-            Indeks Kematangan Pemerintah Digital (Pemdi) 2026
+            Kokpit Evaluasi Kinerja Pemerintah Digital (Pemdi) 2026
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.9)', maxWidth: '680px', lineHeight: 1.6, fontSize: '0.98rem' }}>
-            Transformasi menyeluruh tata kelola pemerintahan digital Kabupaten Aceh Tengah.
-            Mengukur <strong>7 Aspek Utama</strong> dan <strong>20 Indikator Kunci</strong> menuju target indeks <strong>≥ 2,50</strong>.
+            Perangkat kerja Tim Koordinasi Pemdi Kabupaten Aceh Tengah untuk memantau <strong>7 Aspek</strong> dan <strong>20 Indikator</strong>
+            — status bukti dukung mengikuti hasil penilaian asesor di <strong>eval.spbe.go.id</strong>. Target indeks <strong>≥ 2,50</strong>.
           </p>
+          {tahap1 && (
+            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginTop: '14px' }}>
+              <span className="stat-badge" style={{ background: 'rgba(255,255,255,0.14)', color: '#fff', border: '1px solid rgba(255,255,255,0.3)' }}>📤 Tahap 1: {tahap1.diunggah} bukti diunggah</span>
+              <span className="stat-badge" style={{ background: 'rgba(16,185,129,0.25)', color: '#fff', border: '1px solid rgba(255,255,255,0.3)' }}>✅ {tahap1.diterima} diterima</span>
+              <span className="stat-badge" style={{ background: 'rgba(239,68,68,0.3)', color: '#fff', border: '1px solid rgba(255,255,255,0.3)' }}>🔁 {tahap1.revisi} revisi</span>
+              <span className="stat-badge" style={{ background: 'rgba(255,255,255,0.14)', color: '#fff', border: '1px solid rgba(255,255,255,0.3)' }}>📅 Sinkron {tahap1.tanggal_sinkron}</span>
+            </div>
+          )}
         </div>
       </section>
 
@@ -260,7 +262,7 @@ function defaultCatatan(ind) {
             <span className="badge badge-yellow">Level Kematangan Cukup</span>
           </div>
           <div className="glow-card" style={{ padding: '20px', textAlign: 'center', '--i': 1, borderColor: 'var(--primary)' }}>
-            <div style={{ fontSize: '0.78rem', color: 'var(--primary)', textTransform: 'uppercase', fontWeight: 800, letterSpacing: '0.05em' }}>Indeks Pemdi — Capaian Terverifikasi</div>
+            <div style={{ fontSize: '0.78rem', color: 'var(--primary)', textTransform: 'uppercase', fontWeight: 800, letterSpacing: '0.05em' }}>Simulasi Penilaian Mandiri</div>
             <div style={{ fontSize: '2.2rem', fontWeight: 800, margin: '6px 0' }}>
               <CountStat value={indeks} decimals={2} color="var(--primary)" />
             </div>
@@ -268,7 +270,10 @@ function defaultCatatan(ind) {
               Predikat: {predikat?.label}
             </span>
             <div style={{ fontSize: '0.68rem', color: 'var(--muted)', marginTop: '6px' }}>
-              Rumus resmi PermenPANRB 8/2026 · dari {statGlobal.lengkap} bukti lengkap · {statGlobal.total} item
+              Rumus resmi PermenPANRB 8/2026 · hanya {statGlobal.diterima} bukti <strong>diterima asesor</strong> yang dihitung · {statGlobal.total} item
+            </div>
+            <div style={{ fontSize: '0.66rem', color: 'var(--warn)', marginTop: '4px', fontWeight: 700 }}>
+              ⚠️ Bukan nilai resmi — nilai resmi ditetapkan KemenPANRB setelah seluruh tahap evaluasi.
             </div>
           </div>
           <div className="glow-card" style={{ padding: '20px', textAlign: 'center', '--i': 2 }}>
@@ -291,7 +296,8 @@ function defaultCatatan(ind) {
             <p>
               Dihitung dengan rumus resmi pada Lampiran PermenPANRB No. 8 Tahun 2026 (Pedoman Evaluasi
               Kinerja Pemdi — Bagian B &ldquo;Metode Penghitungan Indeks Pemdi&rdquo;, hlm. -37- s.d. -39-).
-              Nilai tiap indikator = tingkat kematangan 1–5 berbasis kelengkapan bukti dukung.
+              Nilai tiap indikator = tingkat kematangan 1–5 berbasis butir bukti yang <strong>diterima asesor</strong> di eval.spbe.go.id
+              (simulasi mandiri — bukan nilai resmi).
             </p>
           </div>
         </div>
@@ -374,7 +380,7 @@ function defaultCatatan(ind) {
           {/* Tolak ukur & proyeksi */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', gap: '10px', marginTop: '16px' }}>
             {[
-              { label: 'Capaian terverifikasi saat ini', nilai: indeks, ket: `${statGlobal.lengkap}/${statGlobal.total} bukti lengkap`, warna: 'var(--primary)' },
+              { label: 'Simulasi mandiri saat ini (tahap 1)', nilai: indeks, ket: `${statGlobal.diterima}/${statGlobal.total} bukti diterima asesor`, warna: 'var(--primary)' },
               { label: 'Proyeksi bila seluruh target indikator tercapai', nilai: hasilTarget.indeks, ket: 'Target indikator Panduan Bab 4.2 — dihitung rumus resmi', warna: 'var(--gold-deep, #b8860b)' },
               { label: 'Skenario Panduan Bab 8.5 (semua fase)', nilai: proyeksi?.skenario_panduan_bab8_5?.cukup ?? 2.375, ket: 'Predikat Cukup (Membangun)', warna: 'var(--warn)' },
               { label: 'Skenario kerja keras Kepuasan Pengguna', nilai: proyeksi?.skenario_panduan_bab8_5?.baik ?? 2.5, ket: `Target resmi ≥ ${formatDesimal(target_indeks, 2)} — Predikat Baik`, warna: 'var(--ok)' },
@@ -388,8 +394,8 @@ function defaultCatatan(ind) {
           </div>
 
           <p style={{ fontSize: '0.68rem', color: 'var(--muted)', marginTop: '12px', lineHeight: 1.6 }}>
-            * Nilai 0 = belum ada bukti Level 1 yang lengkap (bukan nilai evaluasi resmi — skala kuesioner dimulai dari 1).
-            Nilai indikator dihitung dari level kontinu yang seluruh bukti utamanya ber-status lengkap; indikator eksternal
+            * Nilai 0 = belum ada butir Level 1 yang diterima asesor (bukan nilai evaluasi resmi — skala kuesioner dimulai dari 1).
+            Nilai indikator dihitung dari level kontinu yang seluruh butir utamanya ber-status <strong>Diterima</strong>; bukti Revisi/Proses/Draf tidak dihitung; indikator eksternal
             (I5 SDI · I6 SJIG · I7 EPSS · I18) memakai nilai minimum 1 selama skor sistem nasional belum tersedia.
             Bobot mengacu Tabel 1 PermenPANRB 8/2026. {perhitungan?.diperbarui ? `Diperbarui: ${perhitungan.diperbarui}.` : ''}
           </p>
@@ -444,11 +450,12 @@ function defaultCatatan(ind) {
       <section data-reveal style={{ marginBottom: '40px' }}>
         <div className="sec-head">
           <div>
-            <div className="eyebrow">Checklist Persiapan Upload Bukti Dukung</div>
+            <div className="eyebrow">Status Bukti Dukung — hasil eval.spbe.go.id</div>
             <h2>📋 Checklist Bukti Dukung per Indikator</h2>
             <p>
-              Status ketersediaan bukti per level (sinkron dengan halaman Modul Indikator), preview dokumen yang tersedia,
-              rekomendasi pelengkap, dan catatan mandiri yang disiapkan untuk unggah di portal eval.spbe.go.id.
+              Status tiap butir mengikuti hasil penilaian asesor (Tahap 1): <strong>Diterima</strong> (PDF tersedia, kode <code>I#-L#-##</code>),
+              <strong> Revisi</strong> (perbaiki & unggah ulang), <strong>Draf</strong> (arsip lokal, belum diunggah), <strong>Belum</strong> (belum ada dokumen).
+              Sinkron dengan halaman Modul Indikator.
               <strong style={{ color: 'var(--primary)' }}> Pilih indikator di bilah kiri →</strong>
             </p>
           </div>
@@ -459,12 +466,11 @@ function defaultCatatan(ind) {
           <span className="stat-badge" style={{ background: 'var(--surface-2)', color: 'var(--muted)' }}>
             📦 {statGlobal.total} item bukti dukung
           </span>
-          <span className="stat-badge" style={{ background: 'var(--ok-bg)', color: 'var(--ok)' }}>
-            ✅ {statGlobal.lengkap} Lengkap
-          </span>
-          <span className="stat-badge" style={{ background: 'var(--surface-2)', color: 'var(--muted)' }}>
-            ⬜ {statGlobal.belum} Belum
-          </span>
+          {['diterima', 'revisi', 'proses', 'draf', 'belum'].filter(k => k !== 'proses' || statGlobal.proses > 0).map(k => (
+            <span key={k} className="stat-badge" style={{ background: STATUS_META[k].bg, color: STATUS_META[k].color }} title={STATUS_META[k].ket}>
+              {STATUS_META[k].icon} {statGlobal[k]} {STATUS_META[k].label}
+            </span>
+          ))}
           <span className="stat-badge" style={{ background: 'var(--primary-bg, #e3edff)', color: 'var(--primary)' }}>
             🎯 Gap: {statGlobal.gap} item
           </span>
@@ -473,7 +479,7 @@ function defaultCatatan(ind) {
             className="stat-badge"
             style={{ background: 'var(--ok-bg)', color: 'var(--ok)', textDecoration: 'none' }}
           >
-            📌 Matriks kebutuhan L1–L2: {kebutuhanData.cakupan.total_kebutuhan} butir · {kebutuhanData.status_indikasi.lengkap} indikasi lengkap →
+            📌 Matriks kebutuhan L1–L2: {kebutuhanData.cakupan.total_kebutuhan} butir →
           </Link>
         </div>
 
@@ -510,7 +516,8 @@ function defaultCatatan(ind) {
                 .flatMap(a => a.indikator.map(ind => ({ ind, a })))
                 .map(({ ind, a }) => {
                   const st = hitungStatusInd(ind);
-                  const pct = st.count > 0 ? (st.lengkap / st.count) * 100 : 0;
+                  const pct = st.count > 0 ? (st.diterima / st.count) * 100 : 0;
+                  const adaRevisi = st.revisi > 0;
                   const aktif = pilihInd === ind.id;
                   return (
                     <button
@@ -528,8 +535,9 @@ function defaultCatatan(ind) {
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
                         <span className="badge badge-blue">{ind.id}</span>
                         <span style={{ fontSize: '0.68rem', color: 'var(--muted)' }}>{a.nama.slice(0, 22)}</span>
-                        <span style={{ marginLeft: 'auto', fontSize: '0.72rem', fontWeight: 700, fontFamily: 'var(--font-mono)', color: st.lengkap === st.count && st.count > 0 ? 'var(--ok)' : 'var(--muted)' }}>
-                          {st.lengkap}/{st.count}
+                        {adaRevisi && <span title={`${st.revisi} bukti perlu revisi`} style={{ fontSize: '0.66rem', fontWeight: 800, color: 'var(--bad)' }}>🔁 {st.revisi}</span>}
+                        <span style={{ marginLeft: adaRevisi ? 0 : 'auto', fontSize: '0.72rem', fontWeight: 700, fontFamily: 'var(--font-mono)', color: st.diterima === st.count && st.count > 0 ? 'var(--ok)' : 'var(--muted)' }}>
+                          {st.diterima}/{st.count}
                         </span>
                       </div>
                       <div style={{ fontSize: '0.78rem', fontWeight: 600, color: 'var(--text)', lineHeight: 1.3, marginBottom: '6px' }}>
@@ -580,8 +588,10 @@ function defaultCatatan(ind) {
                           ⏳ Eksternal
                         </span>
                       )}
-                      <span className="stat-badge" style={{ background: 'var(--ok-bg)', color: 'var(--ok)', fontSize: '0.68rem' }}>✅ {st.lengkap}</span>
-                      <span className="stat-badge" style={{ background: 'var(--surface-2)', color: 'var(--muted)', fontSize: '0.68rem' }}>⬜ {st.belum}</span>
+                      <span className="stat-badge" style={{ background: STATUS_META.diterima.bg, color: STATUS_META.diterima.color, fontSize: '0.68rem' }}>✅ {st.diterima}</span>
+                      {st.revisi > 0 && <span className="stat-badge" style={{ background: STATUS_META.revisi.bg, color: STATUS_META.revisi.color, fontSize: '0.68rem' }}>🔁 {st.revisi}</span>}
+                      {st.draf > 0 && <span className="stat-badge" style={{ background: STATUS_META.draf.bg, color: STATUS_META.draf.color, fontSize: '0.68rem' }}>📝 {st.draf}</span>}
+                      <span className="stat-badge" style={{ background: STATUS_META.belum.bg, color: STATUS_META.belum.color, fontSize: '0.68rem' }}>⬜ {st.belum}</span>
                       <Link href={`/modul-indikator?modul=${ind.id.replace('I', '')}`} style={{ fontSize: '0.72rem', fontWeight: 600, color: 'var(--primary)', textDecoration: 'none', padding: '3px 10px', borderRadius: '6px', background: 'var(--primary-bg)', border: '1px solid var(--primary-line)' }}>
                         Modul →
                       </Link>
@@ -606,7 +616,7 @@ function defaultCatatan(ind) {
                             L{level} · {LEVEL_LABEL[level]}
                           </span>
                           <span style={{ fontSize: '0.68rem', fontWeight: 700, color: 'var(--muted)' }}>
-                            {items.filter(i => i.status === 'lengkap').length}/{items.length}
+                            {items.filter(i => i.status === 'diterima').length}/{items.length}
                           </span>
                         </div>
                         {items.length === 0 ? (
@@ -617,10 +627,16 @@ function defaultCatatan(ind) {
                               const sm = STATUS_META[b.status] || STATUS_META.belum;
                               const dkNos = getDokumenForBukti(ind.id, b.id);
                               return (
-                                <div key={b.id} style={{ fontSize: '0.7rem', color: 'var(--ink-secondary)', display: 'flex', alignItems: 'flex-start', gap: '4px' }}>
-                                  <span title={sm.label}>{sm.icon}</span>
+                                <div key={b.id} style={{ fontSize: '0.7rem', color: 'var(--ink-secondary)', display: 'flex', alignItems: 'flex-start', gap: '4px', ...(b.status === 'revisi' ? { background: STATUS_META.revisi.bg, borderLeft: `3px solid ${STATUS_META.revisi.color}`, padding: '3px 6px', borderRadius: '4px' } : {}) }}>
+                                  <span title={`${sm.label} — ${sm.ket}`}>{sm.icon}</span>
                                   <span style={{ flex: 1, lineHeight: 1.35 }}>
+                                    {b.eval?.kode && (
+                                      <code style={{ fontSize: '0.62rem', fontWeight: 800, color: sm.color, background: 'var(--surface)', border: `1px solid ${sm.color}`, borderRadius: '3px', padding: '0 4px', marginRight: '4px' }} title={`Kode bukti di eval.spbe.go.id — hasil: ${sm.label}`}>{b.eval.kode}</code>
+                                    )}
                                     {b.nama}
+                                    {b.status === 'revisi' && b.catatan && (
+                                      <div style={{ fontSize: '0.64rem', color: STATUS_META.revisi.color, marginTop: '2px' }}>🔁 {b.catatan}</div>
+                                    )}
                                     {b._peran === 'pendukung' && (
                                       <span style={{ fontSize: '0.6rem', color: 'var(--muted)', border: '1px solid var(--border)', borderRadius: '3px', padding: '0 4px', marginLeft: '4px' }}>
                                         🔹 Pendukung

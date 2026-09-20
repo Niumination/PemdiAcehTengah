@@ -23,10 +23,11 @@ Transformasi menuju **Pemerintah Digital (Pemdi)** — open source government te
 
 | Indikator | Nilai |
 |-----------|-------|
-| **Indeks Pemdi (capaian terverifikasi)** | **0,38** — dari 47/250 bukti lengkap (rumus resmi PermenPANRB 8/2026) |
+| **Indeks Pemdi (simulasi mandiri)** | **0,35** — hanya 18 bukti **diterima asesor** Tahap 1 eval.spbe.go.id yang dihitung (rumus resmi PermenPANRB 8/2026) — *bukan nilai resmi* |
+| **Penilaian Tahap 1 (eval.spbe.go.id)** | 23 bukti diunggah → **18 diterima · 5 revisi** (I1-L2-02, I4-L1-02, I4-L2-02, I12-L1-02, I13-L1-02) — sinkron 20 Sep 2026 |
 | **Target Pemdi 2026** | 2.50 (Baik) |
 | **Indeks SPBE 2025** | 2,59 (Cukup) — baseline konversi |
-| **Total bukti dukung terpetakan** | 250 item (47 lengkap · 4 proses · 199 belum) |
+| **Total butir bukti dukung** | 232 item (18 diterima · 5 revisi · 19 draf lokal · 190 belum) |
 | **7 Aspek** | Tata Kelola, SDM Digital, Data, Keamanan, Teknologi, Keterpaduan, Kepuasan |
 | **20 Indikator** | I1–I20 — dari Tata Kelola hingga Pengelolaan Kepuasan |
 | **Perangkat Daerah** | 38 Instansi + 14 Kecamatan |
@@ -37,7 +38,7 @@ Transformasi menuju **Pemerintah Digital (Pemdi)** — open source government te
 | Halaman | URL | Deskripsi |
 |---------|-----|-----------|
 | Beranda | `/` | Dashboard utama — Pemdi badge, SPBE gauge, Peta Proses Bisnis, fitur publik |
-| Indeks Pemdi | `/pemdi` | Dashboard Pemdi penuh — radar chart, 7 aspek cards + modal detail indikator, SPBE vs Pemdi |
+| Kokpit Pemdi | `/pemdi` | Kokpit penilaian mandiri — simulasi indeks (hanya bukti diterima), 7 aspek + 20 indikator, checklist bukti berkode `I#-L#-##` sesuai eval.spbe.go.id |
 | Peta Proses Bisnis | `/probis` | PPB 3 level — 8 Misi, 35 Urusan, 78 Proses Bisnis OPD + DetailModal misi |
 | Direktori Layanan | `/layanan` | 25 layanan publik dalam 7 kategori — status, biaya, SLA, syarat |
 | Survei Kepuasan | `/skm` | Survei SKM online — 8 dimensi (skala 1–4), 43 unit layanan, simpan ke Supabase |
@@ -45,12 +46,12 @@ Transformasi menuju **Pemerintah Digital (Pemdi)** — open source government te
 | Chatbot Asisten | `/tanya` | Asisten virtual — cari jawaban dari FAQ |
 | Pencarian Global | `/cari` | Pencarian OPD, layanan, FAQ dengan Fuse.js |
 | Dashboard Kepuasan | `/dashboard-kepuasan` | Dashboard publik hasil SKM + rating halaman (Indikator I20) |
-| Modul Indikator | `/modul-indikator` | 20 modul kriteria L1–L5 + matriks kebutuhan bukti L1–L2 |
+| Modul Indikator | `/modul-indikator` | 20 modul kriteria L1–L5 + status bukti per hasil asesor (tab 🔁 Revisi) + matriks kebutuhan L1–L2 |
 | Glosarium | `/glosarium` | Kamus istilah digital pemerintahan |
 | Pusat Bantuan | `/bantuan` | Panduan penggunaan portal + FAQ |
 | Kebijakan Privasi | `/kebijakan-privasi` | Kebijakan perlindungan data pribadi (UU PDP) |
 | Dashboard Admin | `/admin` | Dashboard Admin — lihat data SKM & laporan warga (login required) |
-| Requirements PPB | `/requirement` | 83 item kebutuhan data/API untuk PPB real |
+| Draf Bukti Dukung | `/requirement` | **Draf Bukti Dukung Prioritas** — 5 revisi asesor + 38 butir gap level berikut (diurutkan daya ungkit) dengan contoh modul & template; tab kedua: 83 kebutuhan data PPB |
 | Detail OPD | `/opd/[slug]` | Halaman detail tiap PD (52 halaman statis) |
 
 ### API Endpoints

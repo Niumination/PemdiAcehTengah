@@ -58,8 +58,8 @@ const bd = (level, status, peran) => ({ level, status, ...(peran ? { _peran: per
 
 test('nilaiIndikator: level kontinu — berhenti di level pertama yang belum lengkap', () => {
   const ind = { id: 'I1', bukti_dukung: [
-    bd(1, 'lengkap'), bd(1, 'lengkap'),
-    bd(2, 'lengkap'),
+    bd(1, 'diterima'), bd(1, 'diterima'),
+    bd(2, 'diterima'),
     bd(3, 'belum'),
   ] };
   assert.deepEqual(
@@ -69,13 +69,13 @@ test('nilaiIndikator: level kontinu — berhenti di level pertama yang belum len
 });
 
 test('nilaiIndikator: L1 belum lengkap ⇒ 0 (aturan berjenjang)', () => {
-  const ind = { id: 'I1', bukti_dukung: [bd(1, 'belum'), bd(2, 'lengkap')] };
+  const ind = { id: 'I1', bukti_dukung: [bd(1, 'belum'), bd(2, 'diterima')] };
   assert.equal(nilaiIndikator(ind).nilai, 0);
 });
 
 test('nilaiIndikator: item pendukung tidak menghalangi level utama', () => {
   const ind = { id: 'I1', bukti_dukung: [
-    bd(1, 'lengkap'),
+    bd(1, 'diterima'),
     bd(2, 'belum', 'pendukung'), // pendukung diabaikan dari penilaian
   ] };
   assert.equal(nilaiIndikator(ind).nilai, 1);
@@ -102,8 +102,8 @@ test('nilaiIndikator: indikator eksternal — pakai nilai nasional bila terisi',
 const aspekSintetis = {
   id: 'A1', nama: 'Sintetis', bobot: 10,
   indikator: [
-    { id: 'I1', nama: 'Alpha', bobot: 5, bukti_dukung: [bd(1, 'lengkap')] },                       // nilai 1
-    { id: 'I2', nama: 'Beta', bobot: 5, bukti_dukung: [bd(1, 'lengkap'), bd(2, 'lengkap')] },      // nilai 2
+    { id: 'I1', nama: 'Alpha', bobot: 5, bukti_dukung: [bd(1, 'diterima')] },                       // nilai 1
+    { id: 'I2', nama: 'Beta', bobot: 5, bukti_dukung: [bd(1, 'diterima'), bd(2, 'diterima')] },      // nilai 2
   ],
 };
 
@@ -123,7 +123,7 @@ test('indeksAspek: mode target memakai ind.target', () => {
 test('indeksPemdi: Σ(wA/100 × IndeksAspek)', () => {
   const daftar = [
     aspekSintetis, // bobot 10%, indeks 1,5 → kontribusi 0,15
-    { id: 'A2', nama: 'Kedua', bobot: 90, indikator: [{ id: 'I3', bobot: 90, bukti_dukung: [bd(1, 'lengkap')] }] }, // indeks 1 → 0,90
+    { id: 'A2', nama: 'Kedua', bobot: 90, indikator: [{ id: 'I3', bobot: 90, bukti_dukung: [bd(1, 'diterima')] }] }, // indeks 1 → 0,90
   ];
   const r = indeksPemdi(daftar);
   assert.ok(Math.abs(r.indeks - 1.05) < 1e-9);
@@ -132,13 +132,13 @@ test('indeksPemdi: Σ(wA/100 × IndeksAspek)', () => {
 /* ────────────────────────────────────────────────────────────
    statistikBukti
    ──────────────────────────────────────────────────────────── */
-test('statistikBukti: hitung lengkap/proses/belum + gap', () => {
+test('statistikBukti: hitung diterima/revisi/proses/draf/belum + gap', () => {
   const daftar = [{
     id: 'A1', indikator: [{ id: 'I1', bukti_dukung: [
-      bd(1, 'lengkap'), bd(1, 'lengkap'), bd(2, 'proses'), bd(2, 'belum'),
+      bd(1, 'diterima'), bd(1, 'diterima'), bd(2, 'proses'), bd(2, 'belum'),
     ] }],
   }];
-  assert.deepEqual(statistikBukti(daftar), { total: 4, lengkap: 2, proses: 1, belum: 1, gap: 2 });
+  assert.deepEqual(statistikBukti(daftar), { total: 4, diterima: 2, revisi: 0, proses: 1, draf: 0, belum: 1, gap: 2 });
 });
 
 /* ────────────────────────────────────────────────────────────
@@ -148,10 +148,10 @@ test('statistikBukti: hitung lengkap/proses/belum + gap', () => {
    ──────────────────────────────────────────────────────────── */
 const pemdi = JSON.parse(readFileSync(new URL('../data/pemdi.json', import.meta.url), 'utf8'));
 
-test('REGRESI: indeks aktual = 0,38 (sesuai field indeks_aktual & tampilan /pemdi)', () => {
+test('REGRESI: indeks simulasi = 0,35 (hanya bukti DITERIMA tahap 1; field indeks_aktual & tampilan /pemdi)', () => {
   const hasil = indeksPemdi(pemdi.aspek);
-  assert.ok(Math.abs(hasil.indeks - 0.38) < 0.005, `terhitung ${hasil.indeks}`);
-  assert.equal(pemdi.indeks_aktual, 0.38); // field data harus tetap sinkron
+  assert.ok(Math.abs(hasil.indeks - 0.35) < 0.005, `terhitung ${hasil.indeks}`);
+  assert.equal(pemdi.indeks_aktual, 0.35); // field data harus tetap sinkron
 });
 
 test('REGRESI: proyeksi mode target = 2,29 (Panduan Bab 4.2)', () => {
@@ -159,11 +159,11 @@ test('REGRESI: proyeksi mode target = 2,29 (Panduan Bab 4.2)', () => {
   assert.ok(Math.abs(hasil.indeks - 2.29) < 0.005, `terhitung ${hasil.indeks}`);
 });
 
-test('REGRESI: 250 item bukti — 47 lengkap · 4 proses · 199 belum', () => {
+test('REGRESI: 232 item bukti — 18 diterima · 5 revisi · 0 proses · 19 draf · 190 belum', () => {
   const stat = statistikBukti(pemdi.aspek);
   assert.deepEqual(
-    { total: stat.total, lengkap: stat.lengkap, proses: stat.proses, belum: stat.belum },
-    { total: 250, lengkap: 47, proses: 4, belum: 199 },
+    { total: stat.total, diterima: stat.diterima, revisi: stat.revisi, proses: stat.proses, draf: stat.draf, belum: stat.belum },
+    { total: 232, diterima: 18, revisi: 5, proses: 0, draf: 19, belum: 190 },
   );
 });
 

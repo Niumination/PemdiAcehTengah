@@ -119,7 +119,12 @@ Proyeksi dari baseline SPBE 2025: ~2,375 (Cukup). Perlu kerja keras di Kepuasan 
 ## File
 
 - `opd.json` — master data (52 OPD dari e-Keurani BKPSDM ✅ harmonized)
-- `pemdi.json` — evaluasi Pemdi 7 aspek × 20 indikator + 232 bukti GT. **Capaian dihitung `scripts/hitung-capaian-pemdi.py` dengan rumus resmi PermenPANRB 8/2026** (Indeks Aspek = Σ(wIj×NIj)/wAi; Indeks = Σ(wA×IA); nilai indikator = level kontinu semua-bukti-lengkap; indikator eksternal I5/I6/I7/I18 via field `eksternal`). Jangan pakai `update-indeks-aktual.py` (deprecated).
+- `pemdi.json` — evaluasi Pemdi 7 aspek × 20 indikator + 232 butir bukti GT. **Capaian dihitung `scripts/hitung-capaian-pemdi.py` dengan rumus resmi PermenPANRB 8/2026** (Indeks Aspek = Σ(wIj×NIj)/wAi; Indeks = Σ(wA×IA); nilai indikator = level kontinu semua-butir-utama **`diterima`** asesor; indikator eksternal I5/I6/I7/I18 via field `eksternal`). Jangan pakai `update-indeks-aktual.py` (deprecated).
+  - **Status bukti (sejak 20 Sep 2026)**: `diterima` (dinilai asesor eval.spbe.go.id, diterima — dihitung) · `revisi` (dinilai, perlu revisi — tidak dihitung, wajib tampil 🔁) · `proses` (diunggah, belum ada hasil) · `draf` (arsip lokal, belum diunggah — field `_arsip` = nama berkas lama) · `belum`. Nilai lama `lengkap` TIDAK dipakai lagi.
+  - Butir yang sudah dinilai punya `eval: {tahap, kode, hasil, portal, tanggal}`; `kode` = `I#-L#-##` = nama berkas di `public/bukti-dukung/final/`.
+  - Blok `penilaian_tahap1` — ringkasan tahap 1 (diunggah/diterima/revisi, daftar kode, indikator disentuh).
+  - Alur sinkron: `scripts/apply-eval-tahap1.py` (terapkan hasil portal) → `scripts/hitung-capaian-pemdi.py` (indeks) → `scripts/build-draf-prioritas.py` (→ `draf-bukti-prioritas.json`).
+- `draf-bukti-prioritas.json` — **dibangun otomatis** (`scripts/build-draf-prioritas.py`) untuk `/requirement`: `revisi[]` (P0, catatan asesor + contoh modul + template) dan `gap[]` (P1, butir kurang pada level berikut per indikator, diurutkan `daya_ungkit` = bobot ÷ butir kurang; `kode_rencana` untuk penamaan berkas). Jangan edit manual.
 - `kebutuhan-bukti-dukung.json` — matriks kebutuhan bukti dukung L1-L2 (48 butir, 16 indikator). Dibangun `scripts/build-kebutuhan-bukti.py` dari `docs/analisis-bukti-dukung-l1-l2.md` (sumber NotebookLM) + silang modul-indikator.json + pemdi.json + Panduan Bab 6. Status `status_indikasi` = indikatif (fuzzy-match, perlu verifikasi).
 - `modul-indikator.json` — 20 modul indikator + kriteria level (ground truth NotebookLM 7 Agu 2026) — acuan item bukti resmi
 - `AGENTS.md` — **file ini**

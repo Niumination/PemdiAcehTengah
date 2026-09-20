@@ -178,7 +178,12 @@ export default function Home({ pemdiData, layananData, portalData }) {
             <div className="n">
               <CountStat value={pemdiData.indeks_aktual ?? 0} decimals={2} color="var(--gold-deep)" />
             </div>
-            <div className="l">Indeks Pemdi Terverifikasi (target ≥ 2,50)</div>
+            <div className="l">Indeks Pemdi — Simulasi Mandiri (target ≥ 2,50)</div>
+            {pemdiData.tahap1 && (
+              <div style={{ fontSize: '0.66rem', color: 'var(--muted)', marginTop: '4px' }} title="Bukan nilai resmi asesor. Hanya bukti yang DITERIMA di eval.spbe.go.id yang dihitung.">
+                Tahap 1 eval.spbe.go.id: ✅ {pemdiData.tahap1.diterima} diterima · 🔁 {pemdiData.tahap1.revisi} revisi
+              </div>
+            )}
           </div>
 
           <div className="stat glow-card reveal d1">
@@ -428,6 +433,7 @@ export async function getStaticProps() {
       // id/nama/nilai/target (lihat aspek.map di bawah).
       pemdiData: await import('@/data/pemdi.json').then(({ default: p }) => ({
         indeks_aktual: p.indeks_aktual,
+        tahap1: p.penilaian_tahap1 ? { diterima: p.penilaian_tahap1.diterima, revisi: p.penilaian_tahap1.revisi, tanggal_sinkron: p.penilaian_tahap1.tanggal_sinkron } : null,
         aspek: p.aspek.map(({ id, nama, nilai, target }) => ({ id, nama, nilai, target })),
       })),
       layananData: (await import('@/data/layanan.json')).default,

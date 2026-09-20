@@ -32,7 +32,7 @@ const menuGroups = [
     label: 'III. Sistem & Pengelolaan',
     items: [
       { label: 'Glosarium Istilah', href: '/glosarium', icon: '📖' },
-      { label: 'Requirements Data', href: '/requirement', icon: '📦' },
+      { label: 'Draf Bukti Dukung', href: '/requirement', icon: '📝' },
       { label: 'Dashboard Kepuasan', href: '/dashboard-kepuasan', icon: '📈' },
       { label: 'Panel Admin Diskominfo', href: '/admin', icon: '🔐' },
     ],

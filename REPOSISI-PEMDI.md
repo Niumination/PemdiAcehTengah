@@ -76,7 +76,7 @@ Sebelum adopsi resmi dalam bentuk apa pun:
 
 | # | Prasyarat | Indikator |
 |---|-----------|-----------|
-| 1 | **Hapus label "Portal Resmi"** sampai ada SK penetapan. Ganti "Indeks 0,38 Terverifikasi" → "Simulasi Penilaian Mandiri (belum dinilai asesor)" | K7, K8 |
+| 1 | **Hapus label "Portal Resmi"** sampai ada SK penetapan. Ganti "Indeks 0,38 Terverifikasi" → "Simulasi Penilaian Mandiri (belum dinilai asesor)" — ✅ **K8 selesai 20 Sep 2026** (label simulasi di beranda & /pemdi; indeks 0,35 hanya dari bukti *diterima* asesor Tahap 1) | K7, K8 |
 | 2 | Migrasi ke domain `.go.id` dan infrastruktur Pemda/PDN/awan pemerintah | I14, K6 |
 | 3 | Bersihkan data layanan: hapus SIUP/TDP/IMB, validasi OPD, hapus SLA fiktif atau hubungkan ke sumber pemantauan | K2, I19 |
 | 4 | Sesuaikan SKM ke **9 unsur Permenpan 14/2017** atau tarik data dari SKM Online resmi | K5, I20 |
@@ -144,6 +144,17 @@ Sebelum adopsi resmi dalam bentuk apa pun:
 - UU 27/2022 (Pelindungan Data Pribadi)
 
 ---
+
+## 6b. Status Penilaian Tahap 1 — eval.spbe.go.id (sinkron 20 Sep 2026)
+
+| Item | Nilai |
+|------|-------|
+| Bukti diunggah | 23 |
+| **Diterima** | 18 — I1 (L1-01, L2-01, L2-03) · I2 (L1-01, L1-02) · I3 (L1-01, L1-02) · I4 (L1-01, L1-03) · I11 (L1-01) · I12 (L1-01) · I13 (L1-01) · I17 (L1-01, L1-02, L2-01, L2-02) · I20 (L1-01, L1-02) |
+| **Revisi** | 5 — I1-L2-02 · I4-L1-02 · I4-L2-02 · I12-L1-02 · I13-L1-02 (berkas tidak disimpan di repo; ditandai 🔁 di web) |
+| Indeks simulasi | 0,35 (hanya bukti diterima; bukan nilai resmi) |
+| Konvensi kode | `I{indikator}-L{level}-{NN}` — NN = nomor urut butir di dalam level pada Modul Indikator |
+| Langkah berikut | Halaman `/requirement` (Draf Bukti Dukung Prioritas): P0 unggah ulang 5 revisi · P1 38 butir gap level berikut (I20 L1, I2 L2, I4 L1, I19 L1, I10 L1, I12 L1 … urut daya ungkit) |
 
 ## 7. Catatan Implementasi
 

@@ -48,8 +48,10 @@ Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah. Transformasi menuju Peme
 | **HEAD** | `64ecb2c` (19 Sep 2026) — audit UI/UX live + perbaikan: tautan PDF footer 404 → tersedia, tap target mobile ≥44px (0 sisa), token `--primary-bg` (tema gelap), kontras teks kecil, payload beranda 233→135 KB, `/layanan` mobile satu kolom. Sebelumnya: 22 dead code dihapus, **20 tes** (16 rumus Pemdi + 4 requirement), rate-limit atomic + RPC Supabase, `/api/health`. Ringkasan lengkap: seksi **Status Sekarang** |
 | **Agent Skills** | `.agents/skills/` — **10** skill autoskills (React · Next.js · Supabase · Node · SEO · a11y · design). Lock file ada di **root repo**: `skills-lock.json` (10 entri, masing-masing `source` + `computedHash`). Pasang ulang: `npx autoskills` — ⚠️ registry masih menyediakan `next-cache-components` (**Next.js 16+ only**, sedangkan proyek ini di 14.2.35): keluarkan lagi bila terpasang ulang, sampai proyek benar-benar naik versi. |
 | **Env Vars** | `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `ADMIN_PASSWORD` (Vercel *sensitive*), `IP_HASH_SALT` — `ADMIN_TOKEN` legacy dihapus 18 Sep 2026 |
-| **Indeks Pemdi** | **0.38** (rumus PermenPANRB 8/2026, predikat Tabel 4) — target 2,50+ |
-| **Total bukti dukung** | **250** (`data/pemdi.json`: 47 lengkap / 4 proses / 199 belum; +18 final lolos-evaluasi di `public/bukti-dukung/final/`) |
+| **Indeks Pemdi** | **0,35 — Simulasi Penilaian Mandiri** (rumus PermenPANRB 8/2026; hanya bukti `diterima` asesor yang dihitung) — target 2,50+. Label "Terverifikasi" DIHAPUS (prasyarat K8 REPOSISI-PEMDI.md) |
+| **Penilaian Tahap 1** | eval.spbe.go.id, sinkron 20 Sep 2026: 23 diunggah → **18 diterima** (PDF di `public/bukti-dukung/final/I#-L#-##.pdf`) · **5 revisi** (I1-L2-02, I4-L1-02, I4-L2-02, I12-L1-02, I13-L1-02 — berkas tidak disimpan, ditandai 🔁). Metadata: `data/pemdi.json → penilaian_tahap1` |
+| **Total bukti dukung** | **232** butir (`data/pemdi.json`: 18 diterima / 5 revisi / 0 proses / 19 draf / 190 belum). Vokabuler status: `diterima · revisi · proses · draf · belum` (`lib/pemdiNilai.js → STATUS_META`) |
+| **Konvensi kode bukti** | `I{indikator}-L{level}-{NN}` ⇔ item modul `GT.I{indikator}_L{level}_{NN}` — NN = nomor urut butir di dalam level pada Modul Indikator. Sinkron via `scripts/apply-eval-tahap1.py` → `scripts/hitung-capaian-pemdi.py` → `scripts/build-draf-prioritas.py` |
 
 ## Framework Regulasi — DUA KERANGKA BERBEDA
 

@@ -11,8 +11,9 @@ Bagian B "Metode Penghitungan Indeks Pemdi", hlm. -37- s.d. -39-):
   2. Indeks Pemdi   = Σ(wAspek_i × Indeks Aspek_i)
 
 Nilai indikator (NIj) = tingkat kematangan 1–5 dari bukti dukung:
-level kontinu tertinggi yang SEMUA item bukti utamanya "lengkap"
-(aturan berjenjang — L1 belum lengkap ⇒ level atas tidak dinilai).
+level kontinu tertinggi yang SEMUA item bukti utamanya "diterima" asesor di
+eval.spbe.go.id (aturan berjenjang — L1 belum diterima ⇒ level atas tidak dinilai).
+Status lain (revisi/proses/draf/belum) TIDAK dihitung. Hasil = simulasi mandiri.
 
 Indikator eksternal (I5 SDI/Bappenas, I6 SJIG/BIG, I7 EPSS/BPS, I18 —
 strategi tim) memakai field `eksternal.nilai`; selama null dipakai nilai
@@ -59,7 +60,7 @@ SKENARIO_BAB85 = {"cukup": 2.375, "baik": 2.50}
 
 
 def nilai_indikator(ind):
-    """Nilai indikator 1–5 (level kontinu semua-bukti-lengkap; utama saja)."""
+    """Nilai indikator 1–5 (level kontinu semua-bukti-DITERIMA; utama saja)."""
     if ind.get("eksternal", {}).get("aktif"):
         ext = ind["eksternal"].get("nilai")
         if isinstance(ext, (int, float)) and ext > 0:
@@ -69,7 +70,7 @@ def nilai_indikator(ind):
     lv_tercapai = 0
     for lv in range(1, 6):
         items = [b for b in bd if b.get("level") == lv and b.get("_peran", "utama") != "pendukung"]
-        if items and all(b.get("status") == "lengkap" for b in items):
+        if items and all(b.get("status") == "diterima" for b in items):
             lv_tercapai = lv
         else:
             break
@@ -92,7 +93,8 @@ def main():
     shutil.copyfile(DATA, DATA + ".bak-capaian")
     d = json.load(open(DATA))
 
-    stat = {"total": 0, "lengkap": 0, "proses": 0, "belum": 0}
+    STATUS = ("diterima", "revisi", "proses", "draf", "belum")
+    stat = {k: 0 for k in ("total",) + STATUS}
     for a in d["aspek"]:
         a_lengkap, a_total = 0, 0
         for ind in a["indikator"]:
@@ -117,19 +119,16 @@ def main():
             ind["sumber"] = (
                 f"{ind['eksternal']['sistem']} — {'menunggu nilai eksternal' if menunggu else 'tersedia'}"
                 if ind.get("eksternal", {}).get("aktif")
-                else f"Bukti dukung terverifikasi ({sum(1 for b in ind.get('bukti_dukung', []) if b.get('status') == 'lengkap')}"
+                else f"Bukti diterima asesor ({sum(1 for b in ind.get('bukti_dukung', []) if b.get('status') == 'diterima')}"
                      f"/{len(ind.get('bukti_dukung', []))} item)"
             )
             for b in ind.get("bukti_dukung", []):
                 a_total += 1
                 stat["total"] += 1
-                if b.get("status") == "lengkap":
+                st = b.get("status") if b.get("status") in STATUS else "belum"
+                stat[st] += 1
+                if st == "diterima":
                     a_lengkap += 1
-                    stat["lengkap"] += 1
-                elif b.get("status") == "proses":
-                    stat["proses"] += 1
-                else:
-                    stat["belum"] += 1
         a["nilai_aktual"] = round(indeks_aspek(a, "aktual"), 4)
         a["nilai"] = a["nilai_aktual"]
         a["target"] = round(indeks_aspek(a, "target"), 2)
@@ -144,24 +143,22 @@ def main():
     d["target_item_bukti"] = stat["total"]
     d["indeks_terkini"] = indeks_aktual
     d["indeks_aktual"] = indeks_aktual
-    d["indeks_label"] = (
-        f"Capaian terverifikasi dari {stat['lengkap']} bukti lengkap · {stat['total']} item · "
-        f"target {d.get('target_indeks', 2.5)}"
-    )
+    d["indeks_label"] = "Simulasi Penilaian Mandiri — bukan nilai resmi asesor"
     d["indeks_sumber"] = (
-        f"Rumus resmi PermenPANRB 8/2026 (Lampiran, hlm. -37- s.d. -39-) · {stat['lengkap']} bukti lengkap · "
-        f"{stat['total']} item"
+        f"Rumus resmi PermenPANRB 8/2026 (Lampiran, hlm. -37- s.d. -39-) · hanya bukti DITERIMA di eval.spbe.go.id yang dihitung "
+        f"({stat['diterima']} diterima · {stat['revisi']} revisi · {stat['draf']} draf lokal · {stat['belum']} belum · {stat['total']} item)"
     )
     d["catatan"] = (
-        f"STATUS: {stat['lengkap']} item bukti lengkap, {stat['proses']} proses, {stat['belum']} belum "
-        f"(total {stat['total']}). Nilai indikator = level kontinu semua-bukti-lengkap (bukti utama). "
-        f"Indikator eksternal I5/I6/I7/I18 memakai nilai minimum 1 selama skor eksternal belum tersedia."
+        f"STATUS TAHAP 1 (sinkron {date.today()}): {stat['diterima']} bukti DITERIMA asesor, {stat['revisi']} REVISI, "
+        f"{stat['proses']} proses, {stat['draf']} draf lokal belum diunggah, {stat['belum']} belum ada (total {stat['total']} item). "
+        "Nilai indikator = level kontinu yang seluruh butir bukti utamanya DITERIMA. "
+        "Indikator eksternal I5/I6/I7/I18 memakai nilai minimum 1 selama skor eksternal belum tersedia."
     )
     d["perhitungan"] = {
         "rumus_aspek": "Indeks Aspek_i = Σ(wIj × NIj) / wAi",
         "rumus_indeks": "Indeks Pemdi = Σ(wAspek_i × Indeks Aspek_i)",
         "sumber_rumus": "PermenPANRB No. 8 Tahun 2026 — Lampiran Pedoman Evaluasi Kinerja Pemdi, Bagian B Metode Penghitungan Indeks Pemdi (hlm. -37- s.d. -39-)",
-        "nilai_indikator": "Tingkat kematangan 1–5 — level kontinu dengan seluruh bukti dukung utama ber-status lengkap",
+        "nilai_indikator": "Tingkat kematangan 1–5 — level kontinu dengan seluruh butir bukti utama ber-status DITERIMA asesor (simulasi mandiri)",
         "indikator_eksternal": "I5 (SDI/Bappenas), I6 (SJIG/BIG), I7 (EPSS/BPS), I18 (strategi tim) — nilai minimum 1 selama `eksternal.nilai` belum diisi",
         "diperbarui": str(date.today()),
     }
@@ -176,7 +173,7 @@ def main():
     json.dump(d, open(DATA, "w"), ensure_ascii=False, indent=1)
     print(f"indeks_aktual      : {indeks_aktual}")
     print(f"proyeksi target    : {proyeksi_target}")
-    print(f"bukti              : {stat['lengkap']} lengkap / {stat['proses']} proses / {stat['belum']} belum (total {stat['total']})")
+    print(f"bukti              : {stat['diterima']} diterima / {stat['revisi']} revisi / {stat['proses']} proses / {stat['draf']} draf / {stat['belum']} belum (total {stat['total']})")
     for a in d["aspek"]:
         inds = ", ".join(f"{i['id']}={i['nilai']}" for i in a["indikator"])
         print(f"  A{a['id']} {a['singkat']:<16} nilai={a['nilai']:.2f} target={a['target']:.2f} [{inds}]")
