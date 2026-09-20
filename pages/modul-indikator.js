@@ -3,6 +3,7 @@ import { useMemo, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { MotifEmun, KerawangDivider } from '@/components/motif/KerawangMotifs';
+import CatatanTujuan from '@/components/CatatanTujuan';
 
 // ── Data ──
 import { LEVEL_LABEL, LEVEL_NAMA_RESMI, STATUS_META, REVISI_JENIS, statistikIndikator } from '@/lib/pemdiNilai';
@@ -368,7 +369,7 @@ function formatKriteria(text) {
             ))}
             {pemdiData.penilaian_tahap1 && (
               <span className="stat-badge" style={{ background: 'var(--primary-bg, #e3edff)', color: 'var(--primary)' }}>
-                📤 Tahap 1 eval.spbe.go.id: {pemdiData.penilaian_tahap1.diunggah} diunggah · sinkron {pemdiData.penilaian_tahap1.tanggal_sinkron}
+                📤 Tahap 1 eval.spbe.go.id: {pemdiData.penilaian_tahap1.dinilai} butir dinilai · sinkron {pemdiData.penilaian_tahap1.tanggal_sinkron}
               </span>
             )}
           </div>
@@ -377,6 +378,7 @@ function formatKriteria(text) {
 
       {/* ════════ FILTER BAR ════════ */}
       <section className="section">
+        <CatatanTujuan compact />
         <div className="container">
           <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '1.5rem', alignItems: 'center' }}>
             <input

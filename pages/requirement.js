@@ -5,6 +5,7 @@ import panduanBukti from '@/data/panduan-bukti-l1.json'
 import requirementData from '@/data/requirement.json'
 import drafPrioritas from '@/data/draf-bukti-prioritas.json'
 import { MotifEmun, MotifRante } from '@/components/motif/KerawangMotifs'
+import CatatanTujuan from '@/components/CatatanTujuan'
 import { STATUS_META, LEVEL_LABEL, REVISI_JENIS } from '@/lib/pemdiNilai'
 
 const LEVEL_WARNA = { 0: 'var(--muted)', 1: '#b91c1c', 2: '#ab5708', 3: '#1d4ed8', 4: '#047857', 5: '#6d28d9' }
@@ -71,7 +72,7 @@ export default function Requirement() {
               🎯 {drafPrioritas.ringkas.butir_gap} butir gap · {drafPrioritas.ringkas.indikator_gap} indikator
             </span>
             <span className="card" style={{ padding: '0.5rem 0.75rem', background: 'rgba(255,255,255,0.12)', border: 'none', fontSize: '0.8rem' }}>
-              📈 Simulasi {drafPrioritas.ringkas.indeks_simulasi?.toFixed(2)} → {drafPrioritas.ringkas.indeks_jika_semua_gap_l_berikut?.toFixed(2)} bila semua gap diterima
+              📈 Simulasi {drafPrioritas.ringkas.indeks_simulasi?.toFixed(2)} → {drafPrioritas.ringkas.indeks_jika_p0_p1_diterima?.toFixed(2)} bila seluruh P0 + P1 diterima
             </span>
             {t1 && (
               <span className="card" style={{ padding: '0.5rem 0.75rem', background: 'rgba(255,255,255,0.12)', border: 'none', fontSize: '0.8rem' }}>
@@ -83,6 +84,8 @@ export default function Requirement() {
       </section>
 
       <div className="page-container">
+        <CatatanTujuan compact />
+
         {/* Tab switch */}
         <div className="tab-row" role="tablist">
           {[
@@ -146,7 +149,7 @@ export default function Requirement() {
               <h2 className="section-title">🎯 P1 — Gap ke Level Berikutnya (diurutkan daya ungkit)</h2>
               <p className="lead-note">
                 Nilai indikator hanya naik bila <strong>seluruh</strong> butir pada level berikutnya diterima asesor. Daftar ini menunjukkan
-                butir yang masih kurang per indikator; <em>daya ungkit</em> = bobot indikator ÷ jumlah butir yang kurang — kerjakan dari atas.
+                butir yang masih kurang per indikator <strong>selain</strong> yang sudah tercantum di P0; <em>daya ungkit</em> = bobot indikator ÷ (butir kurang + butir revisi pada level itu) — kerjakan dari atas.
                 Kolom kode adalah <strong>kode rencana</strong> untuk penamaan berkas saat unggah (<code>I#-L#-##</code>).
               </p>
               <div className="gap-list">
@@ -161,7 +164,7 @@ export default function Requirement() {
                         <span className="lvl" style={{ color: LEVEL_WARNA[g.level_target], background: `${LEVEL_WARNA[g.level_target]}18` }}>
                           {g.nilai_sekarang} → L{g.level_target}
                         </span>
-                        <span className="gap-meta">{g.butir_kurang}/{g.butir_total} butir kurang · bobot {g.bobot}% · +{g.kenaikan_indeks.toFixed(2)} indeks</span>
+                        <span className="gap-meta">{g.butir_kurang}/{g.butir_total} butir kurang{g.butir_revisi_di_p0 > 0 ? ` (+${g.butir_revisi_di_p0} revisi di P0)` : ''} · bobot {g.bobot}% · +{g.kenaikan_indeks.toFixed(2)} indeks</span>
                         <span className={`req-detail-arrow ${open ? 'up' : ''}`}>▼</span>
                       </button>
                       {open && (

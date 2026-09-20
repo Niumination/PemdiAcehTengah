@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import DetailModal from '@/components/DetailModal';
 import TopographicBackdrop from '@/components/TopographicBackdrop';
+import CatatanTujuan from '@/components/CatatanTujuan';
 import { MotifEmun, MotifTapak, KerawangDivider } from '@/components/motif/KerawangMotifs';
 import useCountUp from '@/hooks/useCountUp';
 import { formatDesimal } from '@/lib/format';
@@ -243,7 +244,7 @@ function defaultCatatan(ind) {
           </p>
           {tahap1 && (
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginTop: '14px' }}>
-              <span className="stat-badge" style={{ background: 'rgba(255,255,255,0.14)', color: '#fff', border: '1px solid rgba(255,255,255,0.3)' }}>📤 Tahap 1: {tahap1.diunggah} bukti diunggah</span>
+              <span className="stat-badge" style={{ background: 'rgba(255,255,255,0.14)', color: '#fff', border: '1px solid rgba(255,255,255,0.3)' }}>📤 Tahap 1: {tahap1.dinilai} butir dinilai asesor</span>
               <span className="stat-badge" style={{ background: 'rgba(16,185,129,0.25)', color: '#fff', border: '1px solid rgba(255,255,255,0.3)' }}>✅ {tahap1.diterima} diterima</span>
               <span className="stat-badge" style={{ background: 'rgba(239,68,68,0.3)', color: '#fff', border: '1px solid rgba(255,255,255,0.3)' }}>🔁 {tahap1.revisi} revisi</span>
               <span className="stat-badge" style={{ background: 'rgba(255,255,255,0.14)', color: '#fff', border: '1px solid rgba(255,255,255,0.3)' }}>📅 Sinkron {tahap1.tanggal_sinkron}</span>
@@ -251,6 +252,8 @@ function defaultCatatan(ind) {
           )}
         </div>
       </section>
+
+      <div id="tujuan"><CatatanTujuan /></div>
 
       {/* Executive KPI Summary Cards */}
       <section style={{ marginBottom: '32px' }}>

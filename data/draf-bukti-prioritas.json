@@ -6,7 +6,7 @@
   "portal": "https://eval.spbe.go.id",
   "tanggal_sinkron": "2026-09-20",
   "status": "Tahap 1 selesai dinilai — menunggu jadwal unggah revisi & tahap berikutnya",
-  "diunggah": 37,
+  "dinilai": 37,
   "diterima": 18,
   "revisi": 19,
   "kode_diterima": [
@@ -104,10 +104,10 @@
    "belum_diunggah": 10,
    "otomatis_ditolak": 2
   },
-  "indikator_gap": 16,
-  "butir_gap": 38,
+  "indikator_gap": 12,
+  "butir_gap": 24,
   "indeks_simulasi": 0.35,
-  "indeks_jika_semua_gap_l_berikut": 1.21
+  "indeks_jika_p0_p1_diterima": 1.21
  },
  "revisi": [
   {
@@ -607,53 +607,6 @@
  ],
  "gap": [
   {
-   "indikator": "I20",
-   "indikator_nama": "Tingkat Kematangan Pengelolaan Kepuasan Pengguna Layanan Digital Pemerintah",
-   "aspek": "Kepuasan",
-   "bobot": 15,
-   "nilai_sekarang": 0,
-   "level_target": 1,
-   "pic": "DPMPTSP (Koordinator Pokja Kepuasan – Pengelolaan Kepuasan Pengguna)",
-   "daya_ungkit": 7.5,
-   "butir_kurang": 2,
-   "butir_total": 4,
-   "kenaikan_indeks": 0.15,
-   "butir": [
-    {
-     "id": "GT.I20_L1_3",
-     "kode_rencana": "I20-L1-03",
-     "nama": "Bukti pelibatan perwakilan kelompok rentan dalam upaya pengelolaan kepuasan pengguna layanan digital.",
-     "status": "revisi",
-     "catatan": "Dokumen pendukung/evidence terkait belum tersedia dan belum diunggah.",
-     "arsip_lokal": null
-    },
-    {
-     "id": "GT.I20_L1_4",
-     "kode_rencana": "I20-L1-04",
-     "nama": "Bukti tindak lanjut pengelolaan kepuasan pengguna layanan digital.",
-     "status": "revisi",
-     "catatan": "Dokumen pendukung/evidence terkait belum tersedia dan belum diunggah.",
-     "arsip_lokal": null
-    }
-   ],
-   "contoh_modul": [
-    "Laporan hasil survei kepuasan pengguna layanan digital (SKM/ICS); kuesioner; rekap skor; metodologi; sampel responden",
-    "📄 Dokumen Aceh Tengah: Hasil SKM Kabupaten Aceh Tengah (Jan-Mei 2026); SKM Kec. Kebayakan 2025"
-   ],
-   "template": [
-    {
-     "judul": "Pedoman Penyelenggaraan SKM & Pengelolaan Umpan Balik (draf)",
-     "file": "/panduan-bukti-l1/I20/i20-pedoman-skm-dan-umpan-balik-layanan.pdf",
-     "jenis": "Pedoman"
-    },
-    {
-     "judul": "Laporan Hasil SKM (IKM 77,4/B — 1.246 responden) + Rekap Umpan Balik",
-     "file": "/panduan-bukti-l1/I20/i20-laporan-hasil-skm-dan-umpan-balik.pdf",
-     "jenis": "Laporan"
-    }
-   ]
-  },
-  {
    "indikator": "I2",
    "indikator_nama": "Tingkat Kematangan Manajemen Layanan Digital Pemerintah",
    "aspek": "Tata Kelola",
@@ -664,6 +617,7 @@
    "daya_ungkit": 5.0,
    "butir_kurang": 1,
    "butir_total": 1,
+   "butir_revisi_di_p0": 0,
    "kenaikan_indeks": 0.05,
    "butir": [
     {
@@ -683,46 +637,6 @@
    "template": []
   },
   {
-   "indikator": "I4",
-   "indikator_nama": "Tingkat Kematangan Kolaborasi Pemerintah Digital",
-   "aspek": "Penyelenggara",
-   "bobot": 5,
-   "nilai_sekarang": 0,
-   "level_target": 1,
-   "pic": "Bag. Organisasi (Koordinator Pokja Penyelenggara – Kolaborasi)",
-   "daya_ungkit": 5.0,
-   "butir_kurang": 1,
-   "butir_total": 3,
-   "kenaikan_indeks": 0.05,
-   "butir": [
-    {
-     "id": "GT.I4_L1_2",
-     "kode_rencana": "I4-L1-02",
-     "nama": "Substansi Rencana Aksi Nasional Pemerintah Digital pada perencanaan Instansi Pemerintah dengan rincian rencana kolaborasi antar unit kerja/perangkat daerah dalam menerapkan Pemerintah Digital.",
-     "status": "revisi",
-     "catatan": "Dalam bukti dukung yang diberikan berupa RKA Diskominfo, belum terdapat item kegiatan terkait rencana kolaborasi antar unit kerja dalam penerapan pemerintah digital.",
-     "arsip_lokal": null
-    }
-   ],
-   "contoh_modul": [
-    "SK Bupati tentang Tim Koordinasi Pemdi Kabupaten Aceh Tengah (lengkap lampiran keanggotaan & uraian tugas)",
-    "Dokumen perencanaan yang memuat rencana kolaborasi antar PD dalam penerapan Pemdi; matriks kolaborasi lintas PD",
-    "📄 Dokumen Aceh Tengah: SK Bupati 555/395/2026 Tim Koordinasi Pemdi; Perbup 70/2019 Pedoman SPBE"
-   ],
-   "template": [
-    {
-     "judul": "SK Bupati 555/395/2026 Tim Koordinasi Pemdi (lengkap lampiran)",
-     "file": "/panduan-bukti-l1/I04/i04-sk-bupati-tim-koordinasi-pemdi-555-395-2026.pdf",
-     "jenis": "SK"
-    },
-    {
-     "judul": "Rencana Kolaborasi Lintas Perangkat Daerah",
-     "file": "/panduan-bukti-l1/I04/i04-rencana-kolaborasi-lintas-pd.pdf",
-     "jenis": "Rencana"
-    }
-   ]
-  },
-  {
    "indikator": "I19",
    "indikator_nama": "Tingkat Kematangan Fasilitas Dukungan Pengguna Layanan Digital Pemerintah",
    "aspek": "Kepuasan",
@@ -731,8 +645,9 @@
    "level_target": 1,
    "pic": "DPMPTSP (Koordinator Pokja Kepuasan – Fasilitas Dukungan Pengguna)",
    "daya_ungkit": 5.0,
-   "butir_kurang": 2,
+   "butir_kurang": 1,
    "butir_total": 2,
+   "butir_revisi_di_p0": 1,
    "kenaikan_indeks": 0.1,
    "butir": [
     {
@@ -742,14 +657,6 @@
      "status": "draf",
      "catatan": "Daftar SLA 25 layanan digital di 7 sektor (portal Pemdi, live) + Perbup 126/2019 Pedoman Standar Pelayanan (dasar hukum SLA). Bukti dari sistem yang berjalan.",
      "arsip_lokal": "/bukti-dukung/final/I19_L1_SLA-Layanan-Digital_2026.pdf"
-    },
-    {
-     "id": "GT.I19_L1_2",
-     "kode_rencana": "I19-L1-02",
-     "nama": "Dokumen Service Level Agreement (SLA) Per-Proses Layanan Digital.",
-     "status": "revisi",
-     "catatan": "Bukti dukung yang diberikan tidak tepat berupa daftar layanan dan SLA-nya, semestinya adalah dasbor pemantauan SLA layanan digital pemerintah daerah.",
-     "arsip_lokal": null
     }
    ],
    "contoh_modul": [
@@ -771,85 +678,6 @@
    ]
   },
   {
-   "indikator": "I10",
-   "indikator_nama": "Tingkat Kematangan Keamanan Siber (IKASANDI)",
-   "aspek": "Keamanan Siber",
-   "bobot": 4,
-   "nilai_sekarang": 0,
-   "level_target": 1,
-   "pic": "Diskominfo – Bid. Statistik & Persandian",
-   "daya_ungkit": 4.0,
-   "butir_kurang": 1,
-   "butir_total": 1,
-   "kenaikan_indeks": 0.04,
-   "butir": [
-    {
-     "id": "GT.I10_L1_1",
-     "kode_rencana": "I10-L1-01",
-     "nama": "1. Nilai IKASANDI pada area Keamanan Siber. 0 < IKASANDI < 1,5.",
-     "status": "revisi",
-     "catatan": "Bukti dukung yang diberikan tidak sesuai yaitu Indeks KAMI tahun 2023, semestinya adalah hasil penilaian IKASANDI yang dilaksanakan maksimal 1 tahun terakhir.",
-     "arsip_lokal": null
-    }
-   ],
-   "contoh_modul": [
-    "Hasil pengukuran IKASANDI area Keamanan Siber (skor 0–<1,50); form/instrumen terisi; screenshot portal IKASANDI; evidence kontrol dasar",
-    "📄 Dokumen Aceh Tengah: Indeks KAMI 5.0 (Area Keamanan Siber, skor 563); Perbup 6/2025"
-   ],
-   "template": [
-    {
-     "judul": "Instrumen Self-Assessment IKASANDI Area Keamanan Siber (skor 1,10)",
-     "file": "/panduan-bukti-l1/I10/i10-instrumen-ikasandi-keamanan-siber.pdf",
-     "jenis": "Instrumen + skor"
-    },
-    {
-     "judul": "Bukti Kontrol Dasar Keamanan Siber + Hasil KAMI 5.0 (skor 563)",
-     "file": "/panduan-bukti-l1/I10/i10-bukti-kontrol-keamanan-siber-dan-kami-5-0.pdf",
-     "jenis": "Bukti + laporan"
-    }
-   ]
-  },
-  {
-   "indikator": "I12",
-   "indikator_nama": "Tingkat Kematangan Kapabilitas Penanganan Insiden Siber (IKASANDI)",
-   "aspek": "Keamanan Siber",
-   "bobot": 4,
-   "nilai_sekarang": 0,
-   "level_target": 1,
-   "pic": "Diskominfo – Bid. Statistik & Persandian",
-   "daya_ungkit": 4.0,
-   "butir_kurang": 1,
-   "butir_total": 2,
-   "kenaikan_indeks": 0.04,
-   "butir": [
-    {
-     "id": "GT.I12_L1_2",
-     "kode_rencana": "I12-L1-02",
-     "nama": "Nilai IKASANDI pada area Penanganan Insiden Siber. 0 < IKASANDI < 1,50.",
-     "status": "revisi",
-     "catatan": "Dokumen pendukung/evidence terkait belum tersedia dan belum diunggah.",
-     "arsip_lokal": null
-    }
-   ],
-   "contoh_modul": [
-    "Laporan/log penanganan insiden siber; ticket insiden; timeline penanganan; BA insiden (jika ada)",
-    "Hasil self-assessment IKASANDI area Penanganan Insiden Siber (0–<1,50); instrumen; evidence",
-    "📄 Dokumen Aceh Tengah: Perbup 48/2025 Arsitektur SPBE; Dokumentasi penanganan insiden awal"
-   ],
-   "template": [
-    {
-     "judul": "Laporan/Log Penanganan Insiden Siber (Semester I/2026, 12 insiden)",
-     "file": "/panduan-bukti-l1/I12/i12-laporan-penanganan-insiden-siber.pdf",
-     "jenis": "Log + BA"
-    },
-    {
-     "judul": "Instrumen Self-Assessment IKASANDI Penanganan Insiden (skor 1,08)",
-     "file": "/panduan-bukti-l1/I12/i12-instrumen-ikasandi-penanganan-insiden-siber.pdf",
-     "jenis": "Instrumen"
-    }
-   ]
-  },
-  {
    "indikator": "I11",
    "indikator_nama": "Tingkat Kematangan Penerapan Kriptografi untuk Keamanan Data (IKASANDI)",
    "aspek": "Keamanan Siber",
@@ -860,6 +688,7 @@
    "daya_ungkit": 3.0,
    "butir_kurang": 1,
    "butir_total": 1,
+   "butir_revisi_di_p0": 0,
    "kenaikan_indeks": 0.03,
    "butir": [
     {
@@ -886,18 +715,11 @@
    "level_target": 2,
    "pic": "BAPPEDA (Koordinator Pokja Tata Kelola & Manajemen)",
    "daya_ungkit": 2.5,
-   "butir_kurang": 2,
+   "butir_kurang": 1,
    "butir_total": 4,
+   "butir_revisi_di_p0": 1,
    "kenaikan_indeks": 0.05,
    "butir": [
-    {
-     "id": "GT.I1_L2_2",
-     "kode_rencana": "I1-L2-02",
-     "nama": "Pengisian Arsitektur Pemerintah Digital pada sebagian Layanan Digital Pemerintah melalui SIAP Digital.",
-     "status": "revisi",
-     "catatan": "Bukti dukung yang disampaikan tidak tepat yaitu bukti pelaksanaan pembahasan evaluasi kinerja pemerintah digital, semestinya adalah kegiatan kolaboratif yang dilaksanakan di bawah koordinasi Tim Koordinasi Pemerintah Digital dalam penyusunan perencanaan pemerintah digital pemerintah daerah.",
-     "arsip_lokal": null
-    },
     {
      "id": "GT.I1_L2_4",
      "kode_rencana": "I1-L2-04",
@@ -923,18 +745,11 @@
    "level_target": 1,
    "pic": "Diskominfo – Bid. Layanan E-Government (Koordinator Pokja Teknologi Digital)",
    "daya_ungkit": 2.5,
-   "butir_kurang": 2,
+   "butir_kurang": 1,
    "butir_total": 3,
+   "butir_revisi_di_p0": 1,
    "kenaikan_indeks": 0.05,
    "butir": [
-    {
-     "id": "GT.I13_L1_2",
-     "kode_rencana": "I13-L1-02",
-     "nama": "Substansi Rencana Aksi Pemerintah Digital pada Perencanaan Instansi Pemerintah**.",
-     "status": "revisi",
-     "catatan": "Pada dokumen RKA/DPA yang diberikan belum ditemukan program/kegiatan terkait Pengembangan Aplikasi.",
-     "arsip_lokal": null
-    },
     {
      "id": "GT.I13_L1_3",
      "kode_rencana": "I13-L1-03",
@@ -971,18 +786,11 @@
    "level_target": 1,
    "pic": "Inspektorat (Koordinator Pokja Keamanan – Audit)",
    "daya_ungkit": 2.0,
-   "butir_kurang": 2,
+   "butir_kurang": 1,
    "butir_total": 2,
+   "butir_revisi_di_p0": 1,
    "kenaikan_indeks": 0.04,
    "butir": [
-    {
-     "id": "GT.I9_L1_1",
-     "kode_rencana": "I9-L1-01",
-     "nama": "Penetapan Tim Audit yang ditetapkan oleh Koordinator Pemerintah Digital di setiap IPPD.",
-     "status": "revisi",
-     "catatan": "Bukti dukung yang diberikan tidak tepat berupa SK Tim Asesor Internal Evaluasi Kinerja Pemdi, semestinya berupa SK Tim Auditor Internal Pemerintah Digital pemerintah daerah.",
-     "arsip_lokal": null
-    },
     {
      "id": "GT.I9_L1_2",
      "kode_rencana": "I9-L1-02",
@@ -1019,18 +827,11 @@
    "level_target": 1,
    "pic": "Bag. Organisasi (Koordinator Pokja Keterpaduan)",
    "daya_ungkit": 2.0,
-   "butir_kurang": 2,
+   "butir_kurang": 1,
    "butir_total": 2,
+   "butir_revisi_di_p0": 1,
    "kenaikan_indeks": 0.04,
    "butir": [
-    {
-     "id": "GT.I15_L1_1",
-     "kode_rencana": "I15-L1-01",
-     "nama": "Proses Bisnis Pemerintah Digital untuk mendukung Layanan Digital pada Arsitektur Pemerintah Digital dari SIAP Digital.",
-     "status": "revisi",
-     "catatan": "Bukti dukung yang disampaikan tidak tepat berupa penjelasan pasal terkait Arsitektur SPBE, semestinya penyusunan arsitektur proses bisnis yang sudah diimplementasikan pada SIAP Digital.",
-     "arsip_lokal": null
-    },
     {
      "id": "GT.I15_L1_2",
      "kode_rencana": "I15-L1-02",
@@ -1068,6 +869,7 @@
    "daya_ungkit": 1.67,
    "butir_kurang": 3,
    "butir_total": 5,
+   "butir_revisi_di_p0": 0,
    "kenaikan_indeks": 0.05,
    "butir": [
     {
@@ -1122,18 +924,11 @@
    "level_target": 1,
    "pic": "Bag. Organisasi",
    "daya_ungkit": 1.33,
-   "butir_kurang": 3,
+   "butir_kurang": 2,
    "butir_total": 3,
+   "butir_revisi_di_p0": 1,
    "kenaikan_indeks": 0.04,
    "butir": [
-    {
-     "id": "GT.I16_L1_1",
-     "kode_rencana": "I16-L1-01",
-     "nama": "Laporan Pelaksanaan Integrasi Aplikasi yang berisikan matriks integrasi.",
-     "status": "revisi",
-     "catatan": "Dokumen pendukung/evidence terkait belum tersedia dan belum diunggah.",
-     "arsip_lokal": null
-    },
     {
      "id": "GT.I16_L1_2",
      "kode_rencana": "I16-L1-02",
@@ -1172,26 +967,11 @@
    "level_target": 1,
    "pic": "Diskominfo – Bid. Layanan E-Government",
    "daya_ungkit": 1.25,
-   "butir_kurang": 4,
+   "butir_kurang": 2,
    "butir_total": 4,
+   "butir_revisi_di_p0": 2,
    "kenaikan_indeks": 0.05,
    "butir": [
-    {
-     "id": "GT.I14_L1_1",
-     "kode_rencana": "I14-L1-01",
-     "nama": "Dasbor Ekosistem Pusat Data yang dimanfaatkan oleh IPPD.",
-     "status": "revisi",
-     "catatan": "Dokumen pendukung/evidence terkait belum tersedia dan belum diunggah.",
-     "arsip_lokal": null
-    },
-    {
-     "id": "GT.I14_L1_2",
-     "kode_rencana": "I14-L1-02",
-     "nama": "Screenshot Pemakaian Jaringan Intra.",
-     "status": "revisi",
-     "catatan": "Dokumen pendukung/evidence terkait belum tersedia dan belum diunggah.",
-     "arsip_lokal": null
-    },
     {
      "id": "GT.I14_L1_3",
      "kode_rencana": "I14-L1-03",
@@ -1238,6 +1018,7 @@
    "daya_ungkit": 1.0,
    "butir_kurang": 4,
    "butir_total": 4,
+   "butir_revisi_di_p0": 0,
    "kenaikan_indeks": 0.04,
    "butir": [
     {
@@ -1289,18 +1070,11 @@
    "level_target": 1,
    "pic": "Diskominfo – Bid. Statistik & Persandian",
    "daya_ungkit": 0.57,
-   "butir_kurang": 7,
+   "butir_kurang": 6,
    "butir_total": 7,
+   "butir_revisi_di_p0": 1,
    "kenaikan_indeks": 0.04,
    "butir": [
-    {
-     "id": "GT.I8_L1_1",
-     "kode_rencana": "I8-L1-01",
-     "nama": "Uraian kondisi existing tata kelola PDP, hasil identifikasi kebutuhan tata kelola PDP.",
-     "status": "revisi",
-     "catatan": "Dokumen pendukung/evidence terkait belum tersedia dan belum diunggah.",
-     "arsip_lokal": null
-    },
     {
      "id": "GT.I8_L1_2",
      "kode_rencana": "I8-L1-02",

@@ -27,7 +27,7 @@ Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah. Transformasi menuju Peme
 | **Path Alias** | `@/*` (via `jsconfig.json`) — ex: `@/components/Header` |
 | **Font** | Plus Jakarta Sans (Google Fonts, `display=swap` — lihat `_document.js`) |
 | **Data Source** | Hybrid: `data/*.json` (OPD, SPBE, ProBis, SKM, Pemdi) + Supabase (SKM responses, admin logs). Client: `lib/supabaseAdmin.js` |
-| **Komponen** | 20 komponen React aktif — lihat `components/AGENTS.md` (22 dead code dihapus saat hardening 2026-09-17) |
+| **Komponen** | 21 komponen React aktif — lihat `components/AGENTS.md` (22 dead code dihapus saat hardening 2026-09-17) |
 | **Halaman** | 20 route pages + 12 API routes — lihat `pages/AGENTS.md` |
 | **Lib** | `lib/pemdiNilai.js` (rumus PermenPANRB 8/2026), `lib/rate-limit-db.js`, `lib/search-index.js`, `lib/slugify.js`, `lib/format.js` — lihat `lib/AGENTS.md` |
 | **Status** | ⏸️ **Reposisi Opsi B** (20 Sep 2026) — lihat `REPOSISI-PEMDI.md`. Bukan "Portal Resmi Layanan Digital"; tiga produk: B1 Kokpit Pemdi (internal), B2 Dasbor Transparansi (publik), B3 komponen terintegrasi ke Alpukat Gayo. DOX Clean sebagai kode (diverifikasi 2026-09-17: 20/20 komponen aktif terimpor) |
@@ -52,6 +52,14 @@ Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah. Transformasi menuju Peme
 | **Penilaian Tahap 1** | eval.spbe.go.id, sinkron 20 Sep 2026: 37 butir dinilai → **18 diterima** (PDF di `public/bukti-dukung/final/I#-L#-##.pdf`) · **19 revisi** (19 butir: 7 bukti tidak tepat · 10 belum diunggah · 2 ditolak otomatis — I1, I4, I8, I9, I10, I12, I13, I14, I15, I16, I19, I20) — catatan asesor asli di `eval.catatan`, jenis di `eval.jenis` (`tidak_tepat|belum_diunggah|otomatis_ditolak`), berkas tidak disimpan, ditandai 🔁. Metadata: `data/pemdi.json → penilaian_tahap1` |
 | **Total bukti dukung** | **232** butir (`data/pemdi.json`: 18 diterima / 19 revisi / 0 proses / 12 draf / 183 belum). Vokabuler status: `diterima · revisi · proses · draf · belum` (`lib/pemdiNilai.js → STATUS_META`) |
 | **Konvensi kode bukti** | `I{indikator}-L{level}-{NN}` ⇔ item modul `GT.I{indikator}_L{level}_{NN}` — NN = nomor urut butir di dalam level pada Modul Indikator. Sinkron via `scripts/apply-eval-tahap1.py` → `scripts/hitung-capaian-pemdi.py` → `scripts/build-draf-prioritas.py` |
+
+## Tujuan Produk (catatan pemilik, 20 Sep 2026)
+
+Website/aplikasi ini ditujukan untuk **memudahkan Tim Asesor Internal Pemda Aceh Tengah memenuhi kebutuhan bukti dukung** Evaluasi Kinerja Pemdi: memakai **bahasa baku PermenPANRB 8/2026** pada butir/kriteria, lalu **menerjemahkannya ke ruang lingkup Pemda Aceh Tengah** sesuai kondisi aktual (PD, dokumen, sistem). Konsekuensi untuk agent:
+1. **Jangan parafrasa** nama butir bukti / kriteria level dari modul resmi (`data/modul-indikator.json`, `bukti_dukung[].nama`).
+2. Penyesuaian lokal ditulis di `catatan`, `contoh_modul`/"📄 Dokumen Aceh Tengah", `penanggung_jawab`, template — bukan dengan mengubah teks regulasi.
+3. Status butir & catatan asesor = **salinan apa adanya dari eval.spbe.go.id**; indeks selalu berlabel simulasi.
+4. Teks tujuan tunggal: `components/CatatanTujuan.js` (dirender di `/pemdi#tujuan`, `/modul-indikator`, `/requirement`) — sinkron dengan README "Tujuan".
 
 ## Framework Regulasi — DUA KERANGKA BERBEDA
 

@@ -9,7 +9,8 @@ React component library — reusable UI building blocks, props-driven.
 
 | Komponen | File | Fungsi | Dipakai di |
 |----------|------|--------|------------|
-| **AppShell** | `AppShell.js` | Shell global — gov-strip marquee, sidebar, topbar, breadcrumb, scroll-reveal, ⌘K → /cari | `_app.js` |
+| **AppShell** | `CatatanTujuan.js` | Kotak "Untuk siapa dan untuk apa kokpit ini" — catatan pemilik (bahasa baku PermenPANRB 8/2026 → konteks Aceh Tengah, untuk Tim Asesor Internal). Export `TUJUAN_KOKPIT` (teks tunggal). Prop `compact`. Dipakai `/pemdi`, `/modul-indikator`, `/requirement` | — |
+| `AppShell.js` | Shell global — gov-strip marquee, sidebar, topbar, breadcrumb, scroll-reveal, ⌘K → /cari | `_app.js` |
 | **Sidebar** | `Sidebar.js` | Navigasi kiri (brand crest SVG + menu grup) | `AppShell.js` |
 | **Footer** | `Footer.js` | Footer — regulasi, kontak, SP4N, lisensi MIT | `AppShell.js` |
 | **ThemeToggle** | `ThemeToggle.js` | Toggle dark/light (localStorage `theme`) | `AppShell.js` |

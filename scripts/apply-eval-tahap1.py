@@ -117,7 +117,7 @@ def main():
         if item is None:
             raise SystemExit(f"Item modul {bid} tidak ditemukan untuk kode {kode}")
         item["status"] = hasil
-        item["eval"] = {"tahap": 1, "kode": kode, "hasil": hasil, "portal": "eval.spbe.go.id", "tanggal": TANGGAL}
+        item.pop("eval", None)  # tulis ulang di akhir → urutan key stabil (diff bersih saat rerun)
         if hasil == "diterima":
             item["url_preview"] = f"/bukti-dukung/final/{kode}.pdf"
             item["_ext"] = "pdf"
@@ -125,10 +125,11 @@ def main():
         else:
             item.pop("url_preview", None)
             item.pop("_ext", None)
-            jenis, cat = REVISI_DETAIL[kode]
-            item["catatan"] = cat
-            item["eval"]["jenis"] = jenis
+            item["catatan"] = REVISI_DETAIL[kode][1]
         item.pop("_arsip", None)
+        item["eval"] = {"tahap": 1, "kode": kode, "hasil": hasil, "portal": "eval.spbe.go.id", "tanggal": TANGGAL}
+        if hasil == "revisi":
+            item["eval"]["jenis"] = REVISI_DETAIL[kode][0]
 
     for k in DITERIMA:
         apply(k, "diterima")
@@ -147,7 +148,7 @@ def main():
         "portal": "https://eval.spbe.go.id",
         "tanggal_sinkron": TANGGAL,
         "status": "Tahap 1 selesai dinilai — menunggu jadwal unggah revisi & tahap berikutnya",
-        "diunggah": len(DITERIMA) + len(REVISI),
+        "dinilai": len(DITERIMA) + len(REVISI),
         "diterima": len(DITERIMA),
         "revisi": len(REVISI),
         "kode_diterima": DITERIMA,

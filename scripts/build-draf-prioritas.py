@@ -39,6 +39,7 @@ def template_panduan(ind_id, level):
 
 
 revisi, gap = [], []
+kenaikan_p0p1 = 0.0  # kenaikan indeks bila P0 + P1 pada level berikut semuanya diterima
 for a in pemdi["aspek"]:
     for ind in a["indikator"]:
         if ind["id"] in EKSTERNAL:
@@ -58,15 +59,20 @@ for a in pemdi["aspek"]:
         if nilai >= 5:
             continue
         nxt = nilai + 1
-        kurang = [b for b in bd if b["level"] == nxt and b["status"] != "diterima"]
+        kurang = [b for b in bd if b["level"] == nxt and b["status"] not in ("diterima", "revisi")]  # revisi sudah di P0
         total_lv = [b for b in bd if b["level"] == nxt]
         if not total_lv:
             continue
-        ungkit = (ind.get("bobot") or 0) / max(1, len(kurang))
+        if any(b["status"] != "diterima" for b in total_lv):
+            kenaikan_p0p1 += (ind.get("bobot") or 0) / 100
+        if not kurang:
+            continue
+        n_revisi_lv = sum(1 for b in total_lv if b["status"] == "revisi")
+        ungkit = (ind.get("bobot") or 0) / max(1, len(kurang) + n_revisi_lv)
         gap.append({
             "indikator": ind["id"], "indikator_nama": ind["nama"], "aspek": a["singkat"], "bobot": ind.get("bobot"),
             "nilai_sekarang": nilai, "level_target": nxt, "pic": pic, "daya_ungkit": round(ungkit, 2),
-            "butir_kurang": len(kurang), "butir_total": len(total_lv),
+            "butir_kurang": len(kurang), "butir_total": len(total_lv), "butir_revisi_di_p0": n_revisi_lv,
             "kenaikan_indeks": round((ind.get("bobot") or 0) / 100, 3),
             "butir": [{
                 "id": b["id"], "kode_rencana": "I%s-L%d-%02d" % (ind["id"][1:], b["level"], int(b["id"].rsplit("_", 1)[-1])),
@@ -92,13 +98,13 @@ out = {
         "indikator_gap": len(gap),
         "butir_gap": sum(g["butir_kurang"] for g in gap),
         "indeks_simulasi": pemdi.get("indeks_aktual"),
-        "indeks_jika_semua_gap_l_berikut": round(pemdi.get("indeks_aktual", 0) + sum(g["kenaikan_indeks"] for g in gap), 2),
+        "indeks_jika_p0_p1_diterima": round(pemdi.get("indeks_aktual", 0) + kenaikan_p0p1, 2),
     },
     "revisi": revisi,
     "gap": gap,
 }
 json.dump(out, open(D("draf-bukti-prioritas.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 print("revisi:", len(revisi), "· indikator gap:", len(gap), "· butir gap:", out["ringkas"]["butir_gap"],
-      "· indeks jika semua L-berikut diterima:", out["ringkas"]["indeks_jika_semua_gap_l_berikut"])
+      "· indeks jika P0+P1 diterima:", out["ringkas"]["indeks_jika_p0_p1_diterima"])
 for g in gap:
     print(f"  {g['indikator']:4} L{g['level_target']} kurang {g['butir_kurang']}/{g['butir_total']} ungkit {g['daya_ungkit']}")

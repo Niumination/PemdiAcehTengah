@@ -25,7 +25,7 @@ Halaman Next.js Pages Router — entry points untuk user. SSG untuk konten stati
 | `/bantuan` | `bantuan.js` | Pusat bantuan — FAQ + layanan | — |
 | `/lapor` | `lapor.js` | Lapor & pengaduan — form + tracking ID + SP4N banner | TrackerStatus, Sp4nBanner, LaporWidget |
 | `/dashboard-kepuasan` | `dashboard-kepuasan.js` | Dashboard publik hasil SKM + rating (I20) | DashboardSKM |
-| `/requirement` | `requirement.js` | **Draf Bukti Dukung Prioritas** — tab Pemdi (19 revisi asesor + 38 butir gap, dari `draf-bukti-prioritas.json`) · tab PPB (83 requirements, 12 kategori) · panduan L1 | KerawangMotifs |
+| `/requirement` | `requirement.js` | **Draf Bukti Dukung Prioritas** — tab Pemdi (19 revisi asesor + 24 butir gap, dari `draf-bukti-prioritas.json`) · tab PPB (83 requirements, 12 kategori) · panduan L1 | KerawangMotifs |
 | `/admin` | `admin.js` | Admin dashboard — login Bearer, laporan + SKM | — |
 | `/kebijakan-privasi` | `kebijakan-privasi.js` | Kebijakan Privasi & Perlindungan Data (UU PDP) | — |
 | `/404` | `404.js` | Halaman tidak ditemukan | — |

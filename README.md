@@ -13,6 +13,12 @@ Transformasi menuju **Pemerintah Digital (Pemdi)** — open source government te
 
 ---
 
+## 🎯 Tujuan
+
+> **Untuk siapa dan untuk apa.** Website/aplikasi ini ditujukan untuk memudahkan **Tim Asesor Internal Pemerintah Kabupaten Aceh Tengah** dalam memenuhi kebutuhan bukti dukung Evaluasi Kinerja Pemerintah Digital. Kriteria dan butir bukti memakai **bahasa baku PermenPANRB Nomor 8 Tahun 2026** apa adanya, lalu **diterjemahkan ke ruang lingkup Pemda Aceh Tengah** — perangkat daerah, dokumen, sistem, dan kondisi aktual yang benar-benar ada — sehingga tim tahu persis dokumen apa yang harus disiapkan, oleh siapa, dan bagaimana bentuknya.
+>
+> Prinsip: bahasa regulasi tidak diparafrasa · penerjemahan konteks lokal ada di contoh dokumen, PIC, catatan, template · status butir mengikuti hasil asesor eval.spbe.go.id (indeks di sini = simulasi, bukan nilai resmi) · catatan asesor ditampilkan apa adanya. Teks tunggal: `components/CatatanTujuan.js`.
+
 ## 🎯 Fokus Utama
 
 **Indeks Pemerintah Digital (Pemdi)** — Dashboard evaluasi 7 aspek × 20 indikator berdasarkan PermenPANRB 8/2026, dengan data baseline dari konversi SPBE 2025 dan target 2026.
@@ -24,7 +30,7 @@ Transformasi menuju **Pemerintah Digital (Pemdi)** — open source government te
 | Indikator | Nilai |
 |-----------|-------|
 | **Indeks Pemdi (simulasi mandiri)** | **0,35** — hanya 18 bukti **diterima asesor** Tahap 1 eval.spbe.go.id yang dihitung (rumus resmi PermenPANRB 8/2026) — *bukan nilai resmi* |
-| **Penilaian Tahap 1 (eval.spbe.go.id)** | 37 butir dinilai → **18 diterima · 19 revisi** (19 butir: 7 bukti tidak tepat · 10 belum diunggah · 2 ditolak otomatis — I1, I4, I8, I9, I10, I12, I13, I14, I15, I16, I19, I20) — sinkron 20 Sep 2026 |
+| **Penilaian Tahap 1 (eval.spbe.go.id)** | 37 butir dinilai asesor → **18 diterima · 19 revisi** (19 butir: 7 bukti tidak tepat · 10 belum diunggah · 2 ditolak otomatis — I1, I4, I8, I9, I10, I12, I13, I14, I15, I16, I19, I20) — sinkron 20 Sep 2026 |
 | **Target Pemdi 2026** | 2.50 (Baik) |
 | **Indeks SPBE 2025** | 2,59 (Cukup) — baseline konversi |
 | **Total butir bukti dukung** | 232 item (18 diterima · 19 revisi · 12 draf lokal · 183 belum) |
@@ -51,7 +57,7 @@ Transformasi menuju **Pemerintah Digital (Pemdi)** — open source government te
 | Pusat Bantuan | `/bantuan` | Panduan penggunaan portal + FAQ |
 | Kebijakan Privasi | `/kebijakan-privasi` | Kebijakan perlindungan data pribadi (UU PDP) |
 | Dashboard Admin | `/admin` | Dashboard Admin — lihat data SKM & laporan warga (login required) |
-| Draf Bukti Dukung | `/requirement` | **Draf Bukti Dukung Prioritas** — 19 revisi asesor + 38 butir gap level berikut (diurutkan daya ungkit) dengan contoh modul & template; tab kedua: 83 kebutuhan data PPB |
+| Draf Bukti Dukung | `/requirement` | **Draf Bukti Dukung Prioritas** — 19 revisi asesor + 24 butir gap level berikut (di luar P0) (diurutkan daya ungkit) dengan contoh modul & template; tab kedua: 83 kebutuhan data PPB |
 | Detail OPD | `/opd/[slug]` | Halaman detail tiap PD (52 halaman statis) |
 
 ### API Endpoints
@@ -96,7 +102,7 @@ PemdiAcehTengah/
 │       └── admin/        # 🆕 Admin-only API
 │           ├── skm.js    # GET /api/admin/skm
 │           └── laporan.js# GET /api/admin/laporan
-├── components/           # React komponen (20 aktif)
+├── components/           # React komponen (21 aktif)
 │   ├── AppShell.js       # Shell global — sidebar, topbar, breadcrumb
 │   ├── Sidebar.js, Footer.js, ThemeToggle.js, ScrollTop.js
 │   ├── OPDTable.js, SpbeGauge.js, SlaBadge.js
