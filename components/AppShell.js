@@ -62,9 +62,9 @@ export default function AppShell({ children }) {
   const pathname = router.pathname;
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  // Navigasi utama tetap terlihat di desktop agar halaman dan layanan mudah ditemukan.
-  // Pengguna masih dapat meringkasnya lewat tombol di topbar.
-  const [sidebarHidden, setSidebarHidden] = useState(false);
+  // Sidebar disembunyikan secara default (permintaan pemilik 21 Sep 2026) —
+  // konten memakai seluruh lebar; pengguna membuka navigasi lewat tombol topbar.
+  const [sidebarHidden, setSidebarHidden] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
   const [hydrated, setHydrated] = useState(false);
   const [showLapor, setShowLapor] = useState(false);
