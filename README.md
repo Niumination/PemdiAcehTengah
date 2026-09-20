@@ -102,7 +102,7 @@ PemdiAcehTengah/
 │       └── admin/        # 🆕 Admin-only API
 │           ├── skm.js    # GET /api/admin/skm
 │           └── laporan.js# GET /api/admin/laporan
-├── components/           # React komponen (20 aktif)
+├── components/           # React komponen (27 aktif)
 │   ├── AppShell.js       # Shell global — sidebar, topbar, breadcrumb
 │   ├── Sidebar.js, Footer.js, ThemeToggle.js, ScrollTop.js
 │   ├── OPDTable.js, SpbeGauge.js, SlaBadge.js

@@ -478,7 +478,6 @@ function formatKriteria(text) {
                               width: `${(modul.status.diterima / modul.status.count) * 100}%`,
                               background: 'linear-gradient(90deg, #10b981, #059669)',
                               transformOrigin: 'left',
-                              animation: 'fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
                             }} />
                           </div>
                           <span style={{ fontSize: '0.7rem', color: 'var(--muted)' }}>

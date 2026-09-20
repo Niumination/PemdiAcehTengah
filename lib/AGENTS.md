@@ -22,3 +22,11 @@ Utility server-side & shared — murni fungsi, tanpa React.
 - **Jangan pernah** render string HTML tanpa `sanitizeHtml`
 - Perubahan `pemdiNilai.js` wajib `npm test` hijau (16 pin rumus — dari 20 tes suite: indeks simulasi 0,35 · proyeksi 2,29 · 232 bukti = 18 diterima/19 revisi/0 proses/12 draf/183 belum)
 - SQL pendukung: `db/schema.sql` (tabel + view + RPC `skm_per_unit_stats`, `skm_tren_bulanan`, `skm_stats_dimensi`), `db/rate-limit-schema.sql` (tabel + RPC `bump_rate_limit`)
+
+
+## Sprint UI/UX 21 Sep 2026
+
+| File | Fungsi | Uji |
+|------|--------|-----|
+| `persona.js` | Konstanta & util dual-persona: `parsePersona`, `personaHref`, `PERSONAS`, kunci localStorage `pemdi:persona`. Murni JS tanpa React | `test/persona.test.mjs` |
+| `sektorLayanan.js` | `SEKTOR` (6 sektor GOV.UK-style), `kelompokkanSektor(kategori[])` — memetakan 7 kategori `data/layanan.json` → 6 sektor tanpa kehilangan layanan (kategori baru jatuh ke sektor terakhir), `KATA_KUNCI_POPULER` | `test/persona.test.mjs` |

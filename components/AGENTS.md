@@ -3,14 +3,21 @@
 ## Purpose
 React component library — reusable UI building blocks, props-driven.
 
-## Ownership — 20 Komponen Aktif
+## Ownership — 27 Komponen Aktif (20 + 7 Sprint UI/UX 21 Sep 2026)
 
 *(DOX pass hardening 2026-09-17: 22 komponen/lib mati telah dihapus — Accordion, AwardHero, DataBadge, Explainer, Header, LaporanStatus, Modal, PPBChain, PemdiCalculator, ProbisSection, ProgressBarVisual, QuickActions, Rekomendasi, RekomendasiTracker, Section, Stepper, TimelineRoadmap, Toast, motif/KerawangCard, motif/KerawangHero. Tabel lama yang menyebut `Layout.js`/`ExpandablePanel.js` tidak akurat — file tersebut sudah tidak ada.)*
 
 | Komponen | File | Fungsi | Dipakai di |
 |----------|------|--------|------------|
 | **AppShell** | `CatatanTujuan.js` | Kotak "Untuk siapa dan untuk apa kokpit ini" — catatan pemilik (bahasa baku PermenPANRB 8/2026 → konteks Aceh Tengah, untuk Tim Asesor Internal). Export `TUJUAN_KOKPIT` (teks tunggal). Prop `compact`. Dipakai `/pemdi`, `/modul-indikator`, `/requirement` | — |
-| `AppShell.js` | Shell global — gov-strip marquee, sidebar, topbar, breadcrumb, scroll-reveal, ⌘K → /cari | `_app.js` |
+| `AppShell.js` | Shell global — gov-strip running text, sidebar, topbar (+PersonaSwitcher compact di luar beranda), breadcrumb, BottomNav (ponsel), ⌘K → /cari | `_app.js` |
+| **BottomNav** | `BottomNav.js` | Bottom nav bar ponsel (≤768 px): Beranda, Layanan, Lapor (event `pemdi:open-lapor`), Kinerja (`/?view=asesor`), Menu (buka drawer) | `AppShell.js` |
+| **PersonaSwitcher** | `persona/PersonaSwitcher.js` | Segmented control 2 persona (tablist ARIA). Di beranda `router.replace` shallow `?view=`; di halaman lain tautan ke beranda. Prop `compact` | `index.js`, `AppShell.js` |
+| **usePersona** | `persona/usePersona.js` | Hook: persona dari `?view=` → fallback localStorage `pemdi:persona` → default publik; `hydrated` | `index.js`, `PersonaSwitcher` |
+| **HeroPublik** | `publik/HeroPublik.js` | Hero Mode A: 1 pertanyaan + search besar (⌘K) + 5 kata kunci `lib/sektorLayanan.KATA_KUNCI_POPULER` | `index.js` |
+| **SektorLayanan** | `publik/SektorLayanan.js` | 6 kartu sektor + panel accordion inline daftar layanan (SlaBadge) | `index.js` |
+| **KpiCards** | `asesor/KpiCards.js` | 4 kartu KPI Mode B (Pemdi, SPBE, bukti Tahap 1 dengan bar segmen, 52 OPD) | `index.js` |
+| **AspekAccordion** | `asesor/AspekAccordion.js` | Accordion 7 aspek → indikator + chip status bukti (ok/warn/muted/gray) | `index.js` |
 | **Sidebar** | `Sidebar.js` | Navigasi kiri (brand crest SVG + menu grup) | `AppShell.js` |
 | **Footer** | `Footer.js` | Footer — regulasi, kontak, SP4N, lisensi MIT | `AppShell.js` |
 | **ThemeToggle** | `ThemeToggle.js` | Toggle dark/light (localStorage `theme`) | `AppShell.js` |
@@ -19,7 +26,7 @@ React component library — reusable UI building blocks, props-driven.
 | **RatingWidget** | `RatingWidget.js` | Rating ★ per halaman — submit `/api/feedback` | `AppShell.js` |
 | **SkmPrompt** | `SkmPrompt.js` | Toast ajakan survei SKM setelah 3 pageview (sessionStorage) | `_app.js` |
 | **Sp4nBanner** | `Sp4nBanner.js` | Banner/link SP4N LAPOR nasional (variant banner/footer) | `lapor.js`, `Footer.js` |
-| **OPDTable** | `OPDTable.js` | Tabel OPD interaktif — search, filter urusan/level, sort ASN | `index.js`, `opd/index.js` |
+| **OPDTable** | `OPDTable.js` | Tabel 52 OPD: cari + filter level, paginasi 12, toggle Tabel/Grid (desktop), stacked cards otomatis ≤768 px (`data-th`). Membaca `singkat`/`level`/`urusan` data/opd.json | `index.js`, `opd/index.js` |
 | **SpbeGauge** | `SpbeGauge.js` | Donut gauge indeks SPBE + domain | `index.js`, `spbe.js` |
 | **ServiceFinder** | `ServiceFinder.js` | Pencarian & filter layanan — search, tag kategori, hasil real-time | `index.js`, `layanan.js` |
 | **ServiceCard** | `ServiceCard.js` | Kartu layanan — waktu, biaya, persyaratan, SLA badge | `ServiceFinder.js` |

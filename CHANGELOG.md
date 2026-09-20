@@ -3,6 +3,16 @@
 Semua perubahan penting proyek ini didokumentasikan di file ini.
 Ringkasan publik tanpa detail internal; dokumen kerja lengkap disimpan pemilik repo di lokasi privat.
 
+## 2026-09-21 — Sprint UI/UX: Dual-Persona (GOV.UK / Gov.sg style)
+
+Sumber: instruksi refactoring pemilik (`gemini-code-…md`). Tanpa mengubah data JSON/API, tanpa library UI baru.
+
+- **Phase 1 — Persona Switcher**: segmented control `[🏛️ Portal Layanan Publik] | [📊 Dashboard Kinerja & Asesor]` (pola WAI-ARIA tablist, panah ←/→). Sumber kebenaran `?view=publik|asesor`, preferensi tersimpan di `localStorage` `pemdi:persona`. Beranda merender dua `tabpanel` (yang tidak aktif `hidden`) di dalam `.persona-stage` ber-`min-height` → berganti mode tanpa reload dan tanpa layout shift. Versi ringkas tampil di topbar semua halaman lain. File: `lib/persona.js`, `components/persona/{PersonaSwitcher,usePersona}.js`.
+- **Phase 2 — Portal Layanan Warga (Mode A, default)**: hero disederhanakan menjadi satu pertanyaan "Apa yang ingin Anda selesaikan hari ini?" + kotak cari besar (⌘K) + 5 kata kunci populer (KTP, KK, Perizinan, Pajak, Lapor). 25 layanan SLA dari 7 kategori dikelompokkan menjadi **6 kartu sektor** (Kesehatan + Sosial dilebur) dengan panel accordion inline. Indeks Pemdi, status revisi bukti, PPB, dan tabel OPD **disembunyikan** dari mode publik. File: `lib/sektorLayanan.js`, `components/publik/{HeroPublik,SektorLayanan}.js`.
+- **Phase 3 — Dashboard Kokpit Asesor (Mode B)**: 4 kartu KPI (Indeks Pemdi 0,35/2,50 · SPBE 2,59 Cukup · Bukti 18 diterima/19 revisi dengan bar segmen · Kepatuhan 52 OPD) + **Accordion Progress Card 7 Aspek** — klik aspek membuka 20 indikator beserta ringkasan status bukti (diterima/revisi/draf/belum) tanpa reload. `getStaticProps` beranda kini mengirim ringkasan per indikator (hitungan status saja, bukan isi bukti). File: `components/asesor/{KpiCards,AspekAccordion}.js`.
+- **Phase 4 — Mobile & Visual**: `BottomNav` 5 tujuan (Beranda, Layanan, Lapor, Kinerja, Menu→drawer) hanya ≤768 px; tabel 52 OPD: toggle **Tabel/Grid** di desktop, otomatis **stacked cards** (`data-th`) di ponsel tanpa scroll horizontal; spacing seksi seragam `.sec` (48/64 px ≈ py-12/py-16); token warna status AA (hijau `--ok` / amber `--warn` / abu `--muted`) pada chip & bar; Kerawang tetap sebagai divider & footer. Perbaikan ikutan: `OPDTable` membaca field data yang benar (`singkat`/`level`/`urusan` — sebelumnya kolom Kode/Kategori selalu "—"/"OPD"); sisa `fade-up` (transisi halaman AppShell, bar /pemdi & /modul-indikator) dan hover-lift `[class*=card]` dihapus.
+- Tes: +5 (`test/persona.test.mjs`) → 25/25. Bundel `/` 116 → 122 kB First Load (accordion & KPI di-render server).
+
 ## 2026-09-21 — Bersihkan Gambar Sisa Animasi + Kembalikan Running Text
 
 - **Running text pita atas dikembalikan** (keputusan pemilik): `.gov-strip-marquee-track` kembali berjalan 28 s linear, jeda saat hover, tetap berjalan pada `prefers-reduced-motion` karena berisi informasi resmi. Teks tetap "Kokpit Pemdi … Tim Asesor Internal" (bukan "Portal Resmi").

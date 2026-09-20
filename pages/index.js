@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import GlossaryTooltip from '@/components/GlossaryTooltip';
@@ -6,36 +5,22 @@ import OPDTable from '@/components/OPDTable';
 import SpbeGauge from '@/components/SpbeGauge';
 import ServiceFinder from '@/components/ServiceFinder';
 import DashboardSKM from '@/components/DashboardSKM';
+import PersonaSwitcher from '@/components/persona/PersonaSwitcher';
+import { usePersona } from '@/components/persona/usePersona';
+import HeroPublik from '@/components/publik/HeroPublik';
+import SektorLayanan from '@/components/publik/SektorLayanan';
+import KpiCards from '@/components/asesor/KpiCards';
+import AspekAccordion from '@/components/asesor/AspekAccordion';
+import { kelompokkanSektor } from '@/lib/sektorLayanan';
+import { PERSONA_ASESOR, PERSONA_PUBLIK } from '@/lib/persona';
 import { formatDesimal } from '@/lib/format';
 
-/* ── CountStat: angka KPI dengan count-up saat masuk viewport ── */
-function CountStat({ value, decimals = 0, color, style }) {
-  return <span className="countup" style={{ color, ...style }}>{formatDesimal(value ?? 0, decimals)}</span>;
-}
-
-/* ── Bar progres statis ── */
-function AnimatedBar({ pct, color }) {
-  return (
-    <div style={{ height: '6px', background: 'var(--line)', borderRadius: '3px', overflow: 'hidden' }}>
-      <div
-        style={{
-          height: '100%',
-          width: `${pct}%`,
-          background: color || 'var(--primary)',
-        }}
-      />
-    </div>
-  );
-}
-
-const popularQuickQueries = [
-  { label: '🆔 KTP-el & Kartu Keluarga', query: 'KTP' },
-  { label: '🏬 Perizinan Usaha MPP', query: 'Perizinan' },
-  { label: '💰 Pajak & Retribusi PAD', query: 'Pajak' },
-  { label: '🚑 Layanan Kesehatan RSUD', query: 'Kesehatan' },
-  { label: '🔍 Lacak Status Tiket', query: 'Status' },
-];
-
+/**
+ * Beranda — Dual-Persona (Sprint UI/UX 21 Sep 2026; REPOSISI-PEMDI.md B1/B2)
+ *   ?view=publik (default) → Portal Layanan Publik: tugas warga, tanpa metrik birokrasi
+ *   ?view=asesor            → Dashboard Kinerja & Asesor: KPI Pemdi/SPBE/bukti/OPD
+ * Kedua panel dirender di dalam wadah .persona-stage dengan min-height tetap → tanpa CLS.
+ */
 export default function Home({ pemdiData, layananData, portalData }) {
   const opd = portalData.opd;
   const spbe = portalData.spbe;
@@ -43,142 +28,44 @@ export default function Home({ pemdiData, layananData, portalData }) {
   const totalLayanan = layananData.ringkasan?.total_layanan ?? 25;
   const totalKategoriLayanan = layananData.ringkasan?.total_kategori ?? 7;
   const { aspek } = pemdiData;
-
-  const [heroSearch, setHeroSearch] = useState('');
+  const { persona } = usePersona();
+  const sektor = kelompokkanSektor(layananData.kategori);
+  const isAsesor = persona === PERSONA_ASESOR;
 
   return (
     <>
       <Head>
-        <title>Portal Digital Kabupaten Aceh Tengah — Transformasi Pemdi & SPBE</title>
+        <title>{isAsesor ? 'Dashboard Kinerja & Asesor — Pemdi Kabupaten Aceh Tengah' : 'Portal Layanan Publik — Kabupaten Aceh Tengah'}</title>
         <meta
           name="description"
-          content="Portal Resmi Pemerintah Digital (Pemdi) Kabupaten Aceh Tengah. Layanan publik terpadu, evaluasi Indeks SPBE 2025 (2,59), target Pemdi 2026 (PermenPANRB 8/2026), dan partisipasi warga."
+          content="Kabupaten Aceh Tengah: layanan publik terpadu untuk warga dan dashboard kinerja Pemerintah Digital (PermenPANRB 8/2026, SPBE 2025) untuk Tim Asesor."
         />
+        <link rel="canonical" href="https://pemdi-aceh-tengah.vercel.app/" />
       </Head>
 
-      {/* ============ 1. DUAL-PERSPECTIVE EXECUTIVE HERO ============ */}
-      <section className="hero" id="hero" style={{ position: 'relative' }}>
-        <div style={{ position: 'relative', zIndex: 2 }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px', marginBottom: '16px' }}>
-          <span className="pill">
-            🏛️ Portal Resmi Pemerintah Kabupaten Aceh Tengah
-          </span>
-          <span style={{ fontSize: '0.78rem', color: 'var(--primary-200)', fontWeight: 600 }}>
-            PermenPANRB No. 8 Tahun 2026 &amp; PermenPANRB No. 19 Tahun 2018
-          </span>
-        </div>
+      <div className="persona-bar">
+        <PersonaSwitcher />
+      </div>
 
-        <h1 className="gold-head">Pusat Akses Layanan Publik &amp; Transparansi Kinerja Digital Pemda</h1>
-        <p>
-          Integrasi <strong>25 Layanan Terpadu</strong> di <strong>52 Perangkat Daerah</strong>. Memantau progres transformasi <GlossaryTooltip id="pemdi">Pemdi</GlossaryTooltip> &amp; <GlossaryTooltip id="spbe">SPBE</GlossaryTooltip> secara terbuka demi pelayanan yang hemat, pasti, dan bebas pungli.
-        </p>
+      <div className="persona-stage">
+      {/* ═══════════════ MODE A — PORTAL LAYANAN PUBLIK ═══════════════ */}
+      <div id="persona-panel-publik" role="tabpanel" aria-labelledby="persona-tab-publik" hidden={isAsesor}>
+        <HeroPublik totalLayanan={totalLayanan} totalOpd={ringkasan.total_opd} />
 
-        {/* Hero Integrated Search Console */}
-        <div className="hero-search-box">
-          <span style={{ fontSize: '1.2rem' }}>🔍</span>
-          <input
-            type="text"
-            className="hero-search-input"
-            placeholder="Cari layanan publik (contoh: KTP-el, Perizinan, PBB) atau topik regulasi..."
-            value={heroSearch}
-            onChange={(e) => setHeroSearch(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' && heroSearch.trim()) {
-                window.location.href = `/cari?q=${encodeURIComponent(heroSearch.trim())}`;
-              }
-            }}
-          />
-          <Link
-            href={heroSearch.trim() ? `/cari?q=${encodeURIComponent(heroSearch.trim())}` : '/cari'}
-            className="btn btn-primary btn-sm"
-          >
-            Cari Layanan →
-          </Link>
-        </div>
-
-        {/* Quick Query Pills */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '24px' }}>
-          <span style={{ fontSize: '0.75rem', opacity: 0.8, fontWeight: 600 }}>Paling sering dicari:</span>
-          {popularQuickQueries.map((q) => (
-            <Link
-              key={q.label}
-              href={`/cari?q=${encodeURIComponent(q.query)}`}
-              style={{
-                fontSize: '0.75rem',
-                padding: '3px 10px',
-                borderRadius: '100px',
-                background: 'rgba(255,255,255,0.12)',
-                color: '#ffffff',
-                border: '1px solid rgba(255,255,255,0.2)',
-                fontWeight: 600,
-              }}
-            >
-              {q.label}
-            </Link>
-          ))}
-        </div>
-
-        {/* Dual CTA Actions */}
-        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-          <Link href="/layanan" className="hbtn solid">
-            Jelajahi Direktori 25 Layanan Publik
-          </Link>
-          <button
-            type="button"
-            className="hbtn ghost"
-            onClick={() => window.dispatchEvent(new CustomEvent('pemdi:open-lapor'))}
-          >
-            Buat Pengaduan / Lacak Status Tiket →
-          </button>
-        </div>
-        </div>
-      </section>
-
-      {/* ============ 2. EXECUTIVE LIVE METRICS TICKER ============ */}
-      <section style={{ marginBottom: '32px' }} id="statistik">
-        <div className="stats">
-          <div className="stat glow-card" style={{ borderColor: 'var(--gold)' }}>
-            <div className="ic">🚀</div>
-            <div className="n">
-              <CountStat value={pemdiData.indeks_aktual ?? 0} decimals={2} color="var(--gold-deep)" />
+        <section className="sec" id="sektor">
+          <div className="sec-head">
+            <div>
+              <div className="eyebrow">Sektor Layanan Terpadu</div>
+              <h2>Pilih sektor layanan</h2>
+              <p>{totalLayanan} layanan dari {totalKategoriLayanan} kategori dikelompokkan ke 6 sektor. Klik untuk melihat syarat, biaya, dan lama proses.</p>
             </div>
-            <div className="l">Indeks Pemdi — Simulasi Mandiri (target ≥ 2,50)</div>
-            {pemdiData.tahap1 && (
-              <div style={{ fontSize: '0.66rem', color: 'var(--muted)', marginTop: '4px' }} title="Bukan nilai resmi asesor. Hanya bukti yang DITERIMA di eval.spbe.go.id yang dihitung.">
-                Tahap 1 eval.spbe.go.id: ✅ {pemdiData.tahap1.diterima} diterima · 🔁 {pemdiData.tahap1.revisi} revisi
-              </div>
-            )}
+            <Link href="/layanan" className="link-more">Direktori lengkap →</Link>
           </div>
-
-          <div className="stat glow-card">
-            <div className="ic">📊</div>
-            <div className="n"><CountStat value={spbe.indeks} decimals={2} /></div>
-            <div className="l">Indeks SPBE 2025 (Baseline Cukup)</div>
-          </div>
-
-          <div className="stat glow-card">
-            <div className="ic">🏛️</div>
-            <div className="n"><CountStat value={ringkasan.total_opd} /></div>
-            <div className="l">52 Perangkat Daerah</div>
-          </div>
-
-          <div className="stat glow-card">
-            <div className="ic">📋</div>
-            <div className="n"><CountStat value={totalLayanan} /></div>
-            <div className="l">Layanan Terpadu SLA</div>
-          </div>
-
-          <div className="stat glow-card">
-            <div className="ic">👥</div>
-            <div className="n"><CountStat value={ringkasan.total_asn} /></div>
-            <div className="l">Jumlah SDM ASN</div>
-          </div>
-        </div>
-      </section>
-
+          <SektorLayanan sektor={sektor} />
+        </section>
 
       {/* ============ 3. CITIZEN TASK HUB ("Apa yang Ingin Anda Lakukan Hari Ini?") ============ */}
-      <section style={{ marginBottom: '44px' }} id="layanan-warga">
+      <section className="sec" id="layanan-warga">
         <div className="sec-head">
           <div>
             <div className="eyebrow">Akses Utama Warga</div>
@@ -231,8 +118,9 @@ export default function Home({ pemdiData, layananData, portalData }) {
         </div>
       </section>
 
+
       {/* ============ 4. POPULAR SERVICES EXPLORER ============ */}
-      <section style={{ marginBottom: '48px' }}>
+      <section className="sec">
         <div className="sec-head">
           <div>
             <div className="eyebrow">E-Services Explorer</div>
@@ -249,8 +137,49 @@ export default function Home({ pemdiData, layananData, portalData }) {
         </div>
       </section>
 
+
+      {/* ============ 7. LIVE PUBLIC SKM & CITIZEN SATISFACTION ============ */}
+      <section className="sec" id="skm-dashboard">
+        <div className="sec-head">
+          <div>
+            <div className="eyebrow">Indikator I20 PermenPANRB 8/2026</div>
+            <h2>Hasil Live Survei Kepuasan Masyarakat (SKM)</h2>
+            <p>Agregat penilaian kepuasan warga real-time dari seluruh unit pelayanan publik.</p>
+          </div>
+          <Link href="/dashboard-kepuasan" className="link-more">
+            Buka Full Dashboard IKM →
+          </Link>
+        </div>
+
+        <div className="glow-card" style={{ padding: '24px' }}>
+          <DashboardSKM />
+        </div>
+      </section>
+
+
+      </div>
+
+      {/* ═══════════════ MODE B — DASHBOARD KINERJA & ASESOR ═══════════════ */}
+      <div id="persona-panel-asesor" role="tabpanel" aria-labelledby="persona-tab-asesor" hidden={!isAsesor}>
+        <section className="hero hero-asesor" aria-labelledby="hero-asesor-title">
+          <span className="pill">⚖️ PermenPANRB No. 8 Tahun 2026 · Kokpit Penilaian Mandiri</span>
+          <h1 id="hero-asesor-title" className="gold-head">Dashboard Kinerja &amp; Asesor</h1>
+          <p>
+            Ringkasan eksekutif untuk Tim Asesor Internal: <GlossaryTooltip id="pemdi">Indeks Pemdi</GlossaryTooltip>, <GlossaryTooltip id="spbe">SPBE</GlossaryTooltip>,
+            status bukti dukung Tahap 1 eval.spbe.go.id, dan kepatuhan {ringkasan.total_opd} perangkat daerah.
+          </p>
+          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+            <Link href="/pemdi" className="hbtn solid">Buka Kokpit Pemdi →</Link>
+            <Link href="/requirement" className="hbtn ghost">Draf Bukti Dukung Prioritas</Link>
+          </div>
+        </section>
+
+        <section className="sec" id="kpi" aria-label="Ringkasan eksekutif">
+          <KpiCards pemdi={pemdiData} spbe={spbe} opd={ringkasan} />
+        </section>
+
       {/* ============ 5. SPBE & PEMDI EXECUTIVE DASHBOARD ============ */}
-      <section style={{ marginBottom: '48px' }} id="spbe-pemdi">
+      <section className="sec" id="spbe-pemdi">
         <div className="sec-head">
           <div>
             <div className="eyebrow">Command Center Kinerja Pemda</div>
@@ -268,6 +197,11 @@ export default function Home({ pemdiData, layananData, portalData }) {
         </div>
 
         <div className="grid-2" style={{ marginBottom: '24px' }}>
+          <div className="glow-card" style={{ padding: '24px' }}>
+            <h3 style={{ fontSize: '1.1rem', marginBottom: '12px' }}>🚀 Matrix Kematangan Pemdi 2026 — 7 Aspek</h3>
+            <p style={{ fontSize: '0.85rem', color: 'var(--muted)', marginBottom: '16px' }}>Klik aspek untuk melihat indikator &amp; status bukti dukung Tahap 1 (tanpa pindah halaman).</p>
+            <AspekAccordion aspek={aspek} />
+          </div>
           {/* Donut Donut Gauge SPBE */}
           <div className="glow-card" style={{ padding: '24px' }}>
             <h3 style={{ fontSize: '1.1rem', marginBottom: '12px' }}>
@@ -279,36 +213,12 @@ export default function Home({ pemdiData, layananData, portalData }) {
             <SpbeGauge nilai={spbe.indeks} domain={spbe.domain} />
           </div>
 
-          {/* 7 Aspek Pemdi Kematangan */}
-          <div className="glow-card" style={{ padding: '24px' }}>
-            <h3 style={{ fontSize: '1.1rem', marginBottom: '12px' }}>
-              🚀 Matrix Kematangan Pemdi 2026 (7 Aspek Utama)
-            </h3>
-            <p style={{ fontSize: '0.85rem', color: 'var(--muted)', marginBottom: '16px' }}>
-              Berdasarkan evaluasi Indikator PermenPANRB 8/2026:
-            </p>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              {aspek.map((a) => (
-                <div key={a.id} style={{ padding: '10px 12px', borderRadius: 'var(--r-xs)', background: 'var(--surface-2)', border: '1px solid var(--line)' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
-                    <span style={{ fontWeight: 700, fontSize: '0.85rem', color: 'var(--ink)' }}>
-                      {a.id}. {a.nama}
-                    </span>
-                    <span className="badge badge-blue">
-                      Nilai: {formatDesimal(a.nilai)} / Target {formatDesimal(a.target)}
-                    </span>
-                  </div>
-                  <AnimatedBar pct={Math.min(100, (a.nilai / a.target) * 100)} color={a.nilai >= a.target ? 'var(--ok)' : 'var(--primary)'} />
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
+
       {/* ============ 6. PETA PROSES BISNIS (PPB) 3-LEVEL ============ */}
-      <section style={{ marginBottom: '48px' }} id="probis">
+      <section className="sec" id="probis">
         <div className="sec-head">
           <div>
             <div className="eyebrow">Arsitektur Tata Kelola</div>
@@ -349,26 +259,9 @@ export default function Home({ pemdiData, layananData, portalData }) {
         </div>
       </section>
 
-      {/* ============ 7. LIVE PUBLIC SKM & CITIZEN SATISFACTION ============ */}
-      <section style={{ marginBottom: '48px' }} id="skm-dashboard">
-        <div className="sec-head">
-          <div>
-            <div className="eyebrow">Indikator I20 PermenPANRB 8/2026</div>
-            <h2>Hasil Live Survei Kepuasan Masyarakat (SKM)</h2>
-            <p>Agregat penilaian kepuasan warga real-time dari seluruh unit pelayanan publik.</p>
-          </div>
-          <Link href="/dashboard-kepuasan" className="link-more">
-            Buka Full Dashboard IKM →
-          </Link>
-        </div>
-
-        <div className="glow-card" style={{ padding: '24px' }}>
-          <DashboardSKM />
-        </div>
-      </section>
 
       {/* ============ 8. DIRECTORY OF 52 PERANGKAT DAERAH ============ */}
-      <section style={{ marginBottom: '48px' }} id="opd">
+      <section className="sec" id="opd">
         <div className="sec-head">
           <div>
             <div className="eyebrow">Direktori Pemda</div>
@@ -381,6 +274,9 @@ export default function Home({ pemdiData, layananData, portalData }) {
           <OPDTable list={opd.daftar} />
         </div>
       </section>
+
+      </div>
+      </div>
     </>
   );
 }
@@ -396,8 +292,17 @@ export async function getStaticProps() {
       // id/nama/nilai/target (lihat aspek.map di bawah).
       pemdiData: await import('@/data/pemdi.json').then(({ default: p }) => ({
         indeks_aktual: p.indeks_aktual,
-        tahap1: p.penilaian_tahap1 ? { diterima: p.penilaian_tahap1.diterima, revisi: p.penilaian_tahap1.revisi, tanggal_sinkron: p.penilaian_tahap1.tanggal_sinkron } : null,
-        aspek: p.aspek.map(({ id, nama, nilai, target }) => ({ id, nama, nilai, target })),
+        tahap1: p.penilaian_tahap1 ? { diterima: p.penilaian_tahap1.diterima, revisi: p.penilaian_tahap1.revisi, dinilai: p.penilaian_tahap1.dinilai, tanggal_sinkron: p.penilaian_tahap1.tanggal_sinkron } : null,
+        target_indeks: p.target_indeks,
+        total_item_bukti: p.total_item_bukti,
+        // Ringkasan per indikator untuk AspekAccordion (Mode B) — tanpa isi bukti (tetap ringan)
+        aspek: p.aspek.map(({ id, nama, nilai, target, bobot, deskripsi, koordinator, indikator }) => ({
+          id, nama, nilai, target, bobot, deskripsi, koordinator: koordinator || null,
+          indikator: (indikator || []).map((i) => ({
+            id: i.id, nama: i.nama, nilai: i.nilai, target: i.target,
+            bukti: (i.bukti_dukung || []).reduce((acc, b) => { acc[b.status] = (acc[b.status] || 0) + 1; return acc; }, { diterima: 0, revisi: 0, draf: 0, belum: 0 }),
+          })),
+        })),
       })),
       layananData: (await import('@/data/layanan.json')).default,
       portalData: (await import('@/data/opd.json')).default,

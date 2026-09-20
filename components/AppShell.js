@@ -7,6 +7,8 @@ import Footer from './Footer';
 import ScrollTop from './ScrollTop';
 import LaporWidget from './LaporWidget';
 import RatingWidget from './RatingWidget';
+import BottomNav from './BottomNav';
+import PersonaSwitcher from './persona/PersonaSwitcher';
 import { MotifUlen } from './motif/KerawangMotifs';
 
 const breadcrumbLabels = {
@@ -179,6 +181,9 @@ export default function AppShell({ children }) {
               </ol>
             </nav>
 
+            {/* Persona switcher (Phase 1) — di header, tampil di semua halaman selain beranda (beranda punya versi besar) */}
+            {pathname !== '/' && <div className="topbar-persona"><PersonaSwitcher compact /></div>}
+
             {/* Actions Bar — aksi utama tersedia dari semua halaman */}
             <div className="topbar-actions">
               <Link href="/cari" className="btn btn-secondary btn-sm topbar-search" aria-label="Cari informasi di portal">
@@ -202,11 +207,9 @@ export default function AppShell({ children }) {
           {/* Accessible Skip Link */}
           <a href="#main-content" className="skip-link">Lompat ke konten utama</a>
 
-          {/* Main Content Area — page transition fade-up via key remount */}
-          <main id="main-content" className="content" key={pathname} style={{ flex: 1 }}>
-            <div style={{ animation: 'fade-up 0.5s cubic-bezier(0.16,1,0.3,1) both' }}>
-              {children}
-            </div>
+          {/* Main Content Area */}
+          <main id="main-content" className="content" style={{ flex: 1 }}>
+            {children}
           </main>
 
           <Footer />
@@ -216,6 +219,9 @@ export default function AppShell({ children }) {
         </div>
 
         <ScrollTop />
+
+        {/* Bottom Nav Bar — hanya ponsel (Phase 4) */}
+        {hydrated && isMobile && <BottomNav onOpenMenu={() => setSidebarOpen(true)} />}
 
         {/* Lapor Modal — tetap sebagai pop-up (sesuai Task 3) */}
         <LaporWidget

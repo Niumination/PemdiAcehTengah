@@ -141,3 +141,19 @@ Tidak ada child — leaf node. Single file.
 - Yang diizinkan: `transition` warna/bayangan/border ≤0,3 s, micro-interaction ≤3 px (hover tombol/bintang), animasi masuk satu kali ≤0,3 s untuk overlay (panel rating).
 - `data-reveal`, kelas `reveal`/`aurora`/`d1–d4`, `MotifEmun`, `MarqueeBudaya`, `MotifBackground` sudah dihapus seluruhnya — jangan diperkenalkan kembali.
 - Jangan tambahkan kembali `hooks/useCountUp`, `hooks/useInView`, `TopographicBackdrop` tanpa keputusan pemilik.
+
+
+## Sprint UI/UX 21 Sep 2026 — blok CSS baru (akhir berkas)
+
+| Prefiks | Untuk |
+|---------|-------|
+| `.persona-*`, `.persona-stage` | Switcher (tinggi tetap 48 px; `min-height:70vh` pada stage → tanpa CLS) |
+| `.hero-publik`, `.hero-search-lg`, `.hero-kbd`, `.hero-chip` | Hero Mode A |
+| `.sektor-*` | 6 kartu sektor + panel |
+| `.kpi-*` | 4 kartu KPI Mode B |
+| `.aspek-*`, `.ind-*`, `.st-chip.{ok,warn,muted,gray}` | Accordion 7 aspek; warna status AA |
+| `.opd-viewbar`, `.seg`, `.opd-grid`, `.opd-stack` | Toggle Tabel/Grid, stacked cards ≤768 px |
+| `.bottom-nav`, `.bn-*`, `.topbar-persona` | Bottom nav ponsel; ruang `.content` +88 px |
+| `.sec`, `.sr-only`, `.muted` | Spacing seksi 48/64 px, util a11y |
+
+Catatan: `[class*="card"]:hover` tidak lagi memakai `transform`; transisi hanya bayangan/border.

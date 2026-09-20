@@ -6,6 +6,8 @@ export default function OPDTable({ list = [], layananCountMap = {} }) {
   const [search, setSearch] = useState('');
   const [kategoriFilter, setKategoriFilter] = useState('');
   const [page, setPage] = useState(1);
+  // Phase 4: desktop dapat memilih Tabel/Grid; di ponsel CSS memaksa stacked cards (.opd-stack)
+  const [view, setView] = useState('table');
   const pageSize = 12;
 
   /* Get service count for an OPD — fuzzy match via normalized name */
@@ -60,7 +62,8 @@ export default function OPDTable({ list = [], layananCountMap = {} }) {
   const kategoriOptions = useMemo(() => {
     const set = new Set();
     list.forEach((item) => {
-      if (item.kategori) set.add(item.kategori);
+      const kat = item.kategori || item.level;
+      if (kat) set.add(kat);
     });
     return Array.from(set).sort();
   }, [list]);
@@ -72,9 +75,9 @@ export default function OPDTable({ list = [], layananCountMap = {} }) {
       const matchSearch =
         !q ||
         (item.nama && item.nama.toLowerCase().includes(q)) ||
-        (item.singkatan && item.singkatan.toLowerCase().includes(q)) ||
+        ((item.singkatan || item.singkat) && (item.singkatan || item.singkat).toLowerCase().includes(q)) ||
         (item.kode && item.kode.toLowerCase().includes(q));
-      const matchKategori = !kategoriFilter || item.kategori === kategoriFilter;
+      const matchKategori = !kategoriFilter || (item.kategori || item.level) === kategoriFilter;
       return matchSearch && matchKategori;
     });
   }, [list, search, kategoriFilter]);
@@ -152,58 +155,68 @@ export default function OPDTable({ list = [], layananCountMap = {} }) {
         </div>
       </div>
 
-      {/* OPD Table */}
-      <div className="tbl-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th style={{ width: '70px' }}>Kode</th>
-              <th>Nama Perangkat Daerah (OPD)</th>
-              <th>Kategori</th>
-              <th style={{ textAlign: 'center' }}>Layanan</th>
-              <th style={{ textAlign: 'right' }}>Aksi</th>
-            </tr>
-          </thead>
-          <tbody>
-            {paginatedList.length > 0 ? (
-              paginatedList.map((opd) => (
+      {/* Toggle tampilan (desktop) */}
+      <div className="opd-viewbar">
+        <span className="muted" style={{ fontSize: '0.8rem' }}>{filteredList.length} Perangkat Daerah</span>
+        <div className="seg" role="group" aria-label="Pilih tampilan daftar OPD">
+          <button type="button" className={`seg-btn ${view === 'table' ? 'active' : ''}`} aria-pressed={view === 'table'} onClick={() => setView('table')}>☰ Tabel</button>
+          <button type="button" className={`seg-btn ${view === 'grid' ? 'active' : ''}`} aria-pressed={view === 'grid'} onClick={() => setView('grid')}>▦ Grid</button>
+        </div>
+      </div>
+
+      {paginatedList.length === 0 ? (
+        <div className="opd-empty">Tidak ada Perangkat Daerah yang cocok dengan kata kunci &ldquo;{search}&rdquo;.</div>
+      ) : view === 'grid' ? (
+        <ul className="opd-grid" aria-label="Daftar Perangkat Daerah (grid)">
+          {paginatedList.map((opd) => (
+            <li key={opd.id || opd.nama} className="opd-card">
+              <div className="opd-card-top">
+                <span className="opd-kode">{opd.kode || opd.singkat || opd.singkatan || '—'}</span>
+                <span className="badge badge-blue">{opd.kategori || opd.level || 'OPD'}</span>
+              </div>
+              <div className="opd-nama">{opd.nama}</div>
+              <div className="opd-card-foot">
+                <span className="opd-count">{getLayananCount(opd)} layanan</span>
+                <Link href={`/opd/${slugify(opd.nama)}`} className="btn btn-outline btn-sm">Detail →</Link>
+              </div>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div className="tbl-wrap opd-stack">
+          <table>
+            <thead>
+              <tr>
+                <th style={{ width: '70px' }}>Kode</th>
+                <th>Nama Perangkat Daerah (OPD)</th>
+                <th>Kategori</th>
+                <th style={{ textAlign: 'center' }}>Layanan</th>
+                <th style={{ textAlign: 'right' }}>Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              {paginatedList.map((opd) => (
                 <tr key={opd.id || opd.nama}>
-                  <td style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 800, color: 'var(--primary)' }}>
-                    {opd.kode || '—'}
+                  <td data-th="Kode" style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 800, color: 'var(--primary)' }}>
+                    {opd.kode || opd.singkat || '—'}
                   </td>
-                  <td>
-                    <div style={{ fontWeight: 700, color: 'var(--ink)', fontSize: '0.92rem' }}>
-                      {opd.nama}
-                    </div>
-                    {opd.singkatan && (
-                      <span className="badge badge-gray" style={{ marginTop: '3px' }}>
-                        {opd.singkatan}
-                      </span>
-                    )}
+                  <td data-th="Perangkat Daerah">
+                    <div style={{ fontWeight: 700, color: 'var(--ink)', fontSize: '0.92rem' }}>{opd.nama}</div>
+                    {opd.urusan && <span className="muted" style={{ fontSize: '0.75rem', display: 'block', marginTop: '2px' }}>{opd.urusan}</span>}
                   </td>
-                  <td>
-                    <span className="badge badge-blue">{opd.kategori || 'OPD'}</span>
-                  </td>
-                  <td style={{ textAlign: 'center', fontWeight: 800, color: 'var(--primary)', fontSize: '0.95rem' }}>
+                  <td data-th="Kategori"><span className="badge badge-blue">{opd.kategori || opd.level || 'OPD'}</span></td>
+                  <td data-th="Layanan" style={{ textAlign: 'center', fontWeight: 800, color: 'var(--primary)', fontSize: '0.95rem' }}>
                     {getLayananCount(opd)}
                   </td>
-                  <td style={{ textAlign: 'right' }}>
-                    <Link href={`/opd/${slugify(opd.nama)}`} className="btn btn-outline btn-sm">
-                      Detail Profil →
-                    </Link>
+                  <td data-th="" style={{ textAlign: 'right' }}>
+                    <Link href={`/opd/${slugify(opd.nama)}`} className="btn btn-outline btn-sm">Detail Profil →</Link>
                   </td>
                 </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan={5} style={{ textAlign: 'center', padding: '2.5rem', color: 'var(--muted)' }}>
-                  Tidak ada Perangkat Daerah yang cocok dengan kata kunci "{search}".
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
 
       {/* Pagination Bar */}
       {totalPages > 1 && (
