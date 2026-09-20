@@ -3,6 +3,13 @@
 Semua perubahan penting proyek ini didokumentasikan di file ini.
 Ringkasan publik tanpa detail internal; dokumen kerja lengkap disimpan pemilik repo di lokasi privat.
 
+## 2026-09-21 — Penyempurnaan "sidebar tertutup default" (tindak lanjut `90c955f`)
+
+- **Tanpa kedip / CLS**: `Sidebar` kini menerima `collapsed` sejak render server → HTML awal sudah `class="sidebar collapsed"` + `aria-hidden`. Sebelumnya sidebar 275 px dirender terbuka lalu menghilang setelah hydrate (kedip + pergeseran konten).
+- **Batas lebar baca**: `.content` tanpa `max-width` membuat baris teks membentang penuh di monitor lebar (>1600 px). Ditambahkan token `--content-max: 1440px` (GOV.UK: ≤ ~1280–1440 px) — konten tetap memenuhi kolom utama di laptop, tetapi tidak melebar tak terbatas.
+- **Identitas tetap terlihat**: brand ringkas (lambang + "Pemdi Aceh Tengah") di topbar karena sidebar (tempat brand sebelumnya) kini tertutup.
+- **A11y**: tombol toggle punya `aria-expanded` + `aria-controls="sidebar-nav"`; `Esc` menutup drawer.
+
 ## 2026-09-21 — Sprint UI/UX: Dual-Persona (GOV.UK / Gov.sg style)
 
 Sumber: instruksi refactoring pemilik (`gemini-code-…md`). Tanpa mengubah data JSON/API, tanpa library UI baru.

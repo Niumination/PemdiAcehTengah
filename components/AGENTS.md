@@ -10,7 +10,7 @@ React component library — reusable UI building blocks, props-driven.
 | Komponen | File | Fungsi | Dipakai di |
 |----------|------|--------|------------|
 | **AppShell** | `CatatanTujuan.js` | Kotak "Untuk siapa dan untuk apa kokpit ini" — catatan pemilik (bahasa baku PermenPANRB 8/2026 → konteks Aceh Tengah, untuk Tim Asesor Internal). Export `TUJUAN_KOKPIT` (teks tunggal). Prop `compact`. Dipakai `/pemdi`, `/modul-indikator`, `/requirement` | — |
-| `AppShell.js` | Shell global — gov-strip running text, sidebar, topbar (+PersonaSwitcher compact di luar beranda), breadcrumb, BottomNav (ponsel), ⌘K → /cari | `_app.js` |
+| `AppShell.js` | Shell global — gov-strip running text, sidebar, topbar (brand ringkas `.topbar-brand` + toggle `aria-expanded` + PersonaSwitcher compact di luar beranda), breadcrumb, BottomNav (ponsel), ⌘K → /cari | `_app.js` |
 | **BottomNav** | `BottomNav.js` | Bottom nav bar ponsel (≤768 px): Beranda, Layanan, Lapor (event `pemdi:open-lapor`), Kinerja (`/?view=asesor`), Menu (buka drawer) | `AppShell.js` |
 | **PersonaSwitcher** | `persona/PersonaSwitcher.js` | Segmented control 2 persona (tablist ARIA). Di beranda `router.replace` shallow `?view=`; di halaman lain tautan ke beranda. Prop `compact` | `index.js`, `AppShell.js` |
 | **usePersona** | `persona/usePersona.js` | Hook: persona dari `?view=` → fallback localStorage `pemdi:persona` → default publik; `hydrated` | `index.js`, `PersonaSwitcher` |
@@ -18,7 +18,7 @@ React component library — reusable UI building blocks, props-driven.
 | **SektorLayanan** | `publik/SektorLayanan.js` | 6 kartu sektor + panel accordion inline daftar layanan (SlaBadge) | `index.js` |
 | **KpiCards** | `asesor/KpiCards.js` | 4 kartu KPI Mode B (Pemdi, SPBE, bukti Tahap 1 dengan bar segmen, 52 OPD) | `index.js` |
 | **AspekAccordion** | `asesor/AspekAccordion.js` | Accordion 7 aspek → indikator + chip status bukti (ok/warn/muted/gray) | `index.js` |
-| **Sidebar** | `Sidebar.js` | Navigasi kiri (brand crest SVG + menu grup) | `AppShell.js` |
+| **Sidebar** | `Sidebar.js` | Navigasi kiri — **tertutup default** (prop `collapsed` dihormati sejak SSR → tanpa kedip), drawer di ponsel, Esc menutup, `id="sidebar-nav"` | `AppShell.js` |
 | **Footer** | `Footer.js` | Footer — regulasi, kontak, SP4N, lisensi MIT | `AppShell.js` |
 | **ThemeToggle** | `ThemeToggle.js` | Toggle dark/light (localStorage `theme`) | `AppShell.js` |
 | **ScrollTop** | `ScrollTop.js` | Tombol scroll-to-top | `AppShell.js` |

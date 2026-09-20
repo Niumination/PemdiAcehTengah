@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import Image from 'next/image';
 import Sidebar from './Sidebar';
 import ThemeToggle from './ThemeToggle';
 import Footer from './Footer';
@@ -130,7 +131,7 @@ export default function AppShell({ children }) {
         <Sidebar
           isOpen={sidebarOpen}
           onClose={handleCloseSidebar}
-          collapsed={hydrated && !isMobile && sidebarHidden}
+          collapsed={sidebarHidden}
         />
 
         {/* Spacer on Desktop */}
@@ -147,6 +148,8 @@ export default function AppShell({ children }) {
                 className="btn btn-secondary btn-sm"
                 onClick={() => setSidebarOpen((prev) => !prev)}
                 aria-label={sidebarOpen ? 'Tutup menu' : 'Buka menu'}
+                aria-expanded={sidebarOpen}
+                aria-controls="sidebar-nav"
               >
                 {sidebarOpen ? '✕' : '☰ Menu'}
               </button>
@@ -156,12 +159,21 @@ export default function AppShell({ children }) {
                 type="button"
                 className="sb-toggle-btn"
                 onClick={() => setSidebarHidden((prev) => !prev)}
-                aria-label={sidebarHidden ? 'Tampilkan sidebar' : 'Sembunyikan sidebar'}
-                title={sidebarHidden ? 'Tampilkan sidebar' : 'Sembunyikan sidebar'}
+                aria-label={sidebarHidden ? 'Tampilkan navigasi' : 'Sembunyikan navigasi'}
+                title={sidebarHidden ? 'Tampilkan navigasi' : 'Sembunyikan navigasi'}
+                aria-expanded={!sidebarHidden}
+                aria-controls="sidebar-nav"
               >
                 {sidebarHidden ? '☰' : '✕'}
               </button>
             )}
+            {/* Brand ringkas — sidebar tertutup secara default, identitas tetap terlihat */}
+            <Link href="/" className="topbar-brand" aria-label="Beranda Pemdi Aceh Tengah">
+              <span className="topbar-brand-crest" aria-hidden="true">
+                <Image src="/crest-pemdi.svg" alt="" width={26} height={26} />
+              </span>
+              <span className="topbar-brand-text">Pemdi <b>Aceh Tengah</b></span>
+            </Link>
 
             {/* Breadcrumb Navigation Trail */}
             <nav aria-label="Breadcrumb" style={{ flex: 1, minWidth: 0 }}>

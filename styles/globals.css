@@ -96,6 +96,7 @@
   /* Layout & Dimensions */
   --sbw: 275px;
   --max-width: 1220px;
+  --content-max: 1440px;   /* lebar kolom utama saat sidebar tertutup */
   --gov-strip-h: 36px;
 
   /* Typography */
@@ -413,8 +414,11 @@ img, svg {
 .content {
   flex: 1;
   width: 100%;
+  /* Sidebar tertutup default (21 Sep 2026): konten memenuhi kolom utama, tetapi dibatasi
+     --content-max agar baris teks tetap terbaca di monitor lebar (GOV.UK: ≤ ~1280px). */
+  max-width: var(--content-max);
   margin: 0 auto;
-  padding: 24px 24px 64px;
+  padding: 24px 32px 64px;
 }
 
 /* ============ 4. SIDEBAR STYLES (PREMIUM GOVERNMENT) ============ */
@@ -1871,3 +1875,12 @@ a { transition: color 0.18s ease; }
   .rating-widget { bottom: 76px; }
   .scroll-top { bottom: calc(140px + env(safe-area-inset-bottom)); }
 }
+
+/* ── Brand ringkas di topbar (sidebar tertutup default, 21 Sep 2026) ── */
+.topbar-brand { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: var(--ink); flex-shrink: 0; margin-right: 6px; }
+.topbar-brand-crest { width: 30px; height: 30px; border-radius: 8px; background: linear-gradient(135deg, #0a66c2 0%, #063a73 100%); border: 1px solid var(--gold); display: grid; place-items: center; }
+.topbar-brand-text { font-size: 0.86rem; font-weight: 600; white-space: nowrap; }
+.topbar-brand-text b { font-weight: 800; }
+.topbar-brand:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; border-radius: 8px; }
+@media (max-width: 900px) { .topbar-brand-text { display: none; } }
+@media (max-width: 480px) { .topbar-brand { display: none; } }

@@ -157,3 +157,10 @@ Tidak ada child — leaf node. Single file.
 | `.sec`, `.sr-only`, `.muted` | Spacing seksi 48/64 px, util a11y |
 
 Catatan: `[class*="card"]:hover` tidak lagi memakai `transform`; transisi hanya bayangan/border.
+
+
+## Lebar konten (21 Sep 2026)
+
+- `--max-width: 1220px` → hanya untuk `.container` & tabel lama.
+- `--content-max: 1440px` → `.content` (kolom utama saat sidebar tertutup). Jangan hapus `max-width` `.content`; lebar tanpa batas merusak keterbacaan di monitor lebar.
+- `.topbar-brand*` → brand ringkas di topbar (teks disembunyikan ≤900 px, seluruhnya ≤480 px).

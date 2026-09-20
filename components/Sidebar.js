@@ -73,7 +73,17 @@ export default function Sidebar({ isOpen, onClose, collapsed }) {
   };
 
   const showAsDrawer = hydrated && !isDesktop;
-  const isCollapsed = hydrated && isDesktop && collapsed;
+  // Sebelum hydrate: ikuti nilai `collapsed` dari server (default tertutup) → HTML awal
+  // sudah class "collapsed", tidak ada kedip sidebar 275px lalu menghilang (CLS 0).
+  const isCollapsed = hydrated ? (isDesktop && collapsed) : collapsed;
+
+  // Esc menutup drawer (WCAG 2.1 – 1.4.13 / pola dialog)
+  useEffect(() => {
+    if (!isOpen) return undefined;
+    const onKey = (e) => { if (e.key === 'Escape') onCloseRef.current?.(); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [isOpen]);
 
   return (
     <>
@@ -101,6 +111,8 @@ export default function Sidebar({ isOpen, onClose, collapsed }) {
         className={`sidebar ${showAsDrawer && isOpen ? 'open' : ''} ${isCollapsed ? 'collapsed' : ''}`}
         role="navigation"
         aria-label="Navigasi Utama Pemdi Aceh Tengah"
+        id="sidebar-nav"
+        aria-hidden={isCollapsed && !isOpen ? true : undefined}
       >
         {/* Brand Header — selalu tampil meski collapsed, minimal */}
         <div className="sb-header">
