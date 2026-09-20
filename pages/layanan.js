@@ -2,7 +2,6 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useState, useMemo } from 'react';
 import SlaBadge from '@/components/SlaBadge';
-import { MotifEmun, MotifTapak, KerawangDivider } from '@/components/motif/KerawangMotifs';
 import { formatAngka, formatDesimal, gabung } from '@/lib/format';
 import layananData from '@/data/layanan.json';
 import ServiceCard from '@/components/ServiceCard';
@@ -49,7 +48,7 @@ export default function LayananPage() {
       </Head>
 
       {/* ============ HERO ============ */}
-      <section data-reveal style={{
+      <section style={{
         background: 'var(--hero-grad)',
         borderRadius: 'var(--r)',
         padding: '2.5rem 2rem',
@@ -58,12 +57,6 @@ export default function LayananPage() {
         position: 'relative',
         overflow: 'hidden',
       }}>
-        <div aria-hidden="true" style={{ position: 'absolute', top: -18, right: 6, opacity: 0.5, pointerEvents: 'none' }}>
-          <MotifEmun size={300} />
-        </div>
-        <div aria-hidden="true" style={{ position: 'absolute', bottom: -12, left: 10, opacity: 0.32, pointerEvents: 'none' }}>
-          <MotifTapak size={120} />
-        </div>
         <div style={{ position: 'relative', zIndex: 1 }}>
           <Link href="/" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none', fontSize: '0.875rem' }}
             onMouseEnter={e => e.target.style.color = '#fff'}
@@ -137,7 +130,7 @@ export default function LayananPage() {
       {/* ============ STATS ============ */}
       <section className="section" style={{ padding: '1.5rem 0' }}>
         <div className="container">
-          <div className="grid grid-4 layanan-stats" style={{ gap: '0.75rem' }} data-reveal-stagger>
+          <div className="grid grid-4 layanan-stats" style={{ gap: '0.75rem' }}>
             <div className="card" style={{ padding: '1rem', textAlign: 'center', '--i': 0 }}>
               <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--primary)' }}>{formatAngka(ringkasan.total_layanan)}</div>
               <div style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>Total Layanan</div>
@@ -175,7 +168,7 @@ export default function LayananPage() {
             <h2>Kategori Layanan</h2>
             <p>Jelajahi berdasarkan kategori urusan pemerintahan</p>
           </div>
-          <div className="grid grid-3" data-reveal-stagger>
+          <div className="grid grid-3">
             {kategori.map((k, ki) => (
               <Link key={k.id} href={`/layanan?kategori=${k.id}`}
                 className="card"

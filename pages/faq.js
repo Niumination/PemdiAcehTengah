@@ -2,7 +2,6 @@ import Head from 'next/head';
 import Link from 'next/link';
 import faq from '@/data/faq.json';
 import { useState, useEffect } from 'react';
-import { MotifEmun, MotifRante } from '@/components/motif/KerawangMotifs';
 import { sanitizeHtml } from '@/lib/sanitize';
 
 const FEEDBACK_KEY = 'pemdi_faq_fb';
@@ -68,7 +67,7 @@ export default function FAQPage() {
         />
       </Head>
 
-      <section data-reveal style={{
+      <section style={{
         background: 'var(--hero-grad)',
         borderRadius: 'var(--r)',
         padding: '2.5rem 2rem',
@@ -77,12 +76,6 @@ export default function FAQPage() {
         position: 'relative',
         overflow: 'hidden',
       }}>
-        <div aria-hidden="true" style={{ position: 'absolute', top: -18, right: 6, opacity: 0.5, pointerEvents: 'none' }}>
-          <MotifEmun size={300} />
-        </div>
-        <div aria-hidden="true" style={{ position: 'absolute', bottom: -12, left: 10, opacity: 0.32, pointerEvents: 'none' }}>
-          <MotifRante size={170} />
-        </div>
         <div style={{ position: 'relative', zIndex: 1 }}>
           <Link href="/" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none', fontSize: '0.875rem' }}
             onMouseEnter={e => e.target.style.color = '#fff'}

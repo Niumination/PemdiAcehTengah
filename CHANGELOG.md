@@ -3,6 +3,13 @@
 Semua perubahan penting proyek ini didokumentasikan di file ini.
 Ringkasan publik tanpa detail internal; dokumen kerja lengkap disimpan pemilik repo di lokasi privat.
 
+## 2026-09-21 — Bersihkan Gambar Sisa Animasi + Kembalikan Running Text
+
+- **Running text pita atas dikembalikan** (keputusan pemilik): `.gov-strip-marquee-track` kembali berjalan 28 s linear, jeda saat hover, tetap berjalan pada `prefers-reduced-motion` karena berisi informasi resmi. Teks tetap "Kokpit Pemdi … Tim Asesor Internal" (bukan "Portal Resmi").
+- **Dihapus** semua gambar/ornamen yang dulu melekat pada animasi: awan `MotifEmun` (17 halaman), ornamen absolut `MotifUlen/MotifTapak/MotifRante/MotifPucukRebung` di hero/latar (semua halaman), `MarqueeBudaya` (pita filosofi Kerawang di beranda), `MotifBackground`, kelas `aurora`/`reveal`/`d1–d4`, observer `.reveal` sisa di `pages/index.js`, seluruh atribut `data-reveal`/`data-reveal-stagger`, CSS `html.anim-ready .reveal`, `.kr-marquee`, `.aurora`, `.reveal-bar`.
+- **Dipertahankan** (fungsional, bukan sisa animasi): `MotifUlen` 18 px di pita atas, `KerawangDivider` pemisah seksi, `MotifPucukRebung` 26 px di footer.
+- CSS 34,9 → 34,1 kB; `/` 117 → 116 kB.
+
 ## 2026-09-20 — Hapus Kosmetik Animasi (kelayakan produksi & performa)
 
 - **Dihapus**: blob aurora bergerak (2× `blur(70px)` animasi tak berujung), garis topografi SVG acak (`TopographicBackdrop`, ±40 path per render), awan Emun melayang, kilau emas judul (`gold-shimmer`), pita berjalan atas & pita motif (marquee), border conic berputar (`glass-card`), animasi masuk `fade-up` pada semua kartu/grid, scroll-reveal `IntersectionObserver` global, angka *count-up*, bar progres *reveal*, `backdrop-filter: blur` pada topbar lengket & hero, transform *lift* saat hover.

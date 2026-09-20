@@ -157,7 +157,7 @@ export default function AdminPage() {
       </Head>
 
       {/* HERO */}
-      <section data-reveal style={{
+      <section style={{
         background: 'var(--hero-grad)',
         borderRadius: 'var(--r)',
         padding: '1.5rem 2rem',

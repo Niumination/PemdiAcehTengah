@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import OPDTable from '@/components/OPDTable';
-import { MotifEmun, MotifTapak, KerawangDivider } from '@/components/motif/KerawangMotifs';
 import { formatAngka } from '@/lib/format';
 import portalData from '@/data/opd.json';
 import layananData from '@/data/layanan.json';
@@ -64,8 +63,6 @@ export default function OPDIndex({ data, layananCountMap }) {
         position: 'relative',
         overflow: 'hidden',
       }}>
-        <MotifEmun size={280} style={{ position: 'absolute', top: -18, right: 8, opacity: 0.5 }} />
-        <MotifTapak size={90} style={{ position: 'absolute', bottom: -8, left: 18, opacity: 0.35 }} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <h1 className="gold-head" style={{ fontSize: '1.65rem', fontWeight: 700, marginBottom: '0.75rem', lineHeight: 1.2 }}>
             Perangkat Daerah Kabupaten Aceh Tengah

@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import DashboardSKM from '@/components/DashboardSKM';
-import { MotifTapak, MotifUlen, KerawangDivider } from '@/components/motif/KerawangMotifs';
+import { KerawangDivider } from '@/components/motif/KerawangMotifs';
 import { supabaseAdmin, isSupabaseReady } from '@/lib/supabaseAdmin';
 
 /**
@@ -39,7 +39,7 @@ export default function DashboardKepuasan({ ringkasan }) {
         />
       </Head>
 
-      <section data-reveal style={{
+      <section style={{
         background: 'var(--hero-grad)',
         borderRadius: 'var(--r)',
         padding: '2.5rem 2rem',
@@ -48,8 +48,6 @@ export default function DashboardKepuasan({ ringkasan }) {
         position: 'relative',
         overflow: 'hidden',
       }}>
-        <MotifUlen size={100} style={{ position: 'absolute', top: -12, right: 20, opacity: 0.5 }} />
-        <MotifTapak size={150} style={{ position: 'absolute', bottom: -20, left: 10, opacity: 0.35 }} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <Link href="/" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none', fontSize: '0.875rem' }}
             onMouseEnter={e => e.target.style.color = '#fff'}

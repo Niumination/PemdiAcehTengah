@@ -136,7 +136,8 @@ Tidak ada child — leaf node. Single file.
 
 ## Kebijakan motion (sejak 20 Sep 2026 — produksi)
 
-- **Tidak ada** animasi tak berujung (`infinite`), blob/blur besar, `backdrop-filter`, marquee, parallax, 3D transform, count-up, atau scroll-reveal. Semua telah dihapus karena tidak layak produksi & berat di perangkat kelas menengah.
+- **Tidak ada** animasi dekoratif: blob/blur besar, `backdrop-filter`, pita motif, parallax, 3D transform, count-up, scroll-reveal, ornamen SVG absolut di hero. Semua telah dihapus karena tidak layak produksi & berat di perangkat kelas menengah.
+- **Satu pengecualian** (keputusan pemilik 21 Sep 2026): running text `.gov-strip-marquee-track` (28 s linear, `infinite`, jeda saat hover) — dianggap informasi resmi, bukan dekorasi; tetap berjalan pada `prefers-reduced-motion`.
 - Yang diizinkan: `transition` warna/bayangan/border ≤0,3 s, micro-interaction ≤3 px (hover tombol/bintang), animasi masuk satu kali ≤0,3 s untuk overlay (panel rating).
-- `[data-reveal]`/`[data-reveal-stagger]` di JSX kini tidak berefek (CSS memaksa `opacity:1`); atribut boleh dibiarkan atau dibersihkan bertahap.
+- `data-reveal`, kelas `reveal`/`aurora`/`d1–d4`, `MotifEmun`, `MarqueeBudaya`, `MotifBackground` sudah dihapus seluruhnya — jangan diperkenalkan kembali.
 - Jangan tambahkan kembali `hooks/useCountUp`, `hooks/useInView`, `TopographicBackdrop` tanpa keputusan pemilik.

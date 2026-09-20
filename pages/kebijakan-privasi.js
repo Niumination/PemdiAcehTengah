@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { MotifEmun, MotifTapak } from '@/components/motif/KerawangMotifs';
 
 export default function KebijakanPrivasi() {
   return (
@@ -14,19 +13,13 @@ export default function KebijakanPrivasi() {
       </Head>
 
       {/* ============ HERO ============ */}
-      <section data-reveal className="section-hero-privasi" style={{
+      <section className="section-hero-privasi" style={{
         background: 'var(--hero-grad)',
         color: 'white',
         padding: '2.5rem 0 2rem',
         position: 'relative',
         overflow: 'hidden',
       }}>
-        <div aria-hidden="true" style={{ position: 'absolute', top: -18, right: 6, opacity: 0.5, pointerEvents: 'none' }}>
-          <MotifEmun size={280} />
-        </div>
-        <div aria-hidden="true" style={{ position: 'absolute', bottom: -12, left: 10, opacity: 0.32, pointerEvents: 'none' }}>
-          <MotifTapak size={110} />
-        </div>
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <Link href="/" className="back-link" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none', fontSize: '0.875rem' }}>
             ← Beranda

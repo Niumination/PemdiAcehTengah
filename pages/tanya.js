@@ -2,7 +2,6 @@ import Head from 'next/head';
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import faqData from '@/data/faq.json';
-import { MotifEmun } from '@/components/motif/KerawangMotifs';
 import { sanitizeHtml } from '@/lib/sanitize';
 
 /* ---------- helpers ---------- */
@@ -101,10 +100,7 @@ export default function TanyaPage() {
       </Head>
 
       {/* ====== HERO ====== */}
-      <section data-reveal className="chat-hero" style={{ position: 'relative', overflow: 'hidden' }}>
-        <div aria-hidden="true" style={{ position: 'absolute', top: -18, right: 6, opacity: 0.5, pointerEvents: 'none' }}>
-          <MotifEmun size={280} />
-        </div>
+      <section className="chat-hero" style={{ position: 'relative', overflow: 'hidden' }}>
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <Link href="/" className="back-link">← Beranda</Link>
           <div style={{ marginTop: '1rem' }}>

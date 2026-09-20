@@ -7,7 +7,7 @@ import Footer from './Footer';
 import ScrollTop from './ScrollTop';
 import LaporWidget from './LaporWidget';
 import RatingWidget from './RatingWidget';
-import { MotifEmun, MotifUlen, KerawangDivider } from './motif/KerawangMotifs';
+import { MotifUlen } from './motif/KerawangMotifs';
 
 const breadcrumbLabels = {
   '/': 'Beranda Portal',
@@ -104,18 +104,19 @@ export default function AppShell({ children }) {
 
   const breadcrumbs = getBreadcrumbs(pathname);
 
-  /* ── Teks pita atas (statis, tanpa animasi) — bukan 'Portal Resmi' (prasyarat K7 REPOSISI-PEMDI.md) ── */
-  const stripText = 'Kokpit Pemdi Kabupaten Aceh Tengah — Perangkat kerja Tim Asesor Internal · Evaluasi Kinerja Pemerintah Digital (PermenPANRB 8/2026)';
+  /* ── Running text pita atas (informasi resmi, bukan dekorasi) — bukan 'Portal Resmi' (prasyarat K7 REPOSISI-PEMDI.md) ── */
+  const marqueeText = 'Kokpit Pemdi Kabupaten Aceh Tengah — Perangkat kerja Tim Asesor Internal · Evaluasi Kinerja Pemerintah Digital (PermenPANRB 8/2026)';
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', paddingTop: 'calc(var(--gov-strip-h) + env(safe-area-inset-top))' }}>
-      {/* Pita informasi atas — statis + Motif Ulen */}
+      {/* Official Government Strip — Marquee Running Text + Motif Ulen */}
       <div className="gov-strip" aria-label="Informasi portal">
         <span className="gov-strip-flag" aria-hidden="true">🇮🇩</span>
         <MotifUlen size={18} style={{ marginLeft: 8 }} />
         <div className="gov-strip-marquee">
-          <div className="gov-strip-marquee-track" title={stripText}>
-            <span>{stripText}</span>
+          <div className="gov-strip-marquee-track" aria-label={marqueeText}>
+            <span>{marqueeText}</span>
+            <span>{marqueeText}</span>
           </div>
         </div>
         <MotifUlen size={18} />

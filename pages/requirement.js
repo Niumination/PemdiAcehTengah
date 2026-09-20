@@ -4,7 +4,7 @@ import Link from 'next/link'
 import panduanBukti from '@/data/panduan-bukti-l1.json'
 import requirementData from '@/data/requirement.json'
 import drafPrioritas from '@/data/draf-bukti-prioritas.json'
-import { MotifEmun, MotifRante } from '@/components/motif/KerawangMotifs'
+
 import CatatanTujuan from '@/components/CatatanTujuan'
 import { STATUS_META, LEVEL_LABEL, REVISI_JENIS } from '@/lib/pemdiNilai'
 
@@ -38,7 +38,7 @@ export default function Requirement() {
       </Head>
 
       {/* HERO */}
-      <section data-reveal style={{
+      <section style={{
         background: 'var(--hero-grad)',
         borderRadius: 'var(--r)',
         padding: '2.5rem 2rem',
@@ -47,12 +47,6 @@ export default function Requirement() {
         position: 'relative',
         overflow: 'hidden',
       }}>
-        <div aria-hidden="true" style={{ position: 'absolute', top: -18, right: 6, opacity: 0.5, pointerEvents: 'none' }}>
-          <MotifEmun size={300} />
-        </div>
-        <div aria-hidden="true" style={{ position: 'absolute', bottom: -12, left: 10, opacity: 0.32, pointerEvents: 'none' }}>
-          <MotifRante size={170} />
-        </div>
         <div style={{ position: 'relative', zIndex: 1 }}>
           <div className="pill" style={{ marginBottom: '0.75rem', background: 'rgba(255,255,255,0.15)', color: '#fff', border: '1px solid rgba(255,255,255,0.3)' }}>
             KOKPIT PEMDI · PERSIAPAN TAHAP BERIKUTNYA

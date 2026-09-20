@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { MotifEmun, MotifUlen } from '@/components/motif/KerawangMotifs';
 
 export default function Custom404() {
   return (
@@ -12,13 +11,6 @@ export default function Custom404() {
 
       <section className="section" style={{ padding: '4rem 0' }}>
         <div className="container" style={{ textAlign: 'center', maxWidth: '600px', position: 'relative' }}>
-          {/* Motif dekoratif */}
-          <div aria-hidden="true" style={{ position: 'absolute', top: -40, right: -20, opacity: 0.3, pointerEvents: 'none' }}>
-            <MotifEmun size={260} />
-          </div>
-          <div aria-hidden="true" style={{ position: 'absolute', bottom: 10, left: -30, opacity: 0.3, pointerEvents: 'none' }}>
-            <MotifUlen size={90} />
-          </div>
           {/* Ilustrasi */}
           <div style={{
             fontSize: '6rem',

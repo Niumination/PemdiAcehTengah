@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { useState } from 'react';
 import TrackerStatus from '@/components/TrackerStatus';
 import Sp4nBanner from '@/components/Sp4nBanner';
-import { MotifEmun, MotifRante } from '@/components/motif/KerawangMotifs';
 
 const KATEGORI = [
   { value: 'saran', label: '💡 Saran', desc: 'Ide atau usulan perbaikan' },
@@ -27,13 +26,7 @@ export default function LaporPage() {
         <meta name="description" content="Kirim laporan pengaduan dan lacak status tindak lanjut — Pemerintah Kabupaten Aceh Tengah. Indikator I19 Fasilitas Dukungan Pengguna PermenPANRB 8/2026." />
       </Head>
 
-      <section data-reveal className="section-hero-skm" style={{ position: 'relative', overflow: 'hidden' }}>
-        <div aria-hidden="true" style={{ position: 'absolute', top: -18, right: 6, opacity: 0.5, pointerEvents: 'none' }}>
-          <MotifEmun size={280} />
-        </div>
-        <div aria-hidden="true" style={{ position: 'absolute', bottom: -10, left: 10, opacity: 0.32, pointerEvents: 'none' }}>
-          <MotifRante size={160} />
-        </div>
+      <section className="section-hero-skm" style={{ position: 'relative', overflow: 'hidden' }}>
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <Link href="/" className="back-link">← Beranda</Link>
           <div style={{ marginTop: '1rem' }}>

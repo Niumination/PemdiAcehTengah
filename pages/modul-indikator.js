@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useMemo, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { MotifEmun, KerawangDivider } from '@/components/motif/KerawangMotifs';
+import { KerawangDivider } from '@/components/motif/KerawangMotifs';
 import CatatanTujuan from '@/components/CatatanTujuan';
 
 // ── Data ──
@@ -338,9 +338,8 @@ function formatKriteria(text) {
       </Head>
 
       {/* ════════ HERO ════════ */}
-      <section className="hero aurora">
+      <section className="hero">
         <div className="container">
-          <MotifEmun size={260} style={{ position: 'absolute', top: -16, right: 10, opacity: 0.45 }} />
           <div style={{ position: 'relative', zIndex: 2 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '1rem' }}>
             <Link href="/pemdi" className="back-link" style={{ flexShrink: 0 }}>

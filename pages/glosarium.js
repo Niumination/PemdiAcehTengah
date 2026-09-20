@@ -1,7 +1,6 @@
 import { useState, useMemo } from 'react';
 import Head from 'next/head';
 import glosariumData from '@/data/glosarium.json';
-import { MotifEmun, MotifPucukRebung } from '@/components/motif/KerawangMotifs';
 
 // Helper untuk mendapatkan warna badge per kategori
 function getKategoriWarna(kategori) {
@@ -53,7 +52,7 @@ export default function GlosariumPage() {
       <a href="#glosarium-content" className="skip-link">Lompat ke daftar istilah</a>
 
       {/* ============ HERO ============ */}
-      <section data-reveal style={{
+      <section style={{
         background: 'var(--hero-grad)',
         borderRadius: 'var(--r)',
         padding: '2.5rem 2rem',
@@ -62,12 +61,6 @@ export default function GlosariumPage() {
         position: 'relative',
         overflow: 'hidden',
       }}>
-        <div aria-hidden="true" style={{ position: 'absolute', top: -18, right: 6, opacity: 0.5, pointerEvents: 'none' }}>
-          <MotifEmun size={300} />
-        </div>
-        <div aria-hidden="true" style={{ position: 'absolute', bottom: -12, left: 10, opacity: 0.32, pointerEvents: 'none' }}>
-          <MotifPucukRebung size={100} color="#D4A83C" />
-        </div>
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <h1 className="gold-head" style={{ fontSize: 'clamp(1.25rem, 3.5vw, 1.75rem)', fontWeight: 700, marginBottom: '0.5rem' }}>
             📖 Glosarium — Istilah Pemerintah Digital

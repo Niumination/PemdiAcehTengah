@@ -17,20 +17,6 @@ const HIJAU = '#2E7D5B';
 const MERAH = '#B3402E';
 const INK = 'currentColor';
 
-/** Emun Berangkat — gumpalan awan geometris (simbol kesatuan yang dinamis) */
-export function MotifEmun({ size = 120, animated = false, className = '', ...rest }) {
-  return (
-    <svg width={size} height={size * 0.6} viewBox="0 0 200 120" fill="none" aria-hidden="true" className={className} {...rest}>
-      <g stroke={INK} strokeWidth="3" strokeLinecap="round">
-        <path d="M30 70 Q50 30 82 50 Q104 28 130 48 Q158 34 172 60 Q188 70 170 78 L40 78 Q22 76 30 70Z" fill={`${WARN}22`} />
-        <path d="M60 90 Q78 72 100 84 Q120 68 142 84 Q156 78 158 90 L64 90Z" fill={`${HIJAU}1e`} />
-        <circle cx="50" cy="50" r="4" fill={WARN} stroke="none" />
-        <circle cx="140" cy="42" r="3" fill={WARN} stroke="none" />
-        <circle cx="100" cy="24" r="2.5" fill={HIJAU} stroke="none" />
-      </g>
-    </svg>
-  );
-}
 
 /** Puter Tali — pilinan tali (persatuan, kejujuran, lurus) */
 export function MotifPuterTali({ width = '100%', height = 18, ...rest }) {
@@ -121,44 +107,6 @@ export function KerawangDivider({ label, icon, style }) {
         </span>
       )}
       <MotifPagar width="100%" height={12} />
-    </div>
-  );
-}
-
-/** MotifBackground — latar dekoratif motif (opacity rendah, pointer-events none) */
-export function MotifBackground({ pattern = 'emun', opacity, style }) {
-  const P = {
-    emun: <MotifEmun size={260} animated={false} />,
-    rante: <MotifRante size={300} />,
-    tapak: <MotifTapak size={140} />,
-    rebung: <MotifPucukRebung size={120} color={HIJAU} />,
-  }[pattern] || <MotifEmun size={260} animated={false} />;
-
-  return (
-    <div className="kr-motif-bg" style={{ opacity, ...style }} aria-hidden="true">
-      <div style={{ position: 'absolute', top: '6%', right: '4%', transform: 'rotate(8deg)' }}>{P}</div>
-      <div style={{ position: 'absolute', bottom: '10%', left: '6%', transform: 'rotate(-8deg) scale(0.8)', opacity: 0.8 }}>{P}</div>
-    </div>
-  );
-}
-
-/** MarqueeBudaya — ticker filosofi Kerawang Gayo */
-export function MarqueeBudaya({ items, style }) {
-  const defaultItems = [
-    'Emun Berangkat — kesatuan & kerukunan',
-    'Puter Tali — persatuan & kejujuran',
-    'Pucuk Rebung — teguh pendirian & generasi baru',
-    'Rante — keterpaduan yang kukuh',
-    'Tapak Seleman — keadilan & pengayoman',
-    'Ulen — kekuatan & penerangan',
-  ];
-  const list = items || defaultItems;
-  const track = list.join('  ✦  ');
-  return (
-    <div className="kr-marquee" style={style} aria-hidden="true">
-      <div className="kr-marquee-track">
-        <span><i>✦</i> {track}</span>
-      </div>
     </div>
   );
 }

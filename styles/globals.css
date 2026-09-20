@@ -278,21 +278,6 @@ img, svg {
   outline: 3px solid var(--gold);
 }
 
-/* Scroll reveal observer */
-html.anim-ready .reveal {
-  opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
-}
-html.anim-ready .reveal.in {
-  opacity: 1;
-  transform: none;
-}
-html.anim-ready .reveal.d1 { transition-delay: 0.06s; }
-html.anim-ready .reveal.d2 { transition-delay: 0.12s; }
-html.anim-ready .reveal.d3 { transition-delay: 0.18s; }
-html.anim-ready .reveal.d4 { transition-delay: 0.24s; }
-
 /* ============ 3. OFFICIAL STRIP & LAYOUT ============ */
 .gov-strip {
   position: fixed;
@@ -330,15 +315,23 @@ html.anim-ready .reveal.d4 { transition-delay: 0.24s; }
   position: relative;
 }
 .gov-strip-marquee-track {
-  display: block;
-  text-align: center;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  display: inline-flex;
+  align-items: center;
+  gap: 48px;
+  animation: marquee-scroll 28s linear infinite;
 }
 .gov-strip-marquee-track span {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+}
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+/* Pause on hover */
+.gov-strip:hover .gov-strip-marquee-track {
+  animation-play-state: paused;
 }
 
 
@@ -1277,6 +1270,8 @@ a { transition: color 0.18s ease; }
 
 /* --- Hormati preferensi reduced-motion --- */
 @media (prefers-reduced-motion: reduce) {
+  /* Running text (info resmi) tetap berjalan — bukan dekorasi */
+  .gov-strip-marquee-track { animation: marquee-scroll 28s linear infinite !important; }
   html { scroll-behavior: auto; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -1285,13 +1280,7 @@ a { transition: color 0.18s ease; }
   }
 }
 
-/* ════════════ ANIMASI SISTEM — scroll reveal, stagger, micro-interaction ════════════ */
-/* Dipicu oleh [data-reveal] via IntersectionObserver di AppShell (60fps: transform/opacity only) */
-[data-reveal], [data-reveal].is-visible { opacity: 1; transform: none; }
-
-/* Stagger anak kartu dalam grid — delay bertahap via --i (set inline per item) */
-[data-reveal-stagger] > * { opacity: 1; transform: none; }
-
+/* ════════════ MICRO-INTERACTION (tanpa animasi dekoratif) ════════════ */
 /* Micro-interaction: kartu (transform/opacity — aman 60fps) */
 .card, [class*="card"] {
   transition:
@@ -1340,7 +1329,7 @@ a { transition: color 0.18s ease; }
   --kg-putih:  #F7F4EC;   /* poteh — kesucian, kebijaksanaan */
   --kg-emas:   #C6A75E;   /* emas pelengkap (existing gold) */
 
-  /* Override halus: hero jadi hitam tanah + aurora kuning gayo */
+  /* Override halus: hero hitam tanah + gradien kuning gayo statis */
   --hero-grad: radial-gradient(1000px 420px at 88% -18%, rgba(212,168,60,0.28), transparent 55%),
                radial-gradient(720px 300px at 4% 112%, rgba(46,125,91,0.22), transparent 55%),
                radial-gradient(560px 240px at 55% 40%, rgba(212,168,60,0.10), transparent 60%),
@@ -1357,12 +1346,6 @@ a { transition: color 0.18s ease; }
   --glass-shadow: 0 20px 45px -18px rgba(0,0,0,0.6);
 }
 
-/* ── Hero (aurora): latar statis, tanpa blob/animasi ── */
-.aurora {
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-}
 
 /* ── Kartu Kerawang: corner pucuk rebung (segitiga → teguh) ── */
 .kerawang-card {
@@ -1400,27 +1383,6 @@ a { transition: color 0.18s ease; }
   opacity: 0.55;
 }
 
-/* ── Marquee budaya (motif + filosofi) ── */
-.kr-marquee {
-  overflow: hidden;
-  white-space: nowrap;
-  border-block: 1px solid var(--line);
-  padding: 9px 0;
-  background: var(--surface-2);
-}
-.kr-marquee-track {
-  display: inline-block;
-  white-space: nowrap;
-}
-.kr-marquee-track span {
-  display: inline-block;
-  padding-right: 48px;
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-secondary);
-}
-.kr-marquee-track span i { color: var(--kg-kuning); font-style: normal; }
 
 /* ── Count-up angka (text via hook; underline progress) ── */
 .countup {
@@ -1430,8 +1392,6 @@ a { transition: color 0.18s ease; }
   letter-spacing: -0.03em;
 }
 
-/* ── Progress bar masuk saat scroll ── */
-.reveal-bar, .reveal-bar.in-view { transform: none; }
 
 
 /* ── Heading gold gradient (kuning gayo) ── */
@@ -1479,8 +1439,6 @@ a { transition: color 0.18s ease; }
 
 /* Responsive motif layer */
 @media (max-width: 768px) {
-  .aurora::before { width: 90vw; height: 90vw; }
-  .aurora::after { width: 80vw; height: 80vw; }
   .glass-card { border-radius: var(--r); }
 }
 

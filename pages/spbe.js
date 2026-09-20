@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { formatDesimal } from '@/lib/format';
 import portalData from '@/data/opd.json';
-import { MotifUlen, MotifTapak, KerawangDivider } from '@/components/motif/KerawangMotifs';
+import { KerawangDivider } from '@/components/motif/KerawangMotifs';
 
 /* ── CountStat lokal ── */
 function CountStat({ value, decimals = 0, color, style }) {
@@ -72,7 +72,7 @@ export default function SpbePage({ data }) {
       </Head>
 
       {/* HERO */}
-      <section data-reveal style={{
+      <section style={{
         background: 'var(--hero-grad)',
         borderRadius: 'var(--r)',
         padding: '2.5rem 2rem',
@@ -81,8 +81,6 @@ export default function SpbePage({ data }) {
         position: 'relative',
         overflow: 'hidden',
       }}>
-        <MotifUlen size={110} style={{ position: 'absolute', top: -14, right: 24, opacity: 0.5 }} />
-        <MotifTapak size={80} style={{ position: 'absolute', bottom: -10, left: 20, opacity: 0.35 }} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', opacity: 0.7, marginBottom: '0.5rem' }}>
             Kabupaten Aceh Tengah · {spbe.tahun}

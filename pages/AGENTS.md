@@ -10,7 +10,7 @@ Halaman Next.js Pages Router — entry points untuk user. SSG untuk konten stati
 | Route | File | Fungsi | Komponen Kunci |
 |-------|------|--------|----------------|
 | `/` | `index.js` | **Beranda** — hero KPI statis (Pemdi/SPBE/OPD/layanan/ASN), ServiceFinder, gauge SPBE, tabel OPD, DashboardSKM | OPDTable, SpbeGauge, ServiceFinder, DashboardSKM, GlossaryTooltip, KerawangMotifs |
-| `/pemdi` | `pemdi.js` | **Kokpit Pemdi (B1)** — 7 aspek × 20 indikator, **Simulasi Penilaian Mandiri** (hanya bukti `diterima`; lib/pemdiNilai.js), hero menampilkan ringkasan Tahap 1 eval.spbe.go.id, checklist bukti berkode `I#-L#-##` + baris 🔁 revisi dengan catatan asesor | DetailModal, KerawangMotifs, CatatanTujuan |
+| `/pemdi` | `pemdi.js` | **Kokpit Pemdi (B1)** — 7 aspek × 20 indikator, **Simulasi Penilaian Mandiri** (hanya bukti `diterima`; lib/pemdiNilai.js), hero menampilkan ringkasan Tahap 1 eval.spbe.go.id, checklist bukti berkode `I#-L#-##` + baris 🔁 revisi dengan catatan asesor | DetailModal, KerawangDivider, CatatanTujuan |
 | `/modul-indikator` | `modul-indikator.js` | **Modul Indikator + Matriks Kebutuhan Bukti** — 20 modul kriteria L1–L5 (ground truth), bukti per level, matriks kebutuhan L1–L2 | KerawangMotifs |
 | `/opd` | `opd/index.js` | Indeks 52 Perangkat Daerah + layanan per OPD | OPDTable, KerawangMotifs |
 | `/opd/[slug]` | `opd/[slug].js` | Detail per OPD — 52 halaman statis (SSG, `fallback: false`) | KerawangMotifs (via hero class) |

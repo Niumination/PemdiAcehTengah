@@ -2,7 +2,6 @@ import Head from 'next/head';
 import Link from 'next/link';
 import skmData from '@/data/skm.json';
 import { useState } from 'react';
-import { MotifEmun, MotifUlen } from '@/components/motif/KerawangMotifs';
 
 const SKALA_WARNA = {
   4: 'var(--skala-4)',
@@ -48,7 +47,7 @@ export default function SKMPage() {
         <meta name="description" content="Survei Kepuasan Masyarakat (SKM) online — Pemerintah Kabupaten Aceh Tengah. PermenPANRB 8/2026 Indikator I19 & I20." />
       </Head>
 
-      <section data-reveal style={{
+      <section style={{
         background: 'var(--hero-grad)',
         borderRadius: 'var(--r)',
         padding: '2.5rem 2rem',
@@ -57,12 +56,6 @@ export default function SKMPage() {
         position: 'relative',
         overflow: 'hidden',
       }}>
-        <div aria-hidden="true" style={{ position: 'absolute', top: -18, right: 6, opacity: 0.5, pointerEvents: 'none' }}>
-          <MotifEmun size={300} />
-        </div>
-        <div aria-hidden="true" style={{ position: 'absolute', bottom: -10, left: 10, opacity: 0.32, pointerEvents: 'none' }}>
-          <MotifUlen size={80} />
-        </div>
         <div style={{ position: 'relative', zIndex: 1 }}>
           <Link href="/" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none', fontSize: '0.875rem' }}
             onMouseEnter={e => e.target.style.color = '#fff'}

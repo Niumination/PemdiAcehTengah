@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import GlossaryTooltip from '@/components/GlossaryTooltip';
@@ -6,7 +6,6 @@ import OPDTable from '@/components/OPDTable';
 import SpbeGauge from '@/components/SpbeGauge';
 import ServiceFinder from '@/components/ServiceFinder';
 import DashboardSKM from '@/components/DashboardSKM';
-import { MotifEmun, MarqueeBudaya } from '@/components/motif/KerawangMotifs';
 import { formatDesimal } from '@/lib/format';
 
 /* ── CountStat: angka KPI dengan count-up saat masuk viewport ── */
@@ -47,32 +46,6 @@ export default function Home({ pemdiData, layananData, portalData }) {
 
   const [heroSearch, setHeroSearch] = useState('');
 
-  useEffect(() => {
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce || !('IntersectionObserver' in window)) return;
-
-    document.documentElement.classList.add('anim-ready');
-    const els = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('in');
-            io.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.08, rootMargin: '0px 0px -5% 0px' }
-    );
-    els.forEach((el) => io.observe(el));
-
-    const timeout = setTimeout(() => {
-      document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in'));
-    }, 1200);
-
-    return () => clearTimeout(timeout);
-  }, []);
-
   return (
     <>
       <Head>
@@ -84,9 +57,7 @@ export default function Home({ pemdiData, layananData, portalData }) {
       </Head>
 
       {/* ============ 1. DUAL-PERSPECTIVE EXECUTIVE HERO ============ */}
-      <section className="hero aurora reveal" id="hero" style={{ position: 'relative' }}>
-        <MotifEmun size={340} style={{ position: 'absolute', top: -30, right: -20, opacity: 0.5 }} />
-        <MotifEmun size={200} style={{ position: 'absolute', bottom: -20, left: 30, opacity: 0.3 }} />
+      <section className="hero" id="hero" style={{ position: 'relative' }}>
         <div style={{ position: 'relative', zIndex: 2 }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px', marginBottom: '16px' }}>
           <span className="pill">
@@ -166,7 +137,7 @@ export default function Home({ pemdiData, layananData, portalData }) {
       {/* ============ 2. EXECUTIVE LIVE METRICS TICKER ============ */}
       <section style={{ marginBottom: '32px' }} id="statistik">
         <div className="stats">
-          <div className="stat glow-card reveal" style={{ borderColor: 'var(--gold)' }}>
+          <div className="stat glow-card" style={{ borderColor: 'var(--gold)' }}>
             <div className="ic">🚀</div>
             <div className="n">
               <CountStat value={pemdiData.indeks_aktual ?? 0} decimals={2} color="var(--gold-deep)" />
@@ -179,25 +150,25 @@ export default function Home({ pemdiData, layananData, portalData }) {
             )}
           </div>
 
-          <div className="stat glow-card reveal d1">
+          <div className="stat glow-card">
             <div className="ic">📊</div>
             <div className="n"><CountStat value={spbe.indeks} decimals={2} /></div>
             <div className="l">Indeks SPBE 2025 (Baseline Cukup)</div>
           </div>
 
-          <div className="stat glow-card reveal d2">
+          <div className="stat glow-card">
             <div className="ic">🏛️</div>
             <div className="n"><CountStat value={ringkasan.total_opd} /></div>
             <div className="l">52 Perangkat Daerah</div>
           </div>
 
-          <div className="stat glow-card reveal d3">
+          <div className="stat glow-card">
             <div className="ic">📋</div>
             <div className="n"><CountStat value={totalLayanan} /></div>
             <div className="l">Layanan Terpadu SLA</div>
           </div>
 
-          <div className="stat glow-card reveal d4">
+          <div className="stat glow-card">
             <div className="ic">👥</div>
             <div className="n"><CountStat value={ringkasan.total_asn} /></div>
             <div className="l">Jumlah SDM ASN</div>
@@ -205,11 +176,10 @@ export default function Home({ pemdiData, layananData, portalData }) {
         </div>
       </section>
 
-      <MarqueeBudaya />
 
       {/* ============ 3. CITIZEN TASK HUB ("Apa yang Ingin Anda Lakukan Hari Ini?") ============ */}
       <section style={{ marginBottom: '44px' }} id="layanan-warga">
-        <div className="sec-head reveal">
+        <div className="sec-head">
           <div>
             <div className="eyebrow">Akses Utama Warga</div>
             <h2>Apa yang ingin Anda lakukan hari ini?</h2>
@@ -218,7 +188,7 @@ export default function Home({ pemdiData, layananData, portalData }) {
         </div>
 
         <div className="qa-grid">
-          <Link href="/layanan" className="qa-card kerawang-card reveal">
+          <Link href="/layanan" className="qa-card kerawang-card">
             <div className="ic" style={{ background: 'var(--primary-50)', color: 'var(--primary)' }}>
               📋
             </div>
@@ -229,7 +199,7 @@ export default function Home({ pemdiData, layananData, portalData }) {
 
           <button
             type="button"
-            className="qa-card kerawang-card reveal d1"
+            className="qa-card kerawang-card"
             onClick={() => window.dispatchEvent(new CustomEvent('pemdi:open-lapor'))}
             style={{ textAlign: 'left', font: 'inherit', background: 'var(--surface)', border: '1px solid var(--line)' }}
           >
@@ -241,7 +211,7 @@ export default function Home({ pemdiData, layananData, portalData }) {
             <span className="go">Buat Laporan / Lacak →</span>
           </button>
 
-          <Link href="/skm" className="qa-card kerawang-card reveal d2">
+          <Link href="/skm" className="qa-card kerawang-card">
             <div className="ic" style={{ background: 'var(--ok-bg)', color: 'var(--ok)' }}>
               📝
             </div>
@@ -250,7 +220,7 @@ export default function Home({ pemdiData, layananData, portalData }) {
             <span className="go">Isi Survei SKM →</span>
           </Link>
 
-          <Link href="/faq" className="qa-card kerawang-card reveal d3">
+          <Link href="/faq" className="qa-card kerawang-card">
             <div className="ic" style={{ background: 'var(--warn-bg)', color: 'var(--warn)' }}>
               🤖
             </div>
@@ -263,7 +233,7 @@ export default function Home({ pemdiData, layananData, portalData }) {
 
       {/* ============ 4. POPULAR SERVICES EXPLORER ============ */}
       <section style={{ marginBottom: '48px' }}>
-        <div className="sec-head reveal">
+        <div className="sec-head">
           <div>
             <div className="eyebrow">E-Services Explorer</div>
             <h2>Pencarian Layanan Publik Terpadu</h2>
@@ -274,14 +244,14 @@ export default function Home({ pemdiData, layananData, portalData }) {
           </Link>
         </div>
 
-        <div className="glow-card reveal" style={{ padding: '24px' }}>
+        <div className="glow-card" style={{ padding: '24px' }}>
           <ServiceFinder layanan={layananData.kategori.flatMap((k) => k.layanan.map((l) => ({ ...l, kategori: k.nama })))} />
         </div>
       </section>
 
       {/* ============ 5. SPBE & PEMDI EXECUTIVE DASHBOARD ============ */}
       <section style={{ marginBottom: '48px' }} id="spbe-pemdi">
-        <div className="sec-head reveal">
+        <div className="sec-head">
           <div>
             <div className="eyebrow">Command Center Kinerja Pemda</div>
             <h2>Evaluasi SPBE 2025 &amp; Target Kematangan Pemdi 2026</h2>
@@ -299,7 +269,7 @@ export default function Home({ pemdiData, layananData, portalData }) {
 
         <div className="grid-2" style={{ marginBottom: '24px' }}>
           {/* Donut Donut Gauge SPBE */}
-          <div className="glow-card reveal" style={{ padding: '24px' }}>
+          <div className="glow-card" style={{ padding: '24px' }}>
             <h3 style={{ fontSize: '1.1rem', marginBottom: '12px' }}>
               📊 Donut Evaluation — Indeks SPBE 2025: {formatDesimal(spbe.indeks)}/5,00
             </h3>
@@ -310,7 +280,7 @@ export default function Home({ pemdiData, layananData, portalData }) {
           </div>
 
           {/* 7 Aspek Pemdi Kematangan */}
-          <div className="glow-card reveal d1" style={{ padding: '24px' }}>
+          <div className="glow-card" style={{ padding: '24px' }}>
             <h3 style={{ fontSize: '1.1rem', marginBottom: '12px' }}>
               🚀 Matrix Kematangan Pemdi 2026 (7 Aspek Utama)
             </h3>
@@ -339,7 +309,7 @@ export default function Home({ pemdiData, layananData, portalData }) {
 
       {/* ============ 6. PETA PROSES BISNIS (PPB) 3-LEVEL ============ */}
       <section style={{ marginBottom: '48px' }} id="probis">
-        <div className="sec-head reveal">
+        <div className="sec-head">
           <div>
             <div className="eyebrow">Arsitektur Tata Kelola</div>
             <h2>Peta Proses Bisnis (PPB) Level 0, 1, dan 2</h2>
@@ -350,7 +320,7 @@ export default function Home({ pemdiData, layananData, portalData }) {
           </Link>
         </div>
 
-        <div className="glow-card reveal" style={{ padding: '24px' }}>
+        <div className="glow-card" style={{ padding: '24px' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
             <div style={{ padding: '16px', background: 'var(--primary-50)', border: '1px solid var(--primary-200)', borderRadius: 'var(--r-sm)' }}>
               <span className="badge badge-blue" style={{ marginBottom: '8px' }}>Level 0 — Macro</span>
@@ -381,7 +351,7 @@ export default function Home({ pemdiData, layananData, portalData }) {
 
       {/* ============ 7. LIVE PUBLIC SKM & CITIZEN SATISFACTION ============ */}
       <section style={{ marginBottom: '48px' }} id="skm-dashboard">
-        <div className="sec-head reveal">
+        <div className="sec-head">
           <div>
             <div className="eyebrow">Indikator I20 PermenPANRB 8/2026</div>
             <h2>Hasil Live Survei Kepuasan Masyarakat (SKM)</h2>
@@ -392,14 +362,14 @@ export default function Home({ pemdiData, layananData, portalData }) {
           </Link>
         </div>
 
-        <div className="glow-card reveal" style={{ padding: '24px' }}>
+        <div className="glow-card" style={{ padding: '24px' }}>
           <DashboardSKM />
         </div>
       </section>
 
       {/* ============ 8. DIRECTORY OF 52 PERANGKAT DAERAH ============ */}
       <section style={{ marginBottom: '48px' }} id="opd">
-        <div className="sec-head reveal">
+        <div className="sec-head">
           <div>
             <div className="eyebrow">Direktori Pemda</div>
             <h2>52 Perangkat Daerah Kabupaten Aceh Tengah</h2>
@@ -407,7 +377,7 @@ export default function Home({ pemdiData, layananData, portalData }) {
           </div>
         </div>
 
-        <div className="reveal">
+        <div >
           <OPDTable list={opd.daftar} />
         </div>
       </section>

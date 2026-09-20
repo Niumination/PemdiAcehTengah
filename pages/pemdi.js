@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import DetailModal from '@/components/DetailModal';
 import CatatanTujuan from '@/components/CatatanTujuan';
-import { MotifEmun, MotifTapak, KerawangDivider } from '@/components/motif/KerawangMotifs';
+import { KerawangDivider } from '@/components/motif/KerawangMotifs';
 import { formatDesimal } from '@/lib/format';
 import {
   LEVEL_LABEL,
@@ -219,14 +219,11 @@ function defaultCatatan(ind) {
 
       {/* Hero Header */}
       <section
-        data-reveal
         style={{
           background: 'var(--hero-grad)', color: '#ffffff', padding: '36px 28px',
           borderRadius: 'var(--r-lg)', marginBottom: '28px', position: 'relative', overflow: 'hidden',
         }}
       >
-        <MotifEmun size={320} style={{ position: 'absolute', top: -24, right: -18, opacity: 0.5 }} />
-        <MotifTapak size={120} style={{ position: 'absolute', bottom: -16, left: 24, opacity: 0.35 }} />
         <div style={{ position: 'relative', zIndex: 2 }}>
           <span className="pill">⚖️ PermenPANRB No. 8 Tahun 2026 · Kokpit Penilaian Mandiri</span>
           <h1 className="gold-head" style={{ fontSize: 'clamp(22px, 3vw, 34px)', margin: '8px 0 12px' }}>
@@ -251,7 +248,7 @@ function defaultCatatan(ind) {
 
       {/* Executive KPI Summary Cards */}
       <section style={{ marginBottom: '32px' }}>
-        <div className="grid-3" data-reveal-stagger>
+        <div className="grid-3">
           <div className="glow-card" style={{ padding: '20px', textAlign: 'center', '--i': 0 }}>
             <div style={{ fontSize: '0.78rem', color: 'var(--muted)', textTransform: 'uppercase', fontWeight: 700, letterSpacing: '0.05em' }}>Baseline SPBE 2025</div>
             <div style={{ fontSize: '2.2rem', fontWeight: 800, margin: '6px 0' }}>
@@ -285,7 +282,7 @@ function defaultCatatan(ind) {
       </section>
 
       {/* ════════ PANEL PERHITUNGAN CAPAIAN NILAI — rumus resmi PermenPANRB 8/2026 ════════ */}
-      <details data-reveal className="collapse-sec" style={{ marginBottom: '32px' }}>
+      <details className="collapse-sec" style={{ marginBottom: '32px' }}>
         <summary className="collapse-sum">Tolak Ukur Resmi — perhitungan & rumus indeks (buka untuk melihat)</summary>
         <div className="sec-head">
           <div>
@@ -412,7 +409,7 @@ function defaultCatatan(ind) {
           </div>
         </div>
 
-        <div className="grid-2" data-reveal-stagger>
+        <div className="grid-2">
           {aspek.map((a, ai) => {
             const pct = Math.min(100, (a.nilai / a.target) * 100);
             return (
@@ -445,7 +442,7 @@ function defaultCatatan(ind) {
       
       {/* ════════ CHECKLIST BUKTI DUKUNG — accordion kiri-kanan ════════ */}
       <KerawangDivider label="Checklist Upload Bukti" icon="📦" />
-      <section data-reveal style={{ marginBottom: '40px' }}>
+      <section style={{ marginBottom: '40px' }}>
         <div className="sec-head">
           <div>
             <div className="eyebrow">Status Bukti Dukung — hasil eval.spbe.go.id</div>
