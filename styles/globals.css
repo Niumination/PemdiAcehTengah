@@ -1910,3 +1910,27 @@ a { transition: color 0.18s ease; }
 .lvfokus-chev { font-size: 0.8rem; color: var(--muted); }
 .lvfokus-body { padding: 0 10px 10px; }
 @media (max-width: 640px) { .lvfokus-grid { grid-template-columns: 1fr; } .lvfokus-ringkas { margin-left: 0; } }
+
+/* ═══ Catatan mandiri per butir (21 Sep 2026) — components/asesor/CatatanMandiri.js ═══
+   Kartu lipat di bawah butir revisi / butir level berikut; bilah ekspor per indikator.
+   Tanpa animasi tinggi (hindari CLS). */
+.cm-butir { margin: 4px 0 6px 0; border: 1px solid var(--line); border-left-width: 3px; border-radius: var(--r-xs); background: var(--surface); font-size: 0.72rem; }
+.cm-head { display: flex; justify-content: space-between; align-items: center; gap: 6px; padding: 4px 8px; flex-wrap: wrap; }
+.cm-toggle { display: inline-flex; align-items: center; gap: 6px; flex-wrap: wrap; border: none; background: transparent; color: var(--text); font: inherit; font-weight: 800; cursor: pointer; padding: 2px 0; text-align: left; }
+.cm-toggle:focus-visible, .cm-btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.cm-pill { display: inline-block; padding: 0 6px; border-radius: 999px; font-size: 0.62rem; font-weight: 700; line-height: 1.6; }
+.cm-pill.muted { color: var(--muted); background: var(--surface-2); font-weight: 600; }
+.cm-btn { border: 1px solid var(--primary-200); background: var(--primary-bg); color: var(--primary); border-radius: var(--r-xs); padding: 3px 10px; font-size: 0.68rem; font-weight: 700; cursor: pointer; font-family: inherit; white-space: nowrap; }
+.cm-body { padding: 4px 10px 8px; border-top: 1px dashed var(--line); color: var(--ink-secondary); line-height: 1.5; }
+.cm-ringkas { margin: 6px 0; white-space: pre-line; color: var(--text); }
+.cm-sub { font-size: 0.64rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.03em; color: var(--primary); margin-top: 8px; }
+.cm-list { margin: 2px 0 0; padding-left: 18px; }
+.cm-list li { margin-bottom: 2px; }
+.cm-keb { list-style: none; padding-left: 4px; }
+.cm-link { color: var(--primary); text-decoration: underline; }
+.cm-tag { display: inline-block; margin-left: 4px; padding: 0 4px; border: 1px solid var(--border); border-radius: 3px; font-size: 0.58rem; color: var(--muted); vertical-align: middle; }
+.cm-foot { margin-top: 8px; font-size: 0.66rem; color: var(--muted); }
+.cm-ekspor { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; padding: 8px 12px; margin: 10px 0; border-radius: var(--r-xs); border: 1px solid var(--primary-200); background: var(--primary-bg); font-size: 0.74rem; color: var(--text); }
+.cm-ekspor-compact { padding: 6px 10px; font-size: 0.7rem; }
+.cm-ekspor-act { display: inline-flex; gap: 6px; flex-wrap: wrap; }
+.cm-ekspor .muted, .cm-body .muted { color: var(--muted); }

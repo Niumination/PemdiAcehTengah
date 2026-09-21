@@ -4,6 +4,7 @@ import Link from 'next/link';
 import DetailModal from '@/components/DetailModal';
 import CatatanTujuan from '@/components/CatatanTujuan';
 import LevelFokus from '@/components/asesor/LevelFokus';
+import { CatatanButir, EksporCatatan } from '@/components/asesor/CatatanMandiri';
 import { KerawangDivider } from '@/components/motif/KerawangMotifs';
 import { formatDesimal } from '@/lib/format';
 import {
@@ -665,6 +666,7 @@ function defaultCatatan(ind) {
                                         📎{li + 1}
                                       </button>
                                     ))}
+                                    <CatatanButir b={b} ind={ind} />
                                   </span>
                                 </div>
                               );
@@ -695,11 +697,14 @@ function defaultCatatan(ind) {
                     </div>
                   )}
 
-                  {/* Catatan mandiri */}
+                  {/* Catatan mandiri per butir — data/catatan-mandiri.json → ekspor per indikator */}
+                  <EksporCatatan ind={ind} meta={{ versi: pemdiData.catatan_mandiri_meta?.versi, tahun: pemdiData.tahun }} />
+
+                  {/* Catatan bebas (lokal, localStorage) */}
                   <div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px', flexWrap: 'wrap', gap: '6px' }}>
                       <label htmlFor={`catatan-${ind.id}`} style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--text)' }}>
-                        📝 Catatan Mandiri <span style={{ fontWeight: 400, color: 'var(--muted)' }}>— dilampirkan saat unggah bukti di portal eval.spbe.go.id</span>
+                        ✏️ Catatan bebas <span style={{ fontWeight: 400, color: 'var(--muted)' }}>— tersimpan lokal di peramban ini; catatan resmi per butir ada di kartu 📝 di atas</span>
                       </label>
                       <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
                         {catatanTersimpan && <span style={{ fontSize: '0.66rem', color: 'var(--ok)', fontWeight: 600 }}>💾 tersimpan</span>}

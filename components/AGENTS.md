@@ -3,7 +3,7 @@
 ## Purpose
 React component library — reusable UI building blocks, props-driven.
 
-## Ownership — 29 Komponen Aktif (20 + 7 Sprint UI/UX + 2 beranda/ 21 Sep 2026)
+## Ownership — 30 Komponen Aktif (20 + 7 Sprint UI/UX + 2 beranda/ 21 Sep 2026)
 
 > **Mode internal aktif** (`lib/modeSitus.PUBLIK_AKTIF === false` secara default): komponen bertanda 🌐 hanya dirender bila `NEXT_PUBLIC_PERSONA_PUBLIK=on` — LaporWidget, RatingWidget, SkmPrompt, Sp4nBanner, ServiceFinder, ServiceCard, DashboardSKM, TrackerStatus, PersonaSwitcher, publik/*, beranda/BerandaPublik. Jangan dihapus.
 
@@ -23,6 +23,7 @@ React component library — reusable UI building blocks, props-driven.
 | **BerandaPublik** 🌐 | `beranda/BerandaPublik.js` | Panel beranda Mode A; di-`require` kondisional (build-time) agar tidak ikut bundel internal | `index.js` |
 | **AspekAccordion** | `asesor/AspekAccordion.js` | Accordion 7 aspek → indikator + chip status bukti (ok/warn/muted/gray) + chip `.ind-fokus` "✅ L1 → 🎯 L2" (field `fokus` dari getStaticProps `index.js`) | `index.js` |
 | **LevelFokus** | `asesor/LevelFokus.js` | (21 Sep 2026) Pembungkus daftar bukti/kriteria per level: level **dicapai** (semua butir diterima asesor) + level **berikut** terbuka default, level lain tertutup — klik header untuk buka; tombol "Buka semua level / Kembali ke fokus"; state lokal per indikator (tanpa localStorage). Render isi via `children(level, {peran})`; `layout` grid (/pemdi) atau stack (/modul-indikator). Ekspor tambahan `RingkasFokus`. CSS `.lvfokus-*` di globals.css. Tidak mengubah data | `pemdi.js`, `modul-indikator.js` |
+| **CatatanMandiri** | `asesor/CatatanMandiri.js` | (21 Sep 2026) `CatatanButir` — kartu lipat 📝 di bawah butir revisi/level-berikut: ringkas, rujukan (judul → tautan PDF lokal/JDIH, bagian, **hal.**, tag `pindai`/`JDIH`), checklist kebutuhan, PJ, tombol **📋 Salin** (teks siap tempel ke eval.spbe.go.id). `EksporCatatan` — bilah per indikator: jumlah butir, **Salin semua · ⬇️ DOCX · 🖨️ Cetak/PDF** (prop `compact` utk /modul-indikator). Data `b.catatan_mandiri`; tanpa localStorage/pustaka; CSS `.cm-*` di globals.css | `pemdi.js`, `modul-indikator.js` |
 | **Sidebar** | `Sidebar.js` | Navigasi kiri — **tertutup default** (prop `collapsed` dihormati sejak SSR → tanpa kedip), drawer di ponsel, Esc menutup, `id="sidebar-nav"` | `AppShell.js` |
 | **Footer** | `Footer.js` | Footer — regulasi, kontak, SP4N, lisensi MIT | `AppShell.js` |
 | **ThemeToggle** | `ThemeToggle.js` | Toggle dark/light (localStorage `theme`) | `AppShell.js` |

@@ -8,6 +8,7 @@ import CatatanTujuan from '@/components/CatatanTujuan';
 // ── Data ──
 import { LEVEL_LABEL, LEVEL_NAMA_RESMI, STATUS_META, REVISI_JENIS, statistikIndikator } from '@/lib/pemdiNilai';
 import LevelFokus from '@/components/asesor/LevelFokus';
+import { CatatanButir, EksporCatatan } from '@/components/asesor/CatatanMandiri';
 
 export default function ModulIndikatorPage({ moduls, pemdiData, dokumenKunci, buktiMapping, kebutuhanData }) {
   const router = useRouter();
@@ -681,6 +682,7 @@ function formatKriteria(text) {
                             ))}
                           </div>
 
+                          <EksporCatatan ind={modul.ind} meta={{ versi: pemdiData.catatan_mandiri_meta?.versi, tahun: pemdiData.tahun }} compact />
                           {(viewMode[modul.nomor] || 'level') === 'level' ? (
                           <LevelFokus
                             ind={modul.ind}
@@ -753,6 +755,7 @@ function formatKriteria(text) {
                                         </span>
                                       )}
                                       {bd.detail && <div style={{ fontSize: '0.7rem', color: 'var(--muted)', marginTop: '0.15rem' }}>{bd.detail}</div>}
+                                      <CatatanButir b={bd} ind={modul.ind} />
                                     </td>
                                     <td style={tdStyle}>
                                       {bd.opd?.map((o, i) => (

@@ -3,6 +3,14 @@
 Semua perubahan penting proyek ini didokumentasikan di file ini.
 Ringkasan publik tanpa detail internal; dokumen kerja lengkap disimpan pemilik repo di lokasi privat.
 
+## 2026-09-21 — Catatan Mandiri per butir (persiapan interviu asesor eksternal)
+
+- **Materi evaluasi asesor eksternal KemenPANRB belum diterima — akan menyusul.** Catatan disusun dari catatan asesor tahap 1 dan Modul Indikator; dicatat di `data/catatan-mandiri.json → materi_asesor_eksternal` dan `docs/catatan-mandiri-interviu-2026.md`. Tenggat kerja: Senin 28 Sep 2026.
+- Data baru `data/catatan-mandiri.json` (sumber tunggal) → digabung ke `data/pemdi.json` sebagai `bukti_dukung[].catatan_mandiri` oleh `scripts/gabung-catatan-mandiri.py` (langkah terakhir rantai regenerasi; idempoten; `--cek`). Cakupan: **48 butir** = 19 butir revisi + 29 butir belum diterima pada level berikut tiap indikator; butir diterima tidak disentuh; status & catatan asesor tidak diubah.
+- Tiap catatan: teks ringkas siap tempel ke eval.spbe.go.id, **rujukan dokumen dengan nomor halaman PDF** (RPJMD, Renstra Diskominfo, Peta Rencana, SK Tim Koordinasi, laporan & draf panduan di repo) atau tautan JDIH untuk Perbup, daftar yang masih harus disiapkan, PJ, prioritas. PDF hasil pindai (3 berkas) hanya catatan umum.
+- UI: kartu 📝 **Catatan mandiri** per butir di `/pemdi` dan `/modul-indikator` (tombol Salin), bilah ekspor per indikator: **Salin semua · DOCX · Cetak/PDF** — DOCX dibangun tanpa pustaka tambahan (`lib/catatanMandiri.js`), tanpa animasi/CLS. Textarea lama di `/pemdi` menjadi "Catatan bebas" (tetap lokal).
+- 10 tes baru `test/catatanMandiri.test.mjs` (total 47): cakupan revisi & level berikut, batas butir diterima, sinkron versi, keberadaan berkas rujukan, halaman wajib untuk PDF berteks, validitas ZIP/DOCX.
+
 ## 2026-09-21 — Audit konsistensi konten Pemdi + fitur Fokus Level
 
 **Audit (disparitas yang ditemukan & diperbaiki — tanpa mengubah hasil penilaian asesor):**

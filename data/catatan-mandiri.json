@@ -1,0 +1,763 @@
+{
+ "judul": "Catatan Mandiri per Butir Bukti — persiapan interviu asesor eksternal KemenPANRB",
+ "versi": "2026-09-21",
+ "tenggat": "2026-09-28",
+ "deskripsi": "Sumber tunggal catatan mandiri per butir bukti (GT.*). Digabung ke data/pemdi.json (field `catatan_mandiri`) oleh scripts/gabung-catatan-mandiri.py. Cakupan: seluruh butir hasil REVISI tahap 1 + butir belum diterima pada LEVEL BERIKUT setiap indikator (fokusLevel). Butir DITERIMA tidak disentuh. Teks `ringkas` ditulis untuk disalin apa adanya ke kolom catatan di eval.spbe.go.id; `rujukan` menunjuk dokumen + bagian/halaman; `kebutuhan` = yang masih harus disiapkan sebelum unggah ulang.",
+ "materi_asesor_eksternal": {
+  "status": "belum_diterima",
+  "keterangan": "Materi evaluasi/daftar pertanyaan asesor eksternal KemenPANRB belum dikirim ke tim; akan menyusul. Catatan mandiri di berkas ini disusun dari catatan asesor tahap 1 (eval.spbe.go.id, sinkron 20 Sep 2026) dan Modul Indikator. Perbarui berkas ini begitu materi diterima.",
+  "diperbarui": "2026-09-21"
+ },
+ "konvensi_halaman": "`halaman` = nomor halaman PDF (urutan berkas) — kalau dokumen punya penomoran sendiri, ditulis juga dalam kurung (mis. RPJMD `II-210`). Untuk PDF hasil pindai (tanpa teks) hanya diberi catatan umum tanpa nomor halaman.",
+ "dokumen": {
+  "RPJMD": { "judul": "Qanun Kabupaten Aceh Tengah Nomor 4 Tahun 2025 tentang RPJMD 2025–2029", "path": "/bukti-dukung/final/I1-L2-01.pdf", "teks": true, "hal": 409, "status": "diterima asesor (I1-L2-01 / I2-L1-01)" },
+  "RENSTRA": { "judul": "Renstra Dinas Komunikasi dan Informatika Kabupaten Aceh Tengah 2025–2029", "path": "/bukti-dukung/final/I1-L2-03.pdf", "teks": true, "hal": 53, "status": "diterima asesor (I1-L2-03)" },
+  "PETA_RENCANA": { "judul": "Peta Rencana Pemerintah Digital Kabupaten Aceh Tengah 2025–2029 (rancangan awal)", "path": "/bukti-dukung/final/I1-L1-01.pdf", "teks": true, "hal": 20, "status": "diterima asesor (I1-L1-01)" },
+  "SK_TIMKOR": { "judul": "Keputusan Bupati Aceh Tengah Nomor 555/395/DISKOMINFO/2026 tentang Tim Koordinasi Pemerintah Digital (20 Juli 2026)", "path": "/bukti-dukung/final/I4-L1-01.pdf", "teks": true, "hal": 8, "status": "diterima asesor (I4-L1-01)" },
+  "LAP_MANLAY": { "judul": "Laporan Pelaksanaan Manajemen Layanan Digital Internal (Jan–Jun 2026)", "path": "/bukti-dukung/final/I2-L1-02.pdf", "teks": true, "hal": 25, "status": "diterima asesor (I2-L1-02)" },
+  "REKAP_APL": { "judul": "Rekap Penggunaan Aplikasi Kerja Digital Internal", "path": "/bukti-dukung/final/I3-L1-02.pdf", "teks": true, "hal": 12, "status": "diterima asesor (I3-L1-02)" },
+  "RA_ALPUKAT": { "judul": "Rencana Aksi Super App Alpukat Gayo + Arsitektur Mikro", "path": "/bukti-dukung/final/I17-L1-01.pdf", "teks": true, "hal": 13, "status": "diterima asesor (I17-L1-01 / I17-L2-01)" },
+  "SKM_TW2": { "judul": "SKM Online Triwulan II 2026 — 52 unit layanan", "path": "/bukti-dukung/final/I20-L1-01.pdf", "teks": true, "hal": 1, "status": "diterima asesor (I20-L1-01)" },
+  "SCAN_I3": { "judul": "Peta Kompetensi Digital ASN (16 hlm., PDF hasil pindai)", "path": "/bukti-dukung/final/I3-L1-01.pdf", "teks": false, "hal": 16, "status": "diterima asesor (I3-L1-01) — tanpa lapisan teks" },
+  "SCAN_I4": { "judul": "Dokumentasi Kolaborasi antar Perangkat Daerah (9 hlm., PDF hasil pindai)", "path": "/bukti-dukung/final/I4-L1-03.pdf", "teks": false, "hal": 9, "status": "diterima asesor (I4-L1-03) — tanpa lapisan teks" },
+  "SCAN_I13": { "judul": "Dokumentasi Pengembangan Aplikasi — KAK, BA, tangkapan layar (8 hlm., PDF hasil pindai)", "path": "/bukti-dukung/final/I13-L1-01.pdf", "teks": false, "hal": 8, "status": "diterima asesor (I13-L1-01) — tanpa lapisan teks" },
+  "PERBUP48": { "judul": "Peraturan Bupati Aceh Tengah Nomor 48 Tahun 2025 tentang Arsitektur SPBE", "url": "https://jdih.acehtengahkab.go.id/dih/detail/28818ade-468b-49d4-a133-ce77af0fd908", "teks": null, "status": "rujukan JDIH — berkas tidak ada di repo" },
+  "PERBUP60": { "judul": "Peraturan Bupati Aceh Tengah Nomor 60 Tahun 2022 tentang Satu Data Indonesia", "url": "https://jdih.acehtengahkab.go.id/dih/detail/d9671249-08cc-4e6c-87f0-aa04f8ada75c", "status": "rujukan JDIH" },
+  "PERBUP6": { "judul": "Peraturan Bupati Aceh Tengah Nomor 6 Tahun 2025 tentang Sistem Pemerintahan Digital / klasifikasi keamanan", "url": "https://jdih.acehtengahkab.go.id/dih/detail/ade79cb3-cb2b-4b8e-bf31-b35ddeded969", "status": "rujukan JDIH" },
+  "PERBUP137": { "judul": "Peraturan Bupati Aceh Tengah Nomor 137 Tahun 2019 (PPID / pelindungan data)", "url": "https://jdih.acehtengahkab.go.id/dih/detail/6cd5c436-d64e-4068-bb08-2e0526d87cb5", "status": "rujukan JDIH" },
+  "PERBUP126": { "judul": "Peraturan Bupati Aceh Tengah Nomor 126 Tahun 2019 tentang Pedoman Standar Pelayanan", "url": "https://jdih.acehtengahkab.go.id/dih/detail/e8187833-5111-4436-be42-68dfd5d80b76", "status": "rujukan JDIH" },
+  "PERBUP21": { "judul": "Peraturan Bupati Aceh Tengah Nomor 21 Tahun 2021 tentang Pedoman Pengelolaan Pengaduan", "url": "https://jdih.acehtengahkab.go.id/dih/detail/d0d9a4c9-089f-4e69-ad24-24b101057b62", "status": "rujukan JDIH" },
+  "PERBUP73": { "judul": "Peraturan Bupati Aceh Tengah Nomor 73 Tahun 2020 tentang Pelayanan Adminduk Online", "url": "https://jdih.acehtengahkab.go.id/dih/detail/2a0b0c2f-d693-4a15-9e7f-b42d7ab081eb", "status": "rujukan JDIH" },
+  "PERBUP9": { "judul": "Peraturan Bupati Aceh Tengah Nomor 9 Tahun 2025 tentang SOTK Diskominfo", "url": "https://jdih.acehtengahkab.go.id/dih/detail/af9a42bf-cea9-46c8-a739-9beb5d21e990", "status": "rujukan JDIH" },
+  "D_I03_KOMPETENSI": { "judul": "Draf Peta Kompetensi Digital ASN (BKPSDM)", "path": "/panduan-bukti-l1/I03/i03-peta-kompetensi-digital-asn.pdf", "teks": true, "hal": 21, "status": "draf lokal" },
+  "D_I04_RENKOL": { "judul": "Draf Rencana Kolaborasi Antar Perangkat Daerah dalam Penerapan Pemdi 2026–2029", "path": "/panduan-bukti-l1/I04/i04-rencana-kolaborasi-lintas-pd.pdf", "teks": true, "hal": 10, "status": "draf lokal — nomor/TTD kosong" },
+  "D_I08_PDP": { "judul": "Draf Kerangka Tata Kelola Pelindungan Data Pribadi", "path": "/panduan-bukti-l1/I08/i08-kerangka-tata-kelola-pdp.pdf", "teks": true, "hal": 15, "status": "draf lokal" },
+  "D_I08_SILABUS": { "judul": "Draf Rencana & Silabus Program Awareness PDP", "path": "/panduan-bukti-l1/I08/i08-rencana-silabus-awareness-pdp.pdf", "teks": true, "hal": 10, "status": "draf lokal" },
+  "D_I09_SK": { "judul": "Draf Keputusan Sekda — Tim Audit Keamanan Pemdi & Teknologi Pemdi", "path": "/panduan-bukti-l1/I09/i09-sk-tim-audit-keamanan-pemdi.pdf", "teks": true, "hal": 9, "status": "draf lokal — nomor 800/.../SETDA/2026 kosong" },
+  "D_I09_RENCANA": { "judul": "Draf Rencana Audit Keamanan Pemdi 2026 (Inspektorat)", "path": "/panduan-bukti-l1/I09/i09-rencana-audit-keamanan-pemdi-2026.pdf", "teks": true, "hal": 10, "status": "draf lokal" },
+  "D_I10_IKASANDI": { "judul": "Draf Instrumen Self-Assessment IKASANDI Area Keamanan Siber 2026 (skor 1,10)", "path": "/panduan-bukti-l1/I10/i10-instrumen-ikasandi-keamanan-siber.pdf", "teks": true, "hal": 6, "status": "draf lokal — belum diunggah ke portal IKASANDI" },
+  "D_I10_KONTROL": { "judul": "Draf Bukti Kontrol Dasar Keamanan Siber + KAMI 5.0", "path": "/panduan-bukti-l1/I10/i10-bukti-kontrol-keamanan-siber-dan-kami-5-0.pdf", "teks": true, "hal": 7, "status": "draf lokal" },
+  "D_I11_KRIPTO": { "judul": "Draf Lampiran Teknis Bukti Konfigurasi Kriptografi", "path": "/panduan-bukti-l1/I11/i11-lampiran-teknis-bukti-konfigurasi-kriptografi.pdf", "teks": true, "hal": 7, "status": "draf lokal — 13 placeholder tangkapan layar" },
+  "D_I12_IKASANDI": { "judul": "Draf Instrumen Self-Assessment IKASANDI Area Penanganan Insiden Siber 2026 (skor 1,08)", "path": "/panduan-bukti-l1/I12/i12-instrumen-ikasandi-penanganan-insiden-siber.pdf", "teks": true, "hal": 6, "status": "draf lokal" },
+  "D_I13_KAK": { "judul": "Draf KAK Pengembangan Aplikasi Bapokting 2026", "path": "/panduan-bukti-l1/I13/i13-kak-pengembangan-aplikasi-bapokting-2026.pdf", "teks": true, "hal": 7, "status": "draf lokal" },
+  "D_I13_LAP": { "judul": "Draf Laporan Pengembangan Awal Aplikasi Bapokting 2026", "path": "/panduan-bukti-l1/I13/i13-laporan-pengembangan-awal-bapokting-2026.pdf", "teks": true, "hal": 7, "status": "draf lokal" },
+  "D_I14_DASBOR": { "judul": "Draf Dasbor Pemanfaatan Pusat Data & Infrastruktur (PDN + SIAP Digital)", "path": "/panduan-bukti-l1/I14/i14-dasbor-pdn-dan-siap-digital.pdf", "teks": true, "hal": 8, "status": "draf lokal — tangkapan layar placeholder" },
+  "D_I14_INFRA": { "judul": "Draf Dokumen Ketersediaan Infrastruktur, Arsitektur & Topologi Jaringan", "path": "/panduan-bukti-l1/I14/i14-dokumen-ketersediaan-infrastruktur-dan-arsitektur.pdf", "teks": true, "hal": 6, "status": "draf lokal" },
+  "D_I15_BPMN": { "judul": "Draf Peta Proses Bisnis As-is (BPMN) — 33 proses, 3 contoh Level 2 (Setda)", "path": "/panduan-bukti-l1/I15/i15-peta-proses-bisnis-asis-bpmn.pdf", "teks": true, "hal": 9, "status": "draf lokal" },
+  "D_I15_SIAP": { "judul": "Draf Bukti Pengisian Domain Proses Bisnis pada SIAP Digital + Ekspor Arsitektur", "path": "/panduan-bukti-l1/I15/i15-siap-digital-proses-bisnis-dan-ekspor-arsitektur.pdf", "teks": true, "hal": 7, "status": "draf lokal — tangkapan layar placeholder" },
+  "D_I16_LAP": { "judul": "Draf Laporan Pelaksanaan Integrasi Aplikasi 2026 (SSO, 6 API, 12 aplikasi)", "path": "/panduan-bukti-l1/I16/i16-laporan-pelaksanaan-integrasi-aplikasi.pdf", "teks": true, "hal": 8, "status": "draf lokal" },
+  "D_I17_PORTAL": { "judul": "Draf Laporan Ketersediaan Portal Layanan Digital", "path": "/panduan-bukti-l1/I17/i17-laporan-ketersediaan-portal-layanan-digital.pdf", "teks": true, "hal": 8, "status": "draf lokal" },
+  "D_I18_PEDOMAN": { "judul": "Draf Pedoman Teknis Interoperabilitas Data & Standar Pertukaran", "path": "/panduan-bukti-l1/I18/i18-pedoman-teknis-interoperabilitas-data.pdf", "teks": true, "hal": 7, "status": "draf lokal" },
+  "D_I18_LAP": { "judul": "Draf Laporan Awal Pertukaran Data antar PD (12 pertukaran)", "path": "/panduan-bukti-l1/I18/i18-laporan-awal-pertukaran-data-antar-pd.pdf", "teks": true, "hal": 5, "status": "draf lokal" },
+  "D_I19_SOP": { "judul": "Draf SOP Helpdesk / Fasilitas Dukungan Pengguna", "path": "/panduan-bukti-l1/I19/i19-sop-helpdesk-fasilitas-dukungan-pengguna.pdf", "teks": true, "hal": 13, "status": "draf lokal" },
+  "D_I19_LAP": { "judul": "Draf Laporan Pelaksanaan Helpdesk (412 tiket, SLA 94,0%)", "path": "/panduan-bukti-l1/I19/i19-laporan-pelaksanaan-helpdesk.pdf", "teks": true, "hal": 5, "status": "draf lokal — data contoh, ganti rekap riil" },
+  "D_I20_PEDOMAN": { "judul": "Draf Pedoman Penyelenggaraan SKM & Pengelolaan Umpan Balik", "path": "/panduan-bukti-l1/I20/i20-pedoman-skm-dan-umpan-balik-layanan.pdf", "teks": true, "hal": 15, "status": "draf lokal" },
+  "D_I20_LAP": { "judul": "Draf Laporan Hasil SKM & Umpan Balik Layanan Digital Jan–Jun 2026", "path": "/panduan-bukti-l1/I20/i20-laporan-hasil-skm-dan-umpan-balik.pdf", "teks": true, "hal": 8, "status": "draf lokal — data contoh" },
+  "D_I03_REKAP": { "judul": "Draf Rekap Penggunaan Aplikasi Kerja Digital", "path": "/panduan-bukti-l1/I03/i03-rekap-penggunaan-aplikasi-digital.pdf", "teks": true, "hal": 10, "status": "draf lokal" },
+  "PORTAL_LAYANAN": { "judul": "Portal Pemdi Aceh Tengah — Direktori Layanan & SLA (25 layanan, 7 sektor)", "url": "/layanan", "status": "halaman persona publik — saat ini nonaktif (NEXT_PUBLIC_PERSONA_PUBLIK=off), aktifkan sementara saat mengambil tangkapan layar" },
+  "PORTAL_KEPUASAN": { "judul": "Portal Pemdi Aceh Tengah — Dasbor Kepuasan & Umpan Balik", "url": "/dashboard-kepuasan", "status": "halaman persona publik — saat ini nonaktif, aktifkan sementara untuk tangkapan layar" }
+ },
+ "butir": {
+  "GT.I1_L2_2": {
+   "jenis": "revisi",
+   "ringkas": "Menanggapi catatan asesor: bukti sebelumnya (pembahasan evaluasi kinerja Pemdi) diganti dengan bukti kegiatan kolaboratif di bawah koordinasi Tim Koordinasi Pemdi dalam PENYUSUNAN perencanaan Pemdi, yaitu: (1) undangan, daftar hadir, notulen, dan foto rapat penyusunan Peta Rencana Pemdi 2025–2029 yang dipimpin Koordinator Pemdi (Kadis Kominfo selaku Wakil Ketua merangkap Koordinator sesuai Lampiran II SK 555/395/2026); (2) tangkapan layar pengisian domain Arsitektur (Layanan/Proses Bisnis/Aplikasi) pada SIAP Digital sebagai wujud penerapan Arsitektur Pemdi pada sebagian layanan. Peta Rencana yang disusun secara kolaboratif tersebut sudah diterima asesor pada butir I1-L1-01, dan substansinya selaras dengan RPJMD (isu strategis digitalisasi, Bab II) serta Renstra Diskominfo (sub kegiatan 2.16.03.2.02.0037 Koordinasi penyusunan kebijakan tata kelola SPBE).",
+   "rujukan": [
+    { "dok": "SK_TIMKOR", "bagian": "Lampiran II — uraian tugas Wakil Ketua merangkap Koordinator PEMDI: mengoordinasikan penyusunan Arsitektur & Peta Rencana PEMDI", "halaman": "5" },
+    { "dok": "PETA_RENCANA", "bagian": "Bab III 3.2 Strategi per Aspek; Bab V Program A.1 'Penyusunan dan penetapan Peta Rencana Pemdi' (Diskominfo; Bappeda; Setda, 2026)", "halaman": "9, 13" },
+    { "dok": "RPJMD", "bagian": "Bab II — isu strategis no. 8 'Digitalisasi penyelenggaraan pemerintahan dan pelayanan publik' (integrasi SIPD/SIA ke Enterprise Government Architecture)", "halaman": "237–238 (II-209–II-210)" },
+    { "dok": "RENSTRA", "bagian": "Bab IV — sub kegiatan 2.16.03.2.02.0037 Koordinasi penyusunan kebijakan tata kelola SPBE (arsitektur, peta rencana, proses bisnis, rencana & anggaran SPBE), target 7 dokumen/tahun", "halaman": "48 (hal. 45)" }
+   ],
+   "kebutuhan": [
+    "Undangan + daftar hadir + notulen + foto rapat penyusunan Peta Rencana Pemdi (agenda eksplisit 'penyusunan', bukan 'evaluasi') — ditandatangani Sekretaris Tim Koordinasi",
+    "Tangkapan layar SIAP Digital (digital.spbe.go.id) domain arsitektur yang sudah terisi untuk minimal 1–2 layanan (adminduk online / SKM online)",
+    "Satu berkas PDF gabungan bertajuk 'Bukti Kolaborasi Tim Koordinasi Pemdi — Penyusunan Perencanaan Pemdi 2026'"
+   ],
+   "pj": "Diskominfo (Sekretariat Tim Koordinasi Pemdi)",
+   "prioritas": "tinggi"
+  },
+  "GT.I1_L2_4": {
+   "jenis": "gap",
+   "ringkas": "Perencanaan dan anggaran yang mendukung sebagian substansi RAN Pemdi dibuktikan dengan DPA/RKA Diskominfo TA 2026 pada Program Pengelolaan Aplikasi Informatika (2.16.03), khususnya sub kegiatan 2.16.03.2.02.0037 Koordinasi penyusunan kebijakan tata kelola SPBE dan sub kegiatan pendukung (jaringan intra 0024, portal terintegrasi 0025, pusat kendali 0033, SPLP 0034, kabupaten cerdas 0038) sebagaimana dimuat dalam Renstra Diskominfo 2025–2029 Bab IV, yang menjabarkan RPJMD Bab IV (target Indeks SPBE 2,88 → 3,36). Halaman DPA/RKA yang dilampirkan adalah halaman rincian sub kegiatan tersebut (bukan rekap belanja).",
+   "rujukan": [
+    { "dok": "RENSTRA", "bagian": "Bab IV — Program 2.16.03 Pengelolaan Aplikasi Informatika: indikator Indeks SPBE, pagu 5 tahun; rincian sub kegiatan 2.16.03.2.02.0024–0038", "halaman": "44–48 (hal. 41–45)" },
+    { "dok": "RPJMD", "bagian": "Bab IV Tabel program perangkat daerah — 2.16.03 Program Pengelolaan Aplikasi Informatika, target Indeks SPBE 2,88 (2025) → 3,36 (2029)", "halaman": "379 (IV-14)" },
+    { "dok": "PETA_RENCANA", "bagian": "Bab V 5.8 Kebutuhan Anggaran Indikatif (7 program, total Rp12 M)", "halaman": "14" }
+   ],
+   "kebutuhan": [
+    "Salinan DPA/RKA Diskominfo TA 2026 halaman sub kegiatan 2.16.03.2.02.0037 + sub kegiatan pendukung (cetak dari SIPD, ada kode rekening & pagu)",
+    "Halaman pengantar 1 lembar yang memetakan sub kegiatan → aspek Pemdi (tabel silang)"
+   ],
+   "pj": "Diskominfo (Sekretariat/Perencanaan) + BPKAD",
+   "prioritas": "tinggi"
+  },
+  "GT.I2_L2_1": {
+   "jenis": "gap",
+   "ringkas": "Manajemen layanan digital telah diterapkan pada sebagian layanan: layanan adminduk online (Perbup 73/2020) dan layanan internal (e-office, e-absensi, e-kinerja, email dinas, TTE) dikelola melalui 5 domain manajemen (risiko, perubahan, pengetahuan, keberlangsungan, relasi pengguna) sesuai Laporan Pelaksanaan Manajemen Layanan Digital yang telah diterima asesor pada I2-L1-02. Bukti Level 2 melengkapi laporan tersebut dengan register risiko, formulir perubahan, dan rekap tiket untuk layanan publik (adminduk online) — bukan hanya layanan internal.",
+   "rujukan": [
+    { "dok": "LAP_MANLAY", "bagian": "Bab III domain manajemen (C.1–C.5); Lampiran B Log/Tiket, C Daftar Risiko, D Formulir Perubahan, E rekap per domain", "halaman": "2–3, 12–15, 20–25" },
+    { "dok": "PERBUP73", "bagian": "Pelayanan administrasi kependudukan secara daring — dasar layanan publik digital yang dikelola", "halaman": "—" },
+    { "dok": "PERBUP48", "bagian": "Arsitektur SPBE sebagai referensi domain layanan", "halaman": "—" }
+   ],
+   "kebutuhan": [
+    "Rekap tiket/keluhan layanan adminduk online Jan–Agu 2026 dari Disdukcapil (kanal WA/loket/portal)",
+    "Register risiko & catatan perubahan (change log) minimal untuk 2 layanan publik"
+   ],
+   "pj": "Diskominfo + Disdukcapil",
+   "prioritas": "sedang"
+  },
+  "GT.I3_L1_3": {
+   "jenis": "gap",
+   "ringkas": "Komunitas belajar digital ASN Kabupaten Aceh Tengah berjalan dalam bentuk grup diskusi operator SPBE/admin aplikasi per perangkat daerah dan kelas berbagi (bimtek internal) yang difasilitasi Diskominfo dan BKPSDM, sesuai Program B.2 Peta Rencana Pemdi 'Diklat, bimtek, dan komunitas belajar digital' (2026–2029). Bukti berupa notulen/undangan/daftar hadir/foto kegiatan berbagi pengetahuan dan tangkapan layar grup komunitas.",
+   "rujukan": [
+    { "dok": "PETA_RENCANA", "bagian": "Bab V B. Program Penguatan SDM dan Kolaborasi, kegiatan no. 2 (BKPSDM; Diskominfo, 2026–2029)", "halaman": "13" },
+    { "dok": "D_I03_KOMPETENSI", "bagian": "Bab IV 4.4 Mekanisme Asesmen (rencana) — pengembangan kompetensi", "halaman": "14" },
+    { "dok": "REKAP_APL", "bagian": "Bagian E Ringkasan panduan penggunaan aplikasi (materi belajar internal e-office/e-absensi/e-kinerja/TTE)", "halaman": "11–12" }
+   ],
+   "kebutuhan": [
+    "Tangkapan layar grup WA/Telegram operator SPBE (nama grup, jumlah anggota, contoh diskusi teknis) — samarkan nomor telepon",
+    "Notulen + daftar hadir + foto minimal 1 sesi berbagi (bimtek e-office/TTE/SIAP Digital) tahun 2026",
+    "Surat/nota dinas pembentukan komunitas belajar (opsional, memperkuat)"
+   ],
+   "pj": "BKPSDM + Diskominfo",
+   "prioritas": "sedang"
+  },
+  "GT.I3_L1_4": {
+   "jenis": "gap",
+   "ringkas": "Microlearning internal dilaksanakan melalui modul singkat/panduan pengguna dan video tutorial aplikasi kerja digital (e-office, e-absensi, e-kinerja, email dinas, TTE) yang dibagikan kepada ASN; ringkasan panduan tersebut sudah termuat dalam Rekap Penggunaan Aplikasi Kerja Digital (diterima asesor, I3-L1-02). Laporan penggunaan microlearning melengkapi dengan daftar modul/video, tautan, dan rekap peserta/penonton.",
+   "rujukan": [
+    { "dok": "REKAP_APL", "bagian": "Bagian E.1–E.5 ringkasan panduan aplikasi; Bagian D rekap pengguna aktif", "halaman": "9–12" },
+    { "dok": "PETA_RENCANA", "bagian": "Bab V B.2 dan B.3 (pemanfaatan AI & analisis data bagi ASN)", "halaman": "13" }
+   ],
+   "kebutuhan": [
+    "Daftar modul/video tutorial (judul, durasi, tautan YouTube/Drive internal, tanggal terbit)",
+    "Rekap peserta/penonton per modul (statistik tayang atau daftar hadir e-learning)",
+    "Laporan 2–3 halaman 'Penggunaan Microlearning Internal Semester I 2026' (kop Diskominfo/BKPSDM)"
+   ],
+   "pj": "Diskominfo + BKPSDM",
+   "prioritas": "sedang"
+  },
+  "GT.I3_L1_5": {
+   "jenis": "gap",
+   "ringkas": "Tangkapan layar dasbor instansional Pemerintah Kabupaten Aceh Tengah pada myasn.bkn.go.id (profil kompetensi/talenta ASN) sebagai bukti pemanfaatan data kompetensi nasional dalam perencanaan SDM digital. Dasbor diakses oleh admin instansi BKPSDM.",
+   "rujukan": [
+    { "dok": "D_I03_KOMPETENSI", "bagian": "Bab III matriks kompetensi per jenjang (3.1–3.5) — dipadankan dengan data MyASN", "halaman": "10–12" }
+   ],
+   "kebutuhan": [
+    "Tangkapan layar dasbor instansional MyASN (menu Talenta/Kompetensi) dengan nama instansi & tanggal terlihat — oleh admin BKPSDM",
+    "Lembar pengantar 1 halaman menjelaskan menu yang ditampilkan dan pemanfaatannya"
+   ],
+   "pj": "BKPSDM",
+   "prioritas": "rendah"
+  },
+  "GT.I4_L1_2": {
+   "jenis": "revisi",
+   "ringkas": "Menanggapi catatan asesor (RKA Diskominfo belum memuat kegiatan rencana kolaborasi antar unit kerja): bukti diganti dengan dokumen perencanaan yang secara eksplisit memuat rencana kolaborasi antar perangkat daerah dalam penerapan Pemdi, yaitu (1) Rencana Kolaborasi Antar Perangkat Daerah 2026–2029 (matriks peran K/A/D/P per aspek Pemdi + rencana pelaksanaan 2026) yang disusun Sekretariat Tim Koordinasi Pemdi; (2) Peta Rencana Pemdi Bab V yang menetapkan perangkat daerah penanggung jawab lintas PD per kegiatan; (3) RPJMD Bab III yang menempatkan transformasi digital sebagai agenda lintas OPD; serta (4) DPA/RKA Diskominfo halaman sub kegiatan 2.16.03.2.02.0037 (koordinasi penyusunan kebijakan tata kelola SPBE) dan 0038 (koordinasi & fasilitasi kabupaten cerdas) sebagai wadah anggaran kegiatan koordinasi tersebut.",
+   "rujukan": [
+    { "dok": "D_I04_RENKOL", "bagian": "Bab VI Matriks Kolaborasi Lintas PD; Bab VII peran utama PD; Bab VIII rencana pelaksanaan 2026; Bab IX pembiayaan", "halaman": "5–9" },
+    { "dok": "PETA_RENCANA", "bagian": "Bab V Program A–G — kolom 'Perangkat Daerah Penanggung Jawab' (lintas PD); B.4 Forum kolaborasi pentahelix", "halaman": "13–14" },
+    { "dok": "RPJMD", "bagian": "Bab II isu strategis digitalisasi: 'indikator digital harus diintegrasikan ke dalam kinerja seluruh OPD, bukan hanya Dinas Kominfo'", "halaman": "238 (II-210)" },
+    { "dok": "RENSTRA", "bagian": "Bab IV sub kegiatan 2.16.03.2.02.0037 dan 0038 (koordinasi lintas PD)", "halaman": "48 (hal. 45)" },
+    { "dok": "SK_TIMKOR", "bagian": "Lampiran II — Pokja Aspek Penyelenggara tugas no. 3: mengoordinasikan kemitraan & kolaborasi Pemdi lintas instansi", "halaman": "6" }
+   ],
+   "kebutuhan": [
+    "Finalisasi draf Rencana Kolaborasi: isi nomor dokumen, tanggal, TTD Sekda selaku Ketua Tim Koordinasi (atau Koordinator Pemdi)",
+    "Salinan halaman DPA/RKA sub kegiatan 0037 & 0038 dengan uraian belanja rapat koordinasi lintas PD",
+    "Jangan unggah RKA rekap saja — asesor menilai isi kegiatan, bukan keberadaan RKA"
+   ],
+   "pj": "Sekretariat Tim Koordinasi Pemdi (Diskominfo) + Setda Bag. Organisasi",
+   "prioritas": "tinggi"
+  },
+  "GT.I4_L2_2": {
+   "jenis": "revisi",
+   "ringkas": "Butir ini ditolak otomatis karena Level 1 (I4-L1-02) belum diterima; akan dinilai kembali setelah revisi I4-L1-02 diterima. Bukti pelaksanaan kolaborasi ANTAR INSTANSI (bukan antar PD) yang disiapkan: dokumentasi kerja sama dengan instansi pemerintah lain/pusat — misalnya onboarding PDN (Komdigi), integrasi SKM Online/SP4N-LAPOR (KemenPANRB), pemanfaatan SIAP Digital/SIA (KemenPANRB), kerja sama Diskominfo Aceh (provinsi) — berupa surat, BA, notulen, atau tangkapan layar portal nasional.",
+   "rujukan": [
+    { "dok": "PETA_RENCANA", "bagian": "Bab V B.4 'Forum kolaborasi pentahelix dan MoU/PKS lintas instansi' (Setda; Diskominfo, 2026–2029); E.2 onboarding PDN", "halaman": "13–14" },
+    { "dok": "D_I04_RENKOL", "bagian": "Bab V bentuk kolaborasi (termasuk kolaborasi vertikal/eksternal)", "halaman": "3–4" },
+    { "dok": "D_I14_DASBOR", "bagian": "Bukti onboarding PDN (Komdigi) — contoh kolaborasi antar instansi", "halaman": "1–4" }
+   ],
+   "kebutuhan": [
+    "Tunggu hasil revisi I4-L1-02; siapkan 1 paket bukti kolaborasi antar instansi (min. 2 instansi pusat/provinsi) dengan surat/BA bertanggal 2026"
+   ],
+   "pj": "Diskominfo",
+   "prioritas": "sedang"
+  },
+  "GT.I5_L1_1": {
+   "jenis": "gap",
+   "ringkas": "Indikator eksternal — nilai Indeks Satu Data Indonesia ditetapkan Bappenas (pembina). Data dukung yang disiapkan sebagai konteks: Perbup 60/2022 Satu Data Indonesia, SK Forum Satu Data 188.55/375/Bappeda/2025, dan program unggulan 'Aceh Tengah Satu Data' dalam RPJMD. Pastikan pengisian penilaian mandiri SDI pada portal Bappenas dilakukan oleh Walidata (Diskominfo) dan Bappeda tepat waktu.",
+   "rujukan": [
+    { "dok": "RPJMD", "bagian": "Bab III Tabel 3 Keselarasan Program Unggulan — no. 1 'Aceh Tengah Satu Data'; Bab III program 'Pemenuhan Prinsip Satu Data' (statistik sektoral)", "halaman": "281 (III-38), 333 (III-90)" },
+    { "dok": "PERBUP60", "bagian": "Perbup 60/2022 Satu Data Indonesia tingkat kabupaten", "halaman": "—" },
+    { "dok": "PETA_RENCANA", "bagian": "Bab V C.1 Penguatan Forum Satu Data dan walidata", "halaman": "13" }
+   ],
+   "kebutuhan": [
+    "Konfirmasi status pengisian instrumen penilaian SDI 2026 (portal Bappenas) — tangkapan layar status kirim",
+    "Salinan SK Forum Satu Data 188.55/375/2025 (ada draf di /panduan-bukti-l1/I05)"
+   ],
+   "pj": "Bappeda (Koordinator Forum SDI) + Diskominfo (Walidata)",
+   "prioritas": "sedang"
+  },
+  "GT.I6_L1_1": {
+   "jenis": "gap",
+   "ringkas": "Indikator eksternal — Indeks Simpul Jaringan Informasi Geospasial ditetapkan BIG. Konteks daerah: inventarisasi 20 layer data geospasial dan ketersediaan data & peta RDTR 2025 (opendata.acehtengahkab.go.id). Pastikan simpul jaringan Aceh Tengah terdaftar/aktif pada Jaringan IG Nasional dan penilaian mandiri BIG terisi.",
+   "rujukan": [
+    { "dok": "PETA_RENCANA", "bagian": "Bab V C.2 Penyelenggaraan informasi geospasial (Diskominfo; PUPR)", "halaman": "13" }
+   ],
+   "kebutuhan": [
+    "Tangkapan layar status simpul jaringan Aceh Tengah di portal JIGN/BIG + hasil penilaian mandiri 2026",
+    "Dokumen ketersediaan data RDTR & inventarisasi 20 layer (draf di /panduan-bukti-l1/I06) difinalisasi"
+   ],
+   "pj": "Diskominfo + Dinas PUPR/Bappeda",
+   "prioritas": "rendah"
+  },
+  "GT.I7_L1_1": {
+   "jenis": "gap",
+   "ringkas": "Indikator eksternal — Indeks Pembangunan Statistik ditetapkan BPS melalui EPSS. Konteks: RPJMD menargetkan IPS 2,87 (2025) → 4,05 (2029) pada Program Penyelenggaraan Statistik Sektoral (2.20.02) yang diampu Diskominfo; SOP pengumpulan & diseminasi data statistik dan katalog 30 produk statistik sektoral tersedia.",
+   "rujukan": [
+    { "dok": "RPJMD", "bagian": "Bab IV — 2.20.02 Program Penyelenggaraan Statistik Sektoral, target IPS 2,87 → 4,05", "halaman": "381 (IV-16)" },
+    { "dok": "RENSTRA", "bagian": "Bab IV — Urusan Statistik 2.20, Program Penyelenggaraan Statistik Sektoral", "halaman": "48 (hal. 45)" }
+   ],
+   "kebutuhan": [
+    "Tangkapan layar status pengisian EPSS 2026 (portal BPS) + nilai IPS terakhir yang diterbitkan BPS"
+   ],
+   "pj": "Diskominfo (Bidang Statistik & Persandian)",
+   "prioritas": "rendah"
+  },
+  "GT.I8_L1_1": {
+   "jenis": "revisi",
+   "ringkas": "Menanggapi catatan asesor (bukti belum diunggah): diunggah Dokumen Uraian Kondisi Eksisting dan Kebutuhan Tata Kelola Pelindungan Data Pribadi Pemerintah Kabupaten Aceh Tengah (Level 1 — kondisi ad-hoc). Dokumen menguraikan kondisi saat ini (belum ada kebijakan PDP tersendiri; pelindungan data mengacu Perbup 137/2019 dan klasifikasi keamanan Perbup 6/2025; hasil ukur Indeks KAMI 5.0 bagian pelindungan data), hasil identifikasi kebutuhan (kebijakan, struktur/DPO, proses siklus hidup data, pemenuhan hak subjek data, pemberitahuan privasi, pengamanan, manajemen risiko/DPIA), dan rencana tindak lanjut 2026–2027 sesuai Peta Rencana Pemdi Program C.4 (penetapan DPO & sosialisasi PDP).",
+   "rujukan": [
+    { "dok": "D_I08_PDP", "bagian": "Bab I latar belakang & kondisi eksisting; Bab II unsur tata kelola & rencana penunjukan DPO; Bab III siklus hidup data (A–H); Bab IV–VI", "halaman": "1–15" },
+    { "dok": "PETA_RENCANA", "bagian": "Bab V C.4 Penetapan Petugas PDP (DPO) dan sosialisasi PDP (Diskominfo; Bagian Hukum, 2026–2027)", "halaman": "13" },
+    { "dok": "PERBUP137", "bagian": "Pedoman PPID/pelindungan informasi — dasar eksisting", "halaman": "—" },
+    { "dok": "PERBUP6", "bagian": "Klasifikasi keamanan & akses informasi — dasar eksisting", "halaman": "—" }
+   ],
+   "kebutuhan": [
+    "Finalisasi draf: hapus tanda 'DRAFT', isi nomor dokumen, tanggal, TTD Kadis Kominfo; lampirkan nota dinas ke Bagian Hukum",
+    "Tambahkan 1 tabel 'Kondisi saat ini vs kebutuhan' per 7 unsur (agar cocok dengan 7 butir I8 L1)",
+    "Satu unggahan yang sama dapat dirujuk untuk GT.I8_L1_2 s.d. GT.I8_L1_7 (masing-masing menunjuk bab yang relevan)"
+   ],
+   "pj": "Diskominfo + Bagian Hukum Setda",
+   "prioritas": "tinggi"
+  },
+  "GT.I8_L1_2": {
+   "jenis": "gap",
+   "ringkas": "Uraian pelatihan PDP yang pernah diikuti pegawai (bimtek keamanan informasi/literasi digital) dan hasil identifikasi kebutuhan awareness & kompetensi PDP termuat dalam Rencana & Silabus Program Awareness PDP (3 silabus: pimpinan, pengelola data, seluruh pegawai) — bagian dari paket dokumen tata kelola PDP Level 1.",
+   "rujukan": [
+    { "dok": "D_I08_SILABUS", "bagian": "Seluruh dokumen (rencana program, silabus, jadwal 2026–2027)", "halaman": "1–10" },
+    { "dok": "D_I08_PDP", "bagian": "Bab IV program awareness & kompetensi", "halaman": "13" }
+   ],
+   "kebutuhan": [
+    "Daftar pelatihan terkait keamanan informasi/PDP yang pernah diikuti ASN 2024–2026 (nama, penyelenggara, peserta, sertifikat) dari BKPSDM/Diskominfo"
+   ],
+   "pj": "Diskominfo + BKPSDM",
+   "prioritas": "sedang"
+  },
+  "GT.I8_L1_3": {
+   "jenis": "gap",
+   "ringkas": "Uraian struktur organisasi yang saat ini menangani pelindungan data (Bidang Statistik & Persandian / Keamanan Informasi Diskominfo sesuai Perbup 9/2025; PPID sesuai Perbup 137/2019) dan hasil identifikasi kebutuhan penunjukan Pejabat/Petugas PDP (DPO) termuat dalam Kerangka Tata Kelola PDP Bab II (unsur tata kelola & rencana penunjukan DPO, termasuk draf uraian tugas).",
+   "rujukan": [
+    { "dok": "D_I08_PDP", "bagian": "Bab II A Unsur Tata Kelola; B Rencana Penunjukan DPO (tahapan 1–5)", "halaman": "8–9" },
+    { "dok": "PERBUP9", "bagian": "SOTK Diskominfo — bidang yang mengampu persandian & keamanan informasi", "halaman": "—" },
+    { "dok": "RENSTRA", "bagian": "Bab II 2.1 tugas & fungsi bidang (Layanan Keamanan Informasi e-Government)", "halaman": "15 (hal. 12)" }
+   ],
+   "kebutuhan": [
+    "Draf SK Bupati penunjukan DPO/PPDP (cukup draf di Level 1) — lampirkan sebagai lampiran"
+   ],
+   "pj": "Diskominfo + Bagian Organisasi & Bagian Hukum",
+   "prioritas": "sedang"
+  },
+  "GT.I8_L1_4": {
+   "jenis": "gap",
+   "ringkas": "Uraian proses penanganan permintaan hak subjek data yang berjalan saat ini (melalui kanal PPID/pengaduan Perbup 21/2021, belum terstandar) dan hasil identifikasi kebutuhan mekanisme (akses, koreksi, penghapusan, keberatan) termuat dalam Kerangka Tata Kelola PDP Bab III G.",
+   "rujukan": [
+    { "dok": "D_I08_PDP", "bagian": "Bab III G Penanganan Permintaan Hak Subjek Data", "halaman": "12" },
+    { "dok": "PERBUP21", "bagian": "Pedoman pengelolaan pengaduan — kanal eksisting permintaan subjek data", "halaman": "—" }
+   ],
+   "kebutuhan": [
+    "Contoh 1–2 kasus permintaan koreksi data (mis. adminduk) yang pernah ditangani + alur singkat (anonim)"
+   ],
+   "pj": "Diskominfo + PPID Utama",
+   "prioritas": "sedang"
+  },
+  "GT.I8_L1_5": {
+   "jenis": "gap",
+   "ringkas": "Uraian penyampaian informasi pelindungan data kepada pengguna layanan digital saat ini (kebijakan privasi pada portal layanan; pemberitahuan pada formulir SKM/pengaduan) dan hasil identifikasi kebutuhan privacy notice standar termuat dalam Kerangka Tata Kelola PDP Bab III (pemberitahuan/persetujuan subjek data).",
+   "rujukan": [
+    { "dok": "D_I08_PDP", "bagian": "Bab III A siklus hidup data butir 2 (pemberitahuan/persetujuan); Bab III E pertukaran ke pihak ketiga", "halaman": "10–11" }
+   ],
+   "kebutuhan": [
+    "Tangkapan layar halaman Kebijakan Privasi portal Pemdi (/kebijakan-privasi — aktifkan persona publik sementara) dan formulir SKM online yang memuat pemberitahuan penggunaan data"
+   ],
+   "pj": "Diskominfo",
+   "prioritas": "sedang"
+  },
+  "GT.I8_L1_6": {
+   "jenis": "gap",
+   "ringkas": "Uraian kontrol keamanan yang telah diterapkan pada data pribadi (TLS pada layanan daring, pembatasan akses berbasis peran, cadangan data, klasifikasi keamanan Perbup 6/2025) dan hasil identifikasi kebutuhan pengamanan teknis & organisasional termuat dalam Kerangka Tata Kelola PDP Bab III D, didukung Bukti Kontrol Dasar Keamanan Siber + KAMI 5.0 dan Inventarisasi Aset Terenkripsi (I11-L1-01, diterima asesor).",
+   "rujukan": [
+    { "dok": "D_I08_PDP", "bagian": "Bab III D Keamanan Pemrosesan; F Penyimpanan & Retensi", "halaman": "11" },
+    { "dok": "D_I10_KONTROL", "bagian": "Bukti kontrol dasar keamanan siber + skor KAMI 5.0", "halaman": "1–7" },
+    { "dok": "PERBUP6", "bagian": "Klasifikasi keamanan informasi/arsip", "halaman": "—" }
+   ],
+   "kebutuhan": [
+    "Rujuk silang ke berkas I11-L1-01 yang sudah diterima (sebutkan kode I11-L1-01 dalam catatan)"
+   ],
+   "pj": "Diskominfo (Persandian & Keamanan Informasi)",
+   "prioritas": "sedang"
+  },
+  "GT.I8_L1_7": {
+   "jenis": "gap",
+   "ringkas": "Uraian kondisi pengelolaan risiko data pribadi saat ini (risiko layanan dikelola melalui Daftar Risiko Layanan pada manajemen layanan digital — I2-L1-02 diterima asesor; belum ada DPIA khusus) dan hasil identifikasi kebutuhan mekanisme DPIA/manajemen risiko PDP termuat dalam Kerangka Tata Kelola PDP Bab III H dan Bab V.",
+   "rujukan": [
+    { "dok": "D_I08_PDP", "bagian": "Bab III H Penanganan Insiden Data Pribadi; Bab V manajemen risiko/DPIA", "halaman": "12, 14" },
+    { "dok": "LAP_MANLAY", "bagian": "Bab III C.1 Manajemen Risiko Layanan; Lampiran C Daftar Risiko Layanan", "halaman": "12, 22" }
+   ],
+   "kebutuhan": [
+    "Tambahkan 1 tabel risiko data pribadi awal (5–10 risiko utama: kebocoran, akses tidak sah, kehilangan) ke Bab V draf"
+   ],
+   "pj": "Diskominfo",
+   "prioritas": "sedang"
+  },
+  "GT.I9_L1_1": {
+   "jenis": "revisi",
+   "ringkas": "Menanggapi catatan asesor (bukti sebelumnya SK Tim Asesor Internal Evaluasi Kinerja Pemdi — tidak tepat): diunggah Keputusan tentang Pembentukan dan Penetapan Tim Audit Keamanan Pemerintah Digital dan Teknologi Pemerintah Digital yang ditetapkan oleh Koordinator Pemerintah Digital. Sesuai Lampiran II SK Bupati 555/395/2026, Koordinator PEMDI adalah Wakil Ketua Tim Koordinasi (Kepala Dinas Kominfo); Pokja Aspek Keamanan Siber bertugas mengoordinasikan perencanaan & pelaksanaan audit keamanan. Tim Audit beranggotakan unsur Inspektorat (auditor kepatuhan), Diskominfo (auditor teknis aplikasi/jaringan/server/persandian), dan auditor data/PDP; lampiran memuat susunan tim, uraian tugas, tahapan audit, dan kode etik. Tim Audit ini berbeda dari Tim Asesor Internal Evaluasi Kinerja Pemdi.",
+   "rujukan": [
+    { "dok": "D_I09_SK", "bagian": "Konsideran (merujuk Pasal 34 Perbup 48/2025 tentang audit keamanan SPBE); diktum KESATU–KEDUA; Lampiran I susunan tim (A–D); Lampiran II uraian tugas & tahapan/kode etik", "halaman": "1–3, 5–9" },
+    { "dok": "SK_TIMKOR", "bagian": "Lampiran II — Wakil Ketua merangkap Koordinator PEMDI (hal. 5); Pokja Aspek Keamanan Siber tugas no. 1 'mengoordinasikan perencanaan dan pelaksanaan audit keamanan' (hal. 7)", "halaman": "5, 7" },
+    { "dok": "PERBUP48", "bagian": "Pasal tentang audit keamanan SPBE oleh tim/auditor internal (Pasal 34 sebagaimana dirujuk draf SK — verifikasi nomor pasal pada salinan JDIH)", "halaman": "—" },
+    { "dok": "PETA_RENCANA", "bagian": "Bab V D.1 Audit keamanan internal dan eksternal (Inspektorat; Diskominfo, 2026–2029)", "halaman": "13" }
+   ],
+   "kebutuhan": [
+    "PENTING: SK harus ditetapkan oleh KOORDINATOR PEMDI (Kadis Kominfo) atau Ketua Tim Koordinasi (Sekda) — draf saat ini berkop Keputusan Sekretaris Daerah; selaraskan penandatangan dengan Lampiran II SK 555/395/2026 dan sebutkan kapasitasnya",
+    "Isi nomor 800/.../SETDA/2026, tanggal, TTD; nama personel riil di Lampiran I",
+    "Judul berkas unggahan: 'SK Tim Auditor Internal Pemerintah Digital Kab. Aceh Tengah 2026' (mengikuti istilah asesor)"
+   ],
+   "pj": "Diskominfo (Koordinator Pemdi) + Inspektorat + Bagian Hukum",
+   "prioritas": "tinggi"
+  },
+  "GT.I9_L1_2": {
+   "jenis": "gap",
+   "ringkas": "Dokumen Perencanaan Audit Keamanan Pemdi & Teknologi Pemdi Tahun 2026 memuat tujuan/sasaran, ruang lingkup, daftar objek aplikasi & sistem prioritas 2026 (dengan kategorisasi sistem elektronik), metodologi, jadwal (perencanaan–survei–audit lapangan–pelaporan), checklist audit ringkas, mekanisme pelaporan & tindak lanjut, serta pakta integritas auditor; disusun Inspektorat bersama Diskominfo dan masuk PKPT Inspektorat.",
+   "rujukan": [
+    { "dok": "D_I09_RENCANA", "bagian": "III tujuan & sasaran; IV ruang lingkup; V daftar objek audit prioritas 2026; VI metodologi; VII jadwal 2026; IX checklist; X pelaporan & tindak lanjut; Lampiran pakta integritas", "halaman": "3–10" },
+    { "dok": "PETA_RENCANA", "bagian": "Bab V D.1 Audit keamanan internal dan eksternal", "halaman": "13" }
+   ],
+   "kebutuhan": [
+    "Finalisasi: nomor dokumen, tanggal, TTD Inspektur + Kadis Kominfo; sinkronkan daftar objek audit dengan katalog aplikasi di SIAP Digital",
+    "Lampirkan kutipan PKPT Inspektorat 2026 yang memuat audit TIK/keamanan (jika ada)"
+   ],
+   "pj": "Inspektorat + Diskominfo",
+   "prioritas": "tinggi"
+  },
+  "GT.I10_L1_1": {
+   "jenis": "revisi",
+   "ringkas": "Menanggapi catatan asesor (Indeks KAMI 2023 tidak sesuai; diminta hasil penilaian IKASANDI ≤ 1 tahun terakhir): diunggah hasil penilaian mandiri IKASANDI Area Keamanan Siber Tahun 2026 (periode Semester I 2026, pengisian Juni 2026) dengan skor 1,10 (rentang 0 < IKASANDI < 1,5 — tingkat Initiate), berupa instrumen terisi per domain, rekapitulasi skor, dan tangkapan layar pengisian pada portal IKASANDI BSSN. Hasil KAMI 5.0 dan bukti kontrol dasar dilampirkan hanya sebagai pendukung, bukan pengganti IKASANDI.",
+   "rujukan": [
+    { "dok": "D_I10_IKASANDI", "bagian": "Identitas penilaian (periode Semester I 2026, tanggal 15 Juni 2026, portal ikasandi.bssn.go.id); C butir per domain; D rekapitulasi skor per domain; E kesimpulan", "halaman": "1–6" },
+    { "dok": "D_I10_KONTROL", "bagian": "Pendukung — kontrol dasar & KAMI 5.0", "halaman": "1–7" },
+    { "dok": "PETA_RENCANA", "bagian": "Bab V D.2 Penilaian IKASANDI (Keamanan Siber, Persandian, Penanganan Insiden) — Diskominfo (Persandian), 2026–2029", "halaman": "13" },
+    { "dok": "RPJMD", "bagian": "Bab IV — 2.21.02 Program Penyelenggaraan Persandian untuk Pengamanan Informasi, indikator Tingkat Kesiapan Pengamanan Informasi", "halaman": "381 (IV-16)" }
+   ],
+   "kebutuhan": [
+    "WAJIB: pengisian riil di portal IKASANDI BSSN (ikasandi.bssn.go.id) 2026 oleh Bidang Persandian — tangkapan layar halaman hasil/skor dengan nama instansi & tanggal; tanpa ini bukti tetap 'tidak sesuai'",
+    "Instrumen terisi ditandatangani Kadis Kominfo; pastikan tanggal ≤ 12 bulan dari tanggal unggah",
+    "Jangan sertakan Indeks KAMI 2023 lagi"
+   ],
+   "pj": "Diskominfo (Bidang Persandian & Keamanan Informasi)",
+   "prioritas": "tinggi"
+  },
+  "GT.I11_L2_1": {
+   "jenis": "gap",
+   "ringkas": "Laporan pelaksanaan penerapan teknologi kriptografi pada sebagian layanan digital (≤ 50% layanan kategori tinggi), 1 siklus data: TLS (in-transit) pada domain layanan acehtengahkab.go.id, enkripsi disk/backup (at-rest) pada server data center daerah, VPN jaringan intra, dan sertifikat elektronik (TTE BSrE) — melengkapi Inventarisasi Aset Terenkripsi + Laporan Awal Kriptografi 2026 yang telah diterima asesor pada I11-L1-01, dengan lampiran teknis tangkapan layar konfigurasi dan algoritma/modul yang digunakan sesuai ketentuan BSSN.",
+   "rujukan": [
+    { "dok": "D_I11_KRIPTO", "bagian": "Lampiran teknis bukti konfigurasi (TLS, enkripsi disk, VPN, sertifikat) — 13 slot tangkapan layar", "halaman": "1–7" },
+    { "dok": "PETA_RENCANA", "bagian": "Bab V D.3 Penerapan kriptografi sesuai standar nasional pada layanan prioritas (2026–2028)", "halaman": "13" }
+   ],
+   "kebutuhan": [
+    "Isi 13 placeholder tangkapan layar riil (hasil SSL Labs/qualys per domain, konfigurasi enkripsi disk, panel VPN, sertifikat BSrE)",
+    "Tabel cakupan: daftar layanan kategori tinggi × siklus data × algoritma (AES-256/TLS 1.2+/RSA-2048) — hitung persentase ≤ 50%",
+    "Catatan lama 8 Ags 2026: JANGAN unggah Perbup sebagai pengganti laporan"
+   ],
+   "pj": "Diskominfo (Bidang Persandian)",
+   "prioritas": "sedang"
+  },
+  "GT.I12_L1_2": {
+   "jenis": "revisi",
+   "ringkas": "Menanggapi catatan asesor (bukti belum diunggah): diunggah hasil penilaian mandiri IKASANDI Area Penanganan Insiden Siber Tahun 2026 (Semester I 2026, pengisian Juni 2026) dengan skor 1,08 (0 < IKASANDI < 1,50 — Initiate; bukan hasil verifikasi BSSN), berupa instrumen terisi per domain, rekapitulasi skor, dan tangkapan layar portal IKASANDI. Selaras dengan Laporan Penanganan Insiden Siber Jan–Jun 2026 (12 insiden) yang telah diterima asesor pada I12-L1-01.",
+   "rujukan": [
+    { "dok": "D_I12_IKASANDI", "bagian": "Identitas (periode Semester I 2026, 20 Juni 2026); B domain area penanganan insiden; C rekapitulasi skor", "halaman": "1–6" },
+    { "dok": "PETA_RENCANA", "bagian": "Bab V D.2 Penilaian IKASANDI; D.4 Pembentukan & operasionalisasi TTIS/CSIRT (2026–2027)", "halaman": "13" }
+   ],
+   "kebutuhan": [
+    "Sama seperti I10: pengisian riil di portal IKASANDI BSSN + tangkapan layar hasil; instrumen ditandatangani Kadis Kominfo",
+    "Unggah sebagai berkas terpisah dari I10 (area berbeda)"
+   ],
+   "pj": "Diskominfo (Bidang Persandian & Keamanan Informasi)",
+   "prioritas": "tinggi"
+  },
+  "GT.I12_L2_1": {
+   "jenis": "revisi",
+   "ringkas": "Butir ini ditolak otomatis karena Level 1 (I12-L1-02) belum diterima; dinilai kembali setelah revisi L1 diterima. Bukti yang disiapkan untuk Level 2: SK Bupati/Koordinator Pemdi tentang Pembentukan Tim Tanggap Insiden Siber (TTIS/CSIRT) Kabupaten Aceh Tengah, uraian tugas, kontak on-call, dan bukti registrasi TTIS pada BSSN (TTIS Nasional).",
+   "rujukan": [
+    { "dok": "PETA_RENCANA", "bagian": "Bab V D.4 Pembentukan dan operasionalisasi TTIS/CSIRT (Diskominfo; PD terkait, 2026–2027)", "halaman": "13" },
+    { "dok": "SK_TIMKOR", "bagian": "Lampiran II — Pokja Aspek Keamanan Siber tugas no. 3: operasionalisasi & peningkatan kapabilitas tim tanggap insiden", "halaman": "7" },
+    { "dok": "D_I19_SOP", "bagian": "Lampiran C Daftar Kontak Darurat (On-Call) — dapat diadopsi untuk TTIS", "halaman": "13" }
+   ],
+   "kebutuhan": [
+    "Draf SK TTIS/CSIRT (belum ada di repo) — susun mengacu Peraturan BSSN tentang tim tanggap insiden siber; daftarkan ke BSSN (surat permohonan registrasi)",
+    "Tunggu hasil revisi I12-L1-02 sebelum mengunggah"
+   ],
+   "pj": "Diskominfo (Bidang Persandian) + Bagian Hukum",
+   "prioritas": "sedang"
+  },
+  "GT.I13_L1_2": {
+   "jenis": "revisi",
+   "ringkas": "Menanggapi catatan asesor (RKA/DPA tidak memuat program/kegiatan pengembangan aplikasi): bukti diganti dengan dokumen perencanaan yang memuat substansi pengembangan aplikasi Pemdi, yaitu (1) Renstra Diskominfo 2025–2029 — tugas Bidang TIK 'Layanan pengembangan dan pengelolaan aplikasi generik, spesifik & suplemen yang terintegrasi' dan Program 2.16.03 Pengelolaan Aplikasi Informatika; (2) RPJMD Bab IV Program 2.16.03 dengan target Indeks SPBE; (3) Peta Rencana Pemdi Program E.1 'Pengembangan aplikasi sesuai SDLC dan kepatuhan arsitektur SPBE' (2026–2029); serta (4) DPA/RKA Diskominfo TA 2026 pada halaman sub kegiatan yang membiayai pengembangan aplikasi (KAK Bapokting 2026 — Bab VIII perkiraan anggaran) — bukan rekap DPA.",
+   "rujukan": [
+    { "dok": "RENSTRA", "bagian": "Bab II 2.1 tugas Bidang TIK (pengembangan & pengelolaan aplikasi generik/spesifik/suplemen); Bab IV Program 2.16.03 Pengelolaan Aplikasi Informatika (indikator Indeks SPBE, pagu per tahun)", "halaman": "15 (hal. 12); 44 (hal. 41)" },
+    { "dok": "RPJMD", "bagian": "Bab IV — 2.16.03 Program Pengelolaan Aplikasi Informatika, target Indeks SPBE 2,88 → 3,36", "halaman": "379 (IV-14)" },
+    { "dok": "PETA_RENCANA", "bagian": "Bab V E.1 Pengembangan aplikasi sesuai SDLC dan kepatuhan arsitektur SPBE (Diskominfo; seluruh PD, 2026–2029)", "halaman": "14" },
+    { "dok": "D_I13_KAK", "bagian": "Bab VI keluaran & waktu; Bab VIII perkiraan anggaran (mengacu DPA 2026)", "halaman": "5–6" }
+   ],
+   "kebutuhan": [
+    "Cetak halaman rincian DPA 2026 untuk sub kegiatan yang memuat belanja pengembangan aplikasi (cari uraian 'aplikasi'/'sistem informasi' pada 2.16.03.2.02.*) dan tandai (highlight) barisnya",
+    "Jika belanja pengembangan aplikasi belum ada di DPA 2026: nyatakan jujur dalam catatan dan rujuk RKA Perubahan 2026/RKA 2027 + Renstra sebagai substansi perencanaan"
+   ],
+   "pj": "Diskominfo (Bidang TIK/APTIKA + Perencanaan)",
+   "prioritas": "tinggi"
+  },
+  "GT.I13_L1_3": {
+   "jenis": "gap",
+   "ringkas": "Aplikasi Pemerintah Digital pada Arsitektur Teknologi Pemdi dibuktikan dengan tangkapan layar domain Aplikasi pada SIAP Digital (digital.spbe.go.id) yang telah diisi untuk aplikasi Pemkab Aceh Tengah beserta ekspor katalog aplikasi, dengan referensi arsitektur aplikasi pada Perbup 48/2025 (BAB referensi arsitektur — domain aplikasi). Draf lokal saat ini baru berupa ekstrak Perbup; tangkapan layar SIAP Digital menjadi bukti utama.",
+   "rujukan": [
+    { "dok": "PERBUP48", "bagian": "Bab Referensi Arsitektur SPBE — domain arsitektur aplikasi (verifikasi nomor bab/pasal pada salinan JDIH)", "halaman": "—" },
+    { "dok": "REKAP_APL", "bagian": "Bagian B daftar aplikasi kerja digital yang digunakan (sumber pengisian katalog aplikasi)", "halaman": "1–2" },
+    { "dok": "D_I16_LAP", "bagian": "Bab VI daftar 12 aplikasi terintegrasi (konsisten dengan katalog SIAP Digital)", "halaman": "5" }
+   ],
+   "kebutuhan": [
+    "Login SIAP Digital → domain Aplikasi: tangkapan layar daftar aplikasi (nama instansi & tanggal terlihat) + ekspor PDF/Excel katalog",
+    "Pastikan jumlah/nama aplikasi konsisten antara SIAP Digital, Rekap Aplikasi (I3-L1-02), dan Laporan Integrasi (I16)"
+   ],
+   "pj": "Diskominfo (admin SIAP Digital)",
+   "prioritas": "tinggi"
+  },
+  "GT.I13_L2_1": {
+   "jenis": "revisi",
+   "ringkas": "Menanggapi catatan asesor (belum diunggah): diunggah dokumentasi pembangunan/pengembangan aplikasi Pemerintah Digital tahun 2026 berupa dokumentasi SDLC Aplikasi Pemantauan Harga Bahan Pokok Penting (Bapokting) — KAK (analisis kebutuhan, ruang lingkup, spesifikasi teknis, keluaran), laporan pengembangan awal (desain, prototype, tangkapan layar, kemajuan), serta rujukan arsitektur (Perbup 48/2025; katalog aplikasi SIAP Digital). Dokumen ini melanjutkan bukti pelaksanaan pengembangan aplikasi yang telah diterima pada I13-L1-01.",
+   "rujukan": [
+    { "dok": "D_I13_KAK", "bagian": "Bab IV ruang lingkup (analisis–pengembangan–pengujian–pelatihan/serah terima); Bab V spesifikasi teknis; Bab VI keluaran & waktu", "halaman": "4–5" },
+    { "dok": "D_I13_LAP", "bagian": "V ruang lingkup & pengguna; VI spesifikasi teknis; VII tangkapan layar; VIII kemajuan & rencana tindak lanjut", "halaman": "3–6" },
+    { "dok": "SCAN_I13", "bagian": "Catatan umum: PDF hasil pindai (KAK, BA, tangkapan layar) — sudah diterima I13-L1-01; rujuk kodenya, jangan unggah ulang berkas yang sama untuk L2", "halaman": "—" },
+    { "dok": "RA_ALPUKAT", "bagian": "Bab III tahapan & matriks rencana aksi; Arsitektur Mikro Bab II–III (contoh SDLC aplikasi kedua: Super App Alpukat Gayo)", "halaman": "3, 5–8" }
+   ],
+   "kebutuhan": [
+    "Finalisasi KAK & Laporan Bapokting (nomor, tanggal, TTD PPK/Kadis) — ganti tangkapan layar placeholder dengan aplikasi riil",
+    "Tambahkan dokumentasi SDLC Alpukat Gayo (sudah rilis di Play Store, Agustus 2026): kebutuhan, desain, uji, rilis — memperkuat 'sebagian aplikasi' dibangun sesuai rencana aksi",
+    "Unggah sebagai 1 PDF gabungan 'Dokumentasi SDLC Aplikasi Pemdi 2026'"
+   ],
+   "pj": "Diskominfo (Bidang TIK/APTIKA)",
+   "prioritas": "tinggi"
+  },
+  "GT.I13_L2_2": {
+   "jenis": "revisi",
+   "ringkas": "Menanggapi catatan asesor (belum diunggah): substansi Rencana Aksi Pemdi tentang pengembangan aplikasi pada perencanaan daerah dibuktikan dengan Peta Rencana Pemdi Bab V Program E (Teknologi Digital: pengembangan aplikasi sesuai SDLC, onboarding PDN, kabupaten cerdas), Renstra Diskominfo Bab IV Program 2.16.03 dan sub kegiatan pendukung, RPJMD Bab III (transformasi digital layanan publik prioritas: portal terintegrasi, SPLP) dan Bab IV target Indeks SPBE, serta Rencana Aksi Super App Alpukat Gayo (diterima I17-L2-01) sebagai rencana aksi aplikasi konkret.",
+   "rujukan": [
+    { "dok": "PETA_RENCANA", "bagian": "Bab V E. Program Teknologi Digital (E.1–E.4); Bab IV 4.1 target level I13 Aplikasi Pemdi 1→4", "halaman": "11, 14" },
+    { "dok": "RENSTRA", "bagian": "Bab IV Program 2.16.03 & sub kegiatan 2.16.03.2.02.0025 (portal terintegrasi), 0034 (SPLP), 0038 (kabupaten cerdas)", "halaman": "44–48" },
+    { "dok": "RPJMD", "bagian": "Bab III program/sub kegiatan Kominfo 'Transformasi Digital Layanan Publik Prioritas'; Bab IV 2.16.03", "halaman": "331 (III-88), 379 (IV-14)" },
+    { "dok": "RA_ALPUKAT", "bagian": "Bab III matriks rencana aksi; Bab IV dukungan anggaran", "halaman": "3–4" }
+   ],
+   "kebutuhan": [
+    "Buat 1 lembar matriks 'substansi pengembangan aplikasi' yang menunjuk halaman tiap dokumen (RPJMD/Renstra/Peta Rencana/RA Alpukat) — unggah bersama kutipan halaman terkait"
+   ],
+   "pj": "Diskominfo + Bappeda",
+   "prioritas": "tinggi"
+  },
+  "GT.I13_L3_1": {
+   "jenis": "revisi",
+   "ringkas": "Butir Level 3 (dokumentasi pengembangan SELURUH aplikasi prioritas/tematik) belum dapat dipenuhi tahun ini; posisi Aceh Tengah saat ini Level 1 menuju Level 2 (target Peta Rencana: Level 3 pada 2027). Unggahan ditunda sampai Level 2 diterima; jika portal mewajibkan isian, sampaikan catatan: 'Dokumentasi SDLC baru mencakup sebagian aplikasi (Bapokting, Alpukat Gayo); dokumentasi menyeluruh, UAT, BA go-live, dan repositori aplikasi direncanakan 2027 (Peta Rencana Pemdi Bab IV).'",
+   "rujukan": [
+    { "dok": "PETA_RENCANA", "bagian": "Bab IV 4.1 target I13: 2026 = 2, 2027 = 3; Bab III 3.3 tahapan (Tahap III Established 2027–2028)", "halaman": "10–11" }
+   ],
+   "kebutuhan": [
+    "Tidak ada unggahan baru — fokus pada L1/L2. Mulai siapkan repositori kode (Git internal) & standar SDLC untuk 2027"
+   ],
+   "pj": "Diskominfo",
+   "prioritas": "rendah"
+  },
+  "GT.I14_L1_1": {
+   "jenis": "revisi",
+   "ringkas": "Menanggapi catatan asesor (belum diunggah): diunggah Dasbor Ekosistem Pusat Data yang dimanfaatkan Pemkab Aceh Tengah — tangkapan layar dasbor PDN/PDN-T (pdn.layanan.go.id) hasil onboarding, dasbor pemanfaatan data center daerah (VM/storage/utilisasi), serta rekap layanan yang di-host; dilengkapi dokumen ketersediaan infrastruktur (topologi, daftar perangkat). Renstra Diskominfo memuat sub kegiatan pusat kendali (0033) dan jaringan intra (0024) sebagai dasar perencanaan; RPJMD memuat command center dalam program prioritas.",
+   "rujukan": [
+    { "dok": "D_I14_DASBOR", "bagian": "IV pemanfaatan data center daerah (on-premise); bukti onboarding PDN; VI pengisian domain infrastruktur SIAP Digital", "halaman": "1–6" },
+    { "dok": "D_I14_INFRA", "bagian": "Topologi, daftar perangkat, status PDN", "halaman": "1–6" },
+    { "dok": "RENSTRA", "bagian": "Bab IV sub kegiatan 2.16.03.2.02.0033 Penyelenggaraan pusat kendali; 0024 Jaringan intra (54 PD terhubung)", "halaman": "46–47 (hal. 43–44)" },
+    { "dok": "PETA_RENCANA", "bagian": "Bab V E.2 Migrasi/onboarding layanan ke PDN (2026–2028); E.3 pemantauan infrastruktur", "halaman": "14" }
+   ],
+   "kebutuhan": [
+    "Tangkapan layar RIIL: dasbor PDN (akun instansi), panel virtualisasi/monitoring data center daerah (Proxmox/VMware/Zabbix) dengan tanggal; ganti semua placeholder draf",
+    "Rekap 1 tabel: layanan/aplikasi × lokasi hosting (PDN / DC daerah / cloud pihak ketiga)"
+   ],
+   "pj": "Diskominfo (Bidang TIK — infrastruktur)",
+   "prioritas": "tinggi"
+  },
+  "GT.I14_L1_2": {
+   "jenis": "revisi",
+   "ringkas": "Menanggapi catatan asesor (belum diunggah): diunggah tangkapan layar pemakaian Jaringan Intra Pemerintah Daerah — grafik trafik/bandwidth dan daftar perangkat daerah yang terhubung (monitoring jaringan: Mikrotik/Zabbix/Cacti atau dasbor ISP), sesuai indikator Renstra 'Jumlah perangkat daerah yang terhubung Jaringan Intra Pemerintah Daerah = 54' pada sub kegiatan 2.16.03.2.02.0024.",
+   "rujukan": [
+    { "dok": "RENSTRA", "bagian": "Bab IV sub kegiatan 2.16.03.2.02.0024 Penyelenggaraan Jaringan Intra Pemerintah Daerah (target 54 PD terhubung/tahun); 0036 Penyediaan Akses Internet", "halaman": "45–47 (hal. 42–44)" },
+    { "dok": "D_I14_DASBOR", "bagian": "V pemanfaatan jaringan dan konektivitas", "halaman": "5" }
+   ],
+   "kebutuhan": [
+    "Tangkapan layar monitoring jaringan intra: grafik pemakaian 30 hari + daftar node/PD terhubung (nama & tanggal terlihat)",
+    "Tabel 52 OPD × status terhubung (ya/tidak, media: fiber/wireless)"
+   ],
+   "pj": "Diskominfo (Bidang TIK — jaringan)",
+   "prioritas": "tinggi"
+  },
+  "GT.I14_L1_3": {
+   "jenis": "gap",
+   "ringkas": "Tangkapan layar/diagram topologi Jaringan Intra dan Pusat Data Pemkab Aceh Tengah dengan keterangan segmen (core–distribusi–akses, DMZ, koneksi PDN/internet), disusun Diskominfo sebagai lampiran Dokumen Ketersediaan Infrastruktur.",
+   "rujukan": [
+    { "dok": "D_I14_INFRA", "bagian": "Topologi jaringan & daftar perangkat", "halaman": "1–6" }
+   ],
+   "kebutuhan": [
+    "Ekspor topologi riil (draw.io/Visio atau dari controller) dengan tanggal & keterangan; samarkan alamat IP publik"
+   ],
+   "pj": "Diskominfo (Bidang TIK)",
+   "prioritas": "sedang"
+  },
+  "GT.I14_L1_4": {
+   "jenis": "gap",
+   "ringkas": "Infrastruktur Digital pada Arsitektur Teknologi Pemdi dibuktikan dengan tangkapan layar domain Infrastruktur pada SIAP Digital yang telah diisi (pusat data, jaringan intra, akses internet) beserta ekspor arsitektur infrastruktur; referensi arsitektur infrastruktur pada Perbup 48/2025 (domain infrastruktur & PD pembina). Draf lokal saat ini baru ekstrak Perbup — tangkapan layar SIAP Digital menjadi bukti utama.",
+   "rujukan": [
+    { "dok": "D_I14_DASBOR", "bagian": "VI pengisian domain infrastruktur SIAP Digital; VII ekspor arsitektur infrastruktur", "halaman": "5–7" },
+    { "dok": "PERBUP48", "bagian": "Bab referensi arsitektur — domain infrastruktur SPBE (verifikasi nomor bab pada salinan JDIH)", "halaman": "—" }
+   ],
+   "kebutuhan": [
+    "Login SIAP Digital → domain Infrastruktur: tangkapan layar + ekspor (PDF)"
+   ],
+   "pj": "Diskominfo (admin SIAP Digital)",
+   "prioritas": "tinggi"
+  },
+  "GT.I15_L1_1": {
+   "jenis": "revisi",
+   "ringkas": "Menanggapi catatan asesor (bukti sebelumnya penjelasan pasal Arsitektur SPBE — tidak tepat; diminta arsitektur proses bisnis yang sudah diimplementasikan pada SIAP Digital): diunggah bukti pengisian domain Proses Bisnis pada portal SIAP Digital (digital.spbe.go.id) — tangkapan layar daftar proses bisnis Level 0–2 yang telah diinput, ekspor arsitektur/peta proses bisnis dari SIAP Digital — disertai Peta Proses Bisnis As-is (BPMN) Pemkab Aceh Tengah (33 proses: manajemen, inti, pendukung; 3 contoh Level 2: adminduk, perizinan, naskah dinas) yang menjadi sumber pengisian. Perbup 48/2025 hanya dirujuk sebagai dasar, bukan bukti.",
+   "rujukan": [
+    { "dok": "D_I15_SIAP", "bagian": "IV ekspor arsitektur/peta proses bisnis; V daftar proses bisnis yang diinput pada SIAP Digital", "halaman": "4–5" },
+    { "dok": "D_I15_BPMN", "bagian": "V peta proses bisnis Level 0; VI daftar proses as-is (MP/PI/PP); VII contoh BPMN Level 2", "halaman": "3–7" },
+    { "dok": "PETA_RENCANA", "bagian": "Bab V F.1 Pemetaan proses bisnis as-is dan to-be lintas sektor (Setda Organisasi; Diskominfo, 2026–2028)", "halaman": "14" },
+    { "dok": "PERBUP48", "bagian": "Dasar hukum arsitektur proses bisnis (rujukan saja)", "halaman": "—" }
+   ],
+   "kebutuhan": [
+    "WAJIB: pengisian riil domain Proses Bisnis di SIAP Digital (minimal proses bisnis layanan prioritas: adminduk, perizinan, pengaduan, SKM) — tangkapan layar & ekspor dengan nama instansi + tanggal",
+    "Finalisasi Peta Proses Bisnis As-is (TTD Kabag Organisasi) — sinkron dengan peta proses bisnis di /probis portal (78 proses) atau jelaskan bedanya"
+   ],
+   "pj": "Diskominfo (admin SIAP Digital) + Setda Bagian Organisasi",
+   "prioritas": "tinggi"
+  },
+  "GT.I15_L1_2": {
+   "jenis": "gap",
+   "ringkas": "Tangkapan layar yang menggambarkan proses bisnis pada layanan digital di SIAP Digital: detail 1–2 proses bisnis layanan (mis. adminduk online, pengaduan) yang menunjukkan alur/aktivitas dan keterkaitan dengan layanan & aplikasi pada SIAP Digital.",
+   "rujukan": [
+    { "dok": "D_I15_SIAP", "bagian": "V daftar proses bisnis yang diinput (pilih 2 untuk detail)", "halaman": "5" },
+    { "dok": "D_I15_BPMN", "bagian": "VII contoh detail proses bisnis BPMN Level 2 (adminduk, perizinan, naskah dinas)", "halaman": "5–7" }
+   ],
+   "kebutuhan": [
+    "Tangkapan layar halaman detail proses bisnis di SIAP Digital (bukan daftar saja)"
+   ],
+   "pj": "Diskominfo (admin SIAP Digital)",
+   "prioritas": "tinggi"
+  },
+  "GT.I16_L1_1": {
+   "jenis": "revisi",
+   "ringkas": "Menanggapi catatan asesor (belum diunggah): diunggah Laporan Pelaksanaan Integrasi Aplikasi Pemkab Aceh Tengah Tahun 2026 (Semester I) yang memuat uraian pelaksanaan integrasi, mekanisme (SSO, API/web service, pertukaran data), daftar aplikasi terintegrasi, peta hubungan antar aplikasi (interkoneksi), keamanan integrasi, kendala, dan rencana tindak lanjut — termasuk matriks integrasi. Perencanaan integrasi termuat dalam Renstra Diskominfo (sub kegiatan 2.16.03.2.02.0034 Sistem Penghubung Layanan Pemerintah Daerah) dan Peta Rencana Pemdi Program F.2 (integrasi melalui API/SSO dan katalog API).",
+   "rujukan": [
+    { "dok": "D_I16_LAP", "bagian": "I ringkasan eksekutif; V mekanisme integrasi; VI daftar aplikasi terintegrasi; VII peta hubungan antar aplikasi; VIII keamanan; X rencana tindak lanjut", "halaman": "1–7" },
+    { "dok": "RENSTRA", "bagian": "Bab IV sub kegiatan 2.16.03.2.02.0034 Penyelenggaraan SPLP (interoperabilitas & integrasi layanan) — target 1 aplikasi terhubung/tahun", "halaman": "47 (hal. 44)" },
+    { "dok": "RPJMD", "bagian": "Bab III sub kegiatan 'Penyelenggaraan Sistem Penghubung Layanan Pemerintah Daerah dalam rangka interoperabilitas data dan integrasi layanan'", "halaman": "331 (III-88)" },
+    { "dok": "RA_ALPUKAT", "bagian": "Arsitektur Mikro Bab II (API Gateway, microservices, integrasi) — bukti integrasi berjalan pada super app", "halaman": "6–7" },
+    { "dok": "PETA_RENCANA", "bagian": "Bab V F.2 Integrasi aplikasi melalui API/SSO dan katalog API (2026–2029)", "halaman": "14" }
+   ],
+   "kebutuhan": [
+    "Finalisasi laporan (nomor, tanggal, TTD Kadis); ganti data contoh dengan integrasi riil (SSO apa, endpoint API apa, aplikasi mana)",
+    "Lampirkan matriks integrasi (aplikasi sumber × tujuan × metode × status) — matriks ini juga dipakai untuk GT.I16_L1_2 dan GT.I16_L1_3"
+   ],
+   "pj": "Diskominfo (Bidang APTIKA)",
+   "prioritas": "tinggi"
+  },
+  "GT.I16_L1_2": {
+   "jenis": "gap",
+   "ringkas": "Matriks pemantauan integrasi aplikasi: tabel aplikasi sumber × aplikasi tujuan × jenis integrasi (SSO/API/batch) × status (aktif/uji/rencana) × pemantauan (uptime/log terakhir) — merupakan Lampiran Laporan Pelaksanaan Integrasi Aplikasi 2026 (Bab VI–VII).",
+   "rujukan": [
+    { "dok": "D_I16_LAP", "bagian": "VI daftar aplikasi terintegrasi; VII peta hubungan antar aplikasi", "halaman": "5" }
+   ],
+   "kebutuhan": [
+    "Tambahkan kolom pemantauan (tanggal cek terakhir, status koneksi) + tangkapan layar log/monitoring API gateway"
+   ],
+   "pj": "Diskominfo (Bidang APTIKA)",
+   "prioritas": "sedang"
+  },
+  "GT.I16_L1_3": {
+   "jenis": "gap",
+   "ringkas": "Dokumentasi pengintegrasian aplikasi: notulen/undangan/daftar hadir rapat koordinasi integrasi dengan PD pemilik aplikasi, dokumentasi bukti teknis (tangkapan layar SSO, uji API, berita acara uji integrasi) — melengkapi matriks integrasi.",
+   "rujukan": [
+    { "dok": "D_I16_LAP", "bagian": "V mekanisme integrasi; VIII keamanan integrasi (bukti teknis)", "halaman": "3–6" },
+    { "dok": "SCAN_I4", "bagian": "Catatan umum: dokumentasi kolaborasi antar PD (pindai, diterima I4-L1-03) — jika memuat rapat integrasi aplikasi, rujuk kodenya", "halaman": "—" }
+   ],
+   "kebutuhan": [
+    "Minimal 1 notulen rapat integrasi 2026 + 1 BA uji integrasi + tangkapan layar SSO/API berhasil"
+   ],
+   "pj": "Diskominfo (Bidang APTIKA) + PD pemilik aplikasi",
+   "prioritas": "sedang"
+  },
+  "GT.I17_L3_1": {
+   "jenis": "gap",
+   "ringkas": "Level 3 menuntut portal layanan digital untuk SELURUH layanan prioritas berbasis siklus hidup. Posisi saat ini Level 2 (I17-L2-01/02 diterima): portal terpadu Alpukat Gayo & portal Pemdi memuat sebagian layanan (adminduk, MPP, Bapokting, PEMATANG CCTV, SKM, pengaduan). Bukti yang disiapkan: tangkapan layar portal dengan seluruh layanan prioritas dikelompokkan per siklus hidup (kelahiran–pendidikan–bekerja–usaha–kesehatan–lansia) + daftar layanan prioritas vs yang sudah di portal.",
+   "rujukan": [
+    { "dok": "RA_ALPUKAT", "bagian": "Bab II 2.1 ruang lingkup integrasi (MPP digital, adminduk, Bapokting, PEMATANG); Bab III tahapan", "halaman": "1–3" },
+    { "dok": "D_I17_PORTAL", "bagian": "Laporan ketersediaan portal (URL, layanan, statistik)", "halaman": "1–8" },
+    { "dok": "PORTAL_LAYANAN", "bagian": "Direktori 25 layanan × 7 sektor (pengelompokan siklus hidup dapat dibuat dari sini)", "halaman": "—" },
+    { "dok": "PETA_RENCANA", "bagian": "Bab IV 4.1 target I17: 2026 = 2, 2027 = 3; Bab V F.3 pemaduan layanan ke portal (2026–2028)", "halaman": "11, 14" }
+   ],
+   "kebutuhan": [
+    "Tabel gap: daftar layanan prioritas kabupaten (min. 10) × status di portal (ada/belum) — target L3 2027",
+    "Tangkapan layar Alpukat Gayo (Play Store + menu layanan) dengan tanggal"
+   ],
+   "pj": "Diskominfo + DPMPTSP + Disdukcapil",
+   "prioritas": "sedang"
+  },
+  "GT.I17_L3_2": {
+   "jenis": "gap",
+   "ringkas": "Kesesuaian desain antarmuka & pengalaman pengguna portal dengan standar nasional (pedoman UI/UX layanan digital pemerintah/INA Digital): lampirkan checklist kesesuaian (aksesibilitas WCAG AA, konsistensi komponen, bahasa, mobile-first) untuk portal Pemdi & Alpukat Gayo beserta tangkapan layar pembanding.",
+   "rujukan": [
+    { "dok": "RA_ALPUKAT", "bagian": "Arsitektur Mikro Bab II lapisan Presentation; Bab IV keamanan & tech stack", "halaman": "6, 8" }
+   ],
+   "kebutuhan": [
+    "Checklist kesesuaian UI/UX (mengacu pedoman desain layanan digital nasional yang berlaku) diisi & ditandatangani; hasil uji aksesibilitas (Lighthouse/axe) portal"
+   ],
+   "pj": "Diskominfo (Bidang APTIKA)",
+   "prioritas": "rendah"
+  },
+  "GT.I17_L3_3": {
+   "jenis": "gap",
+   "ringkas": "Dasbor matriks pemantauan pemanfaatan Portal Layanan Digital Nasional (INA Digital/INApas) oleh Pemkab Aceh Tengah: tangkapan layar dasbor pemanfaatan/analitik portal nasional untuk layanan Aceh Tengah yang sudah terpadu, atau — jika belum tersedia — dasbor analitik portal daerah (pengunjung, transaksi) sebagai pengganti sementara dengan penjelasan.",
+   "rujukan": [
+    { "dok": "D_I17_PORTAL", "bagian": "Statistik pemanfaatan portal (ganti data analytics dengan data asli)", "halaman": "4–7" }
+   ],
+   "kebutuhan": [
+    "Tangkapan layar analitik portal (Google Analytics/Matomo/Play Console) 90 hari terakhir; konfirmasi status integrasi INApas/INA Digital"
+   ],
+   "pj": "Diskominfo",
+   "prioritas": "rendah"
+  },
+  "GT.I17_L3_4": {
+   "jenis": "gap",
+   "ringkas": "Persentase pemanfaatan portal nasional > 50% populasi pengguna belum dapat dibuktikan (integrasi INA Digital belum penuh). Sampaikan angka riil pengguna portal daerah/aplikasi Alpukat Gayo (unduhan, akun aktif) dibanding populasi target, dan rencana integrasi identitas digital (INApas) pada Rencana Aksi Alpukat Gayo.",
+   "rujukan": [
+    { "dok": "RA_ALPUKAT", "bagian": "Bab III matriks rencana aksi — fase integrasi identitas digital/SSO nasional", "halaman": "3" }
+   ],
+   "kebutuhan": [
+    "Rekap: unduhan & pengguna aktif Alpukat Gayo (Play Console) vs jumlah penduduk dewasa; rencana INApas dengan target tanggal"
+   ],
+   "pj": "Diskominfo",
+   "prioritas": "rendah"
+  },
+  "GT.I18_L1_1": {
+   "jenis": "gap",
+   "ringkas": "Arsitektur Data Pemdi dari SIAP Digital: tangkapan layar domain Data & Informasi pada SIAP Digital yang telah diisi (data prioritas/daftar data daerah, walidata, produsen data) + ekspor arsitektur data; disesuaikan dengan Daftar Data Daerah (30 data prioritas, Forum Satu Data) dan Pedoman Teknis Interoperabilitas Data (format, metadata, kode referensi).",
+   "rujukan": [
+    { "dok": "D_I18_PEDOMAN", "bagian": "Standar format/metadata/kode referensi pertukaran data", "halaman": "1–7" },
+    { "dok": "D_I18_LAP", "bagian": "V mekanisme & saluran pertukaran; VI penerapan standar & metadata; 12 pertukaran data Semester I 2026", "halaman": "3–4" },
+    { "dok": "RPJMD", "bagian": "Bab III program unggulan 'Aceh Tengah Satu Data' (integrasi & konsistensi data lintas unit kerja)", "halaman": "281 (III-38)" },
+    { "dok": "PERBUP60", "bagian": "Perbup 60/2022 Satu Data Indonesia — dasar arsitektur data", "halaman": "—" }
+   ],
+   "kebutuhan": [
+    "Login SIAP Digital → domain Data & Informasi: tangkapan layar + ekspor; pastikan daftar data selaras dengan Daftar Data Daerah Forum SDI (draf di /panduan-bukti-l1/I05)"
+   ],
+   "pj": "Diskominfo (Walidata, admin SIAP Digital) + Bappeda",
+   "prioritas": "tinggi"
+  },
+  "GT.I18_L1_2": {
+   "jenis": "gap",
+   "ringkas": "Indeks SDI aspek Interoperabilitas Data (0 < SDI < 12,5) ditetapkan Bappenas — indikator eksternal. Konteks yang disiapkan: hasil penilaian mandiri SDI 2026 (aspek interoperabilitas), Laporan Awal Pertukaran Data antar PD (12 pertukaran), dan Pedoman Teknis Interoperabilitas Data.",
+   "rujukan": [
+    { "dok": "D_I18_LAP", "bagian": "Seluruh laporan (12 pertukaran data, saluran, standar, kendala, tindak lanjut)", "halaman": "1–5" },
+    { "dok": "PETA_RENCANA", "bagian": "Bab V F.4 Pertukaran data interoperabel antar sistem (Diskominfo; Bappeda, 2026–2029)", "halaman": "14" }
+   ],
+   "kebutuhan": [
+    "Tangkapan layar nilai/hasil pengisian SDI 2026 aspek interoperabilitas (portal Bappenas)"
+   ],
+   "pj": "Bappeda + Diskominfo",
+   "prioritas": "sedang"
+  },
+  "GT.I19_L1_1": {
+   "jenis": "gap",
+   "ringkas": "Dokumen SLA Layanan Digital: penetapan SLA 25 layanan digital di 7 sektor (waktu respons/penyelesaian per layanan) yang dipublikasikan pada Direktori Layanan portal Pemdi, ditetapkan oleh Unit Pengelola Layanan Digital (Diskominfo) dengan dasar Perbup 126/2019 Pedoman Standar Pelayanan dan SOP Helpdesk (jam operasional, prioritas P1–P4, target respons/penyelesaian). Untuk unggahan, SLA dituangkan dalam dokumen bertanda tangan (bukan hanya halaman web).",
+   "rujukan": [
+    { "dok": "D_I19_SOP", "bagian": "Bab III jam operasional; Bab IV–V klasifikasi prioritas & alur penanganan; Lampiran A–B formulir tiket & laporan bulanan", "halaman": "5–8, 12" },
+    { "dok": "PORTAL_LAYANAN", "bagian": "Direktori Layanan — 25 layanan × SLA (tangkapan layar per sektor)", "halaman": "—" },
+    { "dok": "PERBUP126", "bagian": "Pedoman Standar Pelayanan — dasar penetapan waktu layanan", "halaman": "—" },
+    { "dok": "PETA_RENCANA", "bagian": "Bab V G.2 Penetapan dan pemenuhan SLA layanan digital (2026–2029)", "halaman": "14" }
+   ],
+   "kebutuhan": [
+    "Dokumen 'Penetapan SLA Layanan Digital 2026' (tabel 25 layanan: nama, kanal, waktu respons, waktu penyelesaian, PIC) + SK/nota dinas penetapan oleh Kadis Kominfo",
+    "Aktifkan sementara persona publik untuk mengambil tangkapan layar /layanan"
+   ],
+   "pj": "Diskominfo (Unit Pengelola Layanan Digital)",
+   "prioritas": "tinggi"
+  },
+  "GT.I19_L1_2": {
+   "jenis": "revisi",
+   "ringkas": "Menanggapi catatan asesor (bukti sebelumnya daftar layanan & SLA — tidak tepat; diminta DASBOR PEMANTAUAN SLA layanan digital): diunggah tangkapan layar dasbor pemantauan SLA yang berjalan — (1) dasbor helpdesk/tiket (jumlah tiket, waktu respons & penyelesaian rata-rata, % tiket memenuhi SLA per prioritas, per bulan) dan (2) dasbor status permohonan/kepuasan pada portal Pemdi (pelacakan status laporan dan statistik kepuasan) — dilengkapi Laporan Pelaksanaan Helpdesk Semester I 2026 (capaian SLA per prioritas). Dokumen SLA per proses layanan dilampirkan sebagai pendukung, bukan bukti utama.",
+   "rujukan": [
+    { "dok": "D_I19_LAP", "bagian": "II capaian SLA (rata-rata 94,0%); V capaian SLA per prioritas", "halaman": "1–3" },
+    { "dok": "D_I19_SOP", "bagian": "Lampiran B format laporan bulanan helpdesk (basis dasbor)", "halaman": "12" },
+    { "dok": "PORTAL_KEPUASAN", "bagian": "Dasbor kepuasan & umpan balik (statistik real-time) + pelacakan status laporan (/lapor → status tiket)", "halaman": "—" },
+    { "dok": "LAP_MANLAY", "bagian": "Bab IV alur tiket & Lampiran B log tiket (diterima I2-L1-02) — sumber data dasbor", "halaman": "17, 21" }
+   ],
+   "kebutuhan": [
+    "WAJIB tangkapan layar DASBOR (grafik/angka SLA), bukan tabel daftar layanan: dari aplikasi helpdesk/ticketing yang dipakai (jika belum ada, buat dasbor sederhana dari log tiket — spreadsheet/Looker Studio — dan tampilkan) + dasbor portal Pemdi",
+    "Ganti data contoh laporan helpdesk (412 tiket) dengan rekap riil; TTD Kadis",
+    "Aktifkan sementara persona publik untuk tangkapan layar /dashboard-kepuasan"
+   ],
+   "pj": "Diskominfo (Unit Pengelola Layanan Digital / helpdesk)",
+   "prioritas": "tinggi"
+  },
+  "GT.I20_L1_3": {
+   "jenis": "revisi",
+   "ringkas": "Menanggapi catatan asesor (belum diunggah): diunggah bukti pelibatan perwakilan kelompok rentan (penyandang disabilitas, lansia, perempuan kepala keluarga, masyarakat kampung terpencil) dalam pengelolaan kepuasan pengguna layanan digital — berupa undangan, daftar hadir, notulen, dan foto FGD/konsultasi publik bersama organisasi penyandang disabilitas dan perwakilan kelompok rentan, kuesioner SKM yang memuat pertanyaan aksesibilitas, serta rekap responden SKM per kelompok rentan; sesuai Peta Rencana Pemdi Program G.3 (SKM berkala dan FGD publik) dan Pedoman SKM & Umpan Balik.",
+   "rujukan": [
+    { "dok": "D_I20_PEDOMAN", "bagian": "Pedoman SKM (9 unsur PermenPANRB 14/2017 + 4 unsur digital) — bagian pelibatan/inklusi responden", "halaman": "1–15" },
+    { "dok": "D_I20_LAP", "bagian": "IX hasil survei layanan digital (khusus); VII rekap umpan balik — tambahkan pemilahan responden rentan", "halaman": "4–5" },
+    { "dok": "PETA_RENCANA", "bagian": "Bab V G.3 Survei Kepuasan Masyarakat berkala dan FGD publik (Setda Organisasi; Diskominfo)", "halaman": "14" },
+    { "dok": "SKM_TW2", "bagian": "SKM Online TW II 2026 (diterima I20-L1-01) — rujuk sebagai dasar; belum memilah kelompok rentan", "halaman": "1" }
+   ],
+   "kebutuhan": [
+    "Laksanakan 1 FGD/konsultasi (bisa daring) dengan organisasi disabilitas/lansia sebelum 28 Sep: undangan, daftar hadir, notulen, foto",
+    "Tambahkan pertanyaan profil (disabilitas/usia) di SKM online dan rekap hasilnya",
+    "Bila FGD belum sempat: unggah surat undangan + rencana pelibatan + kuesioner inklusif, dan nyatakan jadwal FGD"
+   ],
+   "pj": "Setda Bagian Organisasi + Diskominfo + Dinas Sosial",
+   "prioritas": "tinggi"
+  },
+  "GT.I20_L1_4": {
+   "jenis": "revisi",
+   "ringkas": "Menanggapi catatan asesor (belum diunggah): diunggah bukti tindak lanjut pengelolaan kepuasan pengguna layanan digital — matriks tindak lanjut hasil SKM Online TW II 2026 (unsur nilai terendah → rencana aksi → PD penanggung jawab → tenggat → status), rekap umpan balik/pengaduan yang ditindaklanjuti (closed-loop) dari kanal portal Pemdi/SP4N-LAPOR, dan bukti perbaikan (tangkapan layar sebelum–sesudah/nota dinas). Sesuai Laporan Hasil SKM Bab XI (rekomendasi & rencana tindak lanjut) dan Peta Rencana Program G.4 (pengelolaan umpan balik & closed-loop improvement).",
+   "rujukan": [
+    { "dok": "D_I20_LAP", "bagian": "VIII isu/saran yang paling sering disampaikan; X perbandingan periode; XI rekomendasi & rencana tindak lanjut", "halaman": "5–6" },
+    { "dok": "SKM_TW2", "bagian": "SKM Online TW II 2026 — 52 unit layanan (dasar unsur terendah yang ditindaklanjuti)", "halaman": "1" },
+    { "dok": "PERBUP21", "bagian": "Pedoman pengelolaan pengaduan — mekanisme tindak lanjut", "halaman": "—" },
+    { "dok": "PORTAL_KEPUASAN", "bagian": "Dasbor kepuasan & rekap umpan balik portal (tangkapan layar)", "halaman": "—" },
+    { "dok": "PETA_RENCANA", "bagian": "Bab V G.4 Pengelolaan umpan balik dan closed-loop improvement", "halaman": "14" }
+   ],
+   "kebutuhan": [
+    "Matriks tindak lanjut SKM TW II 2026 (min. 5 item) ditandatangani Kabag Organisasi/Kadis Kominfo",
+    "Rekap 10 pengaduan/umpan balik layanan digital 2026 + status selesai + bukti perbaikan",
+    "Nota dinas/surat tindak lanjut ke unit layanan dengan nilai terendah"
+   ],
+   "pj": "Setda Bagian Organisasi + Diskominfo",
+   "prioritas": "tinggi"
+  }
+ }
+}
