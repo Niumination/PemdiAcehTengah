@@ -3,14 +3,18 @@
 // Install:  npm i -D next-sitemap
 // Tambah di package.json scripts:  "postbuild": "next-sitemap"
 /** @type {import('next-sitemap').IConfig} */
+const { PUBLIK_AKTIF, RUTE_PUBLIK } = require('./lib/modeSitus');
+
 module.exports = {
   siteUrl: process.env.SITE_ORIGIN || 'https://pemdi-aceh-tengah.vercel.app',
   generateRobotsTxt: true,
   changefreq: 'weekly',
   priority: 0.7,
-  exclude: ['/admin', '/admin/*', '/api/*'],
+  exclude: ['/admin', '/admin/*', '/api/*', ...(PUBLIK_AKTIF ? [] : RUTE_PUBLIK.flatMap((r) => [r, `${r}/*`]))],
   robotsTxtOptions: {
-    policies: [{ userAgent: '*', allow: '/', disallow: ['/admin', '/api/'] }],
+    policies: PUBLIK_AKTIF
+      ? [{ userAgent: '*', allow: '/', disallow: ['/admin', '/api/'] }]
+      : [{ userAgent: '*', disallow: '/' }], // mode internal: jangan diindeks
   },
   // Tambahkan halaman dinamis OPD jika perlu, lewat additionalPaths
 };

@@ -30,3 +30,4 @@ Utility server-side & shared — murni fungsi, tanpa React.
 |------|--------|-----|
 | `persona.js` | Konstanta & util dual-persona: `parsePersona`, `personaHref`, `PERSONAS`, kunci localStorage `pemdi:persona`. Murni JS tanpa React | `test/persona.test.mjs` |
 | `sektorLayanan.js` | `SEKTOR` (6 sektor GOV.UK-style), `kelompokkanSektor(kategori[])` — memetakan 7 kategori `data/layanan.json` → 6 sektor tanpa kehilangan layanan (kategori baru jatuh ke sektor terakhir), `KATA_KUNCI_POPULER` | `test/persona.test.mjs` |
+| `modeSitus.js` | **Saklar persona publik** `NEXT_PUBLIC_PERSONA_PUBLIK` (`on` = dual-persona; selain itu mode internal). Ekspor `PUBLIK_AKTIF`, `RUTE_PUBLIK`, `API_PUBLIK`, `isRutePublik()`. CommonJS (dipakai middleware Edge, `_document`, `next-sitemap`). Dipakai: `middleware.js`, `pages/index.js`, `_app`, `_document`, `404`, `AppShell`, `Sidebar`, `Footer`, `BottomNav`, `usePersona`, `search-index` | `test/persona.test.mjs` |

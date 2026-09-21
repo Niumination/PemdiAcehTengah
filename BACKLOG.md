@@ -71,3 +71,8 @@
 ---
 
 *Terakhir diperbarui: 19 Sep 2026 — audit UI/UX, perbaikan T2+P1–P6, `/layanan` mobile selesai; rencana tahap lanjut di `docs/rencana-mobile-ux-tahap-2.md`*
+
+
+## Mode internal (21 Sep 2026)
+
+- [ ] **Fitur kirim eviden dari OPD/SKPD** — menggantikan slot `/admin` (Panel Admin Diskominfo, kini dimatikan lewat `lib/modeSitus.js`). Kebutuhan: PIC OPD mengunggah berkas bukti per kode `I#-L#-##`, status tinjauan Tim Asesor Internal, riwayat versi (REPOSISI-PEMDI.md B1 "Tambahkan"). Akses internal (SSO/akun ASN) menjadi prasyarat.

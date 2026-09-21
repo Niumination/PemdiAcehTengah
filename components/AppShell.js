@@ -11,6 +11,7 @@ import RatingWidget from './RatingWidget';
 import BottomNav from './BottomNav';
 import PersonaSwitcher from './persona/PersonaSwitcher';
 import { MotifUlen } from './motif/KerawangMotifs';
+import { PUBLIK_AKTIF } from '@/lib/modeSitus';
 
 const breadcrumbLabels = {
   '/': 'Beranda Portal',
@@ -194,7 +195,7 @@ export default function AppShell({ children }) {
             </nav>
 
             {/* Persona switcher (Phase 1) — di header, tampil di semua halaman selain beranda (beranda punya versi besar) */}
-            {pathname !== '/' && <div className="topbar-persona"><PersonaSwitcher compact /></div>}
+            {PUBLIK_AKTIF && pathname !== '/' && <div className="topbar-persona"><PersonaSwitcher compact /></div>}
 
             {/* Actions Bar — aksi utama tersedia dari semua halaman */}
             <div className="topbar-actions">
@@ -204,15 +205,22 @@ export default function AppShell({ children }) {
               </Link>
               <ThemeToggle />
 
-              <button
-                type="button"
-                className="btn btn-primary btn-sm topbar-lapor"
-                onClick={() => setShowLapor(true)}
-                aria-label="Buka formulir pengaduan Lapor"
-              >
-                <span aria-hidden="true">📢</span>
-                <span className="topbar-lapor-label">Lapor Warga</span>
-              </button>
+              {PUBLIK_AKTIF ? (
+                <button
+                  type="button"
+                  className="btn btn-primary btn-sm topbar-lapor"
+                  onClick={() => setShowLapor(true)}
+                  aria-label="Buka formulir pengaduan Lapor"
+                >
+                  <span aria-hidden="true">📢</span>
+                  <span className="topbar-lapor-label">Lapor Warga</span>
+                </button>
+              ) : (
+                <Link href="/pemdi" className="btn btn-primary btn-sm topbar-lapor" aria-label="Buka Kokpit Pemdi">
+                  <span aria-hidden="true">🚀</span>
+                  <span className="topbar-lapor-label">Kokpit Pemdi</span>
+                </Link>
+              )}
             </div>
           </header>
 
@@ -227,7 +235,7 @@ export default function AppShell({ children }) {
           <Footer />
 
           {/* Floating Citizen Rating Widget */}
-          <RatingWidget />
+          {PUBLIK_AKTIF && <RatingWidget />}
         </div>
 
         <ScrollTop />
@@ -236,11 +244,13 @@ export default function AppShell({ children }) {
         {hydrated && isMobile && <BottomNav onOpenMenu={() => setSidebarOpen(true)} />}
 
         {/* Lapor Modal — tetap sebagai pop-up (sesuai Task 3) */}
-        <LaporWidget
-          externalOpen={showLapor}
-          hideFab
-          onExternalClose={() => setShowLapor(false)}
-        />
+        {PUBLIK_AKTIF && (
+          <LaporWidget
+            externalOpen={showLapor}
+            hideFab
+            onExternalClose={() => setShowLapor(false)}
+          />
+        )}
       </div>
     </div>
   );

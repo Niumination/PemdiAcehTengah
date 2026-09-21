@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { PUBLIK_AKTIF } from '@/lib/modeSitus';
 
 export default function Custom404() {
   return (
@@ -52,7 +53,7 @@ export default function Custom404() {
             margin: '0 auto',
           }}>
             <Link
-              href="/skm"
+              href={PUBLIK_AKTIF ? "/skm" : "/pemdi"}
               style={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -66,21 +67,19 @@ export default function Custom404() {
                 transition: 'transform 0.15s, box-shadow 0.15s',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = 'var(--sh)';
+                                e.currentTarget.style.boxShadow = 'var(--sh)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.transform = '';
-                e.currentTarget.style.boxShadow = '';
+                                e.currentTarget.style.boxShadow = '';
               }}
             >
-              <span style={{ fontSize: '1.5rem' }}>📝</span>
-              <span style={{ fontSize: '0.8125rem', fontWeight: 600, color: 'var(--ink)' }}>SKM</span>
-              <span style={{ fontSize: '0.6875rem', color: 'var(--muted)' }}>Survei Kepuasan</span>
+              <span style={{ fontSize: '1.5rem' }}>{PUBLIK_AKTIF ? '📝' : '🚀'}</span>
+              <span style={{ fontSize: '0.8125rem', fontWeight: 600, color: 'var(--ink)' }}>{PUBLIK_AKTIF ? 'SKM' : 'Kokpit Pemdi'}</span>
+              <span style={{ fontSize: '0.6875rem', color: 'var(--muted)' }}>{PUBLIK_AKTIF ? 'Survei Kepuasan' : '7 Aspek · 20 Indikator'}</span>
             </Link>
 
             <Link
-              href="/lapor"
+              href={PUBLIK_AKTIF ? "/lapor" : "/modul-indikator"}
               style={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -94,17 +93,15 @@ export default function Custom404() {
                 transition: 'transform 0.15s, box-shadow 0.15s',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = 'var(--sh)';
+                                e.currentTarget.style.boxShadow = 'var(--sh)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.transform = '';
-                e.currentTarget.style.boxShadow = '';
+                                e.currentTarget.style.boxShadow = '';
               }}
             >
-              <span style={{ fontSize: '1.5rem' }}>📢</span>
-              <span style={{ fontSize: '0.8125rem', fontWeight: 600, color: 'var(--ink)' }}>Lapor</span>
-              <span style={{ fontSize: '0.6875rem', color: 'var(--muted)' }}>Sampaikan Masukan</span>
+              <span style={{ fontSize: '1.5rem' }}>{PUBLIK_AKTIF ? '📢' : '📋'}</span>
+              <span style={{ fontSize: '0.8125rem', fontWeight: 600, color: 'var(--ink)' }}>{PUBLIK_AKTIF ? 'Lapor' : 'Modul Indikator'}</span>
+              <span style={{ fontSize: '0.6875rem', color: 'var(--muted)' }}>{PUBLIK_AKTIF ? 'Sampaikan Masukan' : 'Kriteria L1–L5'}</span>
             </Link>
 
             <Link
@@ -122,12 +119,10 @@ export default function Custom404() {
                 transition: 'transform 0.15s, box-shadow 0.15s',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = 'var(--sh)';
+                                e.currentTarget.style.boxShadow = 'var(--sh)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.transform = '';
-                e.currentTarget.style.boxShadow = '';
+                                e.currentTarget.style.boxShadow = '';
               }}
             >
               <span style={{ fontSize: '1.5rem' }}>🔎</span>
@@ -150,12 +145,10 @@ export default function Custom404() {
                 transition: 'transform 0.15s, box-shadow 0.15s',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = 'var(--sh-lg)';
+                                e.currentTarget.style.boxShadow = 'var(--sh-lg)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.transform = '';
-                e.currentTarget.style.boxShadow = '';
+                                e.currentTarget.style.boxShadow = '';
               }}
             >
               <span style={{ fontSize: '1.5rem' }}>🏠</span>

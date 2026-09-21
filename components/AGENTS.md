@@ -3,7 +3,9 @@
 ## Purpose
 React component library — reusable UI building blocks, props-driven.
 
-## Ownership — 27 Komponen Aktif (20 + 7 Sprint UI/UX 21 Sep 2026)
+## Ownership — 29 Komponen Aktif (20 + 7 Sprint UI/UX + 2 beranda/ 21 Sep 2026)
+
+> **Mode internal aktif** (`lib/modeSitus.PUBLIK_AKTIF === false` secara default): komponen bertanda 🌐 hanya dirender bila `NEXT_PUBLIC_PERSONA_PUBLIK=on` — LaporWidget, RatingWidget, SkmPrompt, Sp4nBanner, ServiceFinder, ServiceCard, DashboardSKM, TrackerStatus, PersonaSwitcher, publik/*, beranda/BerandaPublik. Jangan dihapus.
 
 *(DOX pass hardening 2026-09-17: 22 komponen/lib mati telah dihapus — Accordion, AwardHero, DataBadge, Explainer, Header, LaporanStatus, Modal, PPBChain, PemdiCalculator, ProbisSection, ProgressBarVisual, QuickActions, Rekomendasi, RekomendasiTracker, Section, Stepper, TimelineRoadmap, Toast, motif/KerawangCard, motif/KerawangHero. Tabel lama yang menyebut `Layout.js`/`ExpandablePanel.js` tidak akurat — file tersebut sudah tidak ada.)*
 
@@ -17,6 +19,8 @@ React component library — reusable UI building blocks, props-driven.
 | **HeroPublik** | `publik/HeroPublik.js` | Hero Mode A: 1 pertanyaan + search besar (⌘K) + 5 kata kunci `lib/sektorLayanan.KATA_KUNCI_POPULER` | `index.js` |
 | **SektorLayanan** | `publik/SektorLayanan.js` | 6 kartu sektor + panel accordion inline daftar layanan (SlaBadge) | `index.js` |
 | **KpiCards** | `asesor/KpiCards.js` | 4 kartu KPI Mode B (Pemdi, SPBE, bukti Tahap 1 dengan bar segmen, 52 OPD) | `index.js` |
+| **BerandaAsesor** | `beranda/BerandaAsesor.js` | Panel beranda Mode B (hero kokpit, KpiCards, gauge SPBE + AspekAccordion, PPB, OPDTable) — satu-satunya panel pada mode internal | `index.js` |
+| **BerandaPublik** 🌐 | `beranda/BerandaPublik.js` | Panel beranda Mode A; di-`require` kondisional (build-time) agar tidak ikut bundel internal | `index.js` |
 | **AspekAccordion** | `asesor/AspekAccordion.js` | Accordion 7 aspek → indikator + chip status bukti (ok/warn/muted/gray) | `index.js` |
 | **Sidebar** | `Sidebar.js` | Navigasi kiri — **tertutup default** (prop `collapsed` dihormati sejak SSR → tanpa kedip), drawer di ponsel, Esc menutup, `id="sidebar-nav"` | `AppShell.js` |
 | **Footer** | `Footer.js` | Footer — regulasi, kontak, SP4N, lisensi MIT | `AppShell.js` |

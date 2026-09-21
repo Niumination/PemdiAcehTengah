@@ -27,7 +27,7 @@ Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah. Transformasi menuju Peme
 | **Path Alias** | `@/*` (via `jsconfig.json`) — ex: `@/components/Header` |
 | **Font** | Plus Jakarta Sans (Google Fonts, `display=swap` — lihat `_document.js`) |
 | **Data Source** | Hybrid: `data/*.json` (OPD, SPBE, ProBis, SKM, Pemdi) + Supabase (SKM responses, admin logs). Client: `lib/supabaseAdmin.js` |
-| **Komponen** | 27 komponen React aktif (+7 Sprint UI/UX dual-persona 21 Sep 2026; TopographicBackdrop dihapus 20 Sep 2026) — lihat `components/AGENTS.md` (22 dead code dihapus saat hardening 2026-09-17) |
+| **Komponen** | 29 komponen React aktif (+7 Sprint UI/UX dual-persona, +2 beranda/, **mode internal default** via `lib/modeSitus.js` 21 Sep 2026; TopographicBackdrop dihapus 20 Sep 2026) — lihat `components/AGENTS.md` (22 dead code dihapus saat hardening 2026-09-17) |
 | **Halaman** | 20 route pages + 12 API routes — lihat `pages/AGENTS.md` |
 | **Lib** | `lib/pemdiNilai.js` (rumus PermenPANRB 8/2026), `lib/rate-limit-db.js`, `lib/search-index.js`, `lib/slugify.js`, `lib/format.js` — lihat `lib/AGENTS.md` |
 | **Status** | ⏸️ **Reposisi Opsi B** (20 Sep 2026) — lihat `REPOSISI-PEMDI.md`. Bukan "Portal Resmi Layanan Digital"; tiga produk: B1 Kokpit Pemdi (internal), B2 Dasbor Transparansi (publik), B3 komponen terintegrasi ke Alpukat Gayo. DOX Clean sebagai kode (diverifikasi 2026-09-17: 20/20 komponen aktif terimpor) |
@@ -129,7 +129,7 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 |------|-------|
 | `pages/AGENTS.md` | 20 route halaman + 12 API routes (termasuk /api/health, /api/feedback, /api/lapor/status, /api/skm/stats, /api/proxy-pdf) — indexing, routing, data flow |
 | `pages/api/AGENTS.md` | REST API: opd, spbe, requirement, lapor (+status), skm (+stats), feedback, proxy-pdf, health, admin — GET read + POST write. Admin auth via `ADMIN_PASSWORD` (Bearer, constant-time; `ADMIN_TOKEN` legacy dihapus 18 Sep 2026). Lihat `lib/adminAuth.js` |
-| `components/AGENTS.md` | **27 komponen aktif** — AppShell, BottomNav, persona/PersonaSwitcher, persona/usePersona, publik/HeroPublik, publik/SektorLayanan, asesor/KpiCards, asesor/AspekAccordion, Sidebar, Footer, ThemeToggle, ScrollTop, LaporWidget, RatingWidget, SkmPrompt, Sp4nBanner, OPDTable, SpbeGauge, ServiceFinder, ServiceCard, SlaBadge, DashboardSKM, DetailModal, GlossaryTooltip, TrackerStatus, motif/KerawangMotifs |
+| `components/AGENTS.md` | **29 komponen aktif** — AppShell, beranda/BerandaAsesor, beranda/BerandaPublik, BottomNav, persona/PersonaSwitcher, persona/usePersona, publik/HeroPublik, publik/SektorLayanan, asesor/KpiCards, asesor/AspekAccordion, Sidebar, Footer, ThemeToggle, ScrollTop, LaporWidget, RatingWidget, SkmPrompt, Sp4nBanner, OPDTable, SpbeGauge, ServiceFinder, ServiceCard, SlaBadge, DashboardSKM, DetailModal, GlossaryTooltip, TrackerStatus, motif/KerawangMotifs |
 | `styles/AGENTS.md` | **Gayo Civic Digital v3** — CSS variables: `--gov-blue`, `--lake-cyan`, `--gayo-gold`, `--coffee-brown`, `--forest-green`. Hero award gradient. Dark mode. 799 baris. |
 | `data/AGENTS.md` | Struktur data: opd.json (52 OPD, 78 PPB ✅), pemdi.json (7 aspek, 20 indikator), layanan.json, skm.json, faq.json |
 | `STRATEGI_PEMDIACEHTENGAH.md` | **Dokumen perencanaan strategis (file ini)** — 4 fase, quick wins, risiko, metrik |

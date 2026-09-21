@@ -1,3 +1,4 @@
+import { PUBLIK_AKTIF } from '@/lib/modeSitus';
 import { Html, Head, Main, NextScript } from 'next/document';
 
 export default function Document() {
@@ -7,7 +8,7 @@ export default function Document() {
         <meta charSet="utf-8" />
         <meta name="keywords" content="Aceh Tengah, SPBE, Pemerintah Digital, Pemdi, Peta Proses Bisnis, Transformasi Digital, Takengon" />
         <meta name="author" content="Pemdi Aceh Tengah" />
-        <meta name="robots" content="index, follow" />
+        <meta name="robots" content={PUBLIK_AKTIF ? "index, follow" : "noindex, nofollow"} />
         {/* description & og:url di-set per-halaman (pages/*.js + _app.js canonical)
             — jangan duplikat di sini (pemeriksaan ulang 2026-09-17) */}
         <meta property="og:title" content="Pemdi Aceh Tengah — Portal Digital Pemerintah Daerah" />

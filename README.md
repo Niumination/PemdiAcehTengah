@@ -13,6 +13,16 @@ Transformasi menuju **Pemerintah Digital (Pemdi)** — open source government te
 
 ---
 
+## Mode situs (21 Sep 2026)
+
+Situs berjalan dalam **mode internal** (Kokpit Asesor) secara default. Persona publik/warga dimatikan lewat saklar build-time — bukan dihapus:
+
+```
+NEXT_PUBLIC_PERSONA_PUBLIK=on   # aktifkan kembali dual-persona (beranda warga, /layanan, /skm, /lapor, …)
+```
+
+Titik terakhir dual-persona penuh: branch `backup/dual-persona-2026-09-21` / tag `v0.3-dual-persona`. Rincian di `lib/modeSitus.js` dan `CHANGELOG.md`.
+
 ## 🎯 Tujuan
 
 > **Untuk siapa dan untuk apa.** Website/aplikasi ini ditujukan untuk memudahkan **Tim Asesor Internal Pemerintah Kabupaten Aceh Tengah** dalam memenuhi kebutuhan bukti dukung Evaluasi Kinerja Pemerintah Digital. Kriteria dan butir bukti memakai **bahasa baku PermenPANRB Nomor 8 Tahun 2026** apa adanya, lalu **diterjemahkan ke ruang lingkup Pemda Aceh Tengah** — perangkat daerah, dokumen, sistem, dan kondisi aktual yang benar-benar ada — sehingga tim tahu persis dokumen apa yang harus disiapkan, oleh siapa, dan bagaimana bentuknya.
@@ -102,7 +112,7 @@ PemdiAcehTengah/
 │       └── admin/        # 🆕 Admin-only API
 │           ├── skm.js    # GET /api/admin/skm
 │           └── laporan.js# GET /api/admin/laporan
-├── components/           # React komponen (27 aktif)
+├── components/           # React komponen (29 aktif)
 │   ├── AppShell.js       # Shell global — sidebar, topbar, breadcrumb
 │   ├── Sidebar.js, Footer.js, ThemeToggle.js, ScrollTop.js
 │   ├── OPDTable.js, SpbeGauge.js, SlaBadge.js

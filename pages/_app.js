@@ -2,6 +2,7 @@ import '@/styles/globals.css';
 import localFont from 'next/font/local';
 import AppShell from '@/components/AppShell';
 import SkmPrompt from '@/components/SkmPrompt';
+import { PUBLIK_AKTIF } from '@/lib/modeSitus';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { Analytics } from '@vercel/analytics/react';
@@ -66,7 +67,7 @@ export default function App({ Component, pageProps }) {
         <AppShell>
           <Component {...pageProps} />
         </AppShell>
-        <SkmPrompt />
+        {PUBLIK_AKTIF && <SkmPrompt />}
       </div>
       <Analytics />
     </>

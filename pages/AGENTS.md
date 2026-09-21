@@ -9,7 +9,7 @@ Halaman Next.js Pages Router — entry points untuk user. SSG untuk konten stati
 
 | Route | File | Fungsi | Komponen Kunci |
 |-------|------|--------|----------------|
-| `/` | `index.js` | **Beranda dual-persona** (`?view=publik` default · `?view=asesor`). Publik: HeroPublik, 6 SektorLayanan, task hub, ServiceFinder, DashboardSKM — tanpa metrik birokrasi. Asesor: hero kokpit, KpiCards, gauge SPBE + AspekAccordion 7 aspek, PPB, OPDTable. Kedua panel SSR (`hidden`) di `.persona-stage` | PersonaSwitcher, usePersona, HeroPublik, SektorLayanan, KpiCards, AspekAccordion, OPDTable, SpbeGauge, ServiceFinder, DashboardSKM, GlossaryTooltip |
+| `/` | `index.js` | **Beranda** — mode internal (default): hanya `BerandaAsesor`, tanpa switcher. Bila `NEXT_PUBLIC_PERSONA_PUBLIK=on`: dual-persona (`?view=publik` default · `?view=asesor`). Publik: HeroPublik, 6 SektorLayanan, task hub, ServiceFinder, DashboardSKM — tanpa metrik birokrasi. Asesor: hero kokpit, KpiCards, gauge SPBE + AspekAccordion 7 aspek, PPB, OPDTable. Kedua panel SSR (`hidden`) di `.persona-stage` | PersonaSwitcher, usePersona, HeroPublik, SektorLayanan, KpiCards, AspekAccordion, OPDTable, SpbeGauge, ServiceFinder, DashboardSKM, GlossaryTooltip |
 | `/pemdi` | `pemdi.js` | **Kokpit Pemdi (B1)** — 7 aspek × 20 indikator, **Simulasi Penilaian Mandiri** (hanya bukti `diterima`; lib/pemdiNilai.js), hero menampilkan ringkasan Tahap 1 eval.spbe.go.id, checklist bukti berkode `I#-L#-##` + baris 🔁 revisi dengan catatan asesor | DetailModal, KerawangDivider, CatatanTujuan |
 | `/modul-indikator` | `modul-indikator.js` | **Modul Indikator + Matriks Kebutuhan Bukti** — 20 modul kriteria L1–L5 (ground truth), bukti per level, matriks kebutuhan L1–L2 | KerawangMotifs |
 | `/opd` | `opd/index.js` | Indeks 52 Perangkat Daerah + layanan per OPD | OPDTable, KerawangMotifs |
@@ -84,3 +84,8 @@ Supabase (service role, SERVER-ONLY) ──► api/lapor.js, api/lapor/status.js
 - `npm run lint` — 0 error (4 warning `<img>` di modul-indikator dikenal)
 - `npm test` — 20/20 pass (16 rumus Pemdi + 4 requirement)
 - `npm run build` — sukses, semua route ter-generate
+
+
+## Mode internal (21 Sep 2026)
+
+`middleware.js` (root) me-404-kan rute publik saat `NEXT_PUBLIC_PERSONA_PUBLIK` bukan `on`: `/layanan /skm /lapor /faq /tanya /bantuan /dashboard-kepuasan /kebijakan-privasi /admin` dan API `/api/lapor* /api/skm* /api/feedback /api/admin*`. Berkas halamannya **tetap ada** di repo (jangan dihapus) — daftar rute di `lib/modeSitus.js`.

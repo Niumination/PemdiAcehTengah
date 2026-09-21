@@ -2,12 +2,14 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { PUBLIK_AKTIF } from '@/lib/modeSitus';
 import LaporWidget from './LaporWidget';
 
 /* ── Menu Categories for Citizens & Government Leadership ── */
 const menuGroups = [
   {
     label: 'I. Sektor Warga & Layanan',
+    publik: true, // disembunyikan saat mode internal (lib/modeSitus)
     items: [
       { label: 'Direktori Layanan', href: '/layanan', icon: '📋', badge: '25 SLA' },
       { label: 'Pengaduan & Lapor', href: '#', icon: '💬', isModal: true, badge: 'SP4N' },
@@ -33,8 +35,8 @@ const menuGroups = [
     items: [
       { label: 'Glosarium Istilah', href: '/glosarium', icon: '📖' },
       { label: 'Draf Bukti Dukung', href: '/requirement', icon: '📝' },
-      { label: 'Dashboard Kepuasan', href: '/dashboard-kepuasan', icon: '📈' },
-      { label: 'Panel Admin Diskominfo', href: '/admin', icon: '🔐' },
+      ...(PUBLIK_AKTIF ? [{ label: 'Dashboard Kepuasan', href: '/dashboard-kepuasan', icon: '📈' }] : []),
+      ...(PUBLIK_AKTIF ? [{ label: 'Panel Admin Diskominfo', href: '/admin', icon: '🔐' }] : []),
     ],
   },
 ];
@@ -146,9 +148,9 @@ export default function Sidebar({ isOpen, onClose, collapsed }) {
 
         {/* Navigation Groups */}
         <nav className="sb-nav">
-          {menuGroups.map((group) => (
+          {menuGroups.filter((g) => PUBLIK_AKTIF || !g.publik).map((group) => (
             <div key={group.label}>
-              <div className="sb-group">{group.label}</div>
+              <div className="sb-group">{PUBLIK_AKTIF ? group.label : group.label.replace(/^[IVX]+\.\s*/, '')}</div>
               {group.items.map((item) => {
                 const active = !item.isModal && isActive(item.href);
 
@@ -197,6 +199,7 @@ export default function Sidebar({ isOpen, onClose, collapsed }) {
 
         {/* Docked Sidebar Footer Action */}
         <div className="sb-foot">
+          {PUBLIK_AKTIF && (
           <div
             className="sb-quick-cta"
             onClick={() => setShowLapor(true)}
@@ -209,6 +212,7 @@ export default function Sidebar({ isOpen, onClose, collapsed }) {
               <div style={{ fontSize: '10px', color: 'var(--primary-200)' }}>Kirim tiket & lacak real-time</div>
             </div>
           </div>
+          )}
           <div className="sb-foot-text">Walidata: Diskominfo Kab. Aceh Tengah</div>
           <div style={{ fontSize: '9.5px', lineHeight: 1.5, padding: '6px 10px', color: 'var(--primary-200)', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
             ✦ Kerawang Gayo — <em>“alang tulung beret bebantu”</em>: tolong-menolong, kekokohan &amp; keterpaduan
@@ -217,11 +221,13 @@ export default function Sidebar({ isOpen, onClose, collapsed }) {
       </aside>
 
       {/* Lapor Modal — tetap pop-up, bukan side panel */}
-      <LaporWidget
-        externalOpen={showLapor}
-        onExternalClose={() => setShowLapor(false)}
-        hideFab
-      />
+      {PUBLIK_AKTIF && (
+        <LaporWidget
+          externalOpen={showLapor}
+          onExternalClose={() => setShowLapor(false)}
+          hideFab
+        />
+      )}
     </>
   );
 }

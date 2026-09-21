@@ -43,3 +43,30 @@ test('kelompokkanSektor: kategori baru tak terpetakan tetap tampil (masuk sektor
 test('5 kata kunci populer sesuai instruksi (KTP, KK, Perizinan, Pajak, Lapor)', () => {
   assert.deepEqual(KATA_KUNCI_POPULER.map((k) => k.label), ['KTP', 'KK', 'Perizinan', 'Pajak', 'Lapor']);
 });
+
+// ── lib/modeSitus.js (saklar persona publik) ──
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
+const { isRutePublik, RUTE_PUBLIK, API_PUBLIK, PUBLIK_AKTIF } = require('../lib/modeSitus.js');
+
+test('modeSitus: default (env kosong) = mode internal', () => {
+  assert.equal(PUBLIK_AKTIF, process.env.NEXT_PUBLIC_PERSONA_PUBLIK === 'on');
+});
+
+test('isRutePublik: halaman & API warga (beserta sub-path/hash/trailing slash) terdeteksi; rute internal tidak', () => {
+  for (const r of [...RUTE_PUBLIK, ...API_PUBLIK]) assert.equal(isRutePublik(r), true, r);
+  assert.equal(isRutePublik('/layanan/'), true);
+  assert.equal(isRutePublik('/layanan#kependudukan'), true);
+  assert.equal(isRutePublik('/faq#slug'), true);
+  assert.equal(isRutePublik('/skm?src=x'), true);
+  assert.equal(isRutePublik('/api/lapor/status'), true);
+  assert.equal(isRutePublik('/api/skm/stats'), true);
+  assert.equal(isRutePublik('/admin'), true);
+  assert.equal(isRutePublik('/api/admin/laporan'), true);
+  for (const r of ['/', '/pemdi', '/modul-indikator', '/requirement', '/spbe', '/opd', '/opd/setda', '/glosarium', '/cari', '/api/health', '/api/requirement', '/api/spbe', '/api/opd', '/probis']) {
+    assert.equal(isRutePublik(r), false, r);
+  }
+  // prefix palsu tidak boleh cocok
+  assert.equal(isRutePublik('/layanan-internal'), false);
+  assert.equal(isRutePublik('/skmx'), false);
+});

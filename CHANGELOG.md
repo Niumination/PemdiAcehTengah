@@ -3,6 +3,18 @@
 Semua perubahan penting proyek ini didokumentasikan di file ini.
 Ringkasan publik tanpa detail internal; dokumen kerja lengkap disimpan pemilik repo di lokasi privat.
 
+## 2026-09-21 — Mode Internal: persona publik dimatikan sementara (saklar, bukan dihapus)
+
+Keputusan pemilik: fokus ke persona internal (Kokpit Asesor). Kode publik **tidak dihapus** — dimatikan lewat satu saklar build-time `NEXT_PUBLIC_PERSONA_PUBLIK` (`lib/modeSitus.js`). Titik sebelum perubahan ini dibekukan di branch `backup/dual-persona-2026-09-21` + tag `v0.3-dual-persona`.
+
+- **`middleware.js`** (Edge): saat saklar mati, halaman warga (`/layanan /skm /lapor /faq /tanya /bantuan /dashboard-kepuasan /kebijakan-privasi /admin`) → 404, API warga & admin (`/api/lapor* /api/skm* /api/feedback /api/admin*`) → 404 JSON; semua respons `X-Robots-Tag: noindex, nofollow`.
+- **Beranda**: `pages/index.js` dipecah → `components/beranda/BerandaAsesor.js` (selalu) & `BerandaPublik.js` (hanya di-`require` bila saklar aktif → tidak ikut bundel internal). Switcher persona tidak dirender; `usePersona` selalu `asesor`; `layananData` tidak dikirim ke `__NEXT_DATA__`.
+- **Navigasi**: grup sidebar "Sektor Warga & Layanan", CTA Lapor (topbar/sidebar/bottom nav), `RatingWidget`, `LaporWidget`, `SkmPrompt`, tautan footer publik disembunyikan; topbar CTA → "Kokpit Pemdi"; bottom nav ponsel → Ringkasan/Kokpit/Modul/Draf Bukti/Menu; 404 → Kokpit & Modul Indikator; hasil `/cari` yang menuju rute publik disaring.
+- **SEO**: `<meta robots>` noindex, `robots.txt` `Disallow: /`, sitemap mengecualikan rute publik. Teks footer "Portal Digital Resmi" → "Kokpit Pemerintah Digital … Tim Asesor Internal" (K7).
+- **`/admin`** (moderasi lapor/SKM) ikut dimatikan — bergantung pada API warga; slot ini kelak diganti fitur **kirim eviden dari OPD/SKPD** (BACKLOG).
+- **Menghidupkan kembali**: set `NEXT_PUBLIC_PERSONA_PUBLIK=on` di Vercel → redeploy. Build dengan saklar `on` tetap diuji lolos (kode publik tidak membusuk).
+- Tes: +2 (`isRutePublik`) → 27/27.
+
 ## 2026-09-21 — Penyempurnaan "sidebar tertutup default" (tindak lanjut `90c955f`)
 
 - **Tanpa kedip / CLS**: `Sidebar` kini menerima `collapsed` sejak render server → HTML awal sudah `class="sidebar collapsed"` + `aria-hidden`. Sebelumnya sidebar 275 px dirender terbuka lalu menghilang setelah hydrate (kedip + pergeseran konten).
