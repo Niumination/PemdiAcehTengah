@@ -1,6 +1,6 @@
 /**
  * Unit test — lib/pemdiNilai.js (rumus resmi PermenPANRB 8/2026)
- * + regresi end-to-end terhadap data/pemdi.json (indeks 0,38 · 250 bukti).
+ * + regresi end-to-end terhadap data/pemdi.json (indeks 0,35 · 232 item bukti — 21 Sep 2026).
  *
  * Jalankan: npm test  (butuh Node >= 22; CI memakai Node 22)
  */
@@ -14,6 +14,8 @@ import {
   indeksAspek,
   indeksPemdi,
   statistikBukti,
+  fokusLevel,
+  peranLevel,
 } from '../lib/pemdiNilai.js';
 
 /* ────────────────────────────────────────────────────────────
@@ -173,4 +175,96 @@ test('REGRESI: 7 aspek × 20 indikator, total bobot indikator = 100%', () => {
   const totalBobotAspek = pemdi.aspek.reduce((s, a) => s + a.bobot, 0);
   assert.equal(totalInd, 20);
   assert.equal(totalBobotAspek, 100);
+});
+
+/* ────────────────────────────────────────────────────────────
+   fokusLevel / peranLevel — fitur fokus level (21 Sep 2026)
+   ──────────────────────────────────────────────────────────── */
+test('fokusLevel: level dicapai kumulatif (asesor) + level berikut; sisanya tertutup', () => {
+  const ind = { id: 'I1', bukti_dukung: [bd(1, 'diterima'), bd(2, 'diterima'), bd(2, 'revisi'), bd(3, 'belum')] };
+  const f = fokusLevel(ind);
+  assert.equal(f.levelDicapai, 1);
+  assert.equal(f.levelBerikut, 2);
+  assert.deepEqual([...f.tampil].sort(), [1, 2]);
+  assert.equal(f.eksternal, false);
+  assert.equal(peranLevel(1, f).key, 'dicapai');
+  assert.equal(peranLevel(2, f).key, 'berikut');
+  assert.equal(peranLevel(3, f).key, 'nanti');
+});
+
+test('fokusLevel: L1 belum diterima → hanya L1 terbuka; draf/revisi tidak dihitung', () => {
+  const f = fokusLevel({ id: 'I8', bukti_dukung: [bd(1, 'draf'), bd(1, 'revisi'), bd(2, 'belum')] });
+  assert.equal(f.levelDicapai, 0);
+  assert.deepEqual([...f.tampil], [1]);
+});
+
+test('fokusLevel: level 5 tercapai → tidak ada level berikut', () => {
+  const f = fokusLevel({ id: 'X', bukti_dukung: [1, 2, 3, 4, 5].map((l) => bd(l, 'diterima')) });
+  assert.equal(f.levelDicapai, 5);
+  assert.equal(f.levelBerikut, null);
+  assert.equal(peranLevel(3, f).key, 'lewat');
+});
+
+test('fokusLevel: indikator eksternal (I5) → flag eksternal, konteks L1 saja', () => {
+  const f = fokusLevel({ id: 'I5', bukti_dukung: [bd(1, 'belum')] });
+  assert.equal(f.eksternal, true);
+  assert.equal(f.levelDicapai, 0);
+  assert.deepEqual([...f.tampil], [1]);
+});
+
+/* ────────────────────────────────────────────────────────────
+   KONSISTENSI LINTAS-DATA — audit konten Pemdi (21 Sep 2026)
+   pemdi.json ⇔ modul-indikator.json ⇔ draf-bukti-prioritas.json
+   ──────────────────────────────────────────────────────────── */
+const modul = JSON.parse(readFileSync(new URL('../data/modul-indikator.json', import.meta.url), 'utf8'));
+const draf = JSON.parse(readFileSync(new URL('../data/draf-bukti-prioritas.json', import.meta.url), 'utf8'));
+const indMap = Object.fromEntries(pemdi.aspek.flatMap((a) => a.indikator.map((i) => [i.id, i])));
+
+test('KONSISTENSI: field nilai tiap indikator = nilaiIndikator() dari buktinya', () => {
+  for (const ind of Object.values(indMap)) {
+    assert.equal(ind.nilai, nilaiIndikator(ind).nilai, `${ind.id}: nilai ${ind.nilai} ≠ hitung ${nilaiIndikator(ind).nilai}`);
+  }
+});
+
+test('KONSISTENSI: label level modul memakai nama resmi Permen (bukan Established/Transformative)', () => {
+  const resmi = new Set(['Initiate', 'Emerging', 'Developing', 'Embedded', 'Leading']);
+  for (const m of modul.modules) {
+    for (const d of m.data_dukung_modul || []) assert.ok(resmi.has(d.label), `${m.indikator_id} L${d.level}: label "${d.label}"`);
+  }
+  // istilah lama juga tidak boleh tersisa di teks item/output
+  assert.ok(!/Established|Transformative|level Leading/.test(JSON.stringify(modul)), 'istilah level lama masih ada di teks modul');
+});
+
+test('KONSISTENSI: rekomendasi modul menyebut level dicapai yang sama dengan pemdi.json', () => {
+  for (const m of modul.modules) {
+    const ind = indMap[m.indikator_id];
+    if (!ind || ind.eksternal?.aktif) continue;
+    const r0 = (m.rekomendasi || [])[0] || '';
+    assert.ok(r0.includes(`Level dicapai ${ind.nilai}`) || ind.nilai === 5, `${m.indikator_id}: "${r0}" vs nilai ${ind.nilai}`);
+  }
+});
+
+test('KONSISTENSI: deskripsi indikator modul utuh (diakhiri tanda baca, tanpa artefak header PDF)', () => {
+  for (const m of modul.modules) {
+    const d = (m.deskripsi || '').trim();
+    assert.ok(/[.)]$|evaluasi$/.test(d), `${m.indikator_id}: deskripsi terpotong → "…${d.slice(-40)}"`);
+    assert.ok(!/Bobot Kuesioner|jdih\.menpan/.test(d), `${m.indikator_id}: artefak PDF`);
+  }
+});
+
+test('KONSISTENSI: gap draf-prioritas = nilai sekarang & level target (nilai+1) dari pemdi.json', () => {
+  for (const g of draf.gap) {
+    const ind = indMap[g.indikator];
+    assert.equal(g.nilai_sekarang, ind.nilai, `${g.indikator} nilai_sekarang`);
+    assert.equal(g.level_target, ind.nilai + 1, `${g.indikator} level_target`);
+  }
+  assert.ok(Math.abs(draf.ringkas.indeks_simulasi - pemdi.indeks_aktual) < 1e-9, 'indeks_simulasi draf ≠ indeks_aktual pemdi');
+});
+
+test('KONSISTENSI: statistik tahap 1 di pemdi.json = jumlah status di bukti', () => {
+  const st = statistikBukti(pemdi.aspek);
+  assert.equal(pemdi.penilaian_tahap1.diterima, st.diterima);
+  assert.equal(pemdi.penilaian_tahap1.revisi, st.revisi);
+  assert.equal(pemdi.total_item_bukti, st.total);
+  assert.equal(draf.penilaian_tahap1.diterima, st.diterima);
 });

@@ -77,7 +77,7 @@
    }
   ]
  },
- "catatan": "STATUS TAHAP 1 (sinkron 2026-09-20): 18 bukti DITERIMA asesor, 19 REVISI, 0 proses, 12 draf lokal belum diunggah, 183 belum ada (total 232 item). Nilai indikator = level kontinu yang seluruh butir bukti utamanya DITERIMA. Indikator eksternal I5/I6/I7/I18 memakai nilai minimum 1 selama skor eksternal belum tersedia.",
+ "catatan": "STATUS TAHAP 1 (sinkron 2026-09-21): 18 bukti DITERIMA asesor, 19 REVISI, 0 proses, 12 draf lokal belum diunggah, 183 belum ada (total 232 item). Nilai indikator = level kontinu yang seluruh butir bukti utamanya DITERIMA. Indikator eksternal I5/I6/I7/I18 memakai nilai minimum 1 selama skor eksternal belum tersedia.",
  "aspek": [
   {
    "id": 1,
@@ -3946,7 +3946,7 @@
   "sumber_rumus": "PermenPANRB No. 8 Tahun 2026 — Lampiran Pedoman Evaluasi Kinerja Pemdi, Bagian B Metode Penghitungan Indeks Pemdi (hlm. -37- s.d. -39-)",
   "nilai_indikator": "Tingkat kematangan 1–5 — level kontinu dengan seluruh butir bukti utama ber-status DITERIMA asesor (simulasi mandiri)",
   "indikator_eksternal": "I5 (SDI/Bappenas), I6 (SJIG/BIG), I7 (EPSS/BPS), I18 (strategi tim) — nilai minimum 1 selama `eksternal.nilai` belum diisi",
-  "diperbarui": "2026-09-20"
+  "diperbarui": "2026-09-21"
  },
  "proyeksi": {
   "target_indeks": 2.5,

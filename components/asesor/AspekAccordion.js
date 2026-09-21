@@ -57,6 +57,13 @@ export default function AspekAccordion({ aspek = [] }) {
                     </div>
                     <div className="ind-meta">
                       <span className="ind-nilai">Nilai {formatDesimal(i.nilai)} / {formatDesimal(i.target)}</span>
+                      {i.fokus && (
+                        <span className="ind-fokus" title={i.fokus.eksternal ? 'Nilai ditarik dari instansi pembina' : 'Level dicapai (diterima asesor) → level yang dikejar'}>
+                          {i.fokus.eksternal
+                            ? '⏳ eksternal'
+                            : <>{i.fokus.dicapai >= 1 ? `✅ L${i.fokus.dicapai}` : '⬜ L0'}{i.fokus.berikut ? ` → 🎯 L${i.fokus.berikut}` : ' · maks'}</>}
+                        </span>
+                      )}
                       <span className="ind-status">
                         {STATUS.filter((s) => i.bukti[s.k] > 0).map((s) => (
                           <span key={s.k} className={`st-chip ${s.cls}`}>{i.bukti[s.k]} {s.label}</span>

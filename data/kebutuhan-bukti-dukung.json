@@ -2,7 +2,7 @@
  "judul": "Matriks Kebutuhan Bukti Dukung Pemdi — Level 1 & 2",
  "sumber": "Analisis Bukti Dukung Kematangan Pemerintah Digital (Level 1 & 2) — NotebookLM, ekstraksi 20 PPTX Modul Indikator Pemdi (docs/analisis-bukti-dukung-l1-l2.md)",
  "panduan": "docs/Panduan_Peningkatan_Indeks_Pemdi_Aceh_Tengah.md (Bab 6 — Panduan Teknis Pengumpulan Bukti Dukung per Indikator)",
- "dibangun": "2026-08-18",
+ "dibangun": "2026-09-21",
  "cakupan": {
   "indikator": 16,
   "tidak_dibahas": [
@@ -19,9 +19,11 @@
  },
  "status_indikasi": {
   "ket": "Status dipetakan otomatis (fuzzy-match) ke bukti dukung existing di data/pemdi.json — indikatif, tetap perlu verifikasi substansi kriteria level.",
-  "lengkap": 10,
+  "diterima": 7,
+  "revisi": 5,
   "proses": 0,
-  "belum": 19,
+  "draf": 2,
+  "belum": 15,
   "perlu_verifikasi": 19
  },
  "catatan_implementasi": "Untuk bukti dukung arsitektur (I1, I13, I14, I15), sangat krusial bagi operator Aceh Tengah untuk melakukan pengisian di portal SIAP Digital (SIA v3) secara berkala karena bukti utamanya adalah screenshot dari sistem tersebut.",
@@ -56,14 +58,14 @@
        "kondisi": "Dokumen masih berstatus draft (rancangan) dan belum ditetapkan secara resmi",
        "modul_item": "Rancangan dokumen perencanaan Instansi Pemerintah yang berisi substansi Rencana Aksi Nasional Pemerintah Digital pada perencanaan Instansi Pemerintah dalam tahap penyusunan",
        "modul_match": 0.69,
-       "status_indikasi": "lengkap",
+       "status_indikasi": "diterima",
        "status_match": 1.0,
        "status_via": "modul",
        "bukti_terkait": [
         {
          "id": "GT.I1_L1_1",
          "nama": "Rancangan dokumen perencanaan Instansi Pemerintah yang berisi substansi Rencana Aksi Nasional Pemerintah Digital pada perencanaan Instansi Pemerintah dalam tahap penyusunan.",
-         "status": "lengkap"
+         "status": "diterima"
         }
        ]
       }
@@ -89,14 +91,14 @@
        "kondisi": null,
        "modul_item": "Pengisian Arsitektur Pemerintah Digital pada sebagian Layanan Digital Pemerintah melalui SIAP Digital",
        "modul_match": 0.75,
-       "status_indikasi": "belum",
+       "status_indikasi": "revisi",
        "status_match": 1.0,
        "status_via": "modul",
        "bukti_terkait": [
         {
          "id": "GT.I1_L2_2",
          "nama": "Pengisian Arsitektur Pemerintah Digital pada sebagian Layanan Digital Pemerintah melalui SIAP Digital.",
-         "status": "belum"
+         "status": "revisi"
         }
        ]
       },
@@ -161,7 +163,7 @@
     "tim": "Tim Manajemen Layanan Digital"
    },
    "catatan_grup": null,
-   "nilai_saat_ini": 2,
+   "nilai_saat_ini": 1,
    "target_indikator": 2.0,
    "level": [
     {
@@ -184,14 +186,14 @@
        "kondisi": "Bukti tambahan",
        "modul_item": "Bukti Pelaksanaan Manajemen pada Layanan Digital Pemerintah sesuai dengan kebutuhan internal",
        "modul_match": 0.78,
-       "status_indikasi": "lengkap",
+       "status_indikasi": "diterima",
        "status_match": 0.99,
        "status_via": "modul",
        "bukti_terkait": [
         {
          "id": "GT.I2_L1_2",
          "nama": "Bukti Pelaksanaan Manajemen pada Layanan Digital Pemerintah sesuai dengan kebutuhan internal.",
-         "status": "lengkap"
+         "status": "diterima"
         }
        ]
       }
@@ -206,14 +208,14 @@
        "kondisi": null,
        "modul_item": "Bukti Pelaksanaan Manajemen pada sebagian Layanan Digital Pemerintah",
        "modul_match": 0.86,
-       "status_indikasi": "lengkap",
+       "status_indikasi": "draf",
        "status_match": 0.99,
        "status_via": "modul",
        "bukti_terkait": [
         {
          "id": "GT.I2_L2_1",
          "nama": "Bukti Pelaksanaan Manajemen pada sebagian Layanan Digital Pemerintah.",
-         "status": "lengkap"
+         "status": "draf"
         }
        ]
       },
@@ -289,14 +291,14 @@
        "kondisi": null,
        "modul_item": "Peta Kompetensi untuk pelaksanaan Pemerintah Digital",
        "modul_match": 0.6,
-       "status_indikasi": "belum",
+       "status_indikasi": "diterima",
        "status_match": 0.99,
        "status_via": "modul",
        "bukti_terkait": [
         {
          "id": "GT.I3_L1_1",
          "nama": "Peta Kompetensi untuk pelaksanaan Pemerintah Digital.",
-         "status": "belum"
+         "status": "diterima"
         }
        ]
       },
@@ -435,14 +437,14 @@
        "kondisi": null,
        "modul_item": "Penetapan Tim Koordinasi Pemerintah Digital Instansi Pemerintah",
        "modul_match": 0.52,
-       "status_indikasi": "lengkap",
+       "status_indikasi": "diterima",
        "status_match": 1.0,
        "status_via": "modul",
        "bukti_terkait": [
         {
          "id": "GT.I4_L1_1",
          "nama": "Penetapan Tim Koordinasi Pemerintah Digital Instansi Pemerintah.",
-         "status": "lengkap"
+         "status": "diterima"
         }
        ]
       },
@@ -650,14 +652,14 @@
        "kondisi": null,
        "modul_item": "Penetapan Tim Audit yang ditetapkan oleh Koordinator Pemerintah Digital di setiap Instansi Pemerintah",
        "modul_match": 0.5,
-       "status_indikasi": "lengkap",
+       "status_indikasi": "revisi",
        "status_match": 0.89,
        "status_via": "modul",
        "bukti_terkait": [
         {
          "id": "GT.I9_L1_1",
          "nama": "Penetapan Tim Audit yang ditetapkan oleh Koordinator Pemerintah Digital di setiap IPPD.",
-         "status": "lengkap"
+         "status": "revisi"
         }
        ]
       },
@@ -761,14 +763,14 @@
        "kondisi": "Berlaku untuk kelompok I10-I12",
        "modul_item": "Nilai IKASANDI pada area Keamanan Siber 0 <= IKASANDI < 1,50",
        "modul_match": 0.83,
-       "status_indikasi": "belum",
+       "status_indikasi": "revisi",
        "status_match": 0.97,
        "status_via": "modul",
        "bukti_terkait": [
         {
          "id": "GT.I10_L1_1",
          "nama": "1. Nilai IKASANDI pada area Keamanan Siber. 0 < IKASANDI < 1,5.",
-         "status": "belum"
+         "status": "revisi"
         }
        ]
       }
@@ -859,7 +861,7 @@
     "tim": "Tim Kriptografi & TTE"
    },
    "catatan_grup": "bagian kelompok \"Keamanan Siber & Kriptografi (IKASANDI)\"",
-   "nilai_saat_ini": 0,
+   "nilai_saat_ini": 1,
    "target_indikator": 1.5,
    "level": [
     {
@@ -947,14 +949,14 @@
        "kondisi": "Berlaku untuk kelompok I10-I12",
        "modul_item": "Dokumentasi pelaksanaan penanganan insiden",
        "modul_match": 0.5,
-       "status_indikasi": "belum",
+       "status_indikasi": "diterima",
        "status_match": 0.99,
        "status_via": "modul",
        "bukti_terkait": [
         {
          "id": "GT.I12_L1_1",
          "nama": "Dokumentasi pelaksanaan penanganan insiden.",
-         "status": "belum"
+         "status": "diterima"
         }
        ]
       }
@@ -969,14 +971,14 @@
        "kondisi": "Ditandai khusus \"(I12)\" pada dokumen sumber",
        "modul_item": "Penetapan TTIS",
        "modul_match": 1.0,
-       "status_indikasi": "lengkap",
+       "status_indikasi": "revisi",
        "status_match": 0.97,
        "status_via": "modul",
        "bukti_terkait": [
         {
          "id": "GT.I12_L2_1",
          "nama": "Penetapan TTIS.",
-         "status": "lengkap"
+         "status": "revisi"
         }
        ]
       },
@@ -1045,7 +1047,7 @@
     "tim": "Tim Aplikasi & Sistem Informasi"
    },
    "catatan_grup": null,
-   "nilai_saat_ini": 1,
+   "nilai_saat_ini": 0,
    "target_indikator": 2.0,
    "level": [
     {
@@ -1057,14 +1059,14 @@
        "kondisi": null,
        "modul_item": "Bukti Pelaksanaan Pengembangan Aplikasi",
        "modul_match": 0.75,
-       "status_indikasi": "lengkap",
+       "status_indikasi": "diterima",
        "status_match": 1.0,
        "status_via": "modul",
        "bukti_terkait": [
         {
          "id": "GT.I13_L1_1",
          "nama": "Bukti Pelaksanaan Pengembangan Aplikasi**, yang mencakup: Dokumentasi siklus pengembangan aplikasi (formal & terdokumentasi), Bukti konsultasi dengan unit pengelola TIK, Notulensi pembahasan antara unit pengusul dan pengelola TIK, Bukti koordinasi dan kesepakatan pengembangan aplikasi.",
-         "status": "lengkap"
+         "status": "diterima"
         }
        ]
       }
@@ -1269,14 +1271,14 @@
        "kondisi": null,
        "modul_item": "Proses Bisnis Pemerintah Digital untuk mendukung Layanan Digital pada Arsitektur Pemerintah Digital dari SIAP Digital",
        "modul_match": 0.5,
-       "status_indikasi": "lengkap",
+       "status_indikasi": "revisi",
        "status_match": 1.0,
        "status_via": "modul",
        "bukti_terkait": [
         {
          "id": "GT.I15_L1_1",
          "nama": "Proses Bisnis Pemerintah Digital untuk mendukung Layanan Digital pada Arsitektur Pemerintah Digital dari SIAP Digital.",
-         "status": "lengkap"
+         "status": "revisi"
         }
        ]
       }
@@ -1433,7 +1435,7 @@
     "tim": "Tim Portal & Layanan Digital"
    },
    "catatan_grup": null,
-   "nilai_saat_ini": 1,
+   "nilai_saat_ini": 2,
    "target_indikator": 2.5,
    "level": [
     {
@@ -1461,14 +1463,14 @@
        "kondisi": null,
        "modul_item": "Portal Layanan Digital Pemerintah pada Instansi Pemerintah pada sebagian Layanan Digital Pemerintah berbasis siklus hidup",
        "modul_match": 0.56,
-       "status_indikasi": "lengkap",
+       "status_indikasi": "diterima",
        "status_match": 1.0,
        "status_via": "modul",
        "bukti_terkait": [
         {
          "id": "GT.I17_L2_2",
          "nama": "Portal Layanan Digital Pemerintah pada Instansi Pemerintah pada sebagian Layanan Digital Pemerintah berbasis siklus hidup.",
-         "status": "lengkap"
+         "status": "diterima"
         }
        ]
       }
@@ -1533,14 +1535,14 @@
        "kondisi": null,
        "modul_item": null,
        "modul_match": 0.4,
-       "status_indikasi": "lengkap",
+       "status_indikasi": "draf",
        "status_match": 0.86,
        "status_via": "langsung",
        "bukti_terkait": [
         {
          "id": "GT.I19_L1_1",
          "nama": "Dokumen Service Level Agreement (SLA) Layanan Digital.",
-         "status": "lengkap"
+         "status": "draf"
         }
        ]
       }

@@ -250,8 +250,11 @@ def main():
         },
         "status_indikasi": {
             "ket": "Status dipetakan otomatis (fuzzy-match) ke bukti dukung existing di data/pemdi.json — indikatif, tetap perlu verifikasi substansi kriteria level.",
-            "lengkap": status_count.get("lengkap", 0),
+            # Vokabuler status sejak reposisi Opsi B (20 Sep 2026): diterima/revisi/proses/draf/belum
+            "diterima": status_count.get("diterima", 0),
+            "revisi": status_count.get("revisi", 0),
             "proses": status_count.get("proses", 0),
+            "draf": status_count.get("draf", 0),
             "belum": status_count.get("belum", 0),
             "perlu_verifikasi": status_count.get(None, 0),
         },

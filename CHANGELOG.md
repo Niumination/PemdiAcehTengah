@@ -3,6 +3,21 @@
 Semua perubahan penting proyek ini didokumentasikan di file ini.
 Ringkasan publik tanpa detail internal; dokumen kerja lengkap disimpan pemilik repo di lokasi privat.
 
+## 2026-09-21 — Audit konsistensi konten Pemdi + fitur Fokus Level
+
+**Audit (disparitas yang ditemukan & diperbaiki — tanpa mengubah hasil penilaian asesor):**
+- `data/modul-indikator.json`: label level lama `Established/Leading/Transformative` → nama resmi PermenPANRB 8/2026 (`Initiate/Emerging/Developing/Embedded/Leading`); `rekomendasi[]` statis & usang ("nilai 2.0", status "Proses") → dihitung ulang dari `pemdi.json`; `deskripsi` 20 indikator yang terpotong satu baris → teks **Deskripsi Indikator utuh** dari PDF Permen (bahasa baku dipertahankan; ditampilkan dengan pemenggalan butir 1./2./3. dan sub-judul agar mudah dibaca); istilah lama di teks item (`level Established/Leading/Transformative`) → `level N (nama resmi)`. Skrip baru `scripts/sinkron-modul-indikator.py` (idempoten).
+- `data/kebutuhan-bukti-dukung.json`: masih memakai status lama `lengkap` dan nilai I2=2 (pra-Opsi B) → diregenerasi; ringkasan `status_indikasi` kini `diterima/revisi/draf/belum/perlu_verifikasi`; UI matriks menyesuaikan ("indikasi diterima asesor").
+- `data/glosarium.json` istilah *Level*: skala SPBE lama → skala Pemdi (Kurang/Cukup/Baik/Sangat Baik/Memuaskan) + aturan naik level.
+- CSS: `var(--primary-line)` tidak pernah didefinisikan (border tombol hilang) → `--primary-200`.
+- Dokumentasi basi (indeks 0,38 · 250 bukti · "20/20 komponen") diperbarui; rantai regenerasi data diperpanjang (5 skrip) dan dijaga **6 tes KONSISTENSI** lintas-file (`pemdi ⇔ modul ⇔ draf-prioritas`) — total 37 tes.
+
+**Fitur Fokus Level (`lib/pemdiNilai.js` → `fokusLevel`, `components/asesor/LevelFokus.js`):**
+- Definisi (keputusan pemilik): *level dicapai* = level kontinu tertinggi yang **seluruh butir utamanya diterima asesor** (identik dengan rumus indeks); *level berikut* = dicapai + 1.
+- `/pemdi` (checklist per level) dan `/modul-indikator` (Kriteria per Level + tabel bukti per level): hanya level dicapai (badge ✅) dan level berikut (badge 🎯 "Target berikutnya") terbuka; level lain tertutup dengan header ringkas dan dapat dibuka per klik; tombol "Buka semua level / Kembali ke fokus". Tanpa localStorage, tanpa animasi tinggi (bebas CLS).
+- Beranda `AspekAccordion`: chip "✅ L1 → 🎯 L2" per indikator (⏳ eksternal untuk I5/I6/I7/I18).
+- `/modul-indikator`: deskripsi Permen dilipat dalam `<details>` (kalimat pertama tampil), blok "🧭 Posisi & langkah berikut" per indikator.
+
 ## 2026-09-21 — Mode Internal: persona publik dimatikan sementara (saklar, bukan dihapus)
 
 Keputusan pemilik: fokus ke persona internal (Kokpit Asesor). Kode publik **tidak dihapus** — dimatikan lewat satu saklar build-time `NEXT_PUBLIC_PERSONA_PUBLIK` (`lib/modeSitus.js`). Titik sebelum perubahan ini dibekukan di branch `backup/dual-persona-2026-09-21` + tag `v0.3-dual-persona`.

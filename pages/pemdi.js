@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import DetailModal from '@/components/DetailModal';
 import CatatanTujuan from '@/components/CatatanTujuan';
+import LevelFokus from '@/components/asesor/LevelFokus';
 import { KerawangDivider } from '@/components/motif/KerawangMotifs';
 import { formatDesimal } from '@/lib/format';
 import {
@@ -587,7 +588,7 @@ function defaultCatatan(ind) {
                       {st.revisi > 0 && <span className="stat-badge" style={{ background: STATUS_META.revisi.bg, color: STATUS_META.revisi.color, fontSize: '0.68rem' }}>🔁 {st.revisi}</span>}
                       {st.draf > 0 && <span className="stat-badge" style={{ background: STATUS_META.draf.bg, color: STATUS_META.draf.color, fontSize: '0.68rem' }}>📝 {st.draf}</span>}
                       <span className="stat-badge" style={{ background: STATUS_META.belum.bg, color: STATUS_META.belum.color, fontSize: '0.68rem' }}>⬜ {st.belum}</span>
-                      <Link href={`/modul-indikator?modul=${ind.id.replace('I', '')}`} style={{ fontSize: '0.72rem', fontWeight: 600, color: 'var(--primary)', textDecoration: 'none', padding: '3px 10px', borderRadius: '6px', background: 'var(--primary-bg)', border: '1px solid var(--primary-line)' }}>
+                      <Link href={`/modul-indikator?modul=${ind.id.replace('I', '')}`} style={{ fontSize: '0.72rem', fontWeight: 600, color: 'var(--primary)', textDecoration: 'none', padding: '3px 10px', borderRadius: '6px', background: 'var(--primary-bg)', border: '1px solid var(--primary-200)' }}>
                         Modul →
                       </Link>
                     </div>
@@ -602,18 +603,16 @@ function defaultCatatan(ind) {
                     </div>
                   )}
 
-                  {/* Checklist per level */}
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '10px', marginBottom: '14px' }}>
-                    {buktiPerLevel.map(({ level, items }) => (
-                      <div key={level} style={{ padding: '10px', borderRadius: '8px', background: 'var(--surface-2)', border: '1px solid var(--line)' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px' }}>
-                          <span style={{ fontSize: '0.68rem', fontWeight: 800, color: LEVEL_WARNA[level], background: `${LEVEL_WARNA[level]}18`, padding: '2px 8px', borderRadius: '100px' }}>
-                            L{level} · {LEVEL_LABEL[level]}
-                          </span>
-                          <span style={{ fontSize: '0.68rem', fontWeight: 700, color: 'var(--muted)' }}>
-                            {items.filter(i => i.status === 'diterima').length}/{items.length}
-                          </span>
-                        </div>
+                  {/* Checklist per level — fokus: level dicapai + level berikut terbuka, sisanya tertutup (klik utk buka) */}
+                  <div style={{ marginBottom: '14px' }}>
+                  <LevelFokus
+                    ind={ind}
+                    warna={LEVEL_WARNA}
+                    idPrefix="pemdi"
+                    ringkas={(lv) => { const it = buktiPerLevel[lv - 1].items; return `${it.filter(i => i.status === 'diterima').length}/${it.length} diterima`; }}
+                  >
+                    {(level) => { const items = buktiPerLevel[level - 1].items; return (
+                      <div key={level}>
                         {items.length === 0 ? (
                           <div style={{ fontSize: '0.7rem', color: 'var(--muted)', fontStyle: 'italic' }}>— belum ada bukti</div>
                         ) : (
@@ -673,7 +672,8 @@ function defaultCatatan(ind) {
                           </div>
                         )}
                       </div>
-                    ))}
+                    ); }}
+                  </LevelFokus>
                   </div>
 
                   {/* Rekomendasi */}
@@ -703,7 +703,7 @@ function defaultCatatan(ind) {
                       </label>
                       <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
                         {catatanTersimpan && <span style={{ fontSize: '0.66rem', color: 'var(--ok)', fontWeight: 600 }}>💾 tersimpan</span>}
-                        <button onClick={() => salinCatatan(ind.id)} style={{ border: '1px solid var(--primary-line)', background: 'var(--primary-bg)', color: 'var(--primary)', borderRadius: '6px', padding: '3px 10px', fontSize: '0.7rem', fontWeight: 600, cursor: 'pointer' }}>
+                        <button onClick={() => salinCatatan(ind.id)} style={{ border: '1px solid var(--primary-200)', background: 'var(--primary-bg)', color: 'var(--primary)', borderRadius: '6px', padding: '3px 10px', fontSize: '0.7rem', fontWeight: 600, cursor: 'pointer' }}>
                           {copyFlash === ind.id ? '✅ Tersalin!' : '📋 Salin'}
                         </button>
                       </div>
@@ -766,7 +766,7 @@ function defaultCatatan(ind) {
                           fontSize: '0.75rem', fontWeight: 600, color: 'var(--primary)',
                           textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px',
                           padding: '4px 10px', borderRadius: '6px',
-                          background: 'var(--primary-bg)', border: '1px solid var(--primary-line)',
+                          background: 'var(--primary-bg)', border: '1px solid var(--primary-200)',
                         }}>
                         📋 Lihat Modul Indikator →
                       </Link>

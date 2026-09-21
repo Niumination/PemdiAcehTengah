@@ -6,7 +6,7 @@
    "indikator_id": "I1",
    "aspek": "Tata Kelola dan Manajemen",
    "judul": "Tingkat Kematangan Tata Kelola Pemerintah Digital",
-   "deskripsi": "Tata kelola Pemdi adalah kerangka kerja yang memastikan terlaksananya perencanaan, pelaksanaan, dan",
+   "deskripsi": "Tata kelola Pemdi adalah kerangka kerja yang memastikan terlaksananya perencanaan, pelaksanaan, dan pengendalian dalam penerapan Pemdi secara terpadu. Tata Kelola Pemdi terdiri dari: 1. Rencana Aksi Nasional Pemdi, sebagai referensi Rencana Aksi pada Instansi Pemerintah; dan 2. Arsitektur Pemdi Instansi Pemerintah untuk transformasi tata kelola Pemdi untuk pembangunan nasional.",
    "image_count": 100,
    "level_kriteria": [
     {
@@ -117,7 +117,7 @@
     },
     {
      "level": 3,
-     "label": "Established",
+     "label": "Developing",
      "items": [
       "Dokumen perencanaan resmi (ditetapkan) yang memuat SELURUH substansi RAN Pemdi; Peta Rencana Pemdi lengkap; matriks full mapping",
       "Notulen, undangan, daftar hadir, foto, BA rapat Tim Koordinasi Pemdi (untuk penyusunan seluruh substansi); SK Tim Koordinasi Pemdi",
@@ -126,7 +126,7 @@
     },
     {
      "level": 4,
-     "label": "Leading",
+     "label": "Embedded",
      "items": [
       "Laporan reviu Tata Kelola Transformasi Digital; BA reviu Tim Koordinasi/Asesor Internal; temuan dan rekomendasi reviu",
       "Dokumen Arsitektur Pemdi resmi (ditetapkan); bukti integrasi dengan arsitektur Provinsi/Nasional; screenshot SIAP Digital; peta keterpaduan layanan",
@@ -135,7 +135,7 @@
     },
     {
      "level": 5,
-     "label": "Transformative",
+     "label": "Leading",
      "items": [
       "Laporan tindak lanjut reviu; matriks temuan–tindak lanjut–status; BA monitoring tindak lanjut; bukti perbaikan kebijakan/regulasi",
       "Dokumen perubahan/revisi perencanaan yang memuat update substansi RAN Pemdi; SK/Surat penetapan perubahan; change log substansi",
@@ -144,10 +144,10 @@
     }
    ],
    "rekomendasi": [
-    "Lengkapi bukti Level 3 (Established) — nilai saat ini 2.0 di bawah target 2.5.",
-    "Level 3 (Established) belum punya bukti sama sekali — perlu disusun.",
-    "3 bukti ber-status Proses (diunggah ke portal eval.spbe.go.id) — verifikasi kesesuaian kriteria level.",
-    "11 bukti ber-status Belum — lengkapi dokumen dan unggah ke portal eval.spbe.go.id."
+    "Level dicapai 1 (di bawah target 2.5) — kejar Level 2 (Emerging): 2 butir belum diterima asesor.",
+    "PRIORITAS — 1 bukti hasil asesor REVISI (I1-L2-02): perbaiki sesuai catatan, unggah ulang di eval.spbe.go.id.",
+    "6 bukti masih draf lokal — finalisasi (paraf/stempel/ttd) lalu unggah pada tahap berikutnya.",
+    "4 butir belum ada dokumen — lihat contoh di Modul & draf di /requirement."
    ]
   },
   {
@@ -155,7 +155,7 @@
    "indikator_id": "I2",
    "aspek": "Tata Kelola dan Manajemen",
    "judul": "Tingkat Kematangan Manajemen Layanan Digital Pemerintah",
-   "deskripsi": "Aspek 1 - Indikator 2 Tingkat Kematangan Manajemen Layanan Digital Pemerintah",
+   "deskripsi": "Manajemen Layanan Digital Pemerintah adalah serangkaian proses untuk mendukung penyelenggaraan Layanan Digital Pemerintah yang berkualitas. Manajemen Layanan Digital Pemerintah yang dilaksanakan sesuai substansi Rencana Aksi Nasional Pemdi pada perencanaan Instansi Pemerintah terdiri dari: 1. Manajemen Risiko; 2. Manajemen Perubahan; 3. Manajemen Pengetahuan; 4. Manajemen Keberlangsungan; dan 5. Manajemen Relasi Pengguna.",
    "image_count": 185,
    "level_kriteria": [
     {
@@ -243,7 +243,7 @@
     },
     {
      "level": 3,
-     "label": "Established",
+     "label": "Developing",
      "items": [
       "Laporan komprehensif pelaksanaan manajemen pada SELURUH layanan digital; matriks cakupan layanan × domain manajemen...",
       "📄 Dokumen Aceh Tengah: SOP/IK Manajemen Layanan Digital + log penanganan; Perbup 126/2019 (reviu standar pelayanan)"
@@ -251,7 +251,7 @@
     },
     {
      "level": 4,
-     "label": "Leading",
+     "label": "Embedded",
      "items": [
       "Laporan reviu/evaluasi penerapan manajemen layanan digital; temuan dan rekomendasi; BA reviu",
       "📄 Dokumen Aceh Tengah: Laporan reviu manajemen layanan digital; Perbup 48/2025"
@@ -259,7 +259,7 @@
     },
     {
      "level": 5,
-     "label": "Transformative",
+     "label": "Leading",
      "items": [
       "Laporan optimalisasi/perbaikan manajemen layanan; bukti peningkatan KPI/SLA; update SOP; matriks before-after; rencana continuous improvement",
       "📄 Dokumen Aceh Tengah: Laporan optimalisasi manajemen layanan digital"
@@ -267,9 +267,9 @@
     }
    ],
    "rekomendasi": [
-    "Lengkapi bukti Level 3 (Established) — nilai saat ini 2.0 di bawah target 2.5.",
-    "Level 3 (Established) belum punya bukti sama sekali — perlu disusun.",
-    "2 bukti ber-status Belum — lengkapi dokumen dan unggah ke portal eval.spbe.go.id."
+    "Level dicapai 1 (di bawah target 2) — kejar Level 2 (Emerging): 1 butir belum diterima asesor.",
+    "1 bukti masih draf lokal — finalisasi (paraf/stempel/ttd) lalu unggah pada tahap berikutnya.",
+    "3 butir belum ada dokumen — lihat contoh di Modul & draf di /requirement."
    ]
   },
   {
@@ -277,7 +277,7 @@
    "indikator_id": "I3",
    "aspek": "Penyelenggara",
    "judul": "Tingkat Kematangan Sumber Daya Manusia Pemerintah Digital",
-   "deskripsi": "Kompetensi Sumber Daya Manusia (SDM) Pemdi adalah Kompetensi Digital Aparatur Sipil Negara (ASN) yang merupakan bagian",
+   "deskripsi": "Kompetensi Sumber Daya Manusia (SDM) Pemdi adalah Kompetensi Digital Aparatur Sipil Negara (ASN) yang merupakan bagian dari Kompetensi Teknis ASN yang wajib dimiliki setiap pegawai ASN sesuai dengan jenis jabatan, jenjang jabatan, dan penugasan masing-masing. Kompetensi Digital ASN mencakup: 1. Kepemimpinan Digital. 2. Kemahiran Digital. 3. Literasi Digital. sesuai dengan tugas dan fungsinya untuk meningkatkan kinerja dan produktivitas Instansi Pemerintah.",
    "image_count": 176,
    "level_kriteria": [
     {
@@ -337,7 +337,7 @@
      "bukti_dukung": [
       {
        "item": "Peta Kompetensi Digital untuk pelaksanaan Pemerintah Digital",
-       "output": "Peta Kompetensi Digital ASN level Established (komprehensif, terintegrasi formasi jabatan TIK/digital)"
+       "output": "Peta Kompetensi Digital ASN level 3 (Developing) (komprehensif, terintegrasi formasi jabatan TIK/digital)"
       },
       {
        "item": "Laporan peningkatan kompetensi digital",
@@ -364,7 +364,7 @@
      "bukti_dukung": [
       {
        "item": "Peta Kompetensi Digital untuk pelaksanaan Pemerintah Digital",
-       "output": "Peta Kompetensi Digital ASN level Leading (dievaluasi/diperbarui, terhubung kinerja)"
+       "output": "Peta Kompetensi Digital ASN level 4 (Embedded) (dievaluasi/diperbarui, terhubung kinerja)"
       },
       {
        "item": "Laporan peningkatan kompetensi digital",
@@ -387,11 +387,11 @@
      "bukti_dukung": [
       {
        "item": "Peta Kompetensi Digital untuk pelaksanaan Pemerintah Digital",
-       "output": "Peta Kompetensi Digital ASN level Leading (best practice, menjadi rujukan, continuous update)"
+       "output": "Peta Kompetensi Digital ASN level 5 (Leading) (best practice, menjadi rujukan, continuous update)"
       },
       {
        "item": "Laporan peningkatan kompetensi digital",
-       "output": "Laporan peningkatan kompetensi digital level Leading (benchmark/inovasi pembelajaran)"
+       "output": "Laporan peningkatan kompetensi digital level 5 (Leading) (benchmark/inovasi pembelajaran)"
       },
       {
        "item": "Dokumentasi pelaksanaan komunitas belajar (90% ASN)",
@@ -433,36 +433,35 @@
     },
     {
      "level": 3,
-     "label": "Established",
+     "label": "Developing",
      "items": [
-      "Peta Kompetensi Digital ASN level Established (komprehensif, terintegrasi formasi jabatan TIK/digital)",
+      "Peta Kompetensi Digital ASN level 3 (Developing) (komprehensif, terintegrasi formasi jabatan TIK/digital)",
       "Laporan peningkatan kompetensi digital yang lebih luas/berkala; rekap kompetensi per domain; sertifikat",
       "📄 Dokumen Aceh Tengah: Laporan komunitas belajar digital (50% ASN); Laporan pemanfaatan AI & analisis data (20% ASN)"
      ]
     },
     {
      "level": 4,
-     "label": "Leading",
+     "label": "Embedded",
      "items": [
-      "Peta Kompetensi Digital ASN level Leading (dievaluasi/diperbarui, terhubung kinerja)",
+      "Peta Kompetensi Digital ASN level 4 (Embedded) (dievaluasi/diperbarui, terhubung kinerja)",
       "Laporan peningkatan kompetensi digital dengan evaluasi dampak/outcome",
       "📄 Dokumen Aceh Tengah: Laporan komunitas belajar (75% ASN); Laporan pemanfaatan AI intensif (50% ASN)"
      ]
     },
     {
      "level": 5,
-     "label": "Transformative",
+     "label": "Leading",
      "items": [
-      "Peta Kompetensi Digital ASN level Leading (best practice, menjadi rujukan, continuous update)",
-      "Laporan peningkatan kompetensi digital level Leading (benchmark/inovasi pembelajaran)",
+      "Peta Kompetensi Digital ASN level 5 (Leading) (best practice, menjadi rujukan, continuous update)",
+      "Laporan peningkatan kompetensi digital level 5 (Leading) (benchmark/inovasi pembelajaran)",
       "📄 Dokumen Aceh Tengah: Bukti keahlian digital (20% ASN); Laporan pemanfaatan teknologi terbaru"
      ]
     }
    ],
    "rekomendasi": [
-    "Lengkapi bukti Level 3 (Established) — nilai saat ini 2.0 di bawah target 2.5.",
-    "Level 3 (Established) belum punya bukti sama sekali — perlu disusun.",
-    "5 bukti ber-status Belum — lengkapi dokumen dan unggah ke portal eval.spbe.go.id."
+    "Level dicapai 0 (di bawah target 2) — kejar Level 1 (Initiate): 3 butir belum diterima asesor.",
+    "23 butir belum ada dokumen — lihat contoh di Modul & draf di /requirement."
    ]
   },
   {
@@ -470,7 +469,7 @@
    "indikator_id": "I4",
    "aspek": "Penyelenggara",
    "judul": "Tingkat Kematangan Kolaborasi Pemerintah Digital",
-   "deskripsi": "Forum Koordinasi Pemerintah Digital merupakan wadah untuk pertukaran informasi dan peningkatan kapasitas pelaksanaan Pemerintah Digital",
+   "deskripsi": "Forum Koordinasi Pemdi merupakan wadah untuk pertukaran informasi dan peningkatan kapasitas pelaksanaan Pemdi bagi Instansi Pemerintah bersama dan tidak terbatas kepada akademisi, lembaga penelitian, pelaku usaha, industri, media, komunitas, dan organisasi masyarakat baik dalam negeri maupun luar negeri. Forum Koordinasi Pemdi dimanfaatkan untuk: 1. Penyampaian ide/gagasan, penelitian, kajian, penyelesaian masalah, dan peningkatan kualitas pelaksanaan Pemdi. 2. Penguatan Kebijakan, Tata Kelola, dan Manajemen Layanan Digital Pemerintah. 3. Peningkatan Budaya dan Kompetensi Digital ASN. 4. Penguatan Ketersediaan dan Pemanfaatan Data, serta Keamanan Pemdi. 5. Penguatan Teknologi Pemdi untuk Transformasi Layanan Publik.",
    "image_count": 59,
    "level_kriteria": [
     {
@@ -568,7 +567,7 @@
     },
     {
      "level": 3,
-     "label": "Established",
+     "label": "Developing",
      "items": [
       "MoU/PKS multi-pihak (pentahelix); notulen forum multi-stakeholder; foto; laporan kolaborasi dengan akademisi/industri/media/komunitas/ormas",
       "📄 Dokumen Aceh Tengah: MoU/PKS pentahelix lintas instansi; Notulen forum multi-stakeholder"
@@ -576,7 +575,7 @@
     },
     {
      "level": 4,
-     "label": "Leading",
+     "label": "Embedded",
      "items": [
       "Laporan reviu/evaluasi kegiatan kolaborasi Pemdi; temuan & rekomendasi; BA reviu",
       "📄 Dokumen Aceh Tengah: Laporan reviu kegiatan kolaborasi Pemdi; BA reviu Tim Koordinasi/Asesor"
@@ -584,7 +583,7 @@
     },
     {
      "level": 5,
-     "label": "Transformative",
+     "label": "Leading",
      "items": [
       "Laporan optimalisasi kolaborasi; bukti perluasan jejaring/peningkatan outcome kolaborasi; update MoU; best practice yang direplikasi",
       "📄 Dokumen Aceh Tengah: Laporan optimalisasi kolaborasi; Update MoU/PKS & bukti perluasan jejaring"
@@ -592,10 +591,9 @@
     }
    ],
    "rekomendasi": [
-    "Lengkapi bukti Level 3 (Established) — nilai saat ini 2.0 di bawah target 2.5.",
-    "Level 3 (Established) belum punya bukti sama sekali — perlu disusun.",
-    "2 bukti ber-status Proses (diunggah ke portal eval.spbe.go.id) — verifikasi kesesuaian kriteria level.",
-    "3 bukti ber-status Belum — lengkapi dokumen dan unggah ke portal eval.spbe.go.id."
+    "Level dicapai 0 (di bawah target 2.5) — kejar Level 1 (Initiate): 1 butir belum diterima asesor.",
+    "PRIORITAS — 2 bukti hasil asesor REVISI (I4-L1-02, I4-L2-02): perbaiki sesuai catatan, unggah ulang di eval.spbe.go.id.",
+    "7 butir belum ada dokumen — lihat contoh di Modul & draf di /requirement."
    ]
   },
   {
@@ -603,7 +601,7 @@
    "indikator_id": "I5",
    "aspek": "Data",
    "judul": "Tingkat Kematangan Tata Kelola Data (Indeks Satu Data Indonesia)",
-   "deskripsi": "Kemampuan/kapabilitas dari IPPD dalam menerapkan Tata Kelola Data melalui serangkaian proses Satu Data Indonesia dengan tujuan untuk menjamin",
+   "deskripsi": "Tata Kelola Data adalah kemampuan/ kapabilitas dari Instansi Pemerintah dalam menerapkan Tata Kelola Data melalui serangkaian proses Satu Data Indonesia dengan tujuan untuk menjamin terwujudnya data yang akurat, mutakhir, terintegrasi, dan dapat diakses sebagai dasar perencanaan, pelaksanaan, evaluasi, dan pengendalian pembangunan nasional, serta peningkatan kualitas penyelenggaraan Layanan Pemerintah.",
    "image_count": 96,
    "level_kriteria": [
     {
@@ -654,30 +652,28 @@
     },
     {
      "level": 3,
-     "label": "Established",
+     "label": "Developing",
      "items": [
       "📄 Dokumen Aceh Tengah: Hasil evaluasi SDI (OpenData); Perbup 60/2022"
      ]
     },
     {
      "level": 4,
-     "label": "Leading",
+     "label": "Embedded",
      "items": [
       "📄 Dokumen Aceh Tengah: Laporan reviu tata kelola data; Nilai SDI rentang memuaskan"
      ]
     },
     {
      "level": 5,
-     "label": "Transformative",
+     "label": "Leading",
      "items": [
       "📄 Dokumen Aceh Tengah: Bukti integrasi tata kelola data menyeluruh"
      ]
     }
    ],
    "rekomendasi": [
-    "Lengkapi bukti Level 3 (Established) — nilai saat ini 2.0 di bawah target 2.5.",
-    "Level 3 (Established) belum punya bukti sama sekali — perlu disusun.",
-    "4 bukti ber-status Belum — lengkapi dokumen dan unggah ke portal eval.spbe.go.id."
+    "Indikator eksternal — nilai ditarik dari Skor Satu Data Indonesia (SDI) (Bappenas); koordinasikan skor resmi, bukan bukti lokal."
    ]
   },
   {
@@ -685,7 +681,7 @@
    "indikator_id": "I6",
    "aspek": "Data",
    "judul": "Tingkat Kematangan Penyelenggaraan Informasi Geospasial (Indeks SJIG)",
-   "deskripsi": "Kemampuan/kapabilitas dari IPPD dalam berbagi pakai dan memanfaatkan data dan informasi geospasial",
+   "deskripsi": "Kemampuan/kapabilitas dari Instansi Pemerintah dalam berbagi pakai dan memanfaatkan data dan Informasi Geospasial (IG) dengan tujuan untuk menjamin terwujudnya data yang akurat, mutakhir, terintegrasi, dan dapat diakses sebagai dasar perencanaan, pelaksanaan, evaluasi, dan pengendalian pembangunan nas ional, serta peningkatan kualitas penyelenggaraan Layanan Pemerintah. Indikator penilaian diselaraskan dengan Evaluasi Simpul Jaringan Informasi Geospasial (SJIG).",
    "image_count": 8,
    "level_kriteria": [
     {
@@ -736,30 +732,28 @@
     },
     {
      "level": 3,
-     "label": "Established",
+     "label": "Developing",
      "items": [
       "📄 Dokumen Aceh Tengah: Roadmap penyelenggaraan informasi geospasial"
      ]
     },
     {
      "level": 4,
-     "label": "Leading",
+     "label": "Embedded",
      "items": [
       "📄 Dokumen Aceh Tengah: Laporan reviu regulasi SJIG; Nilai SJIG"
      ]
     },
     {
      "level": 5,
-     "label": "Transformative",
+     "label": "Leading",
      "items": [
       "📄 Dokumen Aceh Tengah: Laporan pemanfaatan data geospasial pada layanan digital"
      ]
     }
    ],
    "rekomendasi": [
-    "Bukti Level 3 (Established) dapat melampaui target 2.0.",
-    "Level 3 (Established) belum punya bukti sama sekali — perlu disusun.",
-    "4 bukti ber-status Belum — lengkapi dokumen dan unggah ke portal eval.spbe.go.id."
+    "Indikator eksternal — nilai ditarik dari Skor SJIG (Simpul Jaringan Informasi Geospasial) (BIG); koordinasikan skor resmi, bukan bukti lokal."
    ]
   },
   {
@@ -767,7 +761,7 @@
    "indikator_id": "I7",
    "aspek": "Data",
    "judul": "Tingkat Kematangan Pembangunan Statistik (Indeks Pembangunan Statistik / EPSS)",
-   "deskripsi": "Kemampuan/kapabilitas dari Instansi Pemerintah dalam memanfaatkan Data Statistik dengan tujuan untuk menjamin",
+   "deskripsi": "Kemampuan/kapabilitas dari Instansi Pemerintah dalam memanfaatkan Data Statistik dengan tujuan untuk menjamin terwujudnya data yang akurat, mutakhir, terintegrasi, dan dapat diakses sebagai dasar perencanaan, pelaksanaan, evaluasi, dan pengendalian pembangunan nasional, serta peningkatan kualitas penyelenggaraan Layanan Pemerintah. Indikator penilaian diselaraskan dengan Evaluasi Penyelenggaraan Statistik Sektoral (EPSS).",
    "image_count": 8,
    "level_kriteria": [
     {
@@ -818,30 +812,28 @@
     },
     {
      "level": 3,
-     "label": "Established",
+     "label": "Developing",
      "items": [
       "📄 Dokumen Aceh Tengah: Laporan evaluasi statistik sektoral (EPSS)"
      ]
     },
     {
      "level": 4,
-     "label": "Leading",
+     "label": "Embedded",
      "items": [
       "📄 Dokumen Aceh Tengah: Laporan reviu penyelenggaraan statistik"
      ]
     },
     {
      "level": 5,
-     "label": "Transformative",
+     "label": "Leading",
      "items": [
       "📄 Dokumen Aceh Tengah: Laporan integrasi statistik sektoral menyeluruh"
      ]
     }
    ],
    "rekomendasi": [
-    "Bukti Level 3 (Established) dapat melampaui target 2.0.",
-    "Level 3 (Established) belum punya bukti sama sekali — perlu disusun.",
-    "3 bukti ber-status Belum — lengkapi dokumen dan unggah ke portal eval.spbe.go.id."
+    "Indikator eksternal — nilai ditarik dari Nilai EPSS (Evaluasi Penyelenggaraan Statistik Sektoral) (BPS); koordinasikan skor resmi, bukan bukti lokal."
    ]
   },
   {
@@ -849,7 +841,7 @@
    "indikator_id": "I8",
    "aspek": "Data",
    "judul": "Tingkat Kematangan Pelindungan Data Pribadi",
-   "deskripsi": "ASPEK PELINDUNGAN DATA PRIBADI DALAM INDEKS PEMERINTAH DIGITAL",
+   "deskripsi": "Tata Kelola Pelindungan Data Pribadi memuat aspek Sumber Daya Manusia dan Kebijakan sesuai amanat regulasi Pelindungan Data Pribadi. Sumber Daya Manusia: 1. Pejabat/Petugas Pelindung Data Pribadi (PPDP) 2. awareness dan sosialisasi 3. Pengembangan kompetensi dan sertifikasi. Kebijakan: 1. Strategi Implementasi PDP 2. Kebijakan Internal Pemrosesan Data Pribadi (memuat SOP/Kebijakan untuk semua siklus pemrosesan Data Pribadi dan Pemenuhan Hak Subjek Data Pribadi) 3. Pemberitahuan PDP. Penerapan teknis pelindungan data pribadi mencakup seluruh mekanisme proses dan kontrol yang dirancang untuk menjamin penerapan prinsip pelindungan data pribadi sepanjang siklus pemrosesan hidup data pribadi yang termasuk namun tidak terbatas pada: 1. Sistem Pengendalian Teknis PDP; 2. Manajemen respons hak subjek data; 3. Pelaksanaan Perekaman Aktivitas Pemrosesan Data Pribadi; serta 4. Manajemen risiko keamanan data pribadi dan penilaian dampak PDP.",
    "image_count": 45,
    "level_kriteria": [
     {
@@ -1055,7 +1047,7 @@
     },
     {
      "level": 3,
-     "label": "Established",
+     "label": "Developing",
      "items": [
       "Bukti penerapan Tata Kelola PDP pada SELURUH layanan digital; matriks cakupan layanan × kontrol PDP",
       "Dokumentasi program awareness PDP berkala (jadwal tahunan, rekap multi-periode, evaluasi peserta)",
@@ -1064,7 +1056,7 @@
     },
     {
      "level": 4,
-     "label": "Leading",
+     "label": "Embedded",
      "items": [
       "Laporan evaluasi Tata Kelola PDP; temuan & rekomendasi; BA evaluasi",
       "Laporan evaluasi program awareness/kompetensi PDP; pre-post test; rekomendasi perbaikan",
@@ -1073,7 +1065,7 @@
     },
     {
      "level": 5,
-     "label": "Transformative",
+     "label": "Leading",
      "items": [
       "Laporan tindak lanjut evaluasi Tata Kelola PDP; matriks temuan–aksi–status; bukti perbaikan kebijakan",
       "Bukti perbaikan program awareness (kurikulum baru, frekuensi, jangkauan); laporan tindak lanjut",
@@ -1082,9 +1074,9 @@
     }
    ],
    "rekomendasi": [
-    "Bukti Level 3 (Established) dapat melampaui target 2.0.",
-    "Level 3 (Established) belum punya bukti sama sekali — perlu disusun.",
-    "4 bukti ber-status Belum — lengkapi dokumen dan unggah ke portal eval.spbe.go.id."
+    "Level dicapai 0 (di bawah target 2) — kejar Level 1 (Initiate): 7 butir belum diterima asesor.",
+    "PRIORITAS — 1 bukti hasil asesor REVISI (I8-L1-01): perbaiki sesuai catatan, unggah ulang di eval.spbe.go.id.",
+    "34 butir belum ada dokumen — lihat contoh di Modul & draf di /requirement."
    ]
   },
   {
@@ -1092,7 +1084,7 @@
    "indikator_id": "I9",
    "aspek": "Keamanan Pemerintah Digital Siber",
    "judul": "Tingkat Kematangan Pelaksanaan Audit Keamanan Pemdi & Teknologi Pemdi",
-   "deskripsi": "Kemampuan/kapabilitas dari Instansi Pemerintah dalam pelaksanaan Audit Keamanan Pemdi dan",
+   "deskripsi": "Kemampuan/kapabilitas dari Instansi Pemerintah dalam pelaksanaan Audit Keamanan Pemdi dan Teknologi Pemdi di lingkungan Instansi Pemerintah sesuai dengan ketentuan standar dan tata cara pelaksanaan Audit Keamanan Pemdi dan Teknologi Pemdi.",
    "image_count": 19,
    "level_kriteria": [
     {
@@ -1175,7 +1167,7 @@
     },
     {
      "level": 3,
-     "label": "Established",
+     "label": "Developing",
      "items": [
       "Laporan Hasil Audit Eksternal (oleh lembaga independen/BSSN/auditor eksternal) keamanan Pemdi & teknologi Pemdi",
       "📄 Dokumen Aceh Tengah: Laporan Audit Eksternal (BSSN/auditor independen)"
@@ -1183,7 +1175,7 @@
     },
     {
      "level": 4,
-     "label": "Leading",
+     "label": "Embedded",
      "items": [
       "Laporan tindak lanjut temuan audit internal; matriks temuan–aksi–status–bukti; BA monitoring",
       "📄 Dokumen Aceh Tengah: Laporan tindak lanjut temuan audit internal; Matriks temuan-aksi-status"
@@ -1191,7 +1183,7 @@
     },
     {
      "level": 5,
-     "label": "Transformative",
+     "label": "Leading",
      "items": [
       "Laporan tindak lanjut temuan audit eksternal; matriks temuan–aksi–status; bukti perbaikan",
       "📄 Dokumen Aceh Tengah: Laporan tindak lanjut temuan audit eksternal; Laporan Pengawasan Kinerja Pemda 2025 (OpenData)"
@@ -1199,8 +1191,9 @@
     }
    ],
    "rekomendasi": [
-    "Lengkapi bukti Level 2 (Emerging) — nilai saat ini 1.0 di bawah target 2.5.",
-    "2 bukti ber-status Belum — lengkapi dokumen dan unggah ke portal eval.spbe.go.id."
+    "Level dicapai 0 (di bawah target 2) — kejar Level 1 (Initiate): 2 butir belum diterima asesor.",
+    "PRIORITAS — 1 bukti hasil asesor REVISI (I9-L1-01): perbaiki sesuai catatan, unggah ulang di eval.spbe.go.id.",
+    "5 butir belum ada dokumen — lihat contoh di Modul & draf di /requirement."
    ]
   },
   {
@@ -1208,7 +1201,7 @@
    "indikator_id": "I10",
    "aspek": "Keamanan Pemerintah Digital Siber",
    "judul": "Tingkat Kematangan Keamanan Siber (IKASANDI)",
-   "deskripsi": "Kemampuan/kapabilitas dari IPPD dalam menyelenggarakan keamanan Pemerintah Digital meliputi",
+   "deskripsi": "Kemampuan/kapabilitas dari Instansi Pemerintah dalam menyelenggarakan keamanan Pemdi meliputi implementasi tata kelola dan manajemen keamanan informasi, serta implementasi kontrol teknis keamanan berdasarkan Instrumen Pengukuran Kematangan Keamanan Siber dan Sandi (IKASANDI).",
    "image_count": 44,
    "level_kriteria": [
     {
@@ -1291,7 +1284,7 @@
     },
     {
      "level": 3,
-     "label": "Established",
+     "label": "Developing",
      "items": [
       "Hasil pengukuran IKASANDI area Keamanan Siber (skor 2,50–<3,50); instrumen; screenshot; evidence kontrol menengah",
       "📄 Dokumen Aceh Tengah: Instrumen IKASANDI area Keamanan Siber (nilai terisi)"
@@ -1299,7 +1292,7 @@
     },
     {
      "level": 4,
-     "label": "Leading",
+     "label": "Embedded",
      "items": [
       "Hasil/instrumen IKASANDI area Keamanan Siber (skor 3,50–<4,00); evidence kontrol lanjutan",
       "📄 Dokumen Aceh Tengah: Instrumen IKASANDI + reviu; Indeks KAMI (update)"
@@ -1307,7 +1300,7 @@
     },
     {
      "level": 5,
-     "label": "Transformative",
+     "label": "Leading",
      "items": [
       "Hasil/instrumen IKASANDI area Keamanan Siber (skor 4,00–5,00); evidence mature controls; verifikasi BSSN (jika ada)",
       "📄 Dokumen Aceh Tengah: Instrumen IKASANDI + tindak lanjut reviu"
@@ -1315,9 +1308,9 @@
     }
    ],
    "rekomendasi": [
-    "Lengkapi bukti Level 3 (Established) — nilai saat ini 2.0 di bawah target 2.5.",
-    "Level 3 (Established) belum punya bukti sama sekali — perlu disusun.",
-    "3 bukti ber-status Belum — lengkapi dokumen dan unggah ke portal eval.spbe.go.id."
+    "Level dicapai 0 (di bawah target 2) — kejar Level 1 (Initiate): 1 butir belum diterima asesor.",
+    "PRIORITAS — 1 bukti hasil asesor REVISI (I10-L1-01): perbaiki sesuai catatan, unggah ulang di eval.spbe.go.id.",
+    "5 butir belum ada dokumen — lihat contoh di Modul & draf di /requirement."
    ]
   },
   {
@@ -1325,7 +1318,7 @@
    "indikator_id": "I11",
    "aspek": "Keamanan Pemerintah Digital Siber",
    "judul": "Tingkat Kematangan Penerapan Kriptografi untuk Keamanan Data (IKASANDI)",
-   "deskripsi": "Kemampuan/kapabilitas dari Instansi Pemerintah dalam melakukan proteksi keamanan kerahasiaan data",
+   "deskripsi": "Kemampuan/kapabilitas dari Instansi Pemerintah dalam melakukan proteksi keamanan kerahasiaan data melalui penerapan fungsi kriptografi yang bersesuaian dengan standar keamanan modul kriptografi dan penerapan kriptografi secara nasional, baik untuk posisi data ketika disimpan ( at-rest), digunakan ( in-use), sampai pada data dipertukarkan (in-transit), dalam penyelenggaraan Layanan Digital Pemerintah.",
    "image_count": 29,
    "level_kriteria": [
     {
@@ -1357,7 +1350,7 @@
      "bukti_dukung": [
       {
        "item": "Laporan pelaksanaan penerapan teknologi kriptografi",
-       "output": "Laporan pelaksanaan kriptografi level Established (cakupan lebih luas, standar nasional, key management); bukti penerapan di layanan prioritas"
+       "output": "Laporan pelaksanaan kriptografi level 3 (Developing) (cakupan lebih luas, standar nasional, key management); bukti penerapan di layanan prioritas"
       }
      ]
     },
@@ -1407,15 +1400,15 @@
     },
     {
      "level": 3,
-     "label": "Established",
+     "label": "Developing",
      "items": [
-      "Laporan pelaksanaan kriptografi level Established (cakupan lebih luas, standar nasional, key management); bukti penerapan di layanan prioritas",
+      "Laporan pelaksanaan kriptografi level 3 (Developing) (cakupan lebih luas, standar nasional, key management); bukti penerapan di layanan prioritas",
       "📄 Dokumen Aceh Tengah: Laporan penerapan kriptografi seluruh layanan prioritas"
      ]
     },
     {
      "level": 4,
-     "label": "Leading",
+     "label": "Embedded",
      "items": [
       "Laporan evaluasi penerapan kriptografi; temuan kesenjangan; rekomendasi; BA evaluasi",
       "📄 Dokumen Aceh Tengah: Laporan evaluasi penerapan kriptografi; Nilai IKASANDI area kriptografi"
@@ -1423,7 +1416,7 @@
     },
     {
      "level": 5,
-     "label": "Transformative",
+     "label": "Leading",
      "items": [
       "Laporan tindak lanjut evaluasi kriptografi; bukti perbaikan (upgrade algoritma, key rotation, dll.)",
       "Hasil IKASANDI area Persandian (skor 4,00–5,00); instrumen; screenshot portal; evidence",
@@ -1432,9 +1425,8 @@
     }
    ],
    "rekomendasi": [
-    "Lengkapi bukti Level 3 (Established) — nilai saat ini 2.0 di bawah target 2.5.",
-    "Level 3 (Established) belum punya bukti sama sekali — perlu disusun.",
-    "4 bukti ber-status Belum — lengkapi dokumen dan unggah ke portal eval.spbe.go.id."
+    "Level dicapai 1 (di bawah target 1.5) — kejar Level 2 (Emerging): 1 butir belum diterima asesor.",
+    "5 butir belum ada dokumen — lihat contoh di Modul & draf di /requirement."
    ]
   },
   {
@@ -1442,7 +1434,7 @@
    "indikator_id": "I12",
    "aspek": "Keamanan Pemerintah Digital Siber",
    "judul": "Tingkat Kematangan Kapabilitas Penanganan Insiden Siber (IKASANDI)",
-   "deskripsi": "Kemampuan/kapabilitas dari Instansi Pemerintah dalam Penanganan Insiden Siber secara komprehensif, terstruktur, dan",
+   "deskripsi": "Kemampuan/kapabilitas dari Instansi Pemerintah dalam Penanganan Insiden Siber secara komprehensif, terstruktur, dan terstandar berdasarkan IKASANDI pada Area Penanganan Insiden Siber, termasuk di dalamnya memanfaatkan Tim Tanggap Insiden Siber (TTIS) atau Computer Security Incident Response Team (CSIRT) di Instansi masing - masing hingga kolaborasi dengan TTIS Nasional.",
    "image_count": 37,
    "level_kriteria": [
     {
@@ -1530,7 +1522,7 @@
     },
     {
      "level": 3,
-     "label": "Established",
+     "label": "Developing",
      "items": [
       "Hasil IKASANDI area Penanganan Insiden Siber (2,50–<3,50); evidence operasional TTIS; laporan drill/tabletop",
       "📄 Dokumen Aceh Tengah: Instrumen IKASANDI area Penanganan Insiden; Laporan reviu kapabilitas TTIS"
@@ -1538,7 +1530,7 @@
     },
     {
      "level": 4,
-     "label": "Leading",
+     "label": "Embedded",
      "items": [
       "Hasil IKASANDI area Penanganan Insiden Siber (3,50–<4,00); evidence kolaborasi dengan TTIS Nasional; laporan insiden formal",
       "📄 Dokumen Aceh Tengah: Laporan evaluasi penanganan insiden"
@@ -1546,7 +1538,7 @@
     },
     {
      "level": 5,
-     "label": "Transformative",
+     "label": "Leading",
      "items": [
       "Hasil IKASANDI area Penanganan Insiden Siber (4,00–5,00); evidence mature CSIRT; verifikasi BSSN (jika ada)",
       "📄 Dokumen Aceh Tengah: Laporan penanganan insiden berdampak nasional"
@@ -1554,8 +1546,9 @@
     }
    ],
    "rekomendasi": [
-    "Lengkapi bukti Level 2 (Emerging) — nilai saat ini 1.0 di bawah target 2.5.",
-    "3 bukti ber-status Belum — lengkapi dokumen dan unggah ke portal eval.spbe.go.id."
+    "Level dicapai 0 (di bawah target 2) — kejar Level 1 (Initiate): 1 butir belum diterima asesor.",
+    "PRIORITAS — 2 bukti hasil asesor REVISI (I12-L1-02, I12-L2-01): perbaiki sesuai catatan, unggah ulang di eval.spbe.go.id.",
+    "5 butir belum ada dokumen — lihat contoh di Modul & draf di /requirement."
    ]
   },
   {
@@ -1563,7 +1556,7 @@
    "indikator_id": "I13",
    "aspek": "Teknologi Digital",
    "judul": "Tingkat Kematangan Aplikasi Pemerintah Digital",
-   "deskripsi": "Aplikasi Pemerintah Digital adalah aplikasi, sistem informasi, sistem elektronik, platform digital, atau yang disebut dengan nama lain,",
+   "deskripsi": "Aplikasi Pemdi adalah aplikasi, sistem informasi, sistem elektronik, platform digital, atau yang disebut dengan nama lain, selanjutnya disebut Aplikasi Pemdi adalah satu atau sekumpulan program komputer dan prosedur yang dirancang untuk menyelenggarakan dan/atau menghasilkan Layanan Digital Pemerintah. Pembangunan/pengembangan aplikasi merupakan suatu proses yang bersifat komprehensif sesuai dengan siklus pembangunan dan pengembangan aplikasi (Software Development Life Cycle /SDLC) yang selaras dengan Arsitektur Teknologi Pemdi, dengan menerapkan prinsip-prinsip pelaksanaan Pemdi. Siklus pembangunan dan pengembangan Aplikasi Pemdi terdiri atas: 1. analisis kebutuhan; 2. perencanaan; 3. rancang bangun; 4. implementasi; 5. uji kelaikan; 6. pemeliharaan; dan 7. evaluasi",
    "image_count": 30,
    "level_kriteria": [
     {
@@ -1671,7 +1664,7 @@
     },
     {
      "level": 3,
-     "label": "Established",
+     "label": "Developing",
      "items": [
       "Dokumentasi SDLC lengkap multi-aplikasi; standar coding; hasil UAT; BA go-live",
       "Laporan reviu Unit Pengelola Layanan Digital (berkala/menyeluruh) atas portofolio aplikasi",
@@ -1680,7 +1673,7 @@
     },
     {
      "level": 4,
-     "label": "Leading",
+     "label": "Embedded",
      "items": [
       "Laporan reviu pelaksanaan pembangunan/pengembangan aplikasi (evaluasi SDLC, kepatuhan arsitektur, kualitas); rekomendasi",
       "📄 Dokumen Aceh Tengah: Laporan reviu pengembangan aplikasi; Dokumen terminasi aplikasi"
@@ -1688,7 +1681,7 @@
     },
     {
      "level": 5,
-     "label": "Transformative",
+     "label": "Leading",
      "items": [
       "Laporan tindak lanjut reviu; bukti perbaikan proses SDLC/standar; update pipeline CI/CD; matriks before-after",
       "📄 Dokumen Aceh Tengah: Laporan tindak lanjut reviu SDLC; Update pipeline CI/CD"
@@ -1696,10 +1689,10 @@
     }
    ],
    "rekomendasi": [
-    "Lengkapi bukti Level 3 (Established) — nilai saat ini 2.0 di bawah target 2.5.",
-    "Level 3 (Established) belum punya bukti sama sekali — perlu disusun.",
-    "2 bukti ber-status Proses (diunggah ke portal eval.spbe.go.id) — verifikasi kesesuaian kriteria level.",
-    "4 bukti ber-status Belum — lengkapi dokumen dan unggah ke portal eval.spbe.go.id."
+    "Level dicapai 0 (di bawah target 2) — kejar Level 1 (Initiate): 2 butir belum diterima asesor.",
+    "PRIORITAS — 4 bukti hasil asesor REVISI (I13-L1-02, I13-L2-01, I13-L2-02, I13-L3-01): perbaiki sesuai catatan, unggah ulang di eval.spbe.go.id.",
+    "1 bukti masih draf lokal — finalisasi (paraf/stempel/ttd) lalu unggah pada tahap berikutnya.",
+    "6 butir belum ada dokumen — lihat contoh di Modul & draf di /requirement."
    ]
   },
   {
@@ -1707,7 +1700,7 @@
    "indikator_id": "I14",
    "aspek": "Teknologi Digital",
    "judul": "Tingkat Kematangan Infrastruktur Pemerintah Digital",
-   "deskripsi": "Infrastruktur Pemdi adalah semua perangkat keras, perangkat lunak, dan fasilitas yang menjadi penunjang utama untuk menjelaskan sistem, aplikasi, komunikasi data, pengolahan dan penyimpanan data, perangkat integrasi/penghubung, dan perangkat elektronik lainnya.",
+   "deskripsi": "Infrastruktur Pemdi adalah semua perangkat keras, perangkat lunak, dan fasilitas yang menjadi penunjang utama untuk menjelaskan sistem, aplikasi, komunikasi data, pengolahan dan penyimpanan data, perangkat integrasi/penghubung, dan perangkat elektronik lainnya. Kemampuan/kapabilitas dari Instansi Pemerintah dalam menyelenggarakan Layanan Digital Instansi Pemerintah dengan mengutamakan Teknologi Awan (Cloud Technology) melalui pemanfaatan penyelenggaraan Infrastruktur Pemdi. Infrastruktur Digital Pemerintah merupakan bagian dari ekosistem Pemdi, terdiri atas fasilitas Infrastruktur Pemdi dan jaringan Infrastruktur Pemdi. Fasilitas Infrastruktur Pemdi terdiri atas: 1. Ekosistem Pusat Data Nasional. 2. Jaringan Intra Pemerintah.",
    "image_count": 46,
    "level_kriteria": [
     {
@@ -1790,7 +1783,7 @@
     },
     {
      "level": 3,
-     "label": "Established",
+     "label": "Developing",
      "items": [
       "Laporan pemantauan + matriks pemanfaatan infrastruktur pada SELURUH layanan digital; coverage JIP/PDN",
       "📄 Dokumen Aceh Tengah: Dasbor ekosistem pusat data; Laporan pemantauan seluruh layanan"
@@ -1798,7 +1791,7 @@
     },
     {
      "level": 4,
-     "label": "Leading",
+     "label": "Embedded",
      "items": [
       "Laporan reviu infrastruktur Pemdi (kapasitas, ketersediaan, keamanan, keselarasan arsitektur); temuan & rekomendasi",
       "📄 Dokumen Aceh Tengah: Laporan reviu infrastruktur Pemdi"
@@ -1806,7 +1799,7 @@
     },
     {
      "level": 5,
-     "label": "Transformative",
+     "label": "Leading",
      "items": [
       "Laporan tindak lanjut reviu infrastruktur; bukti upgrade/migrasi/optimasi; matriks temuan–aksi–status",
       "📄 Dokumen Aceh Tengah: Laporan tindak lanjut infrastruktur; Perbup 48/2025"
@@ -1814,9 +1807,10 @@
     }
    ],
    "rekomendasi": [
-    "Lengkapi bukti Level 3 (Established) — nilai saat ini 2.0 di bawah target 2.5.",
-    "Level 3 (Established) belum punya bukti sama sekali — perlu disusun.",
-    "2 bukti ber-status Belum — lengkapi dokumen dan unggah ke portal eval.spbe.go.id."
+    "Level dicapai 0 (di bawah target 2) — kejar Level 1 (Initiate): 4 butir belum diterima asesor.",
+    "PRIORITAS — 2 bukti hasil asesor REVISI (I14-L1-01, I14-L1-02): perbaiki sesuai catatan, unggah ulang di eval.spbe.go.id.",
+    "1 bukti masih draf lokal — finalisasi (paraf/stempel/ttd) lalu unggah pada tahap berikutnya.",
+    "8 butir belum ada dokumen — lihat contoh di Modul & draf di /requirement."
    ]
   },
   {
@@ -1824,7 +1818,7 @@
    "indikator_id": "I15",
    "aspek": "Keterpaduan",
    "judul": "Tingkat Kematangan Keterpaduan Proses Bisnis Lintas Sektor",
-   "deskripsi": "Kemampuan/kapabilitas dari Instansi Pemerintah dalam mewujudkan keterpaduan Layanan Digital Pemerintah",
+   "deskripsi": "Kemampuan/kapabilitas dari Instansi Pemerintah dalam mewujudkan keterpaduan Layanan Digital Pemerintah melalui keterpaduan proses bisnis Pemdi berbasis Arsitektur Pemdi yang berorientasi pada kebutuhan pengguna, yang mencakup penyederhanaan proses bisnis, penggunaan teknologi digital, dan peningkatan efisiensi birokrasi, untuk transformasi tata kelola pelayanan publik dan pembangunan, dalam rangka memberikan layanan kepada masyarakat untuk setiap aspek kehidupan (Human-Based).",
    "image_count": 52,
    "level_kriteria": [
     {
@@ -1911,7 +1905,7 @@
     },
     {
      "level": 3,
-     "label": "Established",
+     "label": "Developing",
      "items": [
       "Pemetaan proses bisnis SELURUH layanan prioritas/tematik di SIAP Digital; katalog proses bisnis lengkap",
       "Proses bisnis to-be untuk SELURUH layanan prioritas/tematik; peta integrasi lintas sektor; BA kesepakatan proses",
@@ -1920,7 +1914,7 @@
     },
     {
      "level": 4,
-     "label": "Leading",
+     "label": "Embedded",
      "items": [
       "Laporan reviu pelaksanaan keterpaduan proses bisnis; temuan & rekomendasi; BA reviu",
       "📄 Dokumen Aceh Tengah: Laporan reviu keterpaduan proses bisnis"
@@ -1928,7 +1922,7 @@
     },
     {
      "level": 5,
-     "label": "Transformative",
+     "label": "Leading",
      "items": [
       "Laporan tindak lanjut reviu proses bisnis; bukti implementasi to-be; update SIAP Digital; matriks before-after",
       "📄 Dokumen Aceh Tengah: Laporan tindak lanjut reviu; Matriks pemantauan"
@@ -1936,9 +1930,9 @@
     }
    ],
    "rekomendasi": [
-    "Lengkapi bukti Level 3 (Established) — nilai saat ini 2.0 di bawah target 2.5.",
-    "Level 3 (Established) belum punya bukti sama sekali — perlu disusun.",
-    "2 bukti ber-status Belum — lengkapi dokumen dan unggah ke portal eval.spbe.go.id."
+    "Level dicapai 0 (di bawah target 2.5) — kejar Level 1 (Initiate): 2 butir belum diterima asesor.",
+    "PRIORITAS — 1 bukti hasil asesor REVISI (I15-L1-01): perbaiki sesuai catatan, unggah ulang di eval.spbe.go.id.",
+    "11 butir belum ada dokumen — lihat contoh di Modul & draf di /requirement."
    ]
   },
   {
@@ -1946,7 +1940,7 @@
    "indikator_id": "I16",
    "aspek": "Keterpaduan",
    "judul": "Tingkat Kematangan Integrasi Aplikasi",
-   "deskripsi": "Integrasi aplikasi adalah proses menghubungkan berbagai aplikasi dan sistem perangkat lunak agar dapat",
+   "deskripsi": "Integrasi aplikasi adalah proses menghubungkan berbagai aplikasi dan sistem perangkat lunak agar dapat bekerja sama dan berbagi data secara holistik. Tujuannya untuk menciptakan ekosistem digital terpadu, efisien, dan menghilangkan hambatan operasional yang disebabkan oleh sistem yang terpisah. Dalam konteks Pemdi, proses ini memastikan data dan layanan yang ada di berbagai instansi atau unit kerja dapat saling terhubung dan digunakan untuk memberikan layanan publik yang terintegrasi dan efisien kepada masyarakat dan/atau layanan kepada Presiden melalui Presiden.",
    "image_count": 27,
    "level_kriteria": [
     {
@@ -2029,7 +2023,7 @@
     },
     {
      "level": 3,
-     "label": "Established",
+     "label": "Developing",
      "items": [
       "Laporan + matriks pemantauan integrasi pada SELURUH layanan; katalog API; bukti SSO/data sharing lintas aplikasi",
       "📄 Dokumen Aceh Tengah: Laporan integrasi aplikasi seluruh layanan; Matriks integrasi"
@@ -2037,7 +2031,7 @@
     },
     {
      "level": 4,
-     "label": "Leading",
+     "label": "Embedded",
      "items": [
       "Matriks pemantauan hasil reviu integrasi aplikasi; temuan; status kepatuhan arsitektur integrasi",
       "📄 Dokumen Aceh Tengah: Matriks pemantauan reviu integrasi"
@@ -2045,7 +2039,7 @@
     },
     {
      "level": 5,
-     "label": "Transformative",
+     "label": "Leading",
      "items": [
       "Matriks pemantauan tindak lanjut integrasi; bukti perbaikan/perluasan integrasi; update arsitektur",
       "📄 Dokumen Aceh Tengah: Matriks pemantauan tindak lanjut integrasi"
@@ -2053,9 +2047,9 @@
     }
    ],
    "rekomendasi": [
-    "Lengkapi bukti Level 3 (Established) — nilai saat ini 2.0 di bawah target 2.5.",
-    "Level 3 (Established) belum punya bukti sama sekali — perlu disusun.",
-    "2 bukti ber-status Belum — lengkapi dokumen dan unggah ke portal eval.spbe.go.id."
+    "Level dicapai 0 (di bawah target 2.5) — kejar Level 1 (Initiate): 3 butir belum diterima asesor.",
+    "PRIORITAS — 1 bukti hasil asesor REVISI (I16-L1-01): perbaiki sesuai catatan, unggah ulang di eval.spbe.go.id.",
+    "9 butir belum ada dokumen — lihat contoh di Modul & draf di /requirement."
    ]
   },
   {
@@ -2063,7 +2057,7 @@
    "indikator_id": "I17",
    "aspek": "Keterpaduan",
    "judul": "Tingkat Kematangan Portal Layanan Digital Pemerintah",
-   "deskripsi": "Kemampuan/kapabilitas dari IPPD untuk menyelenggarakan Portal Pelayanan Publik yang mengonsolidasikan seluruh layanan kepada masyarakat di setiap",
+   "deskripsi": "Kemampuan/kapabilitas dari Instansi Pemerintah untuk menyelenggarakan Portal Pelayanan Publik yang mengonsolidasikan seluruh layanan kepada masyarakat di setiap tingkatan Instansi masing -masing, yang selanjutnya terintegrasi menjadi bagian Layanan Digital Pemerintah melalui Pemanfaatan Portal Nasional Pelayanan Publik.",
    "image_count": 118,
    "level_kriteria": [
     {
@@ -2122,7 +2116,7 @@
      "bukti_dukung": [
       {
        "item": "Dasbor matriks Instansi Pemerintah dalam Pemanfaatan Portal Layanan Digital Pemerintah Nasional",
-       "output": "Dasbor matriks pemanfaatan portal nasional level Leading (lebih detail/berkala); laporan reviu pemanfaatan"
+       "output": "Dasbor matriks pemanfaatan portal nasional level 4 (Embedded) (lebih detail/berkala); laporan reviu pemanfaatan"
       },
       {
        "item": "Persentase pemanfaatan Portal Layanan Digital Pemerintah Nasional lebih dari 90% dari populasi pengguna",
@@ -2166,7 +2160,7 @@
     },
     {
      "level": 3,
-     "label": "Established",
+     "label": "Developing",
      "items": [
       "Screenshot portal yang menampilkan SELURUH layanan berbasis siklus hidup; katalog lengkap life-event",
       "Screenshot dasbor pemanfaatan Portal Nasional (INAdigital/portal terkait); matriks pemantauan; rekap transaksi/user",
@@ -2175,16 +2169,16 @@
     },
     {
      "level": 4,
-     "label": "Leading",
+     "label": "Embedded",
      "items": [
-      "Dasbor matriks pemanfaatan portal nasional level Leading (lebih detail/berkala); laporan reviu pemanfaatan",
+      "Dasbor matriks pemanfaatan portal nasional level 4 (Embedded) (lebih detail/berkala); laporan reviu pemanfaatan",
       "Laporan persentase pemanfaatan portal nasional >90% populasi pengguna; data pendukung",
       "📄 Dokumen Aceh Tengah: Dasbor matriks pemanfaatan portal; Persentase pemanfaatan portal"
      ]
     },
     {
      "level": 5,
-     "label": "Transformative",
+     "label": "Leading",
      "items": [
       "Laporan tindak lanjut matriks pemantauan portal nasional; bukti perbaikan UX/integrasi/promosi; matriks aksi",
       "Laporan pemanfaatan portal nasional >90% (dipertahankan/ditingkatkan) disertai strategi sustaining & continuous improvement",
@@ -2193,9 +2187,8 @@
     }
    ],
    "rekomendasi": [
-    "Lengkapi bukti Level 3 (Established) — nilai saat ini 2.0 di bawah target 3.5.",
-    "Level 3 (Established) belum punya bukti sama sekali — perlu disusun.",
-    "2 bukti ber-status Belum — lengkapi dokumen dan unggah ke portal eval.spbe.go.id."
+    "Level dicapai 2 (di bawah target 2.5) — kejar Level 3 (Developing): 4 butir belum diterima asesor.",
+    "9 butir belum ada dokumen — lihat contoh di Modul & draf di /requirement."
    ]
   },
   {
@@ -2203,7 +2196,7 @@
    "indikator_id": "I18",
    "aspek": "Keterpaduan",
    "judul": "Tingkat Kematangan Interoperabilitas Data",
-   "deskripsi": "Indikator 18 Tingkat Kematangan Interoperabilitas Data (Indeks Satu Data Indonesia)",
+   "deskripsi": "Kemampuan/kapabilitas dari Instansi Pemerintah dalam mewujudkan keterpaduan data, pengurangan redundansi data, penggunaan teknologi digital, dan peningkatan efisiensi birokrasi.",
    "image_count": 18,
    "level_kriteria": [
     {
@@ -2254,30 +2247,28 @@
     },
     {
      "level": 3,
-     "label": "Established",
+     "label": "Developing",
      "items": [
       "📄 Dokumen Aceh Tengah: Bukti interoperabilitas seluruh layanan prioritas"
      ]
     },
     {
      "level": 4,
-     "label": "Leading",
+     "label": "Embedded",
      "items": [
       "📄 Dokumen Aceh Tengah: Laporan reviu interoperabilitas"
      ]
     },
     {
      "level": 5,
-     "label": "Transformative",
+     "label": "Leading",
      "items": [
       "📄 Dokumen Aceh Tengah: Laporan tindak lanjut interoperabilitas"
      ]
     }
    ],
    "rekomendasi": [
-    "Lengkapi bukti Level 3 (Established) — nilai saat ini 2.0 di bawah target 2.5.",
-    "Level 3 (Established) belum punya bukti sama sekali — perlu disusun.",
-    "2 bukti ber-status Belum — lengkapi dokumen dan unggah ke portal eval.spbe.go.id."
+    "Indikator eksternal — nilai ditarik dari Kuesioner Interoperabilitas Data (item modul dikosongkan sesuai strategi tim) (Bappenas); koordinasikan skor resmi, bukan bukti lokal."
    ]
   },
   {
@@ -2285,7 +2276,7 @@
    "indikator_id": "I19",
    "aspek": "Kepuasan Pengguna Layanan Digital Pemerintah",
    "judul": "Tingkat Kematangan Fasilitas Dukungan Pengguna Layanan Digital Pemerintah",
-   "deskripsi": "Dukungan Pengguna Layanan Digital Pemerintah dilakukan untuk mencapai tingkat pemenuhan Kualitas Layanan Digital",
+   "deskripsi": "Dukungan Pengguna Layanan Digital Pemerintah dilakukan untuk mencapai tingkat pemenuhan Kualitas Layanan Digital (Service Level Agreement/SLA) pada Instansi Pemerintah, untuk Layanan Administrasi Pemerintahan dan Pelayanan Publik Digital yang merupakan layanan utama dari Instansi, melalui pemenuhan standar yang telah disepakati dengan pengguna, seperti kecepatan, ketersediaan, dan waktu respons.",
    "image_count": 29,
    "level_kriteria": [
     {
@@ -2329,7 +2320,7 @@
      "bukti_dukung": [
       {
        "item": "Dasbor Fasilitas Dukungan Pengguna Layanan Digital Pemerintah",
-       "output": "Dasbor fasilitas dukungan level Established (terintegrasi multi-layanan, analitik, eskalasi otomatis); laporan operasional"
+       "output": "Dasbor fasilitas dukungan level 3 (Developing) (terintegrasi multi-layanan, analitik, eskalasi otomatis); laporan operasional"
       },
       {
        "item": "Pemenuhan Standar Layanan Digital 99% (SLA lebih dari 99%)",
@@ -2385,16 +2376,16 @@
     },
     {
      "level": 3,
-     "label": "Established",
+     "label": "Developing",
      "items": [
-      "Dasbor fasilitas dukungan level Established (terintegrasi multi-layanan, analitik, eskalasi otomatis); laporan operasional",
+      "Dasbor fasilitas dukungan level 3 (Developing) (terintegrasi multi-layanan, analitik, eskalasi otomatis); laporan operasional",
       "Laporan pemenuhan SLA ≥99%; rekap; bukti continuous monitoring",
       "📄 Dokumen Aceh Tengah: Laporan evaluasi kepatuhan SLA (99%)"
      ]
     },
     {
      "level": 4,
-     "label": "Leading",
+     "label": "Embedded",
      "items": [
       "Laporan evaluasi kepatuhan SLA & fasilitas dukungan pengguna; temuan; rekomendasi; BA evaluasi",
       "📄 Dokumen Aceh Tengah: Laporan evaluasi kepatuhan SLA & fasilitas"
@@ -2402,7 +2393,7 @@
     },
     {
      "level": 5,
-     "label": "Transformative",
+     "label": "Leading",
      "items": [
       "Laporan tindak lanjut matriks pemantauan fasilitas dukungan; bukti perbaikan kanal/SLA/knowledge base",
       "Laporan pemenuhan SLA 99,9%; rekap high-availability; bukti sustaining excellence",
@@ -2411,9 +2402,10 @@
     }
    ],
    "rekomendasi": [
-    "Lengkapi bukti Level 3 (Established) — nilai saat ini 2.0 di bawah target 3.0.",
-    "Level 3 (Established) belum punya bukti sama sekali — perlu disusun.",
-    "4 bukti ber-status Belum — lengkapi dokumen dan unggah ke portal eval.spbe.go.id."
+    "Level dicapai 0 (di bawah target 2.5) — kejar Level 1 (Initiate): 2 butir belum diterima asesor.",
+    "PRIORITAS — 1 bukti hasil asesor REVISI (I19-L1-02): perbaiki sesuai catatan, unggah ulang di eval.spbe.go.id.",
+    "2 bukti masih draf lokal — finalisasi (paraf/stempel/ttd) lalu unggah pada tahap berikutnya.",
+    "6 butir belum ada dokumen — lihat contoh di Modul & draf di /requirement."
    ]
   },
   {
@@ -2421,7 +2413,7 @@
    "indikator_id": "I20",
    "aspek": "Kepuasan Pengguna Layanan Digital Pemerintah",
    "judul": "Tingkat Kematangan Pengelolaan Kepuasan Pengguna Layanan Digital Pemerintah",
-   "deskripsi": "Kepuasan pengguna layanan digital pemerintah Adalah tingkat kepuasan pengguna terhadap Layanan Digital Pemerintah Instansi, baik untuk Layanan",
+   "deskripsi": "Pencapaian tingkat kepuasan pengguna terhadap Layanan Digital Pemerintah Instansi, baik untuk Layanan Administrasi Pemerintahan dan Pelayanan Publik yang merupakan layanan berdasarkan tugas dan fungsi utama (proses bisnis utama) di Instansi Pusat dan layan an sektoral kepada masyarakat di Instansi Daerah, melalui penilaian kepuasan pengguna dengan metode tertentu dan mengutamakan strategi penilaian yang terintegrasi dengan layanan digital.",
    "image_count": 155,
    "level_kriteria": [
     {
@@ -2461,7 +2453,7 @@
       },
       {
        "item": "Hasil kepuasan pengguna layanan",
-       "output": "Laporan hasil kepuasan pengguna level Established (skor memenuhi ambang Baik; terintegrasi di layanan digital)"
+       "output": "Laporan hasil kepuasan pengguna level 3 (Developing) (skor memenuhi ambang Baik; terintegrasi di layanan digital)"
       }
      ]
     },
@@ -2476,7 +2468,7 @@
       },
       {
        "item": "Hasil kepuasan pengguna layanan",
-       "output": "Laporan hasil kepuasan pengguna level Leading (skor Sangat Baik; tren peningkatan)"
+       "output": "Laporan hasil kepuasan pengguna level 4 (Embedded) (skor Sangat Baik; tren peningkatan)"
       }
      ]
     },
@@ -2487,11 +2479,11 @@
      "bukti_dukung": [
       {
        "item": "Log Perubahan",
-       "output": "Log perubahan level Leading (closed-loop continuous improvement; bukti dampak perubahan terhadap skor kepuasan)"
+       "output": "Log perubahan level 5 (Leading) (closed-loop continuous improvement; bukti dampak perubahan terhadap skor kepuasan)"
       },
       {
        "item": "Hasil kepuasan pengguna layanan",
-       "output": "Laporan hasil kepuasan pengguna level Leading (skor Memuaskan; benchmark/best practice; strategi sustaining)"
+       "output": "Laporan hasil kepuasan pengguna level 5 (Leading) (skor Memuaskan; benchmark/best practice; strategi sustaining)"
       }
      ]
     }
@@ -2516,37 +2508,42 @@
     },
     {
      "level": 3,
-     "label": "Established",
+     "label": "Developing",
      "items": [
       "Bukti pelibatan masyarakat yang lebih sistematis (multi-kanal, multi-periode); notulen FGD; tindak lanjut masukan",
-      "Laporan hasil kepuasan pengguna level Established (skor memenuhi ambang Baik; terintegrasi di layanan digital)",
+      "Laporan hasil kepuasan pengguna level 3 (Developing) (skor memenuhi ambang Baik; terintegrasi di layanan digital)",
       "📄 Dokumen Aceh Tengah: Forum respons daring (mystery guest); Log perubahan layanan"
      ]
     },
     {
      "level": 4,
-     "label": "Leading",
+     "label": "Embedded",
      "items": [
       "Log perubahan layanan berdasarkan hasil kepuasan (change log fitur/proses/kebijakan); ticket perbaikan; release note",
-      "Laporan hasil kepuasan pengguna level Leading (skor Sangat Baik; tren peningkatan)",
+      "Laporan hasil kepuasan pengguna level 4 (Embedded) (skor Sangat Baik; tren peningkatan)",
       "📄 Dokumen Aceh Tengah: Trust Score Tracker; Log perubahan layanan berbasis kebutuhan"
      ]
     },
     {
      "level": 5,
-     "label": "Transformative",
+     "label": "Leading",
      "items": [
-      "Log perubahan level Leading (closed-loop continuous improvement; bukti dampak perubahan terhadap skor kepuasan)",
-      "Laporan hasil kepuasan pengguna level Leading (skor Memuaskan; benchmark/best practice; strategi sustaining)",
+      "Log perubahan level 5 (Leading) (closed-loop continuous improvement; bukti dampak perubahan terhadap skor kepuasan)",
+      "Laporan hasil kepuasan pengguna level 5 (Leading) (skor Memuaskan; benchmark/best practice; strategi sustaining)",
       "📄 Dokumen Aceh Tengah: Dasbor kepuasan (dipantau KemenPANRB); Kanal umpan balik dua arah"
      ]
     }
    ],
    "rekomendasi": [
-    "Lengkapi bukti Level 3 (Established) — nilai saat ini 2.0 di bawah target 3.0.",
-    "Level 3 (Established) belum punya bukti sama sekali — perlu disusun.",
-    "4 bukti ber-status Belum — lengkapi dokumen dan unggah ke portal eval.spbe.go.id."
+    "Level dicapai 0 (di bawah target 3) — kejar Level 1 (Initiate): 2 butir belum diterima asesor.",
+    "PRIORITAS — 2 bukti hasil asesor REVISI (I20-L1-03, I20-L1-04): perbaiki sesuai catatan, unggah ulang di eval.spbe.go.id.",
+    "1 bukti masih draf lokal — finalisasi (paraf/stempel/ttd) lalu unggah pada tahap berikutnya.",
+    "18 butir belum ada dokumen — lihat contoh di Modul & draf di /requirement."
    ]
   }
- ]
+ ],
+ "sinkron": {
+  "tanggal": "2026-09-21",
+  "sumber": "scripts/sinkron-modul-indikator.py — pemdi.json + PermenPANRB 8/2026"
+ }
 }

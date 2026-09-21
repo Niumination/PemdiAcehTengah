@@ -7,6 +7,7 @@ import CatatanTujuan from '@/components/CatatanTujuan';
 
 // ── Data ──
 import { LEVEL_LABEL, LEVEL_NAMA_RESMI, STATUS_META, REVISI_JENIS, statistikIndikator } from '@/lib/pemdiNilai';
+import LevelFokus from '@/components/asesor/LevelFokus';
 
 export default function ModulIndikatorPage({ moduls, pemdiData, dokumenKunci, buktiMapping, kebutuhanData }) {
   const router = useRouter();
@@ -499,11 +500,26 @@ function formatKriteria(text) {
                       padding: '0 1.25rem 1.5rem',
                       borderTop: `1px solid ${w}15`,
                     }}>
-                      {/* Description */}
+                      {/* Description — Deskripsi Indikator utuh dari PermenPANRB 8/2026 (disinkronkan scripts/sinkron-modul-indikator.py) */}
                       {modul.deskripsi && (
-                        <p style={{ fontSize: '0.85rem', color: 'var(--muted)', lineHeight: 1.6, margin: '0.75rem 0' }}>
-                          {modul.deskripsi}
-                        </p>
+                        <details className="modul-desk" style={{ margin: '0.75rem 0' }}>
+                          <summary style={{ fontSize: '0.8rem', color: 'var(--muted)', cursor: 'pointer', lineHeight: 1.6 }}>
+                            📖 {modul.deskripsi.split(/(?<=\.)\s/)[0]} <span style={{ color: 'var(--primary)', fontWeight: 600 }}>— baca deskripsi lengkap Permen</span>
+                          </summary>
+                          <p style={{ fontSize: '0.82rem', color: 'var(--text)', lineHeight: 1.65, margin: '0.5rem 0 0', whiteSpace: 'pre-line' }}>
+                            {modul.deskripsi.replace(/\.\s+([A-Z][^.:]{2,40}:)\s+1\./g, '.\n$1\n1.').replace(/\s(\d+\.)\s/g, '\n$1 ')}
+                          </p>
+                        </details>
+                      )}
+
+                      {/* Posisi saat ini — ringkas, dihitung dari pemdi.json (satu sumber) */}
+                      {modul.rekomendasi?.length > 0 && (
+                        <div style={{ padding: '0.6rem 0.8rem', borderRadius: '8px', background: 'var(--warn-bg)', border: '1px solid var(--warn)', marginBottom: '0.5rem' }}>
+                          <div style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--warn)', marginBottom: '0.25rem' }}>🧭 Posisi & langkah berikut</div>
+                          <ul style={{ margin: 0, paddingLeft: '1.1rem', fontSize: '0.76rem', lineHeight: 1.5, color: 'var(--ink-secondary)' }}>
+                            {modul.rekomendasi.map((r, i) => <li key={i}>{r}</li>)}
+                          </ul>
+                        </div>
                       )}
 
                       {/* ════ Level Criteria ════ */}
@@ -512,29 +528,16 @@ function formatKriteria(text) {
                           <h4 style={{ fontSize: '0.85rem', fontWeight: 700, marginBottom: '0.5rem', color: 'var(--text)' }}>
                             📊 Kriteria per Level
                           </h4>
-                          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: '0.75rem', alignItems: 'start' }}>
-                            {modul.level_kriteria.map(lk => (
-                              <div key={lk.level} style={{
-                                borderRadius: '10px', overflow: 'hidden',
-                                border: '1px solid var(--border)',
-                                background: 'var(--surface-1)',
-                                display: 'flex', flexDirection: 'column', height: '100%',
-                              }}>
-                                <div style={{
-                                  background: `${LEVEL_WARNA[lk.level] || '#6b7280'}12`,
-                                  display: 'flex', alignItems: 'center', gap: '0.5rem',
-                                  padding: '0.5rem 0.75rem',
-                                }}>
-                                  <span style={{
-                                    display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                                    background: LEVEL_WARNA[lk.level] || '#6b7280',
-                                    color: '#fff', fontWeight: 700, fontSize: '0.72rem',
-                                    borderRadius: '6px', padding: '0.15rem 0.45rem', lineHeight: 1.5,
-                                  }}>L{lk.level}</span>
-                                  <span style={{ fontSize: '0.78rem', fontWeight: 600, color: 'var(--text)' }} title={LEVEL_NAMA_RESMI[lk.level] || ''}>
-                                    L{lk.level} · {LEVEL_LABEL[lk.level] || `Level ${lk.level}`}
-                                  </span>
-                                </div>
+                          <LevelFokus
+                            ind={modul.ind}
+                            warna={LEVEL_WARNA}
+                            layout="stack"
+                            idPrefix="krit"
+                            levels={modul.level_kriteria.map(lk => lk.level).filter(l => l >= 1)}
+                            ringkas={(lv) => { const n = modul.level_kriteria.find(x => x.level === lv)?.bukti_dukung?.length || 0; return n ? `${n} butir bukti` : ''; }}
+                          >
+                            {(lv) => { const lk = modul.level_kriteria.find(x => x.level === lv); if (!lk) return null; return (
+                              <div style={{ borderRadius: '8px', border: '1px solid var(--border)', background: 'var(--surface-1)' }}>
                                 <div style={{ padding: '0.75rem', fontSize: '0.8rem', lineHeight: 1.6, color: 'var(--text)', overflowWrap: 'break-word' }}>
                                   {/* Ringkasan singkat kriteria */}
                                   {lk.ringkasan && (
@@ -567,8 +570,13 @@ function formatKriteria(text) {
                                   )}
                                 </div>
                               </div>
-                            ))}
-                          </div>
+                            ); }}
+                          </LevelFokus>
+                          {modul.level_kriteria.some(lk => lk.level === 0) && (
+                            <p style={{ fontSize: '0.72rem', color: 'var(--muted)', margin: '0.5rem 0 0', fontStyle: 'italic' }}>
+                              Kondisi awal (L0): {modul.level_kriteria.find(lk => lk.level === 0)?.ringkasan}
+                            </p>
+                          )}
                         </div>
                       )}
 
@@ -674,6 +682,14 @@ function formatKriteria(text) {
                           </div>
 
                           {(viewMode[modul.nomor] || 'level') === 'level' ? (
+                          <LevelFokus
+                            ind={modul.ind}
+                            warna={LEVEL_WARNA}
+                            layout="stack"
+                            idPrefix="bukti"
+                            ringkas={(lv) => { const it = modul.ind.bukti_dukung.filter(b => b.level === lv); return `${it.filter(b => b.status === 'diterima').length}/${it.length} diterima${it.some(b => b.status === 'revisi') ? ' · 🔁 revisi' : ''}`; }}
+                          >
+                            {(lv) => { const rows = modul.ind.bukti_dukung.filter(b => b.level === lv); if (rows.length === 0) return <p style={{ fontSize: '0.75rem', color: 'var(--muted)', fontStyle: 'italic', margin: '0.25rem 0' }}>— belum ada butir bukti pada level ini</p>; return (
                           <div style={{ overflowX: 'auto' }}>
                             <table style={{
                               width: '100%', borderCollapse: 'collapse', fontSize: '0.78rem',
@@ -691,7 +707,7 @@ function formatKriteria(text) {
                                 </tr>
                               </thead>
                               <tbody>
-                                {modul.ind.bukti_dukung.map(bd => {
+                                {rows.map(bd => {
                                 const sm = STATUS_META[bd.status] || STATUS_META.belum;
                                 const url = bd.url_preview || '';
                                 const isPdf = bd._ext === 'pdf' && !!url;
@@ -810,6 +826,8 @@ function formatKriteria(text) {
                               </tbody>
                             </table>
                           </div>
+                            ); }}
+                          </LevelFokus>
                           ) : (
                           /* ── VIEW PER DOKUMEN KUNCI ── */
                           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
@@ -995,8 +1013,18 @@ function formatKriteria(text) {
               {kebutuhanData.cakupan.indikator} indikator
             </span>
             <span className="stat-badge" style={{ background: 'var(--ok-bg)', color: 'var(--ok)' }}>
-              ✅ {kebutuhanData.status_indikasi.lengkap} indikasi lengkap
+              ✅ {kebutuhanData.status_indikasi.diterima} indikasi diterima asesor
             </span>
+            {kebutuhanData.status_indikasi.revisi > 0 && (
+              <span className="stat-badge" style={{ background: STATUS_META.revisi.bg, color: STATUS_META.revisi.color }}>
+                🔁 {kebutuhanData.status_indikasi.revisi} revisi
+              </span>
+            )}
+            {kebutuhanData.status_indikasi.draf > 0 && (
+              <span className="stat-badge" style={{ background: 'var(--surface-2)', color: 'var(--primary)' }}>
+                📝 {kebutuhanData.status_indikasi.draf} draf lokal
+              </span>
+            )}
             <span className="stat-badge" style={{ background: 'var(--surface-2)', color: 'var(--muted)' }}>
               ⬜ {kebutuhanData.status_indikasi.belum} belum
             </span>
@@ -1010,7 +1038,7 @@ function formatKriteria(text) {
             {kebutuhanData.indikator.map((e) => {
               const open = bukaMatriks === e.indikator;
               const semua = e.level.flatMap((lv) => lv.kebutuhan);
-              const nLengkap = semua.filter((k) => k.status_indikasi === 'lengkap').length;
+              const nLengkap = semua.filter((k) => k.status_indikasi === 'diterima').length;
               const pct = Math.round((nLengkap / semua.length) * 100);
               const w = pemdiData.aspek.find((a) => a.singkat === e.aspek_singkat)?.warna || '#6b7280';
               return (
@@ -1041,7 +1069,7 @@ function formatKriteria(text) {
                         <div style={{ flex: 1, maxWidth: 180, height: 4, borderRadius: 2, background: 'var(--line)', overflow: 'hidden' }}>
                           <div style={{ height: '100%', width: `${pct}%`, borderRadius: 2, background: 'linear-gradient(90deg,#10b981,#059669)' }} />
                         </div>
-                        <span style={{ fontSize: '0.66rem', color: 'var(--muted)' }}>{nLengkap}/{semua.length} indikasi lengkap</span>
+                        <span style={{ fontSize: '0.66rem', color: 'var(--muted)' }}>{nLengkap}/{semua.length} indikasi diterima asesor</span>
                       </div>
                     </div>
                     <span style={{ color: 'var(--muted)', transform: open ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}>▾</span>

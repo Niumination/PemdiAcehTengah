@@ -1,3 +1,4 @@
+import { fokusLevel } from '@/lib/pemdiNilai';
 import Head from 'next/head';
 import PersonaSwitcher from '@/components/persona/PersonaSwitcher';
 import { usePersona } from '@/components/persona/usePersona';
@@ -66,6 +67,8 @@ export async function getStaticProps() {
           id, nama, nilai, target, bobot, deskripsi, koordinator: koordinator || null,
           indikator: (indikator || []).map((i) => ({
             id: i.id, nama: i.nama, nilai: i.nilai, target: i.target,
+            // Fokus level (21 Sep 2026): level dicapai (asesor) & level yang dikejar
+            fokus: (() => { const f = fokusLevel(i); return { dicapai: f.levelDicapai, berikut: f.levelBerikut, eksternal: f.eksternal }; })(),
             bukti: (i.bukti_dukung || []).reduce((acc, b) => { acc[b.status] = (acc[b.status] || 0) + 1; return acc; }, { diterima: 0, revisi: 0, draf: 0, belum: 0 }),
           })),
         })),

@@ -25,7 +25,7 @@
     "id": "level",
     "istilah": "Tingkat Kematangan / Level (1–5)",
     "singkat": "Seperti level di game — angka 1 paling dasar, angka 5 paling matang.",
-    "lengkap": "Skala SPBE: 1 Rintisan, 2 Terkelola, 3 Terstandardisasi, 4 Terintegrasi, 5 Optimum. Target nasional minimal Level 3.",
+    "lengkap": "Skala Pemdi (PermenPANRB 8/2026): 1 Kurang (Merintis/Initiate), 2 Cukup (Membangun/Emerging), 3 Baik (Berkembang/Developing), 4 Sangat Baik (Melembaga/Embedded), 5 Memuaskan (Unggul/Leading). Nilai indikator naik hanya bila SELURUH butir bukti level berikutnya diterima asesor. (Skala SPBE lama: Rintisan–Optimum.)",
     "kategori": "Penilaian"
   },
   {

@@ -21,7 +21,8 @@ React component library — reusable UI building blocks, props-driven.
 | **KpiCards** | `asesor/KpiCards.js` | 4 kartu KPI Mode B (Pemdi, SPBE, bukti Tahap 1 dengan bar segmen, 52 OPD) | `index.js` |
 | **BerandaAsesor** | `beranda/BerandaAsesor.js` | Panel beranda Mode B (hero kokpit, KpiCards, gauge SPBE + AspekAccordion, PPB, OPDTable) — satu-satunya panel pada mode internal | `index.js` |
 | **BerandaPublik** 🌐 | `beranda/BerandaPublik.js` | Panel beranda Mode A; di-`require` kondisional (build-time) agar tidak ikut bundel internal | `index.js` |
-| **AspekAccordion** | `asesor/AspekAccordion.js` | Accordion 7 aspek → indikator + chip status bukti (ok/warn/muted/gray) | `index.js` |
+| **AspekAccordion** | `asesor/AspekAccordion.js` | Accordion 7 aspek → indikator + chip status bukti (ok/warn/muted/gray) + chip `.ind-fokus` "✅ L1 → 🎯 L2" (field `fokus` dari getStaticProps `index.js`) | `index.js` |
+| **LevelFokus** | `asesor/LevelFokus.js` | (21 Sep 2026) Pembungkus daftar bukti/kriteria per level: level **dicapai** (semua butir diterima asesor) + level **berikut** terbuka default, level lain tertutup — klik header untuk buka; tombol "Buka semua level / Kembali ke fokus"; state lokal per indikator (tanpa localStorage). Render isi via `children(level, {peran})`; `layout` grid (/pemdi) atau stack (/modul-indikator). Ekspor tambahan `RingkasFokus`. CSS `.lvfokus-*` di globals.css. Tidak mengubah data | `pemdi.js`, `modul-indikator.js` |
 | **Sidebar** | `Sidebar.js` | Navigasi kiri — **tertutup default** (prop `collapsed` dihormati sejak SSR → tanpa kedip), drawer di ponsel, Esc menutup, `id="sidebar-nav"` | `AppShell.js` |
 | **Footer** | `Footer.js` | Footer — regulasi, kontak, SP4N, lisensi MIT | `AppShell.js` |
 | **ThemeToggle** | `ThemeToggle.js` | Toggle dark/light (localStorage `theme`) | `AppShell.js` |
@@ -62,4 +63,4 @@ React component library — reusable UI building blocks, props-driven.
 - **Tombol bukti di `/pemdi`** memakai kelas `.bukti-act` (target sentuh ≥44px di mobile) + `aria-label`.
 
 ## Status
-🟢 **DOX Clean** — 20/20 komponen dalam tabel ini terverifikasi diimpor minimal satu halaman/komponen aktif (cek: grep impor per file).
+🟢 **DOX Clean** — seluruh komponen dalam tabel ini (diverifikasi 2026-09-21 termasuk LevelFokus) terverifikasi diimpor minimal satu halaman/komponen aktif (cek: grep impor per file).
