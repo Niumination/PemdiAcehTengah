@@ -1,0 +1,12 @@
+{
+ "judul": "Linimasa Evaluasi Kinerja Pemerintah Digital 2026",
+ "sumber": "Jadwal evaluasi Kementerian PANRB 2026 + tenggat internal Tim Koordinasi Pemdi",
+ "tahap": [
+  { "id": "unggah1", "label": "Unggah bukti Tahap 1", "mulai": "2026-08-01", "selesai": "2026-09-15", "status": "selesai", "ket": "37 butir dinilai asesor: 18 diterima · 19 revisi" },
+  { "id": "sinkron", "label": "Sinkron hasil eval.spbe.go.id", "mulai": "2026-09-20", "selesai": "2026-09-20", "status": "selesai", "ket": "Status butir & catatan asesor dimuat ke dashboard" },
+  { "id": "revisi", "label": "Tenggat internal revisi & catatan mandiri", "mulai": "2026-09-21", "selesai": "2026-09-28", "status": "aktif", "ket": "48 butir catatan mandiri siap unggah/dijelaskan ke asesor" },
+  { "id": "interviu", "label": "Interviu asesor eksternal", "mulai": "2026-09-21", "selesai": "2026-09-30", "status": "aktif", "ket": "Klarifikasi bukti Tahap 1 & rencana pemenuhan" },
+  { "id": "visitasi", "label": "Visitasi lapangan", "mulai": "2026-10-01", "selesai": "2026-10-30", "status": "berikut", "ket": "Verifikasi dokumen & sistem di lokasi" },
+  { "id": "penetapan", "label": "Penetapan hasil & predikat", "mulai": "2026-11-01", "selesai": "2026-12-15", "status": "berikut", "ket": "Perkiraan — menunggu surat resmi Kementerian PANRB" }
+ ]
+}

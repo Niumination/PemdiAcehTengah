@@ -1,0 +1,118 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   styles/tokens.css — Token desain "Ruang Kendali" (Patch 1, 22 Sep 2026)
+   Adjektiva: Tegas · Waspada · Berakar · Presisi.
+   Dua tema lewat html[data-theme="dark"|"light"] (kunci localStorage `theme`
+   yang sudah dipakai ThemeToggle). Token lama (--primary, --gold, --bg, …)
+   tetap didefinisikan di globals.css sebagai alias selama transisi.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('/fonts/BricolageGrotesque-Var.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 100 700;
+  font-display: swap;
+  src: url('/fonts/IBMPlexSans-Var.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/IBMPlexMono-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/IBMPlexMono-500.woff2') format('woff2');
+}
+
+:root {
+  /* tipografi */
+  --rk-f-display: 'Bricolage Grotesque', 'Plus Jakarta Sans', system-ui, sans-serif;
+  --rk-f-body: 'IBM Plex Sans', 'Plus Jakarta Sans', system-ui, sans-serif;
+  --rk-f-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --rk-fs-1: 0.8125rem;  /* 13 */
+  --rk-fs-2: 0.875rem;   /* 14 */
+  --rk-fs-3: 1rem;       /* 16 */
+  --rk-fs-4: 1.25rem;    /* 20 */
+  --rk-fs-5: 1.75rem;    /* 28 */
+  --rk-fs-6: 2.75rem;    /* 44 */
+  --rk-fs-7: 4rem;       /* 64 */
+  --rk-r-1: 6px;
+  --rk-r-2: 10px;
+  --rk-sp-1: 4px; --rk-sp-2: 8px; --rk-sp-3: 12px; --rk-sp-4: 16px; --rk-sp-5: 24px; --rk-sp-6: 32px;
+  --rk-bar-h: 56px;
+
+  /* status — sama di dua tema, dipilih agar ≥4.5:1 terhadap panel gelap
+     dan (dengan teks gelap) terhadap panel terang */
+  --rk-ok: #3DBE8B;
+  --rk-warn: #F2B134;
+  --rk-bad: #F0605B;
+  --rk-info: #5AA9FF;
+  --rk-draf: #E08A4C;
+  --rk-pembina: #A98BF0;
+  --rk-ok-ink: #0F6B49;
+  --rk-warn-ink: #7A5200;
+  --rk-bad-ink: #9B2320;
+  --rk-info-ink: #1B5FAF;
+  --rk-draf-ink: #8A4413;
+  --rk-pembina-ink: #5A3FB0;
+
+  /* 7 aspek — rona netral biru-abu bertingkat, emas hanya utk aspek bobot 25 % */
+  --rk-asp1: #6F8BBF; --rk-asp2: #5D9EAF; --rk-asp3: #7A9E7E; --rk-asp4: #A88A5E;
+  --rk-asp5: #8C7BB5; --rk-asp6: #6C9BC9; --rk-asp7: #D4AF5A;
+}
+
+/* ── Tema gelap (bawaan Ruang Kendali; aktif lewat data-theme="dark") ── */
+html[data-theme='dark'] {
+  --rk-bg: #0A1220;
+  --rk-panel: #121F34;
+  --rk-panel-2: #182742;
+  --rk-line: #233552;
+  --rk-line-2: #2E4468;
+  --rk-ink: #E6ECF5;
+  --rk-ink-2: #A7B4C8;
+  --rk-ink-3: #7B8BA5;
+  --rk-emas: #D4AF5A;
+  --rk-emas-ink: #F1D48B;
+  --rk-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --rk-status-ink-ok: var(--rk-ok);
+  --rk-status-ink-warn: var(--rk-warn);
+  --rk-status-ink-bad: var(--rk-bad);
+  --rk-status-ink-info: var(--rk-info);
+  --rk-status-ink-draf: var(--rk-draf);
+  --rk-status-ink-pembina: var(--rk-pembina);
+  color-scheme: dark;
+}
+
+/* ── Tema terang (beige + navy; emas lebih gelap agar terbaca) ── */
+html[data-theme='light'],
+html:not([data-theme]) {
+  --rk-bg: #F4F1EA;
+  --rk-panel: #FFFFFF;
+  --rk-panel-2: #F8F5EE;
+  --rk-line: #DDD6C7;
+  --rk-line-2: #C9C0AD;
+  --rk-ink: #14203A;
+  --rk-ink-2: #3E4B66;
+  --rk-ink-3: #6B7690;
+  --rk-emas: #8F6E25;
+  --rk-emas-ink: #6E5314;
+  --rk-shadow: 0 8px 24px rgba(20, 32, 58, 0.08);
+  --rk-status-ink-ok: var(--rk-ok-ink);
+  --rk-status-ink-warn: var(--rk-warn-ink);
+  --rk-status-ink-bad: var(--rk-bad-ink);
+  --rk-status-ink-info: var(--rk-info-ink);
+  --rk-status-ink-draf: var(--rk-draf-ink);
+  --rk-status-ink-pembina: var(--rk-pembina-ink);
+  color-scheme: light;
+}

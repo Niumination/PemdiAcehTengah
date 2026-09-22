@@ -1,6 +1,12 @@
+import '@/styles/tokens.css';
 import '@/styles/globals.css';
+import '@/styles/ruang-kendali.css';
 import localFont from 'next/font/local';
 import AppShell from '@/components/AppShell';
+import RKShell from '@/components/rk/RKShell';
+
+/** Rute yang sudah memakai kerangka Ruang Kendali (Patch 1); sisanya AppShell lama sampai Patch 2. */
+const RUTE_RK = new Set(['/dashboard', '/indikator', '/antrean']);
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { Analytics } from '@vercel/analytics/react';
@@ -62,9 +68,15 @@ export default function App({ Component, pageProps }) {
         />
       </Head>
       <div className={plusJakartaSans.variable}>
-        <AppShell>
-          <Component {...pageProps} />
-        </AppShell>
+        {RUTE_RK.has(router.pathname) ? (
+          <RKShell data={pageProps.rk}>
+            <Component {...pageProps} />
+          </RKShell>
+        ) : (
+          <AppShell>
+            <Component {...pageProps} />
+          </AppShell>
+        )}
       </div>
       <Analytics />
     </>

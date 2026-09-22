@@ -1,0 +1,4 @@
+Font di folder ini berlisensi SIL Open Font License 1.1 (OFL) — boleh disebarkan bersama aplikasi.
+- Bricolage Grotesque (variable, opsz 12–96, wght 400–800) — © Mathieu Triay, https://github.com/ateliertriay/bricolage
+- IBM Plex Sans (variable wght 100–700), IBM Plex Mono 400/500 — © IBM Corp., https://github.com/IBM/plex
+Subset latin, diunduh dari Google Fonts 22 Sep 2026 untuk self-hosting (tanpa request pihak ketiga).
