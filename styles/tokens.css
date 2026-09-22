@@ -85,6 +85,8 @@ html[data-theme='dark'] {
   --rk-emas: #D4AF5A;
   --rk-emas-ink: #F1D48B;
   --rk-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --rk-shadow-1: none;
+  --rk-tag-alpha: 0%;
   --rk-status-ink-ok: var(--rk-ok);
   --rk-status-ink-warn: var(--rk-warn);
   --rk-status-ink-bad: var(--rk-bad);
@@ -94,25 +96,30 @@ html[data-theme='dark'] {
   color-scheme: dark;
 }
 
-/* ── Tema terang (beige + navy; emas lebih gelap agar terbaca) ── */
+/* ── Tema terang (krem hangat + navy; revisi 23 Sep 2026: kontras & kedalaman) ──
+   Latar krem sedikit lebih dalam supaya panel putih benar-benar "terangkat";
+   garis lebih tegas; teks sekunder digelapkan (ink-2 7.9:1, ink-3 5.2:1 pada putih);
+   emas dipertahankan hanya sebagai aksen (≥4.5:1 pada putih). */
 html[data-theme='light'],
 html:not([data-theme]) {
-  --rk-bg: #F4F1EA;
+  --rk-bg: #EDE8DD;
   --rk-panel: #FFFFFF;
-  --rk-panel-2: #F8F5EE;
-  --rk-line: #DDD6C7;
-  --rk-line-2: #C9C0AD;
-  --rk-ink: #14203A;
-  --rk-ink-2: #3E4B66;
-  --rk-ink-3: #6B7690;
-  --rk-emas: #8F6E25;
-  --rk-emas-ink: #6E5314;
-  --rk-shadow: 0 8px 24px rgba(20, 32, 58, 0.08);
+  --rk-panel-2: #F5F1E8;
+  --rk-line: #D3CBB9;
+  --rk-line-2: #B8AE97;
+  --rk-ink: #101A30;
+  --rk-ink-2: #34405A;
+  --rk-ink-3: #5B6680;
+  --rk-emas: #846419;
+  --rk-emas-ink: #6A500F;
+  --rk-shadow: 0 12px 28px rgba(20, 32, 58, 0.14), 0 1px 2px rgba(20, 32, 58, 0.08);
+  --rk-shadow-1: 0 1px 2px rgba(20, 32, 58, 0.06), 0 4px 14px rgba(20, 32, 58, 0.07);
   --rk-status-ink-ok: var(--rk-ok-ink);
   --rk-status-ink-warn: var(--rk-warn-ink);
   --rk-status-ink-bad: var(--rk-bad-ink);
   --rk-status-ink-info: var(--rk-info-ink);
   --rk-status-ink-draf: var(--rk-draf-ink);
   --rk-status-ink-pembina: var(--rk-pembina-ink);
+  --rk-tag-alpha: 12%;
   color-scheme: light;
 }
