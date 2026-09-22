@@ -54,4 +54,4 @@ Aturan komponen rk/ui: **tanpa emoji**, **font ≥ 11px**, animasi hanya marquee
 - Bottom tabs RKShell target sentuh ≥44px.
 
 ## Status
-🟢 **DOX Clean** — 17 komponen dalam tabel ini terverifikasi diimpor minimal satu halaman/komponen aktif (22 Sep 2026; cek: grep impor per file).
+🟢 **DOX Clean** — 13 komponen dalam tabel ini terverifikasi diimpor minimal satu halaman/komponen aktif (23 Sep 2026 pasca Ruang Kendali; cek: grep impor per file).

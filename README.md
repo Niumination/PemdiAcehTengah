@@ -71,7 +71,7 @@ Situs melayani **satu persona: internal Pemdi**. Persona publik/warga (beranda w
 
 ```
 PemdiAcehTengah/
-├── pages/                # 11 halaman internal + 5 API read-only (lihat pages/AGENTS.md)
+├── pages/                # 14 halaman internal + 14 API route (6 read-only + 5 admin + 3 auth) (lihat pages/AGENTS.md)
 │   ├── dashboard.js      # Dashboard (halaman utama) · indikator.js · antrean.js
 │   ├── pemdi.js          # Dashboard Pemdi — simulasi mandiri + catatan mandiri
 │   ├── modul-indikator.js, requirement.js, spbe.js, probis.js, glosarium.js, cari.js
@@ -81,7 +81,7 @@ PemdiAcehTengah/
 ├── lib/                  # pemdiNilai, catatanMandiri, pjButir, search-index, modeSitus, format, slugify
 ├── data/                 # pemdi.json, modul-indikator.json, catatan-mandiri.json, opd.json, draf-bukti-prioritas.json, …
 ├── scripts/              # Rantai regenerasi data (python3) — lihat data/AGENTS.md
-├── test/                 # node --test (43 tes)
+├── test/                 # node --test (55 tes)
 ├── styles/               # globals.css — Navy/Beige/Gold + Kerawang Gayo
 ├── public/               # PWA, crest, panduan-bukti-l1/*.pdf
 ├── middleware.js         # X-Robots-Tag noindex semua rute
@@ -183,7 +183,7 @@ Alur CMS: suntingan disimpan sebagai *overlay* di Postgres → tampil di dashboa
 
 ## 🤖 Agent Skills (autoskills)
 
-Repo ini membawa [autoskills](https://github.com/midudev/autoskills) — **10 skill** best-practice di `.agents/skills/` (ter-commit; lock file ada di **root repo**: `skills-lock.json`) yang otomatis terdeteksi dari stack: **React, Next.js (2 skill), Supabase, Node.js (2 skill), frontend (SEO, a11y, design)**.
+Repo ini membawa [autoskills](https://github.com/midudev/autoskills) — **10 skill** best-practice di `.agents/skills/` (ter-commit; lock file ada di **root repo**: `skills-lock.json`) yang otomatis terdeteksi dari stack: **React, Next.js (2 skill), Node.js (2 skill), frontend (SEO, a11y, design)**.
 
 > ⚠️ `next-cache-components` (Next.js 16+: PPR, `use cache`, `cacheLife`, `cacheTag`) **dikeluarkan 19 Sep 2026** — proyek ini berjalan di Next.js 14.2.35, jadi API tersebut belum tersedia. Bila `npx autoskills` memasangnya kembali, keluarkan lagi sampai proyek benar-benar naik versi. `next-upgrade` tetap dipertahankan (panduan upgrade, versi-agnostik).
 

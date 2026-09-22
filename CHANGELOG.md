@@ -3,6 +3,17 @@
 Semua perubahan penting proyek ini didokumentasikan di file ini.
 Ringkasan publik tanpa detail internal; dokumen kerja lengkap disimpan pemilik repo di lokasi privat.
 
+## 2026-09-22 — Ruang Kendali + CMS (Patch 1–4)
+
+Keputusan pemilik 22 Sep 2026: dashboard Pemdi menjadi **Ruang Kendali** (command center) untuk Tim Koordinasi + PJ OPD. 5 patch diterapkan dari arena (base `12ad08c`, HEAD `6ce6ef8`), di atas reposisi persona publik.
+
+- **Desain**: token desain baru `styles/tokens.css` (Navy/Beige/Gold, `--rk-*`), shell global `components/rk/RKShell.js` di `_app.js` — bar atas (brand, marquee running text, jam, persona Koordinator/PJ OPD, toggle tema), tab Dashboard/Indikator/Antrean/Lainnya, palet perintah Ctrl+K, drawer detail butir, bottom tabs ponsel, footer Kerawang. Halaman lama dibungkus `.rk-legacy`.
+- **Navigasi**: `/` → **308** ke `/dashboard`. Rute baru `/dashboard` (kompas radial 20 indikator, situasi, antrean, beban PJ, linimasa, prasyarat, PPB, tabel OPD), `/indikator` (butir per level, drawer), `/antrean` (butir revisi+gap berprioritas per PJ).
+- **CMS Ruang Kendali**: `/admin` — masuk per peran (Koordinator / PJ OPD), tabel butir bercatatan mandiri (cari, sunting status·prioritas·PJ·ringkas·kebutuhan; PJ tidak bisa ganti PJ/tandai diterima), tab Konten (marquee, pengumuman, tenggat), Log audit, Ekspor JSON. Penyimpanan: **Neon Postgres opsional** (`DATABASE_URL`; tanpa DB → JSON fallback, semua fitur tetap jalan).
+- **API**: 6 baca + `/api/auth/*` (3) + `/api/admin/*` (5). Sesi CMS: sandi bersama per peran → cookie `pemdi_cms` HMAC 12 jam httpOnly, rate-limit 10/10 mnt. Overlay hanya status + `catatan_mandiri.{ringkas,pj,prioritas,kebutuhan}`; nama butir tak tersentuh.
+- **Pembersihan**: emoji → `Ikon`/`StatusIkon` SVG, CSS mati shell lama dihapus, teks ≥11px, penjaga `scripts/cek-ui.mjs`. AppShell/Sidebar/BottomNav/Footer/ScrollTop/ThemeToggle/BerandaAsesor/KpiCards/AspekAccordion/SpbeGauge/GlossaryTooltip **dihapus**.
+- **DOX**: AGENTS.md (root/components/pages/api/lib/styles), README, `docs/RENCANA-RUANG-KENDALI-CMS.md` diperbarui; skrip + tes overlay/ruangKendali/cmsAuth (suite **55 tes**), lint 0 error, build **66 halaman**.
+
 ## 2026-09-22 — Reposisi: persona publik dihapus & diarsipkan, istilah "Dashboard"
 
 Keputusan pemilik 22 Sep 2026 (membalik entri 21 Sep di bawah): persona publik bukan fondasi, jadi **dihapus dari `main`**. Arsip lengkap: tag git **`arsip/persona-publik-2026-09`** (commit `eeaa573`). Rincian di `REPOSISI-PEMDI.md` §8.

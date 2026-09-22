@@ -27,10 +27,10 @@ Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah. Transformasi menuju Peme
 | **Path Alias** | `@/*` (via `jsconfig.json`) — ex: `@/components/Header` |
 | **Font** | Plus Jakarta Sans (Google Fonts, `display=swap` — lihat `_document.js`) |
 | **Data Source** | **Hanya** `data/*.json` (Pemdi, modul indikator, catatan mandiri, OPD, SPBE, ProBis, PPB, glosarium, dokumen kunci) dibundel saat build. Tidak ada DB runtime sejak reposisi 22 Sep 2026 (Supabase dihapus) |
-| **Komponen** | **17 komponen React aktif** persona internal (reposisi 22 Sep 2026: 14 komponen persona publik dihapus, arsip tag `arsip/persona-publik-2026-09`) — lihat `components/AGENTS.md` |
-| **Halaman** | 11 route halaman + 5 API read-only — lihat `pages/AGENTS.md` |
-| **Lib** | `lib/ruangKendali.js` + `lib/rkData.js` (payload dashboard), `lib/pemdiNilai.js` (rumus PermenPANRB 8/2026), `lib/catatanMandiri.js`, `lib/pjButir.js` (butir Pemdi per OPD), `lib/search-index.js`, `lib/modeSitus.js`, `lib/slugify.js`, `lib/format.js` — lihat `lib/AGENTS.md` |
-| **Status** | 🎯 **Reposisi Opsi B — tahap pembersihan selesai (22 Sep 2026)** — lihat `REPOSISI-PEMDI.md`. Produk aktif: **B1 Dashboard Pemdi (internal: Tim Koordinasi Pemdi + PJ OPD)**. Persona publik (layanan/SKM/lapor/FAQ) **dihapus dari main**, diarsipkan di tag `arsip/persona-publik-2026-09`; B2/B3 ditunda. Akses: noindex (belum ada login). Berikutnya: reskin "Ruang Kendali" (Patch 1–3) + CMS admin (Patch 4) |
+| **Komponen** | **13 komponen React aktif** — rk/{RKShell, Panel, Kompas, Drawer, Palet}, ui/{Ikon, StatusIkon}, CatatanTujuan, asesor/{LevelFokus, CatatanMandiri}, OPDTable, DetailModal, motif/KerawangMotifs (lihat `components/AGENTS.md`) |
+| **Halaman** | 14 route halaman + 14 API route (6 read-only + `/api/admin/*` 5 + `/api/auth/*` 3) — lihat `pages/AGENTS.md` |
+| **Lib** | `lib/ruangKendali.js` + `lib/rkData.js` (payload dashboard), `lib/pemdiNilai.js` (rumus PermenPANRB 8/2026), `lib/catatanMandiri.js`, `lib/pjButir.js` (butir Pemdi per OPD), `lib/cmsAuth.js` (CMS: 2 peran sandi bersama), `lib/overlay.js` (overlay Neon Postgres di atas JSON), `lib/db.js` (serverless Postgres), `lib/search-index.js`, `lib/modeSitus.js`, `lib/slugify.js`, `lib/format.js` — lihat `lib/AGENTS.md` |
+| **Status** | 🎯 **Ruang Kendali + CMS live (22 Sep 2026, `6ce6ef8`)** — lihat `REPOSISI-PEMDI.md` + `docs/RENCANA-RUANG-KENDALI-CMS.md`. Produk aktif: **Dashboard Pemdi internal** untuk Tim Koordinasi Pemdi + PJ OPD. Persona publik diarsipkan di tag `arsip/persona-publik-2026-09`. Semua rute di `RKShell`, `/` → 308 `/dashboard`, CMS `/admin` (overlay Neon Postgres; tanpa env → mode baca + API tulis 503) |
 | **Remote** | `git@github.com:Niumination/PemdiAcehTengah.git` |
 | **Production** | https://pemdi-aceh-tengah.vercel.app |
 | **License** | MIT |
@@ -90,7 +90,7 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 | `package.json` | Dependencies: next 14.2.35, react 18.3.1 · `npm test` = node --test (Node 22) |
 | `next.config.js` | Standalone output, reactStrictMode, unoptimized images |
 | `jsconfig.json` | Path alias `@/*` |
-| `.github/workflows/ci.yml` | CI (Node 20): `npm ci` → lint → **`npm test`** (20 tes) → build. Gerbang mutu setiap push/PR ke `main` |
+| `.github/workflows/ci.yml` | CI (Node 20): `npm ci` → lint → **`npm test`** (55 tes) → build. Gerbang mutu setiap push/PR ke `main` |
 | `.gitignore` | node_modules, .next, .env, *.old, build |
 | `docs/riset-peta-proses-bisnis-permenpan-19-2018.md` | Riset lengkap framework PPB (408 lines) — Permenpan 19/2018, BPMN, template, contoh daerah |
 | `docs/riset-data-aceh-tengah.md` | Riset data Aceh Tengah (255 lines) — visi misi, RPJMD, OPD, urusan konkuren, SPBE, transformasi digital |
@@ -100,7 +100,7 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 | `styles/` | CSS globals — **Gayo Civic Digital v3**, CSS variables, hero award gradient, dark mode |
 | `data/` | Data statis JSON (Pemdi, modul indikator, catatan mandiri, OPD, SPBE, ProBis, PPB) + glosarium & dokumen kunci |
 | `docs/` | Dokumentasi, PDF, riset |
-| `lib/` | Util murni: `ruangKendali.js`, `rkData.js`, `pemdiNilai.js`, `catatanMandiri.js`, `pjButir.js`, `search-index.js`, `modeSitus.js`, `format.js`, `slugify.js` |
+| `lib/` | Util murni: `ruangKendali.js`, `rkData.js`, `overlay.js`, `db.js`, `cmsAuth.js`, `pemdiNilai.js`, `catatanMandiri.js`, `pjButir.js`, `search-index.js`, `modeSitus.js`, `format.js`, `slugify.js` |
 | `public/manifest.json` | PWA manifest — standalone, theme_color #1F2A44, icons 192+512+maskable+apple-touch |
 | `public/icons/` | PWA icons — `icon-192.png`, `icon-512.png`, `icon-maskable-512.png`, `apple-touch-icon.png`, `icon.svg`, `192.svg` |
 | `public/crest-pemdi.svg` | Lambang daerah Aceh Tengah (crest) |
@@ -160,21 +160,22 @@ Gap sebelumnya (Sprint Redesign Award Level + Trust Infrastructure) sudah diimpl
 | CORS & XSS helpers | `lib/cors.js`, `lib/safeRichText.js` | ✅ | 14 Jun 2026 |
 | RFC 9116 | `.well-known/security.txt` | ✅ | 14 Jun 2026 |
 
-**Angka terkini (diverifikasi 19 Sep 2026) — tabel di atas adalah catatan historis Sprint Juni 2026, bukan angka aktif:**
+**Angka terkini (diverifikasi 23 Sep 2026, `6ce6ef8` Ruang Kendali + CMS):**
 
-- **20 komponen aktif** di `components/` (22 dead code dihapus saat hardening 17 Sep 2026)
-- **20 route halaman + 12 API route**
-- **9 modul** di `lib/`
-- **20 tes** (`test/pemdiNilai.test.mjs` 16 + `test/requirement.test.mjs` 4) — dijalankan CI dan `npm test`
+- **13 komponen aktif** di `components/` — rk/{RKShell, Panel, Kompas, Drawer, Palet}, ui/{Ikon, StatusIkon}, CatatanTujuan, asesor/{LevelFokus, CatatanMandiri}, OPDTable, DetailModal, motif/KerawangMotifs
+- **14 route halaman + 14 API route** (6 read-only + 5 admin CMS + 3 auth)
+- **12 modul** di `lib/`
+- **55 tes** (`pemdiNilai` 16 + `requirement` 4 + `catatanMandiri` 10 + `pjButir` + `cekUi` + `overlay` + `ruangKendali`) — dijalankan CI dan `npm test`
+- **66 halaman statis** di build · `npx next lint` 0 error · `node scripts/cek-ui.mjs` bersih
 
-> Angka lama pada dokumen ini ("30 komponen", "16 halaman + 7 API route") tidak lagi berlaku dan sudah dikoreksi 19 Sep 2026.
+## Status Sekarang — 23 Sep 2026
 
-## Status Sekarang — 19 Sep 2026
-
-**Repo:** branch `main` · `git@github.com:Niumination/PemdiAcehTengah.git` · produksi `https://pemdi-aceh-tengah.vercel.app` · working tree bersih, semua commit ter-push.
+**Repo:** branch `main` · `git@github.com:Niumination/PemdiAcehTengah.git` · produksi `https://pemdi-aceh-tengah.vercel.app` · HEAD `6ce6ef8` · working tree bersih, semua commit ter-push.
 
 | Milestone | Ringkasan |
 |-----------|-----------|
+| **Ruang Kendali + CMS — 22 Sep 2026** | 5 patch arena di atas `12ad08c`: (1) fondasi desain `styles/tokens.css` + `components/rk/*` + rute baru `/dashboard` `/indikator` `/antrean` + `lib/ruangKendali.js` + `data/linimasa.json`; (2) navigasi pindah ke `RKShell`, `/` → 308 `/dashboard`, shell lama (AppShell/Sidebar/BottomNav/Footer/ScrollTop/ThemeToggle/BerandaAsesor) dihapus; (3) emoji → `Ikon`/`StatusIkon`, 4 komponen mati dihapus, −460 baris CSS mati, font ≥ 11px, penjaga `scripts/cek-ui.mjs`; (4) DOX pass; (5) CMS `/admin` + overlay Neon Postgres di atas JSON, 2 peran sandi bersama, log audit, ekspor ke `catatan-mandiri.json`. 81 berkas +3.258/−2.175 · 55/55 tes · lint 0 error · build 66 halaman · cek-ui bersih |
+| **Reposisi Opsi B — 22 Sep 2026** | Persona publik dihapus dari main (+521/−6.895, 83 berkas): 14 komponen warga, 9 halaman publik, Supabase, middleware persona. Arsip tag `arsip/persona-publik-2026-09` di `eeaa573`. Produk = Dashboard Pemdi internal murni |
 | **Hardening 17 Sep 2026** | 22 dead code dihapus, 20 tes (`node --test`) ditambahkan, rate limiting atomic (`lib/rate-limit-db.js` + RPC Supabase), `/api/health`, sanitizer & `adminAuth` diperkuat, canonical + `og:url`, `og-image.jpg` 166 KB (dari 1,6 MB) |
 | **Merge PR #5 — 18 Sep 2026** | Kontribusi eksternal arena.ai di-*squash* ke `96e018a`: `audit/` dikeluarkan dari repo (arsip privat pemilik), `.gitignore` diperbaiki (`data/*.bak-*`), `/api/health` tidak lagi membocorkan `error.message` ke respons |
 | **CI — 18 Sep 2026** | `.github/workflows/ci.yml`: `npm ci` → lint → **`npm test`** → build (Node 20). Menjadi gerbang mutu untuk setiap push/PR |
