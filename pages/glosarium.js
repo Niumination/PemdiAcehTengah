@@ -45,7 +45,7 @@ export default function GlosariumPage() {
   return (
     <>
       <Head>
-        <title>📖 Glosarium — Istilah Pemerintah Digital | Pemdi Aceh Tengah</title>
+        <title>Glosarium — Istilah Pemerintah Digital | Pemdi Aceh Tengah</title>
         <meta name="description" content="Kumpulan istilah teknis dalam portal Pemdi Aceh Tengah, dijelaskan dengan bahasa sederhana." />
       </Head>
 
@@ -63,7 +63,7 @@ export default function GlosariumPage() {
       }}>
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <h1 className="gold-head" style={{ fontSize: 'clamp(1.25rem, 3.5vw, 1.75rem)', fontWeight: 700, marginBottom: '0.5rem' }}>
-            📖 Glosarium — Istilah Pemerintah Digital
+            Glosarium — Istilah Pemerintah Digital
           </h1>
           <p style={{ fontSize: '0.9375rem', color: 'rgba(255,255,255,0.85)', maxWidth: '560px', margin: '0 auto', lineHeight: 1.6 }}>
             Kumpulan istilah teknis dalam portal Pemdi Aceh Tengah, dijelaskan dengan bahasa sederhana.
@@ -107,8 +107,7 @@ export default function GlosariumPage() {
               }}
               aria-hidden="true"
             >
-              🔍
-            </span>
+              </span>
           </div>
           <p style={{ fontSize: '0.75rem', color: 'var(--muted)', marginTop: '0.5rem', textAlign: 'center' }}>
             {filtered.length} dari {glosariumData.length} istilah ditemukan
@@ -121,7 +120,6 @@ export default function GlosariumPage() {
         <div className="container" style={{ maxWidth: '780px' }}>
           {Object.keys(grouped).length === 0 && (
             <div style={{ textAlign: 'center', padding: '2rem 0' }}>
-              <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>❌</div>
               <p style={{ fontSize: '0.9375rem', color: 'var(--muted)' }}>
                 Tidak ada istilah ditemukan untuk &ldquo;{query}&rdquo;
               </p>
@@ -183,8 +181,7 @@ export default function GlosariumPage() {
                         }}
                         title="Salin tautan"
                       >
-                        🔗
-                      </a>
+                        </a>
                     </div>
 
                     {entry.kepanjangan && (

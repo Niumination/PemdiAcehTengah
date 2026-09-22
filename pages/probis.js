@@ -218,7 +218,7 @@ export default function PetaProsesBisnis({ data }) {
           {probis.level_2.kategori.map((k, i) => (
             <div key={i} className="kategori-section">
               <div className="kategori-header" style={{ borderLeftColor: k.warna }}>
-                <div className="kategori-icon">{k.icon}</div>
+                <div className="kategori-icon">{String(i + 1).padStart(2, '0')}</div>
                 <div>
                   <h3 style={{ color: k.warna }}>{k.nama}</h3>
                   <p className="kategori-desc">{k.deskripsi}</p>
@@ -297,7 +297,7 @@ export default function PetaProsesBisnis({ data }) {
         .ppb-level-badge {
           width: 44px; height: 44px; border-radius: 10px;
           display: flex; align-items: center; justify-content: center;
-          font-size: 0.625rem; font-weight: 700; letter-spacing: 0.03em;
+          font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.03em;
           flex-shrink: 0; color: white; border: 2px solid;
         }
         .level-0 { background: #1565c0; border-color: #1565c0; }
@@ -357,7 +357,7 @@ export default function PetaProsesBisnis({ data }) {
           color: var(--primary); text-align: right;
         }
         .misi-number {
-          font-size: 0.625rem; font-weight: 700; text-transform: uppercase;
+          font-size: 0.6875rem; font-weight: 700; text-transform: uppercase;
           letter-spacing: 0.05em; color: var(--primary); margin-bottom: 0.25rem;
         }
         .misi-nama { font-size: 1rem; font-weight: 600; margin: 0 0 0.5rem; }
@@ -409,7 +409,7 @@ export default function PetaProsesBisnis({ data }) {
         .proses-output-label { font-weight: 600; }
         .proses-opd-badge {
           display: inline-block; margin-top: 0.5rem;
-          font-size: 0.625rem; padding: 0.15rem 0.5rem;
+          font-size: 0.6875rem; padding: 0.15rem 0.5rem;
           background: rgba(0, 0, 0, 0.05); border-radius: 4px; color: var(--muted);
         }
 

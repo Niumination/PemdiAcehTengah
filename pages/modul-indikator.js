@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import StatusIkon from '@/components/ui/StatusIkon';
 import { useMemo, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -349,7 +350,7 @@ function formatKriteria(text) {
             </Link>
           </div>
           <div style={{ marginTop: '1rem' }}>
-            <h1 className="gold-head">📋 Modul Indikator Pemdi</h1>
+            <h1 className="gold-head">Modul Indikator Pemdi</h1>
             <p style={{ color: 'var(--muted)', marginTop: '0.25rem', maxWidth: 640 }}>
               Panduan penyusunan bukti dukung untuk 20 indikator Pemerintah Digital
               berdasarkan PermenPANRB 8/2026 — status tiap butir mengikuti <strong>hasil penilaian asesor</strong> di
@@ -365,12 +366,12 @@ function formatKriteria(text) {
             </span>
             {['diterima', 'revisi', 'draf', 'belum'].map(k => (
               <span key={k} className="stat-badge" style={{ background: STATUS_META[k].bg, color: STATUS_META[k].color }} title={STATUS_META[k].ket}>
-                {STATUS_META[k].icon} {merged.reduce((s, m) => s + (m.status[k] || 0), 0)} {STATUS_META[k].label}
+                <StatusIkon k={k} /> {merged.reduce((s, m) => s + (m.status[k] || 0), 0)} {STATUS_META[k].label}
               </span>
             ))}
             {pemdiData.penilaian_tahap1 && (
               <span className="stat-badge" style={{ background: 'var(--primary-bg, #e3edff)', color: 'var(--primary)' }}>
-                📤 Tahap 1 eval.spbe.go.id: {pemdiData.penilaian_tahap1.dinilai} butir dinilai · sinkron {pemdiData.penilaian_tahap1.tanggal_sinkron}
+                Tahap 1 eval.spbe.go.id: {pemdiData.penilaian_tahap1.dinilai} butir dinilai · sinkron {pemdiData.penilaian_tahap1.tanggal_sinkron}
               </span>
             )}
           </div>
@@ -408,7 +409,7 @@ function formatKriteria(text) {
           <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
             {[
               { key: 'semua', label: `Semua (${merged.length})` },
-              { key: 'revisi', label: `🔁 Revisi Asesor (${merged.filter(m => m.status.revisi > 0).length})` },
+              { key: 'revisi', label: `Revisi Asesor (${merged.filter(m => m.status.revisi > 0).length})` },
               { key: 'perlu', label: `Perlu Dikerjakan (${merged.filter(m => m.status.belum > 0 || m.status.proses > 0 || m.status.draf > 0 || m.status.revisi > 0).length})` },
               { key: 'selesai', label: `Selesai (${merged.filter(m => m.status.diterima === m.status.count && m.status.count > 0).length})` },
             ].map(tab => (
@@ -426,7 +427,7 @@ function formatKriteria(text) {
           </div>
 
           {/* ════════ MODUL LIST ════════ */}
-          <KerawangDivider label="Daftar Modul Indikator" icon="🧭" style={{ margin: '6px 0 18px' }} />
+          <KerawangDivider label="Daftar Modul Indikator" style={{ margin: '6px 0 18px' }} />
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
             {filtered.map(modul => {
               const warnaAspek = pemdiData.aspek.find(a => a.nama === modul.aspek) || {};
@@ -463,7 +464,7 @@ function formatKriteria(text) {
                           {modul.indikator_id} — {modul.judul}
                         </strong>
                         <span style={{
-                          fontSize: '0.65rem', padding: '0.15rem 0.4rem', borderRadius: '4px',
+                          fontSize: '0.6875rem', padding: '0.15rem 0.4rem', borderRadius: '4px',
                           background: `${w}15`, color: w, fontWeight: 600,
                         }}>{modul.aspek?.replace('Aspek ', 'A')}</span>
                       </div>
@@ -483,7 +484,7 @@ function formatKriteria(text) {
                             }} />
                           </div>
                           <span style={{ fontSize: '0.7rem', color: 'var(--muted)' }}>
-                            {modul.status.diterima}/{modul.status.count} diterima{modul.status.revisi > 0 ? ` · 🔁 ${modul.status.revisi} revisi` : ''}
+                            {modul.status.diterima}/{modul.status.count} diterima{modul.status.revisi > 0 ? ` · ${modul.status.revisi} revisi` : ''}
                           </span>
                         </div>
                       )}
@@ -505,7 +506,7 @@ function formatKriteria(text) {
                       {modul.deskripsi && (
                         <details className="modul-desk" style={{ margin: '0.75rem 0' }}>
                           <summary style={{ fontSize: '0.8rem', color: 'var(--muted)', cursor: 'pointer', lineHeight: 1.6 }}>
-                            📖 {modul.deskripsi.split(/(?<=\.)\s/)[0]} <span style={{ color: 'var(--primary)', fontWeight: 600 }}>— baca deskripsi lengkap Permen</span>
+                            {modul.deskripsi.split(/(?<=\.)\s/)[0]} <span style={{ color: 'var(--primary)', fontWeight: 600 }}>— baca deskripsi lengkap Permen</span>
                           </summary>
                           <p style={{ fontSize: '0.82rem', color: 'var(--text)', lineHeight: 1.65, margin: '0.5rem 0 0', whiteSpace: 'pre-line' }}>
                             {modul.deskripsi.replace(/\.\s+([A-Z][^.:]{2,40}:)\s+1\./g, '.\n$1\n1.').replace(/\s(\d+\.)\s/g, '\n$1 ')}
@@ -516,7 +517,7 @@ function formatKriteria(text) {
                       {/* Posisi saat ini — ringkas, dihitung dari pemdi.json (satu sumber) */}
                       {modul.rekomendasi?.length > 0 && (
                         <div style={{ padding: '0.6rem 0.8rem', borderRadius: '8px', background: 'var(--warn-bg)', border: '1px solid var(--warn)', marginBottom: '0.5rem' }}>
-                          <div style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--warn)', marginBottom: '0.25rem' }}>🧭 Posisi & langkah berikut</div>
+                          <div style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--warn)', marginBottom: '0.25rem' }}>Posisi & langkah berikut</div>
                           <ul style={{ margin: 0, paddingLeft: '1.1rem', fontSize: '0.76rem', lineHeight: 1.5, color: 'var(--ink-secondary)' }}>
                             {modul.rekomendasi.map((r, i) => <li key={i}>{r}</li>)}
                           </ul>
@@ -527,7 +528,7 @@ function formatKriteria(text) {
                       {modul.level_kriteria?.length > 0 && (
                         <div style={{ marginTop: '1rem' }}>
                           <h4 style={{ fontSize: '0.85rem', fontWeight: 700, marginBottom: '0.5rem', color: 'var(--text)' }}>
-                            📊 Kriteria per Level
+                            Kriteria per Level
                           </h4>
                           <LevelFokus
                             ind={modul.ind}
@@ -550,10 +551,10 @@ function formatKriteria(text) {
                                   {lk.bukti_dukung?.length > 0 && (
                                     <div>
                                       <p style={{
-                                        fontSize: '0.66rem', fontWeight: 700, color: 'var(--primary)',
+                                        fontSize: '0.6875rem', fontWeight: 700, color: 'var(--primary)',
                                         margin: '0 0 0.3rem', textTransform: 'uppercase', letterSpacing: '0.5px',
                                       }}>
-                                        📎 Bukti Dukung ({lk.bukti_dukung.length})
+                                        Bukti Dukung ({lk.bukti_dukung.length})
                                       </p>
                                       <ul style={{ margin: 0, paddingLeft: '1.05rem' }}>
                                         {lk.bukti_dukung.map((b, i) => (
@@ -585,7 +586,7 @@ function formatKriteria(text) {
                       {modul.data_dukung_modul?.length > 0 && (
                         <div style={{ marginTop: '1rem' }}>
                           <h4 style={{ fontSize: '0.85rem', fontWeight: 700, marginBottom: '0.3rem', color: 'var(--text)' }}>
-                            📎 Contoh Bukti Dukung (Modul)
+                            Contoh Bukti Dukung (Modul)
                           </h4>
                           <p style={{ fontSize: '0.7rem', color: 'var(--muted)', marginBottom: '0.6rem' }}>
                             Disusun sesuai kondisi Pemkab Aceh Tengah — cocokkan dengan item bukti per level di atas.
@@ -596,7 +597,7 @@ function formatKriteria(text) {
                                 <span style={{
                                   display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                                   background: LEVEL_WARNA[lv.level] || '#6b7280',
-                                  color: '#fff', fontWeight: 700, fontSize: '0.62rem',
+                                  color: '#fff', fontWeight: 700, fontSize: '0.6875rem',
                                   borderRadius: '5px', padding: '0.1rem 0.35rem', lineHeight: 1.5,
                                 }}>L{lv.level}</span>
                                 <span style={{ fontSize: '0.72rem', fontWeight: 600, color: 'var(--text)' }}>
@@ -619,7 +620,7 @@ function formatKriteria(text) {
                       {pj && (
                         <div style={{ marginTop: '1rem', padding: '0.75rem', borderRadius: '8px', background: `${w}08`, border: `1px solid ${w}20` }}>
                           <h4 style={{ fontSize: '0.85rem', fontWeight: 700, marginBottom: '0.4rem', color: 'var(--text)' }}>
-                            👤 Penanggung Jawab
+                            Penanggung Jawab
                           </h4>
                           <div style={{ fontSize: '0.8rem', color: 'var(--muted)' }}>
                             <div><strong>Lead:</strong> {pj.lead}</div>
@@ -642,7 +643,7 @@ function formatKriteria(text) {
                               background: STATUS_META.revisi.bg, border: `1px solid ${STATUS_META.revisi.color}`,
                               fontSize: '0.8rem', color: STATUS_META.revisi.color,
                             }}>
-                              🔁 <strong>{modul.status.revisi} bukti dinyatakan REVISI oleh asesor</strong> — perbaiki sesuai catatan pada tabel di bawah,
+                              <strong>{modul.status.revisi} bukti dinyatakan REVISI oleh asesor</strong> — perbaiki sesuai catatan pada tabel di bawah,
                               lalu unggah ulang di eval.spbe.go.id. Lihat draf perbaikan di <Link href="/requirement" style={{ color: 'inherit', fontWeight: 700 }}>Draf Bukti Dukung →</Link>
                             </div>
                           )}
@@ -652,12 +653,12 @@ function formatKriteria(text) {
                               background: 'var(--warn-bg)', border: '1px solid var(--warn)',
                               fontSize: '0.8rem', color: 'var(--warn)',
                             }}>
-                              ⚠️ <strong>Belum ada bukti yang diterima asesor</strong> pada indikator ini —
+                              <strong>Belum ada bukti yang diterima asesor</strong> pada indikator ini —
                               butir Level 1 belum diunggah/dinilai di eval.spbe.go.id, sehingga nilai simulasi masih 0.
                             </div>
                           )}
                           <h4 style={{ fontSize: '0.85rem', fontWeight: 700, marginBottom: '0.5rem', color: 'var(--text)' }}>
-                            📋 Bukti Dukung — Kondisi Existing Pemkab Aceh Tengah
+                            Bukti Dukung — Kondisi Existing Pemkab Aceh Tengah
                           </h4>
 
                           {/* Toggle view: Per Level ↔ Per Dokumen Kunci */}
@@ -689,7 +690,7 @@ function formatKriteria(text) {
                             warna={LEVEL_WARNA}
                             layout="stack"
                             idPrefix="bukti"
-                            ringkas={(lv) => { const it = modul.ind.bukti_dukung.filter(b => b.level === lv); return `${it.filter(b => b.status === 'diterima').length}/${it.length} diterima${it.some(b => b.status === 'revisi') ? ' · 🔁 revisi' : ''}`; }}
+                            ringkas={(lv) => { const it = modul.ind.bukti_dukung.filter(b => b.level === lv); return `${it.filter(b => b.status === 'diterima').length}/${it.length} diterima${it.some(b => b.status === 'revisi') ? ' · revisi' : ''}`; }}
                           >
                             {(lv) => { const rows = modul.ind.bukti_dukung.filter(b => b.level === lv); if (rows.length === 0) return <p style={{ fontSize: '0.75rem', color: 'var(--muted)', fontStyle: 'italic', margin: '0.25rem 0' }}>— belum ada butir bukti pada level ini</p>; return (
                           <div style={{ overflowX: 'auto' }}>
@@ -729,29 +730,29 @@ function formatKriteria(text) {
                                     </td>
                                     <td style={{ ...tdStyle, fontWeight: 500 }}>
                                       {bd.eval?.kode && (
-                                        <code style={{ fontSize: '0.64rem', fontWeight: 800, color: sm.color, border: `1px solid ${sm.color}`, borderRadius: '3px', padding: '0 4px', marginRight: '0.4rem' }}
+                                        <code style={{ fontSize: '0.6875rem', fontWeight: 800, color: sm.color, border: `1px solid ${sm.color}`, borderRadius: '3px', padding: '0 4px', marginRight: '0.4rem' }}
                                           title={`Kode bukti di eval.spbe.go.id (Tahap ${bd.eval.tahap}) — hasil: ${sm.label}`}>{bd.eval.kode}</code>
                                       )}
                                       {bd.nama}
                                       {bd.status === 'revisi' && bd.catatan && (
-                                        <div style={{ fontSize: '0.68rem', color: STATUS_META.revisi.color, marginTop: '0.2rem', fontWeight: 600 }}>{REVISI_JENIS[bd.eval?.jenis]?.icon || '🔁'} {REVISI_JENIS[bd.eval?.jenis]?.label || 'Revisi'}: {bd.catatan}</div>
+                                        <div style={{ fontSize: '0.6875rem', color: STATUS_META.revisi.color, marginTop: '0.2rem', fontWeight: 600 }}><StatusIkon k={bd.eval?.jenis || 'revisi'} /> {REVISI_JENIS[bd.eval?.jenis]?.label || 'Revisi'}: {bd.catatan}</div>
                                       )}
                                       {bd._peran === 'pendukung' && (
                                         <span style={{
                                           display: 'inline-block', marginLeft: '0.4rem', padding: '0.1rem 0.4rem',
                                           borderRadius: '4px', background: 'var(--surface-2)', color: 'var(--muted)',
-                                          border: '1px solid var(--border)', fontSize: '0.62rem', fontWeight: 600, verticalAlign: 'middle',
+                                          border: '1px solid var(--border)', fontSize: '0.6875rem', fontWeight: 600, verticalAlign: 'middle',
                                         }} title="Dokumen penunjang (perbup/SK umum) — mendukung bukti utama, tidak dihitung untuk kelengkapan level">
-                                          🔹 Pendukung
+                                          Pendukung
                                         </span>
                                       )}
                                       {isDup && (
                                         <span style={{
                                           display: 'inline-block', marginLeft: '0.4rem', padding: '0.1rem 0.4rem',
                                           borderRadius: '4px', background: 'var(--gold-light)', color: 'var(--gold-deep)',
-                                          fontSize: '0.62rem', fontWeight: 600, verticalAlign: 'middle',
+                                          fontSize: '0.6875rem', fontWeight: 600, verticalAlign: 'middle',
                                         }} title="Dokumen yang sama dipakai sebagai bukti di lebih dari satu level — wajar sesuai kriteria level">
-                                          🔁 multi-level
+                                          multi-level
                                         </span>
                                       )}
                                       {bd.detail && <div style={{ fontSize: '0.7rem', color: 'var(--muted)', marginTop: '0.15rem' }}>{bd.detail}</div>}
@@ -773,7 +774,7 @@ function formatKriteria(text) {
                                         background: sm.bg, color: sm.color,
                                         fontSize: '0.7rem', fontWeight: 600, whiteSpace: 'nowrap',
                                       }}>
-                                        {sm.icon} {sm.label}
+                                        <StatusIkon k={sm.key || sm.label.toLowerCase()} /> {sm.label}
                                       </span>
                                     </td>
                                     <td style={tdStyle}>
@@ -783,7 +784,7 @@ function formatKriteria(text) {
                                           <span key={no} style={{
                                             display: 'inline-block', padding: '0.1rem 0.4rem', margin: '0.1rem',
                                             borderRadius: '4px', background: 'var(--primary)15',
-                                            color: 'var(--primary)', fontSize: '0.65rem', fontWeight: 700,
+                                            color: 'var(--primary)', fontSize: '0.6875rem', fontWeight: 700,
                                             border: '1px solid var(--primary)30',
                                             cursor: 'pointer', whiteSpace: 'nowrap',
                                           }}
@@ -794,7 +795,7 @@ function formatKriteria(text) {
                                           </span>
                                         );
                                       }) : (
-                                        <span style={{ fontSize: '0.65rem', color: 'var(--muted)' }}>—</span>
+                                        <span style={{ fontSize: '0.6875rem', color: 'var(--muted)' }}>—</span>
                                       )}
                                     </td>
                                     <td style={{...tdStyle, textAlign:'center'}}>
@@ -805,7 +806,7 @@ function formatKriteria(text) {
                                             background: 'var(--primary)', color: '#fff', cursor: 'pointer',
                                             fontSize: '0.7rem', fontWeight: 600, whiteSpace: 'nowrap',
                                           }}>
-                                          👁️ Lihat
+                                          Lihat
                                         </button>
                                       ) : isUrl ? (
                                         <a href={url} target="_blank" rel="noopener noreferrer"
@@ -814,10 +815,10 @@ function formatKriteria(text) {
                                             background: 'var(--primary)', color: '#fff', textDecoration: 'none',
                                             fontSize: '0.7rem', fontWeight: 600, whiteSpace: 'nowrap',
                                           }}>
-                                          🌐 Buka
+                                          Buka
                                         </a>
                                       ) : (
-                                        <span style={{ fontSize: '0.65rem', color: 'var(--muted)' }}>—</span>
+                                        <span style={{ fontSize: '0.6875rem', color: 'var(--muted)' }}>—</span>
                                       )}
                                     </td>
                                     <td style={{ ...tdStyle, fontSize: '0.7rem', color: 'var(--muted)', maxWidth: '160px' }}>
@@ -862,7 +863,7 @@ function formatKriteria(text) {
                                       {group.nama}
                                     </span>
                                     <span style={{
-                                      fontSize: '0.65rem', padding: '0.15rem 0.5rem', borderRadius: '10px',
+                                      fontSize: '0.6875rem', padding: '0.15rem 0.5rem', borderRadius: '10px',
                                       background: stBg, color: stColor, fontWeight: 600, whiteSpace: 'nowrap',
                                     }}>
                                       {group.diterima}/{group.total} diterima
@@ -891,7 +892,7 @@ function formatKriteria(text) {
                                             </td>
                                             <td style={{ ...tdStyle, fontWeight: 500 }}>
                                               {bd.nama}
-                                              {bd.detail && <div style={{ fontSize: '0.68rem', color: 'var(--muted)', marginTop: '0.1rem' }}>{bd.detail}</div>}
+                                              {bd.detail && <div style={{ fontSize: '0.6875rem', color: 'var(--muted)', marginTop: '0.1rem' }}>{bd.detail}</div>}
                                             </td>
                                             <td style={tdStyle}>
                                               <span style={{
@@ -900,7 +901,7 @@ function formatKriteria(text) {
                                                 background: sm.bg, color: sm.color,
                                                 fontSize: '0.7rem', fontWeight: 600, whiteSpace: 'nowrap',
                                               }}>
-                                                {sm.icon} {sm.label}
+                                                <StatusIkon k={sm.key || sm.label.toLowerCase()} /> {sm.label}
                                               </span>
                                             </td>
                                           </tr>
@@ -936,10 +937,10 @@ function formatKriteria(text) {
                                       {info?.nama || `Dokumen #${no}`}
                                     </span>
                                     <span style={{
-                                      fontSize: '0.65rem', padding: '0.15rem 0.5rem', borderRadius: '10px',
+                                      fontSize: '0.6875rem', padding: '0.15rem 0.5rem', borderRadius: '10px',
                                       background: 'var(--warn-bg)', color: 'var(--warn)', fontWeight: 700, whiteSpace: 'nowrap',
                                     }}>
-                                      🆕 Perlu Disusun
+                                      Perlu Disusun
                                     </span>
                                   </div>
                                   <div style={{ padding: '0.5rem 0.75rem', fontSize: '0.7rem', color: 'var(--muted)' }}>
@@ -963,7 +964,7 @@ function formatKriteria(text) {
                           background: 'var(--primary)', color: '#fff',
                           display: 'inline-flex', alignItems: 'center', gap: '0.3rem',
                         }}>
-                          📊 Lihat di Halaman Pemdi →
+                          Lihat di Halaman Pemdi →
                         </Link>
                       </div>
                     </div>
@@ -985,11 +986,10 @@ function formatKriteria(text) {
       <section className="section" id="matriks-kebutuhan" style={{ marginTop: '3rem' }}>
         <div className="container">
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem', flexWrap: 'wrap' }}>
-            <span style={{ fontSize: '1.5rem' }}>📌</span>
             <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text)', margin: 0 }}>
               Matriks Kebutuhan Bukti Dukung — Level 1 &amp; 2
             </h2>
-            <span className="badge badge-yellow" style={{ fontSize: '0.65rem' }}>BARU · SESUAI MODUL</span>
+            <span className="badge badge-yellow" style={{ fontSize: '0.6875rem' }}>BARU · SESUAI MODUL</span>
           </div>
           <p style={{ color: 'var(--muted)', fontSize: '0.85rem', maxWidth: 800, marginBottom: '0.75rem', lineHeight: 1.6 }}>
             Disusun dari dokumen <em>Analisis Bukti Dukung Kematangan Pemerintah Digital (Level 1 &amp; 2)</em> — hasil
@@ -1004,35 +1004,35 @@ function formatKriteria(text) {
             background: 'var(--warn-bg)', border: '1px solid var(--warn)',
             fontSize: '0.8rem', color: 'var(--warn)', lineHeight: 1.55,
           }}>
-            ⚠️ <strong>Catatan implementasi:</strong> {kebutuhanData.catatan_implementasi}
+            <strong>Catatan implementasi:</strong> {kebutuhanData.catatan_implementasi}
           </div>
 
           {/* Stat mini */}
           <div className="stat-row" style={{ flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.25rem' }}>
             <span className="stat-badge" style={{ background: 'var(--primary-bg, #e3edff)', color: 'var(--primary)' }}>
-              📌 {kebutuhanData.cakupan.total_kebutuhan} kebutuhan bukti (L1+L2)
+              {kebutuhanData.cakupan.total_kebutuhan} kebutuhan bukti (L1+L2)
             </span>
             <span className="stat-badge" style={{ background: 'var(--surface-2)', color: 'var(--muted)' }}>
               {kebutuhanData.cakupan.indikator} indikator
             </span>
             <span className="stat-badge" style={{ background: 'var(--ok-bg)', color: 'var(--ok)' }}>
-              ✅ {kebutuhanData.status_indikasi.diterima} indikasi diterima asesor
+              {kebutuhanData.status_indikasi.diterima} indikasi diterima asesor
             </span>
             {kebutuhanData.status_indikasi.revisi > 0 && (
               <span className="stat-badge" style={{ background: STATUS_META.revisi.bg, color: STATUS_META.revisi.color }}>
-                🔁 {kebutuhanData.status_indikasi.revisi} revisi
+                {kebutuhanData.status_indikasi.revisi} revisi
               </span>
             )}
             {kebutuhanData.status_indikasi.draf > 0 && (
               <span className="stat-badge" style={{ background: 'var(--surface-2)', color: 'var(--primary)' }}>
-                📝 {kebutuhanData.status_indikasi.draf} draf lokal
+                {kebutuhanData.status_indikasi.draf} draf lokal
               </span>
             )}
             <span className="stat-badge" style={{ background: 'var(--surface-2)', color: 'var(--muted)' }}>
-              ⬜ {kebutuhanData.status_indikasi.belum} belum
+              {kebutuhanData.status_indikasi.belum} belum
             </span>
             <span className="stat-badge" style={{ background: 'var(--warn-bg)', color: 'var(--warn)' }}>
-              🔎 {kebutuhanData.status_indikasi.perlu_verifikasi} perlu verifikasi
+              {kebutuhanData.status_indikasi.perlu_verifikasi} perlu verifikasi
             </span>
           </div>
 
@@ -1065,14 +1065,14 @@ function formatKriteria(text) {
                     }}>{e.indikator}</span>
                     <div style={{ flex: 1, minWidth: 0 }}>
                       <strong style={{ fontSize: '0.9rem', color: 'var(--text)' }}>{e.nama}</strong>
-                      <div style={{ fontSize: '0.68rem', color: 'var(--muted)', marginTop: '2px' }}>
+                      <div style={{ fontSize: '0.6875rem', color: 'var(--muted)', marginTop: '2px' }}>
                         {e.aspek} · Bobot {e.bobot}% · Nilai saat ini {e.nilai_saat_ini} (target {e.target_indikator})
                       </div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '4px' }}>
                         <div style={{ flex: 1, maxWidth: 180, height: 4, borderRadius: 2, background: 'var(--line)', overflow: 'hidden' }}>
                           <div style={{ height: '100%', width: `${pct}%`, borderRadius: 2, background: 'linear-gradient(90deg,#10b981,#059669)' }} />
                         </div>
-                        <span style={{ fontSize: '0.66rem', color: 'var(--muted)' }}>{nLengkap}/{semua.length} indikasi diterima asesor</span>
+                        <span style={{ fontSize: '0.6875rem', color: 'var(--muted)' }}>{nLengkap}/{semua.length} indikasi diterima asesor</span>
                       </div>
                     </div>
                     <span style={{ color: 'var(--muted)', transform: open ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}>▾</span>
@@ -1088,7 +1088,7 @@ function formatKriteria(text) {
                       )}
                       {e.pic && (
                         <p style={{ fontSize: '0.75rem', color: 'var(--muted)', margin: '0.6rem 0' }}>
-                          👤 <strong>PIC:</strong> {e.pic.lead}
+                          <strong>PIC:</strong> {e.pic.lead}
                           {e.pic.support?.length > 0 && <span> ({e.pic.support.slice(0, 3).join(', ')}{e.pic.support.length > 3 ? '…' : ''})</span>}
                         </p>
                       )}
@@ -1098,7 +1098,7 @@ function formatKriteria(text) {
                           <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.4rem' }}>
                             <span style={{
                               display: 'inline-flex', background: LEVEL_WARNA[lv.level], color: '#fff',
-                              fontWeight: 700, fontSize: '0.66rem', borderRadius: '5px', padding: '0.12rem 0.4rem',
+                              fontWeight: 700, fontSize: '0.6875rem', borderRadius: '5px', padding: '0.12rem 0.4rem',
                             }}>L{lv.level}</span>
                             <span style={{ fontSize: '0.76rem', fontWeight: 700, color: 'var(--text)' }} title={LEVEL_NAMA_RESMI[lv.level] || ''}>
                               {LEVEL_NAMA_RESMI[lv.level] || `Level ${lv.level}`}
@@ -1118,7 +1118,7 @@ function formatKriteria(text) {
                                 {lv.kebutuhan.map((k) => {
                                   const sm = k.status_indikasi
                                     ? STATUS_META[k.status_indikasi] || STATUS_META.belum
-                                    : { icon: '🔎', label: 'Perlu Verifikasi', color: 'var(--warn)', bg: 'var(--surface-2)' };
+                                    : { key: 'proses', label: 'Perlu Verifikasi', color: 'var(--warn)', bg: 'var(--surface-2)' };
                                   const gt = k.bukti_terkait?.[0];
                                   return (
                                     <tr key={k.no} style={{ borderBottom: '1px solid var(--border)' }}>
@@ -1126,11 +1126,11 @@ function formatKriteria(text) {
                                       <td style={tdStyle}>
                                         {k.bukti}
                                         {k.kondisi && (
-                                          <div style={{ fontSize: '0.68rem', color: 'var(--muted)', marginTop: '0.15rem' }}>📝 {k.kondisi}</div>
+                                          <div style={{ fontSize: '0.6875rem', color: 'var(--muted)', marginTop: '0.15rem' }}>{k.kondisi}</div>
                                         )}
                                         {gt && (
-                                          <div style={{ fontSize: '0.66rem', color: 'var(--primary)', marginTop: '0.15rem' }}>
-                                            🔗 {gt.id} — {gt.nama.replace(/^\d+\.\s*/, '').slice(0, 90)}
+                                          <div style={{ fontSize: '0.6875rem', color: 'var(--primary)', marginTop: '0.15rem' }}>
+                                            {gt.id} — {gt.nama.replace(/^\d+\.\s*/, '').slice(0, 90)}
                                             {gt.nama.replace(/^\d+\.\s*/, '').length > 90 ? '…' : ''}
                                           </div>
                                         )}
@@ -1139,18 +1139,18 @@ function formatKriteria(text) {
                                         <span style={{
                                           display: 'inline-flex', alignItems: 'center', gap: '0.25rem',
                                           padding: '0.15rem 0.5rem', borderRadius: '4px',
-                                          background: sm.bg, color: sm.color, fontSize: '0.68rem', fontWeight: 600, whiteSpace: 'nowrap',
+                                          background: sm.bg, color: sm.color, fontSize: '0.6875rem', fontWeight: 600, whiteSpace: 'nowrap',
                                         }}>
-                                          {sm.icon} {sm.label}
+                                          <StatusIkon k={sm.key || sm.label.toLowerCase()} /> {sm.label}
                                         </span>
                                       </td>
                                       <td style={tdStyle}>
                                         {k.modul_item ? (
-                                          <span title={k.modul_item} style={{ fontSize: '0.68rem', color: 'var(--ok)', fontWeight: 700 }}>
-                                            ✔ terpetakan
+                                          <span title={k.modul_item} style={{ fontSize: '0.6875rem', color: 'var(--ok)', fontWeight: 700 }}>
+                                            terpetakan
                                           </span>
                                         ) : (
-                                          <span title="Tidak ditemukan item modul yang persis sama — cek kriteria level pada modul" style={{ fontSize: '0.68rem', color: 'var(--muted)' }}>
+                                          <span title="Tidak ditemukan item modul yang persis sama — cek kriteria level pada modul" style={{ fontSize: '0.6875rem', color: 'var(--muted)' }}>
                                             — (elaborasi)
                                           </span>
                                         )}
@@ -1173,9 +1173,9 @@ function formatKriteria(text) {
                               padding: '0.6rem 0.9rem', border: 'none', background: 'var(--surface-2)',
                               cursor: 'pointer', fontSize: '0.76rem', fontWeight: 700, color: 'var(--text)',
                             }}>
-                            📘 Panduan Bab 6 — cara memperoleh dokumen
+                            Panduan Bab 6 — cara memperoleh dokumen
                             {e.panduan_bab6.target && (
-                              <span style={{ marginLeft: 'auto', fontSize: '0.68rem', color: 'var(--primary)', fontWeight: 600 }}>
+                              <span style={{ marginLeft: 'auto', fontSize: '0.6875rem', color: 'var(--primary)', fontWeight: 600 }}>
                                 Target: {e.panduan_bab6.target}
                               </span>
                             )}
@@ -1228,11 +1228,10 @@ function formatKriteria(text) {
       <section style={{ marginTop: '3rem' }}>
         <div className="container">
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
-            <span style={{ fontSize: '1.5rem' }}>📥</span>
             <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text)', margin: 0 }}>
               Bukti Dukung Baru — Portal Evaluasi & Dokumen 2026
             </h2>
-            <span className="badge badge-yellow" style={{ fontSize: '0.65rem' }}>BARU</span>
+            <span className="badge badge-yellow" style={{ fontSize: '0.6875rem' }}>BARU</span>
           </div>
           <p style={{ color: 'var(--muted)', fontSize: '0.85rem', maxWidth: 760, marginBottom: '1rem' }}>
             <strong>20 bukti dukung</strong> baru yang dipetakan ke Peta Dokumen Kunci — berasal dari
@@ -1280,18 +1279,18 @@ function formatKriteria(text) {
                   return (
                     <tr key={bd.id} style={{ borderBottom: '1px solid var(--border)' }}>
                       <td style={tdStyle}>
-                        <span style={{ padding: '0.15rem 0.4rem', borderRadius: '4px', background: 'var(--primary-bg, #e3edff)', color: 'var(--primary)', fontWeight: 700, fontSize: '0.68rem' }}>
+                        <span style={{ padding: '0.15rem 0.4rem', borderRadius: '4px', background: 'var(--primary-bg, #e3edff)', color: 'var(--primary)', fontWeight: 700, fontSize: '0.6875rem' }}>
                           {bd._indikator}
                         </span>
                       </td>
                       <td style={{ ...tdStyle, fontWeight: 500 }}>
                         {bd.nama}
-                        {bd.detail && <div style={{ fontSize: '0.68rem', color: 'var(--muted)', marginTop: '0.15rem' }}>{bd.detail}</div>}
-                        {bd.catatan && <div style={{ fontSize: '0.66rem', color: 'var(--muted)', marginTop: '0.15rem', opacity: 0.85 }}>📝 {bd.catatan}</div>}
+                        {bd.detail && <div style={{ fontSize: '0.6875rem', color: 'var(--muted)', marginTop: '0.15rem' }}>{bd.detail}</div>}
+                        {bd.catatan && <div style={{ fontSize: '0.6875rem', color: 'var(--muted)', marginTop: '0.15rem', opacity: 0.85 }}>{bd.catatan}</div>}
                         {url && (
                           <a href={url} target="_blank" rel="noopener noreferrer"
-                            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.68rem', color: 'var(--primary)', marginTop: '0.2rem', textDecoration: 'underline' }}>
-                            {bd._ext === 'url' ? '🌐 Buka URL' : isPdf ? '📄 Buka PDF' : '🖼️ Lihat preview'} ↗
+                            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.6875rem', color: 'var(--primary)', marginTop: '0.2rem', textDecoration: 'underline' }}>
+                            {bd._ext === 'url' ? 'Buka URL' : isPdf ? 'Buka PDF' : 'Lihat preview'} ↗
                           </a>
                         )}
                       </td>
@@ -1304,17 +1303,17 @@ function formatKriteria(text) {
                         {dkNos.length > 0 ? dkNos.map(no => (
                           <button key={no} onClick={() => setBukaDokumen(no)} style={{
                             border: 'none', background: 'var(--primary)', color: '#fff', borderRadius: '4px',
-                            padding: '0.15rem 0.45rem', fontSize: '0.68rem', fontWeight: 700, cursor: 'pointer', marginRight: '0.25rem',
+                            padding: '0.15rem 0.45rem', fontSize: '0.6875rem', fontWeight: 700, cursor: 'pointer', marginRight: '0.25rem',
                           }}>#{no}</button>
                         )) : <span style={{ color: 'var(--muted)', fontSize: '0.7rem' }}>—</span>}
                       </td>
                       <td style={tdStyle}>
                         <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', padding: '0.15rem 0.5rem', borderRadius: '4px', background: sm.bg, color: sm.color, fontSize: '0.7rem', fontWeight: 600, whiteSpace: 'nowrap' }}>
-                          {sm.icon} {sm.label}
+                          <StatusIkon k={sm.key || sm.label.toLowerCase()} /> {sm.label}
                         </span>
                       </td>
-                      <td style={{ ...tdStyle, fontSize: '0.68rem', color: 'var(--muted)' }}>
-                        {bd._portal ? '🖥️ Portal eval.spbe.go.id' : '📁 Documents 2026'}
+                      <td style={{ ...tdStyle, fontSize: '0.6875rem', color: 'var(--muted)' }}>
+                        {bd._portal ? 'Portal eval.spbe.go.id' : 'Documents 2026'}
                       </td>
                     </tr>
                   );
@@ -1331,7 +1330,6 @@ function formatKriteria(text) {
           <div style={{
             display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem',
           }}>
-            <span style={{ fontSize: '1.5rem' }}>🗂️</span>
             <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text)', margin: 0 }}>
               Peta Dokumen Kunci Bukti Dukung
             </h2>
@@ -1387,7 +1385,7 @@ function formatKriteria(text) {
                       {doc.prioritas}
                     </span>
                     <span style={{
-                      fontSize: '0.65rem', color: 'var(--muted)', background: 'var(--surface-2)',
+                      fontSize: '0.6875rem', color: 'var(--muted)', background: 'var(--surface-2)',
                       padding: '0.15rem 0.5rem', borderRadius: '12px', whiteSpace: 'nowrap',
                     }}>
                       {doc.indikator.length > 0 ? doc.indikator.join(' · ') : 'Lintas indikator'}
@@ -1427,7 +1425,7 @@ function formatKriteria(text) {
                       {doc.substansi.length > 0 && (
                         <div style={{ marginTop: '0.75rem' }}>
                           <p style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text)', marginBottom: '0.4rem' }}>
-                            📝 Substansi / Isi yang Wajib Dimuat:
+                            Substansi / Isi yang Wajib Dimuat:
                           </p>
                           <ul style={{ margin: 0, paddingLeft: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
                             {doc.substansi.map((s, i) => (
@@ -1455,7 +1453,6 @@ function formatKriteria(text) {
       <section style={{ marginTop: '3rem' }}>
         <div className="container">
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
-            <span style={{ fontSize: '1.5rem' }}>📑</span>
             <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text)', margin: 0 }}>
               Analisis Kesesuaian RPJMD 2025-2029
             </h2>
@@ -1493,47 +1490,47 @@ function formatKriteria(text) {
               <tbody>
                 <tr>
                   <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Bab/uraian khusus Pemerintah Digital (SPBE/Pemdi) — visi, misi, arah kebijakan, strategi</td>
-                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--ok)' }}>✅ Termuat</span></td>
+                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--ok)' }}>Termuat</span></td>
                   <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Bab 2.3.4 Transformasi Digital (II-116); Sasaran "Meningkatnya Transformasi Digital dalam Tata Kelola" (III-28)</td>
                 </tr>
                 <tr>
                   <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Program & kegiatan Pemdi beserta indikator kinerja + target</td>
-                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--ok)' }}>✅ Termuat</span></td>
+                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--ok)' }}>Termuat</span></td>
                   <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Program Pengelolaan Aplikasi Informatika, Indeks SPBE 1,5→1,92, IPTIK 5,7→7,0</td>
                 </tr>
                 <tr>
                   <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Rencana pengembangan aplikasi & pemaduan layanan ke portal</td>
-                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--ok)' }}>✅ Termuat</span></td>
+                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--ok)' }}>Termuat</span></td>
                   <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Koordinasi pemanfaatan Portal Pelayanan Pemerintah Daerah terintegrasi (III-40); portal layanan terpadu + aplikasi mobile + sistem data terpadu</td>
                 </tr>
                 <tr>
                   <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Kebijakan anggaran Pemdi (arah alokasi anggaran lintas PD)</td>
-                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--ok)' }}>✅ Termuat</span></td>
+                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--ok)' }}>Termuat</span></td>
                   <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Proyeksi belanja Kominfo (Rp 212-247 jt/tahun) & Persandian (Rp 27-77 jt/tahun) 2025-2029</td>
                 </tr>
                 <tr>
                   <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Interoperabilitas data & integrasi layanan (Sistem Penghubung Layanan)</td>
-                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--ok)' }}>✅ Termuat</span></td>
+                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--ok)' }}>Termuat</span></td>
                   <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Sub kegiatan "Sistem Penghubung Layanan Pemerintah Daerah dalam rangka interoperabilitas data dan integrasi layanan"</td>
                 </tr>
                 <tr>
                   <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Rencana kolaborasi antar PD & instansi (Pemdi lintas sektor)</td>
-                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--ok)' }}>✅ Termuat (parsial)</span></td>
+                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--ok)' }}>Termuat (parsial)</span></td>
                   <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Forum Satu Data, koordinasi e-walidata SIPD, kolaborasi dengan PT & komunitas digital (II-116)</td>
                 </tr>
                 <tr>
                   <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Matriks pemetaan (full mapping) substansi RAN Pemdi → bab/program</td>
-                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--warn)' }}>⚠️ Perlu penguatan</span></td>
+                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--warn)' }}>Perlu penguatan</span></td>
                   <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Tersirat integrasi IPD ke kinerja seluruh OPD, belum ada matriks eksplisit</td>
                 </tr>
                 <tr>
                   <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Manajemen layanan digital (risiko, perubahan, pengetahuan, BCP, relasi pengguna)</td>
-                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--warn)' }}>⚠️ Perlu penguatan</span></td>
+                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--warn)' }}>Perlu penguatan</span></td>
                   <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Belum eksplisit — perlu SOP/IK manajemen layanan digital (Dokumen #8)</td>
                 </tr>
                 <tr>
                   <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Keterkaitan eksplisit dengan Arsitektur Pemdi (SIAP Digital) & RAN Pemdi</td>
-                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--warn)' }}>⚠️ Perlu penguatan</span></td>
+                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--warn)' }}>Perlu penguatan</span></td>
                   <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Mengadopsi kerangka IPD & EGA, belum referensi silang ke SIAP Digital</td>
                 </tr>
               </tbody>
@@ -1543,7 +1540,7 @@ function formatKriteria(text) {
           {/* Screenshot bukti */}
           <div style={{ marginBottom: '1.5rem' }}>
             <p style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text)', marginBottom: '0.75rem' }}>
-              📸 Bukti Visual dari RPJMD:
+              Bukti Visual dari RPJMD:
             </p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1rem' }}>
               {[
@@ -1564,8 +1561,8 @@ function formatKriteria(text) {
                   </button>
                   <div style={{ padding: '0.6rem 0.75rem' }}>
                     <p style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text)', margin: 0 }}>{img.title}</p>
-                    <p style={{ fontSize: '0.68rem', color: 'var(--muted)', margin: '0.25rem 0 0' }}>{img.desc}</p>
-                    <p style={{ fontSize: '0.6rem', color: 'var(--ok)', margin: '0.25rem 0 0' }}>👆 Klik untuk perbesar</p>
+                    <p style={{ fontSize: '0.6875rem', color: 'var(--muted)', margin: '0.25rem 0 0' }}>{img.desc}</p>
+                    <p style={{ fontSize: '0.6875rem', color: 'var(--ok)', margin: '0.25rem 0 0' }}>Klik untuk perbesar</p>
                   </div>
                 </div>
               ))}
@@ -1577,7 +1574,7 @@ function formatKriteria(text) {
             background: 'var(--ok-bg)', border: '1px solid var(--ok)', borderRadius: '10px',
             padding: '1rem', fontSize: '0.78rem', color: 'var(--text)', lineHeight: 1.6,
           }}>
-            <strong>💡 Kesimpulan:</strong> RPJMD 2025-2029 sudah memuat <strong>6 dari 9 substansi</strong> yang
+            <strong>Kesimpulan:</strong> RPJMD 2025-2029 sudah memuat <strong>6 dari 9 substansi</strong> yang
             dibutuhkan Dokumen #1 (bab transformasi digital, program & indikator SPBE, portal terpadu, anggaran,
             interoperabilitas, kolaborasi). Perlu penguatan: <strong>matriks mapping RAN Pemdi</strong>,
             <strong> manajemen layanan digital</strong> (SOP/IK — Dokumen #8), dan
@@ -1592,7 +1589,6 @@ function formatKriteria(text) {
       <section style={{ marginTop: '3rem' }}>
         <div className="container">
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
-            <span style={{ fontSize: '1.5rem' }}>🎯</span>
             <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text)', margin: 0 }}>
               RPJMD untuk Indikator Lainnya
             </h2>
@@ -1694,7 +1690,7 @@ function formatKriteria(text) {
           {/* Screenshot bukti */}
           <div>
             <p style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text)', marginBottom: '0.75rem' }}>
-              📸 Bukti Visual dari RPJMD:
+              Bukti Visual dari RPJMD:
             </p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1rem' }}>
               {[
@@ -1715,8 +1711,8 @@ function formatKriteria(text) {
                   </button>
                   <div style={{ padding: '0.6rem 0.75rem' }}>
                     <p style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text)', margin: 0 }}>{img.title}</p>
-                    <p style={{ fontSize: '0.68rem', color: 'var(--muted)', margin: '0.25rem 0 0' }}>{img.desc}</p>
-                    <p style={{ fontSize: '0.6rem', color: 'var(--ok)', margin: '0.25rem 0 0' }}>👆 Klik untuk perbesar</p>
+                    <p style={{ fontSize: '0.6875rem', color: 'var(--muted)', margin: '0.25rem 0 0' }}>{img.desc}</p>
+                    <p style={{ fontSize: '0.6875rem', color: 'var(--ok)', margin: '0.25rem 0 0' }}>Klik untuk perbesar</p>
                   </div>
                 </div>
               ))}
@@ -1729,7 +1725,6 @@ function formatKriteria(text) {
       <section style={{ marginTop: '3rem' }}>
         <div className="container">
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
-            <span style={{ fontSize: '1.5rem' }}>📎</span>
             <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text)', margin: 0 }}>
               Bukti Dukung Dokumen Pendukung
             </h2>
@@ -1804,7 +1799,7 @@ function formatKriteria(text) {
           {/* Screenshot bukti */}
           <div style={{ display: 'none' }} aria-hidden="true">
             <p style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text)', marginBottom: '0.75rem' }}>
-              📸 Bukti Visual dari Dokumen Pendukung:
+              Bukti Visual dari Dokumen Pendukung:
             </p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1rem' }}>
               {[
@@ -1821,8 +1816,8 @@ function formatKriteria(text) {
                   </button>
                   <div style={{ padding: '0.6rem 0.75rem' }}>
                     <p style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text)', margin: 0 }}>{img.title}</p>
-                    <p style={{ fontSize: '0.68rem', color: 'var(--muted)', margin: '0.25rem 0 0' }}>{img.desc}</p>
-                    <p style={{ fontSize: '0.6rem', color: 'var(--ok)', margin: '0.25rem 0 0' }}>👆 Klik untuk perbesar</p>
+                    <p style={{ fontSize: '0.6875rem', color: 'var(--muted)', margin: '0.25rem 0 0' }}>{img.desc}</p>
+                    <p style={{ fontSize: '0.6875rem', color: 'var(--ok)', margin: '0.25rem 0 0' }}>Klik untuk perbesar</p>
                   </div>
                 </div>
               ))}
@@ -1833,7 +1828,7 @@ function formatKriteria(text) {
           {/* P5: idem blok di atas — daftar screenshot eksternal kosong. */}
           <div style={{ marginTop: '2.5rem', display: 'none' }} aria-hidden="true">
             <p style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text)', marginBottom: '0.4rem' }}>
-              📸 Bukti Visual Dokumen Eksternal (JDIH & OpenData):
+              Bukti Visual Dokumen Eksternal (JDIH & OpenData):
             </p>
             <p style={{ fontSize: '0.72rem', color: 'var(--muted)', marginBottom: '0.75rem' }}>
               15 dokumen hukum & data dari JDIH Aceh Tengah + OpenData — di-download ke repository lokal (1 sumber). Klik untuk perbesar; nama file = sumber resmi.
@@ -1853,8 +1848,8 @@ function formatKriteria(text) {
                   </button>
                   <div style={{ padding: '0.6rem 0.75rem' }}>
                     <p style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text)', margin: 0 }}>{img.title}</p>
-                    <p style={{ fontSize: '0.68rem', color: 'var(--muted)', margin: '0.25rem 0 0' }}>{img.desc}</p>
-                    <p style={{ fontSize: '0.6rem', color: 'var(--ok)', margin: '0.25rem 0 0' }}>👆 Klik untuk perbesar</p>
+                    <p style={{ fontSize: '0.6875rem', color: 'var(--muted)', margin: '0.25rem 0 0' }}>{img.desc}</p>
+                    <p style={{ fontSize: '0.6875rem', color: 'var(--ok)', margin: '0.25rem 0 0' }}>Klik untuk perbesar</p>
                   </div>
                 </div>
               ))}
@@ -1884,7 +1879,6 @@ function formatKriteria(text) {
               padding: '1rem 1.25rem', borderBottom: '1px solid var(--border)',
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <span style={{ fontSize: '1.1rem' }}>📄</span>
                 <span style={{ fontWeight: 600, fontSize: '0.9rem', color: 'var(--text)' }}>
                   {previewDoc.title}
                 </span>
@@ -1895,7 +1889,7 @@ function formatKriteria(text) {
                 fontSize: '1.2rem', display: 'flex', alignItems: 'center', justifyContent: 'center',
                 color: 'var(--muted)', transition: 'all 0.15s',
               }} onMouseOver={e => e.target.style.background = 'var(--surface-hover)'}
-              onMouseOut={e => e.target.style.background = 'var(--surface-2)'}>✕</button>
+              onMouseOut={e => e.target.style.background = 'var(--surface-2)'} aria-label="Tutup">×</button>
             </div>
             {/* PDF preview via proxy (same-origin, no XFO issues) */}
             <div style={{ flex: 1, position: 'relative', background: 'var(--surface-2)' }}>

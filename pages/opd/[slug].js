@@ -79,11 +79,11 @@ function cariRelated(daftar, opd, limit = 6) {
    LEVEL — icon & colour mapping
    ============================================= */
 const LEVEL_META = {
-  Staf:      { color: 'var(--primary)', icon: '🏛️', label: 'Staf Ahli/Setda' },
-  Badan:     { color: 'var(--level-badan)', icon: '📊', label: 'Badan' },
-  Dinas:     { color: 'var(--level-dinas)', icon: '🏢', label: 'Dinas' },
-  Lembaga:   { color: 'var(--level-lembaga)', icon: '🏫', label: 'Lembaga' },
-  Kecamatan: { color: 'var(--level-kecamatan)', icon: '📍', label: 'Kecamatan' },
+  Staf:      { color: 'var(--primary)',  label: 'Staf Ahli/Setda' },
+  Badan:     { color: 'var(--level-badan)',  label: 'Badan' },
+  Dinas:     { color: 'var(--level-dinas)',  label: 'Dinas' },
+  Lembaga:   { color: 'var(--level-lembaga)',  label: 'Lembaga' },
+  Kecamatan: { color: 'var(--level-kecamatan)',  label: 'Kecamatan' },
 };
 
 /* =============================================
@@ -102,7 +102,7 @@ export default function OPDPage({ opd, urusanTerkait, probisMisi, relatedOpd, pr
     );
   }
 
-  const levelMeta = LEVEL_META[opd.level] || { color: 'var(--ink-secondary)', icon: '📋', label: opd.level };
+  const levelMeta = LEVEL_META[opd.level] || { color: 'var(--ink-secondary)', label: opd.level };
   const tipe = opd.jenis === 'kecamatan' ? 'Kecamatan' : 'Instansi Daerah';
 
   return (
@@ -117,7 +117,7 @@ export default function OPDPage({ opd, urusanTerkait, probisMisi, relatedOpd, pr
         <div className="container">
           <div className="hero-content">
             <Link href="/#opd" className="hero-back-link">← Daftar Perangkat Daerah</Link>
-            <div className="hero-badge">🏛️ Detail Perangkat Daerah</div>
+            <div className="hero-badge">Detail Perangkat Daerah</div>
             <h1>{opd.nama}</h1>
             <p className="hero-subtitle">
               {opd.singkat !== opd.nama ? (
@@ -130,7 +130,7 @@ export default function OPDPage({ opd, urusanTerkait, probisMisi, relatedOpd, pr
                 color: levelMeta.color,
                 border: `1px solid ${levelMeta.color}40`,
               }}>
-                {levelMeta.icon} {levelMeta.label}
+                {levelMeta.label}
               </span>
               <span className="badge badge-green">{opd.urusan}</span>
               <span className="badge" style={{
@@ -141,7 +141,7 @@ export default function OPDPage({ opd, urusanTerkait, probisMisi, relatedOpd, pr
               </span>
               {opd.jumlah_asn > 0 && (
                 <span className="badge badge-gray">
-                  👥 {formatAngka(opd.jumlah_asn)} ASN
+                  {formatAngka(opd.jumlah_asn)} ASN
                 </span>
               )}
             </div>
@@ -157,8 +157,7 @@ export default function OPDPage({ opd, urusanTerkait, probisMisi, relatedOpd, pr
             <div className="card">
               <div className="card-header">
                 <div className="card-icon" style={{ background: 'var(--primary-light)', color: 'var(--primary)' }}>
-                  📋
-                </div>
+                  </div>
                 <h3>Identitas</h3>
               </div>
               <table className="info-table">
@@ -191,8 +190,7 @@ export default function OPDPage({ opd, urusanTerkait, probisMisi, relatedOpd, pr
             <div className="card">
               <div className="card-header">
                 <div className="card-icon" style={{ background: 'var(--success-light)', color: 'var(--success)' }}>
-                  👥
-                </div>
+                  </div>
                 <h3>SDM & Urusan</h3>
               </div>
               <table className="info-table">
@@ -237,8 +235,7 @@ export default function OPDPage({ opd, urusanTerkait, probisMisi, relatedOpd, pr
             <div className="card">
               <div className="card-header">
                 <div className="card-icon" style={{ background: 'var(--info-light)', color: 'var(--info)' }}>
-                  🔗
-                </div>
+                  </div>
                 <h3>Keterkaitan PPB</h3>
               </div>
               <table className="info-table">
@@ -355,17 +352,17 @@ export default function OPDPage({ opd, urusanTerkait, probisMisi, relatedOpd, pr
           {/* Visual chain */}
           <div className="ppb-chain">
             <div className="ppb-chain-item">
-              <div className="ppb-chain-circle">🎯</div>
+              <div className="ppb-chain-circle">1</div>
               <span>Visi &amp; Misi</span>
             </div>
             <div className="ppb-chain-arrow">→</div>
             <div className="ppb-chain-item">
-              <div className="ppb-chain-circle" style={{ background: 'var(--success)', color: 'white' }}>📋</div>
+              <div className="ppb-chain-circle" style={{ background: 'var(--success)', color: 'white' }}>2</div>
               <span>Urusan</span>
             </div>
             <div className="ppb-chain-arrow">→</div>
             <div className="ppb-chain-item">
-              <div className="ppb-chain-circle" style={{ background: 'var(--warning)', color: 'white' }}>⚙️</div>
+              <div className="ppb-chain-circle" style={{ background: 'var(--warning)', color: 'white' }}>3</div>
               <span>Proses Bisnis</span>
             </div>
             <div className="ppb-chain-arrow">→</div>
@@ -382,7 +379,7 @@ export default function OPDPage({ opd, urusanTerkait, probisMisi, relatedOpd, pr
             <>
               <div className="section-subheader" style={{ marginTop: '2.5rem', marginBottom: '1.25rem' }}>
                 <h3 style={{ fontSize: '1.125rem', fontWeight: 600, margin: 0 }}>
-                  ⚙️ Proses Bisnis {opd.singkat}
+                  Proses Bisnis {opd.singkat}
                 </h3>
                 <p style={{ fontSize: '0.8125rem', color: 'var(--muted)', margin: '0.25rem 0 0' }}>
                   {formatAngka(prosesOPD.length)} proses bisnis spesifik berdasarkan tugas dan fungsi {opd.nama}
@@ -392,10 +389,9 @@ export default function OPDPage({ opd, urusanTerkait, probisMisi, relatedOpd, pr
                 {prosesOPD.map((p, i) => (
                   <div key={i} className="card" style={{ padding: '1rem' }}>
                     <div className="flex items-center gap-2 mb-1">
-                      <span>{p.icon}</span>
                       <span className="badge badge-sm" style={{
                         background: `${p.warna}18`, color: p.warna,
-                        border: `1px solid ${p.warna}40`, fontSize: '0.625rem',
+                        border: `1px solid ${p.warna}40`, fontSize: '0.6875rem',
                       }}>
                         {p.kategori}
                       </span>
@@ -449,7 +445,7 @@ export default function OPDPage({ opd, urusanTerkait, probisMisi, relatedOpd, pr
                     {r.urusan}
                   </p>
                   <small style={{ color: 'var(--gray-500)' }}>
-                    {r.jumlah_asn > 0 ? `👥 ${formatAngka(r.jumlah_asn)} ASN` : '—'}
+                    {r.jumlah_asn > 0 ? `${formatAngka(r.jumlah_asn)} ASN` : '—'}
                   </small>
                 </Link>
               ))}

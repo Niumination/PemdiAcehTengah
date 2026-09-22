@@ -80,8 +80,7 @@ export default function DetailModal({ title, open, onClose, children, maxWidth =
             onClick={onClose}
             aria-label="Tutup panel"
           >
-            ✕
-          </button>
+            </button>
         </div>
         <div className="sp-body">
           {children}

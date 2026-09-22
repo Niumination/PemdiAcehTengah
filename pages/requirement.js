@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import StatusIkon from '@/components/ui/StatusIkon';
 import { useState } from 'react'
 import Link from 'next/link'
 import panduanBukti from '@/data/panduan-bukti-l1.json'
@@ -60,17 +61,17 @@ export default function Requirement() {
           </p>
           <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap', marginTop: '1rem' }}>
             <span className="card" style={{ padding: '0.5rem 0.75rem', background: 'rgba(239,68,68,0.3)', border: 'none', fontSize: '0.8rem' }}>
-              🔁 {drafPrioritas.ringkas.revisi} revisi asesor
+              {drafPrioritas.ringkas.revisi} revisi asesor
             </span>
             <span className="card" style={{ padding: '0.5rem 0.75rem', background: 'rgba(255,255,255,0.12)', border: 'none', fontSize: '0.8rem' }}>
-              🎯 {drafPrioritas.ringkas.butir_gap} butir gap · {drafPrioritas.ringkas.indikator_gap} indikator
+              {drafPrioritas.ringkas.butir_gap} butir gap · {drafPrioritas.ringkas.indikator_gap} indikator
             </span>
             <span className="card" style={{ padding: '0.5rem 0.75rem', background: 'rgba(255,255,255,0.12)', border: 'none', fontSize: '0.8rem' }}>
-              📈 Simulasi {drafPrioritas.ringkas.indeks_simulasi?.toFixed(2)} → {drafPrioritas.ringkas.indeks_jika_p0_p1_diterima?.toFixed(2)} bila seluruh P0 + P1 diterima
+              Simulasi {drafPrioritas.ringkas.indeks_simulasi?.toFixed(2)} → {drafPrioritas.ringkas.indeks_jika_p0_p1_diterima?.toFixed(2)} bila seluruh P0 + P1 diterima
             </span>
             {t1 && (
               <span className="card" style={{ padding: '0.5rem 0.75rem', background: 'rgba(255,255,255,0.12)', border: 'none', fontSize: '0.8rem' }}>
-                📅 Sinkron {t1.tanggal_sinkron}
+                Sinkron {t1.tanggal_sinkron}
               </span>
             )}
           </div>
@@ -83,8 +84,8 @@ export default function Requirement() {
         {/* Tab switch */}
         <div className="tab-row" role="tablist">
           {[
-            { key: 'pemdi', label: '📝 Draf Bukti Dukung Pemdi', sub: 'revisi + gap level · prioritas' },
-            { key: 'ppb', label: '🗺️ Kebutuhan Data PPB', sub: `${requirements.summary?.reduce((s, c) => s + c.count, 0)} item · Permenpan 19/2018` },
+            { key: 'pemdi', label: 'Draf Bukti Dukung Pemdi', sub: 'revisi + gap level · prioritas' },
+            { key: 'ppb', label: 'Kebutuhan Data PPB', sub: `${requirements.summary?.reduce((s, c) => s + c.count, 0)} item · Permenpan 19/2018` },
           ].map(x => (
             <button key={x.key} role="tab" aria-selected={tab === x.key} className={`tab-btn ${tab === x.key ? 'on' : ''}`} onClick={() => setTab(x.key)}>
               <span>{x.label}</span>
@@ -97,11 +98,11 @@ export default function Requirement() {
           <>
             {/* ─── P0: REVISI ASESOR ─── */}
             <div className="req-summary">
-              <h2 className="section-title" style={{ borderTopColor: 'var(--bad)' }}>🔁 P0 — Revisi Asesor (unggah ulang paling cepat)</h2>
+              <h2 className="section-title" style={{ borderTopColor: 'var(--bad)' }}>P0 — Revisi Asesor (unggah ulang paling cepat)</h2>
               <p className="lead-note">
                 {drafPrioritas.ringkas.revisi} butir dinyatakan <strong>REVISI</strong> pada Tahap 1 — catatan asesor disalin apa adanya dari eval.spbe.go.id.
                 Tiga jenis dengan tindak lanjut berbeda:
-                {' '}{Object.entries(REVISI_JENIS).map(([k, v]) => <span key={k} className="jenis-chip">{v.icon} {v.label} ({drafPrioritas.ringkas.revisi_per_jenis?.[k] ?? 0})</span>)}.
+                {' '}{Object.entries(REVISI_JENIS).map(([k, v]) => <span key={k} className="jenis-chip"><StatusIkon k={k} /> {v.label} ({drafPrioritas.ringkas.revisi_per_jenis?.[k] ?? 0})</span>)}.
                 Berkas lama tidak disimpan di repo — unggah ulang memakai kode yang sama.
                 Status revisi juga ditandai di <Link href="/pemdi">Dashboard Pemdi</Link> dan <Link href="/modul-indikator">Modul Indikator</Link>.
               </p>
@@ -115,24 +116,24 @@ export default function Requirement() {
                     </div>
                     <div className="rev-butir">{r.butir}</div>
                     <div className="rev-cat">
-                      <div className="jenis-chip" style={{ marginBottom: 4 }}>{REVISI_JENIS[r.jenis]?.icon} {REVISI_JENIS[r.jenis]?.label}</div>
-                      <div>🔁 <strong>Catatan asesor:</strong> {r.catatan_asesor}</div>
-                      <div style={{ marginTop: 4, color: 'var(--text)' }}>➡️ <strong>Tindak lanjut:</strong> {REVISI_JENIS[r.jenis]?.tindak}</div>
+                      <div className="jenis-chip" style={{ marginBottom: 4 }}><StatusIkon k={r.jenis} /> {REVISI_JENIS[r.jenis]?.label}</div>
+                      <div><strong>Catatan asesor:</strong> {r.catatan_asesor}</div>
+                      <div style={{ marginTop: 4, color: 'var(--text)' }}><strong>Tindak lanjut:</strong> {REVISI_JENIS[r.jenis]?.tindak}</div>
                     </div>
                     {r.contoh_modul.length > 0 && (
                       <details className="rev-det">
-                        <summary>📄 Contoh bukti menurut Modul Indikator (L{r.level})</summary>
+                        <summary>Contoh bukti menurut Modul Indikator (L{r.level})</summary>
                         <ul>{r.contoh_modul.map((c, i) => <li key={i}>{c}</li>)}</ul>
                       </details>
                     )}
                     {r.template.length > 0 && (
                       <div className="rev-tpl">
                         {r.template.map((t, i) => (
-                          <a key={i} href={t.file} target="_blank" rel="noopener noreferrer" className="panduan-link">📎 {t.judul}</a>
+                          <a key={i} href={t.file} target="_blank" rel="noopener noreferrer" className="panduan-link">{t.judul}</a>
                         ))}
                       </div>
                     )}
-                    <div className="rev-foot">👤 PIC: <strong>{r.pic}</strong> · <Link href={`/modul-indikator?modul=${r.indikator.replace('I', '')}`}>Modul {r.indikator} →</Link></div>
+                    <div className="rev-foot">PIC: <strong>{r.pic}</strong> · <Link href={`/modul-indikator?modul=${r.indikator.replace('I', '')}`}>Modul {r.indikator} →</Link></div>
                   </div>
                 ))}
               </div>
@@ -140,7 +141,7 @@ export default function Requirement() {
 
             {/* ─── P1: GAP LEVEL BERIKUT ─── */}
             <div className="req-summary">
-              <h2 className="section-title">🎯 P1 — Gap ke Level Berikutnya (diurutkan daya ungkit)</h2>
+              <h2 className="section-title">P1 — Gap ke Level Berikutnya (diurutkan daya ungkit)</h2>
               <p className="lead-note">
                 Nilai indikator hanya naik bila <strong>seluruh</strong> butir pada level berikutnya diterima asesor. Daftar ini menunjukkan
                 butir yang masih kurang per indikator <strong>selain</strong> yang sudah tercantum di P0; <em>daya ungkit</em> = bobot indikator ÷ (butir kurang + butir revisi pada level itu) — kerjakan dari atas.
@@ -163,7 +164,7 @@ export default function Requirement() {
                       </button>
                       {open && (
                         <div className="gap-body">
-                          <div className="gap-pic">👤 PIC: <strong>{g.pic}</strong> · Aspek {g.aspek} · <Link href={`/modul-indikator?modul=${g.indikator.replace('I', '')}`}>Modul {g.indikator} →</Link></div>
+                          <div className="gap-pic">PIC: <strong>{g.pic}</strong> · Aspek {g.aspek} · <Link href={`/modul-indikator?modul=${g.indikator.replace('I', '')}`}>Modul {g.indikator} →</Link></div>
                           <table className="req-table">
                             <thead><tr><th style={{ width: 110 }}>Kode rencana</th><th>Butir bukti (Modul Indikator)</th><th style={{ width: 100 }}>Status</th><th>Catatan / arsip lokal</th></tr></thead>
                             <tbody>
@@ -173,10 +174,10 @@ export default function Requirement() {
                                   <tr key={b.id}>
                                     <td><code>{b.kode_rencana}</code></td>
                                     <td>{b.nama}</td>
-                                    <td><span className="st" style={{ color: sm.color, background: sm.bg }}>{sm.icon} {sm.label}</span></td>
+                                    <td><span className="st" style={{ color: sm.color, background: sm.bg }}><StatusIkon k={sm.key || sm.label.toLowerCase()} /> {sm.label}</span></td>
                                     <td style={{ fontSize: '0.78rem', color: 'var(--muted)' }}>
                                       {b.catatan}
-                                      {b.arsip_lokal && <div>🗄️ Arsip draf: <code>{b.arsip_lokal.split('/').pop()}</code> (belum diunggah)</div>}
+                                      {b.arsip_lokal && <div>Arsip draf: <code>{b.arsip_lokal.split('/').pop()}</code> (belum diunggah)</div>}
                                     </td>
                                   </tr>
                                 )
@@ -185,7 +186,7 @@ export default function Requirement() {
                           </table>
                           {g.contoh_modul.length > 0 && (
                             <details className="rev-det" open>
-                              <summary>📄 Contoh bukti menurut Modul Indikator (L{g.level_target})</summary>
+                              <summary>Contoh bukti menurut Modul Indikator (L{g.level_target})</summary>
                               <ul>{g.contoh_modul.map((c, i) => <li key={i}>{c}</li>)}</ul>
                             </details>
                           )}
@@ -193,7 +194,7 @@ export default function Requirement() {
                             <div className="rev-tpl">
                               <span style={{ fontSize: '0.72rem', color: 'var(--muted)' }}>Draf/template tersedia:</span>
                               {g.template.map((t, i) => (
-                                <a key={i} href={t.file} target="_blank" rel="noopener noreferrer" className="panduan-link">📎 {t.judul}</a>
+                                <a key={i} href={t.file} target="_blank" rel="noopener noreferrer" className="panduan-link">{t.judul}</a>
                               ))}
                             </div>
                           )}
@@ -213,7 +214,7 @@ export default function Requirement() {
 
         {tab === 'ppb' && (<>
         <div className="ppb-intro">
-          <strong>🗺️ Kebutuhan Data Peta Proses Bisnis</strong> — Permenpan RB 19/2018 · disusun Juni 2026 · {requirements.summary?.length} kategori ·
+          <strong>Kebutuhan Data Peta Proses Bisnis</strong> — Permenpan RB 19/2018 · disusun Juni 2026 · {requirements.summary?.length} kategori ·
           {' '}{requirements.summary?.reduce((s, c) => s + c.count, 0)} item. Relevan untuk indikator <strong>I15</strong> (Proses Bisnis Pemdi) — PPB yang ditetapkan menjadi lampiran Arsitektur.
         </div>
         {/* Summary Cards */}
@@ -227,13 +228,13 @@ export default function Requirement() {
                 onClick={() => setActiveCategory(activeCategory === cat.category ? null : cat.category)}
               >
                 <div className="req-card-header">
-                  <span className="req-card-icon">{cat.icon}</span>
+                  <span className="req-card-icon">{(cat.name || '').trim().charAt(0)}</span>
                   <span className="req-card-priority">{cat.priority}</span>
                 </div>
                 <h3 className="req-card-title">{cat.category}</h3>
                 <div className="req-card-stats">
                   <span>{cat.count} item</span>
-                  <span>⬇ {cat.kebutuhan}</span>
+                  <span>{cat.kebutuhan}</span>
                 </div>
                 <div className="req-card-desc">{cat.description}</div>
               </div>
@@ -250,7 +251,7 @@ export default function Requirement() {
           >
             <div className="req-detail-header" onClick={() => setActiveCategory(activeCategory === cat.id ? null : cat.id)}>
               <div>
-                <span className="req-detail-icon">{cat.icon}</span>
+                <span className="req-detail-icon">{(cat.name || '').trim().charAt(0)}</span>
                 <span className="req-detail-code">{cat.id}</span>
                 <span className="req-detail-name">{cat.name}</span>
                 <span className="req-detail-count">{cat.items.length} item</span>
@@ -371,12 +372,12 @@ export default function Requirement() {
 
         </>)}
 
-        {/* 📘 Panduan Penyusunan Bukti Dukung Level 1 */}
+        {/* Panduan Penyusunan Bukti Dukung Level 1 */}
         {tab === 'pemdi' && (
         <div className="req-panduan">
-          <h2 className="section-title">📘 Panduan Penyusunan Bukti Dukung Level 1 (Pemdi 2026)</h2>
+          <h2 className="section-title">Panduan Penyusunan Bukti Dukung Level 1 (Pemdi 2026)</h2>
           <div className="panduan-notice">
-            ⚠️ <strong>Panduan penyusunan (draf)</strong> — bukan bukti final yang dinilai. Dokumen berikut adalah acuan
+            <strong>Panduan penyusunan (draf)</strong> — bukan bukti final yang dinilai. Dokumen berikut adalah acuan
             penyusunan bukti dukung per indikator sesuai kriteria modul asli PermenPANRB 8/2026. <strong>Belum final:</strong> data
             isian masih contoh, tanda tangan/cap & logo masih placeholder, screenshot masih `[TAMPILAN LAYAR]`. Finalisasi
             sebelum diunggah ke portal eval.spbe.go.id.
@@ -403,7 +404,7 @@ export default function Requirement() {
                     <div key={i} className="panduan-doc">
                       <div className="panduan-doc-head">
                         <span className={`panduan-status ${d.status}`}>
-                          {d.status === 'lengkap' ? '📝 Siap unggah' : d.status === 'proses' ? '🔄 Draf' : '📎 Lampiran'}
+                          {d.status === 'lengkap' ? 'Siap unggah' : d.status === 'proses' ? 'Draf' : 'Lampiran'}
                         </span>
                         <span className="panduan-jenis">{d.jenis}</span>
                       </div>
@@ -413,9 +414,9 @@ export default function Requirement() {
                           <span className="panduan-dk">Dok. Kunci: {d.dokumen_kunci.map(n => `#${n}`).join(', ')}</span>
                         )}
                       </div>
-                      {d.catatan && <div className="panduan-catatan">📝 {d.catatan}</div>}
+                      {d.catatan && <div className="panduan-catatan">{d.catatan}</div>}
                       <a href={d.file} target="_blank" rel="noopener noreferrer" className="panduan-link">
-                        📄 Buka Dokumen ↗
+                        Buka Dokumen ↗
                       </a>
                     </div>
                   ))}
@@ -698,7 +699,7 @@ export default function Requirement() {
           width: 34px; height: 34px; border-radius: 8px; background: #1B4332; color: #fff;
           display: grid; place-items: center; font-weight: 800; font-size: 0.75rem; flex-shrink: 0;
         }
-        .panduan-aspek { font-size: 0.68rem; color: #667; background: var(--bg-subtle); padding: 3px 8px; border-radius: 100px; }
+        .panduan-aspek { font-size: 0.6875rem; color: #667; background: var(--bg-subtle); padding: 3px 8px; border-radius: 100px; }
         .panduan-title { font-size: 0.85rem; font-weight: 600; margin: 0; color: var(--ink); line-height: 1.35; }
         .panduan-docs { display: flex; flex-direction: column; gap: 8px; }
         .panduan-doc {
@@ -707,7 +708,7 @@ export default function Requirement() {
         }
         .panduan-doc-head { display: flex; justify-content: space-between; align-items: center; gap: 6px; }
         .panduan-status {
-          font-size: 0.62rem; font-weight: 700; padding: 2px 8px; border-radius: 100px;
+          font-size: 0.6875rem; font-weight: 700; padding: 2px 8px; border-radius: 100px;
           background: var(--bg-subtle); color: var(--muted);
         }
         .panduan-status.lengkap { background: #e6f4ea; color: #1B7A3D; }
@@ -725,11 +726,11 @@ export default function Requirement() {
         .rev-card { border: 1px solid var(--bad, #b91c1c); border-left-width: 5px; border-radius: 10px; padding: 14px; background: var(--surface); display: flex; flex-direction: column; gap: 8px; }
         .rev-head { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
         .rev-kode { font-weight: 800; font-size: 0.8rem; color: var(--bad, #b91c1c); border: 1px solid currentColor; border-radius: 4px; padding: 1px 6px; }
-        .lvl { font-size: 0.66rem; font-weight: 800; padding: 2px 8px; border-radius: 100px; white-space: nowrap; }
+        .lvl { font-size: 0.6875rem; font-weight: 800; padding: 2px 8px; border-radius: 100px; white-space: nowrap; }
         .rev-ind { font-size: 0.7rem; color: var(--muted); margin-left: auto; }
         .rev-butir { font-weight: 600; font-size: 0.86rem; line-height: 1.4; }
         .rev-cat { font-size: 0.78rem; line-height: 1.5; padding: 8px 10px; border-radius: 8px; background: var(--bad-bg, #fde8e8); color: var(--bad, #b91c1c); }
-        .jenis-chip { display: inline-block; font-size: 0.68rem; font-weight: 700; padding: 1px 8px; border-radius: 100px; background: var(--surface); border: 1px solid var(--line); color: var(--text); margin-right: 4px; }
+        .jenis-chip { display: inline-block; font-size: 0.6875rem; font-weight: 700; padding: 1px 8px; border-radius: 100px; background: var(--surface); border: 1px solid var(--line); color: var(--text); margin-right: 4px; }
         .rev-det summary { font-size: 0.76rem; font-weight: 700; color: var(--primary); cursor: pointer; }
         .rev-det ul { margin: 6px 0 0; padding-left: 18px; font-size: 0.76rem; color: var(--muted); line-height: 1.5; }
         .rev-tpl { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
@@ -747,12 +748,12 @@ export default function Requirement() {
         .gap-pic a { color: var(--primary); font-weight: 600; }
         .st { font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; white-space: nowrap; }
         .panduan-status.proses { background: #fff3e0; color: #b26a00; }
-        .panduan-jenis { font-size: 0.62rem; color: var(--muted); }
+        .panduan-jenis { font-size: 0.6875rem; color: var(--muted); }
         .panduan-doc-title { font-size: 0.75rem; font-weight: 600; color: var(--ink); line-height: 1.4; }
-        .panduan-dk { font-size: 0.65rem; color: #1B4332; background: #e8f2ec; padding: 2px 6px; border-radius: 4px; }
-        .panduan-catatan { font-size: 0.65rem; color: var(--muted); line-height: 1.4; }
+        .panduan-dk { font-size: 0.6875rem; color: #1B4332; background: #e8f2ec; padding: 2px 6px; border-radius: 4px; }
+        .panduan-catatan { font-size: 0.6875rem; color: var(--muted); line-height: 1.4; }
         .panduan-link {
-          font-size: 0.68rem; color: #1B4332; font-weight: 600; text-decoration: none;
+          font-size: 0.6875rem; color: #1B4332; font-weight: 600; text-decoration: none;
           border: 1px solid #1B4332; border-radius: 6px; padding: 4px 10px; align-self: flex-start;
           background: var(--surface); transition: all 0.15s;
         }

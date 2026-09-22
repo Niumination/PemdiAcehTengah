@@ -8,6 +8,7 @@
  * Tanpa localStorage, tanpa pustaka luar; ekspor berjalan di klien.
  */
 import { useState } from 'react';
+import StatusIkon from '@/components/ui/StatusIkon';
 import {
   PRIORITAS_META, JENIS_META, teksCatatanButir, teksCatatanIndikator,
   htmlCatatanIndikator, docxCatatanIndikator, butirBercatatan, namaBerkasCatatan,
@@ -62,9 +63,9 @@ export function CatatanButir({ b, ind, terbuka = false }) {
     <div className="cm-butir" style={{ borderColor: pm.color }}>
       <div className="cm-head">
         <button type="button" className="cm-toggle" aria-expanded={open} aria-controls={id} onClick={() => setOpen(!open)}>
-          <span aria-hidden="true">{open ? '▾' : '▸'}</span> 📝 Catatan mandiri
+          <span aria-hidden="true">{open ? '▾' : '▸'}</span> Catatan mandiri
           <span className="cm-pill" style={{ color: pm.color, background: pm.bg }}>{pm.label}</span>
-          <span className="cm-pill muted">{jm.icon} {jm.label}</span>
+          <span className="cm-pill muted"><StatusIkon k={c.jenis} /> {jm.label}</span>
         </button>
         <button
           type="button"
@@ -72,7 +73,7 @@ export function CatatanButir({ b, ind, terbuka = false }) {
           onClick={async () => { if (await salin(teksCatatanButir(b, ind))) { setFlash(true); setTimeout(() => setFlash(false), 1500); } }}
           aria-label={`Salin catatan mandiri butir ${b.eval?.kode || b.id}`}
         >
-          {flash ? '✅ Tersalin' : '📋 Salin'}
+          {flash ? 'Tersalin' : 'Salin'}
         </button>
       </div>
       {open && (
@@ -87,10 +88,10 @@ export function CatatanButir({ b, ind, terbuka = false }) {
           {c.kebutuhan?.length > 0 && (
             <>
               <div className="cm-sub">Masih harus disiapkan sebelum unggah</div>
-              <ul className="cm-list cm-keb">{c.kebutuhan.map((k, i) => <li key={i}>☐ {k}</li>)}</ul>
+              <ul className="cm-list cm-keb">{c.kebutuhan.map((k, i) => <li key={i}>{k}</li>)}</ul>
             </>
           )}
-          <div className="cm-foot">👤 PJ: <strong>{c.pj}</strong>{c.versi && <span className="muted"> · versi catatan {c.versi}</span>}</div>
+          <div className="cm-foot">PJ: <strong>{c.pj}</strong>{c.versi && <span className="muted"> · versi catatan {c.versi}</span>}</div>
         </div>
       )}
     </div>
@@ -112,15 +113,15 @@ export function EksporCatatan({ ind, meta = {}, compact = false }) {
   return (
     <div className={`cm-ekspor${compact ? ' cm-ekspor-compact' : ''}`} role="group" aria-label={`Ekspor catatan mandiri ${ind.id}`}>
       <span className="cm-ekspor-label">
-        📝 Catatan mandiri: <strong>{items.length} butir</strong>{nRevisi > 0 && <> · 🔁 {nRevisi} revisi</>}
+        Catatan mandiri: <strong>{items.length} butir</strong>{nRevisi > 0 && <> · {nRevisi} revisi</>}
         {!compact && <span className="muted"> — untuk diunggah di eval.spbe.go.id</span>}
       </span>
       <span className="cm-ekspor-act">
         <button type="button" className="cm-btn" onClick={async () => { if (await salin(teksCatatanIndikator(ind))) { setFlash(true); setTimeout(() => setFlash(false), 1500); } }}>
-          {flash ? '✅ Tersalin' : '📋 Salin semua'}
+          {flash ? 'Tersalin' : 'Salin semua'}
         </button>
-        <button type="button" className="cm-btn" onClick={() => unduhBlob(docxCatatanIndikator(ind, meta), namaBerkasCatatan(ind, 'docx'))}>⬇️ DOCX</button>
-        <button type="button" className="cm-btn" onClick={cetak}>🖨️ Cetak / PDF</button>
+        <button type="button" className="cm-btn" onClick={() => unduhBlob(docxCatatanIndikator(ind, meta), namaBerkasCatatan(ind, 'docx'))}>DOCX</button>
+        <button type="button" className="cm-btn" onClick={cetak}>Cetak / PDF</button>
       </span>
     </div>
   );

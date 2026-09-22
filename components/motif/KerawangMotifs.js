@@ -102,7 +102,6 @@ export function KerawangDivider({ label, icon, style }) {
       <MotifPagar width="100%" height={12} />
       {label && (
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontWeight: 800, fontSize: '0.78rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--ink-secondary)', whiteSpace: 'nowrap' }}>
-          {icon && <span>{icon}</span>}
           {label}
         </span>
       )}

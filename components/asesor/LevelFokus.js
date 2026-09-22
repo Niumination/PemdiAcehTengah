@@ -20,11 +20,12 @@
  *   layout     'grid' | 'stack' — grid utk kartu /pemdi, stack utk tabel modul
  */
 import { useState } from 'react';
+import Ikon from '@/components/ui/Ikon';
 import { LEVEL_LABEL, LEVEL_NAMA_RESMI, fokusLevel, peranLevel } from '@/lib/pemdiNilai';
 
 const PERAN_STYLE = {
-  dicapai: { color: 'var(--ok)', bg: 'var(--ok-bg)', icon: '✅' },
-  berikut: { color: 'var(--primary)', bg: 'var(--primary-bg)', icon: '🎯' },
+  dicapai: { color: 'var(--ok)', bg: 'var(--ok-bg)', ikon: 'cek' },
+  berikut: { color: 'var(--primary)', bg: 'var(--primary-bg)', ikon: 'kompas' },
   lewat: { color: 'var(--muted)', bg: 'var(--surface-2)', icon: '↩' },
   nanti: { color: 'var(--muted)', bg: 'var(--surface-2)', icon: '⏭' },
 };
@@ -41,10 +42,10 @@ export function RingkasFokus({ ind, compact = false }) {
   return (
     <span className="fokus-ringkas">
       {f.levelDicapai >= 1
-        ? <><strong style={{ color: 'var(--ok)' }}>✅ Level {f.levelDicapai} dicapai</strong>{!compact && <span className="muted"> ({LEVEL_LABEL[f.levelDicapai]})</span>}</>
-        : <strong style={{ color: 'var(--bad)' }}>⬜ Belum ada level yang dicapai</strong>}
+        ? <><strong style={{ color: 'var(--ok)' }}>Level {f.levelDicapai} dicapai</strong>{!compact && <span className="muted"> ({LEVEL_LABEL[f.levelDicapai]})</span>}</>
+        : <strong style={{ color: 'var(--bad)' }}>Belum ada level yang dicapai</strong>}
       {f.levelBerikut && (
-        <> · <strong style={{ color: 'var(--primary)' }}>🎯 Target berikutnya: Level {f.levelBerikut}</strong>{!compact && <span className="muted"> ({LEVEL_LABEL[f.levelBerikut]})</span>}</>
+        <> · <strong style={{ color: 'var(--primary)' }}>Target berikutnya: Level {f.levelBerikut}</strong>{!compact && <span className="muted"> ({LEVEL_LABEL[f.levelBerikut]})</span>}</>
       )}
       {!f.levelBerikut && <> · <strong style={{ color: 'var(--ok)' }}>Level maksimal tercapai</strong></>}
     </span>
@@ -90,7 +91,7 @@ export default function LevelFokus({ ind, levels = [1, 2, 3, 4, 5], ringkas, war
                   title={`${LEVEL_NAMA_RESMI[lv] || ''} — ${peran?.ket || ''}`}
                 >
                   <span className="lvfokus-lv" style={{ color: w, background: `${w}18` }}>L{lv} · {LEVEL_LABEL[lv]}</span>
-                  {peran && <span className="lvfokus-peran" style={{ color: ps.color, background: ps.bg }}>{ps.icon} {peran.label}</span>}
+                  {peran && <span className="lvfokus-peran" style={{ color: ps.color, background: ps.bg }}><Ikon nama={ps.ikon} size={12} /> {peran.label}</span>}
                   <span className="lvfokus-ringkas">{ringkas ? ringkas(lv) : ''}</span>
                   <span className="lvfokus-chev" aria-hidden="true">{open ? '▴' : '▾'}</span>
                 </button>

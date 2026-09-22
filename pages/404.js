@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Ikon from '@/components/ui/Ikon';
 import Link from 'next/link';
 
 export default function Custom404() {
@@ -18,8 +19,7 @@ export default function Custom404() {
             marginBottom: '1rem',
             filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.08))',
           }}>
-            🔍
-          </div>
+            </div>
 
           {/* Judul */}
           <h1 style={{
@@ -72,7 +72,7 @@ export default function Custom404() {
                                 e.currentTarget.style.boxShadow = '';
               }}
             >
-              <span style={{ fontSize: '1.5rem' }}>'🚀'</span>
+              <Ikon nama="kompas" size={22} />
               <span style={{ fontSize: '0.8125rem', fontWeight: 600, color: 'var(--ink)' }}>Dashboard Pemdi</span>
               <span style={{ fontSize: '0.6875rem', color: 'var(--muted)' }}>7 Aspek · 20 Indikator</span>
             </Link>
@@ -98,7 +98,7 @@ export default function Custom404() {
                                 e.currentTarget.style.boxShadow = '';
               }}
             >
-              <span style={{ fontSize: '1.5rem' }}>'📋'</span>
+              <Ikon nama="daftar" size={22} />
               <span style={{ fontSize: '0.8125rem', fontWeight: 600, color: 'var(--ink)' }}>Modul Indikator</span>
               <span style={{ fontSize: '0.6875rem', color: 'var(--muted)' }}>Kriteria L1–L5</span>
             </Link>
@@ -124,7 +124,7 @@ export default function Custom404() {
                                 e.currentTarget.style.boxShadow = '';
               }}
             >
-              <span style={{ fontSize: '1.5rem' }}>🔎</span>
+              <Ikon nama="cari" size={22} />
               <span style={{ fontSize: '0.8125rem', fontWeight: 600, color: 'var(--ink)' }}>Cari</span>
               <span style={{ fontSize: '0.6875rem', color: 'var(--muted)' }}>Telusuri Portal</span>
             </Link>
@@ -150,7 +150,7 @@ export default function Custom404() {
                                 e.currentTarget.style.boxShadow = '';
               }}
             >
-              <span style={{ fontSize: '1.5rem' }}>🏠</span>
+              <Ikon nama="menu" size={22} />
               <span style={{ fontSize: '0.8125rem', fontWeight: 600, color: '#fff' }}>Beranda</span>
               <span style={{ fontSize: '0.6875rem', color: 'rgba(255,255,255,0.75)' }}>Halaman Utama</span>
             </Link>

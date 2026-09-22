@@ -49,7 +49,7 @@ export default function OPDIndex({ data, butirCountMap }) {
               minWidth: 100,
             }}>
               <div style={{ fontSize: '1.5rem', fontWeight: 700 }}>{totalOPD}</div>
-              <div style={{ fontSize: '0.65rem', opacity: 0.7, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Perangkat Daerah</div>
+              <div style={{ fontSize: '0.6875rem', opacity: 0.7, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Perangkat Daerah</div>
             </div>
             <div className="card" style={{
               padding: '0.75rem 1rem',
@@ -59,7 +59,7 @@ export default function OPDIndex({ data, butirCountMap }) {
               minWidth: 100,
             }}>
               <div style={{ fontSize: '1.5rem', fontWeight: 700 }}>{formatAngka(totalASN)}</div>
-              <div style={{ fontSize: '0.65rem', opacity: 0.7, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Total ASN</div>
+              <div style={{ fontSize: '0.6875rem', opacity: 0.7, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Total ASN</div>
             </div>
             <div className="card" style={{
               padding: '0.75rem 1rem',
@@ -69,7 +69,7 @@ export default function OPDIndex({ data, butirCountMap }) {
               minWidth: 100,
             }}>
               <div style={{ fontSize: '1.5rem', fontWeight: 700 }}>{kecamatan.length}</div>
-              <div style={{ fontSize: '0.65rem', opacity: 0.7, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Kecamatan</div>
+              <div style={{ fontSize: '0.6875rem', opacity: 0.7, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Kecamatan</div>
             </div>
           </div>
         </div>
@@ -91,11 +91,11 @@ export default function OPDIndex({ data, butirCountMap }) {
           gap: '0.75rem',
         }}>
           {[
-            { label: 'Unsur Staf', count: instansi.filter(d => d.level === 'Staf').length, icon: '🏛️' },
-            { label: 'Badan Daerah', count: instansi.filter(d => d.level === 'Badan').length, icon: '📊' },
-            { label: 'Dinas Daerah', count: instansi.filter(d => d.level === 'Dinas').length, icon: '🏢' },
-            { label: 'Lembaga Lain', count: instansi.filter(d => d.level === 'Lembaga').length, icon: '🏫' },
-            { label: 'Kecamatan', count: kecamatan.length, icon: '🗺️' },
+            { label: 'Unsur Staf', count: instansi.filter(d => d.level === 'Staf').length },
+            { label: 'Badan Daerah', count: instansi.filter(d => d.level === 'Badan').length },
+            { label: 'Dinas Daerah', count: instansi.filter(d => d.level === 'Dinas').length },
+            { label: 'Lembaga Lain', count: instansi.filter(d => d.level === 'Lembaga').length },
+            { label: 'Kecamatan', count: kecamatan.length },
           ].map((g) => (
             <div key={g.label} className="card" style={{
               padding: '1rem',
@@ -103,7 +103,6 @@ export default function OPDIndex({ data, butirCountMap }) {
               alignItems: 'center',
               gap: '0.75rem',
             }}>
-              <span style={{ fontSize: '1.5rem' }}>{g.icon}</span>
               <div>
                 <div style={{ fontSize: '1.1rem', fontWeight: 700 }}>{g.count}</div>
                 <div style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>{g.label}</div>

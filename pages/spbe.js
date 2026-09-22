@@ -17,7 +17,7 @@ function getLevel(value) {
 }
 
 /* ── Domain card ── */
-function DomainCard({ nama, nilai, icon }) {
+function DomainCard({ nama, nilai }) {
   const level = getLevel(nilai);
   return (
     <div
@@ -30,7 +30,6 @@ function DomainCard({ nama, nilai, icon }) {
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-        <span style={{ fontSize: '1.5rem' }}>{icon}</span>
         <div style={{ flex: 1 }}>
           <div style={{ fontSize: '0.8rem', color: 'var(--muted)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
             Domain
@@ -124,16 +123,16 @@ export default function SpbePage({ data }) {
 
       {/* DOMAIN SCORES */}
       <section style={{ marginBottom: '2rem' }}>
-        <KerawangDivider label="Nilai per Domain" icon="📊" style={{ margin: '6px 0 18px' }} />
+        <KerawangDivider label="Nilai per Domain" style={{ margin: '6px 0 18px' }} />
         <div className="grid-2" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
           gap: '1rem',
         }}>
-          <DomainCard nama="Kebijakan SPBE" nilai={domain.kebijakan_spbe} icon="📜" />
-          <DomainCard nama="Tata Kelola SPBE" nilai={domain.tata_kelola_spbe} icon="🏛️" />
-          <DomainCard nama="Manajemen SPBE" nilai={domain.manajemen_spbe} icon="⚙️" />
-          <DomainCard nama="Layanan SPBE" nilai={domain.layanan_spbe} icon="🤝" />
+          <DomainCard nama="Kebijakan SPBE" nilai={domain.kebijakan_spbe} />
+          <DomainCard nama="Tata Kelola SPBE" nilai={domain.tata_kelola_spbe} />
+          <DomainCard nama="Manajemen SPBE" nilai={domain.manajemen_spbe} />
+          <DomainCard nama="Layanan SPBE" nilai={domain.layanan_spbe} />
         </div>
       </section>
 
@@ -147,7 +146,7 @@ export default function SpbePage({ data }) {
         {/* Kekuatan */}
         <div className="card" style={{ padding: '1.5rem' }}>
           <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.75rem', color: 'var(--ok)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <span>✅</span> Kekuatan
+            Kekuatan
           </h3>
           <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
             {kekuatan.map((item, i) => (
@@ -168,7 +167,7 @@ export default function SpbePage({ data }) {
         {/* Rekomendasi Prioritas */}
         <div className="card" style={{ padding: '1.5rem' }}>
           <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.75rem', color: 'var(--bad)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <span>🔴</span> Prioritas Perbaikan
+            Prioritas Perbaikan
           </h3>
           <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
             {rekomendasi.map((item, i) => (
@@ -192,7 +191,6 @@ export default function SpbePage({ data }) {
         <section style={{ marginBottom: '2rem' }}>
           <div className="card" style={{ padding: '1.5rem', background: 'var(--info-bg)', border: '1px solid var(--info)' }}>
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
-              <span style={{ fontSize: '1.5rem', flexShrink: 0 }}>🔄</span>
               <div>
                 <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem', color: 'var(--info)' }}>
                   Transisi ke Pemerintah Digital (Pemdi)
@@ -221,10 +219,10 @@ export default function SpbePage({ data }) {
         </h2>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
           {Object.entries({
-            'Kebijakan SPBE': { nilai: domain.kebijakan_spbe, desc: 'Kebijakan internal yang mengatur penyelenggaraan SPBE di lingkungan Pemkab Aceh Tengah.', icon: '📜' },
-            'Tata Kelola SPBE': { nilai: domain.tata_kelola_spbe, desc: 'Struktur organisasi, tim koordinasi, dan proses pengelolaan SPBE yang terdiri dari perencanaan, penganggaran, dan inovasi.', icon: '🏛️' },
-            'Manajemen SPBE': { nilai: domain.manajemen_spbe, desc: 'Penerapan manajemen SPBE mencakup pembangunan aplikasi, pusat data, jaringan intra, keamanan, dan audit TIK.', icon: '⚙️' },
-            'Layanan SPBE': { nilai: domain.layanan_spbe, desc: 'Ketersediaan dan kualitas layanan administrasi pemerintahan dan layanan publik yang diselenggarakan secara elektronik.', icon: '🤝' },
+            'Kebijakan SPBE': { nilai: domain.kebijakan_spbe, desc: 'Kebijakan internal yang mengatur penyelenggaraan SPBE di lingkungan Pemkab Aceh Tengah.' },
+            'Tata Kelola SPBE': { nilai: domain.tata_kelola_spbe, desc: 'Struktur organisasi, tim koordinasi, dan proses pengelolaan SPBE yang terdiri dari perencanaan, penganggaran, dan inovasi.' },
+            'Manajemen SPBE': { nilai: domain.manajemen_spbe, desc: 'Penerapan manajemen SPBE mencakup pembangunan aplikasi, pusat data, jaringan intra, keamanan, dan audit TIK.' },
+            'Layanan SPBE': { nilai: domain.layanan_spbe, desc: 'Ketersediaan dan kualitas layanan administrasi pemerintahan dan layanan publik yang diselenggarakan secara elektronik.' },
           }).map(([nama, info]) => (
             <details
               key={nama}
@@ -246,12 +244,11 @@ export default function SpbePage({ data }) {
                 color: 'var(--ink)',
                 userSelect: 'none',
               }}>
-                <span>{info.icon}</span>
-                <span style={{ flex: 1 }}>{nama}</span>
+                                <span style={{ flex: 1 }}>{nama}</span>
                 <span style={{ fontSize: '1.1rem', fontWeight: 700, color: getLevel(info.nilai).color }}>
                   {formatDesimal(info.nilai)}
                 </span>
-                <span className="badge" style={{ background: `${getLevel(info.nilai).color}18`, color: getLevel(info.nilai).color, fontSize: '0.65rem' }}>
+                <span className="badge" style={{ background: `${getLevel(info.nilai).color}18`, color: getLevel(info.nilai).color, fontSize: '0.6875rem' }}>
                   {getLevel(info.nilai).label}
                 </span>
               </summary>

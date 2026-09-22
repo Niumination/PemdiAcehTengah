@@ -6,6 +6,7 @@
  * Props: compact (bool) — versi satu paragraf untuk halaman yang padat.
  */
 import Link from 'next/link';
+import Ikon from '@/components/ui/Ikon';
 
 export const TUJUAN_KOKPIT = {
   judul: 'Untuk siapa dan untuk apa dashboard ini',
@@ -16,10 +17,10 @@ export const TUJUAN_KOKPIT = {
     'Pemda Aceh Tengah — perangkat daerah, dokumen, sistem, dan kondisi aktual yang benar-benar ada — ' +
     'sehingga tim tahu persis dokumen apa yang harus disiapkan, oleh siapa, dan bagaimana bentuknya.',
   prinsip: [
-    { icon: '📜', teks: 'Bahasa baku PermenPANRB 8/2026 dipertahankan pada nama butir & kriteria level — tidak diparafrasa.' },
-    { icon: '🏔️', teks: 'Penerjemahan ke konteks Aceh Tengah ada di kolom contoh dokumen, PIC perangkat daerah, catatan, dan template draf.' },
-    { icon: '🧭', teks: 'Status tiap butir mengikuti hasil asesor di eval.spbe.go.id — bukan klaim mandiri. Angka indeks di sini adalah simulasi, bukan nilai resmi.' },
-    { icon: '🔁', teks: 'Catatan asesor ditampilkan apa adanya agar revisi dikerjakan tepat sasaran, bukan berdasarkan tafsiran.' },
+    { ikon: 'dokumen', teks: 'Bahasa baku PermenPANRB 8/2026 dipertahankan pada nama butir & kriteria level — tidak diparafrasa.' },
+    { ikon: 'gedung', teks: 'Penerjemahan ke konteks Aceh Tengah ada di kolom contoh dokumen, PIC perangkat daerah, catatan, dan template draf.' },
+    { ikon: 'kompas', teks: 'Status tiap butir mengikuti hasil asesor di eval.spbe.go.id — bukan klaim mandiri. Angka indeks di sini adalah simulasi, bukan nilai resmi.' },
+    { ikon: 'peringatan', teks: 'Catatan asesor ditampilkan apa adanya agar revisi dikerjakan tepat sasaran, bukan berdasarkan tafsiran.' },
   ],
   pemilik: 'Catatan pengelola — Diskominfo Kab. Aceh Tengah (Bid. Layanan E-Government)',
 };
@@ -42,16 +43,15 @@ export default function CatatanTujuan({ compact = false }) {
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
-        <span aria-hidden="true">📌</span>
         <strong style={{ color: 'var(--primary)' }}>{t.judul}</strong>
-        <span style={{ marginLeft: 'auto', fontSize: '0.68rem', color: 'var(--muted)' }}>{t.pemilik}</span>
+        <span style={{ marginLeft: 'auto', fontSize: '0.6875rem', color: 'var(--muted)' }}>{t.pemilik}</span>
       </div>
       <p style={{ margin: 0 }}>{t.inti}</p>
       {!compact && (
         <ul style={{ margin: '10px 0 0', paddingLeft: 0, listStyle: 'none', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '6px 16px' }}>
           {t.prinsip.map((p, i) => (
             <li key={i} style={{ fontSize: '0.78rem', color: 'var(--ink-secondary, var(--muted))', display: 'flex', gap: '6px' }}>
-              <span aria-hidden="true">{p.icon}</span>
+              <Ikon nama={p.ikon} size={14} />
               <span>{p.teks}</span>
             </li>
           ))}

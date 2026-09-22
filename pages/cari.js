@@ -1,4 +1,5 @@
 import { useState, useMemo, useRef, useEffect } from 'react';
+import Ikon from '@/components/ui/Ikon';
 import React from 'react';
 import Head from 'next/head';
 import Fuse from 'fuse.js';
@@ -19,11 +20,11 @@ const fuseOptions = {
 };
 
 const TYPE_ICON = {
-  OPD: '🏛️',
-  'Aspek Pemdi': '📊',
-  'Indikator Pemdi': '📋',
-  Glosarium: '📖',
-  'Dokumen Kunci': '📄',
+  OPD: 'gedung',
+  'Aspek Pemdi': 'kompas',
+  'Indikator Pemdi': 'daftar',
+  Glosarium: 'modul',
+  'Dokumen Kunci': 'dokumen',
 };
 
 const TYPE_CLASS = {
@@ -74,7 +75,7 @@ export default function Cari({ items }) {
 
       <section style={{ padding: '3rem 0 1.5rem', background: 'var(--hero-grad)', color: '#fff', position: 'relative', overflow: 'hidden' }}>
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-          <h1 className="gold-head" style={{ margin: '0 0 0.75rem', fontSize: '1.75rem' }}>🔍 Pencarian</h1>
+          <h1 className="gold-head" style={{ margin: '0 0 0.75rem', fontSize: '1.75rem' }}>Pencarian</h1>
           <p style={{ opacity: 0.85, marginBottom: '1.25rem', fontSize: '0.9375rem' }}>
             Cari indikator Pemdi, OPD, istilah glosarium, dan dokumen kunci — {statistik} item tersedia
           </p>
@@ -102,7 +103,7 @@ export default function Cari({ items }) {
             <span style={{
               position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)',
               fontSize: '1.25rem', opacity: 0.5, pointerEvents: 'none',
-            }}>🔍</span>
+            }}><Ikon nama="cari" size={18} /></span>
           </div>
         </div>
       </section>
@@ -110,7 +111,6 @@ export default function Cari({ items }) {
       <section className="container" style={{ padding: '2rem 0' }}>
         {!searched && !query && (
           <div style={{ textAlign: 'center', padding: '4rem 1rem', color: 'var(--muted)' }}>
-            <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🔍</div>
             <p style={{ fontSize: '1.125rem' }}>Ketik kata kunci untuk memulai pencarian</p>
             <p style={{ fontSize: '0.875rem', marginTop: '0.5rem' }}>
               Cari berdasarkan kode/nama indikator, nama OPD, istilah glosarium, atau dokumen kunci
@@ -120,7 +120,6 @@ export default function Cari({ items }) {
 
         {searched && hasil.length === 0 && (
           <div style={{ textAlign: 'center', padding: '3rem 1rem', color: 'var(--muted)' }}>
-            <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>😕</div>
             <p style={{ fontSize: '1.125rem' }}>Tidak ditemukan untuk "{query}"</p>
             <p style={{ fontSize: '0.875rem', marginTop: '0.25rem' }}>Coba kata kunci lain</p>
           </div>
@@ -146,7 +145,7 @@ export default function Cari({ items }) {
                   onMouseOut={e => { e.currentTarget.style.boxShadow = ''; e.currentTarget.style.transform = ''; }}
                 >
                   <span style={{ fontSize: '1.5rem', flexShrink: 0, width: '2rem', textAlign: 'center' }}>
-                    {TYPE_ICON[item.type] || '📄'}
+                    <Ikon nama={TYPE_ICON[item.type] || 'dokumen'} size={16} />
                   </span>
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <div style={{ fontWeight: 600, fontSize: '1rem', marginBottom: '0.125rem' }}>

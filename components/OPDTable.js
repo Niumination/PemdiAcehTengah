@@ -82,8 +82,7 @@ export default function OPDTable({ list = [], butirCountMap = {} }) {
                 }}
                 aria-label="Hapus pencarian"
               >
-                ✕
-              </button>
+                </button>
             )}
           </div>
         </div>
@@ -114,7 +113,7 @@ export default function OPDTable({ list = [], butirCountMap = {} }) {
       <div className="opd-viewbar">
         <span className="muted" style={{ fontSize: '0.8rem' }}>{filteredList.length} Perangkat Daerah</span>
         <div className="seg" role="group" aria-label="Pilih tampilan daftar OPD">
-          <button type="button" className={`seg-btn ${view === 'table' ? 'active' : ''}`} aria-pressed={view === 'table'} onClick={() => setView('table')}>☰ Tabel</button>
+          <button type="button" className={`seg-btn ${view === 'table' ? 'active' : ''}`} aria-pressed={view === 'table'} onClick={() => setView('table')}>Tabel</button>
           <button type="button" className={`seg-btn ${view === 'grid' ? 'active' : ''}`} aria-pressed={view === 'grid'} onClick={() => setView('grid')}>▦ Grid</button>
         </div>
       </div>
