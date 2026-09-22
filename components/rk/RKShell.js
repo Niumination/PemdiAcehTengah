@@ -49,7 +49,9 @@ function tulisLS(k, v) {
  * props.data — { indikator[], antrean[], opdPJ[] } dari getStaticProps halaman;
  * disimpan di konteks agar drawer & palet bisa dipakai dari halaman mana pun.
  */
-export default function RKShell({ children, data }) {
+export default function RKShell({ children, data: dataProp, legacy = false }) {
+  const [dataLazy, setDataLazy] = useState(null);
+  const data = dataProp || dataLazy;
   const router = useRouter();
   const [persona, setPersonaState] = useState('koordinator');
   const [opdId, setOpdIdState] = useState('');
@@ -57,6 +59,14 @@ export default function RKShell({ children, data }) {
   const [hidrasi, setHidrasi] = useState(false);
   const [drawer, setDrawer] = useState(null); // { indikatorId, butirId }
   const [palet, setPalet] = useState(false);
+
+  // Halaman lama tidak membawa props rk → muat ringkasan statis (dibangun saat build) untuk drawer & palet
+  useEffect(() => {
+    if (dataProp || dataLazy) return;
+    let batal = false;
+    fetch('/api/rk-data').then((r) => (r.ok ? r.json() : null)).then((d) => { if (!batal && d) setDataLazy(d); }).catch(() => {});
+    return () => { batal = true; };
+  }, [dataProp, dataLazy]);
 
   useEffect(() => {
     setPersonaState(bacaLS('pemdi:persona', 'koordinator'));
@@ -159,7 +169,7 @@ export default function RKShell({ children, data }) {
           </div>
         </header>
 
-        <main id="main-content" className="rk-main">{children}</main>
+        <main id="main-content" className={`rk-main${legacy ? ' rk-main-legacy' : ''}`}>{children}</main>
 
         <footer className="rk-foot">
           <span>© {new Date().getFullYear()} Pemerintah Kabupaten Aceh Tengah · Diskominfo · Tim Koordinasi Pemdi</span>

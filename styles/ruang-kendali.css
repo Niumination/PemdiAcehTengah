@@ -272,3 +272,28 @@
 .rk-lain > ul a { display: block; padding: 8px 10px; border-radius: var(--rk-r-1); font-size: var(--rk-fs-1); color: var(--rk-ink-2); }
 .rk-lain > ul a:hover { background: var(--rk-panel-2); color: var(--rk-ink); }
 @media (max-width: 1100px) { .rk-kbtn-lbl { display: none; } .rk-kbtn kbd { display: none; } }
+
+/* ── PPB ringkas ── */
+.rk-ppb { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.rk-ppb a { display: flex; flex-direction: column; gap: 4px; padding: 14px; border: 1px solid var(--rk-line); border-radius: var(--rk-r-1); background: var(--rk-panel-2); font-size: var(--rk-fs-1); }
+.rk-ppb a:hover { border-color: var(--rk-emas); }
+.rk-ppb b { font-family: var(--rk-f-display); font-size: var(--rk-fs-3); color: var(--rk-ink); }
+@media (max-width: 720px) { .rk-ppb { grid-template-columns: 1fr; } }
+
+/* ── Jembatan halaman lama (Patch 2): token lama dipetakan ke token Ruang Kendali ── */
+.rk-main-legacy { max-width: var(--content-max, 1440px); }
+.rk-legacy {
+  --bg: var(--rk-bg); --surface: var(--rk-panel); --surface-2: var(--rk-panel-2); --surface-hover: var(--rk-panel-2);
+  --bg-subtle: var(--rk-panel-2); --line: var(--rk-line); --line-2: var(--rk-line-2); --border: var(--rk-line);
+  --ink: var(--rk-ink); --text: var(--rk-ink); --ink-secondary: var(--rk-ink-2); --muted: var(--rk-ink-2); --muted-light: var(--rk-ink-3);
+  --gold: var(--rk-emas); --gold-deep: var(--rk-emas-ink);
+  --ok: var(--rk-status-ink-ok); --warn: var(--rk-status-ink-warn); --bad: var(--rk-status-ink-bad); --info: var(--rk-status-ink-info);
+  --r: 10px; --r-sm: 8px; --r-lg: 12px;
+  --sh: none; --sh-lg: none; --sh-xl: none; --sh-sm: none; --card-glow: none; --hero-grad: none;
+  font-family: var(--rk-f-body); color: var(--rk-ink);
+}
+html[data-theme='dark'] .rk-legacy { --primary: var(--rk-emas); --primary-hover: var(--rk-emas-ink); --primary-50: var(--rk-panel-2); --primary-100: var(--rk-line); --primary-200: var(--rk-line-2); --primary-deep: var(--rk-panel); }
+html[data-theme='light'] .rk-legacy, html:not([data-theme]) .rk-legacy { --primary: #1F2A44; --primary-hover: #2C3A5E; --primary-50: #EEF1F7; --primary-100: #DDE3EF; --primary-200: #C3CCE0; --primary-deep: #10162A; }
+.rk-legacy h1, .rk-legacy h2, .rk-legacy h3 { font-family: var(--rk-f-display); }
+.rk-legacy .hero, .rk-legacy .hero-award { background: var(--rk-panel) !important; border: 1px solid var(--rk-line); border-radius: var(--rk-r-2); color: var(--rk-ink); }
+.rk-legacy .card, .rk-legacy .glow-card, .rk-legacy .kpi-card { border-radius: var(--rk-r-2) !important; box-shadow: none !important; border: 1px solid var(--rk-line); }

@@ -28,6 +28,10 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  async redirects() {
+    // Patch 2 (22 Sep 2026): beranda = Ruang Kendali. /?view=... lama ikut dialihkan.
+    return [{ source: '/', destination: '/dashboard', permanent: true }];
+  },
   async headers() {
     return [
       { source: '/:path*', headers: securityHeaders },

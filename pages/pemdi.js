@@ -149,6 +149,19 @@ function defaultCatatan(ind) {
   const [pilihInd, setPilihInd] = useState(null); // indikator aktif di accordion checklist
   const [pilihAspek, setPilihAspek] = useState(null); // filter aspek di bilah kiri
 
+  // Patch 2: /pemdi#I7 (dari drawer Ruang Kendali) → pilih indikator & gulir ke kartunya
+  useEffect(() => {
+    const h = () => {
+      const m = /^#(I\d+)$/.exec(window.location.hash || '');
+      if (!m) return;
+      setPilihInd(m[1]);
+      setTimeout(() => document.getElementById(`ind-${m[1]}`)?.scrollIntoView({ block: 'start' }), 80);
+    };
+    h();
+    window.addEventListener('hashchange', h);
+    return () => window.removeEventListener('hashchange', h);
+  }, []);
+
   // Inisialisasi pilihInd ke indikator pertama dari aspek pertama saat komponen mount
   useEffect(() => {
     if (aspek.length > 0 && aspek[0].indikator.length > 0) {
@@ -569,7 +582,7 @@ function defaultCatatan(ind) {
                 items: (ind.bukti_dukung || []).filter(b => b.level === lv),
               }));
               return (
-                <div key={ind.id} style={{ padding: '20px', borderRadius: '14px', border: '1px solid var(--line)', background: 'var(--surface)' }}>
+                <div key={ind.id} id={`ind-${ind.id}`} style={{ padding: '20px', borderRadius: '14px', border: '1px solid var(--line)', background: 'var(--surface)', scrollMarginTop: '72px' }}>
                   {/* Header indikator */}
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '12px', flexWrap: 'wrap', marginBottom: '14px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>

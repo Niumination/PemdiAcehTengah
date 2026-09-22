@@ -130,7 +130,7 @@ export default function Custom404() {
             </Link>
 
             <Link
-              href="/"
+              href="/dashboard"
               style={{
                 display: 'flex',
                 flexDirection: 'column',

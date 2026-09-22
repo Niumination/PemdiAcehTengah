@@ -13,7 +13,16 @@ import opdJson from '@/data/opd.json';
 import pemdiJson from '@/data/pemdi.json';
 import { petaButirOPD } from '@/lib/pjButir';
 
-export default function Dashboard({ rk, opdList, butirCountMap, dibangun }) {
+/** Ringkasan PPB dari opd.json → probis (level_0 misi, level_1 urusan, level_2 kategori→proses). */
+function hitungPPB() {
+  const pb = opdJson.probis || {};
+  const misi = (pb.level_0?.misi || []).length;
+  const urusan = (pb.level_1?.urusan || []).length;
+  const proses = (pb.level_2?.kategori || []).reduce((n, k) => n + (k.proses || []).length, 0);
+  return { misi, urusan, proses };
+}
+
+export default function Dashboard({ rk, opdList, butirCountMap, dibangun, ppb }) {
   const antrean = useAntreanAktif();
   const tinggi = antrean.filter((b) => b.prioritas === 'tinggi').slice(0, 8);
   return (
@@ -51,7 +60,16 @@ export default function Dashboard({ rk, opdList, butirCountMap, dibangun }) {
         </section>
 
         <section className="rk-panel">
-          <h2>52 perangkat daerah · butir Pemdi per OPD <Link className="rk-act" href="/probis">Peta proses bisnis →</Link></h2>
+          <h2>Peta Proses Bisnis (PPB) Level 0–1–2 · PermenPANRB 19/2018 <Link className="rk-act" href="/probis">Eksplorasi peta lintas fungsi →</Link></h2>
+          <div className="rk-ppb">
+            <Link href="/probis"><span className="mono faint">L0 · Makro</span><b>Visi &amp; {ppb.misi} Misi RPJMD 2025–2029</b><span className="muted">Arah pembangunan daerah sebagai akar seluruh proses.</span></Link>
+            <Link href="/probis"><span className="mono faint">L1 · Urusan</span><b>{ppb.urusan} urusan konkuren UU 23/2014</b><span className="muted">Kewenangan wajib &amp; pilihan di seluruh perangkat daerah.</span></Link>
+            <Link href="/probis"><span className="mono faint">L2 · Proses</span><b>{ppb.proses} proses lintas OPD</b><span className="muted">Bagan lintas fungsi (CFM) — bukti I15 Proses Bisnis &amp; I17 Keterpaduan.</span></Link>
+          </div>
+        </section>
+
+        <section className="rk-panel">
+          <h2>52 perangkat daerah · butir Pemdi per OPD <Link className="rk-act" href="/opd">Indeks OPD →</Link></h2>
           <OPDTable opdList={opdList} butirCountMap={butirCountMap} />
         </section>
       </div>
@@ -67,6 +85,7 @@ export async function getStaticProps() {
       opdList: opdJson.opd.daftar,
       butirCountMap: petaButirOPD(opdJson.opd.daftar, pemdiJson),
       dibangun: new Date().toISOString(),
+      ppb: hitungPPB(),
     },
   };
 }

@@ -2,10 +2,14 @@ import '@/styles/tokens.css';
 import '@/styles/globals.css';
 import '@/styles/ruang-kendali.css';
 import localFont from 'next/font/local';
-import AppShell from '@/components/AppShell';
 import RKShell from '@/components/rk/RKShell';
 
-/** Rute yang sudah memakai kerangka Ruang Kendali (Patch 1); sisanya AppShell lama sampai Patch 2. */
+/**
+ * Patch 2 (22 Sep 2026): seluruh rute memakai kerangka Ruang Kendali (RKShell).
+ * Halaman yang belum di-reskin (pemdi, modul-indikator, requirement, spbe, probis,
+ * opd, glosarium, cari, 404) dibungkus `.rk-legacy` supaya token lama (globals.css)
+ * tetap berlaku di dalam kontennya. AppShell/Sidebar/BottomNav/Footer lama dihapus.
+ */
 const RUTE_RK = new Set(['/dashboard', '/indikator', '/antrean']);
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -68,15 +72,11 @@ export default function App({ Component, pageProps }) {
         />
       </Head>
       <div className={plusJakartaSans.variable}>
-        {RUTE_RK.has(router.pathname) ? (
-          <RKShell data={pageProps.rk}>
-            <Component {...pageProps} />
-          </RKShell>
-        ) : (
-          <AppShell>
-            <Component {...pageProps} />
-          </AppShell>
-        )}
+        <RKShell data={pageProps.rk} legacy={!RUTE_RK.has(router.pathname)}>
+          {RUTE_RK.has(router.pathname) ? <Component {...pageProps} /> : (
+            <div className="rk-legacy"><Component {...pageProps} /></div>
+          )}
+        </RKShell>
       </div>
       <Analytics />
     </>

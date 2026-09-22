@@ -33,7 +33,7 @@ export default function PetaProsesBisnis({ data }) {
         overflow: 'hidden',
       }}>
         <div style={{ position: 'relative', zIndex: 1 }}>
-          <Link href="/" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none', fontSize: '0.875rem' }}
+          <Link href="/dashboard" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none', fontSize: '0.875rem' }}
             onMouseEnter={e => e.target.style.color = '#fff'}
             onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.8)'}>
             ← Beranda
