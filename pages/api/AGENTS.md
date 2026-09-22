@@ -4,10 +4,11 @@
 
 REST API read-only — serverless functions Next.js yang membaca `data/*.json` atau mem-proxy PDF JDIH. **Tidak ada database / penulisan data** sejak reposisi 22 Sep 2026 (API Supabase persona publik — lapor, skm, feedback, admin — dihapus; arsip tag `arsip/persona-publik-2026-09`).
 
-## Ownership — 5 API
+## Ownership — 6 API
 
 | Route | File | Methods | Fungsi | Status |
 |-------|------|---------|--------|--------|
+| `/api/rk-data` | `rk-data.js` | GET | Payload Ruang Kendali (`lib/rkData.susunDataRK()`: indikator ringkas, antrean, bebanPJ, linimasa, OPD) — cache modul + `Cache-Control: s-maxage=3600`; dipakai `RKShell` pada halaman lama | ✅ Active (22 Sep 2026) |
 | `/api/opd` | `opd.js` | GET | Daftar lengkap OPD (52 entries) + data umum | ✅ Active |
 | `/api/spbe` | `spbe.js` | GET | Data SPBE 2025 (4 domain, 47 indikator) | ✅ Active |
 | `/api/requirement` | `requirement.js` | GET | 83 requirements PPB (12 kategori, 3 fase) | ✅ Active |

@@ -44,7 +44,9 @@ Situs melayani **satu persona: internal Pemdi**. Persona publik/warga (beranda w
 
 | Halaman | URL | Deskripsi |
 |---------|-----|-----------|
-| Ringkasan | `/` | Beranda internal — KPI Pemdi/SPBE/bukti, gauge SPBE + 7 aspek, blok PPB, tabel 52 OPD (kolom butir Pemdi per OPD) |
+| Dashboard | `/dashboard` (`/` dialihkan 308) | Ruang kendali evaluasi 2026 — bar situasi, Kompas Pemdi 20 indikator, antrean ringkas, beban PJ, linimasa, prasyarat, blok PPB, tabel 52 OPD |
+| Indikator | `/indikator` | 20 indikator × 7 aspek, level dicapai/target, drawer detail butir (`?butir=`) |
+| Antrean | `/antrean` | Antrean kerja butir revisi + gap per prioritas & PJ OPD |
 | Dashboard Pemdi | `/pemdi` | Simulasi penilaian mandiri — indeks (hanya bukti diterima), 7 aspek × 20 indikator, fokus level, catatan mandiri per butir + ekspor |
 | Modul Indikator | `/modul-indikator` | 20 modul kriteria L1–L5 + matriks kebutuhan bukti |
 | Draf Bukti Dukung Prioritas | `/requirement` | 19 revisi asesor + butir gap, template draf; tab sekunder PPB (83 kebutuhan) |
@@ -69,12 +71,12 @@ Situs melayani **satu persona: internal Pemdi**. Persona publik/warga (beranda w
 ```
 PemdiAcehTengah/
 ├── pages/                # 11 halaman internal + 5 API read-only (lihat pages/AGENTS.md)
-│   ├── index.js          # Ringkasan — KPI, SPBE, PPB, tabel OPD
+│   ├── dashboard.js      # Dashboard (halaman utama) · indikator.js · antrean.js
 │   ├── pemdi.js          # Dashboard Pemdi — simulasi mandiri + catatan mandiri
 │   ├── modul-indikator.js, requirement.js, spbe.js, probis.js, glosarium.js, cari.js
 │   ├── opd/              # index + [slug] (52 SSG)
 │   └── api/              # opd, spbe, requirement, proxy-pdf, health
-├── components/           # 17 komponen — AppShell, Sidebar, BottomNav, Footer, asesor/*, beranda/BerandaAsesor, motif/Kerawang
+├── components/           # 13 komponen — rk/{RKShell,Panel,Kompas,Drawer,Palet}, ui/{Ikon,StatusIkon}, asesor/*, motif/Kerawang
 ├── lib/                  # pemdiNilai, catatanMandiri, pjButir, search-index, modeSitus, format, slugify
 ├── data/                 # pemdi.json, modul-indikator.json, catatan-mandiri.json, opd.json, draf-bukti-prioritas.json, …
 ├── scripts/              # Rantai regenerasi data (python3) — lihat data/AGENTS.md

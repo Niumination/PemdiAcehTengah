@@ -3,9 +3,11 @@
 ## Purpose
 Global CSS — satu file sumber untuk seluruh tampilan portal. **Luxury Navy / Warm Beige / Soft Gold** (palet resmi sejak 8 Agu 2026; menggantikan v3 "Gayo Civic Digital" yang berbasis `#004098`).
 
-## Ownership
-- `globals.css` — Satu-satunya file CSS utama. **1.732 baris / 60 KB** (diperbarui 22 Sep 2026 — CSS persona publik dihapus; sebelumnya 1.936). Semua styling di sini.
-- **TIDAK ada file CSS lain.** No module CSS, no Tailwind. Period.
+## Ownership (Ruang Kendali, 22 Sep 2026 — 3 berkas)
+- `tokens.css` — **Sumber token tunggal** Ruang Kendali: `--rk-bg/-panel/-panel-2/-line/-ink/-ink-2/-ink-3/-gold`, status `--rk-status-{ok,warn,bad,info,draf,pembina}` + varian `-ink-*` (kontras ≥4.5:1 pada panel; gelap `--rk-ink-3` #7B8BA5), skala tipografi 13/14/16/20/28/44/64, font **Bricolage Grotesque** (display) + **IBM Plex Sans/Mono** (self-host woff2 `public/fonts/`). Tema `[data-theme=light|dark]`, default light.
+- `ruang-kendali.css` — Kelas `.rk-*` untuk shell & panel (`.rk-bar`, `.rk-marquee` (satu-satunya animasi berulang), `.rk-tabs`, `.rk-grid` 12 kolom, `.rk-panel`, `.rk-tag`, `.rk-drawer`, `.rk-palet`, `.rk-ppb`, `.rk-lain`), plus **jembatan `.rk-legacy`** yang memetakan token lama (`--primary`, `--gold`, `--bg`, `--surface*`, `--line`, `--muted`, dsb.) ke token rk per tema sehingga halaman lama tampil konsisten tanpa reskin penuh.
+- `globals.css` — CSS halaman lama (pemdi, modul-indikator, requirement, opd, probis, spbe, glosarium, cari, 404). **1.156 baris** (Patch 3, 22 Sep 2026 — CSS shell lama sidebar/topbar/bottom-nav/footer/scroll-top/gov-strip/KPI/aspek dihapus; sebelumnya 1.732). Semua styling di sini.
+- Tidak ada module CSS / Tailwind. Font < 11px dan emoji ikon **ditolak** oleh `scripts/cek-ui.mjs` (bagian `npm test`).
 
 ## Local Contracts
 
@@ -77,7 +79,7 @@ Blok CSS `/layanan` mobile, `.service-card`, `.sf-*`, `.layanan-stats` **dihapus
 | Komponen | CSS Classes |
 |----------|-------------|
 | Header | `.gov-header`, `.gov-header-inner`, `.gov-nav`, `.mobile-menu-btn`, `.mobile-menu-overlay` |
-| Footer | `.gov-footer-wrapper`, `.gov-footer`, `.footer-main`, `.footer-gov`, `.footer-grid`, `.footer-col` |
+| Footer | `.rk-foot` (ruang-kendali.css) |
 | OPD Table | `.opd-table`, `.opd-table-search`, `.table-container`, `.tbl-wrap`, `.filter-section` |
 | SPBE Gauge | `.spbe-section`, `.gauge-container`, `.spbe-card`, `.domain-bar` |
 | Modal | `.modal-overlay`, `.modal-content`, `.modal-close` |
@@ -143,7 +145,6 @@ Tidak ada child — leaf node. Single file.
 | Prefiks | Untuk |
 |---------|-------|
 | ~~`.persona-*`, `.hero-publik`, `.sektor-*`, `.topbar-persona`, `.sb-quick-cta`~~ | **Dihapus 22 Sep 2026** (persona publik) |
-| `.kpi-*` | 4 kartu KPI beranda internal |
 | `.aspek-*`, `.ind-*`, `.st-chip.{ok,warn,muted,gray}` | Accordion 7 aspek; warna status AA |
 | `.opd-viewbar`, `.seg`, `.opd-grid`, `.opd-stack` | Toggle Tabel/Grid, stacked cards ≤768 px |
 | `.bottom-nav`, `.bn-*` | Bottom nav ponsel 5 tab internal; ruang `.content` +88 px |

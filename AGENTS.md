@@ -29,7 +29,7 @@ Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah. Transformasi menuju Peme
 | **Data Source** | **Hanya** `data/*.json` (Pemdi, modul indikator, catatan mandiri, OPD, SPBE, ProBis, PPB, glosarium, dokumen kunci) dibundel saat build. Tidak ada DB runtime sejak reposisi 22 Sep 2026 (Supabase dihapus) |
 | **Komponen** | **17 komponen React aktif** persona internal (reposisi 22 Sep 2026: 14 komponen persona publik dihapus, arsip tag `arsip/persona-publik-2026-09`) — lihat `components/AGENTS.md` |
 | **Halaman** | 11 route halaman + 5 API read-only — lihat `pages/AGENTS.md` |
-| **Lib** | `lib/pemdiNilai.js` (rumus PermenPANRB 8/2026), `lib/catatanMandiri.js`, `lib/pjButir.js` (butir Pemdi per OPD), `lib/search-index.js`, `lib/modeSitus.js`, `lib/slugify.js`, `lib/format.js` — lihat `lib/AGENTS.md` |
+| **Lib** | `lib/ruangKendali.js` + `lib/rkData.js` (payload dashboard), `lib/pemdiNilai.js` (rumus PermenPANRB 8/2026), `lib/catatanMandiri.js`, `lib/pjButir.js` (butir Pemdi per OPD), `lib/search-index.js`, `lib/modeSitus.js`, `lib/slugify.js`, `lib/format.js` — lihat `lib/AGENTS.md` |
 | **Status** | 🎯 **Reposisi Opsi B — tahap pembersihan selesai (22 Sep 2026)** — lihat `REPOSISI-PEMDI.md`. Produk aktif: **B1 Dashboard Pemdi (internal: Tim Koordinasi Pemdi + PJ OPD)**. Persona publik (layanan/SKM/lapor/FAQ) **dihapus dari main**, diarsipkan di tag `arsip/persona-publik-2026-09`; B2/B3 ditunda. Akses: noindex (belum ada login). Berikutnya: reskin "Ruang Kendali" (Patch 1–3) + CMS admin (Patch 4) |
 | **Remote** | `git@github.com:Niumination/PemdiAcehTengah.git` |
 | **Production** | https://pemdi-aceh-tengah.vercel.app |
@@ -44,7 +44,7 @@ Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah. Transformasi menuju Peme
 | **Program Unggulan** | Aceh Tengah Satu Data (AWS + Komdigi), MPP, Satu OPD Satu Inovasi |
 | **PWA** | `manifest.json`, icons (192/512 PNG + maskable-512 + apple-touch + SVG), `theme_color: #1F2A44`, `display: standalone`, scope root, +orientation portrait |
 | **Security** | Security headers di `next.config.js` (CSP, XFO, nosniff, Referrer-Policy) + `middleware.js` `X-Robots-Tag: noindex, nofollow` semua rute. Tidak ada endpoint tulis, tidak ada auth (belum diperlukan) |
-| **HEAD** | `64ecb2c` (19 Sep 2026) — audit UI/UX live + perbaikan: tautan PDF footer 404 → tersedia, tap target mobile ≥44px (0 sisa), token `--primary-bg` (tema gelap), kontras teks kecil, payload beranda 233→135 KB, `/layanan` mobile satu kolom. Sebelumnya: 22 dead code dihapus, **20 tes** (16 rumus Pemdi + 4 requirement), rate-limit atomic + RPC Supabase, `/api/health`. Ringkasan lengkap: seksi **Status Sekarang** |
+| **HEAD** | Patch 1–3 **Ruang Kendali** (22 Sep 2026, di atas `12ad08c`): shell baru `components/rk/RKShell` untuk semua rute, `/` → 308 `/dashboard`, rute baru `/dashboard` `/indikator` `/antrean`, `/api/rk-data`, token `styles/tokens.css` + `ruang-kendali.css`, emoji → `Ikon`/`StatusIkon`, CSS mati dihapus, penjaga `scripts/cek-ui.mjs`. Rencana lengkap & Patch 4 (CMS Neon): `docs/RENCANA-RUANG-KENDALI-CMS.md` |
 | **Agent Skills** | `.agents/skills/` — **10** skill autoskills (React · Next.js · Supabase · Node · SEO · a11y · design). Lock file ada di **root repo**: `skills-lock.json` (10 entri, masing-masing `source` + `computedHash`). Pasang ulang: `npx autoskills` — ⚠️ registry masih menyediakan `next-cache-components` (**Next.js 16+ only**, sedangkan proyek ini di 14.2.35): keluarkan lagi bila terpasang ulang, sampai proyek benar-benar naik versi. |
 | **Env Vars** | **Tidak ada** yang wajib (Supabase/ADMIN_PASSWORD/IP_HASH_SALT dihapus 22 Sep 2026 — boleh dilepas dari Vercel). Opsional: `NEXT_PUBLIC_SITE_URL` untuk canonical/sitemap |
 | **Indeks Pemdi** | **0,35 — Simulasi Penilaian Mandiri** (rumus PermenPANRB 8/2026; hanya bukti `diterima` asesor yang dihitung) — target 2,50+. Label "Terverifikasi" DIHAPUS (prasyarat K8 REPOSISI-PEMDI.md) |
@@ -100,7 +100,7 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 | `styles/` | CSS globals — **Gayo Civic Digital v3**, CSS variables, hero award gradient, dark mode |
 | `data/` | Data statis JSON (Pemdi, modul indikator, catatan mandiri, OPD, SPBE, ProBis, PPB) + glosarium & dokumen kunci |
 | `docs/` | Dokumentasi, PDF, riset |
-| `lib/` | Util murni: `pemdiNilai.js`, `catatanMandiri.js`, `pjButir.js`, `search-index.js`, `modeSitus.js`, `format.js`, `slugify.js` |
+| `lib/` | Util murni: `ruangKendali.js`, `rkData.js`, `pemdiNilai.js`, `catatanMandiri.js`, `pjButir.js`, `search-index.js`, `modeSitus.js`, `format.js`, `slugify.js` |
 | `public/manifest.json` | PWA manifest — standalone, theme_color #1F2A44, icons 192+512+maskable+apple-touch |
 | `public/icons/` | PWA icons — `icon-192.png`, `icon-512.png`, `icon-maskable-512.png`, `apple-touch-icon.png`, `icon.svg`, `192.svg` |
 | `public/crest-pemdi.svg` | Lambang daerah Aceh Tengah (crest) |
@@ -125,13 +125,13 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 
 | Path | Scope |
 |------|-------|
-| `pages/AGENTS.md` | 11 route halaman internal + 5 API read-only (opd, spbe, requirement, proxy-pdf, health) — routing, data flow, noindex |
-| `pages/api/AGENTS.md` | REST API read-only: opd, spbe, requirement, proxy-pdf, health. Tanpa DB, tanpa auth |
-| `components/AGENTS.md` | **17 komponen aktif** — AppShell, CatatanTujuan, BottomNav, Sidebar, Footer, beranda/BerandaAsesor, asesor/{KpiCards, AspekAccordion, LevelFokus, CatatanMandiri}, OPDTable, SpbeGauge, DetailModal, GlossaryTooltip, ThemeToggle, ScrollTop, motif/KerawangMotifs |
-| `styles/AGENTS.md` | **Gayo Civic Digital v3** — CSS variables: `--gov-blue`, `--lake-cyan`, `--gayo-gold`, `--coffee-brown`, `--forest-green`. Hero award gradient. Dark mode. 799 baris. |
+| `pages/AGENTS.md` | 13 route halaman internal (utama `/dashboard`) + 6 API read-only (rk-data, opd, spbe, requirement, proxy-pdf, health) — routing, data flow, noindex |
+| `pages/api/AGENTS.md` | REST API read-only: rk-data, opd, spbe, requirement, proxy-pdf, health. Tanpa DB, tanpa auth |
+| `components/AGENTS.md` | **13 komponen aktif** — rk/{RKShell, Panel, Kompas, Drawer, Palet}, ui/{Ikon, StatusIkon}, CatatanTujuan, asesor/{LevelFokus, CatatanMandiri}, OPDTable, DetailModal, motif/KerawangMotifs |
+| `styles/AGENTS.md` | `tokens.css` (token `--rk-*`, font Bricolage Grotesque + IBM Plex) · `ruang-kendali.css` (`.rk-*`, jembatan `.rk-legacy`) · `globals.css` (halaman lama, 1.156 baris) |
 | `data/AGENTS.md` | Struktur data: pemdi.json (7 aspek, 20 indikator, 232 bukti, catatan_mandiri), modul-indikator.json, catatan-mandiri.json, opd.json (52 OPD, PPB), draf-bukti-prioritas.json, kebutuhan-bukti-dukung.json, glosarium, dokumen-kunci; rantai skrip regenerasi |
 | `STRATEGI_PEMDIACEHTENGAH.md` | **Dokumen perencanaan strategis (file ini)** — 4 fase, quick wins, risiko, metrik |
-| `lib/AGENTS.md` | 7 modul — pemdiNilai (rumus resmi; tes pin), catatanMandiri (ekspor teks/HTML/DOCX), pjButir (butir per OPD), search-index, modeSitus, format, slugify |
+| `lib/AGENTS.md` | 9 modul — ruangKendali, rkData, pemdiNilai (rumus resmi; tes pin), catatanMandiri (ekspor teks/HTML/DOCX), pjButir (butir per OPD), search-index, modeSitus, format, slugify |
 | `public/AGENTS.md` | PWA assets: manifest.json, icons (192/512 PNG + maskable-512 + apple-touch + SVG), favicon, crest-pemdi.svg, og-image.jpg |
 | **`REPOSISI-PEMDI.md`** | **Arah reposisi Opsi B** — B1 Dashboard Pemdi (internal, aktif); B2/B3 ditunda; §Arsip persona publik (tag `arsip/persona-publik-2026-09`). Baca ini dulu sebelum kerja selanjutnya |
 
@@ -305,7 +305,7 @@ Palette resmi dari user: **Navy #1F2A44 · Warm Beige #E8DCC8 · Soft Gold #C6A7
 |-----------|--------|
 | `styles/globals.css` `:root` | **Tema terang (default)** = Navy primary, bg Warm Beige, aksen Soft Gold. Gradien hero/sidebar navy+gold. |
 | `styles/globals.css` `[data-theme=dark]` | **Tema gelap padanan "Midnight Navy & Gold"**: bg #0B101C, surface #141C2E, primary interaktif Gold #C6A75E, teks Warm Beige #E8DCC8. |
-| `pages/_document.js` + `components/ThemeToggle.js` | **Default SELALU light** (abaikan prefers-color-scheme OS). Toggle manual tetap tersimpan di localStorage. |
+| `pages/_document.js` + tombol tema di `components/rk/RKShell.js` | **Default SELALU light** (abaikan prefers-color-scheme OS). Toggle manual tetap tersimpan di localStorage. |
 | `pages/_app.js` | theme-color & mask-icon → #1F2A44. |
 | `components/PPBChain.js`, `QuickActions.js` | Hardcode #004098 → #1F2A44. |
 

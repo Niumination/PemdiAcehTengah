@@ -100,6 +100,8 @@ Pita atas: marquee (dipertahankan) → bar kendali: lambang + "Dashboard Pemerin
 | **2 — Migrasi navigasi** | `/` → 308 `/dashboard`; semua rute lama pindah ke AppShell baru; Sidebar/BottomNav lama dihapus; breadcrumb → tab aktif; `/pemdi` menerima `#I7` dan `?butir=` dari drawer | ±20 berkas | Sedang — uji semua 63 halaman via curl; middleware tetap noindex |
 | **3 — Pembersihan visual** | emoji → Ikon di komponen; 1.207 inline style → kelas (per halaman); teks <11px dihapus; `.eslintrc` guard (no-inline-style di komponen baru, no-emoji regex sederhana); hapus token alias lama & CSS mati; audit kontras | ±30 berkas, −banyak | Rendah |
 
+**Status realisasi (22 Sep 2026):** Patch 1 `e11131c`, Patch 2 `ffb9339`, Patch 3 `2ffd5a5` selesai (komponen ada di `components/rk/*` dan `components/ui/*`, bukan `components/ui/{Panel,Segmen,…}` seperti rencana awal). Penyimpangan Patch 3 yang disengaja: 844 inline style halaman lama **tidak** dikonversi massal ke kelas (risiko regresi tinggi menjelang 28 Sep) — halaman lama disatukan lewat jembatan `.rk-legacy`; penjaga kualitas dibuat sebagai `scripts/cek-ui.mjs` (emoji ikon + font < 11px, dijalankan `npm test`) alih-alih aturan `.eslintrc`.
+
 Setiap patch = 1 commit, `git format-patch`, instruksi Hermes. Patch 1 diusulkan dikirim **setelah interviu selesai (≥ 1 Okt)** atau lebih awal bila pemilik mau — karena `/` tidak berubah, risikonya kecil.
 
 ---
