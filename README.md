@@ -47,6 +47,7 @@ Situs melayani **satu persona: internal Pemdi**. Persona publik/warga (beranda w
 | Dashboard | `/dashboard` (`/` dialihkan 308) | Ruang kendali evaluasi 2026 — bar situasi, Kompas Pemdi 20 indikator, antrean ringkas, beban PJ, linimasa, prasyarat, blok PPB, tabel 52 OPD |
 | Indikator | `/indikator` | 20 indikator × 7 aspek, level dicapai/target, drawer detail butir (`?butir=`) |
 | Antrean | `/antrean` | Antrean kerja butir revisi + gap per prioritas & PJ OPD |
+| Admin CMS | `/admin` | Sunting status/catatan/PJ/prioritas butir, konten tampilan, log audit, ekspor (perlu env CMS) |
 | Dashboard Pemdi | `/pemdi` | Simulasi penilaian mandiri — indeks (hanya bukti diterima), 7 aspek × 20 indikator, fokus level, catatan mandiri per butir + ekspor |
 | Modul Indikator | `/modul-indikator` | 20 modul kriteria L1–L5 + matriks kebutuhan bukti |
 | Draf Bukti Dukung Prioritas | `/requirement` | 19 revisi asesor + butir gap, template draf; tab sekunder PPB (83 kebutuhan) |
@@ -126,7 +127,18 @@ npm run start   # Production server
 
 ### Environment Variables
 
-Tidak ada variabel wajib. Opsional: `NEXT_PUBLIC_SITE_URL` (canonical/sitemap). Variabel Supabase/`ADMIN_PASSWORD`/`IP_HASH_SALT` lama **tidak dipakai lagi** dan boleh dihapus dari Vercel.
+Tidak ada variabel wajib — situs berjalan penuh dari `data/*.json`. Variabel Supabase/`ADMIN_PASSWORD`/`IP_HASH_SALT` lama **tidak dipakai lagi** dan boleh dihapus dari Vercel.
+
+**Opsional — CMS `/admin` (Patch 4):** lihat `.env.example`.
+
+| Variabel | Fungsi |
+|----------|--------|
+| `DATABASE_URL` | Postgres Neon (Vercel Marketplace → Storage → Neon, pakai URL *pooled*). Tabel dibuat otomatis saat pertama dipakai. |
+| `CMS_SANDI_KOORDINATOR` / `CMS_SANDI_PJ` | Kata sandi bersama per peran (Koordinator: semua butir + konten + log + ekspor; PJ OPD: hanya butir OPD-nya). |
+| `CMS_SESI_RAHASIA` | Rahasia HMAC cookie sesi (≥ 32 karakter; `openssl rand -base64 48`). |
+| `NEXT_PUBLIC_SITE_URL` | Canonical/sitemap. |
+
+Alur CMS: suntingan disimpan sebagai *overlay* di Postgres → tampil di dashboard ≤ 60 dtk (ISR + revalidate) → Koordinator **Ekspor JSON** → simpan sebagai `data/catatan-mandiri.json` → jalankan rantai skrip regenerasi → commit. Nama butir/kriteria PermenPANRB 8/2026 tidak dapat diubah dari CMS.
 
 ## 🔧 Teknologi
 

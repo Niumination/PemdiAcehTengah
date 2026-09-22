@@ -10,7 +10,7 @@ import RKShell from '@/components/rk/RKShell';
  * opd, glosarium, cari, 404) dibungkus `.rk-legacy` supaya token lama (globals.css)
  * tetap berlaku di dalam kontennya. AppShell/Sidebar/BottomNav/Footer lama dihapus.
  */
-const RUTE_RK = new Set(['/dashboard', '/indikator', '/antrean']);
+const RUTE_RK = new Set(['/dashboard', '/indikator', '/antrean', '/admin']);
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { Analytics } from '@vercel/analytics/react';

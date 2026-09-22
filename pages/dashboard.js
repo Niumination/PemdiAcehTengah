@@ -33,6 +33,12 @@ export default function Dashboard({ rk, opdList, butirCountMap, dibangun, ppb })
       </Head>
       <div className="rk-grid">
         <Situasi s={rk.situasi} now={dibangun} />
+        {rk.konten?.pengumuman ? (
+          <section className="rk-panel rk-pengumuman" role="status">
+            <h2>Pengumuman Tim Koordinasi</h2>
+            <p>{rk.konten.pengumuman}</p>
+          </section>
+        ) : null}
 
         <section className="rk-panel rk-c8">
           <h2>Kompas Pemdi — 7 aspek · 20 indikator · 5 level <Link className="rk-act" href="/indikator">Matriks lengkap →</Link></h2>
@@ -78,7 +84,7 @@ export default function Dashboard({ rk, opdList, butirCountMap, dibangun, ppb })
 }
 
 export async function getStaticProps() {
-  const rk = susunDataRK();
+  const rk = await susunDataRK();
   return {
     props: {
       rk,
@@ -87,5 +93,6 @@ export async function getStaticProps() {
       dibangun: new Date().toISOString(),
       ppb: hitungPPB(),
     },
+    revalidate: 60, // Patch 4: overlay CMS tampil ≤ 60 dtk setelah disimpan
   };
 }

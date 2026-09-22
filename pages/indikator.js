@@ -60,5 +60,5 @@ export default function Indikator({ rk }) {
 }
 
 export async function getStaticProps() {
-  return { props: { rk: susunDataRK() } };
+  return { props: { rk: await susunDataRK() }, revalidate: 60 };
 }

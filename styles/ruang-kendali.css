@@ -297,3 +297,29 @@ html[data-theme='light'] .rk-legacy, html:not([data-theme]) .rk-legacy { --prima
 .rk-legacy h1, .rk-legacy h2, .rk-legacy h3 { font-family: var(--rk-f-display); }
 .rk-legacy .hero, .rk-legacy .hero-award { background: var(--rk-panel) !important; border: 1px solid var(--rk-line); border-radius: var(--rk-r-2); color: var(--rk-ink); }
 .rk-legacy .card, .rk-legacy .glow-card, .rk-legacy .kpi-card { border-radius: var(--rk-r-2) !important; box-shadow: none !important; border: 1px solid var(--rk-line); }
+
+/* ── Admin CMS (Patch 4) ── */
+.rk-form { display: flex; flex-direction: column; gap: 12px; }
+.rk-form label { display: flex; flex-direction: column; gap: 4px; font-size: var(--rk-fs-1); color: var(--rk-ink-2); }
+.rk-form-baris { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+.rk-form-aksi { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; font-size: var(--rk-fs-1); }
+.rk-form-konten { padding: 12px 0; border-top: 1px solid var(--rk-line); }
+.rk-form-konten:first-child { border-top: 0; padding-top: 0; }
+.rk-input { width: 100%; min-height: 34px; padding: 6px 10px; border: 1px solid var(--rk-line); border-radius: var(--rk-r-1); background: var(--rk-bg); color: var(--rk-ink); font: inherit; font-size: var(--rk-fs-1); }
+.rk-input:focus-visible { outline: 2px solid var(--rk-emas); outline-offset: 1px; }
+.rk-input:disabled { opacity: .6; }
+textarea.rk-input { resize: vertical; line-height: 1.5; }
+.rk-galat { color: var(--rk-status-ink-bad); font-size: var(--rk-fs-1); margin: 0; }
+.rk-catatan { color: var(--rk-ink-3); font-size: var(--rk-fs-1); line-height: 1.5; margin: 0; }
+.rk-admin-masuk { max-width: 520px; }
+.rk-admin-kepala p { margin: 4px 0 0; font-size: var(--rk-fs-1); line-height: 1.5; }
+.rk-admin-tbl tr.disunting td:first-child { box-shadow: inset 3px 0 0 var(--rk-emas); }
+.rk-admin-form-baris td { background: var(--rk-panel-2); padding: 16px; }
+.rk-admin-baku { font-size: var(--rk-fs-1); color: var(--rk-ink-2); }
+.rk-admin-baku p { margin: 4px 0 0; color: var(--rk-ink); }
+.rk-admin h2 .rk-input { width: 260px; min-height: 30px; }
+.rk-pengumuman { border-color: color-mix(in srgb, var(--rk-emas) 55%, transparent); }
+.rk-pengumuman p { margin: 0; font-size: var(--rk-fs-2); line-height: 1.55; }
+.rk-chips { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+@media (max-width: 720px) { .rk-admin h2 .rk-input { width: 100%; } }
+.rk-table-wrap { overflow-x: auto; }

@@ -33,6 +33,7 @@ const TAB_LAIN = [
   { href: '/probis', label: 'Proses bisnis' },
   { href: '/glosarium', label: 'Glosarium' },
   { href: '/cari', label: 'Cari' },
+  { href: '/admin', label: 'Admin CMS' },
 ];
 
 const MARQUEE =
@@ -125,12 +126,13 @@ export default function RKShell({ children, data: dataProp, legacy = false }) {
   );
 
   const path = router.pathname;
+  const teksMarquee = data?.konten?.marquee || MARQUEE;
   return (
     <RKContext.Provider value={ctx}>
       <div className="rk">
         <div className="rk-strip" aria-label="Informasi">
           <span aria-hidden="true">🇮🇩</span>
-          <div className="rk-track" aria-label={MARQUEE}><span>{MARQUEE}</span><span aria-hidden="true">{MARQUEE}</span></div>
+          <div className="rk-track" aria-label={teksMarquee}><span>{teksMarquee}</span><span aria-hidden="true">{teksMarquee}</span></div>
         </div>
 
         <header className="rk-bar">

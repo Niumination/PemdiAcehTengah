@@ -4,7 +4,22 @@
 
 REST API read-only — serverless functions Next.js yang membaca `data/*.json` atau mem-proxy PDF JDIH. **Tidak ada database / penulisan data** sejak reposisi 22 Sep 2026 (API Supabase persona publik — lapor, skm, feedback, admin — dihapus; arsip tag `arsip/persona-publik-2026-09`).
 
-## Ownership — 6 API
+## Ownership — 6 API baca + 3 auth + 5 admin (Patch 4)
+
+> **CMS (22 Sep 2026)** — `lib/db.js` (Neon, tanpa ORM; tabel `butir_overlay`, `konten_tampilan`, `log_audit` dibuat otomatis `CREATE TABLE IF NOT EXISTS`), `lib/cmsAuth.js` (token HMAC-SHA256 stateless di cookie httpOnly `pemdi_cms`, 12 jam), `lib/overlay.js` (validasi + penggabungan murni, teruji). Tanpa `DATABASE_URL` semua API tulis → 503, baca tetap jalan. Nama butir/kriteria PermenPANRB tidak pernah dapat diubah lewat API.
+
+| Route | File | Method | Fungsi | Auth |
+|-------|------|--------|--------|------|
+| `/api/auth/masuk` | `auth/masuk.js` | POST | `{peran, sandi, opd?}` → cookie sesi; rate-limit 10 percobaan/10 mnt/IP | — |
+| `/api/auth/keluar` | `auth/keluar.js` | POST | hapus cookie | — |
+| `/api/auth/sesi` | `auth/sesi.js` | GET | `{sesi, cmsAktif, dbAktif}` | — |
+| `/api/admin/butir/[id]` | `admin/butir/[id].js` | PATCH | overlay butir; PJ hanya butir yang PJ-nya OPD sesi (`lib/pjButir.hitungButirOPD`), PJ tidak boleh ubah `pj` / set `diterima`; `res.revalidate` /dashboard /indikator /antrean | sesi |
+| `/api/admin/konten/[kunci]` | `admin/konten/[kunci].js` | PUT | `marquee` (≤400) · `pengumuman` (≤600) · `tenggat` (YYYY-MM-DD) | koordinator |
+| `/api/admin/overlay` | `admin/overlay.js` | GET | semua baris overlay + konten | sesi |
+| `/api/admin/log` | `admin/log.js` | GET | 200 log audit terakhir | koordinator |
+| `/api/admin/ekspor` | `admin/ekspor.js` | GET | unduh `catatan-mandiri.json` + overlay (`status_overlay`, `hash_dasar: terserap`) → simpan ke `data/catatan-mandiri.json`, jalankan rantai skrip regenerasi, commit | koordinator |
+
+### API baca
 
 | Route | File | Methods | Fungsi | Status |
 |-------|------|---------|--------|--------|

@@ -43,10 +43,10 @@ Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah. Transformasi menuju Peme
 | **Jargon** | HAMAS (Haili Yoga + Muchsin Hasan), 17 sasaran prioritas |
 | **Program Unggulan** | Aceh Tengah Satu Data (AWS + Komdigi), MPP, Satu OPD Satu Inovasi |
 | **PWA** | `manifest.json`, icons (192/512 PNG + maskable-512 + apple-touch + SVG), `theme_color: #1F2A44`, `display: standalone`, scope root, +orientation portrait |
-| **Security** | Security headers di `next.config.js` (CSP, XFO, nosniff, Referrer-Policy) + `middleware.js` `X-Robots-Tag: noindex, nofollow` semua rute. Tidak ada endpoint tulis, tidak ada auth (belum diperlukan) |
-| **HEAD** | Patch 1–3 **Ruang Kendali** (22 Sep 2026, di atas `12ad08c`): shell baru `components/rk/RKShell` untuk semua rute, `/` → 308 `/dashboard`, rute baru `/dashboard` `/indikator` `/antrean`, `/api/rk-data`, token `styles/tokens.css` + `ruang-kendali.css`, emoji → `Ikon`/`StatusIkon`, CSS mati dihapus, penjaga `scripts/cek-ui.mjs`. Rencana lengkap & Patch 4 (CMS Neon): `docs/RENCANA-RUANG-KENDALI-CMS.md` |
+| **Security** | Security headers di `next.config.js` (CSP, XFO, nosniff, Referrer-Policy) + `middleware.js` `X-Robots-Tag: noindex, nofollow` semua rute. Endpoint tulis hanya `/api/admin/*` (butuh cookie sesi HMAC httpOnly dari `/api/auth/masuk`; PJ OPD dibatasi butir OPD-nya; semua tercatat `log_audit`) |
+| **HEAD** | Patch 1–3 **Ruang Kendali** (22 Sep 2026, di atas `12ad08c`): shell baru `components/rk/RKShell` untuk semua rute, `/` → 308 `/dashboard`, rute baru `/dashboard` `/indikator` `/antrean`, `/api/rk-data`, **CMS `/admin`** (Patch 4: overlay Neon Postgres di atas JSON, 2 peran sandi bersama, log audit, ekspor kembali ke `catatan-mandiri.json`), token `styles/tokens.css` + `ruang-kendali.css`, emoji → `Ikon`/`StatusIkon`, CSS mati dihapus, penjaga `scripts/cek-ui.mjs`. Rencana lengkap & Patch 4 (CMS Neon): `docs/RENCANA-RUANG-KENDALI-CMS.md` |
 | **Agent Skills** | `.agents/skills/` — **10** skill autoskills (React · Next.js · Supabase · Node · SEO · a11y · design). Lock file ada di **root repo**: `skills-lock.json` (10 entri, masing-masing `source` + `computedHash`). Pasang ulang: `npx autoskills` — ⚠️ registry masih menyediakan `next-cache-components` (**Next.js 16+ only**, sedangkan proyek ini di 14.2.35): keluarkan lagi bila terpasang ulang, sampai proyek benar-benar naik versi. |
-| **Env Vars** | **Tidak ada** yang wajib (Supabase/ADMIN_PASSWORD/IP_HASH_SALT dihapus 22 Sep 2026 — boleh dilepas dari Vercel). Opsional: `NEXT_PUBLIC_SITE_URL` untuk canonical/sitemap |
+| **Env Vars** | **Tidak ada yang wajib** — situs penuh dari JSON. Opsional CMS (Patch 4): `DATABASE_URL` (Neon Postgres), `CMS_SANDI_KOORDINATOR`, `CMS_SANDI_PJ`, `CMS_SESI_RAHASIA` (lihat `.env.example`); tanpa ini `/admin` mode baca & API tulis 503. Supabase/ADMIN_PASSWORD/IP_HASH_SALT lama dihapus 22 Sep 2026. `NEXT_PUBLIC_SITE_URL` opsional |
 | **Indeks Pemdi** | **0,35 — Simulasi Penilaian Mandiri** (rumus PermenPANRB 8/2026; hanya bukti `diterima` asesor yang dihitung) — target 2,50+. Label "Terverifikasi" DIHAPUS (prasyarat K8 REPOSISI-PEMDI.md) |
 | **Penilaian Tahap 1** | eval.spbe.go.id, sinkron 20 Sep 2026: 37 butir dinilai → **18 diterima** (PDF di `public/bukti-dukung/final/I#-L#-##.pdf`) · **19 revisi** (19 butir: 7 bukti tidak tepat · 10 belum diunggah · 2 ditolak otomatis — I1, I4, I8, I9, I10, I12, I13, I14, I15, I16, I19, I20) — catatan asesor asli di `eval.catatan`, jenis di `eval.jenis` (`tidak_tepat|belum_diunggah|otomatis_ditolak`), berkas tidak disimpan, ditandai 🔁. Metadata: `data/pemdi.json → penilaian_tahap1` |
 | **Total bukti dukung** | **232** butir (`data/pemdi.json`: 18 diterima / 19 revisi / 0 proses / 12 draf / 183 belum). Vokabuler status: `diterima · revisi · proses · draf · belum` (`lib/pemdiNilai.js → STATUS_META`) |
@@ -125,13 +125,13 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 
 | Path | Scope |
 |------|-------|
-| `pages/AGENTS.md` | 13 route halaman internal (utama `/dashboard`) + 6 API read-only (rk-data, opd, spbe, requirement, proxy-pdf, health) — routing, data flow, noindex |
-| `pages/api/AGENTS.md` | REST API read-only: rk-data, opd, spbe, requirement, proxy-pdf, health. Tanpa DB, tanpa auth |
+| `pages/AGENTS.md` | 14 route halaman internal (utama `/dashboard`, CMS `/admin`) + 6 API read-only + 3 auth + 5 admin — routing, data flow, noindex |
+| `pages/api/AGENTS.md` | REST API: read-only rk-data, opd, spbe, requirement, proxy-pdf, health. Tanpa DB, tanpa auth |
 | `components/AGENTS.md` | **13 komponen aktif** — rk/{RKShell, Panel, Kompas, Drawer, Palet}, ui/{Ikon, StatusIkon}, CatatanTujuan, asesor/{LevelFokus, CatatanMandiri}, OPDTable, DetailModal, motif/KerawangMotifs |
 | `styles/AGENTS.md` | `tokens.css` (token `--rk-*`, font Bricolage Grotesque + IBM Plex) · `ruang-kendali.css` (`.rk-*`, jembatan `.rk-legacy`) · `globals.css` (halaman lama, 1.156 baris) |
 | `data/AGENTS.md` | Struktur data: pemdi.json (7 aspek, 20 indikator, 232 bukti, catatan_mandiri), modul-indikator.json, catatan-mandiri.json, opd.json (52 OPD, PPB), draf-bukti-prioritas.json, kebutuhan-bukti-dukung.json, glosarium, dokumen-kunci; rantai skrip regenerasi |
 | `STRATEGI_PEMDIACEHTENGAH.md` | **Dokumen perencanaan strategis (file ini)** — 4 fase, quick wins, risiko, metrik |
-| `lib/AGENTS.md` | 9 modul — ruangKendali, rkData, pemdiNilai (rumus resmi; tes pin), catatanMandiri (ekspor teks/HTML/DOCX), pjButir (butir per OPD), search-index, modeSitus, format, slugify |
+| `lib/AGENTS.md` | 12 modul — ruangKendali, rkData, overlay, db, cmsAuth, pemdiNilai (rumus resmi; tes pin), catatanMandiri (ekspor teks/HTML/DOCX), pjButir (butir per OPD), search-index, modeSitus, format, slugify |
 | `public/AGENTS.md` | PWA assets: manifest.json, icons (192/512 PNG + maskable-512 + apple-touch + SVG), favicon, crest-pemdi.svg, og-image.jpg |
 | **`REPOSISI-PEMDI.md`** | **Arah reposisi Opsi B** — B1 Dashboard Pemdi (internal, aktif); B2/B3 ditunda; §Arsip persona publik (tag `arsip/persona-publik-2026-09`). Baca ini dulu sebelum kerja selanjutnya |
 

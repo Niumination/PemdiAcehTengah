@@ -41,5 +41,5 @@ export default function Antrean({ rk }) {
 }
 
 export async function getStaticProps() {
-  return { props: { rk: susunDataRK() } };
+  return { props: { rk: await susunDataRK() }, revalidate: 60 };
 }
