@@ -33,7 +33,7 @@ export default function Requirement() {
   return (
     <>
       <Head>
-        <title>Draf Bukti Dukung Prioritas — Kokpit Pemdi Aceh Tengah</title>
+        <title>Draf Bukti Dukung Prioritas — Dashboard Pemdi Aceh Tengah</title>
         <meta name="description" content="Daftar bukti dukung Pemdi yang harus segera disusun untuk tahap evaluasi berikutnya di eval.spbe.go.id — revisi asesor & gap level, dilengkapi contoh/draf. Termasuk kebutuhan data Peta Proses Bisnis (Permenpan 19/2018)." />
       </Head>
 
@@ -49,7 +49,7 @@ export default function Requirement() {
       }}>
         <div style={{ position: 'relative', zIndex: 1 }}>
           <div className="pill" style={{ marginBottom: '0.75rem', background: 'rgba(255,255,255,0.15)', color: '#fff', border: '1px solid rgba(255,255,255,0.3)' }}>
-            KOKPIT PEMDI · PERSIAPAN TAHAP BERIKUTNYA
+            DASHBOARD PEMDI · PERSIAPAN TAHAP BERIKUTNYA
           </div>
           <h1 className="gold-head" style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>
             Draf Bukti Dukung Prioritas
@@ -103,7 +103,7 @@ export default function Requirement() {
                 Tiga jenis dengan tindak lanjut berbeda:
                 {' '}{Object.entries(REVISI_JENIS).map(([k, v]) => <span key={k} className="jenis-chip">{v.icon} {v.label} ({drafPrioritas.ringkas.revisi_per_jenis?.[k] ?? 0})</span>)}.
                 Berkas lama tidak disimpan di repo — unggah ulang memakai kode yang sama.
-                Status revisi juga ditandai di <Link href="/pemdi">Kokpit Pemdi</Link> dan <Link href="/modul-indikator">Modul Indikator</Link>.
+                Status revisi juga ditandai di <Link href="/pemdi">Dashboard Pemdi</Link> dan <Link href="/modul-indikator">Modul Indikator</Link>.
               </p>
               <div className="rev-grid">
                 {drafPrioritas.revisi.map(r => (

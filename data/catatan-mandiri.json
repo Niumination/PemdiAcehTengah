@@ -54,8 +54,8 @@
   "D_I20_PEDOMAN": { "judul": "Draf Pedoman Penyelenggaraan SKM & Pengelolaan Umpan Balik", "path": "/panduan-bukti-l1/I20/i20-pedoman-skm-dan-umpan-balik-layanan.pdf", "teks": true, "hal": 15, "status": "draf lokal" },
   "D_I20_LAP": { "judul": "Draf Laporan Hasil SKM & Umpan Balik Layanan Digital Jan–Jun 2026", "path": "/panduan-bukti-l1/I20/i20-laporan-hasil-skm-dan-umpan-balik.pdf", "teks": true, "hal": 8, "status": "draf lokal — data contoh" },
   "D_I03_REKAP": { "judul": "Draf Rekap Penggunaan Aplikasi Kerja Digital", "path": "/panduan-bukti-l1/I03/i03-rekap-penggunaan-aplikasi-digital.pdf", "teks": true, "hal": 10, "status": "draf lokal" },
-  "PORTAL_LAYANAN": { "judul": "Portal Pemdi Aceh Tengah — Direktori Layanan & SLA (25 layanan, 7 sektor)", "url": "/layanan", "status": "halaman persona publik — saat ini nonaktif (NEXT_PUBLIC_PERSONA_PUBLIK=off), aktifkan sementara saat mengambil tangkapan layar" },
-  "PORTAL_KEPUASAN": { "judul": "Portal Pemdi Aceh Tengah — Dasbor Kepuasan & Umpan Balik", "url": "/dashboard-kepuasan", "status": "halaman persona publik — saat ini nonaktif, aktifkan sementara untuk tangkapan layar" }
+  "PORTAL_LAYANAN": { "judul": "Portal Pemdi Aceh Tengah — Direktori Layanan & SLA (25 layanan, 7 sektor)", "url": "/layanan", "status": "halaman persona publik — dihapus dari cabang utama (reposisi 22 Sep 2026); tangkapan layar diambil dari arsip git tag arsip/persona-publik-2026-09 (jalankan lokal) atau dari sistem layanan riil OPD" },
+  "PORTAL_KEPUASAN": { "judul": "Portal Pemdi Aceh Tengah — Dasbor Kepuasan & Umpan Balik", "url": "/dashboard-kepuasan", "status": "halaman persona publik — dihapus dari cabang utama (reposisi 22 Sep 2026); tangkapan layar dari arsip git tag arsip/persona-publik-2026-09 (lokal) atau dari dasbor helpdesk riil" }
  },
  "butir": {
   "GT.I1_L2_2": {
@@ -286,7 +286,7 @@
     { "dok": "D_I08_PDP", "bagian": "Bab III A siklus hidup data butir 2 (pemberitahuan/persetujuan); Bab III E pertukaran ke pihak ketiga", "halaman": "10–11" }
    ],
    "kebutuhan": [
-    "Tangkapan layar halaman Kebijakan Privasi portal Pemdi (/kebijakan-privasi — aktifkan persona publik sementara) dan formulir SKM online yang memuat pemberitahuan penggunaan data"
+    "Tangkapan layar pemberitahuan penggunaan data pada sistem layanan digital yang riil dipakai OPD (mis. halaman kebijakan privasi/persetujuan pada aplikasi layanan) — halaman persona publik portal Pemdi sudah diarsipkan (tag arsip/persona-publik-2026-09), bukan bukti utama"
    ],
    "pj": "Diskominfo",
    "prioritas": "sedang"
@@ -702,7 +702,7 @@
    ],
    "kebutuhan": [
     "Dokumen 'Penetapan SLA Layanan Digital 2026' (tabel 25 layanan: nama, kanal, waktu respons, waktu penyelesaian, PIC) + SK/nota dinas penetapan oleh Kadis Kominfo",
-    "Aktifkan sementara persona publik untuk mengambil tangkapan layar /layanan"
+    "Tangkapan layar direktori layanan & SLA: utamakan sistem layanan riil OPD; bila memakai portal Pemdi, jalankan arsip tag arsip/persona-publik-2026-09 secara lokal"
    ],
    "pj": "Diskominfo (Unit Pengelola Layanan Digital)",
    "prioritas": "tinggi"
@@ -719,7 +719,7 @@
    "kebutuhan": [
     "WAJIB tangkapan layar DASBOR (grafik/angka SLA), bukan tabel daftar layanan: dari aplikasi helpdesk/ticketing yang dipakai (jika belum ada, buat dasbor sederhana dari log tiket — spreadsheet/Looker Studio — dan tampilkan) + dasbor portal Pemdi",
     "Ganti data contoh laporan helpdesk (412 tiket) dengan rekap riil; TTD Kadis",
-    "Aktifkan sementara persona publik untuk tangkapan layar /dashboard-kepuasan"
+    "Tangkapan layar dasbor kepuasan: utamakan dasbor helpdesk/ticketing riil; portal Pemdi persona publik sudah diarsipkan (tag arsip/persona-publik-2026-09, jalankan lokal bila tetap diperlukan)"
    ],
    "pj": "Diskominfo (Unit Pengelola Layanan Digital / helpdesk)",
    "prioritas": "tinggi"

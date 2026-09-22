@@ -1,6 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""I19/I20: buat bukti SLA 25 layanan + SKM Online dari sistem portal yang berjalan."""
+"""I19/I20: buat bukti SLA 25 layanan + SKM Online dari sistem portal yang berjalan.
+
+USANG (22 Sep 2026): membaca data/layanan.json & data/skm.json yang sudah dihapus
+bersama persona publik (arsip tag arsip/persona-publik-2026-09). Skrip satu-kali
+ini dibiarkan sebagai jejak; jalankan hanya dari checkout tag arsip tersebut.
+"""
+import sys
+for _f in ('data/layanan.json', 'data/skm.json'):
+    import os as _os
+    if not _os.path.exists(_f):
+        sys.exit(f"USANG: {_f} tidak ada lagi di cabang ini — lihat catatan di atas.")
 import json, os, shutil
 import openpyxl
 from reportlab.lib.pagesizes import A4, landscape

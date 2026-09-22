@@ -1,6 +1,4 @@
-import Sp4nBanner from './Sp4nBanner';
 import { KerawangDivider, MotifPucukRebung } from './motif/KerawangMotifs';
-import { PUBLIK_AKTIF } from '@/lib/modeSitus';
 
 // Dievaluasi sekali per load (skill react: init-once) — bukan di tiap render.
 // suppressHydrationWarning menutup edge pergantian tahun (SSG build vs client).
@@ -20,7 +18,7 @@ export default function Footer() {
               Pemdi Aceh Tengah
             </h4>
             <p>
-              Kokpit Pemerintah Digital Kabupaten Aceh Tengah — perangkat kerja Tim Asesor Internal.
+              Dashboard Pemerintah Digital Kabupaten Aceh Tengah — perangkat kerja Tim Koordinasi Pemdi dan penanggung jawab OPD.
               Transformasi menuju Pemerintah Digital (Pemdi) berdasarkan 
               <strong> PermenPANRB No. 8 Tahun 2026</strong> &amp; <strong>PermenPANRB No. 19 Tahun 2018</strong>.
             </p>
@@ -38,13 +36,12 @@ export default function Footer() {
           <div className="footer-col">
             <h5>Navigasi Utama</h5>
             <ul>
-              <li><a href="/">Beranda Portal</a></li>
-              {PUBLIK_AKTIF && (<li><a href="/layanan">Direktori Layanan Publik (25 SLA)</a></li>)}
+              <li><a href="/">Beranda Dashboard</a></li>
               <li><a href="/pemdi">Indeks Pemdi (PermenPANRB 8/2026)</a></li>
               <li><a href="/spbe">Evaluasi Indeks SPBE 2025 (2,59)</a></li>
               <li><a href="/probis">Peta Proses Bisnis (PPB Level 0–2)</a></li>
-              {PUBLIK_AKTIF && (<li><a href="/skm">Survei Kepuasan Masyarakat (SKM)</a></li>)}
-              {PUBLIK_AKTIF && (<li><a href="/dashboard-kepuasan">Live Dashboard IKM Publik</a></li>)}
+              <li><a href="/modul-indikator">Modul Indikator (20)</a></li>
+              <li><a href="/requirement">Draf Bukti Dukung Prioritas</a></li>
             </ul>
           </div>
 
@@ -77,13 +74,6 @@ export default function Footer() {
                   ⚖️ SK Tim Koordinasi Pemdi 2026
                 </a>
               </li>
-              {PUBLIK_AKTIF && (
-              <li>
-                <a href="/kebijakan-privasi">
-                  🔒 Kebijakan Privasi Portal
-                </a>
-              </li>
-              )}
             </ul>
           </div>
 
@@ -105,9 +95,6 @@ export default function Footer() {
                 <a href="https://github.com/Niumination/PemdiAcehTengah" target="_blank" rel="noopener noreferrer">
                   💻 Repositori Open Source GitHub
                 </a>
-              </li>
-              <li style={{ marginTop: '10px' }}>
-                <Sp4nBanner variant="footer" />
               </li>
             </ul>
           </div>

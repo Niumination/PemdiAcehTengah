@@ -1,67 +1,52 @@
 # components/ — DOX
 
 ## Purpose
-React component library — reusable UI building blocks, props-driven.
+React component library — reusable UI building blocks, props-driven. Seluruh komponen melayani **persona internal Pemdi**.
 
-## Ownership — 30 Komponen Aktif (20 + 7 Sprint UI/UX + 2 beranda/ 21 Sep 2026)
+## Ownership — 17 Komponen Aktif (reposisi 22 Sep 2026)
 
-> **Mode internal aktif** (`lib/modeSitus.PUBLIK_AKTIF === false` secara default): komponen bertanda 🌐 hanya dirender bila `NEXT_PUBLIC_PERSONA_PUBLIK=on` — LaporWidget, RatingWidget, SkmPrompt, Sp4nBanner, ServiceFinder, ServiceCard, DashboardSKM, TrackerStatus, PersonaSwitcher, publik/*, beranda/BerandaPublik. Jangan dihapus.
+> **Dihapus 22 Sep 2026** (arsip tag `arsip/persona-publik-2026-09`): LaporWidget, RatingWidget, SkmPrompt, Sp4nBanner, ServiceFinder, ServiceCard, SlaBadge, DashboardSKM, TrackerStatus, persona/PersonaSwitcher, persona/usePersona, publik/HeroPublik, publik/SektorLayanan, beranda/BerandaPublik. Jangan direstorasi ke cabang utama tanpa keputusan pemilik.
 
-*(DOX pass hardening 2026-09-17: 22 komponen/lib mati telah dihapus — Accordion, AwardHero, DataBadge, Explainer, Header, LaporanStatus, Modal, PPBChain, PemdiCalculator, ProbisSection, ProgressBarVisual, QuickActions, Rekomendasi, RekomendasiTracker, Section, Stepper, TimelineRoadmap, Toast, motif/KerawangCard, motif/KerawangHero. Tabel lama yang menyebut `Layout.js`/`ExpandablePanel.js` tidak akurat — file tersebut sudah tidak ada.)*
+*(DOX pass hardening 2026-09-17: 22 komponen/lib mati lain telah dihapus — Accordion, AwardHero, DataBadge, Explainer, Header, LaporanStatus, Modal, PPBChain, PemdiCalculator, ProbisSection, ProgressBarVisual, QuickActions, Rekomendasi, RekomendasiTracker, Section, Stepper, TimelineRoadmap, Toast, motif/KerawangCard, motif/KerawangHero.)*
 
 | Komponen | File | Fungsi | Dipakai di |
 |----------|------|--------|------------|
-| **AppShell** | `CatatanTujuan.js` | Kotak "Untuk siapa dan untuk apa kokpit ini" — catatan pemilik (bahasa baku PermenPANRB 8/2026 → konteks Aceh Tengah, untuk Tim Asesor Internal). Export `TUJUAN_KOKPIT` (teks tunggal). Prop `compact`. Dipakai `/pemdi`, `/modul-indikator`, `/requirement` | — |
-| `AppShell.js` | Shell global — gov-strip running text, sidebar, topbar (brand ringkas `.topbar-brand` + toggle `aria-expanded` + PersonaSwitcher compact di luar beranda), breadcrumb, BottomNav (ponsel), ⌘K → /cari | `_app.js` |
-| **BottomNav** | `BottomNav.js` | Bottom nav bar ponsel (≤768 px): Beranda, Layanan, Lapor (event `pemdi:open-lapor`), Kinerja (`/?view=asesor`), Menu (buka drawer) | `AppShell.js` |
-| **PersonaSwitcher** | `persona/PersonaSwitcher.js` | Segmented control 2 persona (tablist ARIA). Di beranda `router.replace` shallow `?view=`; di halaman lain tautan ke beranda. Prop `compact` | `index.js`, `AppShell.js` |
-| **usePersona** | `persona/usePersona.js` | Hook: persona dari `?view=` → fallback localStorage `pemdi:persona` → default publik; `hydrated` | `index.js`, `PersonaSwitcher` |
-| **HeroPublik** | `publik/HeroPublik.js` | Hero Mode A: 1 pertanyaan + search besar (⌘K) + 5 kata kunci `lib/sektorLayanan.KATA_KUNCI_POPULER` | `index.js` |
-| **SektorLayanan** | `publik/SektorLayanan.js` | 6 kartu sektor + panel accordion inline daftar layanan (SlaBadge) | `index.js` |
+| **AppShell** | `AppShell.js` | Shell global — gov-strip running text (marquee dipertahankan), sidebar tertutup default + toggle topbar, breadcrumb `PETA_JUDUL` (rute internal saja), CTA topbar "Indikator Pemdi" → `/pemdi`, `<main id="main-content">`, footer, ScrollTop, ThemeToggle. Tidak ada widget lapor/rating/persona sejak 22 Sep 2026 | `_app.js` |
+| **CatatanTujuan** | `CatatanTujuan.js` | Kotak "Untuk siapa dan untuk apa dashboard ini" — catatan pemilik (bahasa baku PermenPANRB 8/2026 → konteks Aceh Tengah, untuk Tim Asesor Internal). Export `TUJUAN_KOKPIT` (teks tunggal). Prop `compact`. Dipakai `/pemdi`, `/modul-indikator`, `/requirement` | — |
+| **BottomNav** | `BottomNav.js` | Bottom nav ponsel (≤768 px), 5 tab internal: Ringkasan `/`, Indikator `/pemdi`, Modul `/modul-indikator`, Draf Bukti `/requirement`, Menu (buka sidebar via `onOpenMenu`) | `AppShell.js` |
 | **KpiCards** | `asesor/KpiCards.js` | 4 kartu KPI Mode B (Pemdi, SPBE, bukti Tahap 1 dengan bar segmen, 52 OPD) | `index.js` |
-| **BerandaAsesor** | `beranda/BerandaAsesor.js` | Panel beranda Mode B (hero kokpit, KpiCards, gauge SPBE + AspekAccordion, PPB, OPDTable) — satu-satunya panel pada mode internal | `index.js` |
-| **BerandaPublik** 🌐 | `beranda/BerandaPublik.js` | Panel beranda Mode A; di-`require` kondisional (build-time) agar tidak ikut bundel internal | `index.js` |
+| **BerandaAsesor** | `beranda/BerandaAsesor.js` | Beranda internal (wrapper `#beranda-internal`; hero "Dashboard Pemerintah Digital", KpiCards, gauge SPBE + AspekAccordion, PPB, OPDTable) — satu-satunya panel pada mode internal | `index.js` |
 | **AspekAccordion** | `asesor/AspekAccordion.js` | Accordion 7 aspek → indikator + chip status bukti (ok/warn/muted/gray) + chip `.ind-fokus` "✅ L1 → 🎯 L2" (field `fokus` dari getStaticProps `index.js`) | `index.js` |
 | **LevelFokus** | `asesor/LevelFokus.js` | (21 Sep 2026) Pembungkus daftar bukti/kriteria per level: level **dicapai** (semua butir diterima asesor) + level **berikut** terbuka default, level lain tertutup — klik header untuk buka; tombol "Buka semua level / Kembali ke fokus"; state lokal per indikator (tanpa localStorage). Render isi via `children(level, {peran})`; `layout` grid (/pemdi) atau stack (/modul-indikator). Ekspor tambahan `RingkasFokus`. CSS `.lvfokus-*` di globals.css. Tidak mengubah data | `pemdi.js`, `modul-indikator.js` |
 | **CatatanMandiri** | `asesor/CatatanMandiri.js` | (21 Sep 2026) `CatatanButir` — kartu lipat 📝 di bawah butir revisi/level-berikut: ringkas, rujukan (judul → tautan PDF lokal/JDIH, bagian, **hal.**, tag `pindai`/`JDIH`), checklist kebutuhan, PJ, tombol **📋 Salin** (teks siap tempel ke eval.spbe.go.id). `EksporCatatan` — bilah per indikator: jumlah butir, **Salin semua · ⬇️ DOCX · 🖨️ Cetak/PDF** (prop `compact` utk /modul-indikator). Data `b.catatan_mandiri`; tanpa localStorage/pustaka; CSS `.cm-*` di globals.css | `pemdi.js`, `modul-indikator.js` |
-| **Sidebar** | `Sidebar.js` | Navigasi kiri — **tertutup default** (prop `collapsed` dihormati sejak SSR → tanpa kedip), drawer di ponsel, Esc menutup, `id="sidebar-nav"` | `AppShell.js` |
-| **Footer** | `Footer.js` | Footer — regulasi, kontak, SP4N, lisensi MIT | `AppShell.js` |
+| **Sidebar** | `Sidebar.js` | Navigasi kiri — **tertutup default** (prop `collapsed` dihormati sejak SSR → tanpa kedip), drawer di ponsel. Grup: Ringkasan · **Kinerja & Evaluasi** (Indikator Pemdi, Modul Indikator, Draf Bukti, SPBE, ProBis) · **Bukti & Rujukan** (OPD, Glosarium, Cari). Tanpa quick-CTA lapor | `AppShell.js` |
+| **Footer** | `Footer.js` | Footer — brand Dashboard Pemdi, navigasi internal (Indikator, Modul, Draf Bukti, OPD, Glosarium), regulasi, kontak, lisensi MIT; Kerawang divider | `AppShell.js` |
 | **ThemeToggle** | `ThemeToggle.js` | Toggle dark/light (localStorage `theme`) | `AppShell.js` |
 | **ScrollTop** | `ScrollTop.js` | Tombol scroll-to-top | `AppShell.js` |
-| **LaporWidget** | `LaporWidget.js` | FAB "Lapor/Saran" — modal form + tracking, focus-trap, submit `/api/lapor` | `AppShell.js`, `lapor.js` |
-| **RatingWidget** | `RatingWidget.js` | Rating ★ per halaman — submit `/api/feedback` | `AppShell.js` |
-| **SkmPrompt** | `SkmPrompt.js` | Toast ajakan survei SKM setelah 3 pageview (sessionStorage) | `_app.js` |
-| **Sp4nBanner** | `Sp4nBanner.js` | Banner/link SP4N LAPOR nasional (variant banner/footer) | `lapor.js`, `Footer.js` |
-| **OPDTable** | `OPDTable.js` | Tabel 52 OPD: cari + filter level, paginasi 12, toggle Tabel/Grid (desktop), stacked cards otomatis ≤768 px (`data-th`). Membaca `singkat`/`level`/`urusan` data/opd.json | `index.js`, `opd/index.js` |
+| **OPDTable** | `OPDTable.js` | Tabel 52 OPD: cari + filter level, paginasi 12, toggle Tabel/Grid (desktop), stacked cards ≤768 px. Prop `butirCountMap` (id/nama → jumlah butir Pemdi yang PJ-nya OPD tsb) → kolom **"Butir Pemdi"** | `index.js` (via BerandaAsesor), `opd/index.js` |
 | **SpbeGauge** | `SpbeGauge.js` | Donut gauge indeks SPBE + domain | `index.js`, `spbe.js` |
-| **ServiceFinder** | `ServiceFinder.js` | Pencarian & filter layanan — search, tag kategori, hasil real-time | `index.js`, `layanan.js` |
-| **ServiceCard** | `ServiceCard.js` | Kartu layanan — waktu, biaya, persyaratan, SLA badge | `ServiceFinder.js` |
-| **SlaBadge** | `SlaBadge.js` | Badge SLA visual | `ServiceCard.js`, dll. |
-| **DashboardSKM** | `DashboardSKM.js` | Dashboard hasil SKM + rating — fetch `/api/skm/stats` | `index.js`, `dashboard-kepuasan.js` |
 | **DetailModal** | `DetailModal.js` | Modal detail aspek/indikator Pemdi | `pemdi.js`, `probis.js` |
-| **GlossaryTooltip** | `GlossaryTooltip.js` | Tooltip definisi istilah (data/glosarium.json) | `index.js`, `faq.js`, `glosarium.js` |
-| **TrackerStatus** | `TrackerStatus.js` | Stepper status laporan (baru→diproses→selesai) | `lapor.js` |
+| **GlossaryTooltip** | `GlossaryTooltip.js` | Tooltip definisi istilah (data/glosarium.json) | `index.js`, `glosarium.js` |
 | **motif/KerawangMotifs (7 ekspor: PuterTali, PucukRebung, Rante, Pagar, Ulen, Tapak, KerawangDivider — MotifEmun/MotifBackground/MarqueeBudaya dihapus 21 Sep 2026)** | `motif/KerawangMotifs.js` | Motif Gayo (Emun, Ulen, Rante, Tapak, Puter, Pucuk Rebung, divider, marquee budaya) | lintas halaman |
 
 ## Local Contracts
 
 ### AppShell (`AppShell.js`)
 - **Props**: `{ children }`
-- **Struktur**: gov-strip → sidebar + spacer → topbar (breadcrumb) → `<main id="main-content">{children}</main>` → footer
+- **Struktur**: gov-strip (marquee) → sidebar + spacer → topbar (toggle nav, brand, breadcrumb, CTA `/pemdi`, ThemeToggle) → `<main id="main-content">{children}</main>` → footer → BottomNav (ponsel)
 - **Skip-link** `#main-content`; scroll-reveal `[data-reveal]` via IntersectionObserver (hormati prefers-reduced-motion)
-
-### LaporWidget (`LaporWidget.js`)
-- **Props**: `{ externalOpen, onExternalClose, hideFab }`
-- **Fitur**: FAB, modal form (kategori/pesan/kontak), tracking by ID, focus-trap + Escape
+- Breadcrumb: tambah entri `PETA_JUDUL` setiap rute baru
 
 ### DetailModal (`DetailModal.js`)
 - **Props**: `{ title, children, onClose, isOpen }`
 
-## Kontrak Mobile (19 Sep 2026)
+### OPDTable (`OPDTable.js`)
+- **Props**: `{ opdList, butirCountMap }` — `butirCountMap` dibangun di server dengan `petaButirOPD(daftar, pemdiData)` (`lib/pjButir.js`); kunci = `opd.id ?? opd.nama`
 
-- **ServiceCard** — di `≤768px` kartu tampil **satu kolom** (desktop: baris 3 kolom). Deskripsi dibatasi 2 baris dan **dilepas otomatis** saat kartu dibuka (`aria-expanded="true"`) — jangan menambah clamp tanpa mekanisme buka, agar teks penuh tidak hilang.
-- **SpbeGauge / SlaBadge** — bar kemajuan memakai `transform: scaleX()` (bukan animasi `width`) supaya tidak memicu layout. DashboardSKM sengaja dibiarkan `width` karena label persennya diposisikan terhadap lebar bar.
+## Kontrak Mobile (19 Sep 2026)
+- **SpbeGauge** — bar kemajuan memakai `transform: scaleX()` (bukan animasi `width`) supaya tidak memicu layout.
 - **Tombol bukti di `/pemdi`** memakai kelas `.bukti-act` (target sentuh ≥44px di mobile) + `aria-label`.
+- **BottomNav** target sentuh ≥44px.
 
 ## Status
-🟢 **DOX Clean** — seluruh komponen dalam tabel ini (diverifikasi 2026-09-21 termasuk LevelFokus) terverifikasi diimpor minimal satu halaman/komponen aktif (cek: grep impor per file).
+🟢 **DOX Clean** — 17 komponen dalam tabel ini terverifikasi diimpor minimal satu halaman/komponen aktif (22 Sep 2026; cek: grep impor per file).

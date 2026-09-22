@@ -1,27 +1,18 @@
-# 🏛️ Pemdi Aceh Tengah
+# 🏛️ Dashboard Pemerintah Digital — Aceh Tengah
 
-**Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah**
+**Ruang kerja internal Evaluasi Kinerja Pemerintah Digital (Pemdi) Kabupaten Aceh Tengah**
 
-Transformasi menuju **Pemerintah Digital (Pemdi)** — open source government technology untuk tata kelola yang transparan, efisien, dan berorientasi pada masyarakat.
+Perangkat kerja **Tim Koordinasi Pemdi dan penanggung jawab perangkat daerah** untuk memantau 7 aspek × 20 indikator PermenPANRB 8/2026, menyiapkan bukti dukung, dan menyusun catatan penilaian mandiri. Bukan portal layanan publik.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Next.js](https://img.shields.io/badge/Next.js-14-black)](https://nextjs.org)
-[![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?logo=supabase&logoColor=white)](https://supabase.com)
-[![Vercel](https://img.shields.io/badge/Deploy-Vercel-000?logo=vercel)](https://vercel.com)
-[![DOX](https://img.shields.io/badge/🧭%20DOX-Self--Documenting-1d70b8)](https://github.com/agent0ai/dox)
-[![Database: Supabase](https://img.shields.io/badge/Database-Supabase-3ECF8E)](https://supabase.com)
+[![Data: JSON statis](https://img.shields.io/badge/Data-JSON%20statis-1F2A44)](data/AGENTS.md)
 
 ---
 
-## Mode situs (21 Sep 2026)
+## Mode situs (reposisi 22 Sep 2026)
 
-Situs berjalan dalam **mode internal** (Kokpit Asesor) secara default. Persona publik/warga dimatikan lewat saklar build-time — bukan dihapus:
-
-```
-NEXT_PUBLIC_PERSONA_PUBLIK=on   # aktifkan kembali dual-persona (beranda warga, /layanan, /skm, /lapor, …)
-```
-
-Titik terakhir dual-persona penuh: branch `backup/dual-persona-2026-09-21` / tag `v0.3-dual-persona`. Rincian di `lib/modeSitus.js` dan `CHANGELOG.md`.
+Situs melayani **satu persona: internal Pemdi**. Persona publik/warga (beranda warga, `/layanan`, `/skm`, `/lapor`, `/faq`, `/tanya`, `/bantuan`, `/dashboard-kepuasan`, `/kebijakan-privasi`, `/admin` beserta API Supabase-nya) **dihapus dari cabang `main`** dan diarsipkan di tag git **`arsip/persona-publik-2026-09`** (commit `eeaa573`). Tidak ada saklar env untuk menghidupkannya kembali; bila suatu saat dibutuhkan, lihat `REPOSISI-PEMDI.md` §Arsip. Seluruh halaman diberi `noindex` (middleware + meta + robots). Rincian di `CHANGELOG.md`.
 
 ## 🎯 Tujuan
 
@@ -53,99 +44,45 @@ Titik terakhir dual-persona penuh: branch `backup/dual-persona-2026-09-21` / tag
 
 | Halaman | URL | Deskripsi |
 |---------|-----|-----------|
-| Beranda | `/` | Dashboard utama — Pemdi badge, SPBE gauge, Peta Proses Bisnis, fitur publik |
-| Kokpit Pemdi | `/pemdi` | Kokpit penilaian mandiri — simulasi indeks (hanya bukti diterima), 7 aspek + 20 indikator, checklist bukti berkode `I#-L#-##` sesuai eval.spbe.go.id |
-| Peta Proses Bisnis | `/probis` | PPB 3 level — 8 Misi, 35 Urusan, 78 Proses Bisnis OPD + DetailModal misi |
-| Direktori Layanan | `/layanan` | 25 layanan publik dalam 7 kategori — status, biaya, SLA, syarat |
-| Survei Kepuasan | `/skm` | Survei SKM online — 8 dimensi (skala 1–4), 43 unit layanan, simpan ke Supabase |
-| Tanya Jawab | `/faq` | FAQ seputar layanan, portal, SPBE, dan Pemdi |
-| Chatbot Asisten | `/tanya` | Asisten virtual — cari jawaban dari FAQ |
-| Pencarian Global | `/cari` | Pencarian OPD, layanan, FAQ dengan Fuse.js |
-| Dashboard Kepuasan | `/dashboard-kepuasan` | Dashboard publik hasil SKM + rating halaman (Indikator I20) |
-| Modul Indikator | `/modul-indikator` | 20 modul kriteria L1–L5 + status bukti per hasil asesor (tab 🔁 Revisi) + matriks kebutuhan L1–L2 |
-| Glosarium | `/glosarium` | Kamus istilah digital pemerintahan |
-| Pusat Bantuan | `/bantuan` | Panduan penggunaan portal + FAQ |
-| Kebijakan Privasi | `/kebijakan-privasi` | Kebijakan perlindungan data pribadi (UU PDP) |
-| Dashboard Admin | `/admin` | Dashboard Admin — lihat data SKM & laporan warga (login required) |
-| Draf Bukti Dukung | `/requirement` | **Draf Bukti Dukung Prioritas** — 19 revisi asesor + 24 butir gap level berikut (di luar P0) (diurutkan daya ungkit) dengan contoh modul & template; tab kedua: 83 kebutuhan data PPB |
-| Detail OPD | `/opd/[slug]` | Halaman detail tiap PD (52 halaman statis) |
+| Ringkasan | `/` | Beranda internal — KPI Pemdi/SPBE/bukti, gauge SPBE + 7 aspek, blok PPB, tabel 52 OPD (kolom butir Pemdi per OPD) |
+| Dashboard Pemdi | `/pemdi` | Simulasi penilaian mandiri — indeks (hanya bukti diterima), 7 aspek × 20 indikator, fokus level, catatan mandiri per butir + ekspor |
+| Modul Indikator | `/modul-indikator` | 20 modul kriteria L1–L5 + matriks kebutuhan bukti |
+| Draf Bukti Dukung Prioritas | `/requirement` | 19 revisi asesor + butir gap, template draf; tab sekunder PPB (83 kebutuhan) |
+| SPBE 2025 | `/spbe` | Baseline indeks SPBE 4 domain |
+| Peta Proses Bisnis | `/probis` | Level 0–1–2 (8 misi → 35 urusan → 78 proses) |
+| Perangkat Daerah | `/opd`, `/opd/[slug]` | 52 OPD (SSG) + detail |
+| Glosarium | `/glosarium` | Istilah Pemdi/SPBE |
+| Pencarian | `/cari` | Fuse.js — indikator, modul, OPD, glosarium, dokumen kunci |
 
-### API Endpoints
+### API (read-only)
 
-| Endpoint | Method | Fungsi | Auth |
-|----------|--------|--------|------|
-| `/api/opd` | GET | Daftar lengkap OPD (52 entries) | — |
-| `/api/spbe` | GET | Data SPBE 2025 (indeks 2,59 + 4 domain + rekomendasi) | — |
-| `/api/requirement` | GET | 83 requirements PPB (12 kategori, 3 fase) | — |
-| `/api/lapor` | POST, PATCH | Kirim & update laporan warga → Supabase | PATCH: Bearer |
-| `/api/lapor/status` | GET | Tracking status laporan by ID (rate-limit) | — |
-| `/api/feedback` | GET, POST | Rating halaman ★ → Supabase | — |
-| `/api/skm/stats` | GET | Statistik SKM (per dimensi/unit/tren) | — |
-| `/api/proxy-pdf` | GET | Proxy PDF JDIH (whitelist host) | — |
-| `/api/health` | GET | Health check app + DB — pantau via uptime monitor | — |
-| `/api/skm` | GET, POST | Survei Kepuasan Masyarakat → Supabase | — |
-| `/api/admin/skm` | GET | Data SKM — admin only | Bearer Token |
-| `/api/admin/laporan` | GET | Data laporan warga — admin only, filter status | Bearer Token |
+| Endpoint | Method | Deskripsi |
+|----------|--------|-----------|
+| `/api/opd` | GET | 52 OPD |
+| `/api/spbe` | GET | Data SPBE 2025 |
+| `/api/requirement` | GET | 83 kebutuhan PPB |
+| `/api/proxy-pdf?url=` | GET | Proxy PDF JDIH Aceh Tengah (allowlist) |
+| `/api/health` | GET | Kesehatan app + integritas data, `mode: internal` |
 
 ## 🏗️ Arsitektur
 
 ```
 PemdiAcehTengah/
-├── pages/                # Halaman Next.js (SSR/SSG)
-│   ├── index.js          # Beranda — Pemdi badge, SPBE, PPB, fitur publik
-│   ├── pemdi.js          # Dashboard Indeks Pemdi (7 aspek × 20 indikator)
-│   ├── probis.js         # Peta Proses Bisnis 3 level
-│   ├── layanan.js        # Direktori layanan publik
-│   ├── skm.js            # Survei Kepuasan Masyarakat (8 dimensi skala 1–4)
-│   ├── faq.js            # Tanya jawab (FAQ interaktif)
-│   ├── tanya.js          # Chatbot asisten virtual
-│   ├── cari.js           # Pencarian global (OPD, layanan, FAQ)
-│   ├── admin.js          # 🆕 Dashboard Admin — SKM & laporan
-│   ├── requirement.js    # Daftar Kebutuhan PPB
-│   ├── opd/[slug].js     # 52 halaman detail PD (SSG)
-│   └── api/              # Backend API Routes
-│       ├── opd.js        # GET /api/opd
-│       ├── spbe.js       # GET /api/spbe
-│       ├── requirement.js# GET /api/requirement
-│       ├── lapor.js      # 🆕 POST/PATCH /api/lapor → Supabase
-│       ├── skm.js        # 🆕 GET/POST /api/skm → Supabase
-│       └── admin/        # 🆕 Admin-only API
-│           ├── skm.js    # GET /api/admin/skm
-│           └── laporan.js# GET /api/admin/laporan
-├── components/           # React komponen (29 aktif)
-│   ├── AppShell.js       # Shell global — sidebar, topbar, breadcrumb
-│   ├── Sidebar.js, Footer.js, ThemeToggle.js, ScrollTop.js
-│   ├── OPDTable.js, SpbeGauge.js, SlaBadge.js
-│   ├── ServiceFinder.js, ServiceCard.js, DashboardSKM.js
-│   ├── DetailModal.js, GlossaryTooltip.js
-│   ├── LaporWidget.js    # FAB Lapor/Saran — form + tracking ID
-│   ├── RatingWidget.js, SkmPrompt.js, Sp4nBanner.js, TrackerStatus.js
-│   └── motif/KerawangMotifs.js  # Motif budaya Gayo
-├── lib/                  # Utility libraries (9 modul — lihat lib/AGENTS.md)
-│   ├── adminAuth.js      # Admin auth — Bearer, constant-time compare
-│   ├── supabaseAdmin.js  # Supabase admin client — server-only
-│   ├── security.js       # Sanitasi, IP-hash, rate-limit, ID generator
-│   ├── rate-limit-db.js  # Rate limiter atomic (RPC Supabase)
-│   ├── pemdiNilai.js     # Rumus resmi PermenPANRB 8/2026 (teruji unit test)
-│   ├── sanitize.js       # Sanitizer HTML allowlist ketat
-│   ├── format.js         # Format angka & teks (locale id-ID)
-│   ├── slugify.js        # Slug URL konsisten
-│   └── search-index.js   # Search index builder — Fuse.js corpus
-├── styles/globals.css    # CSS Global — Gayo Civic Digital v3
-├── test/                 # Unit test (node:test) — rumus Pemdi + regresi data
-├── CHANGELOG.md          # Ringkasan perubahan (changelog publik)
-├── data/
-│   ├── opd.json          # Data OPD, SPBE, PPB, rekomendasi
-│   ├── pemdi.json        # Data 7 aspek × 20 indikator Pemdi
-│   ├── layanan.json      # Data 25 layanan publik (7 kategori)
-│   ├── faq.json          # Data FAQ
-│   └── skm.json          # Data pertanyaan SKM
-├── db/                   # Database schema Supabase
-│   ├── schema.sql        # Tabel skm/laporan/rating_feedback + view + RPC agregat
-│   └── rate-limit-schema.sql  # Tabel rate_limits + RPC atomic bump_rate_limit
-├── MASTERPLAN.md         # Master plan pengembangan
-├── docs/                 # Dokumentasi proyek
-└── public/               # Aset statis
+├── pages/                # 11 halaman internal + 5 API read-only (lihat pages/AGENTS.md)
+│   ├── index.js          # Ringkasan — KPI, SPBE, PPB, tabel OPD
+│   ├── pemdi.js          # Dashboard Pemdi — simulasi mandiri + catatan mandiri
+│   ├── modul-indikator.js, requirement.js, spbe.js, probis.js, glosarium.js, cari.js
+│   ├── opd/              # index + [slug] (52 SSG)
+│   └── api/              # opd, spbe, requirement, proxy-pdf, health
+├── components/           # 17 komponen — AppShell, Sidebar, BottomNav, Footer, asesor/*, beranda/BerandaAsesor, motif/Kerawang
+├── lib/                  # pemdiNilai, catatanMandiri, pjButir, search-index, modeSitus, format, slugify
+├── data/                 # pemdi.json, modul-indikator.json, catatan-mandiri.json, opd.json, draf-bukti-prioritas.json, …
+├── scripts/              # Rantai regenerasi data (python3) — lihat data/AGENTS.md
+├── test/                 # node --test (43 tes)
+├── styles/               # globals.css — Navy/Beige/Gold + Kerawang Gayo
+├── public/               # PWA, crest, panduan-bukti-l1/*.pdf
+├── middleware.js         # X-Robots-Tag noindex semua rute
+└── REPOSISI-PEMDI.md     # Arah produk + §Arsip persona publik
 ```
 
 ## 🧭 DOX — Self-Documenting Project
@@ -163,21 +100,14 @@ Project ini menggunakan [DOX](https://github.com/agent0ai/dox) — hierarki AGEN
 
 **DOX pass**: Setiap perubahan kode wajib update nearest AGENTS.md.
 
-### Admin & Security
-
-Fitur admin dan keamanan yang diimplementasikan:
+### Keamanan
 
 | Aspek | Detail |
 |-------|--------|
-| **Auth Admin** | Bearer token via env `ADMIN_PASSWORD` (Vercel *sensitive*, Production) — lihat `lib/adminAuth.js` |
-| **Rate Limiting** | Per-IP: SKM 3×/5 menit, Lapor 5×/menit — `lib/security.js` |
-| **Anti-Spam** | Rate limit atomic per-IP via Supabase RPC + validasi ketat + sanitasi (Turnstile: **belum diimplementasikan** — direncanakan) |
-| **Sanitasi Input** | Strip HTML tags, length limit, regex validation |
-| **IP Hashing** | SHA-256 hash disimpan, bukan IP mentah — `lib/security.js` |
-| **Database** | Supabase — service role key (env), server-only |
-| **CORS** | Terbatas ke `SITE_ORIGIN` atau wildcard untuk publik |
-
-> **Admin credentials**: token admin dikonfigurasi lewat environment variable `ADMIN_PASSWORD` di Vercel (Produksi, bertipe *sensitive* — nilainya tidak bisa dibaca kembali dari dashboard/CLI). Variable lama `ADMIN_TOKEN` **dihapus 18 Sep 2026**; nilai lamanya tidak berlaku lagi.
+| **Security headers** | CSP, X-Frame-Options, nosniff, Referrer-Policy — `next.config.js` |
+| **Indeksasi** | `X-Robots-Tag: noindex, nofollow` (middleware) + meta robots + `robots.txt` disallow |
+| **Data** | Tidak ada DB runtime, tidak ada endpoint tulis, tidak ada rahasia yang dibutuhkan |
+| **Akses** | Belum ada login (keputusan 22 Sep 2026: noindex saja). Login/peran menyusul bersama CMS admin |
 
 ## 🚀 Deploy di Vercel
 
@@ -194,27 +124,12 @@ npm run start   # Production server
 
 ### Environment Variables
 
-Buat file `.env.local` dengan variabel berikut:
-
-```bash
-# Supabase (opsional — tanpa ini, API tetap hidup dengan fallback)
-SUPABASE_URL=your_supabase_url
-SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
-
-# Admin (satu kredensial saja — ADMIN_TOKEN legacy dihapus 18 Sep 2026)
-ADMIN_PASSWORD=your_admin_password
-
-# Security
-IP_HASH_SALT=pemdi-aceh-tengah
-SITE_ORIGIN=https://pemdi-aceh-tengah.vercel.app
-```
-
-> ⚠️ `.env.local` ter-ignore oleh git (`.gitignore` baris `.env*.local`) — jangan pernah commit. Variabel `VERCEL_OIDC_TOKEN` dipakai khusus untuk deploy via CLI (`vercel deploy --prod`), bukan untuk runtime.
+Tidak ada variabel wajib. Opsional: `NEXT_PUBLIC_SITE_URL` (canonical/sitemap). Variabel Supabase/`ADMIN_PASSWORD`/`IP_HASH_SALT` lama **tidak dipakai lagi** dan boleh dihapus dari Vercel.
 
 ## 🔧 Teknologi
 
-- **Framework**: Next.js 14 (Fullstack — frontend + backend API)
-- **Database**: Supabase (PostgreSQL) — persist SKM & laporan warga
+- **Framework**: Next.js 14 (Pages Router, SSG)
+- **Data**: JSON statis di `data/` (dibundel saat build; regenerasi via `scripts/*.py`)
 - **Search**: Fuse.js — client-side fuzzy search
 - **Sitemap**: next-sitemap — auto-generate sitemap.xml
 - **Deploy**: Vercel (Free Tier)
@@ -234,22 +149,23 @@ SITE_ORIGIN=https://pemdi-aceh-tengah.vercel.app
 |------|--------|----------|--------|
 | **1** | Fondasi Data — Harmonisasi OPD, Mapping Urusan, Struktur PPB | Jun 2026 | ✅ Selesai |
 | **2** | PPB Final — Level 0/1/2, Halaman OPD, Integrasi | Jun 2026 | ✅ Selesai |
-| **3** | Fitur Publik — Layanan, FAQ, SKM, Lapor, Pencarian, Admin | Jun 2026 | ✅ **Selesai** |
-| **4** | Pemdi Dashboard — 7 aspek, radar chart, gap analysis | Mulai lebih awal | ◌ Pemdi page sudah live |
+| **3** | Fitur Publik — Layanan, FAQ, SKM, Lapor, Admin | Jun 2026 | 🗄️ **Diarsipkan** 22 Sep 2026 (tag `arsip/persona-publik-2026-09`) — di luar lingkup reposisi |
+| **4** | Dashboard Pemdi — 7 aspek, simulasi mandiri, catatan mandiri, draf bukti | Sep 2026 | ✅ Live (`/pemdi`) |
+| **5** | Reskin "Ruang Kendali" + CMS admin | Okt 2026 | ◌ Prototipe disetujui, patch menyusul |
 
 ### Progress Detail
 
 | Fitur | Status |
 |-------|--------|
-| SKM Online (8 dimensi, 43 unit layanan) | ✅ |
-| Lapor Warga (FAB widget + Supabase) | ✅ |
-| Dashboard Admin (SKM + laporan) | ✅ |
-| Rate limiting atomic + health endpoint | ✅ |
-| Pencarian Global (Fuse.js) | ✅ |
-| Chatbot Asisten (/tanya) | ✅ |
-| Supabase Database Integration | ✅ |
-| Unit test rumus Pemdi (16 pin regresi, `npm test`) | ✅ |
-| API Rate Limiting & Security | ✅ |
+| Simulasi indeks Pemdi (rumus resmi, pin tes) | ✅ |
+| Sinkron hasil Tahap 1 eval.spbe.go.id (18 diterima · 19 revisi) | ✅ |
+| Catatan mandiri per butir + ekspor teks/HTML/DOCX | ✅ |
+| Draf bukti dukung prioritas | ✅ |
+| Butir Pemdi per OPD (`lib/pjButir`) | ✅ |
+| Pencarian global (Fuse.js) | ✅ |
+| Health endpoint + noindex | ✅ |
+| Reskin Ruang Kendali (Patch 1–3) | ◌ |
+| CMS admin (Patch 4) | ◌ |
 
 ## 🤖 Agent Skills (autoskills)
 

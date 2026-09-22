@@ -2,26 +2,11 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { PUBLIK_AKTIF } from '@/lib/modeSitus';
-import LaporWidget from './LaporWidget';
 
-/* ── Menu Categories for Citizens & Government Leadership ── */
+/* ── Menu dashboard internal Pemdi (reposisi 22 Sep 2026) ── */
 const menuGroups = [
   {
-    label: 'I. Sektor Warga & Layanan',
-    publik: true, // disembunyikan saat mode internal (lib/modeSitus)
-    items: [
-      { label: 'Direktori Layanan', href: '/layanan', icon: '📋', badge: '25 SLA' },
-      { label: 'Pengaduan & Lapor', href: '#', icon: '💬', isModal: true, badge: 'SP4N' },
-      { label: 'Lacak Status Laporan', href: '/lapor', icon: '🔎' },
-      { label: 'Survei Kepuasan (SKM)', href: '/skm', icon: '📝' },
-      { label: 'Tanya Assistant & FAQ', href: '/faq', icon: '🤖' },
-      { label: 'Chat Tanya-Jawab', href: '/tanya', icon: '🗨️' },
-      { label: 'Pusat Bantuan', href: '/bantuan', icon: '🆘' },
-    ],
-  },
-  {
-    label: 'II. Kinerja & Transparansi',
+    label: 'Kinerja & Evaluasi',
     items: [
       { label: 'Indeks Pemdi 2026', href: '/pemdi', icon: '🚀', badge: '8/2026' },
       { label: 'Modul Indikator', href: '/modul-indikator', icon: '📋', badge: '20' },
@@ -31,12 +16,10 @@ const menuGroups = [
     ],
   },
   {
-    label: 'III. Sistem & Pengelolaan',
+    label: 'Bukti & Rujukan',
     items: [
-      { label: 'Glosarium Istilah', href: '/glosarium', icon: '📖' },
       { label: 'Draf Bukti Dukung', href: '/requirement', icon: '📝' },
-      ...(PUBLIK_AKTIF ? [{ label: 'Dashboard Kepuasan', href: '/dashboard-kepuasan', icon: '📈' }] : []),
-      ...(PUBLIK_AKTIF ? [{ label: 'Panel Admin Diskominfo', href: '/admin', icon: '🔐' }] : []),
+      { label: 'Glosarium Istilah', href: '/glosarium', icon: '📖' },
     ],
   },
 ];
@@ -47,7 +30,6 @@ export default function Sidebar({ isOpen, onClose, collapsed }) {
 
   const [isDesktop, setIsDesktop] = useState(false);
   const [hydrated, setHydrated] = useState(false);
-  const [showLapor, setShowLapor] = useState(false);
 
   useEffect(() => {
     const mq = window.matchMedia('(min-width: 901px)');
@@ -148,34 +130,11 @@ export default function Sidebar({ isOpen, onClose, collapsed }) {
 
         {/* Navigation Groups */}
         <nav className="sb-nav">
-          {menuGroups.filter((g) => PUBLIK_AKTIF || !g.publik).map((group) => (
+          {menuGroups.map((group) => (
             <div key={group.label}>
-              <div className="sb-group">{PUBLIK_AKTIF ? group.label : group.label.replace(/^[IVX]+\.\s*/, '')}</div>
+              <div className="sb-group">{group.label}</div>
               {group.items.map((item) => {
-                const active = !item.isModal && isActive(item.href);
-
-                if (item.isModal) {
-                  return (
-                    <button
-                      key={item.label}
-                      type="button"
-                      onClick={() => setShowLapor(true)}
-                      className="sb-link"
-                      style={{
-                        width: '100%',
-                        textAlign: 'left',
-                        background: 'none',
-                        border: 'none',
-                        fontFamily: 'inherit',
-                      }}
-                    >
-                      <span className="i">{item.icon}</span>
-                      <span style={{ flex: 1 }}>{item.label}</span>
-                      {item.badge && <span className="badge badge-blue">{item.badge}</span>}
-                    </button>
-                  );
-                }
-
+                const active = isActive(item.href);
                 return (
                   <Link
                     key={item.href}
@@ -199,35 +158,13 @@ export default function Sidebar({ isOpen, onClose, collapsed }) {
 
         {/* Docked Sidebar Footer Action */}
         <div className="sb-foot">
-          {PUBLIK_AKTIF && (
-          <div
-            className="sb-quick-cta"
-            onClick={() => setShowLapor(true)}
-            role="button"
-            tabIndex={0}
-          >
-            <span style={{ fontSize: '18px' }}>📢</span>
-            <div style={{ flex: 1 }}>
-              <div style={{ fontSize: '12px', fontWeight: 700, color: '#ffffff' }}>Butuh Bantuan / Lapor?</div>
-              <div style={{ fontSize: '10px', color: 'var(--primary-200)' }}>Kirim tiket & lacak real-time</div>
-            </div>
-          </div>
-          )}
           <div className="sb-foot-text">Walidata: Diskominfo Kab. Aceh Tengah</div>
-          <div style={{ fontSize: '9.5px', lineHeight: 1.5, padding: '6px 10px', color: 'var(--primary-200)', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+          <div style={{ fontSize: '0.75rem', lineHeight: 1.5, padding: '6px 10px', color: 'var(--primary-200)', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
             ✦ Kerawang Gayo — <em>“alang tulung beret bebantu”</em>: tolong-menolong, kekokohan &amp; keterpaduan
           </div>
         </div>
       </aside>
 
-      {/* Lapor Modal — tetap pop-up, bukan side panel */}
-      {PUBLIK_AKTIF && (
-        <LaporWidget
-          externalOpen={showLapor}
-          onExternalClose={() => setShowLapor(false)}
-          hideFab
-        />
-      )}
     </>
   );
 }

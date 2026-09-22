@@ -1,5 +1,5 @@
 /**
- * CatatanTujuan — catatan pemilik/pengelola tentang tujuan Kokpit Pemdi.
+ * CatatanTujuan — catatan pemilik/pengelola tentang tujuan Dashboard Pemdi.
  * Ditampilkan di /pemdi, /modul-indikator, /requirement. Teks tunggal di sini
  * (dan disalin ke README "Tujuan"), agar tidak ada versi yang saling berbeda.
  *
@@ -8,7 +8,7 @@
 import Link from 'next/link';
 
 export const TUJUAN_KOKPIT = {
-  judul: 'Untuk siapa dan untuk apa kokpit ini',
+  judul: 'Untuk siapa dan untuk apa dashboard ini',
   inti:
     'Website/aplikasi ini ditujukan untuk memudahkan Tim Asesor Internal Pemerintah Kabupaten Aceh Tengah ' +
     'dalam memenuhi kebutuhan bukti dukung Evaluasi Kinerja Pemerintah Digital. Kriteria dan butir bukti ' +
@@ -59,7 +59,7 @@ export default function CatatanTujuan({ compact = false }) {
       )}
       {compact && (
         <div style={{ marginTop: '6px', fontSize: '0.74rem' }}>
-          <Link href="/pemdi#tujuan" style={{ color: 'var(--primary)', fontWeight: 600 }}>Selengkapnya di Kokpit Pemdi →</Link>
+          <Link href="/pemdi#tujuan" style={{ color: 'var(--primary)', fontWeight: 600 }}>Selengkapnya di Dashboard Pemdi →</Link>
         </div>
       )}
     </aside>

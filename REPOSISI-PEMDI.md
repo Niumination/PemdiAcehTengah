@@ -3,6 +3,7 @@
 > **Tanggal keputusan:** 19 September 2026
 > **Sumber:** `Penilaian_Kelayakan_Adopsi_Prototipe_Pemdi_Aceh_Tengah.md` (dalam `reposisi-pemdi.zip`)
 > **Status:** AKTIF — seluruh pekerjaan selanjutnya mengikuti benang merah ini
+> **Pembaruan 22 Sep 2026:** tahap pembersihan selesai — persona publik **dihapus dari `main`** dan diarsipkan (lihat §8). Istilah "Kokpit" → **"Dashboard"** di seluruh UI.
 
 ---
 
@@ -14,7 +15,7 @@ Reposisi menjadi **tiga produk** yang berbeda peran:
 
 | Produk | Akses | Tujuan |
 |--------|-------|--------|
-| **B1. Kokpit Pemdi** | Internal (ASN/Tim Asesor) | Mesin Penilaian Mandiri: kelola 250 butir bukti, PIC OPD, unggah berkas, ekspor laporan |
+| **B1. Dashboard Pemdi** (d/h Kokpit) | Internal (ASN/Tim Asesor) | Mesin Penilaian Mandiri: kelola 250 butir bukti, PIC OPD, unggah berkas, ekspor laporan |
 | **B2. Dasbor Transparansi** | Publik | Tampilkan predikat **resmi**, SKM **resmi**, SLA layanan **resmi**, log perubahan layanan |
 | **B3. Komponen Terintegrasi** | Publik | Komponen yang dilebur ke Alpukat Gayo & sistem resmi (bukan berdiri sendiri) |
 
@@ -22,7 +23,7 @@ Reposisi menjadi **tiga produk** yang berbeda peran:
 
 ## 2. Tiga Produk & Pekerjaan
 
-### B1. Kokpit Pemdi — Perangkat Kerja Internal (PRIORITAS TERTINGGI)
+### B1. Dashboard Pemdi — Perangkat Kerja Internal (PRIORITAS TERTINGGI — SATU-SATUNYA YANG AKTIF)
 
 **Pertahankan & kembangkan:**
 
@@ -44,7 +45,7 @@ Reposisi menjadi **tiga produk** yang berbeda peran:
 
 **Bukti langsung:** narasi I1 (tata kelola terkoordinasi) & I4 (kolaborasi lintas OPD).
 
-### B2. Dasbor Transparansi — Halaman Publik
+### B2. Dasbor Transparansi — Halaman Publik *(DITUNDA — tidak dikerjakan di repo ini sampai ada keputusan baru)*
 
 **Tampilkan:**
 
@@ -58,7 +59,7 @@ Reposisi menjadi **tiga produk** yang berbeda peran:
 
 **Penempatan:** subdomain `pemdi.acehtengahkab.go.id` atau menu di `acehtengahkab.go.id`.
 
-### B3. Komponen yang Dilebur ke Sistem Resmi
+### B3. Komponen yang Dilebur ke Sistem Resmi *(DITUNDA — kode sumber ada di arsip, lihat §8)*
 
 | Komponen saat ini | Tujuan integrasi | Indikator |
 |-------------------|------------------|-----------|
@@ -158,7 +159,25 @@ Sebelum adopsi resmi dalam bentuk apa pun:
 
 ## 7. Catatan Implementasi
 
-- **B1 Kokpit** memakai stack yang sudah ada (`/pemdi`, `/modul-indikator`, `pemdiNilai.js`) dengan penambahan fitur internal
+- **B1 Dashboard** memakai stack yang sudah ada (`/pemdi`, `/modul-indikator`, `pemdiNilai.js`) dengan penambahan fitur internal
 - **B2 Dasbor** di-redirect/di-embed dari domain resmi (`.go.id`) dengan data resmi
 - **B3 Komponen** secara bertahap dilebur ke Alpukat Gayo — prototipe tidak lagi menjadi portal layanan publik
 - Domain `vercal.app` hanya untuk pengembangan, bukan produksi resmi
+
+---
+
+## 8. Arsip Persona Publik (22 Sep 2026)
+
+**Keputusan pemilik (22 Sep 2026, membalik keputusan 21 Sep "disembunyikan, tidak dihapus"):** persona publik adalah *dead code* yang tidak konsisten dengan reposisi dan **tidak boleh menjadi fondasi** pekerjaan berikutnya. Oleh karena itu dihapus dari cabang `main`.
+
+| Item | Nilai |
+|------|-------|
+| **Tag arsip** | `arsip/persona-publik-2026-09` → commit `eeaa573` (kondisi terakhir lengkap: dual-persona + saklar `NEXT_PUBLIC_PERSONA_PUBLIK`) |
+| **Cara melihat** | `git checkout arsip/persona-publik-2026-09` lalu `NEXT_PUBLIC_PERSONA_PUBLIK=on npm run dev` (butuh env Supabase lama bila ingin SKM/lapor berfungsi) |
+| **Yang dihapus** | Halaman `/layanan /skm /lapor /faq /tanya /bantuan /dashboard-kepuasan /kebijakan-privasi /admin`; API `/api/lapor* /api/skm* /api/feedback /api/admin/*`; komponen LaporWidget, RatingWidget, SkmPrompt, Sp4nBanner, ServiceFinder, ServiceCard, SlaBadge, DashboardSKM, TrackerStatus, persona/*, publik/*, beranda/BerandaPublik; lib security, sanitize, rate-limit-db, adminAuth, supabaseAdmin, persona, sektorLayanan; data `layanan.json`, `skm.json`, `faq.json`; `db/*.sql`; dependensi `@supabase/supabase-js`; CSS terkait |
+| **Yang tetap** | Semua halaman internal, blok PPB & tabel 52 OPD di beranda (keputusan pemilik: masih relevan), marquee pita atas, motif Kerawang Gayo |
+| **Akses** | `noindex` (middleware + meta + robots) — belum ada login; peran/login menyusul bersama CMS admin |
+| **Catatan bukti** | Butir catatan mandiri yang dulu menyarankan "aktifkan persona publik untuk tangkapan layar" (I8 privasi, I19 SLA/dasbor kepuasan) sudah diarahkan ke sistem layanan/helpdesk riil OPD; portal arsip hanya cadangan |
+
+**Rencana berikutnya (menunggu patch):** Patch 1–3 reskin "Ruang Kendali" (token 2 tema, `/dashboard` sebagai beranda baru, drawer butir, emoji → SVG), Patch 4 CMS admin (peran koordinator/PJ, edit catatan & status langsung dari dashboard, JSON tetap sumber dasar).
+

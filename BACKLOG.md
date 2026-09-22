@@ -61,7 +61,7 @@
 - [x] **A9 kunci produksi jadi *sensitive* + insiden nilai ter-escape** — 19 Sep 2026: `SUPABASE_SERVICE_ROLE_KEY` (akses penuh database) dan `IP_HASH_SALT` diubah ke tipe *sensitive* di Vercel; hanya `SUPABASE_URL` yang tetap non-sensitive (bukan rahasia). **Insiden & pelajaran:** saat mengirim ulang nilai, sumbernya adalah hasil `vercel env pull` yang menulis nilai dalam bentuk ter-escape (`"...\n"`). Escape itu ikut terkirim sebagai dua karakter literal sehingga kunci tidak valid → deploy `dzcsq17c3` menampilkan `db: error` dan `/api/skm` 500 (produksi terganggu ±12 menit, 01:07–01:19 WIB). Pemulihan: `vercel promote` ke deployment sehat terakhir, lalu nilai dikirim ulang hasil *decode* (newline sungguhan, sama seperti aslinya) → `db: ok` terverifikasi di deploy `90erb988h`. **Aturan:** jangan pernah menyalin nilai dari `vercel env pull` apa adanya — decode escape dulu, atau pasang dari sumber aslinya. Catatan: dua commit kosong (`0c55951`, `32e9143`) hanya pemicu redeploy, boleh di-squash kapan saja
 - [x] **A8 pembersih `rate_limits`** — `db/rate-limit-cleanup.sql` dijalankan di Supabase SQL Editor 18 Sep 2026: pg_cron `bersihkan-rate-limits` terdaftar (jobid 1, active true, harian 03:17 UTC = 10:17 WIB). Verifikasi saat pemasangan: tabel 1 baris, 0 kadaluarsa
 - [x] **Sprint B** — B1 font self-host (0 request Google Fonts) · B2 /pemdi 174→114 kB & /modul-indikator 172→113 kB · B3 SSR+ISR ringkasan kepuasan · B4 kontras 30 PASS/0 FAIL · B5 13 token warna + dark override — 18 Sep 2026
-- [ ] **Sprint C** — Next 15 (+React 19), repo slimming, audit log admin
+- [ ] **Sprint C** — Next 15 (+React 19), repo slimming *(audit log admin dipindah ke Patch 4 CMS)*
 - [ ] **Backup ritme git** — push ke origin tiap akhir sesi kerja (sempat tertinggal 3 commit; sudah disinkronkan 10 Agu 2026)
 
 ## 🔄 Future
@@ -73,6 +73,13 @@
 *Terakhir diperbarui: 19 Sep 2026 — audit UI/UX, perbaikan T2+P1–P6, `/layanan` mobile selesai; rencana tahap lanjut di `docs/rencana-mobile-ux-tahap-2.md`*
 
 
-## Mode internal (21 Sep 2026)
+## Reposisi selesai — tahap pembersihan (22 Sep 2026)
+
+- [x] **Patch 0 — pembersihan reposisi**: persona publik dihapus dari `main` + tag `arsip/persona-publik-2026-09`; env Supabase/ADMIN_PASSWORD/IP_HASH_SALT tidak dipakai lagi → **TODO pemilik: lepas env tsb di Vercel & pause/hapus proyek Supabase lama**; "Kokpit" → "Dashboard"; kolom OPD "Butir Pemdi" (`lib/pjButir`)
+- [ ] **Patch 1–2 — Ruang Kendali fase A–C**: `styles/tokens.css` 2 tema + font self-host (Bricolage Grotesque + IBM Plex), `/dashboard` beranda baru (Kompas Pemdi, antrean butir, PJ OPD), `/indikator`, drawer butir (reuse CatatanButir/EksporCatatan), Ctrl+K
+- [ ] **Patch 3 — fase D**: emoji → SVG, inline style → kelas, lint guard, redirect `/pemdi` → `/dashboard`
+- [ ] **Patch 4 — CMS admin**: peran koordinator/PJ, login, edit status/catatan/PJ langsung dari drawer + `/admin` baru, impor hasil eval, audit log; JSON tetap sumber dasar, DB = overlay, ekspor kembali ke `catatan-mandiri.json`
+
+## Mode internal (21 Sep 2026) — *diperbarui 22 Sep: `/admin` lama sudah dihapus, bukan dimatikan*
 
 - [ ] **Fitur kirim eviden dari OPD/SKPD** — menggantikan slot `/admin` (Panel Admin Diskominfo, kini dimatikan lewat `lib/modeSitus.js`). Kebutuhan: PIC OPD mengunggah berkas bukti per kode `I#-L#-##`, status tinjauan Tim Asesor Internal, riwayat versi (REPOSISI-PEMDI.md B1 "Tambahkan"). Akses internal (SSO/akun ASN) menjadi prasyarat.

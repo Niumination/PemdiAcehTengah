@@ -103,7 +103,7 @@
   --font-body: var(--font-pjs), "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; /* var(--font-pjs) dari next/font/local (B1) */
 
   /* ── Sprint B5 (2026-09-18): token warna level OPD & status —
-     migrasi dari hex hardcode di komponen (opd/[slug], TrackerStatus, skm) ── */
+     migrasi dari hex hardcode di komponen (opd/[slug]) ── */
   --level-badan: #01579b;
   --level-dinas: #2e7d32;
   --level-lembaga: #c2410c;
@@ -590,22 +590,6 @@ img, svg {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   background: rgba(0, 0, 0, 0.15);
 }
-.sb-quick-cta {
-  background: linear-gradient(135deg, rgba(14,165,164,0.25), rgba(0,64,152,0.3));
-  border: 1px solid rgba(14, 165, 164, 0.3);
-  border-radius: 10px;
-  padding: 10px 12px;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-.sb-quick-cta:hover {
-  border-color: var(--teal);
-  transform: translateY(-1px);
-}
 .sb-foot-text {
   font-size: 11px;
   color: #7b9cc0;
@@ -998,26 +982,6 @@ input:focus, select:focus, textarea:focus {
   color: var(--muted);
 }
 
-/* ============ 10. RATING WIDGET ============ */
-.rating-widget{position:fixed;bottom:28px;left:28px;z-index:9999;display:flex;flex-direction:column;align-items:flex-start;gap:0}
-.rating-trigger{width:52px;height:52px;border-radius:50%;border:none;background:var(--primary);color:#fff;font-size:1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.18);transition:transform .2s ease,background .2s ease;line-height:1;padding:0}
-.rating-trigger:hover{transform:scale(1.08);background:var(--primary-hover, var(--primary))}
-.rating-widget.is-open .rating-trigger{background:var(--ink);transform:rotate(90deg)}
-.rating-panel{position:absolute;bottom:62px;left:0;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px 16px;width:260px;box-shadow:0 8px 32px rgba(0,0,0,.15);display:flex;flex-direction:column;gap:10px;animation:ratingIn .25s ease}
-@keyframes ratingIn{from{opacity:0;transform:translateY(10px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
-.rating-title{margin:0;font-size:.85rem;font-weight:600;text-align:center;color:var(--ink)}
-.rating-stars{display:flex;justify-content:center;gap:6px}
-.rating-stars .star{background:none;border:none;font-size:1.7rem;cursor:pointer;padding:2px;color:var(--line);transition:color .15s,transform .15s;line-height:1}
-.rating-stars .star-active{color:#f5b342;transform:scale(1.1)}
-.rating-stars .star:hover{color:#f5b342;transform:scale(1.15)}
-.rating-input{width:100%;resize:none;border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:.8rem;background:var(--bg);color:var(--ink);font-family:inherit;box-sizing:border-box}
-.rating-input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 2px rgba(0,0,0,.06)}
-.rating-error{color:#e74c3c;font-size:.75rem;margin:0;text-align:center}
-.rating-submit{width:100%;padding:9px 0;border:none;border-radius:8px;background:var(--primary);color:#fff;font-size:.82rem;font-weight:600;cursor:pointer;transition:opacity .2s;font-family:inherit}
-.rating-submit:disabled{opacity:.5;cursor:not-allowed}
-.rating-thanks{margin:0;font-size:.85rem;text-align:center;padding:6px 0;color:var(--ink)}
-.rating-close-btn{width:100%;padding:7px 0;border:1px solid var(--line);border-radius:8px;background:transparent;color:var(--ink);font-size:.8rem;cursor:pointer;font-family:inherit}
-
 /* ============ 11. SIDE PANEL (DetailModal → Right Panel) ============ */
 .sp-overlay{
   position:fixed;inset:0;z-index:1001;
@@ -1172,8 +1136,7 @@ input:focus, select:focus, textarea:focus {
   .topbar nav ol li:last-child { overflow: hidden; text-overflow: ellipsis; }
   .topbar-actions { gap: 6px; }
   .topbar-search { min-width: 38px; padding: 6px 10px; }
-  .topbar-search-label, .topbar-lapor-label { display: none; }
-  .topbar-lapor { min-width: 38px; padding: 6px 10px; }
+  .topbar-search-label { display: none; }
   .sb-spacer { display: none; }
   .grid-2, .grid-3 { grid-template-columns: 1fr; }
   .stats { grid-template-columns: repeat(2, 1fr); }
@@ -1193,8 +1156,8 @@ input:focus, select:focus, textarea:focus {
 /* ============ 10. SCROLL TOP BUTTON ============ */
 .scroll-top {
   position: fixed;
-  right: 32px; /* sejajar terpusat dengan rating-widget (52px di right 28) */
-  bottom: 90px; /* 28 + 52 + gap 10 → di atas tombol rating */
+  right: 32px;
+  bottom: 90px;
   width: 44px;
   height: 44px;
   border-radius: 50%;
@@ -1268,7 +1231,6 @@ a { transition: color 0.18s ease; }
   .sidebar a, .sidebar button { min-height: 44px; }
   .content { padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
   .container { padding: 0 16px; }
-  .lapor-fab { bottom: calc(1rem + env(safe-area-inset-bottom)) !important; }
 }
 
 /* --- Hormati preferensi reduced-motion --- */
@@ -1577,175 +1539,16 @@ a { transition: color 0.18s ease; }
 .collapse-sec[open] > summary.collapse-sum::after { transform: rotate(180deg); }
 .collapse-sec[open] > summary.collapse-sum { margin-bottom: 18px; }
 
-/* ════════════ /layanan — mobile ringkas tapi padat informasi (19 Sep 2026) ════════════ */
-/* Diukur pada produksi sebelum perbaikan (viewport 390px):
-   tinggi halaman 8.746px (~10 layar) · 25 kartu rata-rata 168px, deskripsi
-   117px/kartu (33% tinggi halaman) · 8 chip filter setinggi 200px (320px: 356px)
-   · grid statistik 4 kartu menumpuk 1 kolom · filter tidak dapat dijangkau
-   setelah menggulir 2 layar. Perbaikan hanya berlaku di layar sempit —
-   tata letak desktop tidak berubah. */
-@media (max-width: 768px) {
-  /* 1. Deskripsi kartu: 2 baris saja. Teks utuh tetap tersedia lewat kartu
-        yang sudah dapat diklik/expand (aria-expanded sudah ada di ServiceCard). */
-  .service-card .service-desc,
-  .service-desc {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  /* Kartu yang sudah dibuka (aria-expanded=true) menampilkan deskripsi penuh —
-     jangan sampai clamp ini menyembunyikan teks yang memang diminta pengguna. */
-  .service-card[aria-expanded="true"] .service-desc {
-    display: block;
-    -webkit-line-clamp: unset;
-    line-clamp: unset;
-    overflow: visible;
-  }
-  /* 2. AKAR MASALAH: kartu memakai tata letak 3 kolom (flex row) dari desktop.
-        Terukur di 390px: judul terjepit 89px, deskripsi hanya 72px lebar
-        (≈8 karakter per baris), badge 63px — isi kartu saling menumpuk.
-        Di layar sempit kartu diturunkan menjadi satu kolom. */
-  .service-card {
-    display: block;
-    padding: 14px !important;
-  }
-  .service-card > div:first-child {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 10px;
-    margin-bottom: 8px;
-  }
-  /* blok judul mengambil sisa lebar */
-  .service-card > div:first-child > div:nth-child(2) {
-    flex: 1 1 auto;
-    min-width: 0;
-  }
-  .service-card > div:first-child > .service-status,
-  .service-card > div:first-child > span {
-    margin-left: auto;
-  }
-  .service-category {
-    display: inline-block;
-    margin-top: 4px;
-  }
-  .service-desc {
-    width: auto !important;
-    margin: 6px 0 10px !important;
-  }
-  /* baris meta (waktu + SLA) memakai lebar penuh, bukan kolom 63px */
-  .service-card > div:last-child {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px;
-    width: auto !important;
-  }
-  .service-card .service-name { font-size: 0.9rem !important; margin-bottom: 2px !important; }
-  /* 3. Filter kategori: satu baris yang bisa digeser, bukan dinding chip. */
-  .sf-tags {
-    flex-wrap: nowrap !important;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 6px;
-    scrollbar-width: thin;
-  }
-  .sf-tag { flex: 0 0 auto; white-space: nowrap; }
-  /* 4. Pencarian melekat di bawah topbar supaya filter selalu terjangkau. */
-  .sf-search {
-    position: sticky;
-    top: calc(var(--gov-strip-h, 36px) + env(safe-area-inset-top, 0px) + 61px);
-    z-index: 30;
-    background: var(--bg);
-    padding-top: 6px;
-    padding-bottom: 6px;
-  }
-  /* 5. Statistik halaman ini: 2x2, bukan 4 baris. (Kelas khusus — hanya /layanan.) */
-  .layanan-stats { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
-  .layanan-stats > * { padding: 0.75rem 0.6rem !important; }
-}
 
 
 /* ════════════════════════════════════════════════════════════════════════
-   SPRINT UI/UX 21 Sep 2026 — Dual-Persona (GOV.UK / Gov.sg style)
+   SPRINT UI/UX 21 Sep 2026 — komponen beranda internal (persona publik dihapus 22 Sep 2026)
    Warna status WCAG 2.1 AA: hijau = diterima · amber = revisi/proses · abu = belum
    ════════════════════════════════════════════════════════════════════════ */
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 .muted { color: var(--muted); }
 .sec { margin-bottom: 48px; }                    /* ≈ py-12 antar seksi */
 @media (min-width: 901px) { .sec { margin-bottom: 64px; } } /* ≈ py-16 */
-
-/* ── Phase 1: Persona switcher (tinggi tetap → tanpa CLS) ── */
-.persona-bar { display: flex; justify-content: center; margin: 0 0 20px; min-height: 48px; }
-.persona-switch {
-  display: inline-flex; padding: 4px; gap: 4px; border-radius: var(--r-full);
-  background: var(--surface-2); border: 1px solid var(--line); height: 48px; box-sizing: border-box;
-}
-.persona-tab {
-  display: inline-flex; align-items: center; gap: 8px; height: 38px; padding: 0 18px;
-  border-radius: var(--r-full); border: 1px solid transparent; background: transparent;
-  color: var(--ink-secondary); font: inherit; font-weight: 700; font-size: 0.86rem; cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease; white-space: nowrap;
-}
-.persona-tab:hover { color: var(--ink); }
-.persona-tab.active { background: var(--primary); color: #fff; box-shadow: var(--sh-sm); }
-.persona-tab:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
-.persona-short { display: none; }
-@media (max-width: 640px) {
-  .persona-switch { width: 100%; }
-  .persona-tab { flex: 1; justify-content: center; padding: 0 10px; }
-  .persona-label { display: none; }
-  .persona-short { display: inline; }
-}
-.persona-stage { min-height: 70vh; }             /* panel bertukar tanpa lompatan tinggi */
-
-/* ── Phase 2: Hero publik ── */
-.hero-publik { padding: 44px 36px 40px; }
-.hero-publik h1 { font-size: clamp(1.6rem, 3.4vw, 2.4rem); max-width: 760px; }
-.hero-search-lg { max-width: 760px; padding: 10px 12px 10px 16px; margin-bottom: 14px; }
-.hero-search-lg .hero-search-input { font-size: 1.05rem; min-height: 40px; }
-.hero-kbd {
-  font-family: var(--font-mono); font-size: 0.7rem; padding: 3px 7px; border-radius: 6px;
-  background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.3); color: #fff; flex-shrink: 0;
-}
-@media (max-width: 640px) { .hero-kbd { display: none; } }
-.hero-keywords { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 0.8rem; }
-.hero-keywords > span { opacity: 0.85; font-weight: 600; }
-.hero-chip {
-  padding: 6px 14px; border-radius: var(--r-full); font-weight: 700; font-size: 0.8rem; color: #fff;
-  background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.3); text-decoration: none; min-height: 32px; display: inline-flex; align-items: center;
-}
-.hero-chip:hover, .hero-chip:focus-visible { background: rgba(255,255,255,0.26); }
-
-/* ── Phase 2: 6 kartu sektor ── */
-.sektor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-@media (max-width: 900px) { .sektor-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 560px) { .sektor-grid { grid-template-columns: 1fr; } }
-.sektor-card {
-  display: flex; flex-direction: column; align-items: flex-start; gap: 4px; text-align: left;
-  padding: 20px; min-height: 132px; border-radius: var(--r); background: var(--surface);
-  border: 1px solid var(--line); border-left: 5px solid var(--primary); color: var(--ink); font: inherit; cursor: pointer;
-  transition: box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
-}
-.sektor-card:hover { box-shadow: var(--sh); border-color: var(--primary); }
-.sektor-card:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
-.sektor-card.open { background: var(--primary-50); border-color: var(--primary); }
-.sektor-ic { font-size: 1.6rem; line-height: 1; }
-.sektor-nama { font-weight: 800; font-size: 1rem; }
-.sektor-meta { font-size: 0.78rem; color: var(--ink-secondary); font-weight: 600; }
-.sektor-contoh { font-size: 0.76rem; color: var(--muted); }
-.sektor-panel { margin-top: 16px; padding: 20px; border-radius: var(--r); background: var(--surface); border: 1px solid var(--line); }
-.sektor-panel[hidden] { display: none; }
-.sektor-panel-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
-.sektor-panel-head h3 { margin: 0; font-size: 1.05rem; }
-.sektor-list { list-style: none; margin: 0 0 12px; padding: 0; display: flex; flex-direction: column; gap: 8px; }
-.sektor-item { display: flex; justify-content: space-between; gap: 16px; padding: 12px 14px; border-radius: var(--r-sm); background: var(--surface-2); border: 1px solid var(--line); }
-.sektor-item-main { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-.sektor-item-desc { font-size: 0.8rem; color: var(--ink-secondary); }
-.sektor-item-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 0.78rem; color: var(--ink-secondary); white-space: nowrap; justify-content: flex-end; }
-@media (max-width: 640px) { .sektor-item { flex-direction: column; } .sektor-item-meta { justify-content: flex-start; } }
 
 /* ── Phase 3: KPI cards (4 grid) ── */
 .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
@@ -1849,13 +1652,7 @@ a { transition: color 0.18s ease; }
   .opd-stack td[data-th=""] { justify-content: flex-end; }
 }
 
-/* ── Phase 4: Bottom Nav Bar (ponsel) + persona di topbar ── */
-.topbar-persona { display: flex; align-items: center; }
-.topbar-persona .persona-switch { height: 36px; padding: 3px; }
-.topbar-persona .persona-tab { height: 28px; padding: 0 10px; font-size: 0.74rem; }
-.topbar-persona .persona-label { display: none; }
-.topbar-persona .persona-short { display: inline; }
-@media (max-width: 640px) { .topbar-persona { display: none; } }
+/* ── Phase 4: Bottom Nav Bar (ponsel) ── */
 .bottom-nav {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 110;
   display: none; grid-template-columns: repeat(5, 1fr);
@@ -1873,7 +1670,6 @@ a { transition: color 0.18s ease; }
 @media (max-width: 768px) {
   .bottom-nav { display: grid; }
   .content { padding-bottom: 88px; }           /* ruang untuk bottom nav */
-  .rating-widget { bottom: 76px; }
   .scroll-top { bottom: calc(140px + env(safe-area-inset-bottom)); }
 }
 

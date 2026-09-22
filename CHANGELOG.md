@@ -3,6 +3,19 @@
 Semua perubahan penting proyek ini didokumentasikan di file ini.
 Ringkasan publik tanpa detail internal; dokumen kerja lengkap disimpan pemilik repo di lokasi privat.
 
+## 2026-09-22 — Reposisi: persona publik dihapus & diarsipkan, istilah "Dashboard"
+
+Keputusan pemilik 22 Sep 2026 (membalik entri 21 Sep di bawah): persona publik bukan fondasi, jadi **dihapus dari `main`**. Arsip lengkap: tag git **`arsip/persona-publik-2026-09`** (commit `eeaa573`). Rincian di `REPOSISI-PEMDI.md` §8.
+
+- **Dihapus**: 9 halaman publik + 9 API (layanan, skm, lapor, faq, tanya, bantuan, dashboard-kepuasan, kebijakan-privasi, admin), 14 komponen, 7 lib, `data/{layanan,skm,faq}.json`, `db/*.sql`, `test/persona.test.mjs`, dependensi `@supabase/supabase-js`, ±200 baris CSS mati. Tidak ada lagi env wajib.
+- **Saklar `NEXT_PUBLIC_PERSONA_PUBLIK` dihapus**; `lib/modeSitus.js` kini konstanta `MODE_SITUS='internal'`. `middleware.js` hanya menambah `X-Robots-Tag: noindex, nofollow`. `/api/health` tanpa cek Supabase, melaporkan `mode: internal`.
+- **Navigasi**: Sidebar 3 grup (Ringkasan · Kinerja & Evaluasi · Bukti & Rujukan), BottomNav 5 tab internal (Ringkasan/Indikator/Modul/Draf Bukti/Menu), topbar CTA "Indikator Pemdi", footer tautan internal; tidak ada CTA lapor/rating/switcher.
+- **Istilah**: "Kokpit" → **"Dashboard"** di hero beranda, `/pemdi`, `/requirement`, CatatanTujuan, BottomNav, breadcrumb.
+- **Tabel OPD**: kolom "Layanan" (data layanan.json) → **"Butir Pemdi"** — jumlah butir catatan mandiri yang PJ-nya OPD tsb (`lib/pjButir.js` baru, alias Diskominfo/Setda dsb.; Diskominfo 47, Setda 9, Bappeda 5, BKPSDM 4, …). Tes baru `test/pjButir.test.mjs` (suite 43 tes).
+- **/cari**: indeks tanpa layanan/FAQ/SKM (tak ada lagi tautan ke 404); placeholder disesuaikan.
+- **Data**: 5 kalimat di `catatan-mandiri.json` (I8, I19) yang menyarankan "aktifkan persona publik untuk tangkapan layar" diarahkan ke sistem riil OPD / arsip; `pemdi.json` diregenerasi (`gabung-catatan-mandiri.py`). Angka indeks/status bukti tidak berubah.
+- **DOX**: AGENTS.md root + pages/api/components/lib/styles, README, REPOSISI-PEMDI.md §8 diperbarui. Build 63 halaman, lint 0 error.
+
 ## 2026-09-21 — Catatan Mandiri per butir (persiapan interviu asesor eksternal)
 
 - **Materi evaluasi asesor eksternal KemenPANRB belum diterima — akan menyusul.** Catatan disusun dari catatan asesor tahap 1 dan Modul Indikator; dicatat di `data/catatan-mandiri.json → materi_asesor_eksternal` dan `docs/catatan-mandiri-interviu-2026.md`. Tenggat kerja: Senin 28 Sep 2026.
@@ -26,7 +39,7 @@ Ringkasan publik tanpa detail internal; dokumen kerja lengkap disimpan pemilik r
 - Beranda `AspekAccordion`: chip "✅ L1 → 🎯 L2" per indikator (⏳ eksternal untuk I5/I6/I7/I18).
 - `/modul-indikator`: deskripsi Permen dilipat dalam `<details>` (kalimat pertama tampil), blok "🧭 Posisi & langkah berikut" per indikator.
 
-## 2026-09-21 — Mode Internal: persona publik dimatikan sementara (saklar, bukan dihapus)
+## 2026-09-21 — Mode Internal: persona publik dimatikan sementara (saklar, bukan dihapus) — *dibalik 22 Sep: dihapus & diarsipkan*
 
 Keputusan pemilik: fokus ke persona internal (Kokpit Asesor). Kode publik **tidak dihapus** — dimatikan lewat satu saklar build-time `NEXT_PUBLIC_PERSONA_PUBLIK` (`lib/modeSitus.js`). Titik sebelum perubahan ini dibekukan di branch `backup/dual-persona-2026-09-21` + tag `v0.3-dual-persona`.
 

@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { PUBLIK_AKTIF } from '@/lib/modeSitus';
 
 export default function Custom404() {
   return (
@@ -53,7 +52,7 @@ export default function Custom404() {
             margin: '0 auto',
           }}>
             <Link
-              href={PUBLIK_AKTIF ? "/skm" : "/pemdi"}
+              href="/pemdi"
               style={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -73,13 +72,13 @@ export default function Custom404() {
                                 e.currentTarget.style.boxShadow = '';
               }}
             >
-              <span style={{ fontSize: '1.5rem' }}>{PUBLIK_AKTIF ? '📝' : '🚀'}</span>
-              <span style={{ fontSize: '0.8125rem', fontWeight: 600, color: 'var(--ink)' }}>{PUBLIK_AKTIF ? 'SKM' : 'Kokpit Pemdi'}</span>
-              <span style={{ fontSize: '0.6875rem', color: 'var(--muted)' }}>{PUBLIK_AKTIF ? 'Survei Kepuasan' : '7 Aspek · 20 Indikator'}</span>
+              <span style={{ fontSize: '1.5rem' }}>'🚀'</span>
+              <span style={{ fontSize: '0.8125rem', fontWeight: 600, color: 'var(--ink)' }}>Dashboard Pemdi</span>
+              <span style={{ fontSize: '0.6875rem', color: 'var(--muted)' }}>7 Aspek · 20 Indikator</span>
             </Link>
 
             <Link
-              href={PUBLIK_AKTIF ? "/lapor" : "/modul-indikator"}
+              href="/modul-indikator"
               style={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -99,9 +98,9 @@ export default function Custom404() {
                                 e.currentTarget.style.boxShadow = '';
               }}
             >
-              <span style={{ fontSize: '1.5rem' }}>{PUBLIK_AKTIF ? '📢' : '📋'}</span>
-              <span style={{ fontSize: '0.8125rem', fontWeight: 600, color: 'var(--ink)' }}>{PUBLIK_AKTIF ? 'Lapor' : 'Modul Indikator'}</span>
-              <span style={{ fontSize: '0.6875rem', color: 'var(--muted)' }}>{PUBLIK_AKTIF ? 'Sampaikan Masukan' : 'Kriteria L1–L5'}</span>
+              <span style={{ fontSize: '1.5rem' }}>'📋'</span>
+              <span style={{ fontSize: '0.8125rem', fontWeight: 600, color: 'var(--ink)' }}>Modul Indikator</span>
+              <span style={{ fontSize: '0.6875rem', color: 'var(--muted)' }}>Kriteria L1–L5</span>
             </Link>
 
             <Link

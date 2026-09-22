@@ -1,27 +1,17 @@
 /**
- * BottomNav — Bottom Navigation Bar untuk ponsel (Sprint UI/UX Phase 4).
- * Tampil hanya ≤ 768px (CSS .bottom-nav). 5 tujuan utama: Beranda, Layanan,
- * Lapor (modal), Kinerja (persona asesor), Menu (buka drawer sidebar).
+ * BottomNav — Bottom Navigation Bar untuk ponsel (≤ 768px, CSS .bottom-nav).
+ * Mode internal Pemdi (reposisi 22 Sep 2026): 5 tujuan Tim Koordinasi & PJ OPD —
+ * Ringkasan, Indikator, Modul, Draf Bukti, Menu (buka drawer sidebar).
  */
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { PERSONA_ASESOR, personaHref } from '@/lib/persona';
-import { PUBLIK_AKTIF } from '@/lib/modeSitus';
 
 export default function BottomNav({ onOpenMenu }) {
   const router = useRouter();
   const path = router.pathname;
-  const isAsesorHome = path === '/' && router.query?.view === PERSONA_ASESOR;
-  const items = PUBLIK_AKTIF ? [
-    { key: 'home', href: '/', icon: '🏠', label: 'Beranda', active: path === '/' && !isAsesorHome },
-    { key: 'layanan', href: '/layanan', icon: '📋', label: 'Layanan', active: path.startsWith('/layanan') },
-    { key: 'lapor', icon: '📢', label: 'Lapor', action: () => window.dispatchEvent(new CustomEvent('pemdi:open-lapor')) },
-    { key: 'kinerja', href: personaHref(PERSONA_ASESOR), icon: '📊', label: 'Kinerja', active: isAsesorHome || path.startsWith('/pemdi') || path.startsWith('/spbe') },
-    { key: 'menu', icon: '☰', label: 'Menu', action: onOpenMenu },
-  ] : [
-    // Mode internal: 5 tujuan Tim Asesor
+  const items = [
     { key: 'home', href: '/', icon: '🏠', label: 'Ringkasan', active: path === '/' },
-    { key: 'pemdi', href: '/pemdi', icon: '🚀', label: 'Kokpit', active: path.startsWith('/pemdi') },
+    { key: 'pemdi', href: '/pemdi', icon: '🚀', label: 'Indikator', active: path.startsWith('/pemdi') },
     { key: 'modul', href: '/modul-indikator', icon: '📋', label: 'Modul', active: path.startsWith('/modul-indikator') },
     { key: 'draf', href: '/requirement', icon: '📝', label: 'Draf Bukti', active: path.startsWith('/requirement') },
     { key: 'menu', icon: '☰', label: 'Menu', action: onOpenMenu },

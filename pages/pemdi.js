@@ -227,9 +227,9 @@ function defaultCatatan(ind) {
         }}
       >
         <div style={{ position: 'relative', zIndex: 2 }}>
-          <span className="pill">⚖️ PermenPANRB No. 8 Tahun 2026 · Kokpit Penilaian Mandiri</span>
+          <span className="pill">⚖️ PermenPANRB No. 8 Tahun 2026 · Penilaian Mandiri Internal</span>
           <h1 className="gold-head" style={{ fontSize: 'clamp(22px, 3vw, 34px)', margin: '8px 0 12px' }}>
-            Kokpit Evaluasi Kinerja Pemerintah Digital (Pemdi) 2026
+            Dashboard Evaluasi Pemerintah Digital (Pemdi) 2026
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.9)', maxWidth: '680px', lineHeight: 1.6, fontSize: '0.98rem' }}>
             Perangkat kerja Tim Koordinasi Pemdi Kabupaten Aceh Tengah untuk memantau <strong>7 Aspek</strong> dan <strong>20 Indikator</strong>

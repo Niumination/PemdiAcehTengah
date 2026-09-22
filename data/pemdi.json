@@ -2034,7 +2034,7 @@
          }
         ],
         "kebutuhan": [
-         "Tangkapan layar halaman Kebijakan Privasi portal Pemdi (/kebijakan-privasi — aktifkan persona publik sementara) dan formulir SKM online yang memuat pemberitahuan penggunaan data"
+         "Tangkapan layar pemberitahuan penggunaan data pada sistem layanan digital yang riil dipakai OPD (mis. halaman kebijakan privasi/persetujuan pada aplikasi layanan) — halaman persona publik portal Pemdi sudah diarsipkan (tag arsip/persona-publik-2026-09), bukan bukti utama"
         ],
         "pj": "Diskominfo",
         "prioritas": "sedang",
@@ -4692,7 +4692,7 @@
           "path": null,
           "url": "/layanan",
           "teks": null,
-          "status_dok": "halaman persona publik — saat ini nonaktif (NEXT_PUBLIC_PERSONA_PUBLIK=off), aktifkan sementara saat mengambil tangkapan layar"
+          "status_dok": "halaman persona publik — dihapus dari cabang utama (reposisi 22 Sep 2026); tangkapan layar diambil dari arsip git tag arsip/persona-publik-2026-09 (jalankan lokal) atau dari sistem layanan riil OPD"
          },
          {
           "kode": "PETA_RENCANA",
@@ -5197,7 +5197,7 @@
           "path": null,
           "url": "/layanan",
           "teks": null,
-          "status_dok": "halaman persona publik — saat ini nonaktif (NEXT_PUBLIC_PERSONA_PUBLIK=off), aktifkan sementara saat mengambil tangkapan layar"
+          "status_dok": "halaman persona publik — dihapus dari cabang utama (reposisi 22 Sep 2026); tangkapan layar diambil dari arsip git tag arsip/persona-publik-2026-09 (jalankan lokal) atau dari sistem layanan riil OPD"
          },
          {
           "kode": "PERBUP126",
@@ -5222,7 +5222,7 @@
         ],
         "kebutuhan": [
          "Dokumen 'Penetapan SLA Layanan Digital 2026' (tabel 25 layanan: nama, kanal, waktu respons, waktu penyelesaian, PIC) + SK/nota dinas penetapan oleh Kadis Kominfo",
-         "Aktifkan sementara persona publik untuk mengambil tangkapan layar /layanan"
+         "Tangkapan layar direktori layanan & SLA: utamakan sistem layanan riil OPD; bila memakai portal Pemdi, jalankan arsip tag arsip/persona-publik-2026-09 secara lokal"
         ],
         "pj": "Diskominfo (Unit Pengelola Layanan Digital)",
         "prioritas": "tinggi",
@@ -5272,7 +5272,7 @@
           "path": null,
           "url": "/dashboard-kepuasan",
           "teks": null,
-          "status_dok": "halaman persona publik — saat ini nonaktif, aktifkan sementara untuk tangkapan layar"
+          "status_dok": "halaman persona publik — dihapus dari cabang utama (reposisi 22 Sep 2026); tangkapan layar dari arsip git tag arsip/persona-publik-2026-09 (lokal) atau dari dasbor helpdesk riil"
          },
          {
           "kode": "LAP_MANLAY",
@@ -5288,7 +5288,7 @@
         "kebutuhan": [
          "WAJIB tangkapan layar DASBOR (grafik/angka SLA), bukan tabel daftar layanan: dari aplikasi helpdesk/ticketing yang dipakai (jika belum ada, buat dasbor sederhana dari log tiket — spreadsheet/Looker Studio — dan tampilkan) + dasbor portal Pemdi",
          "Ganti data contoh laporan helpdesk (412 tiket) dengan rekap riil; TTD Kadis",
-         "Aktifkan sementara persona publik untuk tangkapan layar /dashboard-kepuasan"
+         "Tangkapan layar dasbor kepuasan: utamakan dasbor helpdesk/ticketing riil; portal Pemdi persona publik sudah diarsipkan (tag arsip/persona-publik-2026-09, jalankan lokal bila tetap diperlukan)"
         ],
         "pj": "Diskominfo (Unit Pengelola Layanan Digital / helpdesk)",
         "prioritas": "tinggi",
@@ -5592,7 +5592,7 @@
           "path": null,
           "url": "/dashboard-kepuasan",
           "teks": null,
-          "status_dok": "halaman persona publik — saat ini nonaktif, aktifkan sementara untuk tangkapan layar"
+          "status_dok": "halaman persona publik — dihapus dari cabang utama (reposisi 22 Sep 2026); tangkapan layar dari arsip git tag arsip/persona-publik-2026-09 (lokal) atau dari dasbor helpdesk riil"
          },
          {
           "kode": "PETA_RENCANA",

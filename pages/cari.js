@@ -20,18 +20,18 @@ const fuseOptions = {
 
 const TYPE_ICON = {
   OPD: '🏛️',
-  Layanan: '📋',
-  FAQ: '❓',
-  Survei: '📝',
-  'Indikator Pemdi': '📊',
+  'Aspek Pemdi': '📊',
+  'Indikator Pemdi': '📋',
+  Glosarium: '📖',
+  'Dokumen Kunci': '📄',
 };
 
 const TYPE_CLASS = {
   OPD: 'badge-blue',
-  Layanan: 'badge-purple',
-  FAQ: 'badge-green',
-  Survei: 'badge-orange',
-  'Indikator Pemdi': 'badge-cyan',
+  'Aspek Pemdi': 'badge-cyan',
+  'Indikator Pemdi': 'badge-green',
+  Glosarium: 'badge-purple',
+  'Dokumen Kunci': 'badge-orange',
 };
 
 export default function Cari({ items }) {
@@ -69,25 +69,25 @@ export default function Cari({ items }) {
     <>
       <Head>
         <title>{query ? `Pencarian: ${query}` : 'Pencarian'} — Pemdi Aceh Tengah</title>
-        <meta name="description" content="Pencarian global portal Pemdi Aceh Tengah — cari OPD, layanan publik, FAQ, dan indikator Pemdi." />
+        <meta name="description" content="Pencarian dashboard Pemdi Aceh Tengah — cari indikator, OPD, glosarium, dan dokumen kunci." />
       </Head>
 
       <section style={{ padding: '3rem 0 1.5rem', background: 'var(--hero-grad)', color: '#fff', position: 'relative', overflow: 'hidden' }}>
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <h1 className="gold-head" style={{ margin: '0 0 0.75rem', fontSize: '1.75rem' }}>🔍 Pencarian</h1>
           <p style={{ opacity: 0.85, marginBottom: '1.25rem', fontSize: '0.9375rem' }}>
-            Cari OPD, layanan publik, FAQ, dan indikator Pemdi — {statistik} item tersedia
+            Cari indikator Pemdi, OPD, istilah glosarium, dan dokumen kunci — {statistik} item tersedia
           </p>
           <div style={{ position: 'relative' }}>
             <input
               ref={inputRef}
               type="search"
-              placeholder="Cari… (contoh: pendidikan, KTP, SKM)"
+              placeholder="Cari… (contoh: I13, Diskominfo, arsitektur SPBE)"
               value={query}
               onChange={e => setQuery(e.target.value)}
               autoComplete="off"
               spellCheck={false}
-              aria-label="Cari OPD, layanan, FAQ, dan indikator Pemdi"
+              aria-label="Cari indikator Pemdi, OPD, glosarium, dan dokumen kunci"
               style={{
                 width: '100%',
                 padding: '0.875rem 1rem 0.875rem 3rem',
@@ -113,7 +113,7 @@ export default function Cari({ items }) {
             <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🔍</div>
             <p style={{ fontSize: '1.125rem' }}>Ketik kata kunci untuk memulai pencarian</p>
             <p style={{ fontSize: '0.875rem', marginTop: '0.5rem' }}>
-              Cari berdasarkan nama OPD, layanan, pertanyaan FAQ, atau indikator Pemdi
+              Cari berdasarkan kode/nama indikator, nama OPD, istilah glosarium, atau dokumen kunci
             </p>
           </div>
         )}

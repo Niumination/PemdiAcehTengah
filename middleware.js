@@ -1,26 +1,15 @@
 /**
- * middleware.js — Satu titik pemutus jalur publik (mode internal, 21 Sep 2026).
- * Saat NEXT_PUBLIC_PERSONA_PUBLIK != "on": halaman & API warga → 404, dan seluruh
- * respons diberi X-Robots-Tag: noindex (URL Vercel tetap terbuka, tidak diindeks).
+ * middleware.js — Mode internal (reposisi 22 Sep 2026).
+ * Seluruh respons diberi X-Robots-Tag: noindex, nofollow. URL Vercel tetap
+ * terbuka untuk Tim Koordinasi & PJ OPD; tidak ada rute publik yang perlu diblokir
+ * karena kodenya sudah dihapus (arsip: tag git arsip/persona-publik-2026-09).
  */
 import { NextResponse } from 'next/server';
-import { PUBLIK_AKTIF, isRutePublik } from '@/lib/modeSitus';
+import { NOINDEX } from '@/lib/modeSitus';
 
-export function middleware(req) {
-  if (PUBLIK_AKTIF) return NextResponse.next();
-  const { pathname } = req.nextUrl;
-  if (isRutePublik(pathname)) {
-    if (pathname.startsWith('/api/')) {
-      return NextResponse.json({ error: 'Fitur publik dinonaktifkan sementara (mode internal).' }, { status: 404 });
-    }
-    const url = req.nextUrl.clone();
-    url.pathname = '/404';
-    const res = NextResponse.rewrite(url, { status: 404 });
-    res.headers.set('X-Robots-Tag', 'noindex, nofollow');
-    return res;
-  }
+export function middleware() {
   const res = NextResponse.next();
-  res.headers.set('X-Robots-Tag', 'noindex, nofollow');
+  if (NOINDEX) res.headers.set('X-Robots-Tag', 'noindex, nofollow');
   return res;
 }
 

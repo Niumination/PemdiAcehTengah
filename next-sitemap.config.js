@@ -1,20 +1,18 @@
-// next-sitemap.config.js
-// PERBAIKAN T-5: generate sitemap.xml + robots.txt otomatis saat build.
-// Install:  npm i -D next-sitemap
-// Tambah di package.json scripts:  "postbuild": "next-sitemap"
+// next-sitemap.config.js — dijalankan otomatis pada `postbuild`.
+// Mode internal (reposisi 22 Sep 2026): robots.txt melarang seluruh crawler;
+// sitemap tetap dibuat (dipakai audit tautan internal), tanpa /api/*.
 /** @type {import('next-sitemap').IConfig} */
-const { PUBLIK_AKTIF, RUTE_PUBLIK } = require('./lib/modeSitus');
+const { NOINDEX } = require('./lib/modeSitus');
 
 module.exports = {
   siteUrl: process.env.SITE_ORIGIN || 'https://pemdi-aceh-tengah.vercel.app',
   generateRobotsTxt: true,
   changefreq: 'weekly',
   priority: 0.7,
-  exclude: ['/admin', '/admin/*', '/api/*', ...(PUBLIK_AKTIF ? [] : RUTE_PUBLIK.flatMap((r) => [r, `${r}/*`]))],
+  exclude: ['/api/*'],
   robotsTxtOptions: {
-    policies: PUBLIK_AKTIF
-      ? [{ userAgent: '*', allow: '/', disallow: ['/admin', '/api/'] }]
-      : [{ userAgent: '*', disallow: '/' }], // mode internal: jangan diindeks
+    policies: NOINDEX
+      ? [{ userAgent: '*', disallow: '/' }]
+      : [{ userAgent: '*', allow: '/', disallow: ['/api/'] }],
   },
-  // Tambahkan halaman dinamis OPD jika perlu, lewat additionalPaths
 };

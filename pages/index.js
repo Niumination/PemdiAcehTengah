@@ -1,49 +1,28 @@
 import { fokusLevel } from '@/lib/pemdiNilai';
 import Head from 'next/head';
-import PersonaSwitcher from '@/components/persona/PersonaSwitcher';
-import { usePersona } from '@/components/persona/usePersona';
 import BerandaAsesor from '@/components/beranda/BerandaAsesor';
-import { PERSONA_ASESOR } from '@/lib/persona';
-import { PUBLIK_AKTIF } from '@/lib/modeSitus';
-
-// Mode publik hanya dimuat bila saklar aktif (build-time) → kode warga tidak ikut bundel internal.
-const BerandaPublik = PUBLIK_AKTIF ? require('@/components/beranda/BerandaPublik').default : null;
 
 /**
- * Beranda — Dual-Persona (Sprint UI/UX 21 Sep 2026; REPOSISI-PEMDI.md B1/B2)
- *   NEXT_PUBLIC_PERSONA_PUBLIK=on : ?view=publik (default) | ?view=asesor, switcher tampil
- *   selain itu (mode internal)    : hanya Dashboard Kinerja & Asesor, tanpa switcher
+ * Beranda — Dashboard internal Pemdi (reposisi 22 Sep 2026; REPOSISI-PEMDI.md B1).
+ * Persona publik telah dihapus dari cabang utama (arsip: tag arsip/persona-publik-2026-09).
  */
-export default function Home({ pemdiData, layananData, portalData }) {
+export default function Home({ pemdiData, portalData }) {
   const opd = portalData.opd;
   const spbe = portalData.spbe;
   const ringkasan = opd.ringkasan;
-  const { persona } = usePersona();
-  const isAsesor = !PUBLIK_AKTIF || persona === PERSONA_ASESOR;
 
   return (
     <>
       <Head>
-        <title>{isAsesor ? 'Dashboard Kinerja & Asesor — Pemdi Kabupaten Aceh Tengah' : 'Portal Layanan Publik — Kabupaten Aceh Tengah'}</title>
+        <title>Dashboard Pemerintah Digital — Kabupaten Aceh Tengah</title>
         <meta
           name="description"
-          content="Kabupaten Aceh Tengah: dashboard kinerja Pemerintah Digital (PermenPANRB 8/2026, SPBE 2025) untuk Tim Asesor Internal."
+          content="Dashboard internal Pemerintah Digital Kabupaten Aceh Tengah (PermenPANRB 8/2026, SPBE 2025) untuk Tim Koordinasi Pemdi dan penanggung jawab OPD."
         />
         <link rel="canonical" href="https://pemdi-aceh-tengah.vercel.app/" />
       </Head>
 
-      {PUBLIK_AKTIF && (
-        <div className="persona-bar">
-          <PersonaSwitcher />
-        </div>
-      )}
-
-      <div className="persona-stage">
-        {BerandaPublik && (
-          <BerandaPublik layananData={layananData} ringkasan={ringkasan} hidden={isAsesor} />
-        )}
-        <BerandaAsesor pemdiData={pemdiData} spbe={spbe} opd={opd} ringkasan={ringkasan} hidden={!isAsesor} />
-      </div>
+      <BerandaAsesor pemdiData={pemdiData} spbe={spbe} opd={opd} ringkasan={ringkasan} />
     </>
   );
 }
@@ -73,8 +52,6 @@ export async function getStaticProps() {
           })),
         })),
       })),
-      // Mode internal: data layanan warga tidak dikirim (panel publik tidak dirender)
-      layananData: PUBLIK_AKTIF ? (await import('@/data/layanan.json')).default : { ringkasan: null, kategori: [] },
       portalData: (await import('@/data/opd.json')).default,
     },
   };

@@ -2,21 +2,17 @@
 
 ## Purpose
 
-REST API endpoints — serverless functions di Next.js. Digunakan untuk operasi data yang membutuhkan backend (write/read dari server).
+REST API read-only — serverless functions Next.js yang membaca `data/*.json` atau mem-proxy PDF JDIH. **Tidak ada database / penulisan data** sejak reposisi 22 Sep 2026 (API Supabase persona publik — lapor, skm, feedback, admin — dihapus; arsip tag `arsip/persona-publik-2026-09`).
 
-**Baru: Database Supabase untuk persist penuh** — bukan lagi filesystem.
-
-## Ownership — 7 API
+## Ownership — 5 API
 
 | Route | File | Methods | Fungsi | Status |
 |-------|------|---------|--------|--------|
 | `/api/opd` | `opd.js` | GET | Daftar lengkap OPD (52 entries) + data umum | ✅ Active |
 | `/api/spbe` | `spbe.js` | GET | Data SPBE 2025 (4 domain, 47 indikator) | ✅ Active |
 | `/api/requirement` | `requirement.js` | GET | 83 requirements PPB (12 kategori, 3 fase) | ✅ Active |
-| `/api/lapor` | `lapor.js` | POST • PATCH • GET | Kirim laporan warga + update status (PATCH) + lihat daftar → Supabase | ✅ Active |
-| `/api/skm` | `skm.js` | GET • POST | Survei Kepuasan Masyarakat → Supabase | ✅ **BARU** |
-| `/api/admin/laporan` | `admin/laporan.js` | GET | Daftar laporan (admin-only, Bearer token) → Supabase | ✅ **BARU** |
-| `/api/admin/skm` | `admin/skm.js` | GET | Data SKM (admin-only, Bearer token) → Supabase | ✅ **BARU** |
+| `/api/proxy-pdf` | `proxy-pdf.js` | GET | Proxy PDF `https://jdih.acehtengahkab.go.id/*` (allowlist domain) agar bisa di-iframe same-origin | ✅ Active |
+| `/api/health` | `health.js` | GET | Cek kesehatan: app + integritas data (`pemdi.json` 20 indikator ⇔ `modul-indikator.json` 20 modul), `mode: "internal"`; 200 sehat / 503 gagal | ✅ Active |
 
 ## API Contracts
 
@@ -32,94 +28,22 @@ REST API endpoints — serverless functions di Next.js. Digunakan untuk operasi 
 - **Response (200):** `{ requirements: [...], total: 83, kategori: [...] }`
 - **Data source:** `data/requirement.json`
 
-### `POST /api/lapor` — Kirim laporan
-**Request:**
-```json
-{ "kategori": "saran|keluhan|pertanyaan|apresiasi|bug|lainnya|layanan|portal|pungli", "pesan": "string (min 5)", "kontak": "string (opsional)", "halaman": "string (opsional)" }
-```
-**Response (201):**
-```json
-{ "success": true, "tersimpan": true, "data": { "id": "LAPOR-...", "kategori": "...", "status": "baru", "dibuat": "..." } }
-```
-**Keamanan:** sanitasi input, rate-limit atomic 5/menit/IP (RPC `bump_rate_limit`), hash IP SHA-256.
+### `GET /api/proxy-pdf?url=` — Proxy PDF JDIH
+- **400** tanpa `url`; **403** bila bukan `https://jdih.acehtengahkab.go.id/`; sukses → `Content-Type: application/pdf`, cache 1 jam
 
-### `PATCH /api/lapor` — Update status laporan
-Digunakan oleh admin untuk mengubah status laporan.
-**Request (admin-only):**
-```json
-{ "id": "LAPOR-...", "status": "baru|diproses|selesai|ditolak" }
-```
-**Headers:** `Authorization: Bearer <ADMIN_PASSWORD>`
-**Response (200):** `{ "success": true, "tersimpan": true }`
-**Keamanan:** memerlukan Bearer token admin — dicek via `requireAdmin()` dari `lib/adminAuth.js`.
-
-### `GET /api/lapor?id=LAPOR-xxx` — Lacak status laporan (BARU)
-**Query params:** `id` (string, required) — ID laporan (format: `LAPOR-xxx`)
-**Response (200):**
-```json
-{
-  "success": true,
-  "data": {
-    "id": "LAPOR-xxx",
-    "kategori": "keluhan",
-    "pesan": "...",
-    "status": "baru|diproses|selesai|ditolak",
-    "dibuat": "2026-06-14T10:00:00.000Z",
-    "diupdate": "2026-06-14T12:00:00.000Z",
-    "respon_admin": "Terima kasih, sedang diproses"
-  }
-}
-```
-**Error (404):** `{ "success": false, "error": "Laporan tidak ditemukan" }`
-
-### `POST /api/skm` — Kirim survei
-**Request:**
-```json
-{ "persyaratan": 1-4, "prosedur": 1-4, "waktu": 1-4, "biaya": 1-4, "produk": 1-4, "kompetensi": 1-4, "perilaku": 1-4, "sarana": 1-4, "layanan": "string (unit pelayanan)", "saran": "string (opsional)" }
-```
-**Response (201):** `{ "success": true, "tersimpan": true, "note": "Terima kasih! ..." }`
-**Keamanan:** sanitasi, rate-limit 3/5 menit/IP, validasi nilai 1-4 per unsur, hash IP.
-
-### `GET /api/skm` — Ringkasan SKM
-**Response (200):** `{ "success": true, "data": { total_responden, rata_unsur, ikm } }`
-**Note:** Memerlukan Supabase + view `skm_ringkasan` dari `db/schema.sql`.
-
-### `GET /api/admin/laporan` — Daftar laporan (admin)
-**Response (200):** `{ "data": [...], "total": number }`
-**Query params:** `status` (filter), `limit` (default 100), `offset` (default 0)
-**Headers:** `Authorization: Bearer <ADMIN_PASSWORD>`
-**Keamanan:** Admin-only — validasi Bearer token via `requireAdmin()`.
-
-### `GET /api/admin/skm` — Data SKM (admin)
-**Response (200):** `{ "data": [...], "total": number }`
-**Query params:** `limit` (default 100), `offset` (default 0)
-**Headers:** `Authorization: Bearer <ADMIN_PASSWORD>`
-**Keamanan:** Admin-only — validasi Bearer token via `requireAdmin()`.
-
-## Admin Authentication
-
-Endpoint `/api/admin/*` dan `PATCH /api/lapor` memerlukan autentikasi admin via **Bearer token**:
-
-| Mekanisme | Detail |
-|-----------|--------|
-| **Header** | `Authorization: Bearer <ADMIN_PASSWORD>` |
-| **Token** | Nilai env `ADMIN_PASSWORD` — Vercel *sensitive*, Production. Bila tidak diset, semua permintaan admin **ditolak** (tidak ada token default). `ADMIN_TOKEN` legacy dihapus 18 Sep 2026 |
-| **Validasi** | `lib/adminAuth.js` — `requireAdmin(req)` |
-| **Gagal** | HTTP 401 `{ error: 'Unauthorized', loginUrl: '/admin?login=1' }` |
+### `GET /api/health` — Kesehatan
+- **Response (200):** `{ status: "ok", app, data, indikator: 20, modul: 20, mode: "internal", checkedAt }`
+- **503** bila data tidak terbaca / indikator ≠ 20 atau `total_modul` = 0
 
 ## Notes
-- **POST routes** menggunakan Supabase — butuh env `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY`
-- **Tanpa Supabase:** API tetap hidup → return 503 dengan pesan jelas
-- **Keamanan:** Setiap route tulis punya rate-limit atomic per IP + sanitasi input (Turnstile: belum diimplementasikan — lihat README)
-- **Admin auth:** Bearer token dari env `ADMIN_PASSWORD` (Vercel *sensitive*; `ADMIN_TOKEN` legacy dihapus 18 Sep 2026) — dicek di `lib/adminAuth.js`
-- **Upgrade:** Eksekusi `db/schema.sql` di Supabase SQL Editor untuk setup database
+- Semua respons ikut mendapat `X-Robots-Tag: noindex, nofollow` dari `middleware.js`
+- Menambah API tulis (mis. CMS admin — Patch 4 rencana) wajib: auth server-side, rate limit, sanitasi, dan pembaruan DOX ini + `AGENTS.md` root §Security
 
 ## Verification
 ```bash
-curl https://pemdi-aceh-tengah.vercel.app/api/opd                → HTTP 200 + JSON
-curl https://pemdi-aceh-tengah.vercel.app/api/spbe               → HTTP 200 + JSON indeks
-curl https://pemdi-aceh-tengah.vercel.app/api/skm                → HTTP 200 + JSON ringkasan (jika Supabase ready)
-curl -H "Authorization: Bearer <ADMIN_PASSWORD>" https://pemdi-aceh-tengah.vercel.app/api/admin/laporan   → HTTP 200 + JSON (admin)
-curl -H "Authorization: Bearer <ADMIN_PASSWORD>" https://pemdi-aceh-tengah.vercel.app/api/admin/skm       → HTTP 200 + JSON (admin)
-curl -X PATCH -H "Authorization: Bearer <ADMIN_PASSWORD>" -H "Content-Type: application/json"   -d '{"id":"LAPOR-test","status":"diproses"}'   https://pemdi-aceh-tengah.vercel.app/api/lapor                  → HTTP 200 + JSON (admin)
+curl https://pemdi-aceh-tengah.vercel.app/api/opd          → HTTP 200 + JSON
+curl https://pemdi-aceh-tengah.vercel.app/api/spbe         → HTTP 200 + JSON indeks
+curl https://pemdi-aceh-tengah.vercel.app/api/requirement  → HTTP 200 + JSON 83
+curl https://pemdi-aceh-tengah.vercel.app/api/health       → HTTP 200 {"status":"ok","mode":"internal"}
+curl -o /dev/null -w '%{http_code}' https://pemdi-aceh-tengah.vercel.app/api/skm   → 404
 ```

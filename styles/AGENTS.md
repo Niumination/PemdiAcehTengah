@@ -4,7 +4,7 @@
 Global CSS — satu file sumber untuk seluruh tampilan portal. **Luxury Navy / Warm Beige / Soft Gold** (palet resmi sejak 8 Agu 2026; menggantikan v3 "Gayo Civic Digital" yang berbasis `#004098`).
 
 ## Ownership
-- `globals.css` — Satu-satunya file CSS utama. **1.709 baris / 52 KB** (diperbarui 19 Sep 2026; sebelumnya tercatat 1.591 baris). Semua styling di sini.
+- `globals.css` — Satu-satunya file CSS utama. **1.732 baris / 60 KB** (diperbarui 22 Sep 2026 — CSS persona publik dihapus; sebelumnya 1.936). Semua styling di sini.
 - **TIDAK ada file CSS lain.** No module CSS, no Tailwind. Period.
 
 ## Local Contracts
@@ -64,13 +64,8 @@ Blok `@media (max-width: 768px)` di akhir `globals.css` memaksa tinggi minimum *
 Alasan terukur (produksi, viewport 390px, sebelum perbaikan): `.theme-tg` 40×23 · nav header 44×14 · `.bukti-act` 58×15 · `.sf-tag` 28 · tombol kategori 30 · `.hbtn` 23 · `.link-more` 22 · `select` 37.
 **Aturan untuk perubahan berikutnya:** kontrol interaktif baru wajib ≥44px di layar ≤768px; jangan menambah `padding: 0` pada tombol ikon/teks tanpa memberi area sentuh.
 
-### Kontrak Mobile `/layanan` (19 Sep 2026)
-Blok `@media (max-width: 768px)` di akhir `globals.css` mengatur halaman Direktori Layanan:
-`.service-card` → `display: block` (kartu satu kolom; desktop tetap 3 kolom), header kartu membungkus,
-deskripsi 2 baris (`-webkit-line-clamp`) yang **dilepas** saat `.service-card[aria-expanded="true"]`,
-`.sf-tags` satu baris dapat digeser (`flex-wrap: nowrap` + `overflow-x: auto`), `.sf-search` **melekat**
-di `top: calc(var(--gov-strip-h) + safe-area + 61px)`, dan `.layanan-stats` 2×2.
-Angka sebelum perbaikan: halaman 8.746px, kartu 168px, judul 89px, deskripsi 72px, chip 200px.
+### Kontrak Mobile `/layanan` *(dihapus 22 Sep 2026)*
+Blok CSS `/layanan` mobile, `.service-card`, `.sf-*`, `.layanan-stats` **dihapus** bersama persona publik (arsip tag `arsip/persona-publik-2026-09`). Sisa selektor `.sf-tag` di blok tap-target ≥44px dibiarkan (tidak berbahaya) dan akan dibersihkan saat reskin.
 
 ### Panel yang bisa dilipat
 `.collapse-sec` (> `summary.collapse-sum`) — dipakai `/pemdi` untuk panel rumus internal. Native `<details>`
@@ -88,14 +83,14 @@ Angka sebelum perbaikan: halaman 8.746px, kartu 168px, judul 89px, deskripsi 72p
 | Modal | `.modal-overlay`, `.modal-content`, `.modal-close` |
 | ⚠️ AwardHero *(dihapus)* | `.award-hero`, `.award-hero-badge`, `.award-title`, `.award-subtitle`, `.award-stats`, `.cta-group` |
 | ⚠️ QuickActions *(dihapus)* | `.quick-actions`, `.quick-action-card`, `.qa-icon`, `.qa-label`, `.qa-desc` |
-| ServiceCard | `.service-card`, `.service-icon`, `.service-name`, `.service-desc`, `.sla-badge` |
-| ServiceFinder | `.service-finder`, `.sf-search`, `.sf-tags`, `.sf-tag`, `.sf-tag-active`, `.sf-results` |
+| ⚠️ ServiceCard *(dihapus 22 Sep 2026)* | `.service-card`, `.service-icon`, `.service-name`, `.service-desc`, `.sla-badge` — CSS dihapus |
+| ⚠️ ServiceFinder *(dihapus 22 Sep 2026)* | `.service-finder`, `.sf-*` — CSS dihapus |
 | ⚠️ LaporanStatus *(dihapus)* | `.lapor-status-root`, `.lapor-card`, `.lapor-timeline`, `.lapor-step`, `.step-dot`, `.step-dot-active`, `.step-dot-complete`, `.step-label` |
 | ⚠️ Toast *(dihapus)* | `.toast-root`, `.toast-inner`, `.toast-success`, `.toast-error` |
 | ⚠️ ProgressBarVisual *(dihapus)* | `.progress-root`, `.progress-bar`, `.progress-fill`, `.progress-label` |
 | ⚠️ TimelineRoadmap *(dihapus)* | `.timeline-root`, `.timeline-item`, `.tl-year`, `.tl-dot`, `.tl-dot-complete`, `.tl-dot-active`, `.tl-dot-planned`, `.tl-content` |
 | Reveal/animasi | `[data-reveal]`, `[data-reveal].is-visible`, `[data-reveal-stagger]`, `.reveal` (index.js, digate `html.anim-ready`) |
-| Widget mengambang | `.rating-widget` (`position: fixed`, z-index 9999), `.scroll-top` (44×44) |
+| Widget mengambang | `.scroll-top` (44×44). `.rating-widget` & `.lapor-fab` dihapus 22 Sep 2026 |
 
 ### Styling Strategy
 Semua komponen baru menggunakan **inline styles + CSS variables** (styled-jsx dihindari). CSS classes di atas bersifat deklaratif/semantic pada DOM. `@keyframes` untuk animasi dekoratif ditambahkan di `globals.css` (marquee `gov-strip`/`kr-*`, float, reveal).
@@ -143,17 +138,15 @@ Tidak ada child — leaf node. Single file.
 - Jangan tambahkan kembali `hooks/useCountUp`, `hooks/useInView`, `TopographicBackdrop` tanpa keputusan pemilik.
 
 
-## Sprint UI/UX 21 Sep 2026 — blok CSS baru (akhir berkas)
+## Sprint UI/UX 21 Sep 2026 — blok CSS akhir berkas (dipangkas 22 Sep 2026)
 
 | Prefiks | Untuk |
 |---------|-------|
-| `.persona-*`, `.persona-stage` | Switcher (tinggi tetap 48 px; `min-height:70vh` pada stage → tanpa CLS) |
-| `.hero-publik`, `.hero-search-lg`, `.hero-kbd`, `.hero-chip` | Hero Mode A |
-| `.sektor-*` | 6 kartu sektor + panel |
-| `.kpi-*` | 4 kartu KPI Mode B |
+| ~~`.persona-*`, `.hero-publik`, `.sektor-*`, `.topbar-persona`, `.sb-quick-cta`~~ | **Dihapus 22 Sep 2026** (persona publik) |
+| `.kpi-*` | 4 kartu KPI beranda internal |
 | `.aspek-*`, `.ind-*`, `.st-chip.{ok,warn,muted,gray}` | Accordion 7 aspek; warna status AA |
 | `.opd-viewbar`, `.seg`, `.opd-grid`, `.opd-stack` | Toggle Tabel/Grid, stacked cards ≤768 px |
-| `.bottom-nav`, `.bn-*`, `.topbar-persona` | Bottom nav ponsel; ruang `.content` +88 px |
+| `.bottom-nav`, `.bn-*` | Bottom nav ponsel 5 tab internal; ruang `.content` +88 px |
 | `.sec`, `.sr-only`, `.muted` | Spacing seksi 48/64 px, util a11y |
 
 Catatan: `[class*="card"]:hover` tidak lagi memakai `transform`; transisi hanya bayangan/border.

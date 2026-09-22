@@ -6,30 +6,18 @@ import Sidebar from './Sidebar';
 import ThemeToggle from './ThemeToggle';
 import Footer from './Footer';
 import ScrollTop from './ScrollTop';
-import LaporWidget from './LaporWidget';
-import RatingWidget from './RatingWidget';
 import BottomNav from './BottomNav';
-import PersonaSwitcher from './persona/PersonaSwitcher';
 import { MotifUlen } from './motif/KerawangMotifs';
-import { PUBLIK_AKTIF } from '@/lib/modeSitus';
 
 const breadcrumbLabels = {
-  '/': 'Beranda Portal',
-  '/layanan': 'Direktori Layanan Publik',
+  '/': 'Beranda Dashboard',
   '/opd': '52 Perangkat Daerah',
   '/spbe': 'Evaluasi Indeks SPBE 2025',
   '/pemdi': 'Indeks Pemdi (PermenPANRB 8/2026)',
   '/probis': 'Peta Proses Bisnis (PPB Level 0-2)',
-  '/lapor': 'Lapor & Pengaduan Warga',
-  '/skm': 'Survei Kepuasan Masyarakat',
-  '/dashboard-kepuasan': 'Dashboard Kepuasan Publik',
-  '/faq': 'FAQ & Asisten Virtual',
   '/glosarium': 'Kamus Glosarium Digital',
-  '/cari': 'Konsol Pencarian Portal',
+  '/cari': 'Pencarian',
   '/requirement': 'Requirements Inventaris Data',
-  '/admin': 'Panel Admin Pengelola',
-  '/bantuan': 'Pusat Bantuan',
-  '/kebijakan-privasi': 'Kebijakan Privasi',
   '/modul-indikator': 'Modul Indikator Pemdi',
 };
 
@@ -69,7 +57,6 @@ export default function AppShell({ children }) {
   const [sidebarHidden, setSidebarHidden] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
   const [hydrated, setHydrated] = useState(false);
-  const [showLapor, setShowLapor] = useState(false);
 
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 900px)');
@@ -84,12 +71,6 @@ export default function AppShell({ children }) {
   useEffect(() => {
     if (isMobile) setSidebarOpen(false);
   }, [pathname, isMobile]);
-
-  useEffect(() => {
-    const openLapor = () => setShowLapor(true);
-    window.addEventListener('pemdi:open-lapor', openLapor);
-    return () => window.removeEventListener('pemdi:open-lapor', openLapor);
-  }, []);
 
   // Shortcut yang sudah dikomunikasikan pada sidebar: ⌘/Ctrl + K menuju pencarian global.
   useEffect(() => {
@@ -109,7 +90,7 @@ export default function AppShell({ children }) {
   const breadcrumbs = getBreadcrumbs(pathname);
 
   /* ── Running text pita atas (informasi resmi, bukan dekorasi) — bukan 'Portal Resmi' (prasyarat K7 REPOSISI-PEMDI.md) ── */
-  const marqueeText = 'Kokpit Pemdi Kabupaten Aceh Tengah — Perangkat kerja Tim Asesor Internal · Evaluasi Kinerja Pemerintah Digital (PermenPANRB 8/2026)';
+  const marqueeText = 'Dashboard Pemerintah Digital Kabupaten Aceh Tengah — Perangkat kerja Tim Koordinasi Pemdi & penanggung jawab OPD · Evaluasi Pemerintah Digital (PermenPANRB 8/2026)';
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', paddingTop: 'calc(var(--gov-strip-h) + env(safe-area-inset-top))' }}>
@@ -194,33 +175,18 @@ export default function AppShell({ children }) {
               </ol>
             </nav>
 
-            {/* Persona switcher (Phase 1) — di header, tampil di semua halaman selain beranda (beranda punya versi besar) */}
-            {PUBLIK_AKTIF && pathname !== '/' && <div className="topbar-persona"><PersonaSwitcher compact /></div>}
-
             {/* Actions Bar — aksi utama tersedia dari semua halaman */}
             <div className="topbar-actions">
-              <Link href="/cari" className="btn btn-secondary btn-sm topbar-search" aria-label="Cari informasi di portal">
+              <Link href="/cari" className="btn btn-secondary btn-sm topbar-search" aria-label="Cari di dashboard">
                 <span aria-hidden="true">⌕</span>
                 <span className="topbar-search-label">Cari</span>
               </Link>
               <ThemeToggle />
 
-              {PUBLIK_AKTIF ? (
-                <button
-                  type="button"
-                  className="btn btn-primary btn-sm topbar-lapor"
-                  onClick={() => setShowLapor(true)}
-                  aria-label="Buka formulir pengaduan Lapor"
-                >
-                  <span aria-hidden="true">📢</span>
-                  <span className="topbar-lapor-label">Lapor Warga</span>
-                </button>
-              ) : (
-                <Link href="/pemdi" className="btn btn-primary btn-sm topbar-lapor" aria-label="Buka Kokpit Pemdi">
-                  <span aria-hidden="true">🚀</span>
-                  <span className="topbar-lapor-label">Kokpit Pemdi</span>
-                </Link>
-              )}
+              <Link href="/pemdi" className="btn btn-primary btn-sm topbar-lapor" aria-label="Buka Dashboard Indikator Pemdi">
+                <span aria-hidden="true">🚀</span>
+                <span className="topbar-lapor-label">Indikator Pemdi</span>
+              </Link>
             </div>
           </header>
 
@@ -233,24 +199,12 @@ export default function AppShell({ children }) {
           </main>
 
           <Footer />
-
-          {/* Floating Citizen Rating Widget */}
-          {PUBLIK_AKTIF && <RatingWidget />}
         </div>
 
         <ScrollTop />
 
         {/* Bottom Nav Bar — hanya ponsel (Phase 4) */}
         {hydrated && isMobile && <BottomNav onOpenMenu={() => setSidebarOpen(true)} />}
-
-        {/* Lapor Modal — tetap sebagai pop-up (sesuai Task 3) */}
-        {PUBLIK_AKTIF && (
-          <LaporWidget
-            externalOpen={showLapor}
-            hideFab
-            onExternalClose={() => setShowLapor(false)}
-          />
-        )}
       </div>
     </div>
   );

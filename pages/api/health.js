@@ -1,57 +1,29 @@
 /**
- * Health check — dipakai uptime monitor (UptimeRobot / Vercel Cron / Better Uptime).
- * 200 = aplikasi + database hidup; 503 = ada komponen mati (monitor harus alert).
- * Audit P0-L1 2026-09-17: backend produksi sempat mati berbulan-bulan tanpa
- * ada yang sadar karena tidak ada endpoint kesehatan yang bisa dipantau.
+ * Health check — dipakai uptime monitor (UptimeRobot / Vercel Cron).
+ * Mode internal Pemdi (reposisi, 22 Sep 2026): tidak ada basis data runtime —
+ * seluruh konten dashboard berasal dari data/*.json yang dibundel saat build.
+ * 200 = aplikasi hidup dan data inti termuat; 503 = data inti tidak termuat.
  */
-import { supabaseAdmin, isSupabaseReady } from '../../lib/supabaseAdmin';
+import pemdi from '@/data/pemdi.json';
+import modul from '@/data/modul-indikator.json';
 
-export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+export default function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
-
   if (req.method !== 'GET') {
     res.setHeader('Allow', 'GET');
     return res.status(405).json({ status: 'error', error: 'Method not allowed' });
   }
-
-  const started = Date.now();
-
-  if (!isSupabaseReady) {
-    // Detail (nama env var) hanya untuk log server — jangan ke respons publik (review PR #5)
-    console.error('[health] DB not configured: SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY belum diset');
-    return res.status(503).json({
-      status: 'unhealthy',
-      app: 'ok',
-      db: 'not_configured',
-      detail: 'database not configured',
-      latencyMs: 0,
-      checkedAt: new Date().toISOString(),
-    });
-  }
-
-  const { error } = await supabaseAdmin
-    .from('laporan')
-    .select('id', { count: 'exact', head: true });
-
-  if (error) {
-    // Pesan error DB asli hanya di log server — respons ke klien generik (review PR #5)
-    console.error('[health] DB check error:', error.message);
-    return res.status(503).json({
-      status: 'unhealthy',
-      app: 'ok',
-      db: 'error',
-      detail: 'database unavailable',
-      latencyMs: Date.now() - started,
-      checkedAt: new Date().toISOString(),
-    });
-  }
-
-  return res.status(200).json({
-    status: 'ok',
+  const indikator = Array.isArray(pemdi?.aspek)
+    ? pemdi.aspek.reduce((n, a) => n + (a.indikator?.length || 0), 0)
+    : 0;
+  const ok = indikator === 20 && (modul?.total_modul || 0) > 0;
+  return res.status(ok ? 200 : 503).json({
+    status: ok ? 'ok' : 'unhealthy',
     app: 'ok',
-    db: 'ok',
-    latencyMs: Date.now() - started,
+    data: ok ? 'ok' : 'incomplete',
+    indikator,
+    modul: modul?.total_modul || 0,
+    mode: 'internal',
     checkedAt: new Date().toISOString(),
   });
 }

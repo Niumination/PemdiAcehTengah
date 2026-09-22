@@ -1,7 +1,7 @@
 /**
- * BerandaAsesor — Mode B (Dashboard Kinerja & Asesor). Satu-satunya panel beranda pada
- * mode internal (NEXT_PUBLIC_PERSONA_PUBLIK != on). Isi identik dengan panel asesor
- * Sprint UI/UX 21 Sep 2026.
+ * BerandaAsesor — Beranda dashboard internal Pemdi (reposisi 22 Sep 2026).
+ * Pengguna: Tim Koordinasi Pemdi & penanggung jawab OPD (bukan asesor eksternal, bukan warga).
+ * Nama komponen dipertahankan untuk kestabilan impor; persona publik sudah dihapus.
  */
 import Link from 'next/link';
 import GlossaryTooltip from '@/components/GlossaryTooltip';
@@ -11,19 +11,19 @@ import KpiCards from '@/components/asesor/KpiCards';
 import AspekAccordion from '@/components/asesor/AspekAccordion';
 import { formatDesimal } from '@/lib/format';
 
-export default function BerandaAsesor({ pemdiData, spbe, opd, ringkasan, hidden = false }) {
+export default function BerandaAsesor({ pemdiData, spbe, opd, ringkasan }) {
   const { aspek } = pemdiData;
   return (
-    <div id="persona-panel-asesor" role="tabpanel" aria-labelledby="persona-tab-asesor" hidden={hidden}>
+    <div id="beranda-internal">
         <section className="hero hero-asesor" aria-labelledby="hero-asesor-title">
-          <span className="pill">⚖️ PermenPANRB No. 8 Tahun 2026 · Kokpit Penilaian Mandiri</span>
-          <h1 id="hero-asesor-title" className="gold-head">Dashboard Kinerja &amp; Asesor</h1>
+          <span className="pill">⚖️ PermenPANRB No. 8 Tahun 2026 · Penilaian Mandiri Internal</span>
+          <h1 id="hero-asesor-title" className="gold-head">Dashboard Pemerintah Digital</h1>
           <p>
-            Ringkasan eksekutif untuk Tim Asesor Internal: <GlossaryTooltip id="pemdi">Indeks Pemdi</GlossaryTooltip>, <GlossaryTooltip id="spbe">SPBE</GlossaryTooltip>,
+            Ringkasan untuk Tim Koordinasi Pemdi dan penanggung jawab OPD: <GlossaryTooltip id="pemdi">Indeks Pemdi</GlossaryTooltip>, <GlossaryTooltip id="spbe">SPBE</GlossaryTooltip>,
             status bukti dukung Tahap 1 eval.spbe.go.id, dan kepatuhan {ringkasan.total_opd} perangkat daerah.
           </p>
           <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-            <Link href="/pemdi" className="hbtn solid">Buka Kokpit Pemdi →</Link>
+            <Link href="/pemdi" className="hbtn solid">Buka Dashboard Indikator →</Link>
             <Link href="/requirement" className="hbtn ghost">Draf Bukti Dukung Prioritas</Link>
           </div>
         </section>

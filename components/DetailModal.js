@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 
 /**
  * SidePanel — Menggantikan DetailModal (pop-up centered → side panel dari kanan).
- * KECUALI komponen LaporWidget tetap sebagai pop-up.
+ * (Catatan historis: LaporWidget persona publik sudah dihapus — arsip tag arsip/persona-publik-2026-09.)
  *
  * Props:
  * - title: judul panel
