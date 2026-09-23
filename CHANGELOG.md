@@ -3,6 +3,15 @@
 Semua perubahan penting proyek ini didokumentasikan di file ini.
 Ringkasan publik tanpa detail internal; dokumen kerja lengkap disimpan pemilik repo di lokasi privat.
 
+## 2026-09-23 — Patch 5: Tema Terang (kontras & kedalaman)
+
+Susulan dari arena (`pemdi-reposisi#3.zip`), respons umpan balik pemilik soal kontras dan panel datar. Visual saja — nol perubahan perilaku.
+
+- **`styles/tokens.css`**: bg `#EDE8DD` (krem lebih dalam), panel putih + `--rk-shadow-1` (bayangan halus; `none` di tema gelap), garis `#D3CBB9`/`#B8AE97`, ink-2 `#34405A` (10,4:1), ink-3 `#5B6680` (5,7:1), emas `#846419` (≥4,5:1 juga di panel-2), chip status diberi tint latar via `--rk-tag-alpha` (12 % terang / 0 % gelap). Semua token teks ≥ 4,5:1.
+- **`styles/ruang-kendali.css`**: `.rk-panel`/`.rk-sit` berbayang halus, chip status tint latar, blok tema terang (bar, tabel, segmen persona navy, footer, btab), jembatan `.rk-legacy` tema terang.
+- **DOX**: `styles/AGENTS.md` (token revisi) + root `AGENTS.md` (status, angka, HEAD `76f3242`).
+- **Verifikasi**: 55/55 tes · `npx next lint` 0 error · `node scripts/cek-ui.mjs` bersih · `next build` ✓ 62 halaman statis.
+
 ## 2026-09-22 — Ruang Kendali + CMS (Patch 1–4)
 
 Keputusan pemilik 22 Sep 2026: dashboard Pemdi menjadi **Ruang Kendali** (command center) untuk Tim Koordinasi + PJ OPD. 5 patch diterapkan dari arena (base `12ad08c`, HEAD `6ce6ef8`), di atas reposisi persona publik.

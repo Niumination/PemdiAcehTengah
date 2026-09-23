@@ -1,6 +1,6 @@
 # Rencana Implementasi — Dashboard "Ruang Kendali" + CMS Admin
 
-> **Status:** ✅ **TERLAKSANA** — Patch 1–4 diterapkan (HEAD `6ce6ef8`, 22 Sep 2026). Status realisasi di §5.2; kontrak final di `pages/api/AGENTS.md`.
+> **Status:** ✅ **TERLAKSANA** — Patch 1–4 diterapkan (22 Sep 2026), kini HEAD `76f3242` setelah **Patch 5 Tema Terang** (23 Sep 2026, susulan dari `pemdi-reposisi#3.zip`; lihat CHANGELOG). Status realisasi di §5.2; kontrak final di `pages/api/AGENTS.md`.
 > **Dasar:** `REPOSISI-PEMDI.md` §8 (Patch 0 sudah di `main` = `12ad08c`), prototipe v2 yang disetujui (`~/prototipe/v2/`), keputusan pemilik 22 Sep malam:
 > penyimpanan **Vercel Postgres/Neon**, login **kata sandi bersama per peran**, cakupan CMS **butir + konten tampilan**, urutan **reskin dulu (Patch 1–3), CMS setelahnya (Patch 4)**.
 > **Batas waktu:** interviu 21–30 Sep (tidak boleh ada gangguan produksi) · visitasi 1–30 Okt.

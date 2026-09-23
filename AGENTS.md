@@ -30,7 +30,7 @@ Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah. Transformasi menuju Peme
 | **Komponen** | **13 komponen React aktif** — rk/{RKShell, Panel, Kompas, Drawer, Palet}, ui/{Ikon, StatusIkon}, CatatanTujuan, asesor/{LevelFokus, CatatanMandiri}, OPDTable, DetailModal, motif/KerawangMotifs (lihat `components/AGENTS.md`) |
 | **Halaman** | 14 route halaman + 14 API route (6 read-only + `/api/admin/*` 5 + `/api/auth/*` 3) — lihat `pages/AGENTS.md` |
 | **Lib** | `lib/ruangKendali.js` + `lib/rkData.js` (payload dashboard), `lib/pemdiNilai.js` (rumus PermenPANRB 8/2026), `lib/catatanMandiri.js`, `lib/pjButir.js` (butir Pemdi per OPD), `lib/cmsAuth.js` (CMS: 2 peran sandi bersama), `lib/overlay.js` (overlay Neon Postgres di atas JSON), `lib/db.js` (serverless Postgres), `lib/search-index.js`, `lib/modeSitus.js`, `lib/slugify.js`, `lib/format.js` — lihat `lib/AGENTS.md` |
-| **Status** | 🎯 **Ruang Kendali + CMS live (22 Sep 2026, `6ce6ef8`)** — lihat `REPOSISI-PEMDI.md` + `docs/RENCANA-RUANG-KENDALI-CMS.md`. Produk aktif: **Dashboard Pemdi internal** untuk Tim Koordinasi Pemdi + PJ OPD. Persona publik diarsipkan di tag `arsip/persona-publik-2026-09`. Semua rute di `RKShell`, `/` → 308 `/dashboard`, CMS `/admin` (overlay Neon Postgres; tanpa env → mode baca + API tulis 503) |
+| **Status** | 🎯 **Ruang Kendali + CMS + Tema Terang live (23 Sep 2026, `76f3242`)** — lihat `REPOSISI-PEMDI.md` + `docs/RENCANA-RUANG-KENDALI-CMS.md`. Produk aktif: **Dashboard Pemdi internal** untuk Tim Koordinasi Pemdi + PJ OPD. Persona publik diarsipkan di tag `arsip/persona-publik-2026-09`. Semua rute di `RKShell`, `/` → 308 `/dashboard`, CMS `/admin` (overlay Neon Postgres; tanpa env → mode baca + API tulis 503), tema terang revisi (kontras & kedalaman, krem lebih dalam, panel berbayang halus, chip status bertint, emas ≥4.5:1) |
 | **Remote** | `git@github.com:Niumination/PemdiAcehTengah.git` |
 | **Production** | https://pemdi-aceh-tengah.vercel.app |
 | **License** | MIT |
@@ -44,7 +44,7 @@ Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah. Transformasi menuju Peme
 | **Program Unggulan** | Aceh Tengah Satu Data (AWS + Komdigi), MPP, Satu OPD Satu Inovasi |
 | **PWA** | `manifest.json`, icons (192/512 PNG + maskable-512 + apple-touch + SVG), `theme_color: #1F2A44`, `display: standalone`, scope root, +orientation portrait |
 | **Security** | Security headers di `next.config.js` (CSP, XFO, nosniff, Referrer-Policy) + `middleware.js` `X-Robots-Tag: noindex, nofollow` semua rute. Endpoint tulis hanya `/api/admin/*` (butuh cookie sesi HMAC httpOnly dari `/api/auth/masuk`; PJ OPD dibatasi butir OPD-nya; semua tercatat `log_audit`) |
-| **HEAD** | Patch 1–3 **Ruang Kendali** (22 Sep 2026, di atas `12ad08c`): shell baru `components/rk/RKShell` untuk semua rute, `/` → 308 `/dashboard`, rute baru `/dashboard` `/indikator` `/antrean`, `/api/rk-data`, **CMS `/admin`** (Patch 4: overlay Neon Postgres di atas JSON, 2 peran sandi bersama, log audit, ekspor kembali ke `catatan-mandiri.json`), token `styles/tokens.css` + `ruang-kendali.css`, emoji → `Ikon`/`StatusIkon`, CSS mati dihapus, penjaga `scripts/cek-ui.mjs`. Rencana lengkap & Patch 4 (CMS Neon): `docs/RENCANA-RUANG-KENDALI-CMS.md` |
+| **HEAD** | Patch 1–3 **Ruang Kendali** (22 Sep 2026, di atas `12ad08c`) + Patch 4 CMS (Neon Postgres) + **Patch 5 Tema Terang** (23 Sep 2026, `76f3242` — kontras & kedalaman: krem lebih dalam `#EDE8DD`, panel putih berbayang halus, garis tegas, chip status bertint, emas ≥4.5:1; hanya `styles/tokens.css` + `styles/ruang-kendali.css`): shell baru `components/rk/RKShell` untuk semua rute, `/` → 308 `/dashboard`, rute baru `/dashboard` `/indikator` `/antrean`, `/api/rk-data`, **CMS `/admin`** (Patch 4: overlay Neon Postgres di atas JSON, 2 peran sandi bersama, log audit, ekspor kembali ke `catatan-mandiri.json`), token `styles/tokens.css` + `ruang-kendali.css`, emoji → `Ikon`/`StatusIkon`, CSS mati dihapus, penjaga `scripts/cek-ui.mjs`. Rencana lengkap & Patch 4 (CMS Neon): `docs/RENCANA-RUANG-KENDALI-CMS.md` |
 | **Agent Skills** | `.agents/skills/` — **10** skill autoskills (React · Next.js · Supabase · Node · SEO · a11y · design). Lock file ada di **root repo**: `skills-lock.json` (10 entri, masing-masing `source` + `computedHash`). Pasang ulang: `npx autoskills` — ⚠️ registry masih menyediakan `next-cache-components` (**Next.js 16+ only**, sedangkan proyek ini di 14.2.35): keluarkan lagi bila terpasang ulang, sampai proyek benar-benar naik versi. |
 | **Env Vars** | **Tidak ada yang wajib** — situs penuh dari JSON. Opsional CMS (Patch 4): `DATABASE_URL` (Neon Postgres), `CMS_SANDI_KOORDINATOR`, `CMS_SANDI_PJ`, `CMS_SESI_RAHASIA` (lihat `.env.example`); tanpa ini `/admin` mode baca & API tulis 503. Supabase/ADMIN_PASSWORD/IP_HASH_SALT lama dihapus 22 Sep 2026. `NEXT_PUBLIC_SITE_URL` opsional |
 | **Indeks Pemdi** | **0,35 — Simulasi Penilaian Mandiri** (rumus PermenPANRB 8/2026; hanya bukti `diterima` asesor yang dihitung) — target 2,50+. Label "Terverifikasi" DIHAPUS (prasyarat K8 REPOSISI-PEMDI.md) |
@@ -128,7 +128,7 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 | `pages/AGENTS.md` | 14 route halaman internal (utama `/dashboard`, CMS `/admin`) + 6 API read-only + 3 auth + 5 admin — routing, data flow, noindex |
 | `pages/api/AGENTS.md` | REST API: read-only rk-data, opd, spbe, requirement, proxy-pdf, health. Tanpa DB, tanpa auth |
 | `components/AGENTS.md` | **13 komponen aktif** — rk/{RKShell, Panel, Kompas, Drawer, Palet}, ui/{Ikon, StatusIkon}, CatatanTujuan, asesor/{LevelFokus, CatatanMandiri}, OPDTable, DetailModal, motif/KerawangMotifs |
-| `styles/AGENTS.md` | `tokens.css` (token `--rk-*`, font Bricolage Grotesque + IBM Plex) · `ruang-kendali.css` (`.rk-*`, jembatan `.rk-legacy`) · `globals.css` (halaman lama, 1.156 baris) |
+| `styles/AGENTS.md` | `tokens.css` (token `--rk-*`, revisi tema terang 23 Sep: kontras ≥4.5:1, panel berbayang halus, chip status tint; font Bricolage Grotesque + IBM Plex) · `ruang-kendali.css` (`.rk-*`, jembatan `.rk-legacy`) · `globals.css` (halaman lama, 1.156 baris) |
 | `data/AGENTS.md` | Struktur data: pemdi.json (7 aspek, 20 indikator, 232 bukti, catatan_mandiri), modul-indikator.json, catatan-mandiri.json, opd.json (52 OPD, PPB), draf-bukti-prioritas.json, kebutuhan-bukti-dukung.json, glosarium, dokumen-kunci; rantai skrip regenerasi |
 | `STRATEGI_PEMDIACEHTENGAH.md` | **Dokumen perencanaan strategis (file ini)** — 4 fase, quick wins, risiko, metrik |
 | `lib/AGENTS.md` | 12 modul — ruangKendali, rkData, overlay, db, cmsAuth, pemdiNilai (rumus resmi; tes pin), catatanMandiri (ekspor teks/HTML/DOCX), pjButir (butir per OPD), search-index, modeSitus, format, slugify |
@@ -160,20 +160,21 @@ Gap sebelumnya (Sprint Redesign Award Level + Trust Infrastructure) sudah diimpl
 | CORS & XSS helpers | `lib/cors.js`, `lib/safeRichText.js` | ✅ | 14 Jun 2026 |
 | RFC 9116 | `.well-known/security.txt` | ✅ | 14 Jun 2026 |
 
-**Angka terkini (diverifikasi 23 Sep 2026, `6ce6ef8` Ruang Kendali + CMS):**
+**Angka terkini (diverifikasi 23 Sep 2026, `76f3242` Patch 5 Tema Terang):**
 
 - **13 komponen aktif** di `components/` — rk/{RKShell, Panel, Kompas, Drawer, Palet}, ui/{Ikon, StatusIkon}, CatatanTujuan, asesor/{LevelFokus, CatatanMandiri}, OPDTable, DetailModal, motif/KerawangMotifs
 - **14 route halaman + 14 API route** (6 read-only + 5 admin CMS + 3 auth)
 - **12 modul** di `lib/`
 - **55 tes** (`pemdiNilai` 16 + `requirement` 4 + `catatanMandiri` 10 + `pjButir` + `cekUi` + `overlay` + `ruangKendali`) — dijalankan CI dan `npm test`
-- **66 halaman statis** di build · `npx next lint` 0 error · `node scripts/cek-ui.mjs` bersih
+- **62 halaman statis** di build (14 route inti + 48 halaman OPD `/opd/[slug]`) · `npx next lint` 0 error · `node scripts/cek-ui.mjs` bersih
 
 ## Status Sekarang — 23 Sep 2026
 
-**Repo:** branch `main` · `git@github.com:Niumination/PemdiAcehTengah.git` · produksi `https://pemdi-aceh-tengah.vercel.app` · HEAD `6ce6ef8` · working tree bersih, semua commit ter-push.
+**Repo:** branch `main` · `git@github.com:Niumination/PemdiAcehTengah.git` · produksi `https://pemdi-aceh-tengah.vercel.app` · HEAD `76f3242` (Patch 5 Tema Terang) · working tree bersih, semua commit ter-push.
 
 | Milestone | Ringkasan |
 |-----------|-----------|
+| **Patch 5 — Tema Terang (23 Sep 2026, `76f3242`)** | Susulan arena dari `pemdi-reposisi#3.zip`: revisi tema terang (umpan balik pemilik soal kontras & panel datar). Hanya 3 berkas styles: `tokens.css` (bg `#EDE8DD`, panel putih + `--rk-shadow-1` bayangan halus, garis `#D3CBB9/#B8AE97`, ink-2 `#34405A` 10.4:1, ink-3 `#5B6680` 5.7:1, emas `#846419` ≥4.5:1 juga di panel-2, chip status tint `--rk-tag-alpha` 12 %) + `ruang-kendali.css` (bayangan panel, chip status, blok tema terang) + `styles/AGENTS.md`. Semua token teks ≥ 4.5:1. 3 berkas +52/−22 · 55/55 tes · lint 0 error · build 62 halaman statis · cek-ui bersih. Visual saja — nol perubahan perilaku |
 | **Ruang Kendali + CMS — 22 Sep 2026** | 5 patch arena di atas `12ad08c`: (1) fondasi desain `styles/tokens.css` + `components/rk/*` + rute baru `/dashboard` `/indikator` `/antrean` + `lib/ruangKendali.js` + `data/linimasa.json`; (2) navigasi pindah ke `RKShell`, `/` → 308 `/dashboard`, shell lama (AppShell/Sidebar/BottomNav/Footer/ScrollTop/ThemeToggle/BerandaAsesor) dihapus; (3) emoji → `Ikon`/`StatusIkon`, 4 komponen mati dihapus, −460 baris CSS mati, font ≥ 11px, penjaga `scripts/cek-ui.mjs`; (4) DOX pass; (5) CMS `/admin` + overlay Neon Postgres di atas JSON, 2 peran sandi bersama, log audit, ekspor ke `catatan-mandiri.json`. 81 berkas +3.258/−2.175 · 55/55 tes · lint 0 error · build 66 halaman · cek-ui bersih |
 | **Reposisi Opsi B — 22 Sep 2026** | Persona publik dihapus dari main (+521/−6.895, 83 berkas): 14 komponen warga, 9 halaman publik, Supabase, middleware persona. Arsip tag `arsip/persona-publik-2026-09` di `eeaa573`. Produk = Dashboard Pemdi internal murni |
 | **Hardening 17 Sep 2026** | 22 dead code dihapus, 20 tes (`node --test`) ditambahkan, rate limiting atomic (`lib/rate-limit-db.js` + RPC Supabase), `/api/health`, sanitizer & `adminAuth` diperkuat, canonical + `og:url`, `og-image.jpg` 166 KB (dari 1,6 MB) |
