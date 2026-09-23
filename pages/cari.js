@@ -1,6 +1,7 @@
 import { useState, useMemo, useRef, useEffect } from 'react';
 import Ikon from '@/components/ui/Ikon';
 import React from 'react';
+// Patch 10 (Tahap 3a): tampilan gaya Ruang Kendali (rk-cari, rk-hasil); mesin pencari Fuse tidak berubah.
 import Head from 'next/head';
 import Fuse from 'fuse.js';
 import buildSearchIndex from '@/lib/search-index';
@@ -25,14 +26,6 @@ const TYPE_ICON = {
   'Indikator Pemdi': 'daftar',
   Glosarium: 'modul',
   'Dokumen Kunci': 'dokumen',
-};
-
-const TYPE_CLASS = {
-  OPD: 'badge-blue',
-  'Aspek Pemdi': 'badge-cyan',
-  'Indikator Pemdi': 'badge-green',
-  Glosarium: 'badge-purple',
-  'Dokumen Kunci': 'badge-orange',
 };
 
 export default function Cari({ items }) {
@@ -66,110 +59,69 @@ export default function Cari({ items }) {
   const hasil = results.map(r => r.item);
   const statistik = items.length;
 
+  const perTipe = useMemo(() => {
+    const m = {};
+    hasil.forEach((h) => { m[h.type] = (m[h.type] || 0) + 1; });
+    return m;
+  }, [hasil]);
+  const [tipe, setTipe] = useState('');
+  const tampil = tipe ? hasil.filter((h) => h.type === tipe) : hasil;
+
   return (
     <>
       <Head>
-        <title>{query ? `Pencarian: ${query}` : 'Pencarian'} — Pemdi Aceh Tengah</title>
+        <title>{query ? `Pencarian: ${query}` : 'Pencarian'} — Dashboard Pemerintah Digital Aceh Tengah</title>
         <meta name="description" content="Pencarian dashboard Pemdi Aceh Tengah — cari indikator, OPD, glosarium, dan dokumen kunci." />
       </Head>
-
-      <section className="hero" style={{ padding: '3rem 0 1.5rem' }}>
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-          <h1 className="gold-head" style={{ margin: '0 0 0.75rem', fontSize: '1.75rem' }}>Pencarian</h1>
-          <p style={{ opacity: 0.85, marginBottom: '1.25rem', fontSize: '0.9375rem' }}>
-            Cari indikator Pemdi, OPD, istilah glosarium, dan dokumen kunci — {statistik} item tersedia
-          </p>
-          <div style={{ position: 'relative' }}>
+      <div className="rk-grid">
+        <section className="rk-panel rk-cari">
+          <h2>Pencarian <span className="rk-act faint">{statistik} entri terindeks · OPD, aspek, indikator, glosarium, dokumen kunci · Ctrl K untuk palet perintah</span></h2>
+          <label className="rk-cari-box">
+            <Ikon nama="cari" size={18} />
             <input
-              ref={inputRef}
-              type="search"
-              placeholder="Cari… (contoh: I13, Diskominfo, arsitektur SPBE)"
-              value={query}
-              onChange={e => setQuery(e.target.value)}
-              autoComplete="off"
-              spellCheck={false}
-              aria-label="Cari indikator Pemdi, OPD, glosarium, dan dokumen kunci"
-              style={{
-                width: '100%',
-                padding: '0.875rem 1rem 0.875rem 3rem',
-                borderRadius: '8px',
-                border: 'none',
-                fontSize: '1.1rem',
-                color: 'var(--ink)',
-                background: 'var(--surface)',
-                boxShadow: '0 2px 12px rgba(0,0,0,0.15)',
-              }}
+              ref={inputRef} type="search" value={query} onChange={(e) => setQuery(e.target.value)}
+              placeholder="Ketik kata kunci: Diskominfo, keamanan, SIAP Digital, I15…" aria-label="Kata kunci pencarian" autoComplete="off"
             />
-            <span style={{
-              position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)',
-              fontSize: '1.25rem', opacity: 0.5, pointerEvents: 'none',
-            }}><Ikon nama="cari" size={18} /></span>
-          </div>
-        </div>
-      </section>
-
-      <section className="container" style={{ padding: '2rem 0' }}>
-        {!searched && !query && (
-          <div style={{ textAlign: 'center', padding: '4rem 1rem', color: 'var(--muted)' }}>
-            <p style={{ fontSize: '1.125rem' }}>Ketik kata kunci untuk memulai pencarian</p>
-            <p style={{ fontSize: '0.875rem', marginTop: '0.5rem' }}>
-              Cari berdasarkan kode/nama indikator, nama OPD, istilah glosarium, atau dokumen kunci
-            </p>
-          </div>
-        )}
-
-        {searched && hasil.length === 0 && (
-          <div style={{ textAlign: 'center', padding: '3rem 1rem', color: 'var(--muted)' }}>
-            <p style={{ fontSize: '1.125rem' }}>Tidak ditemukan untuk "{query}"</p>
-            <p style={{ fontSize: '0.875rem', marginTop: '0.25rem' }}>Coba kata kunci lain</p>
-          </div>
-        )}
-
-        {hasil.length > 0 && (
-          <>
-            <p style={{ fontSize: '0.875rem', color: 'var(--muted)', marginBottom: '1rem' }}>
-              {hasil.length} hasil untuk "{query}"
-            </p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              {hasil.map((item, i) => (
-                <a
-                  key={item.id || i}
-                  href={item.url}
-                  style={{
-                    display: 'flex', alignItems: 'flex-start', gap: '0.75rem',
-                    padding: '1rem', borderRadius: '8px', background: 'var(--surface)',
-                    border: '1px solid var(--line)', textDecoration: 'none',
-                    color: 'inherit', transition: 'box-shadow 0.15s, transform 0.15s',
-                  }}
-                  onMouseOver={e => { e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.08)'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
-                  onMouseOut={e => { e.currentTarget.style.boxShadow = ''; e.currentTarget.style.transform = ''; }}
-                >
-                  <span style={{ fontSize: '1.5rem', flexShrink: 0, width: '2rem', textAlign: 'center' }}>
-                    <Ikon nama={TYPE_ICON[item.type] || 'dokumen'} size={16} />
-                  </span>
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontWeight: 600, fontSize: '1rem', marginBottom: '0.125rem' }}>
-                      {highlight(item.label, query)}
-                    </div>
-                    <div style={{ fontSize: '0.825rem', color: 'var(--muted)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                      {item.sublabel}
-                    </div>
-                  </div>
-                  <span className={`badge ${TYPE_CLASS[item.type] || 'badge-gray'} badge-sm`} style={{ flexShrink: 0 }}>
-                    {item.type}
-                  </span>
-                </a>
-              ))}
+            {query ? <button type="button" className="rk-btn kecil" onClick={() => setQuery('')} aria-label="Hapus"><Ikon nama="tutup" size={14} /></button> : null}
+          </label>
+          {hasil.length > 0 ? (
+            <div className="rk-filter" role="group" aria-label="Saring jenis">
+              <button type="button" className="rk-chip" aria-pressed={!tipe} onClick={() => setTipe('')}>Semua ({hasil.length})</button>
+              {Object.entries(perTipe).map(([t, n]) => <button key={t} type="button" className="rk-chip" aria-pressed={tipe === t} onClick={() => setTipe(tipe === t ? '' : t)}><Ikon nama={TYPE_ICON[t] || 'dokumen'} size={13} /> {t} ({n})</button>)}
             </div>
-          </>
-        )}
-      </section>
+          ) : null}
+        </section>
 
-      <style jsx>{`
-        section.container :global(a:hover) {
-          border-color: var(--primary);
-        }
-      `}</style>
+        {searched && hasil.length === 0 ? (
+          <section className="rk-panel"><p className="muted" style={{ margin: 0 }}>Tidak ada hasil untuk “{query}”. Coba kata yang lebih umum, singkatan OPD, atau kode indikator (I1–I20).</p></section>
+        ) : null}
+
+        {!searched ? (
+          <section className="rk-panel">
+            <h2>Contoh pencarian</h2>
+            <div className="rk-chips">
+              {['Diskominfo', 'keamanan siber', 'arsitektur SPBE', 'I15', 'kepuasan pengguna', 'Bappeda', 'PDP'].map((k) => <button key={k} type="button" className="rk-chip" onClick={() => setQuery(k)}>{k}</button>)}
+            </div>
+          </section>
+        ) : null}
+
+        {tampil.length > 0 ? (
+          <section className="rk-panel">
+            <h2>{tampil.length} hasil untuk “{query}”</h2>
+            <ol className="rk-hasil">
+              {tampil.map((item, i) => (
+                <li key={item.id || i}>
+                  <a href={item.url}>
+                    <span className="ic"><Ikon nama={TYPE_ICON[item.type] || 'dokumen'} size={16} /></span>
+                    <span className="tx"><b>{highlight(item.label, query)}</b><small>{item.sublabel}</small></span>
+                    <span className="rk-tag">{item.type}</span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </section>
+        ) : null}
+      </div>
     </>
   );
 }
@@ -200,7 +152,7 @@ function highlight(text = '', query) {
     s.match
       ? React.createElement('mark', {
           key: i,
-          style: { background: 'var(--mark-bg)', borderRadius: 2, padding: '0 2px', color: 'var(--mark-color)' },
+          className: 'rk-mark',
         }, s.text)
       : s.text
   );
