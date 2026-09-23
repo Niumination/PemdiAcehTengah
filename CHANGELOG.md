@@ -3,6 +3,14 @@
 Semua perubahan penting proyek ini didokumentasikan di file ini.
 Ringkasan publik tanpa detail internal; dokumen kerja lengkap disimpan pemilik repo di lokasi privat.
 
+## 2026-09-23 — Patch 6 + Patch 7: Tema terang menyeluruh + CMS revalidate eksplisit
+
+Susulan kedua dari arena (`pemdi-reposisi#4.zip`, basis `fce460b`).
+
+- **Patch 6 — Tema terang di seluruh halaman lama** (visual saja): hero gradien navy + teks putih hardcoded → panel token (`.hero`, `.hero-chip`) di pemdi, modul-indikator, requirement, spbe, probis, opd, opd/[slug], glosarium, cari, 404; `LEVEL_WARNA` & warna OPD jadi token per tema; pola `${warna}15` → `color-mix()`; hex hijau/biru di styled-jsx → token.
+- **Patch 7 — CMS revalidate eksplisit + PGlite** (tanpa env: tidak ada perubahan perilaku): `lib/revalidate.js` — hasil revalidate dilaporkan di respons API; `CMS_DB_LOKAL` → **PGlite** (`@electric-sql/pglite` devDependency) untuk uji lokal tanpa Neon; jalur tulis diverifikasi end-to-end terhadap Postgres.
+- **Verifikasi**: 55/55 tes · `npx next lint` 0 error · `node scripts/cek-ui.mjs` bersih · `next build` ✓ 62 halaman statis.
+
 ## 2026-09-23 — Patch 5: Tema Terang (kontras & kedalaman)
 
 Susulan dari arena (`pemdi-reposisi#3.zip`), respons umpan balik pemilik soal kontras dan panel datar. Visual saja — nol perubahan perilaku.
