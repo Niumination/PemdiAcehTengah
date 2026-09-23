@@ -28,6 +28,14 @@ const P = {
   kiri: <><path d="m15 6-6 6 6 6" /></>,
   kanan: <><path d="m9 6 6 6-6 6" /></>,
   lebar: <><path d="M3 12h18M7 8l-4 4 4 4M17 8l4 4-4 4" /></>,
+  aspek: <><circle cx="12" cy="12" r="9" /><path d="M12 3v18M3 12h18" /></>,
+  grafik: <><path d="M4 19V5M4 19h16M8 15l4-6 4 3 4-6" /></>,
+  probis: <><rect x="3" y="3" width="6" height="6" rx="1" /><rect x="15" y="15" width="6" height="6" rx="1" /><path d="M9 6h6a3 3 0 0 1 3 3v6" /></>,
+  buku: <><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z" /><path d="M8 7h8" /></>,
+  roda: <><circle cx="12" cy="12" r="3" /><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1" /></>,
+  radial: <><circle cx="19" cy="12" r="2" /><circle cx="8" cy="5" r="2" /><circle cx="5" cy="12" r="2" /><circle cx="8" cy="19" r="2" /><path d="M17.5 10.8 9.7 6.2M17 12H7M17.5 13.2 9.7 17.8" /></>,
+  baris: <><rect x="13" y="3" width="8" height="18" rx="1" /><path d="M15 8h4M15 12h4M15 16h4M3 12h6" /></>,
+  lipat: <><path d="m6 9 6 6 6-6" /></>,
 };
 
 export default function Ikon({ nama, size = 16, stroke = 1.75, className, title, ...rest }) {

@@ -6,7 +6,7 @@
  *   - pita marquee di bawah bar kendali (dipertahankan sesuai keputusan pemilik; Patch 8: dipindah ke bawah header, tanpa emoji bendera)
  *   - baris konteks PJ OPD (Patch 8: pemilih OPD keluar dari bar agar tab tidak tergencet)
  *   - toggle lebar halaman penuh/1800/1440 (Patch 8; atribut html[data-lebar], default penuh)
- *   - bar kendali: brand, tab, persona Koordinator/PJ (+ pilih OPD), Ctrl+K, tema
+ *   - bar kendali: brand, persona Koordinator/PJ, Ctrl+K, lebar, tema (tab dihapus Patch 9 → NavMenu radial/baris)
  *   - konteks `useRK()` → { persona, opd, setPersona, setOpd, bukaButir, bukaIndikator, bukaPalet }
  *   - drawer indikator/butir + palet perintah, dirender sekali di sini
  */
@@ -17,26 +17,12 @@ import Image from 'next/image';
 import Ikon from '@/components/ui/Ikon';
 import Drawer from './Drawer';
 import Palet from './Palet';
+import NavMenu from './NavMenu';
 
 const RKContext = createContext(null);
 export const useRK = () => useContext(RKContext);
 
-export const TAB_RK = [
-  { href: '/dashboard', label: 'Situasi', ikon: 'kompas' },
-  { href: '/indikator', label: 'Indikator', ikon: 'daftar' },
-  { href: '/antrean', label: 'Antrean', ikon: 'antrean' },
-  { href: '/modul-indikator', label: 'Modul', ikon: 'modul' },
-  { href: '/requirement', label: 'Draf Bukti', ikon: 'draf' },
-];
-const TAB_LAIN = [
-  { href: '/pemdi', label: 'Rinci per aspek' },
-  { href: '/opd', label: 'Perangkat daerah' },
-  { href: '/spbe', label: 'SPBE 2025' },
-  { href: '/probis', label: 'Proses bisnis' },
-  { href: '/glosarium', label: 'Glosarium' },
-  { href: '/cari', label: 'Cari' },
-  { href: '/admin', label: 'Admin CMS' },
-];
+// Daftar rute navigasi kini di components/rk/NavMenu.js (RUTE_NAV) — Patch 9
 
 const LABEL_LEBAR = { penuh: 'Penuh', 1800: '1800', 1440: '1440' };
 const URUTAN_LEBAR = ['penuh', '1800', '1440'];
@@ -161,17 +147,6 @@ export default function RKShell({ children, data: dataProp, legacy = false }) {
             <Image src="/crest-pemdi.svg" alt="" width={30} height={30} />
             <span><b>Dashboard Pemerintah Digital</b><small>Kabupaten Aceh Tengah · Evaluasi Pemdi 2026</small></span>
           </Link>
-          <nav className="rk-tabs" aria-label="Halaman">
-            {TAB_RK.map((t) => (
-              <Link key={t.href} href={t.href} aria-current={path === t.href ? 'page' : undefined}>{t.label}</Link>
-            ))}
-            <details className="rk-lain" ref={lainRef}>
-              <summary className="rk-kbtn" style={{ height: 34, border: 0, background: 'transparent', listStyle: 'none' }}>Lainnya ▾</summary>
-              <ul>
-                {TAB_LAIN.map((t) => <li key={t.href}><Link href={t.href}>{t.label}</Link></li>)}
-              </ul>
-            </details>
-          </nav>
           <div className="rk-actions">
             <div className="rk-seg" role="group" aria-label="Persona">
               <button type="button" aria-pressed={persona === 'koordinator'} onClick={() => setPersona('koordinator')}>Koordinator</button>
@@ -212,14 +187,7 @@ export default function RKShell({ children, data: dataProp, legacy = false }) {
           <span>Simulasi penilaian mandiri — bukan nilai resmi asesor · Data: eval.spbe.go.id (sinkron 20 Sep 2026)</span>
         </footer>
 
-        <nav className="rk-btab" aria-label="Halaman (ponsel)">
-          {TAB_RK.map((t) => (
-            <Link key={t.href} href={t.href} aria-current={path === t.href ? 'page' : undefined}>
-              <Ikon nama={t.ikon} size={20} />{t.label}
-            </Link>
-          ))}
-        </nav>
-
+        <NavMenu />
         <Drawer state={drawer} onClose={tutupDrawer} data={data} />
         {palet ? <Palet onClose={() => setPalet(false)} data={data} /> : null}
       </div>

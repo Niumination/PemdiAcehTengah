@@ -83,6 +83,7 @@ html[data-theme='dark'] {
   --rk-ink-2: #A7B4C8;
   --rk-ink-3: #7B8BA5;
   --rk-emas: #D4AF5A;
+  --rk-navy: #0A1220;
   --rk-emas-ink: #F1D48B;
   --rk-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
   --rk-shadow-1: none;
@@ -111,6 +112,7 @@ html:not([data-theme]) {
   --rk-ink-2: #34405A;
   --rk-ink-3: #5B6680;
   --rk-emas: #846419;
+  --rk-navy: #14203A;
   --rk-emas-ink: #6A500F;
   --rk-shadow: 0 12px 28px rgba(20, 32, 58, 0.14), 0 1px 2px rgba(20, 32, 58, 0.08);
   --rk-shadow-1: 0 1px 2px rgba(20, 32, 58, 0.06), 0 4px 14px rgba(20, 32, 58, 0.07);

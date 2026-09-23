@@ -39,7 +39,7 @@ Implikasi untuk dashboard: angka resmi sementara asesor (1,42/1,24) **jauh di at
 
 ## C. Tahapan (urut prioritas; tiap tahap = 1 patch Hermes, mandiri & aman)
 
-### Tahap 0 — Hotfix & keluhan cepat (kecil, risiko rendah) ⟵ **usul dikerjakan pertama**
+### Tahap 0 — Hotfix & keluhan cepat — ✅ Patch 8
 1. `OPDTable` prop `list` di dashboard (#1).
 2. Cetak/PDF: buka jendela tanpa `noopener`, tulis HTML, lalu `w.opener=null`; fallback `iframe` tersembunyi + `print()` jika pop-up diblokir (#5, kedua lokasi).
 3. Menu "Lainnya": tutup otomatis pada `routeChangeStart`, klik-luar, dan `Esc` (#9).
@@ -49,7 +49,7 @@ Implikasi untuk dashboard: angka resmi sementara asesor (1,42/1,24) **jauh di at
 7. Drawer: `width:min(820px,94vw)`, tambah tombol "perlebar" (820 ↔ 1100) + pegangan seret; ponsel tetap penuh (#4).
 Verifikasi: cek-ui, lint, build, curl 12 rute, uji ganti persona/lebar tanpa CLS.
 
-### Tahap 1 — Navigasi baru + panel lipat (kerangka)
+### Tahap 1 — Navigasi baru + panel lipat (kerangka) — ✅ Patch 9 (prototipe v5 disetujui)
 - **Menu radial setengah lingkaran** (#13) — KEPUTUSAN PEMILIK: menggantikan tab atas & menu "Lainnya"; header tetap (brand, persona, Cari, tema, lebar). Rujukan: video "Magic Navigation Menu — Animated Half Circular Indicator" (dotWebdesign, CSS only). Adaptasi:
   - Tombol pemicu bulat 56 px menempel di **tepi kanan** layar (separuh terpotong), ☰ ↔ ✕, warna navy/emas; posisi vertikal tengah, ponsel di kanan-bawah.
   - Saat terbuka: 12 rute **mekar di busur 180°** mengelilingi tombol — busur dalam (r≈150 px) 5 rute utama, busur luar (r≈240 px) 7 rute lain; tiap item = ikon SVG Lucide bulat 44 px + **label pil selalu tampak** (miring mengikuti sudut busur). Item aktif = isian emas + indikator.

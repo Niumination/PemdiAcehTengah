@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="id" data-theme="light" data-nav="radial">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prototipe Tahap 1 v2 — Menu kiri Radial ⇄ Baris + Panel Lipat · Ruang Kendali</title>
+<style>
+/* ── Token (ringkasan dari styles/tokens.css) ── */
+:root{
+  --f-display:"Plus Jakarta Sans",ui-sans-serif,system-ui,sans-serif;--f-body:var(--f-display);--f-mono:ui-monospace,"JetBrains Mono",Menlo,monospace;
+  --bar-h:56px;--r1:8px;--r2:12px;
+}
+html[data-theme=light]{--bg:#F3EEE3;--panel:#FBF8F1;--panel2:#EFE9DC;--line:#D9D1BE;--line2:#C4B99F;--ink:#1B2233;--ink2:#4A5468;--ink3:#7A8397;
+  --emas:#B8902F;--emas-ink:#8C6A17;--navy:#14203A;--ok:#2F7D4F;--warn:#B26A00;--bad:#B23A3A;--info:#2B5FA8;--shadow:0 12px 32px rgba(27,34,51,.16);--scrim:rgba(20,32,58,.55)}
+html[data-theme=dark]{--bg:#0B1220;--panel:#111A2B;--panel2:#182337;--line:#243247;--line2:#31425C;--ink:#E9EEF7;--ink2:#B4BFD2;--ink3:#7F8CA3;
+  --emas:#D8B75A;--emas-ink:#EBCB73;--navy:#0A1220;--ok:#5FC08A;--warn:#F0B35A;--bad:#F07A7A;--info:#7FB0F0;--shadow:0 12px 32px rgba(0,0,0,.5);--scrim:rgba(3,10,22,.7)}
+*{box-sizing:border-box}body{margin:0;font:14px/1.5 var(--f-body);color:var(--ink);background:var(--bg);font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:pointer}
+h1,h2,h3{font-family:var(--f-display);letter-spacing:-.01em;margin:0}
+:focus-visible{outline:2px solid var(--emas);outline-offset:2px}
+.mono{font-family:var(--f-mono)}.faint{color:var(--ink3)}.muted{color:var(--ink2)}
+svg{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+
+/* ── Bar kendali (tanpa tab — digantikan menu) ── */
+.bar{position:sticky;top:0;z-index:40;height:var(--bar-h);display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:16px;padding:0 20px;background:var(--panel);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}.brand i{width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 35% 35%,var(--emas),var(--navy) 70%);flex:0 0 auto}
+.brand b{font-size:15px;white-space:nowrap}.brand small{display:block;font-size:11px;color:var(--ink3);letter-spacing:.08em;text-transform:uppercase}
+.acts{display:flex;align-items:center;gap:8px}
+.kbtn{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 12px;border:1px solid var(--line);border-radius:var(--r1);background:var(--panel2);color:var(--ink2);font-size:13px}
+.kbtn:hover{border-color:var(--line2);color:var(--ink)}.kbtn kbd{font-family:var(--f-mono);font-size:11px;padding:1px 5px;border:1px solid var(--line2);border-radius:4px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:var(--r1);overflow:hidden;height:36px}.seg button{padding:0 12px;background:transparent;border:0;color:var(--ink2);font-size:13px;font-weight:500}
+.seg button[aria-pressed=true]{background:var(--emas);color:#14203A}
+.strip{position:sticky;top:var(--bar-h);z-index:39;height:30px;display:flex;align-items:center;background:#0A1220;color:#E6ECF5;border-bottom:1px solid #233552;font-size:13px;overflow:hidden;white-space:nowrap}
+.strip-lbl{align-self:stretch;display:inline-flex;align-items:center;padding:0 12px;margin-right:14px;background:var(--emas);color:#14203A;font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;position:relative;z-index:1}
+.track{display:flex;gap:48px;animation:mq 40s linear infinite}.track span{flex:0 0 auto}@keyframes mq{to{transform:translateX(-50%)}}
+main{padding:20px 24px 96px;max-width:none}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}
+.panel{grid-column:span 12;background:var(--panel);border:1px solid var(--line);border-radius:var(--r2);min-width:0;box-shadow:0 1px 0 rgba(0,0,0,.03)}
+@media(min-width:1024px){.c4{grid-column:span 4}.c8{grid-column:span 8}.c6{grid-column:span 6}}
+.panel>h2{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:700;padding:14px 18px;margin:0}
+.panel>h2 .act{margin-left:auto;font-size:13px;font-weight:500;color:var(--emas);white-space:nowrap}
+.panel .bd{padding:0 18px 16px}
+.stat{display:flex;gap:28px;flex-wrap:wrap}.stat b{display:block;font-size:30px;line-height:1;font-family:var(--f-display)}.stat span{font-size:12px;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em}
+.bars{display:grid;gap:8px}.bars div{display:grid;grid-template-columns:160px 1fr 40px;gap:10px;align-items:center;font-size:13px}.bars i{height:8px;border-radius:4px;background:var(--panel2);position:relative;overflow:hidden}.bars i::after{content:"";position:absolute;inset:0;width:var(--w);background:var(--emas)}
+table{width:100%;border-collapse:collapse;font-size:13px}td,th{padding:8px 6px;border-bottom:1px solid var(--line);text-align:left}th{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+
+/* ── PANEL LIPAT ── */
+.panel[data-lipat]>.bd-wrap{display:grid;grid-template-rows:1fr;transition:grid-template-rows .22s ease}
+.panel[data-lipat]>.bd-wrap>.bd{overflow:hidden;min-height:0}
+.panel[data-lipat=tutup]>.bd-wrap{grid-template-rows:0fr}
+.panel[data-lipat=tutup]>.bd-wrap>.bd{padding-bottom:0}
+.lipat{width:28px;height:28px;border:1px solid var(--line);border-radius:6px;background:var(--panel2);display:inline-flex;align-items:center;justify-content:center;color:var(--ink2);transition:transform .2s}
+.lipat svg{transition:transform .2s}.panel[data-lipat=tutup] .lipat svg{transform:rotate(-90deg)}
+.panel[data-lipat=tutup]>h2{border-bottom:0}.panel[data-lipat=tutup] .ringkas{display:inline}.ringkas{display:none;font-weight:400;color:var(--ink3);font-size:12px}
+.lipat-semua{display:flex;gap:8px;justify-content:flex-end;margin-bottom:12px}
+@media(prefers-reduced-motion:reduce){.panel[data-lipat]>.bd-wrap,.lipat svg,.track{transition:none;animation:none}}
+
+/* ── MENU NAVIGASI (v2): pemicu di TEPI KIRI; dua gaya susunan item dari pemicu yang sama ── */
+.nav-trig{position:fixed;left:-28px;top:50%;transform:translateY(-50%);z-index:70;width:56px;height:56px;padding:0;border-radius:50%;border:2px solid var(--emas);background:var(--navy);color:#F4E9C8;display:grid;place-items:center;box-shadow:var(--shadow);transition:left .2s,background .2s,color .2s}
+.nav-trig svg{width:22px;height:22px;stroke-width:2;position:relative;left:14px;pointer-events:none;transition:left .2s}
+.nav-trig:hover,.nav-trig:focus-visible{left:-14px}
+.nav-trig:hover svg,.nav-trig:focus-visible svg{left:7px}
+html[data-open] .nav-trig{background:var(--emas);color:#14203A;left:0}
+html[data-open] .nav-trig svg{left:0}
+.nav-trig .ic-x{display:none}html[data-open] .nav-trig .ic-x{display:block}html[data-open] .nav-trig .ic-m{display:none}
+.nav-scrim{position:fixed;inset:0;z-index:60;background:var(--scrim);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .2s}
+html[data-open] .nav-scrim{opacity:1;pointer-events:auto}
+/* sakelar gaya + petunjuk: kiri-bawah, muncul bersama menu */
+.nav-gaya{position:fixed;z-index:71;left:16px;bottom:24px;display:none;border:1px solid var(--line2);border-radius:999px;overflow:hidden;background:var(--panel);font-size:12px;box-shadow:var(--shadow)}
+.nav-gaya button{padding:7px 14px;border:0;background:transparent;color:var(--ink2);display:inline-flex;gap:6px;align-items:center;min-height:36px}
+.nav-gaya button[aria-pressed=true]{background:var(--emas);color:#14203A;font-weight:600}
+html[data-open] .nav-gaya{display:inline-flex}
+.nav-hint{position:fixed;z-index:71;left:16px;bottom:68px;display:none;font-size:11px;color:#F4E9C8;opacity:.85}html[data-open] .nav-hint{display:block}
+
+/* item bersama (dipakai radial & baris) */
+.nav-item{position:fixed;z-index:65;left:14px;top:50%;width:0;height:0;margin:0;padding:0;list-style:none;pointer-events:none}
+.nav-item li{position:absolute;left:0;top:0;opacity:0;transition:opacity .22s,transform .38s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d)}
+html[data-open] .nav-item li{opacity:1;pointer-events:auto}
+.nav-item a{position:absolute;left:0;top:0;display:flex;align-items:center;gap:10px;white-space:nowrap;transform:translate(0,-50%)}
+.nav-item .ic{width:40px;height:40px;border-radius:50%;background:var(--panel);border:1.5px solid var(--line2);display:grid;place-items:center;color:var(--ink);box-shadow:var(--shadow);transition:transform .15s,border-color .15s,background .15s;flex:0 0 auto}
+.nav-item .ic svg{width:18px;height:18px}
+.nav-item .lbl{padding:4px 12px;border-radius:999px;border:1px solid color-mix(in srgb,var(--line2) 70%,transparent);background:color-mix(in srgb,var(--panel) 55%,transparent);backdrop-filter:blur(5px);color:var(--ink);font-size:13px;font-weight:600;box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.nav-item .lbl kbd{font-family:var(--f-mono);font-size:10px;font-weight:400;color:var(--ink3);margin-left:8px}
+.nav-item a:hover .ic,.nav-item a:focus-visible .ic{border-color:var(--emas);transform:scale(1.08)}
+.nav-item a:hover .lbl,.nav-item a:focus-visible .lbl{border-color:var(--emas);background:color-mix(in srgb,var(--panel) 80%,transparent)}
+.nav-item a[aria-current] .ic{background:var(--emas);border-color:var(--emas);color:#14203A}
+.nav-item a[aria-current] .lbl{background:color-mix(in srgb,var(--navy) 75%,transparent);color:#F4E9C8;border-color:var(--navy)}
+.nav-item li.lain .lbl{font-weight:500}
+.nav-item .busur{position:absolute;border-radius:50%;border:1px dashed color-mix(in srgb,var(--emas) 50%,transparent);pointer-events:none;opacity:0;transition:opacity .3s}
+.nav-item .busur.b1{left:-270px;top:-270px;width:540px;height:540px}.nav-item .busur.b2{display:none}
+
+/* GAYA RADIAL — SATU ring r=270px; 12 rute ditempatkan dengan JARAK VERTIKAL SERAGAM 46px (x = √(r²−y²)),
+   sehingga jarak antar menu konsisten dari ujung atas sampai bawah (tidak merapat/tumpang tindih di ujung busur) */
+html[data-nav=radial] .nav-item li{transform:translate(var(--x),var(--y))}
+html:not([data-open])[data-nav=radial] .nav-item li{transform:translate(0,0)}
+html[data-open][data-nav=radial] .nav-item .busur{opacity:1}
+html[data-nav=radial] .nav-item li:nth-child(1){--x:94px;--y:-253px;--d:0ms}
+html[data-nav=radial] .nav-item li:nth-child(2){--x:173px;--y:-207px;--d:25ms}
+html[data-nav=radial] .nav-item li:nth-child(3){--x:217px;--y:-161px;--d:50ms}
+html[data-nav=radial] .nav-item li:nth-child(4){--x:244px;--y:-115px;--d:75ms}
+html[data-nav=radial] .nav-item li:nth-child(5){--x:261px;--y:-69px;--d:100ms}
+html[data-nav=radial] .nav-item li:nth-child(6){--x:269px;--y:-23px;--d:125ms}
+html[data-nav=radial] .nav-item li:nth-child(7){--x:269px;--y:23px;--d:150ms}
+html[data-nav=radial] .nav-item li:nth-child(8){--x:261px;--y:69px;--d:175ms}
+html[data-nav=radial] .nav-item li:nth-child(9){--x:244px;--y:115px;--d:200ms}
+html[data-nav=radial] .nav-item li:nth-child(10){--x:217px;--y:161px;--d:225ms}
+html[data-nav=radial] .nav-item li:nth-child(11){--x:173px;--y:207px;--d:250ms}
+html[data-nav=radial] .nav-item li:nth-child(12){--x:94px;--y:253px;--d:275ms}
+
+/* GAYA BARIS — overlay yang sama, item disusun garis lurus vertikal dari pemicu (5 utama, jeda, 7 lain) */
+html[data-nav=baris] .nav-item li{transform:translate(var(--x),var(--y))}
+html:not([data-open])[data-nav=baris] .nav-item li{transform:translate(0,0)}
+html[data-nav=baris] .nav-item li{--x:44px}
+html[data-nav=baris] .nav-item li:nth-child(1){--y:-290px;--d:0ms}html[data-nav=baris] .nav-item li:nth-child(2){--y:-236px;--d:25ms}html[data-nav=baris] .nav-item li:nth-child(3){--y:-182px;--d:50ms}
+html[data-nav=baris] .nav-item li:nth-child(4){--y:-128px;--d:75ms}html[data-nav=baris] .nav-item li:nth-child(5){--y:-74px;--d:100ms}
+html[data-nav=baris] .nav-item li:nth-child(6){--y:0px;--d:125ms}html[data-nav=baris] .nav-item li:nth-child(7){--y:48px;--d:150ms}html[data-nav=baris] .nav-item li:nth-child(8){--y:96px;--d:175ms}
+html[data-nav=baris] .nav-item li:nth-child(9){--y:144px;--d:200ms}html[data-nav=baris] .nav-item li:nth-child(10){--y:192px;--d:225ms}html[data-nav=baris] .nav-item li:nth-child(11){--y:240px;--d:250ms}
+html[data-nav=baris] .nav-item li:nth-child(12){--y:288px;--d:275ms}
+html[data-nav=baris] .nav-item .busur{display:none}
+html[data-nav=baris] .nav-item::before{content:"";position:absolute;left:21px;top:-300px;height:600px;width:1px;background:color-mix(in srgb,var(--emas) 45%,transparent);opacity:0;transition:opacity .3s}
+html[data-open][data-nav=baris] .nav-item::before{opacity:1}
+
+/* ── PONSEL: pemicu kiri-bawah; radial = kuadran ke kanan-atas; baris = tumpukan ke atas ── */
+@media(max-width:860px){
+  .brand small,.kbtn .lbl,.kbtn kbd{display:none}main{padding:12px 12px 100px}
+  .nav-trig{top:auto;bottom:24px;transform:none}
+  .nav-item{top:auto;bottom:52px}
+  .nav-item .busur{display:none}
+  .nav-item .lbl{font-size:12px;padding:4px 10px}.nav-item .lbl kbd{display:none}
+  html[data-nav=radial] .nav-item li:nth-child(1){--x:44px;--y:-492px}
+  html[data-nav=radial] .nav-item li:nth-child(2){--x:69px;--y:-450px}
+  html[data-nav=radial] .nav-item li:nth-child(3){--x:93px;--y:-408px}
+  html[data-nav=radial] .nav-item li:nth-child(4){--x:112px;--y:-366px}
+  html[data-nav=radial] .nav-item li:nth-child(5){--x:126px;--y:-324px}
+  html[data-nav=radial] .nav-item li:nth-child(6){--x:133px;--y:-282px}
+  html[data-nav=radial] .nav-item li:nth-child(7){--x:133px;--y:-240px}
+  html[data-nav=radial] .nav-item li:nth-child(8){--x:126px;--y:-198px}
+  html[data-nav=radial] .nav-item li:nth-child(9){--x:112px;--y:-156px}
+  html[data-nav=radial] .nav-item li:nth-child(10){--x:93px;--y:-114px}
+  html[data-nav=radial] .nav-item li:nth-child(11){--x:69px;--y:-72px}
+  html[data-nav=radial] .nav-item li:nth-child(12){--x:44px;--y:-30px}
+  html[data-nav=baris] .nav-item li{--x:40px}
+  html[data-nav=baris] .nav-item li:nth-child(1){--y:-560px}html[data-nav=baris] .nav-item li:nth-child(2){--y:-510px}html[data-nav=baris] .nav-item li:nth-child(3){--y:-460px}html[data-nav=baris] .nav-item li:nth-child(4){--y:-410px}html[data-nav=baris] .nav-item li:nth-child(5){--y:-360px}
+  html[data-nav=baris] .nav-item li:nth-child(6){--y:-296px}html[data-nav=baris] .nav-item li:nth-child(7){--y:-252px}html[data-nav=baris] .nav-item li:nth-child(8){--y:-208px}html[data-nav=baris] .nav-item li:nth-child(9){--y:-164px}html[data-nav=baris] .nav-item li:nth-child(10){--y:-120px}html[data-nav=baris] .nav-item li:nth-child(11){--y:-76px}html[data-nav=baris] .nav-item li:nth-child(12){--y:-32px}
+  html[data-nav=baris] .nav-item::before{top:-580px;height:580px}
+  .nav-gaya{left:auto;right:12px;bottom:24px}.nav-hint{display:none!important}
+}
+.demo{position:fixed;left:16px;bottom:16px;z-index:50;display:flex;gap:6px;flex-wrap:wrap}
+.demo .kbtn{height:30px;font-size:12px;padding:0 10px}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="i-kompas" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></symbol>
+<symbol id="i-daftar" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></symbol>
+<symbol id="i-antrean" viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h6"/><path d="m17 15 2 2 4-4"/></symbol>
+<symbol id="i-modul" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 10v10"/></symbol>
+<symbol id="i-draf" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></symbol>
+<symbol id="i-aspek" viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></symbol>
+<symbol id="i-gedung" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14"/><path d="M9 21v-5h6v5M9 11h.01M15 11h.01M12 11h.01"/></symbol>
+<symbol id="i-spbe" viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 15l4-6 4 3 4-6"/></symbol>
+<symbol id="i-probis" viewBox="0 0 24 24"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="15" width="6" height="6" rx="1"/><path d="M9 6h6a3 3 0 0 1 3 3v6"/></symbol>
+<symbol id="i-glos" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M8 7h8"/></symbol>
+<symbol id="i-cari" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+<symbol id="i-admin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+<symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+<symbol id="i-tema" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9c0-.5 0-1-.1-1.4A5.5 5.5 0 0 1 13.4 3.1C13 3 12.5 3 12 3Z"/></symbol>
+<symbol id="i-lebar" viewBox="0 0 24 24"><path d="M3 12h18M7 8l-4 4 4 4M17 8l4 4-4 4"/></symbol>
+<symbol id="i-radial" viewBox="0 0 24 24"><circle cx="19" cy="12" r="2"/><circle cx="8" cy="5" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="8" cy="19" r="2"/><path d="M17.5 10.8 9.7 6.2M17 12H7M17.5 13.2 9.7 17.8"/></symbol>
+<symbol id="i-baris" viewBox="0 0 24 24"><rect x="13" y="3" width="8" height="18" rx="1"/><path d="M15 8h4M15 12h4M15 16h4M3 12h6"/></symbol>
+</defs></svg>
+
+<header class="bar">
+  <a class="brand" href="#"><i></i><span><b>Dashboard Pemerintah Digital</b><small>Kabupaten Aceh Tengah · Evaluasi Pemdi 2026</small></span></a>
+  <div class="acts">
+    <div class="seg" role="group" aria-label="Persona"><button aria-pressed="true">Koordinator</button><button aria-pressed="false">PJ OPD</button></div>
+    <button class="kbtn"><svg><use href="#i-cari"/></svg><span class="lbl">Cari</span><kbd>Ctrl K</kbd></button>
+    <button class="kbtn" title="Lebar halaman"><svg><use href="#i-lebar"/></svg><span class="lbl">Penuh</span></button>
+    <button class="kbtn" id="tema" title="Tema"><svg><use href="#i-tema"/></svg></button>
+  </div>
+</header>
+<div class="strip"><span class="strip-lbl">Info</span><div class="track"><span>Dashboard Pemerintah Digital Kabupaten Aceh Tengah — Ruang kendali evaluasi 2026 · Interviu asesor 21–30 September · Visitasi 1–30 Oktober · PermenPANRB 8/2026</span><span aria-hidden="true">Dashboard Pemerintah Digital Kabupaten Aceh Tengah — Ruang kendali evaluasi 2026 · Interviu asesor 21–30 September · Visitasi 1–30 Oktober · PermenPANRB 8/2026</span></div></div>
+
+<main>
+  <div class="lipat-semua"><span class="faint" style="margin-right:auto;align-self:center">Prototipe Tahap 1 v2 · menu di kiri · tekan <b>M</b> untuk menu · <b>g</b> lalu huruf untuk pintasan rute · panel dapat dilipat &amp; diingat</span><button class="kbtn" data-semua="buka">Buka semua</button><button class="kbtn" data-semua="tutup">Lipat semua</button></div>
+  <div class="grid">
+    <section class="panel c8" data-lipat="buka" data-id="situasi"><h2><button class="lipat" aria-expanded="true" aria-label="Lipat panel"><svg><use href="#i-chev"/></svg></button>Situasi evaluasi <span class="ringkas">· indeks asesor 1,24 · 183 butir belum</span><a class="act" href="#">Matriks →</a></h2>
+      <div class="bd-wrap"><div class="bd"><div class="stat"><div><b>1,24</b><span>Indeks asesor (sementara)</span></div><div><b>1,42</b><span>Penilaian mandiri awal</span></div><div><b>2,50</b><span>Target 2026</span></div><div><b>18 / 19 / 12</b><span>Diterima · Revisi · Draf</span></div><div><b>183</b><span>Belum</span></div></div>
+      <p class="muted" style="margin:14px 0 0">Angka asesor = hasil evaluasi tim asesor eksternal KemenPANRB (sesi interviu 21 Sep 2026), skala 1–5, Level 1 · Rintisan.</p></div></div></section>
+    <section class="panel c4" data-lipat="buka" data-id="antrean"><h2><button class="lipat" aria-expanded="true" aria-label="Lipat panel"><svg><use href="#i-chev"/></svg></button>Antrean prioritas tinggi <span class="ringkas">· 8 butir</span><a class="act" href="#">Semua →</a></h2>
+      <div class="bd-wrap"><div class="bd"><table><tr><th>Butir</th><th>PJ</th><th>Status</th></tr><tr><td class="mono">I18_L1_1</td><td>Diskominfo</td><td style="color:var(--bad)">belum</td></tr><tr><td class="mono">I20_L1_3</td><td>Bag. Organisasi</td><td style="color:var(--warn)">proses</td></tr><tr><td class="mono">I09_L1_2</td><td>Diskominfo</td><td style="color:var(--warn)">revisi</td></tr><tr><td class="mono">I05_L1_1</td><td>BKPSDM</td><td style="color:var(--bad)">belum</td></tr></table></div></div></section>
+    <section class="panel c4" data-lipat="buka" data-id="beban"><h2><button class="lipat" aria-expanded="true" aria-label="Lipat panel"><svg><use href="#i-chev"/></svg></button>Beban per PJ <span class="ringkas">· 14 OPD</span></h2>
+      <div class="bd-wrap"><div class="bd bars"><div>Diskominfo<i style="--w:78%"></i><span class="mono">96</span></div><div>Bag. Organisasi<i style="--w:30%"></i><span class="mono">37</span></div><div>Bappeda<i style="--w:18%"></i><span class="mono">22</span></div><div>BKPSDM<i style="--w:12%"></i><span class="mono">15</span></div><div>Inspektorat<i style="--w:9%"></i><span class="mono">11</span></div></div></div></section>
+    <section class="panel c4" data-lipat="tutup" data-id="linimasa"><h2><button class="lipat" aria-expanded="false" aria-label="Buka panel"><svg><use href="#i-chev"/></svg></button>Linimasa evaluasi 2026 <span class="ringkas">· interviu berjalan (hari 3/10)</span></h2>
+      <div class="bd-wrap"><div class="bd muted">Pengisian mandiri ✓ · Interviu 21–30 Sep (berjalan) · Visitasi 1–30 Okt · Penetapan Nov.</div></div></section>
+    <section class="panel c4" data-lipat="buka" data-id="prasyarat"><h2><button class="lipat" aria-expanded="true" aria-label="Lipat panel"><svg><use href="#i-chev"/></svg></button>Prasyarat lintas indikator <span class="ringkas">· 6 dokumen</span></h2>
+      <div class="bd-wrap"><div class="bd muted">Arsitektur SPBE (SIAP Digital) → I15, I17, I13, I14 · Peta proses bisnis → I15 · SK Tim Koordinasi → I01, I04.</div></div></section>
+  </div>
+</main>
+
+<!-- ── MENU NAVIGASI ── -->
+<div class="nav-scrim" id="scrim"></div>
+<button class="nav-trig" id="trig" aria-haspopup="true" aria-expanded="false" aria-controls="navitem" aria-label="Buka menu navigasi (M)"><svg class="ic-m"><use href="#i-menu"/></svg><svg class="ic-x"><use href="#i-x"/></svg></button>
+<div class="nav-gaya" role="group" aria-label="Gaya menu"><button data-gaya="radial" aria-pressed="true"><svg><use href="#i-radial"/></svg>Radial</button><button data-gaya="baris" aria-pressed="false"><svg><use href="#i-baris"/></svg>Baris</button></div>
+<div class="nav-hint">Esc menutup · g+huruf pintasan</div>
+
+<ul class="nav-item" id="navitem" role="menu" aria-label="Navigasi halaman">
+  <li role="none"><a role="menuitem" href="#" aria-current="page" data-k="s"><span class="ic"><svg><use href="#i-kompas"/></svg></span><span class="lbl">Situasi<kbd>g s</kbd></span></a></li>
+  <li role="none"><a role="menuitem" href="#" data-k="i"><span class="ic"><svg><use href="#i-daftar"/></svg></span><span class="lbl">Indikator<kbd>g i</kbd></span></a></li>
+  <li role="none"><a role="menuitem" href="#" data-k="a"><span class="ic"><svg><use href="#i-antrean"/></svg></span><span class="lbl">Antrean<kbd>g a</kbd></span></a></li>
+  <li role="none"><a role="menuitem" href="#" data-k="m"><span class="ic"><svg><use href="#i-modul"/></svg></span><span class="lbl">Modul<kbd>g m</kbd></span></a></li>
+  <li role="none"><a role="menuitem" href="#" data-k="d"><span class="ic"><svg><use href="#i-draf"/></svg></span><span class="lbl">Draf Bukti<kbd>g d</kbd></span></a></li>
+  <li role="none" class="lain"><a role="menuitem" href="#" data-k="r"><span class="ic"><svg><use href="#i-aspek"/></svg></span><span class="lbl">Rinci per aspek<kbd>g r</kbd></span></a></li>
+  <li role="none" class="lain"><a role="menuitem" href="#" data-k="o"><span class="ic"><svg><use href="#i-gedung"/></svg></span><span class="lbl">Perangkat daerah<kbd>g o</kbd></span></a></li>
+  <li role="none" class="lain"><a role="menuitem" href="#" data-k="e"><span class="ic"><svg><use href="#i-spbe"/></svg></span><span class="lbl">SPBE 2025<kbd>g e</kbd></span></a></li>
+  <li role="none" class="lain"><a role="menuitem" href="#" data-k="p"><span class="ic"><svg><use href="#i-probis"/></svg></span><span class="lbl">Proses bisnis<kbd>g p</kbd></span></a></li>
+  <li role="none" class="lain"><a role="menuitem" href="#" data-k="l"><span class="ic"><svg><use href="#i-glos"/></svg></span><span class="lbl">Glosarium<kbd>g l</kbd></span></a></li>
+  <li role="none" class="lain"><a role="menuitem" href="#" data-k="c"><span class="ic"><svg><use href="#i-cari"/></svg></span><span class="lbl">Cari<kbd>g c</kbd></span></a></li>
+  <li role="none" class="lain"><a role="menuitem" href="#" data-k="x"><span class="ic"><svg><use href="#i-admin"/></svg></span><span class="lbl">Admin CMS<kbd>g x</kbd></span></a></li>
+  <span class="busur b1" aria-hidden="true"></span><span class="busur b2" aria-hidden="true"></span>
+</ul>
+
+<div class="demo"><span class="kbtn" style="cursor:default">Demo:</span><button class="kbtn" id="d-ponsel">Simulasi ponsel</button><button class="kbtn" id="d-reset">Reset ingatan</button></div>
+
+<script>
+(function(){
+  var html=document.documentElement, trig=document.getElementById('trig'), scrim=document.getElementById('scrim');
+  var LS=function(k,v){try{return v===undefined?localStorage.getItem(k):localStorage.setItem(k,v)}catch(e){}};
+  var ponsel=function(){return matchMedia('(max-width:860px)').matches};
+  // gaya: tersimpan per perangkat; default desktop radial, ponsel baris
+  var gaya=LS('proto:nav')||(ponsel()?'baris':'radial'); setGaya(gaya,false);
+  function setGaya(g,simpan){gaya=g;html.setAttribute('data-nav',g);document.querySelectorAll('[data-gaya]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.gaya===g))});if(simpan)LS('proto:nav',g);if(html.hasAttribute('data-open'))setTimeout(fokusAktif,60)}
+  document.querySelectorAll('[data-gaya]').forEach(function(b){b.addEventListener('click',function(){setGaya(b.dataset.gaya,true)})});
+  var terakhir=null;
+  function wadah(){return document.getElementById('navitem')}
+  function fokusAktif(){var w=wadah();var a=w.querySelector('a[aria-current]')||w.querySelector('a');a&&a.focus()}
+  function buka(){terakhir=document.activeElement;html.setAttribute('data-open','');trig.setAttribute('aria-expanded','true');trig.setAttribute('aria-label','Tutup menu navigasi (Esc)');document.body.style.overflow='hidden';setTimeout(fokusAktif,80)}
+  function tutup(){if(!html.hasAttribute('data-open'))return;html.removeAttribute('data-open');trig.setAttribute('aria-expanded','false');trig.setAttribute('aria-label','Buka menu navigasi (M)');document.body.style.overflow='';(terakhir||trig).focus&&trig.focus()}
+  trig.addEventListener('click',function(){html.hasAttribute('data-open')?tutup():buka()});
+  scrim.addEventListener('click',tutup);
+  // auto-hide saat memilih rute (di Next.js: router.events routeChangeStart)
+  document.querySelectorAll('#navitem a').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();document.querySelectorAll('#navitem a').forEach(function(x){x.removeAttribute('aria-current')});var t=a.textContent.trim().replace(/g \w$/,'').trim();document.querySelectorAll('#navitem a').forEach(function(x){if(x.textContent.trim().replace(/g \w$/,'').trim()===t)x.setAttribute('aria-current','page')});tutup()})});
+  // focus trap + Esc + panah
+  document.addEventListener('keydown',function(e){
+    var open=html.hasAttribute('data-open');
+    if(e.key==='Escape'&&open){e.preventDefault();tutup();return}
+    if(!open&&(e.key==='m'||e.key==='M')&&!/input|textarea|select/i.test(e.target.tagName)){e.preventDefault();buka();return}
+    if(open){var f=Array.prototype.slice.call(document.querySelectorAll('#navitem a,.nav-gaya button,#trig'));var i=f.indexOf(document.activeElement);
+      if(e.key==='Tab'){e.preventDefault();var n=e.shiftKey?(i<=0?f.length-1:i-1):(i>=f.length-1?0:i+1);f[n].focus()}
+      if(e.key==='ArrowDown'||e.key==='ArrowRight'){e.preventDefault();f[(i+1)%f.length].focus()}
+      if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();f[(i-1+f.length)%f.length].focus()}
+    }
+  });
+  // pintasan g + huruf
+  var gWaktu=0;document.addEventListener('keydown',function(e){if(/input|textarea|select/i.test(e.target.tagName))return;var now=Date.now();if(e.key==='g'){gWaktu=now;return}if(now-gWaktu<900){var a=document.querySelector('#navitem a[data-k="'+e.key+'"]');if(a){a.click()}gWaktu=0}});
+  // panel lipat + ingatan
+  document.querySelectorAll('.panel[data-lipat]').forEach(function(p){var id=p.dataset.id,s=LS('proto:lipat:'+id);if(s)set(p,s);p.querySelector('.lipat').addEventListener('click',function(){set(p,p.dataset.lipat==='buka'?'tutup':'buka',true)})});
+  function set(p,s,simpan){p.dataset.lipat=s;var b=p.querySelector('.lipat');b.setAttribute('aria-expanded',String(s==='buka'));b.setAttribute('aria-label',s==='buka'?'Lipat panel':'Buka panel');if(simpan)LS('proto:lipat:'+p.dataset.id,s)}
+  document.querySelectorAll('[data-semua]').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.panel[data-lipat]').forEach(function(p){set(p,b.dataset.semua,true)})})});
+  // demo
+  document.getElementById('tema').addEventListener('click',function(){html.setAttribute('data-theme',html.getAttribute('data-theme')==='dark'?'light':'dark')});
+  document.getElementById('d-reset').addEventListener('click',function(){try{Object.keys(localStorage).filter(function(k){return k.indexOf('proto:')===0}).forEach(function(k){localStorage.removeItem(k)})}catch(e){}location.reload()});
+  document.getElementById('d-ponsel').addEventListener('click',function(){var s=document.createElement('style');s.textContent='body{max-width:390px;margin:0 auto;border-left:1px solid var(--line);border-right:1px solid var(--line)}';document.head.appendChild(s);alert('Lebar konten dibatasi 390px sebagai ilustrasi; untuk perilaku ponsel sesungguhnya (busur kuadran + default Baris) kecilkan jendela ≤ 860px atau buka di ponsel.')});
+})();
+</script>
+</body>
+</html>

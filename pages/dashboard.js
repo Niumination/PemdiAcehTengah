@@ -6,6 +6,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import Kompas from '@/components/rk/Kompas';
+import PanelLipat, { LipatSemua } from '@/components/rk/PanelLipat';
 import { Situasi, AntreanTabel, BebanPJ, Linimasa, Prasyarat, useAntreanAktif } from '@/components/rk/Panel';
 import OPDTable from '@/components/OPDTable';
 import { susunDataRK } from '@/lib/rkData';
@@ -40,44 +41,39 @@ export default function Dashboard({ rk, opdList, butirCountMap, dibangun, ppb })
           </section>
         ) : null}
 
-        <section className="rk-panel rk-c8">
-          <h2>Kompas Pemdi — 7 aspek · 20 indikator · 5 level <Link className="rk-act" href="/indikator">Matriks lengkap →</Link></h2>
+        <LipatSemua keterangan="Panel dapat dilipat; status diingat di perangkat ini." />
+
+        <PanelLipat id="kompas" className="rk-c8" judul="Kompas Pemdi — 7 aspek · 20 indikator · 5 level" ringkas={`· indeks ${Number(rk.situasi.indeks).toFixed(2).replace('.', ',')} · ${rk.situasi.predikat}`} aksi={<Link className="rk-act" href="/indikator">Matriks lengkap →</Link>}>
           <Kompas indikator={rk.indikator} situasi={rk.situasi} aspek={rk.situasi.aspek} />
-        </section>
+        </PanelLipat>
 
-        <section className="rk-panel rk-c4">
-          <h2>Antrean prioritas tinggi <Link className="rk-act" href="/antrean">Semua ({antrean.length}) →</Link></h2>
+        <PanelLipat id="antrean" className="rk-c4" judul="Antrean prioritas tinggi" ringkas={`· ${tinggi.length} dari ${antrean.length} butir`} aksi={<Link className="rk-act" href="/antrean">Semua ({antrean.length}) →</Link>}>
           <AntreanTabel rows={tinggi} ringkas />
-        </section>
+        </PanelLipat>
 
-        <section className="rk-panel rk-c4">
-          <h2>Beban per penanggung jawab <span className="rk-act" style={{ color: 'var(--rk-ink-3)' }}>{rk.opdPJ.length} OPD</span></h2>
+        <PanelLipat id="beban" className="rk-c4" judul="Beban per penanggung jawab" ringkas={`· ${rk.opdPJ.length} OPD`} aksi={<span className="rk-act" style={{ color: 'var(--rk-ink-3)' }}>{rk.opdPJ.length} OPD</span>}>
           <BebanPJ rows={rk.opdPJ} />
-        </section>
+        </PanelLipat>
 
-        <section className="rk-panel rk-c4">
-          <h2>Linimasa evaluasi 2026</h2>
+        <PanelLipat id="linimasa" className="rk-c4" judul="Linimasa evaluasi 2026" ringkas={`· ${(rk.linimasa || []).length} tahap`}>
           <Linimasa tahap={rk.linimasa} now={dibangun} />
-        </section>
+        </PanelLipat>
 
-        <section className="rk-panel rk-c4">
-          <h2>Prasyarat lintas indikator <Link className="rk-act" href="/requirement">Draf bukti →</Link></h2>
+        <PanelLipat id="prasyarat" className="rk-c4" judul="Prasyarat lintas indikator" ringkas={`· ${(rk.prasyarat || []).length} dokumen`} aksi={<Link className="rk-act" href="/requirement">Draf bukti →</Link>}>
           <Prasyarat rows={rk.prasyarat} />
-        </section>
+        </PanelLipat>
 
-        <section className="rk-panel">
-          <h2>Peta Proses Bisnis (PPB) Level 0–1–2 · PermenPANRB 19/2018 <Link className="rk-act" href="/probis">Eksplorasi peta lintas fungsi →</Link></h2>
+        <PanelLipat id="ppb" judul="Peta Proses Bisnis (PPB) Level 0–1–2 · PermenPANRB 19/2018" ringkas={`· ${ppb.misi} misi · ${ppb.urusan} urusan · ${ppb.proses} proses`} aksi={<Link className="rk-act" href="/probis">Eksplorasi peta lintas fungsi →</Link>}>
           <div className="rk-ppb">
             <Link href="/probis"><span className="mono faint">L0 · Makro</span><b>Visi &amp; {ppb.misi} Misi RPJMD 2025–2029</b><span className="muted">Arah pembangunan daerah sebagai akar seluruh proses.</span></Link>
             <Link href="/probis"><span className="mono faint">L1 · Urusan</span><b>{ppb.urusan} urusan konkuren UU 23/2014</b><span className="muted">Kewenangan wajib &amp; pilihan di seluruh perangkat daerah.</span></Link>
             <Link href="/probis"><span className="mono faint">L2 · Proses</span><b>{ppb.proses} proses lintas OPD</b><span className="muted">Bagan lintas fungsi (CFM) — bukti I15 Proses Bisnis &amp; I17 Keterpaduan.</span></Link>
           </div>
-        </section>
+        </PanelLipat>
 
-        <section className="rk-panel">
-          <h2>52 perangkat daerah · butir Pemdi per OPD <Link className="rk-act" href="/opd">Indeks OPD →</Link></h2>
+        <PanelLipat id="opd" judul="52 perangkat daerah · butir Pemdi per OPD" ringkas={`· ${opdList.length} OPD`} aksi={<Link className="rk-act" href="/opd">Indeks OPD →</Link>}>
           <OPDTable list={opdList} butirCountMap={butirCountMap} />
-        </section>
+        </PanelLipat>
       </div>
     </>
   );
