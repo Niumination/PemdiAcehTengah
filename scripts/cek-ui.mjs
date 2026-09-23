@@ -3,7 +3,9 @@
  * scripts/cek-ui.mjs — Penjaga kualitas UI (Patch 3).
  * Gagal (exit 1) bila:
  *  1. ada emoji sebagai ikon di pages/, components/, lib/ (kecuali bendera 🇮🇩 dan berkas ekspor lib/catatanMandiri.js),
- *  2. ada ukuran font < 11px (0.6875rem) di styles/*.css atau inline style.
+ *  2. ada ukuran font < 11px (0.6875rem) di styles/*.css atau inline style,
+ *  3. (Patch 8) `window.open(..., 'noopener')` — selalu mengembalikan null, tombol cetak mati; pakai lib/cetak.js,
+ *  4. (Patch 8) <OPDTable> dipanggil tanpa prop `list` (mis. `opdList=`) — tabel akan kosong.
  * Jalankan: node scripts/cek-ui.mjs  (dipanggil juga oleh `npm test` lewat test/cekUi.test.mjs)
  */
 import { readdirSync, readFileSync, statSync } from 'node:fs';
@@ -31,6 +33,8 @@ export function periksa(root = process.cwd()) {
     baris.forEach((l, i) => {
       const bersih = l.replace(FLAG, '');
       if (!KECUALI.has(rel) && EMOJI.test(bersih)) masalah.push(`${rel}:${i + 1} emoji sebagai ikon — pakai <Ikon>/<StatusIkon>`);
+      if (/window\.open\([^)]*noopener/.test(l)) masalah.push(`${rel}:${i + 1} window.open dengan 'noopener' mengembalikan null — pakai bukaCetak() dari lib/cetak.js`);
+      if (/<OPDTable\b(?![^>]*\blist=)/.test(l)) masalah.push(`${rel}:${i + 1} <OPDTable> tanpa prop list= — tabel akan kosong`);
       for (const m of l.matchAll(/font-?[sS]ize:\s*['"]?([\d.]+)(px|rem)/g)) {
         const px = m[2] === 'rem' ? parseFloat(m[1]) * 16 : parseFloat(m[1]);
         if (px < 11) masalah.push(`${rel}:${i + 1} font-size ${m[1]}${m[2]} < 11px`);

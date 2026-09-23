@@ -26,11 +26,17 @@
 .rk .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); border: 0; }
 .rk :focus-visible { outline: 2px solid var(--rk-emas); outline-offset: 2px; }
 
-/* ── Pita atas: marquee (dipertahankan) ── */
+/* ── Pita info: marquee di BAWAH bar kendali (Patch 8; dipertahankan sesuai keputusan pemilik) ── */
 .rk-strip {
-  height: 32px; display: flex; align-items: center; gap: 10px; padding: 0 14px;
-  background: #0A1220; color: #E6ECF5; border-bottom: 1px solid #233552;
+  position: sticky; top: var(--rk-bar-h); z-index: 39;
+  height: 30px; display: flex; align-items: center; gap: 0;
+  background: var(--rk-strip-bg, #0A1220); color: var(--rk-strip-ink, #E6ECF5); border-bottom: 1px solid var(--rk-strip-line, #233552);
   font-size: var(--rk-fs-1); overflow: hidden; white-space: nowrap;
+}
+.rk-strip-lbl {
+  flex: 0 0 auto; align-self: stretch; display: inline-flex; align-items: center; padding: 0 12px; margin-right: 14px;
+  background: var(--rk-emas); color: #14203A; font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  position: relative; z-index: 1;
 }
 .rk-strip .rk-track { display: flex; gap: 48px; animation: rk-marquee 40s linear infinite; will-change: transform; }
 .rk-strip .rk-track span { flex: 0 0 auto; }
@@ -38,24 +44,34 @@
 @keyframes rk-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .rk-strip .rk-track { animation-duration: 90s; } }
 
+/* ── Baris konteks PJ OPD (Patch 8) ── */
+.rk-konteks {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap; min-height: 44px; padding: 6px 20px;
+  background: color-mix(in srgb, var(--rk-emas) 10%, var(--rk-panel)); border-bottom: 1px solid var(--rk-line);
+  font-size: var(--rk-fs-1);
+}
+.rk-konteks-lbl { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; color: var(--rk-emas-ink); letter-spacing: 0.04em; text-transform: uppercase; font-size: 11px; }
+.rk-konteks-nama { color: var(--rk-ink-2); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
 /* ── Bar kendali ── */
 .rk-bar {
   position: sticky; top: 0; z-index: 40; height: var(--rk-bar-h);
-  display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 16px;
+  display: grid; grid-template-columns: minmax(0, auto) minmax(0, 1fr) auto; align-items: center; gap: 16px;
   padding: 0 20px; background: var(--rk-panel); border-bottom: 1px solid var(--rk-line);
 }
 .rk-brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
 .rk-brand img { width: 30px; height: 30px; }
 .rk-brand b { font-family: var(--rk-f-display); font-weight: 700; font-size: var(--rk-fs-3); white-space: nowrap; }
 .rk-brand small { display: block; font-size: 11px; color: var(--rk-ink-3); letter-spacing: 0.08em; text-transform: uppercase; }
-.rk-tabs { display: flex; gap: 2px; justify-self: center; }
+.rk-tabs { display: flex; gap: 2px; justify-self: center; min-width: 0; max-width: 100%; overflow-x: auto; scrollbar-width: none; }
+.rk-tabs::-webkit-scrollbar { display: none; }
 .rk-tabs a {
   padding: 8px 12px; border-radius: var(--rk-r-1); font-weight: 500; color: var(--rk-ink-2);
   border-bottom: 2px solid transparent; white-space: nowrap;
 }
 .rk-tabs a:hover { color: var(--rk-ink); background: var(--rk-panel-2); }
 .rk-tabs a[aria-current='page'] { color: var(--rk-ink); border-bottom-color: var(--rk-emas); }
-.rk-actions { display: flex; align-items: center; gap: 8px; }
+.rk-actions { display: flex; align-items: center; gap: 8px; flex: 0 0 auto; }
 .rk-kbtn {
   display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 12px;
   border: 1px solid var(--rk-line); border-radius: var(--rk-r-1); background: var(--rk-panel-2);
@@ -68,11 +84,15 @@
 .rk-seg button[aria-pressed='true'] { background: var(--rk-emas); color: #14203A; }
 .rk-select {
   height: 36px; padding: 0 30px 0 10px; border: 1px solid var(--rk-line); border-radius: var(--rk-r-1);
-  background: var(--rk-panel-2); color: var(--rk-ink); font: inherit; font-size: var(--rk-fs-1); max-width: 200px;
+  background: var(--rk-panel-2); color: var(--rk-ink); font: inherit; font-size: var(--rk-fs-1); max-width: 320px;
 }
 
 /* ── Isi ── */
-.rk-main { flex: 1; width: 100%; max-width: 1440px; margin: 0 auto; padding: 20px 20px 96px; }
+.rk-main { flex: 1; width: 100%; max-width: var(--rk-lebar, none); margin: 0 auto; padding: 20px 24px 96px; }
+/* Patch 8: lebar halaman — default penuh; toggle di bar kendali menulis html[data-lebar] */
+html[data-lebar='1800'] { --rk-lebar: 1800px; }
+html[data-lebar='1440'] { --rk-lebar: 1440px; }
+@media (min-width: 1800px) { .rk-main { padding-left: 32px; padding-right: 32px; } }
 .rk-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 16px; }
 .rk-panel {
   grid-column: span 12; background: var(--rk-panel); border: 1px solid var(--rk-line);
@@ -201,11 +221,13 @@
 
 /* ── Drawer ── */
 .rk-drawer {
-  position: fixed; top: 0; right: 0; bottom: 0; width: min(560px, 100vw); z-index: 60;
+  position: fixed; top: 0; right: 0; bottom: 0; width: min(var(--rk-drawer-w, 820px), 100vw); z-index: 60;
   background: var(--rk-panel); border-left: 1px solid var(--rk-line); box-shadow: var(--rk-shadow);
   transform: translateX(100%); transition: transform 0.22s ease; display: flex; flex-direction: column;
 }
 .rk-drawer[data-open='true'] { transform: none; }
+.rk-drawer[data-lebar='lebar'] { --rk-drawer-w: 1120px; }
+@media (max-width: 860px) { .rk-drawer { --rk-drawer-w: 100vw; } }
 @media (prefers-reduced-motion: reduce) { .rk-drawer { transition: none; } }
 .rk-drawer .hd { padding: 16px 20px; border-bottom: 1px solid var(--rk-line); display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
 .rk-drawer .hd h2 { font-size: var(--rk-fs-4); line-height: 1.25; }
@@ -213,6 +235,8 @@
 .rk-drawer .bd { padding: 16px 20px; overflow-y: auto; flex: 1; }
 .rk-drawer .ft { padding: 12px 20px; border-top: 1px solid var(--rk-line); display: flex; gap: 8px; flex-wrap: wrap; }
 .rk-scrim { position: fixed; inset: 0; z-index: 55; background: rgba(4, 9, 20, 0.55); }
+.rk-drawer-act { display: flex; gap: 6px; flex: 0 0 auto; }
+@media (max-width: 860px) { .rk-x-lebar { display: none; } }
 .rk-x { width: 36px; height: 36px; border: 1px solid var(--rk-line); border-radius: var(--rk-r-1); background: var(--rk-panel-2); display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; }
 .rk-lvbox { border: 1px solid var(--rk-line); border-radius: var(--rk-r-1); margin-bottom: 10px; }
 .rk-lvbox > summary { list-style: none; cursor: pointer; padding: 10px 12px; display: flex; gap: 10px; align-items: center; font-weight: 600; font-size: var(--rk-fs-2); }
@@ -257,6 +281,9 @@
   .rk-tabs { display: none; }
   .rk-brand small { display: none; }
   .rk-main { padding: 12px 12px 88px; }
+  .rk-konteks { padding: 6px 12px; }
+  .rk-kbtn-lebar { display: none; }
+  .rk-strip-lbl { padding: 0 8px; margin-right: 10px; }
   .rk-sit .lead { grid-column: span 2; }
   .rk-btab {
     position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; display: grid; grid-template-columns: repeat(5, 1fr);
@@ -284,7 +311,7 @@
 @media (max-width: 720px) { .rk-ppb { grid-template-columns: 1fr; } }
 
 /* ── Jembatan halaman lama (Patch 2): token lama dipetakan ke token Ruang Kendali ── */
-.rk-main-legacy { max-width: var(--content-max, 1440px); }
+.rk-main-legacy { max-width: var(--rk-lebar, none); }
 .rk-legacy {
   --bg: var(--rk-bg); --surface: var(--rk-panel); --surface-2: var(--rk-panel-2); --surface-hover: var(--rk-panel-2);
   --bg-subtle: var(--rk-panel-2); --line: var(--rk-line); --line-2: var(--rk-line-2); --border: var(--rk-line);

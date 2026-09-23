@@ -8,6 +8,7 @@
  * Tanpa localStorage, tanpa pustaka luar; ekspor berjalan di klien.
  */
 import { useState } from 'react';
+import { bukaCetak } from '@/lib/cetak';
 import StatusIkon from '@/components/ui/StatusIkon';
 import {
   PRIORITAS_META, JENIS_META, teksCatatanButir, teksCatatanIndikator,
@@ -103,13 +104,7 @@ export function EksporCatatan({ ind, meta = {}, compact = false }) {
   const items = butirBercatatan(ind);
   if (!items.length) return null;
   const nRevisi = items.filter((b) => b.catatan_mandiri.jenis === 'revisi').length;
-  const cetak = () => {
-    const w = window.open('', '_blank', 'noopener');
-    if (!w) return;
-    w.document.open();
-    w.document.write(htmlCatatanIndikator(ind, meta));
-    w.document.close();
-  };
+  const cetak = () => bukaCetak(htmlCatatanIndikator(ind, meta));
   return (
     <div className={`cm-ekspor${compact ? ' cm-ekspor-compact' : ''}`} role="group" aria-label={`Ekspor catatan mandiri ${ind.id}`}>
       <span className="cm-ekspor-label">

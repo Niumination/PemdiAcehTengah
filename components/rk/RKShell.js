@@ -3,12 +3,14 @@
  *
  * Dipakai untuk rute baru (/dashboard, /indikator, /antrean). Rute lama masih
  * memakai AppShell sampai Patch 2. Menyediakan:
- *   - pita marquee (dipertahankan sesuai keputusan pemilik)
+ *   - pita marquee di bawah bar kendali (dipertahankan sesuai keputusan pemilik; Patch 8: dipindah ke bawah header, tanpa emoji bendera)
+ *   - baris konteks PJ OPD (Patch 8: pemilih OPD keluar dari bar agar tab tidak tergencet)
+ *   - toggle lebar halaman penuh/1800/1440 (Patch 8; atribut html[data-lebar], default penuh)
  *   - bar kendali: brand, tab, persona Koordinator/PJ (+ pilih OPD), Ctrl+K, tema
  *   - konteks `useRK()` → { persona, opd, setPersona, setOpd, bukaButir, bukaIndikator, bukaPalet }
  *   - drawer indikator/butir + palet perintah, dirender sekali di sini
  */
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -36,6 +38,9 @@ const TAB_LAIN = [
   { href: '/admin', label: 'Admin CMS' },
 ];
 
+const LABEL_LEBAR = { penuh: 'Penuh', 1800: '1800', 1440: '1440' };
+const URUTAN_LEBAR = ['penuh', '1800', '1440'];
+
 const MARQUEE =
   'Dashboard Pemerintah Digital Kabupaten Aceh Tengah — Ruang kendali evaluasi 2026 · Interviu asesor 21–30 September · Visitasi 1–30 Oktober · Perangkat kerja Tim Koordinasi Pemdi & penanggung jawab OPD (PermenPANRB 8/2026)';
 
@@ -60,6 +65,8 @@ export default function RKShell({ children, data: dataProp, legacy = false }) {
   const [hidrasi, setHidrasi] = useState(false);
   const [drawer, setDrawer] = useState(null); // { indikatorId, butirId }
   const [palet, setPalet] = useState(false);
+  const [lebar, setLebar] = useState('penuh'); // Patch 8: penuh | 1800 | 1440 (default penuh — keputusan pemilik)
+  const lainRef = useRef(null);
 
   // Halaman lama tidak membawa props rk → muat ringkasan statis (dibangun saat build) untuk drawer & palet
   useEffect(() => {
@@ -73,8 +80,20 @@ export default function RKShell({ children, data: dataProp, legacy = false }) {
     setPersonaState(bacaLS('pemdi:persona', 'koordinator'));
     setOpdIdState(bacaLS('pemdi:pj', ''));
     setTema(document.documentElement.getAttribute('data-theme') || 'light');
+    setLebar(document.documentElement.getAttribute('data-lebar') || 'penuh');
     setHidrasi(true);
   }, []);
+
+  // Patch 8: menu "Lainnya" (<details>) menutup saat pindah rute, klik di luar, atau Esc
+  useEffect(() => {
+    const tutup = () => { if (lainRef.current?.open) lainRef.current.open = false; };
+    const klik = (e) => { if (lainRef.current?.open && !lainRef.current.contains(e.target)) tutup(); };
+    const esc = (e) => { if (e.key === 'Escape') tutup(); };
+    router.events.on('routeChangeStart', tutup);
+    document.addEventListener('pointerdown', klik);
+    document.addEventListener('keydown', esc);
+    return () => { router.events.off('routeChangeStart', tutup); document.removeEventListener('pointerdown', klik); document.removeEventListener('keydown', esc); };
+  }, [router.events]);
 
   // Buka drawer dari URL ?butir= / ?indikator=
   useEffect(() => {
@@ -94,6 +113,13 @@ export default function RKShell({ children, data: dataProp, legacy = false }) {
     tulisLS('theme', t);
     setTema(t);
   }, [tema]);
+
+  const gantiLebar = useCallback(() => {
+    const n = URUTAN_LEBAR[(URUTAN_LEBAR.indexOf(lebar) + 1) % URUTAN_LEBAR.length];
+    document.documentElement.setAttribute('data-lebar', n);
+    tulisLS('pemdi:lebar', n);
+    setLebar(n);
+  }, [lebar]);
 
   const bukaIndikator = useCallback((indikatorId) => setDrawer({ indikatorId, butirId: null }), []);
   const bukaButir = useCallback((butirId, indikatorId) => setDrawer({ indikatorId, butirId }), []);
@@ -130,11 +156,6 @@ export default function RKShell({ children, data: dataProp, legacy = false }) {
   return (
     <RKContext.Provider value={ctx}>
       <div className="rk">
-        <div className="rk-strip" aria-label="Informasi">
-          <span aria-hidden="true">🇮🇩</span>
-          <div className="rk-track" aria-label={teksMarquee}><span>{teksMarquee}</span><span aria-hidden="true">{teksMarquee}</span></div>
-        </div>
-
         <header className="rk-bar">
           <Link href="/dashboard" className="rk-brand" aria-label="Dashboard Pemerintah Digital — beranda">
             <Image src="/crest-pemdi.svg" alt="" width={30} height={30} />
@@ -144,7 +165,7 @@ export default function RKShell({ children, data: dataProp, legacy = false }) {
             {TAB_RK.map((t) => (
               <Link key={t.href} href={t.href} aria-current={path === t.href ? 'page' : undefined}>{t.label}</Link>
             ))}
-            <details className="rk-lain">
+            <details className="rk-lain" ref={lainRef}>
               <summary className="rk-kbtn" style={{ height: 34, border: 0, background: 'transparent', listStyle: 'none' }}>Lainnya ▾</summary>
               <ul>
                 {TAB_LAIN.map((t) => <li key={t.href}><Link href={t.href}>{t.label}</Link></li>)}
@@ -156,20 +177,33 @@ export default function RKShell({ children, data: dataProp, legacy = false }) {
               <button type="button" aria-pressed={persona === 'koordinator'} onClick={() => setPersona('koordinator')}>Koordinator</button>
               <button type="button" aria-pressed={persona === 'pj'} onClick={() => setPersona('pj')}>PJ OPD</button>
             </div>
-            {persona === 'pj' ? (
-              <select className="rk-select" aria-label="Pilih perangkat daerah" value={opdId} onChange={(e) => setOpd(e.target.value)}>
-                <option value="">Semua OPD</option>
-                {(data?.opdPJ || []).map((o) => <option key={o.id} value={o.id}>{o.singkat} ({o.total})</option>)}
-              </select>
-            ) : null}
             <button type="button" className="rk-kbtn" onClick={() => setPalet(true)} aria-label="Cari / perintah (Ctrl+K)">
               <Ikon nama="cari" /> <span className="rk-kbtn-lbl">Cari</span> <kbd>Ctrl K</kbd>
+            </button>
+            <button type="button" className="rk-kbtn rk-kbtn-lebar" onClick={gantiLebar} aria-label={`Lebar halaman: ${LABEL_LEBAR[lebar]} — klik untuk mengubah`} title={`Lebar halaman: ${LABEL_LEBAR[lebar]}`} suppressHydrationWarning>
+              <Ikon nama="lebar" /><span className="rk-kbtn-lbl">{LABEL_LEBAR[lebar]}</span>
             </button>
             <button type="button" className="rk-kbtn" onClick={gantiTema} aria-label={tema === 'dark' ? 'Ganti ke tema terang' : 'Ganti ke tema gelap'} suppressHydrationWarning>
               <Ikon nama="tema" />
             </button>
           </div>
         </header>
+
+        <div className="rk-strip" aria-label="Informasi">
+          <span className="rk-strip-lbl">Info</span>
+          <div className="rk-track" aria-label={teksMarquee}><span>{teksMarquee}</span><span aria-hidden="true">{teksMarquee}</span></div>
+        </div>
+
+        {persona === 'pj' ? (
+          <div className="rk-konteks" role="region" aria-label="Konteks penanggung jawab">
+            <span className="rk-konteks-lbl"><Ikon nama="gedung" size={14} /> Mode PJ OPD</span>
+            <select className="rk-select" aria-label="Pilih perangkat daerah" value={opdId} onChange={(e) => setOpd(e.target.value)}>
+              <option value="">Semua OPD</option>
+              {(data?.opdPJ || []).map((o) => <option key={o.id} value={o.id}>{o.singkat} ({o.total})</option>)}
+            </select>
+            {opdAktif ? <span className="rk-konteks-nama">{opdAktif.nama} · {opdAktif.total} butir</span> : <span className="rk-konteks-nama faint">Pilih OPD untuk menyaring antrean &amp; indikator</span>}
+          </div>
+        ) : null}
 
         <main id="main-content" className={`rk-main${legacy ? ' rk-main-legacy' : ''}`}>{children}</main>
 

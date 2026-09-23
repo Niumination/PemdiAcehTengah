@@ -7,6 +7,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import Ikon from '@/components/ui/Ikon';
+import { bukaCetak } from '@/lib/cetak';
 import { fokusLevel, peranLevel, statusMeta, LEVEL_NAMA_RESMI } from '@/lib/pemdiNilai';
 import {
   teksCatatanButir, teksCatatanIndikator, htmlCatatanIndikator, docxCatatanIndikator,
@@ -80,6 +81,8 @@ function Butir({ b, ind, sorot }) {
 export default function Drawer({ state, onClose, data }) {
   const ref = useRef(null);
   const [flash, setFlash] = useState(false);
+  const [lebar, setLebar] = useState('normal'); // Patch 8: normal (820px) | lebar (1120px)
+  useEffect(() => { try { setLebar(localStorage.getItem('pemdi:drawer') === 'lebar' ? 'lebar' : 'normal'); } catch { /* abaikan */ } }, []);
   const ind = useMemo(() => {
     if (!state?.indikatorId) return null;
     return (data?.indikatorPenuh || []).find((i) => i.id === state.indikatorId) || null;
@@ -116,12 +119,13 @@ export default function Drawer({ state, onClose, data }) {
   const perLevel = [1, 2, 3, 4, 5].map((l) => ({ l, items: (ind.bukti_dukung || []).filter((b) => Number(b.level) === l) }));
   const nCM = butirBercatatan(ind).length;
   const meta = { instansi: 'Pemerintah Kabupaten Aceh Tengah', tanggal: new Date().toLocaleDateString('id-ID') };
-  const cetak = () => { const w = window.open('', '_blank', 'noopener'); if (!w) return; w.document.open(); w.document.write(htmlCatatanIndikator(ind, meta)); w.document.close(); };
+  const cetak = () => bukaCetak(htmlCatatanIndikator(ind, meta));
+  const gantiLebar = () => { const n = lebar === 'lebar' ? 'normal' : 'lebar'; setLebar(n); try { localStorage.setItem('pemdi:drawer', n); } catch { /* abaikan */ } };
 
   return (
     <>
       <div className="rk-scrim" onClick={onClose} aria-hidden="true" />
-      <aside className="rk-drawer" data-open="true" role="dialog" aria-modal="true" aria-labelledby="rk-dr-title" ref={ref} tabIndex={-1}>
+      <aside className="rk-drawer" data-open="true" data-lebar={lebar} role="dialog" aria-modal="true" aria-labelledby="rk-dr-title" ref={ref} tabIndex={-1}>
         <div className="hd">
           <div>
             <div className="sub">
@@ -135,7 +139,10 @@ export default function Drawer({ state, onClose, data }) {
               {ringkas?.pjLead ? <span className="faint">· PJ indikator: {ringkas.pjLead}</span> : null}
             </div>
           </div>
-          <button type="button" className="rk-x" onClick={onClose} aria-label="Tutup"><Ikon nama="tutup" /></button>
+          <div className="rk-drawer-act">
+            <button type="button" className="rk-x rk-x-lebar" onClick={gantiLebar} aria-label={lebar === 'lebar' ? 'Persempit panel' : 'Perlebar panel'} title={lebar === 'lebar' ? 'Persempit panel' : 'Perlebar panel'}><Ikon nama={lebar === 'lebar' ? 'kanan' : 'lebar'} /></button>
+            <button type="button" className="rk-x" onClick={onClose} aria-label="Tutup"><Ikon nama="tutup" /></button>
+          </div>
         </div>
         <div className="bd">
           {f.eksternal ? (

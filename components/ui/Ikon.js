@@ -27,6 +27,7 @@ const P = {
   gedung: <><path d="M3 21h18M5 21V7l7-4 7 4v14" /><path d="M9 21v-5h6v5M9 11h.01M15 11h.01M12 11h.01" /></>,
   kiri: <><path d="m15 6-6 6 6 6" /></>,
   kanan: <><path d="m9 6 6 6-6 6" /></>,
+  lebar: <><path d="M3 12h18M7 8l-4 4 4 4M17 8l4 4-4 4" /></>,
 };
 
 export default function Ikon({ nama, size = 16, stroke = 1.75, className, title, ...rest }) {

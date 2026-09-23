@@ -30,6 +30,10 @@ export default function Document() {
                 // Default SELALU light — palette Navy/Beige/Gold adalah tema resmi
                 if (!t) t = 'light';
                 document.documentElement.setAttribute('data-theme', t);
+                // Patch 8: lebar halaman (penuh | 1800 | 1440), default penuh
+                var l; try { l = localStorage.getItem('pemdi:lebar'); } catch(e){}
+                if (l !== '1800' && l !== '1440') l = 'penuh';
+                document.documentElement.setAttribute('data-lebar', l);
               })();
             `,
           }}

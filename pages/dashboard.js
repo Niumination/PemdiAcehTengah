@@ -76,7 +76,7 @@ export default function Dashboard({ rk, opdList, butirCountMap, dibangun, ppb })
 
         <section className="rk-panel">
           <h2>52 perangkat daerah · butir Pemdi per OPD <Link className="rk-act" href="/opd">Indeks OPD →</Link></h2>
-          <OPDTable opdList={opdList} butirCountMap={butirCountMap} />
+          <OPDTable list={opdList} butirCountMap={butirCountMap} />
         </section>
       </div>
     </>
