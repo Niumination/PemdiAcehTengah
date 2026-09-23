@@ -6,6 +6,7 @@
 import pemdi from '@/data/pemdi.json';
 import opdJson from '@/data/opd.json';
 import { wajibSesi, labelSesi } from '@/lib/cmsAuth';
+import { segarkanHalaman } from '@/lib/revalidate';
 import { dbAktif, simpanButir, catatLog, bacaOverlay } from '@/lib/db';
 import { validasiPatchButir } from '@/lib/overlay';
 import { hitungButirOPD } from '@/lib/pjButir';
@@ -36,6 +37,6 @@ export default async function handler(req, res) {
 
   const { lama, baru } = await simpanButir(id, v.patch, labelSesi(sesi));
   await catatLog({ peran: sesi.peran, opd: sesi.opd, aksi: 'ubah_butir', target: id, sebelum: lama, sesudah: baru });
-  try { await res.revalidate('/dashboard'); await res.revalidate('/indikator'); await res.revalidate('/antrean'); } catch { /* ISR akan menyusul */ }
-  return res.status(200).json({ ok: true, id, overlay: baru });
+  const segar = await segarkanHalaman(res);
+  return res.status(200).json({ ok: true, id, overlay: baru, segar });
 }

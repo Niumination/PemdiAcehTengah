@@ -6,7 +6,7 @@ REST API read-only — serverless functions Next.js yang membaca `data/*.json` a
 
 ## Ownership — 6 API baca + 3 auth + 5 admin (Patch 4)
 
-> **CMS (22 Sep 2026)** — `lib/db.js` (Neon, tanpa ORM; tabel `butir_overlay`, `konten_tampilan`, `log_audit` dibuat otomatis `CREATE TABLE IF NOT EXISTS`), `lib/cmsAuth.js` (token HMAC-SHA256 stateless di cookie httpOnly `pemdi_cms`, 12 jam), `lib/overlay.js` (validasi + penggabungan murni, teruji). Tanpa `DATABASE_URL` semua API tulis → 503, baca tetap jalan. Nama butir/kriteria PermenPANRB tidak pernah dapat diubah lewat API.
+> **CMS (22 Sep 2026)** — `lib/db.js` (Neon, tanpa ORM; tabel `butir_overlay`, `konten_tampilan`, `log_audit` dibuat otomatis `CREATE TABLE IF NOT EXISTS`), `lib/cmsAuth.js` (token HMAC-SHA256 stateless di cookie httpOnly `pemdi_cms`, 12 jam), `lib/overlay.js` (validasi + penggabungan murni, teruji). Tanpa `DATABASE_URL` semua API tulis → 503, baca tetap jalan. Uji lokal end-to-end: `CMS_DB_LOKAL=.cache/pgdata` (PGlite). Catatan: PJ OPD boleh menyunting butir yang PJ-nya menyebut OPD-nya **termasuk butir multi-OPD** (mis. "Setda + Diskominfo") — sesuai `pjButir`. Setelah tulis, API memanggil `lib/revalidate.segarkanHalaman` dan melaporkan `segar:{ok,gagal}`. Nama butir/kriteria PermenPANRB tidak pernah dapat diubah lewat API.
 
 | Route | File | Method | Fungsi | Auth |
 |-------|------|--------|--------|------|
