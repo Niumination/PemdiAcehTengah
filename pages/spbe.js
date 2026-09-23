@@ -43,7 +43,7 @@ function DomainCard({ nama, nilai }) {
         <span style={{ fontSize: '2rem', fontWeight: 700, color: level.color }}>
           {formatDesimal(nilai)}
         </span>
-        <span className="badge" style={{ background: `${level.color}18`, color: level.color, fontSize: '0.7rem' }}>
+        <span className="badge" style={{ background: `color-mix(in srgb, ${level.color} 10%, transparent)`, color: level.color, fontSize: '0.7rem' }}>
           {level.label}
         </span>
       </div>
@@ -71,15 +71,7 @@ export default function SpbePage({ data }) {
       </Head>
 
       {/* HERO */}
-      <section style={{
-        background: 'var(--hero-grad)',
-        borderRadius: 'var(--r)',
-        padding: '2.5rem 2rem',
-        marginBottom: '2rem',
-        color: '#fff',
-        position: 'relative',
-        overflow: 'hidden',
-      }}>
+      <section className="hero" style={{ padding: '2.5rem 2rem' }}>
         <div style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', opacity: 0.7, marginBottom: '0.5rem' }}>
             Kabupaten Aceh Tengah · {spbe.tahun}
@@ -106,14 +98,9 @@ export default function SpbePage({ data }) {
               </div>
               <div style={{ fontSize: '0.75rem', opacity: 0.7, marginTop: '0.25rem' }}>dari 5.00</div>
             </div>
-            <div style={{ width: 1, height: 50, background: 'rgba(255,255,255,0.2)' }} />
+            <div className="hero-sep" />
             <div>
-              <span className="badge" style={{
-                background: 'rgba(255,255,255,0.2)',
-                color: '#fff',
-                fontSize: '0.85rem',
-                padding: '0.35rem 1rem',
-              }}>
+              <span className="hero-chip" style={{ fontSize: '0.85rem', padding: '0.35rem 1rem' }}>
                 {kategori}
               </span>
             </div>
@@ -248,7 +235,7 @@ export default function SpbePage({ data }) {
                 <span style={{ fontSize: '1.1rem', fontWeight: 700, color: getLevel(info.nilai).color }}>
                   {formatDesimal(info.nilai)}
                 </span>
-                <span className="badge" style={{ background: `${getLevel(info.nilai).color}18`, color: getLevel(info.nilai).color, fontSize: '0.6875rem' }}>
+                <span className="badge" style={{ background: `color-mix(in srgb, ${getLevel(info.nilai).color} 10%, transparent)`, color: getLevel(info.nilai).color, fontSize: '0.6875rem' }}>
                   {getLevel(info.nilai).label}
                 </span>
               </summary>

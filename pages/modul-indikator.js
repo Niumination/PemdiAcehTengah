@@ -39,9 +39,9 @@ function hitungStatusL1(indId) {
 // STATUS_META (diterima/revisi/proses/draf/belum) di-import dari lib/pemdiNilai.js
 
 // LEVEL_LABEL & LEVEL_NAMA_RESMI di-import dari lib/pemdiNilai.js (nama level resmi PermenPANRB 8/2026)
-// Palet level (B4): nilai literal (dipakai dengan concat alpha `${warna}18`)
+// Palet level (B4): nilai literal (dipakai dengan concat alpha `color-mix(in srgb, ${warna} 10%, transparent)`)
 //  — dipilih agar kontras WCAG >= 5:1 vs putih & putih di atasnya (audit kontras 2026-09-18)
-const LEVEL_WARNA = { 0: 'var(--muted)', 1: '#b91c1c', 2: '#ab5708', 3: '#1d4ed8', 4: '#047857', 5: '#6d28d9' };
+const LEVEL_WARNA = { 0: 'var(--muted)', 1: 'var(--lv1)', 2: 'var(--lv2)', 3: 'var(--lv3)', 4: 'var(--lv4)', 5: 'var(--lv5)' };
 
 function hitungStatus(ind) {
   const st = statistikIndikator(ind);
@@ -370,7 +370,7 @@ function formatKriteria(text) {
               </span>
             ))}
             {pemdiData.penilaian_tahap1 && (
-              <span className="stat-badge" style={{ background: 'var(--primary-bg, #e3edff)', color: 'var(--primary)' }}>
+              <span className="stat-badge" style={{ background: 'var(--primary-bg)', color: 'var(--primary)' }}>
                 Tahap 1 eval.spbe.go.id: {pemdiData.penilaian_tahap1.dinilai} butir dinilai · sinkron {pemdiData.penilaian_tahap1.tanggal_sinkron}
               </span>
             )}
@@ -431,16 +431,16 @@ function formatKriteria(text) {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
             {filtered.map(modul => {
               const warnaAspek = pemdiData.aspek.find(a => a.nama === modul.aspek) || {};
-              const w = warnaAspek.warna || '#6b7280';
+              const w = warnaAspek.warna || 'var(--muted)';
               const isOpen = buka === modul.nomor;
               const pj = modul.ind?.penanggung_jawab;
 
               return (
                 <div key={modul.nomor} id={`modul-${modul.nomor}`}
                   style={{
-                    border: `1px solid ${w}25`, borderRadius: '12px',
+                    border: `1px solid color-mix(in srgb, ${w} 15%, transparent)`, borderRadius: '12px',
                     background: 'var(--card-bg)', overflow: 'hidden',
-                    boxShadow: isOpen ? `0 0 0 2px ${w}30` : 'none',
+                    boxShadow: isOpen ? `0 0 0 2px color-mix(in srgb, ${w} 19%, transparent)` : 'none',
                     transition: 'box-shadow 0.2s',
                   }}>
                   {/* ── HEADER ── */}
@@ -453,7 +453,7 @@ function formatKriteria(text) {
                     }}>
                     <span style={{
                       width: '36px', height: '36px', borderRadius: '8px',
-                      background: `${w}15`, color: w,
+                      background: `color-mix(in srgb, ${w} 8%, transparent)`, color: w,
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                       fontWeight: 700, fontSize: '0.8rem', flexShrink: 0,
                     }}>{modul.nomor}</span>
@@ -465,7 +465,7 @@ function formatKriteria(text) {
                         </strong>
                         <span style={{
                           fontSize: '0.6875rem', padding: '0.15rem 0.4rem', borderRadius: '4px',
-                          background: `${w}15`, color: w, fontWeight: 600,
+                          background: `color-mix(in srgb, ${w} 8%, transparent)`, color: w, fontWeight: 600,
                         }}>{modul.aspek?.replace('Aspek ', 'A')}</span>
                       </div>
 
@@ -479,7 +479,7 @@ function formatKriteria(text) {
                             <div style={{
                               height: '100%', borderRadius: '2px',
                               width: `${(modul.status.diterima / modul.status.count) * 100}%`,
-                              background: 'linear-gradient(90deg, #10b981, #059669)',
+                              background: 'var(--ok)',
                               transformOrigin: 'left',
                             }} />
                           </div>
@@ -500,7 +500,7 @@ function formatKriteria(text) {
                   {isOpen && (
                     <div style={{
                       padding: '0 1.25rem 1.5rem',
-                      borderTop: `1px solid ${w}15`,
+                      borderTop: `1px solid color-mix(in srgb, ${w} 8%, transparent)`,
                     }}>
                       {/* Description — Deskripsi Indikator utuh dari PermenPANRB 8/2026 (disinkronkan scripts/sinkron-modul-indikator.py) */}
                       {modul.deskripsi && (
@@ -596,7 +596,7 @@ function formatKriteria(text) {
                               <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.25rem' }}>
                                 <span style={{
                                   display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                                  background: LEVEL_WARNA[lv.level] || '#6b7280',
+                                  background: LEVEL_WARNA[lv.level] || 'var(--muted)',
                                   color: '#fff', fontWeight: 700, fontSize: '0.6875rem',
                                   borderRadius: '5px', padding: '0.1rem 0.35rem', lineHeight: 1.5,
                                 }}>L{lv.level}</span>
@@ -618,7 +618,7 @@ function formatKriteria(text) {
 
                       {/* ════ Penanggung Jawab ════ */}
                       {pj && (
-                        <div style={{ marginTop: '1rem', padding: '0.75rem', borderRadius: '8px', background: `${w}08`, border: `1px solid ${w}20` }}>
+                        <div style={{ marginTop: '1rem', padding: '0.75rem', borderRadius: '8px', background: `${w}08`, border: `1px solid color-mix(in srgb, ${w} 12%, transparent)` }}>
                           <h4 style={{ fontSize: '0.85rem', fontWeight: 700, marginBottom: '0.4rem', color: 'var(--text)' }}>
                             Penanggung Jawab
                           </h4>
@@ -723,8 +723,8 @@ function formatKriteria(text) {
                                     <td style={tdStyle}>
                                       <span style={{
                                         padding: '0.15rem 0.4rem', borderRadius: '4px',
-                                        background: `${LEVEL_WARNA[bd.level] || '#6b7280'}15`,
-                                        color: LEVEL_WARNA[bd.level] || '#6b7280',
+                                        background: `color-mix(in srgb, ${LEVEL_WARNA[bd.level] || 'var(--muted)'} 12%, transparent)`,
+                                        color: LEVEL_WARNA[bd.level] || 'var(--muted)',
                                         fontWeight: 600, fontSize: '0.7rem',
                                       }}>L{bd.level}</span>
                                     </td>
@@ -885,8 +885,8 @@ function formatKriteria(text) {
                                             <td style={tdStyle}>
                                               <span style={{
                                                 padding: '0.15rem 0.4rem', borderRadius: '4px',
-                                                background: `${LEVEL_WARNA[bd.level] || '#6b7280'}15`,
-                                                color: LEVEL_WARNA[bd.level] || '#6b7280',
+                                                background: `color-mix(in srgb, ${LEVEL_WARNA[bd.level] || 'var(--muted)'} 12%, transparent)`,
+                                                color: LEVEL_WARNA[bd.level] || 'var(--muted)',
                                                 fontWeight: 600, fontSize: '0.7rem',
                                               }}>L{bd.level}</span>
                                             </td>
@@ -1009,7 +1009,7 @@ function formatKriteria(text) {
 
           {/* Stat mini */}
           <div className="stat-row" style={{ flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.25rem' }}>
-            <span className="stat-badge" style={{ background: 'var(--primary-bg, #e3edff)', color: 'var(--primary)' }}>
+            <span className="stat-badge" style={{ background: 'var(--primary-bg)', color: 'var(--primary)' }}>
               {kebutuhanData.cakupan.total_kebutuhan} kebutuhan bukti (L1+L2)
             </span>
             <span className="stat-badge" style={{ background: 'var(--surface-2)', color: 'var(--muted)' }}>
@@ -1043,13 +1043,13 @@ function formatKriteria(text) {
               const semua = e.level.flatMap((lv) => lv.kebutuhan);
               const nLengkap = semua.filter((k) => k.status_indikasi === 'diterima').length;
               const pct = Math.round((nLengkap / semua.length) * 100);
-              const w = pemdiData.aspek.find((a) => a.singkat === e.aspek_singkat)?.warna || '#6b7280';
+              const w = pemdiData.aspek.find((a) => a.singkat === e.aspek_singkat)?.warna || 'var(--muted)';
               return (
                 <div key={e.indikator} id={`matriks-${e.indikator}`}
                   style={{
-                    border: `1px solid ${w}25`, borderRadius: '12px',
+                    border: `1px solid color-mix(in srgb, ${w} 15%, transparent)`, borderRadius: '12px',
                     background: 'var(--card-bg)', overflow: 'hidden',
-                    boxShadow: open ? `0 0 0 2px ${w}30` : 'none',
+                    boxShadow: open ? `0 0 0 2px color-mix(in srgb, ${w} 19%, transparent)` : 'none',
                   }}>
                   {/* Header */}
                   <button onClick={() => setBukaMatriks(open ? null : e.indikator)}
@@ -1059,7 +1059,7 @@ function formatKriteria(text) {
                       textAlign: 'left', fontSize: '0.875rem', fontFamily: 'inherit',
                     }}>
                     <span style={{
-                      width: 34, height: 34, borderRadius: '8px', background: `${w}15`, color: w,
+                      width: 34, height: 34, borderRadius: '8px', background: `color-mix(in srgb, ${w} 8%, transparent)`, color: w,
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                       fontWeight: 700, fontSize: '0.72rem', flexShrink: 0,
                     }}>{e.indikator}</span>
@@ -1070,7 +1070,7 @@ function formatKriteria(text) {
                       </div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '4px' }}>
                         <div style={{ flex: 1, maxWidth: 180, height: 4, borderRadius: 2, background: 'var(--line)', overflow: 'hidden' }}>
-                          <div style={{ height: '100%', width: `${pct}%`, borderRadius: 2, background: 'linear-gradient(90deg,#10b981,#059669)' }} />
+                          <div style={{ height: '100%', width: `${pct}%`, borderRadius: 2, background: 'var(--ok)' }} />
                         </div>
                         <span style={{ fontSize: '0.6875rem', color: 'var(--muted)' }}>{nLengkap}/{semua.length} indikasi diterima asesor</span>
                       </div>
@@ -1080,7 +1080,7 @@ function formatKriteria(text) {
 
                   {/* Body */}
                   {open && (
-                    <div style={{ padding: '0 1.1rem 1.25rem', borderTop: `1px solid ${w}15` }}>
+                    <div style={{ padding: '0 1.1rem 1.25rem', borderTop: `1px solid color-mix(in srgb, ${w} 8%, transparent)` }}>
                       {e.catatan_grup && (
                         <p style={{ fontSize: '0.7rem', color: 'var(--muted)', fontStyle: 'italic', margin: '0.6rem 0 0' }}>
                           ℹ️ {e.catatan_grup}
@@ -1252,7 +1252,7 @@ function formatKriteria(text) {
             <span className="stat-badge" style={{ background: 'var(--surface-2)', color: 'var(--muted)' }}>
               {hitungBuktiBaru().belum} belum diunggah
             </span>
-            <span className="stat-badge" style={{ background: 'var(--primary-bg, #e3edff)', color: 'var(--primary)' }}>
+            <span className="stat-badge" style={{ background: 'var(--primary-bg)', color: 'var(--primary)' }}>
               {hitungBuktiBaru().dokumen} dokumen kunci terdukung
             </span>
           </div>
@@ -1279,7 +1279,7 @@ function formatKriteria(text) {
                   return (
                     <tr key={bd.id} style={{ borderBottom: '1px solid var(--border)' }}>
                       <td style={tdStyle}>
-                        <span style={{ padding: '0.15rem 0.4rem', borderRadius: '4px', background: 'var(--primary-bg, #e3edff)', color: 'var(--primary)', fontWeight: 700, fontSize: '0.6875rem' }}>
+                        <span style={{ padding: '0.15rem 0.4rem', borderRadius: '4px', background: 'var(--primary-bg)', color: 'var(--primary)', fontWeight: 700, fontSize: '0.6875rem' }}>
                           {bd._indikator}
                         </span>
                       </td>
@@ -1295,7 +1295,7 @@ function formatKriteria(text) {
                         )}
                       </td>
                       <td style={tdStyle}>
-                        <span style={{ padding: '0.15rem 0.4rem', borderRadius: '4px', background: `${LEVEL_WARNA[bd.level] || '#6b7280'}15`, color: LEVEL_WARNA[bd.level] || '#6b7280', fontWeight: 600, fontSize: '0.7rem' }}>
+                        <span style={{ padding: '0.15rem 0.4rem', borderRadius: '4px', background: `color-mix(in srgb, ${LEVEL_WARNA[bd.level] || 'var(--muted)'} 12%, transparent)`, color: LEVEL_WARNA[bd.level] || 'var(--muted)', fontWeight: 600, fontSize: '0.7rem' }}>
                           L{bd.level}
                         </span>
                       </td>
@@ -1357,8 +1357,8 @@ function formatKriteria(text) {
             {dokumenKunci.dokumen.map((doc) => {
               const open = bukaDokumen === doc.no;
               const prioritasWarna = doc.prioritas.toLowerCase().includes('tertinggi')
-                ? 'var(--status-bad, #b91c1c)' : doc.prioritas.toLowerCase().includes('tinggi')
-                ? 'var(--warn, #b45309)' : 'var(--muted)';
+                ? 'var(--bad)' : doc.prioritas.toLowerCase().includes('tinggi')
+                ? 'var(--warn)' : 'var(--muted)';
               return (
                 <div key={doc.no} style={{
                   border: '1px solid var(--border)', borderRadius: '10px',

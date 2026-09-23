@@ -73,7 +73,7 @@ export default function Cari({ items }) {
         <meta name="description" content="Pencarian dashboard Pemdi Aceh Tengah — cari indikator, OPD, glosarium, dan dokumen kunci." />
       </Head>
 
-      <section style={{ padding: '3rem 0 1.5rem', background: 'var(--hero-grad)', color: '#fff', position: 'relative', overflow: 'hidden' }}>
+      <section className="hero" style={{ padding: '3rem 0 1.5rem' }}>
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <h1 className="gold-head" style={{ margin: '0 0 0.75rem', fontSize: '1.75rem' }}>Pencarian</h1>
           <p style={{ opacity: 0.85, marginBottom: '1.25rem', fontSize: '0.9375rem' }}>

@@ -21,9 +21,9 @@ import {
 } from '@/lib/pemdiNilai';
 
 // STATUS_META (diterima/revisi/proses/draf/belum) di-import dari lib/pemdiNilai.js — satu sumber untuk /pemdi, /modul-indikator, beranda
-// Palet level (B4): nilai literal (dipakai dengan concat alpha `${warna}18`)
+// Palet level (B4): nilai literal (dipakai dengan concat alpha `color-mix(in srgb, ${warna} 10%, transparent)`)
 //  — dipilih agar kontras WCAG >= 5:1 vs putih & putih di atasnya (audit kontras 2026-09-18)
-const LEVEL_WARNA = { 0: 'var(--muted)', 1: '#b91c1c', 2: '#ab5708', 3: '#1d4ed8', 4: '#047857', 5: '#6d28d9' };
+const LEVEL_WARNA = { 0: 'var(--muted)', 1: 'var(--lv1)', 2: 'var(--lv2)', 3: 'var(--lv3)', 4: 'var(--lv4)', 5: 'var(--lv5)' };
 
 /* ── CountStat lokal: angka KPI dengan count-up saat masuk viewport ── */
 function CountStat({ value, decimals = 0, color, style }) {
@@ -234,27 +234,22 @@ function defaultCatatan(ind) {
       </Head>
 
       {/* Hero Header */}
-      <section
-        style={{
-          background: 'var(--hero-grad)', color: '#ffffff', padding: '36px 28px',
-          borderRadius: 'var(--r-lg)', marginBottom: '28px', position: 'relative', overflow: 'hidden',
-        }}
-      >
+      <section className="hero" style={{ padding: '36px 28px' }}>
         <div style={{ position: 'relative', zIndex: 2 }}>
           <span className="pill">PermenPANRB No. 8 Tahun 2026 · Penilaian Mandiri Internal</span>
           <h1 className="gold-head" style={{ fontSize: 'clamp(22px, 3vw, 34px)', margin: '8px 0 12px' }}>
             Dashboard Evaluasi Pemerintah Digital (Pemdi) 2026
           </h1>
-          <p style={{ color: 'rgba(255,255,255,0.9)', maxWidth: '680px', lineHeight: 1.6, fontSize: '0.98rem' }}>
+          <p style={{ maxWidth: '680px', lineHeight: 1.6, fontSize: '0.98rem' }}>
             Perangkat kerja Tim Koordinasi Pemdi Kabupaten Aceh Tengah untuk memantau <strong>7 Aspek</strong> dan <strong>20 Indikator</strong>
             — status bukti dukung mengikuti hasil penilaian asesor di <strong>eval.spbe.go.id</strong>. Target indeks <strong>≥ 2,50</strong>.
           </p>
           {tahap1 && (
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginTop: '14px' }}>
-              <span className="stat-badge" style={{ background: 'rgba(255,255,255,0.14)', color: '#fff', border: '1px solid rgba(255,255,255,0.3)' }}>Tahap 1: {tahap1.dinilai} butir dinilai asesor</span>
-              <span className="stat-badge" style={{ background: 'rgba(16,185,129,0.25)', color: '#fff', border: '1px solid rgba(255,255,255,0.3)' }}>{tahap1.diterima} diterima</span>
-              <span className="stat-badge" style={{ background: 'rgba(239,68,68,0.3)', color: '#fff', border: '1px solid rgba(255,255,255,0.3)' }}>{tahap1.revisi} revisi</span>
-              <span className="stat-badge" style={{ background: 'rgba(255,255,255,0.14)', color: '#fff', border: '1px solid rgba(255,255,255,0.3)' }}>Sinkron {tahap1.tanggal_sinkron}</span>
+              <span className="hero-chip">Tahap 1: {tahap1.dinilai} butir dinilai asesor</span>
+              <span className="hero-chip ok">{tahap1.diterima} diterima</span>
+              <span className="hero-chip bad">{tahap1.revisi} revisi</span>
+              <span className="hero-chip">Sinkron {tahap1.tanggal_sinkron}</span>
             </div>
           )}
         </div>
@@ -377,7 +372,7 @@ function defaultCatatan(ind) {
                     </tr>
                   </Fragment>
                 ))}
-                <tr style={{ background: 'var(--primary-bg, #e3edff)' }}>
+                <tr style={{ background: 'var(--primary-bg)' }}>
                   <td style={{ padding: '10px', fontWeight: 800, color: 'var(--primary)' }}>INDEKS PEMDI — CAPAIAN TERVERIFIKASI</td>
                   <td style={{ padding: '10px', textAlign: 'center', fontFamily: 'var(--font-mono)' }}>100%</td>
                   <td colSpan={2} style={{ padding: '10px', textAlign: 'center', fontFamily: 'var(--font-mono)', fontWeight: 800, fontSize: '0.95rem', color: 'var(--primary)' }}>
@@ -482,7 +477,7 @@ function defaultCatatan(ind) {
               <StatusIkon k={k} /> {statGlobal[k]} {STATUS_META[k].label}
             </span>
           ))}
-          <span className="stat-badge" style={{ background: 'var(--primary-bg, #e3edff)', color: 'var(--primary)' }}>
+          <span className="stat-badge" style={{ background: 'var(--primary-bg)', color: 'var(--primary)' }}>
             Gap: {statGlobal.gap} item
           </span>
           <Link
@@ -538,7 +533,7 @@ function defaultCatatan(ind) {
                       style={{
                         display: 'block', width: '100%', textAlign: 'left', border: 'none', cursor: 'pointer',
                         padding: '11px 14px', fontFamily: 'inherit',
-                        background: aktif ? 'var(--primary-bg, #e3edff)' : 'var(--surface)',
+                        background: aktif ? 'var(--primary-bg)' : 'var(--surface)',
                         borderBottom: '1px solid var(--line)',
                         borderTop: aktif ? '3px solid var(--primary)' : '3px solid transparent',
                       }}
@@ -812,7 +807,7 @@ function defaultCatatan(ind) {
             <div style={{ marginBottom: '12px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '8px' }}>
                 <span className="badge badge-blue">{preview.indId}</span>
-                <span style={{ fontSize: '0.72rem', fontWeight: 800, color: LEVEL_WARNA[preview.level], background: `${LEVEL_WARNA[preview.level]}18`, padding: '2px 8px', borderRadius: '100px' }}>
+                <span style={{ fontSize: '0.72rem', fontWeight: 800, color: LEVEL_WARNA[preview.level], background: `color-mix(in srgb, ${LEVEL_WARNA[preview.level]} 10%, transparent)`, padding: '2px 8px', borderRadius: '100px' }}>
                   Level {preview.level} · {LEVEL_LABEL[preview.level]}
                 </span>
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '2px 8px', borderRadius: '4px', background: (STATUS_META[preview.status] || STATUS_META.belum).bg, color: (STATUS_META[preview.status] || STATUS_META.belum).color, fontSize: '0.7rem', fontWeight: 600 }}>
@@ -827,7 +822,7 @@ function defaultCatatan(ind) {
               <strong style={{ fontSize: '0.9rem', color: 'var(--text)' }}>{preview.nama}</strong>
               {preview.detail && <p style={{ fontSize: '0.78rem', color: 'var(--muted)', marginTop: '4px', lineHeight: 1.5 }}>{preview.detail}</p>}
             </div>
-            <div style={{ border: '1px solid var(--line)', borderRadius: '10px', overflow: 'hidden', background: '#f4f6f9', minHeight: 300 }}>
+            <div style={{ border: '1px solid var(--line)', borderRadius: '10px', overflow: 'hidden', background: 'var(--surface-2)', minHeight: 300 }}>
               {preview.url.match(/\.(pdf|png|jpe?g|gif|webp)(\?|$)/i) ? (
                 <iframe src={preview.url} title={`Preview ${preview.id}`} style={{ width: '100%', height: '78vh', border: 'none' }} />
               ) : (

@@ -151,8 +151,8 @@ export default function Custom404() {
               }}
             >
               <Ikon nama="menu" size={22} />
-              <span style={{ fontSize: '0.8125rem', fontWeight: 600, color: '#fff' }}>Beranda</span>
-              <span style={{ fontSize: '0.6875rem', color: 'rgba(255,255,255,0.75)' }}>Halaman Utama</span>
+              <span style={{ fontSize: '0.8125rem', fontWeight: 600, }}>Beranda</span>
+              <span style={{ fontSize: '0.6875rem', opacity: 0.75 }}>Halaman Utama</span>
             </Link>
           </div>
 

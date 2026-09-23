@@ -293,10 +293,28 @@
   --ok: var(--rk-status-ink-ok); --warn: var(--rk-status-ink-warn); --bad: var(--rk-status-ink-bad); --info: var(--rk-status-ink-info);
   --r: 10px; --r-sm: 8px; --r-lg: 12px;
   --sh: none; --sh-lg: none; --sh-xl: none; --sh-sm: none; --card-glow: none; --hero-grad: none;
+  --ok-bg: color-mix(in srgb, var(--rk-ok) 12%, var(--rk-panel)); --warn-bg: color-mix(in srgb, var(--rk-warn) 14%, var(--rk-panel));
+  --bad-bg: color-mix(in srgb, var(--rk-bad) 12%, var(--rk-panel)); --info-bg: color-mix(in srgb, var(--rk-info) 12%, var(--rk-panel));
+  /* warna level L1–L5 & jenis OPD: satu sumber untuk dua tema (dipakai pemdi/modul/requirement/probis/glosarium/opd) */
+  --lv1: var(--rk-status-ink-bad); --lv2: var(--rk-status-ink-draf); --lv3: var(--rk-status-ink-info); --lv4: var(--rk-status-ink-ok); --lv5: var(--rk-status-ink-pembina);
+  --level-badan: var(--rk-status-ink-info); --level-dinas: var(--rk-status-ink-ok); --level-lembaga: var(--rk-status-ink-draf); --level-kecamatan: var(--rk-status-ink-pembina);
   font-family: var(--rk-f-body); color: var(--rk-ink);
 }
-html[data-theme='dark'] .rk-legacy { --primary: var(--rk-emas); --primary-hover: var(--rk-emas-ink); --primary-50: var(--rk-panel-2); --primary-100: var(--rk-line); --primary-200: var(--rk-line-2); --primary-deep: var(--rk-panel); }
-html[data-theme='light'] .rk-legacy, html:not([data-theme]) .rk-legacy { --primary: #1F2A44; --primary-hover: #2C3A5E; --primary-50: #EEF1F7; --primary-100: #DDE3EF; --primary-200: #C3CCE0; --primary-deep: #10162A; }
+/* Hero halaman lama: panel netral (bukan gradien navy) di kedua tema; teks ikut token */
+.rk-legacy .hero h1, .rk-legacy .hero p, .rk-legacy .hero .gold-head { color: var(--rk-ink); }
+.rk-legacy .hero .gold-head { background: none; -webkit-text-fill-color: currentColor; color: var(--rk-ink); }
+.rk-legacy .hero p { color: var(--rk-ink-2); }
+.rk-legacy .hero a { color: var(--rk-emas); }
+.rk-legacy .hero .pill, .rk-legacy .hero-chip {
+  display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px;
+  background: var(--rk-panel-2); border: 1px solid var(--rk-line); color: var(--rk-ink-2); font-size: var(--rk-fs-1); font-weight: 600;
+}
+.rk-legacy .hero-chip.ok { color: var(--rk-status-ink-ok); border-color: color-mix(in srgb, var(--rk-ok) 45%, transparent); background: color-mix(in srgb, var(--rk-ok) 12%, transparent); }
+.rk-legacy .hero-chip.bad { color: var(--rk-status-ink-bad); border-color: color-mix(in srgb, var(--rk-bad) 45%, transparent); background: color-mix(in srgb, var(--rk-bad) 12%, transparent); }
+.rk-legacy .hero-sep { width: 1px; height: 50px; background: var(--rk-line); }
+.rk-legacy .hero .badge { background: var(--rk-panel-2); color: var(--rk-ink); border: 1px solid var(--rk-line); }
+html[data-theme='dark'] .rk-legacy { --primary-bg: var(--rk-panel-2); --primary: var(--rk-emas); --primary-hover: var(--rk-emas-ink); --primary-50: var(--rk-panel-2); --primary-100: var(--rk-line); --primary-200: var(--rk-line-2); --primary-deep: var(--rk-panel); }
+html[data-theme='light'] .rk-legacy, html:not([data-theme]) .rk-legacy { --primary-bg: #EEF1F7; --primary: #1F2A44; --primary-hover: #2C3A5E; --primary-50: #EEF1F7; --primary-100: #DDE3EF; --primary-200: #C3CCE0; --primary-deep: #10162A; }
 .rk-legacy h1, .rk-legacy h2, .rk-legacy h3 { font-family: var(--rk-f-display); }
 .rk-legacy .hero, .rk-legacy .hero-award { background: var(--rk-panel) !important; border: 1px solid var(--rk-line); border-radius: var(--rk-r-2); color: var(--rk-ink); }
 .rk-legacy .card, .rk-legacy .glow-card, .rk-legacy .kpi-card { border-radius: var(--rk-r-2) !important; box-shadow: none !important; border: 1px solid var(--rk-line); }

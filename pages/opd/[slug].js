@@ -126,9 +126,9 @@ export default function OPDPage({ opd, urusanTerkait, probisMisi, relatedOpd, pr
             </p>
             <div className="hero-tags flex flex-wrap gap-2" style={{ marginTop: '1.5rem' }}>
               <span className="badge" style={{
-                background: `${levelMeta.color}18`,
+                background: `color-mix(in srgb, ${levelMeta.color} 10%, transparent)`,
                 color: levelMeta.color,
-                border: `1px solid ${levelMeta.color}40`,
+                border: `1px solid color-mix(in srgb, ${levelMeta.color} 25%, transparent)`,
               }}>
                 {levelMeta.label}
               </span>
@@ -337,9 +337,9 @@ export default function OPDPage({ opd, urusanTerkait, probisMisi, relatedOpd, pr
               <div className="flex flex-wrap gap-1" style={{ marginTop: '0.75rem' }}>
                 {[...new Set(prosesOPD.map(p => p.kategori))].map(k => (
                   <span key={k} className="badge badge-sm" style={{
-                    background: `${prosesOPD.find(p => p.kategori === k)?.warna}18`,
+                    background: `color-mix(in srgb, ${prosesOPD.find(p => p.kategori === k)?.warna} 10%, transparent)`,
                     color: prosesOPD.find(p => p.kategori === k)?.warna,
-                    border: `1px solid ${prosesOPD.find(p => p.kategori === k)?.warna}40`,
+                    border: `1px solid color-mix(in srgb, ${prosesOPD.find(p => p.kategori === k)?.warna} 25%, transparent)`,
                   }}>
                     {k}
                   </span>
@@ -390,8 +390,8 @@ export default function OPDPage({ opd, urusanTerkait, probisMisi, relatedOpd, pr
                   <div key={i} className="card" style={{ padding: '1rem' }}>
                     <div className="flex items-center gap-2 mb-1">
                       <span className="badge badge-sm" style={{
-                        background: `${p.warna}18`, color: p.warna,
-                        border: `1px solid ${p.warna}40`, fontSize: '0.6875rem',
+                        background: `color-mix(in srgb, ${p.warna} 10%, transparent)`, color: p.warna,
+                        border: `1px solid color-mix(in srgb, ${p.warna} 25%, transparent)`, fontSize: '0.6875rem',
                       }}>
                         {p.kategori}
                       </span>

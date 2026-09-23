@@ -9,7 +9,7 @@ import drafPrioritas from '@/data/draf-bukti-prioritas.json'
 import CatatanTujuan from '@/components/CatatanTujuan'
 import { STATUS_META, LEVEL_LABEL, REVISI_JENIS } from '@/lib/pemdiNilai'
 
-const LEVEL_WARNA = { 0: 'var(--muted)', 1: '#b91c1c', 2: '#ab5708', 3: '#1d4ed8', 4: '#047857', 5: '#6d28d9' }
+const LEVEL_WARNA = { 0: 'var(--muted)', 1: 'var(--lv1)', 2: 'var(--lv2)', 3: 'var(--lv3)', 4: 'var(--lv4)', 5: 'var(--lv5)' }
 
 export default function Requirement() {
   const [requirements, setRequirements] = useState(requirementData)
@@ -39,38 +39,30 @@ export default function Requirement() {
       </Head>
 
       {/* HERO */}
-      <section style={{
-        background: 'var(--hero-grad)',
-        borderRadius: 'var(--r)',
-        padding: '2.5rem 2rem',
-        marginBottom: '2rem',
-        color: '#fff',
-        position: 'relative',
-        overflow: 'hidden',
-      }}>
+      <section className="hero" style={{ padding: '2.5rem 2rem' }}>
         <div style={{ position: 'relative', zIndex: 1 }}>
-          <div className="pill" style={{ marginBottom: '0.75rem', background: 'rgba(255,255,255,0.15)', color: '#fff', border: '1px solid rgba(255,255,255,0.3)' }}>
+          <div className="hero-chip" style={{ marginBottom: '0.75rem' }}>
             DASHBOARD PEMDI · PERSIAPAN TAHAP BERIKUTNYA
           </div>
           <h1 className="gold-head" style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>
             Draf Bukti Dukung Prioritas
           </h1>
-          <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1rem', maxWidth: '640px' }}>
+          <p style={{ fontSize: '1rem', maxWidth: '640px' }}>
             Bukti yang harus <strong>segera disusun</strong> setelah hasil Tahap 1 di eval.spbe.go.id: revisi asesor & butir
             yang menahan kenaikan level, lengkap dengan contoh dari Modul Indikator dan draf/template yang sudah ada.
           </p>
           <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap', marginTop: '1rem' }}>
-            <span className="card" style={{ padding: '0.5rem 0.75rem', background: 'rgba(239,68,68,0.3)', border: 'none', fontSize: '0.8rem' }}>
+            <span className="hero-chip bad" style={{ padding: '0.5rem 0.75rem', fontSize: '0.8rem' }}>
               {drafPrioritas.ringkas.revisi} revisi asesor
             </span>
-            <span className="card" style={{ padding: '0.5rem 0.75rem', background: 'rgba(255,255,255,0.12)', border: 'none', fontSize: '0.8rem' }}>
+            <span className="hero-chip" style={{ padding: '0.5rem 0.75rem', fontSize: '0.8rem' }}>
               {drafPrioritas.ringkas.butir_gap} butir gap · {drafPrioritas.ringkas.indikator_gap} indikator
             </span>
-            <span className="card" style={{ padding: '0.5rem 0.75rem', background: 'rgba(255,255,255,0.12)', border: 'none', fontSize: '0.8rem' }}>
+            <span className="hero-chip" style={{ padding: '0.5rem 0.75rem', fontSize: '0.8rem' }}>
               Simulasi {drafPrioritas.ringkas.indeks_simulasi?.toFixed(2)} → {drafPrioritas.ringkas.indeks_jika_p0_p1_diterima?.toFixed(2)} bila seluruh P0 + P1 diterima
             </span>
             {t1 && (
-              <span className="card" style={{ padding: '0.5rem 0.75rem', background: 'rgba(255,255,255,0.12)', border: 'none', fontSize: '0.8rem' }}>
+              <span className="hero-chip" style={{ padding: '0.5rem 0.75rem', fontSize: '0.8rem' }}>
                 Sinkron {t1.tanggal_sinkron}
               </span>
             )}
@@ -111,7 +103,7 @@ export default function Requirement() {
                   <div key={r.kode} className="rev-card">
                     <div className="rev-head">
                       <code className="rev-kode">{r.kode}</code>
-                      <span className="lvl" style={{ color: LEVEL_WARNA[r.level], background: `${LEVEL_WARNA[r.level]}18` }}>L{r.level} · {LEVEL_LABEL[r.level]}</span>
+                      <span className="lvl" style={{ color: LEVEL_WARNA[r.level], background: `color-mix(in srgb, ${LEVEL_WARNA[r.level]} 10%, transparent)` }}>L{r.level} · {LEVEL_LABEL[r.level]}</span>
                       <span className="rev-ind">{r.indikator} · {r.aspek}</span>
                     </div>
                     <div className="rev-butir">{r.butir}</div>
@@ -156,7 +148,7 @@ export default function Requirement() {
                         <span className="gap-rank">#{gi + 1}</span>
                         <span className="badge badge-blue">{g.indikator}</span>
                         <span className="gap-nama">{g.indikator_nama}</span>
-                        <span className="lvl" style={{ color: LEVEL_WARNA[g.level_target], background: `${LEVEL_WARNA[g.level_target]}18` }}>
+                        <span className="lvl" style={{ color: LEVEL_WARNA[g.level_target], background: `color-mix(in srgb, ${LEVEL_WARNA[g.level_target]} 10%, transparent)` }}>
                           {g.nilai_sekarang} → L{g.level_target}
                         </span>
                         <span className="gap-meta">{g.butir_kurang}/{g.butir_total} butir kurang{g.butir_revisi_di_p0 > 0 ? ` (+${g.butir_revisi_di_p0} revisi di P0)` : ''} · bobot {g.bobot}% · +{g.kenaikan_indeks.toFixed(2)} indeks</span>
@@ -291,7 +283,7 @@ export default function Requirement() {
                             {item.dokumenKunci ? (
                               <span style={{
                                 display: 'inline-block', padding: '0.1rem 0.4rem', borderRadius: '4px',
-                                background: 'rgba(27,67,50,0.1)', color: 'var(--primary)',
+                                background: 'var(--primary-50)', color: 'var(--primary)',
                                 fontSize: '0.7rem', fontWeight: 700,
                               }}>{item.dokumenKunci}</span>
                             ) : <span style={{ color: 'var(--muted)' }}>—</span>}
@@ -470,7 +462,7 @@ export default function Requirement() {
         }
         .req-card:hover {
           border-color: var(--primary);
-          box-shadow: 0 4px 12px rgba(0,64,152,0.1);
+          box-shadow: var(--sh);
           transform: translateY(-2px);
         }
         .req-card-header {
@@ -489,7 +481,7 @@ export default function Requirement() {
         }
         .req-card.wajib .req-card-priority { background: var(--bad); color: white; }
         .req-card.sangat .req-card-priority { background: var(--warn); color: white; }
-        .req-card.penting .req-card-priority { background: #ca8a04; color: white; }
+        .req-card.penting .req-card-priority { background: var(--warn); color: #fff; }
         .req-card.pendukung .req-card-priority { background: var(--muted); color: white; }
         .req-card-title {
           font-size: 0.95rem;
@@ -678,14 +670,14 @@ export default function Requirement() {
         .req-panduan { margin-top: 48px; }
         .panduan-notice {
           padding: 14px 16px; border-radius: 10px; font-size: 0.85rem; line-height: 1.55;
-          background: var(--warn-bg, #fff7e6); border: 1px solid #f0c36d; color: #7a5b12; margin-bottom: 16px;
+          background: color-mix(in srgb, var(--warn) 12%, var(--surface)); border: 1px solid color-mix(in srgb, var(--warn) 45%, transparent); color: var(--ink); margin-bottom: 16px;
         }
         .panduan-stats { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
         .panduan-stat {
-          padding: 8px 14px; border-radius: 8px; background: #f0f7f2; border: 1px solid #d5e8da;
-          font-size: 0.78rem; color: #3d5a45; display: inline-flex; align-items: baseline; gap: 4px;
+          padding: 8px 14px; border-radius: 8px; background: color-mix(in srgb, var(--ok) 10%, var(--surface)); border: 1px solid color-mix(in srgb, var(--ok) 35%, transparent);
+          font-size: 0.78rem; color: var(--ink-secondary); display: inline-flex; align-items: baseline; gap: 4px;
         }
-        .panduan-stat strong { font-size: 1rem; color: #1B4332; }
+        .panduan-stat strong { font-size: 1rem; color: var(--ok); }
         .panduan-grid {
           display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
           gap: 14px;
@@ -696,7 +688,7 @@ export default function Requirement() {
         }
         .panduan-card-head { display: flex; align-items: center; gap: 8px; }
         .panduan-badge {
-          width: 34px; height: 34px; border-radius: 8px; background: #1B4332; color: #fff;
+          width: 34px; height: 34px; border-radius: 8px; background: var(--primary); color: #fff;
           display: grid; place-items: center; font-weight: 800; font-size: 0.75rem; flex-shrink: 0;
         }
         .panduan-aspek { font-size: 0.6875rem; color: #667; background: var(--bg-subtle); padding: 3px 8px; border-radius: 100px; }
@@ -711,25 +703,25 @@ export default function Requirement() {
           font-size: 0.6875rem; font-weight: 700; padding: 2px 8px; border-radius: 100px;
           background: var(--bg-subtle); color: var(--muted);
         }
-        .panduan-status.lengkap { background: #e6f4ea; color: #1B7A3D; }
+        .panduan-status.lengkap { background: color-mix(in srgb, var(--ok) 14%, var(--surface)); color: var(--ok); }
         /* ── Tab & prioritas Pemdi ── */
         .tab-row { display: flex; gap: 8px; margin: 0 0 24px; flex-wrap: wrap; }
         .tab-btn { flex: 1 1 240px; min-height: 56px; text-align: left; padding: 10px 14px; border-radius: 10px; cursor: pointer;
           border: 1px solid var(--line); background: var(--surface); color: var(--text); font-family: inherit; display: flex; flex-direction: column; gap: 2px; }
         .tab-btn span { font-weight: 700; font-size: 0.92rem; }
         .tab-btn small { color: var(--muted); font-size: 0.72rem; }
-        .tab-btn.on { border-color: var(--primary); background: var(--primary-bg, #e3edff); box-shadow: inset 0 3px 0 var(--primary); }
+        .tab-btn.on { border-color: var(--primary); background: var(--primary-bg); box-shadow: inset 0 3px 0 var(--primary); }
         .lead-note { font-size: 0.86rem; color: var(--muted); line-height: 1.6; margin: -8px 0 16px; }
         .lead-note a { color: var(--primary); font-weight: 600; }
         .ppb-intro { font-size: 0.86rem; color: var(--muted); line-height: 1.6; padding: 12px 14px; border: 1px dashed var(--line); border-radius: 10px; margin-bottom: 24px; background: var(--surface-2); }
         .rev-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
-        .rev-card { border: 1px solid var(--bad, #b91c1c); border-left-width: 5px; border-radius: 10px; padding: 14px; background: var(--surface); display: flex; flex-direction: column; gap: 8px; }
+        .rev-card { border: 1px solid var(--bad); border-left-width: 5px; border-radius: 10px; padding: 14px; background: var(--surface); display: flex; flex-direction: column; gap: 8px; }
         .rev-head { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
-        .rev-kode { font-weight: 800; font-size: 0.8rem; color: var(--bad, #b91c1c); border: 1px solid currentColor; border-radius: 4px; padding: 1px 6px; }
+        .rev-kode { font-weight: 800; font-size: 0.8rem; color: var(--bad); border: 1px solid currentColor; border-radius: 4px; padding: 1px 6px; }
         .lvl { font-size: 0.6875rem; font-weight: 800; padding: 2px 8px; border-radius: 100px; white-space: nowrap; }
         .rev-ind { font-size: 0.7rem; color: var(--muted); margin-left: auto; }
         .rev-butir { font-weight: 600; font-size: 0.86rem; line-height: 1.4; }
-        .rev-cat { font-size: 0.78rem; line-height: 1.5; padding: 8px 10px; border-radius: 8px; background: var(--bad-bg, #fde8e8); color: var(--bad, #b91c1c); }
+        .rev-cat { font-size: 0.78rem; line-height: 1.5; padding: 8px 10px; border-radius: 8px; background: color-mix(in srgb, var(--bad) 10%, var(--surface)); color: var(--bad); }
         .jenis-chip { display: inline-block; font-size: 0.6875rem; font-weight: 700; padding: 1px 8px; border-radius: 100px; background: var(--surface); border: 1px solid var(--line); color: var(--text); margin-right: 4px; }
         .rev-det summary { font-size: 0.76rem; font-weight: 700; color: var(--primary); cursor: pointer; }
         .rev-det ul { margin: 6px 0 0; padding-left: 18px; font-size: 0.76rem; color: var(--muted); line-height: 1.5; }
@@ -740,24 +732,24 @@ export default function Requirement() {
         .gap-item { border: 1px solid var(--line); border-radius: 10px; background: var(--surface); overflow: hidden; }
         .gap-item.open { border-color: var(--primary); }
         .gap-head { width: 100%; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 12px 14px; border: none; background: transparent; cursor: pointer; text-align: left; font-family: inherit; color: var(--text); min-height: 44px; }
-        .gap-rank { font-weight: 800; color: var(--gold-deep, #b8860b); font-family: var(--font-mono); font-size: 0.8rem; }
+        .gap-rank { font-weight: 800; color: var(--gold-deep); font-family: var(--font-mono); font-size: 0.8rem; }
         .gap-nama { font-weight: 600; font-size: 0.86rem; flex: 1 1 260px; }
         .gap-meta { font-size: 0.72rem; color: var(--muted); }
         .gap-body { padding: 0 14px 14px; display: flex; flex-direction: column; gap: 10px; }
         .gap-pic { font-size: 0.76rem; color: var(--muted); }
         .gap-pic a { color: var(--primary); font-weight: 600; }
         .st { font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; white-space: nowrap; }
-        .panduan-status.proses { background: #fff3e0; color: #b26a00; }
+        .panduan-status.proses { background: color-mix(in srgb, var(--warn) 14%, var(--surface)); color: var(--warn); }
         .panduan-jenis { font-size: 0.6875rem; color: var(--muted); }
         .panduan-doc-title { font-size: 0.75rem; font-weight: 600; color: var(--ink); line-height: 1.4; }
-        .panduan-dk { font-size: 0.6875rem; color: #1B4332; background: #e8f2ec; padding: 2px 6px; border-radius: 4px; }
+        .panduan-dk { font-size: 0.6875rem; color: var(--ok); background: color-mix(in srgb, var(--ok) 12%, var(--surface)); padding: 2px 6px; border-radius: 4px; }
         .panduan-catatan { font-size: 0.6875rem; color: var(--muted); line-height: 1.4; }
         .panduan-link {
-          font-size: 0.6875rem; color: #1B4332; font-weight: 600; text-decoration: none;
-          border: 1px solid #1B4332; border-radius: 6px; padding: 4px 10px; align-self: flex-start;
+          font-size: 0.6875rem; color: var(--primary); font-weight: 600; text-decoration: none;
+          border: 1px solid var(--primary); border-radius: 6px; padding: 4px 10px; align-self: flex-start;
           background: var(--surface); transition: all 0.15s;
         }
-        .panduan-link:hover { background: #1B4332; color: #fff; }
+        .panduan-link:hover { background: var(--primary); color: #fff; }
         .panduan-empty { font-size: 0.7rem; color: var(--muted); font-style: italic; }
 
         @media (max-width: 640px) {

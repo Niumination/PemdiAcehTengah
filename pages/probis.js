@@ -23,24 +23,14 @@ export default function PetaProsesBisnis({ data }) {
       </Head>
 
       {/* ============ HERO ============ */}
-      <section style={{
-        background: 'var(--hero-grad)',
-        borderRadius: 'var(--r)',
-        padding: '2.5rem 2rem',
-        marginBottom: '2rem',
-        color: '#fff',
-        position: 'relative',
-        overflow: 'hidden',
-      }}>
+      <section className="hero" style={{ padding: '2.5rem 2rem' }}>
         <div style={{ position: 'relative', zIndex: 1 }}>
-          <Link href="/dashboard" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none', fontSize: '0.875rem' }}
-            onMouseEnter={e => e.target.style.color = '#fff'}
-            onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.8)'}>
+          <Link href="/dashboard" style={{ textDecoration: 'none', fontSize: '0.875rem' }}>
             ← Beranda
           </Link>
           <div style={{ marginTop: '1rem' }}>
             <h1 className="gold-head" style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>Peta Proses Bisnis (PPB)</h1>
-            <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1rem' }}>
+            <p style={{ fontSize: '1rem' }}>
               Hierarki proses bisnis Pemerintah Kabupaten Aceh Tengah — 3 level sesuai
               Permenpan RB 19/2018 tentang Penyusunan Peta Proses Bisnis Instansi Pemerintah.
             </p>
@@ -300,9 +290,9 @@ export default function PetaProsesBisnis({ data }) {
           font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.03em;
           flex-shrink: 0; color: white; border: 2px solid;
         }
-        .level-0 { background: #1565c0; border-color: #1565c0; }
-        .level-1 { background: #2e7d32; border-color: #2e7d32; }
-        .level-2 { background: #c2410c; border-color: #c2410c; }
+        .level-0 { background: var(--lv3); border-color: var(--lv3); }
+        .level-1 { background: var(--lv4); border-color: var(--lv4); }
+        .level-2 { background: var(--lv2); border-color: var(--lv2); }
         .ppb-section-desc { color: var(--muted); margin: 0; font-size: 0.9375rem; }
         .ppb-section-source { font-size: 0.75rem; color: var(--muted); margin: 0.25rem 0 0; }
 
@@ -324,7 +314,7 @@ export default function PetaProsesBisnis({ data }) {
         }
 
         .ppb-visi-card {
-          background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);
+          background: var(--primary);
           color: white; border-radius: 12px; padding: 2rem; margin-bottom: 2rem;
           text-align: center;
         }
@@ -350,7 +340,7 @@ export default function PetaProsesBisnis({ data }) {
         }
         .misi-card-compact:hover {
           transform: translateY(-2px);
-          box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+          box-shadow: var(--sh);
         }
         .misi-detail-link {
           margin-top: 0.75rem; font-size: 0.75rem; font-weight: 600;
@@ -370,7 +360,7 @@ export default function PetaProsesBisnis({ data }) {
         .misi-tags { display: flex; flex-wrap: wrap; gap: 0.375rem; }
         .misi-tag {
           font-size: 0.6875rem; padding: 0.2rem 0.5rem;
-          background: rgba(21, 101, 192, 0.08); color: var(--primary);
+          background: var(--primary-50); color: var(--primary);
           border-radius: 4px;
         }
         .misi-opd-links { margin-top: 0.5rem; }
@@ -387,7 +377,7 @@ export default function PetaProsesBisnis({ data }) {
 
         .ppb-note {
           margin-top: 1rem; padding: 0.75rem 1rem;
-          background: rgba(21, 101, 192, 0.05); border-top: 3px solid var(--primary);
+          background: var(--surface-2); border-top: 3px solid var(--primary);
           border-radius: 6px; font-size: 0.8125rem; color: var(--muted);
         }
 
@@ -410,7 +400,7 @@ export default function PetaProsesBisnis({ data }) {
         .proses-opd-badge {
           display: inline-block; margin-top: 0.5rem;
           font-size: 0.6875rem; padding: 0.15rem 0.5rem;
-          background: rgba(0, 0, 0, 0.05); border-radius: 4px; color: var(--muted);
+          background: var(--surface-2); border-radius: 4px; color: var(--muted);
         }
 
         .reg-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }

@@ -5,14 +5,14 @@ import glosariumData from '@/data/glosarium.json';
 // Helper untuk mendapatkan warna badge per kategori
 function getKategoriWarna(kategori) {
   const warnaMap = {
-    'Konsep': '#1d70b8',
-    'Penilaian': '#c2410c',
-    'Tata Kelola': '#00703c',
-    'Umum': '#6b7280',
-    'Layanan': '#007073',
-    'Regulasi': '#6f42c1',
+    'Konsep': 'var(--lv3)',
+    'Penilaian': 'var(--lv2)',
+    'Tata Kelola': 'var(--lv4)',
+    'Umum': 'var(--muted)',
+    'Layanan': 'var(--info)',
+    'Regulasi': 'var(--lv5)',
   };
-  return warnaMap[kategori] || '#6b7280';
+  return warnaMap[kategori] || 'var(--muted)';
 }
 
 export default function GlosariumPage() {
@@ -52,20 +52,12 @@ export default function GlosariumPage() {
       <a href="#glosarium-content" className="skip-link">Lompat ke daftar istilah</a>
 
       {/* ============ HERO ============ */}
-      <section style={{
-        background: 'var(--hero-grad)',
-        borderRadius: 'var(--r)',
-        padding: '2.5rem 2rem',
-        marginBottom: '2rem',
-        color: '#fff',
-        position: 'relative',
-        overflow: 'hidden',
-      }}>
+      <section className="hero" style={{ padding: '2.5rem 2rem' }}>
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <h1 className="gold-head" style={{ fontSize: 'clamp(1.25rem, 3.5vw, 1.75rem)', fontWeight: 700, marginBottom: '0.5rem' }}>
             Glosarium — Istilah Pemerintah Digital
           </h1>
-          <p style={{ fontSize: '0.9375rem', color: 'rgba(255,255,255,0.85)', maxWidth: '560px', margin: '0 auto', lineHeight: 1.6 }}>
+          <p style={{ fontSize: '0.9375rem', maxWidth: '560px', margin: '0 auto', lineHeight: 1.6 }}>
             Kumpulan istilah teknis dalam portal Pemdi Aceh Tengah, dijelaskan dengan bahasa sederhana.
           </p>
         </div>
@@ -232,11 +224,11 @@ export default function GlosariumPage() {
           transition: box-shadow 0.15s;
         }
         .glossary-card:hover {
-          box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+          box-shadow: var(--sh);
         }
         .glossary-card:target {
           border-color: var(--primary);
-          box-shadow: 0 0 0 3px rgba(0,64,152,0.15);
+          box-shadow: 0 0 0 3px var(--primary-100);
         }
       `}</style>
     </>

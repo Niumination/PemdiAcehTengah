@@ -24,15 +24,7 @@ export default function OPDIndex({ data, butirCountMap }) {
       </Head>
 
       {/* HERO */}
-      <section style={{
-        background: 'var(--hero-grad)',
-        borderRadius: 'var(--r)',
-        padding: '2rem',
-        marginBottom: '2rem',
-        color: '#fff',
-        position: 'relative',
-        overflow: 'hidden',
-      }}>
+      <section className="hero" style={{ padding: '2rem' }}>
         <div style={{ position: 'relative', zIndex: 1 }}>
           <h1 className="gold-head" style={{ fontSize: '1.65rem', fontWeight: 700, marginBottom: '0.75rem', lineHeight: 1.2 }}>
             Perangkat Daerah Kabupaten Aceh Tengah
@@ -41,33 +33,21 @@ export default function OPDIndex({ data, butirCountMap }) {
             Daftar {totalOPD} Perangkat Daerah ({instansi.length} instansi + {kecamatan.length} kecamatan) yang telah diharmonisasikan dari data e-Keurani BKPSDM dan data SPBE Diskominfo.
           </p>
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-            <div className="card" style={{
-              padding: '0.75rem 1rem',
-              background: 'rgba(255,255,255,0.12)',
-              border: 'none',
+            <div className="hero-chip" style={{ padding: '0.75rem 1rem',
               textAlign: 'center',
-              minWidth: 100,
-            }}>
+              minWidth: 100 }}>
               <div style={{ fontSize: '1.5rem', fontWeight: 700 }}>{totalOPD}</div>
               <div style={{ fontSize: '0.6875rem', opacity: 0.7, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Perangkat Daerah</div>
             </div>
-            <div className="card" style={{
-              padding: '0.75rem 1rem',
-              background: 'rgba(255,255,255,0.12)',
-              border: 'none',
+            <div className="hero-chip" style={{ padding: '0.75rem 1rem',
               textAlign: 'center',
-              minWidth: 100,
-            }}>
+              minWidth: 100 }}>
               <div style={{ fontSize: '1.5rem', fontWeight: 700 }}>{formatAngka(totalASN)}</div>
               <div style={{ fontSize: '0.6875rem', opacity: 0.7, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Total ASN</div>
             </div>
-            <div className="card" style={{
-              padding: '0.75rem 1rem',
-              background: 'rgba(255,255,255,0.12)',
-              border: 'none',
+            <div className="hero-chip" style={{ padding: '0.75rem 1rem',
               textAlign: 'center',
-              minWidth: 100,
-            }}>
+              minWidth: 100 }}>
               <div style={{ fontSize: '1.5rem', fontWeight: 700 }}>{kecamatan.length}</div>
               <div style={{ fontSize: '0.6875rem', opacity: 0.7, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Kecamatan</div>
             </div>
