@@ -1,428 +1,166 @@
+/**
+ * pages/probis.js — Peta Proses Bisnis (PPB) bergaya Ruang Kendali (Patch 12, Tahap 3c).
+ * Tiga level PermenPANRB 19/2018 disajikan sebagai "aliran": L0 misi (kartu lipat) → L1 urusan
+ * (batang jumlah OPD, saring per misi/OPD) → L2 proses per kategori (6 jalur/lajur).
+ * Data tetap dari data/opd.json (probis + opd.daftar); DetailModal lama diganti kartu misi yang dibuka di tempat.
+ */
 import Head from 'next/head';
 import Link from 'next/link';
-import { useState } from 'react';
-import DetailModal from '@/components/DetailModal';
-import { formatAngka, formatDesimal, gabung } from '@/lib/format';
+import { useMemo, useState } from 'react';
+import PanelLipat, { LipatSemua } from '@/components/rk/PanelLipat';
+import Ikon from '@/components/ui/Ikon';
+import { formatAngka } from '@/lib/format';
 import slugify from '@/lib/slugify';
 import portalData from '@/data/opd.json';
 
-export default function PetaProsesBisnis({ data }) {
-  const [modalMisi, setModalMisi] = useState(null);
-  const [showAllUrusan, setShowAllUrusan] = useState(false);
-  const probis = data.probis;
-  const opdList = data.opd.daftar;
+const WARNA_KAT = ['#1565c0', '#2e7d32', '#b45309', '#6d28d9', '#0e7490', '#b91c1c'];
 
-  const opdMap = {};
-  opdList.forEach(o => { opdMap[o.id] = o; });
+export default function PetaProsesBisnis({ data }) {
+  const [misiBuka, setMisiBuka] = useState(-1);
+  const [fokusOPD, setFokusOPD] = useState(null); // id OPD yang disorot lintas level
+  const probis = data.probis;
+  const opdMap = useMemo(() => Object.fromEntries(data.opd.daftar.map((o) => [o.id, o])), [data]);
+  const urusan = useMemo(() => probis.level_1.urusan || [], [probis]);
+  const kategori = useMemo(() => probis.level_2.kategori || [], [probis]);
+  const totalProses = kategori.reduce((s, k) => s + (k.proses?.length || 0), 0);
+  const opdTerlibat = useMemo(() => {
+    const s = new Set();
+    urusan.forEach((u) => u.opd_terkait?.forEach((id) => s.add(id)));
+    kategori.forEach((k) => k.proses?.forEach((p) => p.opd_terkait?.forEach((id) => s.add(id))));
+    return s;
+  }, [urusan, kategori]);
+  const maksOPD = Math.max(1, ...urusan.map((u) => u.opd_terkait?.length || 0));
+  const bebanOPD = useMemo(() => {
+    const m = {};
+    urusan.forEach((u) => u.opd_terkait?.forEach((id) => { m[id] = (m[id] || 0) + 1; }));
+    kategori.forEach((k) => k.proses?.forEach((p) => p.opd_terkait?.forEach((id) => { m[id] = (m[id] || 0) + 1; })));
+    return Object.entries(m).map(([id, n]) => ({ id: Number(id), n })).sort((a, b) => b.n - a.n);
+  }, [urusan, kategori]);
+  const sorot = (ids) => fokusOPD == null || (ids || []).includes(fokusOPD);
+  const ChipOPD = ({ id }) => {
+    const o = opdMap[id];
+    if (!o) return null;
+    return (
+      <button type="button" className="rk-chip" aria-pressed={fokusOPD === id} onClick={() => setFokusOPD(fokusOPD === id ? null : id)} title={o.nama}>
+        {o.singkat}
+      </button>
+    );
+  };
 
   return (
     <>
       <Head>
-        <title>Peta Proses Bisnis (PPB) — Pemdi Aceh Tengah</title>
-        <meta name="description" content="Peta Proses Bisnis Pemkab Aceh Tengah 3 level — Visi-Misi, Urusan, Proses Bisnis OPD. Berdasarkan Permenpan 19/2018 dan RPJMD 2025-2030." />
+        <title>Peta Proses Bisnis — Dashboard Pemerintah Digital Aceh Tengah</title>
+        <meta name="description" content="Peta Proses Bisnis Pemkab Aceh Tengah 3 level — Visi-Misi, Urusan, Proses Bisnis OPD. Berdasarkan PermenPANRB 19/2018 dan RPJMD 2025-2030." />
       </Head>
-
-      {/* ============ HERO ============ */}
-      <section className="hero" style={{ padding: '2.5rem 2rem' }}>
-        <div style={{ position: 'relative', zIndex: 1 }}>
-          <Link href="/dashboard" style={{ textDecoration: 'none', fontSize: '0.875rem' }}>
-            ← Beranda
-          </Link>
-          <div style={{ marginTop: '1rem' }}>
-            <h1 className="gold-head" style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>Peta Proses Bisnis (PPB)</h1>
-            <p style={{ fontSize: '1rem' }}>
-              Hierarki proses bisnis Pemerintah Kabupaten Aceh Tengah — 3 level sesuai
-              Permenpan RB 19/2018 tentang Penyusunan Peta Proses Bisnis Instansi Pemerintah.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ============ CONTENT ============ */}
-      <section className="section">
-        <div className="container">
-
-        {/* ============ HIERARCHY OVERVIEW ============ */}
-        <section className="ppb-overview">
-          <div className="ppb-chain">
-            <div className="ppb-chain-item">
-              <div className="ppb-chain-circle" style={{ fontSize: '0.75rem', fontWeight: 700 }}>L0</div>
-              <strong style={{ fontSize: '0.875rem' }}>Visi &amp; Misi</strong>
-              <span style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>Arah pembangunan daerah</span>
-            </div>
-            <div className="ppb-chain-arrow">→</div>
-            <div className="ppb-chain-item">
-              <div className="ppb-chain-circle" style={{ background: 'var(--ok-bg)', color: 'var(--ok)', fontSize: '0.75rem', fontWeight: 700 }}>L1</div>
-              <strong style={{ fontSize: '0.875rem' }}>Urusan Pemerintahan</strong>
-              <span style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>24 urusan konkuren + urusan umum</span>
-            </div>
-            <div className="ppb-chain-arrow">→</div>
-            <div className="ppb-chain-item">
-              <div className="ppb-chain-circle" style={{ background: 'var(--warn-bg)', color: 'var(--warn)', fontSize: '0.75rem', fontWeight: 700 }}>L2</div>
-              <strong style={{ fontSize: '0.875rem' }}>Proses Bisnis OPD</strong>
-              <span style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>6 kategori — 37 proses spesifik</span>
-            </div>
-          </div>
+      <div className="rk-grid">
+        <section className="rk-sit" aria-label="Ringkasan peta proses bisnis">
+          <div className="lead"><div className="lbl">Visi RPJMD 2025–2030</div><div className="val" style={{ fontSize: 'var(--rk-fs-4)' }}>“{probis.level_0.deskripsi}”</div><div className="sub">{probis.level_0.sumber}</div></div>
+          <div><div className="lbl">L0 · Misi</div><div className="val">{probis.level_0.misi.length}</div><div className="sub">arah pembangunan daerah</div></div>
+          <div><div className="lbl">L1 · Urusan</div><div className="val">{urusan.length}</div><div className="sub">24 konkuren + urusan umum</div></div>
+          <div><div className="lbl">L2 · Proses</div><div className="val">{totalProses}<small>{kategori.length} kategori</small></div><div className="sub">proses spesifik OPD</div></div>
+          <div><div className="lbl">OPD terlibat</div><div className="val">{opdTerlibat.size}<small>/ {data.opd.daftar.length}</small></div><div className="sub">disebut pada L1/L2 · relevan indikator 4.x &amp; 6.1</div></div>
         </section>
 
-        {/* ============ LEVEL 0: VISI & MISI ============ */}
-        <section className="ppb-section" id="level-0">
-          <div className="ppb-section-header">
-            <div className="ppb-level-badge level-0">Level 0</div>
-            <div>
-              <h2>{probis.level_0.label}</h2>
-              <p className="ppb-section-desc">Visi &amp; Misi Pembangunan Kabupaten Aceh Tengah</p>
-              {probis.level_0.sumber && (
-                <p className="ppb-section-source">Sumber: {probis.level_0.sumber}</p>
-              )}
-            </div>
-          </div>
+        <LipatSemua keterangan="Aliran L0 → L1 → L2. Klik singkatan OPD di mana pun untuk menyorot keterlibatannya lintas level.">
+          {fokusOPD != null ? (
+            <span className="rk-chips">
+              <span className="rk-act faint">Sorot:</span>
+              <ChipOPD id={fokusOPD} />
+              <button type="button" className="rk-act" onClick={() => setFokusOPD(null)}><Ikon nama="tutup" size={12} /> lepas</button>
+            </span>
+          ) : null}
+        </LipatSemua>
 
-          {/* Visi — Highlight */}
-          <div className="ppb-visi-inline">
-            <div className="ppb-visi-label-inline">Visi</div>
-            <div className="ppb-visi-text-inline">"{probis.level_0.deskripsi}"</div>
-          </div>
-
-          {/* 8 Misi — Compact Cards with Modal Detail */}
-          <div className="section-subheader">
-            <h3>8 Misi Pembangunan</h3>
-            <p>Klik card untuk lihat detail — fokus strategis dan OPD pelaksana</p>
-          </div>
-          <div className="misi-grid">
-            {probis.level_0.misi.map((m, i) => (
-              <div key={i} className="misi-card-compact" onClick={() => setModalMisi(m)}>
-                <div className="misi-number">Misi {formatAngka(i + 1)}</div>
-                <h3 className="misi-nama">{m.nama}</h3>
-                <div className="misi-detail-link">Lihat Detail →</div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ============ SIDE PANEL MISI DETAIL ============ */}
-        <DetailModal
-          title={modalMisi ? modalMisi.nama : ''}
-          open={!!modalMisi}
-          onClose={() => setModalMisi(null)}
-          maxWidth={600}
-        >
-          {modalMisi && (
-            <div>
-              <p style={{ fontSize: '0.875rem', color: 'var(--ink-secondary)', lineHeight: 1.7, marginBottom: '1rem' }}>
-                {modalMisi.deskripsi}
-              </p>
-              {modalMisi.fokus && (
-                <div style={{ marginBottom: '1rem' }}>
-                  <div style={{ fontSize: '0.6875rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--ink-secondary)', marginBottom: '0.5rem' }}>
-                    Fokus Strategis:
-                  </div>
-                  <div className="flex flex-wrap gap-1">
-                    {modalMisi.fokus.map((f, j) => (
-                      <span key={j} className="misi-tag">{f}</span>
-                    ))}
-                  </div>
-                </div>
-              )}
-              {modalMisi.opd_terkait && modalMisi.opd_terkait.length > 0 && (
-                <div>
-                  <div style={{ fontSize: '0.6875rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--ink-secondary)', marginBottom: '0.5rem' }}>
-                    OPD Pelaksana:
-                  </div>
-                  <div className="opd-tags">
-                    {modalMisi.opd_terkait.map((id) => {
-                      const opd = opdMap[id];
-                      return opd ? (
-                        <Link key={id} href={`/opd/${slugify(opd.nama)}`} className="opd-tag-link">
-                          {opd.singkat}
-                        </Link>
-                      ) : null;
-                    })}
-                  </div>
-                </div>
-              )}
-            </div>
-          )}
-        </DetailModal>
-
-        {/* ============ LEVEL 1: URUSAN ============ */}
-        <section className="ppb-section" id="level-1">
-          <div className="ppb-section-header">
-            <div className="ppb-level-badge level-1">Level 1</div>
-            <div>
-              <h2>{probis.level_1.label}</h2>
-              <p className="ppb-section-desc">{probis.level_1.deskripsi} — {formatAngka(probis.level_1.urusan?.length)} urusan</p>
-            </div>
-          </div>
-
-          <div className="grid grid-3" style={{ gap: '0.625rem' }}>
-            {probis.level_1.urusan.slice(0, showAllUrusan ? undefined : 12).map((u, i) => (
-              <div key={i} className="urusan-card">
-                <div className="urusan-header">
-                  <h3>{u.nama}</h3>
-                  <span className="badge badge-blue">{formatAngka(u.opd_terkait?.length)} OPD</span>
-                </div>
-                <div className="opd-tags">
-                  {u.opd_terkait?.map((id) => {
-                    const opd = opdMap[id];
-                    return opd ? (
-                      <Link key={id} href={`/opd/${slugify(opd.nama)}`} className="opd-tag-link">
-                        {opd.singkat}
-                      </Link>
-                    ) : (
-                      <span key={id} className="opd-tag">{id}</span>
-                    );
-                  })}
-                </div>
-              </div>
-            ))}
-          </div>
-          {probis.level_1.urusan.length > 12 && (
-            <div className="flex justify-center" style={{ marginTop: '1rem' }}>
-              <button
-                onClick={() => setShowAllUrusan(!showAllUrusan)}
-                className="btn btn-outline btn-sm"
-              >
-                {showAllUrusan ? 'Tampilkan lebih sedikit ↑' : `Lihat ${formatAngka(probis.level_1.urusan.length - 12)} urusan lainnya ↓`}
-              </button>
-            </div>
-          )}
-
-          <div className="ppb-note">
-            <strong>Catatan:</strong> 24 urusan konkuren berdasarkan UU 23/2014 + urusan umum 
-            (Sekretariat, Legislatif, Pengawasan, Kepegawaian, Perencanaan, Keuangan, 
-            Kesbangpol, Bencana, Keagamaan, Kecamatan) — total {formatAngka(probis.level_1.urusan?.length)} urusan.
-          </div>
-        </section>
-
-        {/* ============ LEVEL 2: PROSES BISNIS ============ */}
-        <section className="ppb-section" id="level-2">
-          <div className="ppb-section-header">
-            <div className="ppb-level-badge level-2">Level 2</div>
-            <div>
-              <h2>{probis.level_2.label}</h2>
-              <p className="ppb-section-desc">{probis.level_2.deskripsi}</p>
-            </div>
-          </div>
-
-          {probis.level_2.kategori.map((k, i) => (
-            <div key={i} className="kategori-section">
-              <div className="kategori-header" style={{ borderLeftColor: k.warna }}>
-                <div className="kategori-icon">{String(i + 1).padStart(2, '0')}</div>
-                <div>
-                  <h3 style={{ color: k.warna }}>{k.nama}</h3>
-                  <p className="kategori-desc">{k.deskripsi}</p>
-                </div>
-              </div>
-              <div className="grid grid-3" style={{ gap: '0.625rem' }}>
-                {k.proses?.map((p, j) => (
-                  <div key={j} className="proses-card">
-                    <div className="proses-nama">{p.nama}</div>
-                    <div className="proses-output">
-                      <span className="proses-output-label">Output:</span> {p.output}
+        <PanelLipat id="ppb-l0" judul="L0 · Visi & misi" ringkas={`· ${probis.level_0.misi.length} misi`} className="rk-c8" aksi={<span className="rk-act faint">klik misi untuk fokus &amp; OPD pelaksana</span>}>
+          <ol className="rk-misi">
+            {probis.level_0.misi.map((m, i) => {
+              const buka = misiBuka === i;
+              return (
+                <li key={i} className={buka ? 'on' : ''} data-redup={!sorot(m.opd_terkait) || undefined}>
+                  <button type="button" onClick={() => setMisiBuka(buka ? -1 : i)} aria-expanded={buka}>
+                    <span className="no">{formatAngka(i + 1)}</span>
+                    <span className="nm">{m.nama}</span>
+                    <span className="ct">{m.opd_terkait?.length || 0} OPD</span>
+                    <Ikon nama="lipat" size={14} />
+                  </button>
+                  {buka ? (
+                    <div className="isi">
+                      <p>{m.deskripsi}</p>
+                      {m.fokus?.length ? <div className="rk-chips">{m.fokus.map((f, j) => <span key={j} className="rk-tag t-rendah">{f}</span>)}</div> : null}
+                      {m.opd_terkait?.length ? <div className="rk-chips">{m.opd_terkait.map((id) => <ChipOPD key={id} id={id} />)}</div> : null}
                     </div>
-                    {p.opd_semua ? (
-                      <div className="proses-opd-badge">Semua OPD</div>
-                    ) : (
-                      <div className="opd-tags" style={{ marginTop: '0.5rem' }}>
-                        {p.opd_terkait?.map((id) => {
-                          const opd = opdMap[id];
-                          return opd ? (
-                            <Link key={id} href={`/opd/${slugify(opd.nama)}`} className="opd-tag-link">
-                              {opd.singkat}
-                            </Link>
-                          ) : null;
-                        })}
-                      </div>
-                    )}
-                  </div>
-                ))}
+                  ) : null}
+                </li>
+              );
+            })}
+          </ol>
+        </PanelLipat>
+
+        <PanelLipat id="ppb-beban" judul="Beban keterlibatan OPD" ringkas={`· ${bebanOPD.length} OPD`} className="rk-c4">
+          <ol className="rk-beban">
+            {bebanOPD.slice(0, 12).map((b) => {
+              const o = opdMap[b.id];
+              if (!o) return null;
+              return (
+                <li key={b.id} data-redup={(fokusOPD != null && fokusOPD !== b.id) || undefined}>
+                  <ChipOPD id={b.id} />
+                  <span className="jalur"><i style={{ width: `${(b.n / bebanOPD[0].n) * 100}%` }} /></span>
+                  <b>{b.n}</b>
+                </li>
+              );
+            })}
+          </ol>
+          <p className="rk-catatan">Jumlah penyebutan pada urusan L1 dan proses L2. Konsentrasi beban pada sedikit OPD adalah temuan asesor (arsitektur SPBE belum menjadi rujukan lintas OPD).</p>
+        </PanelLipat>
+
+        <PanelLipat id="ppb-l1" judul="L1 · Urusan pemerintahan" ringkas={`· ${urusan.length} urusan`} aksi={<span className="rk-act faint">panjang batang = jumlah OPD pengampu</span>}>
+          <div className="rk-urusan">
+            {urusan.map((u, i) => (
+              <div key={i} className="ur" data-redup={!sorot(u.opd_terkait) || undefined}>
+                <div className="hd"><b>{u.nama}</b><span>{u.opd_terkait?.length || 0} OPD</span></div>
+                <span className="jalur"><i style={{ width: `${((u.opd_terkait?.length || 0) / maksOPD) * 100}%` }} /></span>
+                <div className="rk-chips">{u.opd_terkait?.map((id) => <ChipOPD key={id} id={id} />)}</div>
               </div>
-            </div>
-          ))}
-        </section>
-
-        {/* ============ REGULATORY FRAMEWORK ============ */}
-        <section className="ppb-section">
-          <div className="ppb-section-header">
-            <div className="ppb-level-badge" style={{ background: 'var(--primary-deep)', borderColor: 'var(--primary-deep)' }}>Reg</div>
-            <div>
-              <h2>Kerangka Regulasi PPB</h2>
-              <p className="ppb-section-desc">Dasar hukum penyusunan Peta Proses Bisnis</p>
-            </div>
+            ))}
           </div>
-          <div className="reg-grid">
-            <div className="reg-card">
-              <h4>Permenpan RB 19/2018</h4>
-              <p>Penyusunan Peta Proses Bisnis Instansi Pemerintah — 3 level hierarki: Level 0 (Visi-Misi), Level 1 (Urusan), Level 2 (Proses Bisnis).</p>
-              <a href="https://peraturan.bpk.go.id/Details/132523/permen-pan-rb-no-19-tahun-2018" target="_blank" rel="noopener noreferrer" className="reg-link">
-                Baca di BPK ↗
-              </a>
-            </div>
-            <div className="reg-card">
-              <h4>UU 23/2014</h4>
-              <p>Pemerintahan Daerah — 24 urusan konkuren yang menjadi kewenangan kabupaten/kota.</p>
-            </div>
-            <div className="reg-card">
-              <h4>Permenpan RB 8/2026</h4>
-              <p>Evaluasi Kinerja Pemerintah Digital — framework transisi dari SPBE ke Pemdi. 7 aspek, 20 indikator.</p>
-            </div>
-            <div className="reg-card">
-              <h4>Qanun No. 4/2025</h4>
-              <p>RPJMD Kabupaten Aceh Tengah 2025-2029 — visi "Aceh Tengah Islami, Maju, Sejahtera, dan Berkeadilan".</p>
-            </div>
+        </PanelLipat>
+
+        <PanelLipat id="ppb-l2" judul="L2 · Proses bisnis per kategori" ringkas={`· ${totalProses} proses`} aksi={<span className="rk-act faint">{probis.level_2.deskripsi}</span>}>
+          <div className="rk-lajur">
+            {kategori.map((k, i) => (
+              <section key={i} className="lj" style={{ '--warna': k.warna || WARNA_KAT[i % WARNA_KAT.length] }}>
+                <h3><span className="no">{String(i + 1).padStart(2, '0')}</span>{k.nama}<small>{k.proses?.length || 0}</small></h3>
+                {k.deskripsi ? <p className="ds">{k.deskripsi}</p> : null}
+                <ol>
+                  {k.proses?.map((p, j) => (
+                    <li key={j} data-redup={(!p.opd_semua && !sorot(p.opd_terkait)) || undefined}>
+                      <b>{p.nama}</b>
+                      {p.output ? <span className="out">→ {p.output}</span> : null}
+                      {p.opd_semua ? <span className="rk-tag t-belum">Semua OPD</span> : <div className="rk-chips">{p.opd_terkait?.map((id) => <ChipOPD key={id} id={id} />)}</div>}
+                    </li>
+                  ))}
+                </ol>
+              </section>
+            ))}
           </div>
+        </PanelLipat>
+
+        <section className="rk-panel rk-rujuk">
+          <h2><span className="rk-judul">Kerangka regulasi</span></h2>
+          <ul className="rk-ol">
+            <li><b>PermenPANRB 19/2018</b> — Penyusunan Peta Proses Bisnis Instansi Pemerintah: L0 Visi–Misi, L1 Urusan, L2 Proses Bisnis. <a href="https://peraturan.bpk.go.id/Details/132523/permen-pan-rb-no-19-tahun-2018" target="_blank" rel="noopener noreferrer">Baca di BPK <Ikon nama="luar" size={11} /></a></li>
+            <li><b>UU 23/2014</b> — Pemerintahan Daerah: 24 urusan konkuren kewenangan kabupaten/kota.</li>
+            <li><b>PermenPANRB 8/2026</b> — Evaluasi Kinerja Pemerintah Digital: 7 aspek, 20 indikator; PPB menjadi bukti indikator arsitektur &amp; keterpaduan.</li>
+            <li><b>Qanun No. 4/2025</b> — RPJMD Kabupaten Aceh Tengah 2025–2030.</li>
+          </ul>
+          <p className="rk-catatan">Profil tiap OPD: <Link href="/opd">peta perangkat daerah</Link>. Tautan OPD pada halaman ini menyorot; buka profil lewat <Link href={fokusOPD != null && opdMap[fokusOPD] ? `/opd/${slugify(opdMap[fokusOPD].nama)}` : '/opd'}>{fokusOPD != null && opdMap[fokusOPD] ? `profil ${opdMap[fokusOPD].singkat}` : 'daftar OPD'}</Link>.</p>
         </section>
-        </div>
-      </section>
-
-      <style jsx>{`
-        .ppb-overview { margin-bottom: 3rem; }
-
-        .ppb-section { margin-bottom: 3rem; padding-top: 1rem; }
-        .ppb-section-header {
-          display: flex; gap: 1rem; align-items: flex-start;
-          margin-bottom: 1.5rem;
-        }
-        .ppb-level-badge {
-          width: 44px; height: 44px; border-radius: 10px;
-          display: flex; align-items: center; justify-content: center;
-          font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.03em;
-          flex-shrink: 0; color: white; border: 2px solid;
-        }
-        .level-0 { background: var(--lv3); border-color: var(--lv3); }
-        .level-1 { background: var(--lv4); border-color: var(--lv4); }
-        .level-2 { background: var(--lv2); border-color: var(--lv2); }
-        .ppb-section-desc { color: var(--muted); margin: 0; font-size: 0.9375rem; }
-        .ppb-section-source { font-size: 0.75rem; color: var(--muted); margin: 0.25rem 0 0; }
-
-        .ppb-visi-inline {
-          background: var(--bg-card);
-          border: 2px solid var(--primary);
-          border-radius: 12px;
-          padding: 1.25rem 1.5rem;
-          margin-bottom: 2rem;
-          text-align: center;
-        }
-        .ppb-visi-label-inline {
-          font-size: 0.6875rem; font-weight: 700; text-transform: uppercase;
-          letter-spacing: 0.1em; color: var(--primary); margin-bottom: 0.5rem;
-        }
-        .ppb-visi-text-inline {
-          font-size: 1.125rem; font-weight: 600; line-height: 1.5;
-          color: var(--text);
-        }
-
-        .ppb-visi-card {
-          background: var(--primary);
-          color: white; border-radius: 12px; padding: 2rem; margin-bottom: 2rem;
-          text-align: center;
-        }
-        .ppb-visi-label {
-          font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em;
-          opacity: 0.8; margin-bottom: 0.5rem;
-        }
-        .ppb-visi-text { font-size: 1.5rem; font-weight: 700; line-height: 1.4; }
-
-        .section-subheader { margin-bottom: 1.25rem; }
-        .section-subheader h3 { margin: 0; font-size: 1.125rem; }
-        .section-subheader p { margin: 0.25rem 0 0; font-size: 0.875rem; color: var(--muted); }
-
-        .misi-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-        @media (max-width: 768px) {
-          .misi-grid { grid-template-columns: 1fr; }
-        }
-
-        .misi-card-compact {
-          background: var(--bg-card); border: 1px solid var(--border);
-          border-radius: 10px; padding: 1.25rem;
-          cursor: pointer; transition: transform 0.15s, box-shadow 0.15s;
-        }
-        .misi-card-compact:hover {
-          transform: translateY(-2px);
-          box-shadow: var(--sh);
-        }
-        .misi-detail-link {
-          margin-top: 0.75rem; font-size: 0.75rem; font-weight: 600;
-          color: var(--primary); text-align: right;
-        }
-        .misi-number {
-          font-size: 0.6875rem; font-weight: 700; text-transform: uppercase;
-          letter-spacing: 0.05em; color: var(--primary); margin-bottom: 0.25rem;
-        }
-        .misi-nama { font-size: 1rem; font-weight: 600; margin: 0 0 0.5rem; }
-        .misi-deskripsi { font-size: 0.8125rem; color: var(--muted); margin: 0 0 0.75rem; line-height: 1.55; }
-        .misi-fokus { margin-bottom: 0.75rem; }
-        .misi-fokus-label {
-          font-size: 0.6875rem; font-weight: 600; text-transform: uppercase;
-          letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.375rem;
-        }
-        .misi-tags { display: flex; flex-wrap: wrap; gap: 0.375rem; }
-        .misi-tag {
-          font-size: 0.6875rem; padding: 0.2rem 0.5rem;
-          background: var(--primary-50); color: var(--primary);
-          border-radius: 4px;
-        }
-        .misi-opd-links { margin-top: 0.5rem; }
-
-        .urusan-card {
-          background: var(--bg-card); border: 1px solid var(--border);
-          border-radius: 8px; padding: 0.875rem;
-        }
-        .urusan-header {
-          display: flex; justify-content: space-between; align-items: flex-start;
-          margin-bottom: 0.5rem;
-        }
-        .urusan-header h3 { font-size: 0.8125rem; font-weight: 600; margin: 0; }
-
-        .ppb-note {
-          margin-top: 1rem; padding: 0.75rem 1rem;
-          background: var(--surface-2); border-top: 3px solid var(--primary);
-          border-radius: 6px; font-size: 0.8125rem; color: var(--muted);
-        }
-
-        .kategori-section { margin-bottom: 1.5rem; }
-        .kategori-header {
-          display: flex; gap: 1rem; align-items: flex-start;
-          border-top: 3px solid; padding-top: 0.75rem; margin-bottom: 1rem;
-        }
-        .kategori-icon { font-size: 1.5rem; }
-        .kategori-header h3 { font-size: 1.125rem; font-weight: 600; margin: 0; }
-        .kategori-desc { font-size: 0.8125rem; color: var(--muted); margin: 0.25rem 0 0; }
-
-        .proses-card {
-          background: var(--bg-card); border: 1px solid var(--border);
-          border-radius: 8px; padding: 0.875rem;
-        }
-        .proses-nama { font-size: 0.8125rem; font-weight: 600; margin-bottom: 0.375rem; }
-        .proses-output { font-size: 0.6875rem; color: var(--muted); }
-        .proses-output-label { font-weight: 600; }
-        .proses-opd-badge {
-          display: inline-block; margin-top: 0.5rem;
-          font-size: 0.6875rem; padding: 0.15rem 0.5rem;
-          background: var(--surface-2); border-radius: 4px; color: var(--muted);
-        }
-
-        .reg-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-        @media (max-width: 768px) {
-          .reg-grid { grid-template-columns: 1fr; }
-        }
-        .reg-card {
-          background: var(--bg-card); border: 1px solid var(--border);
-          border-radius: 8px; padding: 1.25rem;
-        }
-        .reg-card h4 { font-size: 0.9375rem; font-weight: 600; margin: 0 0 0.5rem; }
-        .reg-card p { font-size: 0.8125rem; color: var(--muted); margin: 0 0 0.75rem; line-height: 1.55; }
-        .reg-link { font-size: 0.8125rem; font-weight: 600; color: var(--primary); }
-      `}</style>
+      </div>
     </>
   );
 }
 
 export function getStaticProps() {
-  return {
-    props: {
-      data: portalData,
-    },
-  };
+  return { props: { data: portalData } };
 }

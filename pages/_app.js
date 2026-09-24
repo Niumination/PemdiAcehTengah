@@ -6,11 +6,11 @@ import RKShell from '@/components/rk/RKShell';
 
 /**
  * Patch 2 (22 Sep 2026): seluruh rute memakai kerangka Ruang Kendali (RKShell).
- * Halaman yang belum di-reskin (pemdi, modul-indikator, requirement, spbe, probis,
- * opd, glosarium, 404; pemdi/requirement/cari sudah RK-native sejak Patch 10) dibungkus `.rk-legacy` supaya token lama (globals.css)
+ * Halaman yang belum di-reskin (kini tinggal modul-indikator — Patch 10–12 menjadikan
+ * pemdi/requirement/cari/opd/spbe/probis/glosarium/404 RK-native) dibungkus `.rk-legacy` supaya token lama (globals.css)
  * tetap berlaku di dalam kontennya. AppShell/Sidebar/BottomNav/Footer lama dihapus.
  */
-const RUTE_RK = new Set(['/dashboard', '/indikator', '/antrean', '/admin', '/pemdi', '/requirement', '/cari', '/opd', '/opd/[slug]', '/spbe']); // Patch 10–11: halaman lama yang sudah RK-native
+const RUTE_RK = new Set(['/dashboard', '/indikator', '/antrean', '/admin', '/pemdi', '/requirement', '/cari', '/opd', '/opd/[slug]', '/spbe', '/probis', '/glosarium', '/404']); // Patch 10–12: halaman lama yang sudah RK-native; sisa .rk-legacy hanya /modul-indikator
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { Analytics } from '@vercel/analytics/react';

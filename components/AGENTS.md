@@ -3,7 +3,7 @@
 ## Purpose
 React component library — reusable UI building blocks, props-driven. Seluruh komponen melayani **persona internal Pemdi**.
 
-## Ownership — 13 Komponen Aktif (Ruang Kendali, 22 Sep 2026)
+## Ownership — Komponen Aktif (Ruang Kendali, 22 Sep 2026)
 
 ## Ruang Kendali (Patch 1–3, 22 Sep 2026)
 
@@ -36,7 +36,6 @@ Aturan komponen rk/ui: **tanpa emoji**, **font ≥ 11px**, animasi hanya marquee
 | **LevelFokus** | `asesor/LevelFokus.js` | (21 Sep 2026) Pembungkus daftar bukti/kriteria per level: level **dicapai** (semua butir diterima asesor) + level **berikut** terbuka default, level lain tertutup — klik header untuk buka; tombol "Buka semua level / Kembali ke fokus"; state lokal per indikator (tanpa localStorage). Render isi via `children(level, {peran})`; `layout` grid (/pemdi) atau stack (/modul-indikator). Ekspor tambahan `RingkasFokus`. CSS `.lvfokus-*` di globals.css. Tidak mengubah data | `pemdi.js`, `modul-indikator.js` |
 | **CatatanMandiri** | `asesor/CatatanMandiri.js` | (21 Sep 2026) `CatatanButir` — kartu lipat di bawah butir revisi/level-berikut: ringkas, rujukan (judul → tautan PDF lokal/JDIH, bagian, **hal.**, tag `pindai`/`JDIH`), checklist kebutuhan, PJ, tombol **📋 Salin** (teks siap tempel ke eval.spbe.go.id). `EksporCatatan` — bilah per indikator: jumlah butir, **Salin semua · ⬇️ DOCX · 🖨️ Cetak/PDF** (prop `compact` utk /modul-indikator). Data `b.catatan_mandiri`; tanpa localStorage/pustaka; CSS `.cm-*` di globals.css | `pemdi.js`, `modul-indikator.js` |
 | **OPDTable** | `OPDTable.js` | Tabel 52 OPD: cari + filter level, paginasi 12, toggle Tabel/Grid (desktop), stacked cards ≤768 px. Prop `butirCountMap` (id/nama → jumlah butir Pemdi yang PJ-nya OPD tsb) → kolom **"Butir Pemdi"** | `dashboard.js`, `opd/index.js` |
-| **DetailModal** | `DetailModal.js` | Modal detail aspek/indikator Pemdi | `pemdi.js`, `probis.js` |
 | **motif/KerawangMotifs (7 ekspor: PuterTali, PucukRebung, Rante, Pagar, Ulen, Tapak, KerawangDivider — MotifEmun/MotifBackground/MarqueeBudaya dihapus 21 Sep 2026)** | `motif/KerawangMotifs.js` | Motif Gayo (Emun, Ulen, Rante, Tapak, Puter, Pucuk Rebung, divider, marquee budaya) | lintas halaman |
 
 ## Local Contracts
@@ -46,15 +45,12 @@ Aturan komponen rk/ui: **tanpa emoji**, **font ≥ 11px**, animasi hanya marquee
 - Persona disimpan di localStorage `pemdi:pj` (kosong = Koordinator; nama OPD = PJ OPD; dropdown hanya OPD yang punya butir).
 - Marquee running text di bar atas **dipertahankan** (satu-satunya animasi berulang).
 
-### DetailModal (`DetailModal.js`)
-- **Props**: `{ title, children, onClose, isOpen }`
-
 ### OPDTable (`OPDTable.js`)
-- **Props**: `{ opdList, butirCountMap }` — `butirCountMap` dibangun di server dengan `petaButirOPD(daftar, pemdiData)` (`lib/pjButir.js`); kunci = `opd.id ?? opd.nama`
+- **Props**: `{ list, butirCountMap, polos? }` — `polos` (Patch 11) melepas bingkai `.glow-card` saat dipakai dalam `PanelLipat` (`/opd`); `butirCountMap` dibangun di server dengan `petaButirOPD(daftar, pemdiData)` (`lib/pjButir.js`); kunci = `opd.id ?? opd.nama`
 
 ## Kontrak Mobile (19 Sep 2026)
 - **Tombol bukti di `/pemdi`** memakai kelas `.bukti-act` (target sentuh ≥44px di mobile) + `aria-label`.
 - Bottom tabs RKShell target sentuh ≥44px.
 
 ## Status
-🟢 **DOX Clean** — 13 komponen dalam tabel ini terverifikasi diimpor minimal satu halaman/komponen aktif (23 Sep 2026 pasca Ruang Kendali; cek: grep impor per file).
+🟢 **DOX Clean** — komponen dalam tabel ini terverifikasi (DetailModal dihapus Patch 12 — `/probis` kini RK-native tanpa modal) diimpor minimal satu halaman/komponen aktif (23 Sep 2026 pasca Ruang Kendali; cek: grep impor per file).

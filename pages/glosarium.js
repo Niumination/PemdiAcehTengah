@@ -1,236 +1,97 @@
-import { useState, useMemo } from 'react';
+/**
+ * pages/glosarium.js — Glosarium istilah Pemdi bergaya Ruang Kendali (Patch 12, Tahap 3c).
+ * Kotak cari RK + saring kategori (chip) + kartu istilah dua tingkat (penjelasan singkat → lengkap).
+ * Data tetap: data/glosarium.json.
+ */
+import { useMemo, useState } from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
+import Ikon from '@/components/ui/Ikon';
 import glosariumData from '@/data/glosarium.json';
 
-// Helper untuk mendapatkan warna badge per kategori
-function getKategoriWarna(kategori) {
-  const warnaMap = {
-    'Konsep': 'var(--lv3)',
-    'Penilaian': 'var(--lv2)',
-    'Tata Kelola': 'var(--lv4)',
-    'Umum': 'var(--muted)',
-    'Layanan': 'var(--info)',
-    'Regulasi': 'var(--lv5)',
-  };
-  return warnaMap[kategori] || 'var(--muted)';
+const KATEGORI_WARNA = {
+  Konsep: 'var(--rk-info)',
+  Penilaian: 'var(--rk-emas)',
+  'Tata Kelola': 'var(--rk-ok)',
+  Layanan: 'var(--rk-status-ink-draf)',
+  Regulasi: 'var(--rk-bad)',
+  Umum: 'var(--rk-ink-3)',
+};
+
+function Sorot({ teks, q }) {
+  if (!q) return teks;
+  const i = teks.toLowerCase().indexOf(q);
+  if (i < 0) return teks;
+  return <>{teks.slice(0, i)}<mark className="rk-mark">{teks.slice(i, i + q.length)}</mark>{teks.slice(i + q.length)}</>;
 }
 
 export default function GlosariumPage() {
   const [query, setQuery] = useState('');
-
-  // Filter glosarium berdasarkan input pencarian
-  const filtered = useMemo(() => {
-    if (!query.trim()) return glosariumData;
-    const q = query.toLowerCase();
-    return glosariumData.filter(
-      (entry) =>
-        entry.istilah.toLowerCase().includes(q) ||
-        (entry.singkat && entry.singkat.toLowerCase().includes(q)) ||
-        (entry.lengkap && entry.lengkap.toLowerCase().includes(q)) ||
-        (entry.kepanjangan && entry.kepanjangan.toLowerCase().includes(q))
-    );
-  }, [query]);
-
-  // Group berdasarkan kategori
-  const grouped = useMemo(() => {
-    const groups = {};
-    filtered.forEach((entry) => {
-      const cat = entry.kategori || 'Lainnya';
-      if (!groups[cat]) groups[cat] = [];
-      groups[cat].push(entry);
-    });
-    return groups;
-  }, [filtered]);
+  const [kat, setKat] = useState('');
+  const q = query.trim().toLowerCase();
+  const kategori = useMemo(() => {
+    const m = {};
+    glosariumData.forEach((e) => { const k = e.kategori || 'Umum'; m[k] = (m[k] || 0) + 1; });
+    return Object.entries(m).sort((a, b) => b[1] - a[1]);
+  }, []);
+  const hasil = useMemo(() => glosariumData.filter((e) => (!kat || (e.kategori || 'Umum') === kat) && (!q || [e.istilah, e.singkat, e.lengkap, e.kepanjangan].some((t) => t && t.toLowerCase().includes(q)))), [q, kat]);
 
   return (
     <>
       <Head>
-        <title>Glosarium — Istilah Pemerintah Digital | Pemdi Aceh Tengah</title>
-        <meta name="description" content="Kumpulan istilah teknis dalam portal Pemdi Aceh Tengah, dijelaskan dengan bahasa sederhana." />
+        <title>Glosarium — Dashboard Pemerintah Digital Aceh Tengah</title>
+        <meta name="description" content="Istilah teknis evaluasi Pemerintah Digital (PermenPANRB 8/2026) yang dipakai di dashboard, dijelaskan dengan bahasa sederhana." />
       </Head>
+      <div className="rk-grid">
+        <section className="rk-sit" aria-label="Ringkasan glosarium">
+          <div className="lead"><div className="lbl">Glosarium</div><div className="val">{glosariumData.length}<small>istilah</small></div><div className="sub">kosakata evaluasi Pemerintah Digital yang dipakai lintas halaman dashboard</div></div>
+          <div><div className="lbl">Kategori</div><div className="val">{kategori.length}</div><div className="sub">{kategori.map(([k]) => k).join(' · ')}</div></div>
+          <div><div className="lbl">Cocok</div><div className="val">{hasil.length}</div><div className="sub">{q || kat ? 'sesuai cari/saring' : 'semua ditampilkan'}</div></div>
+          <div><div className="lbl">Rujukan</div><div className="val" style={{ fontSize: 'var(--rk-fs-3)' }}>PermenPANRB 8/2026</div><div className="sub">nama aspek/indikator tidak diparafrasa</div></div>
+        </section>
 
-      <a href="#glosarium-content" className="skip-link">Lompat ke daftar istilah</a>
-
-      {/* ============ HERO ============ */}
-      <section className="hero" style={{ padding: '2.5rem 2rem' }}>
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-          <h1 className="gold-head" style={{ fontSize: 'clamp(1.25rem, 3.5vw, 1.75rem)', fontWeight: 700, marginBottom: '0.5rem' }}>
-            Glosarium — Istilah Pemerintah Digital
-          </h1>
-          <p style={{ fontSize: '0.9375rem', maxWidth: '560px', margin: '0 auto', lineHeight: 1.6 }}>
-            Kumpulan istilah teknis dalam portal Pemdi Aceh Tengah, dijelaskan dengan bahasa sederhana.
-          </p>
-        </div>
-      </section>
-
-      {/* ============ SEARCH ============ */}
-      <section className="section" style={{ padding: '1.5rem 0' }}>
-        <div className="container" style={{ maxWidth: '720px' }}>
-          <div style={{ position: 'relative' }}>
-            <input
-              id="glosarium-search"
-              type="text"
-              placeholder="Cari istilah, singkatan, atau penjelasan..."
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              aria-label="Cari istilah dalam glosarium"
-              style={{
-                width: '100%',
-                padding: '0.75rem 1rem 0.75rem 2.75rem',
-                border: '2px solid var(--line)',
-                borderRadius: '10px',
-                fontFamily: 'Inter, system-ui, sans-serif',
-                fontSize: '0.9375rem',
-                transition: 'border-color 0.2s',
-                outline: 'none',
-              }}
-              onFocus={(e) => { e.target.style.borderColor = 'var(--primary)'; }}
-              onBlur={(e) => { e.target.style.borderColor = 'var(--line)'; }}
-            />
-            <span
-              style={{
-                position: 'absolute',
-                left: '1rem',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                fontSize: '1.125rem',
-                color: 'var(--muted)',
-                pointerEvents: 'none',
-              }}
-              aria-hidden="true"
-            >
-              </span>
+        <section className="rk-panel rk-c12 rk-glos-kendali">
+          <label className="rk-cari-box">
+            <Ikon nama="cari" size={16} />
+            <input type="search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Cari istilah, singkatan, atau penjelasan…" aria-label="Cari istilah dalam glosarium" autoComplete="off" />
+            {query ? <button type="button" className="rk-act" onClick={() => setQuery('')} aria-label="Bersihkan"><Ikon nama="tutup" size={12} /></button> : null}
+          </label>
+          <div className="rk-chips" role="group" aria-label="Saring kategori">
+            <button type="button" className="rk-chip" aria-pressed={!kat} onClick={() => setKat('')}>Semua {glosariumData.length}</button>
+            {kategori.map(([k, n]) => (
+              <button key={k} type="button" className="rk-chip" aria-pressed={kat === k} onClick={() => setKat(kat === k ? '' : k)}>
+                <span className="sw" style={{ background: KATEGORI_WARNA[k] || 'var(--rk-ink-3)' }} />{k} {n}
+              </button>
+            ))}
           </div>
-          <p style={{ fontSize: '0.75rem', color: 'var(--muted)', marginTop: '0.5rem', textAlign: 'center' }}>
-            {filtered.length} dari {glosariumData.length} istilah ditemukan
-          </p>
-        </div>
-      </section>
+        </section>
 
-      {/* ============ GLOSARIUM CONTENT ============ */}
-      <section className="section" id="glosarium-content" style={{ paddingTop: 0, paddingBottom: '2.5rem' }}>
-        <div className="container" style={{ maxWidth: '780px' }}>
-          {Object.keys(grouped).length === 0 && (
-            <div style={{ textAlign: 'center', padding: '2rem 0' }}>
-              <p style={{ fontSize: '0.9375rem', color: 'var(--muted)' }}>
-                Tidak ada istilah ditemukan untuk &ldquo;{query}&rdquo;
-              </p>
-            </div>
-          )}
-
-          {Object.entries(grouped).map(([kategori, entries]) => (
-            <div key={kategori} style={{ marginBottom: '2rem' }}>
-              <div
-                style={{
-                  display: 'inline-block',
-                  padding: '0.25rem 0.75rem',
-                  borderRadius: '100px',
-                  fontSize: '0.75rem',
-                  fontWeight: 600,
-                  color: 'white',
-                  background: getKategoriWarna(kategori),
-                  marginBottom: '0.75rem',
-                }}
-              >
-                {kategori}
-              </div>
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                {entries.map((entry) => (
-                  <div
-                    key={entry.id}
-                    id={`glossary-${entry.id}`}
-                    className="glossary-card"
-                    style={{
-                      background: 'var(--surface)',
-                      border: '1px solid var(--line)',
-                      borderRadius: '10px',
-                      padding: '1.25rem',
-                      scrollMarginTop: '80px',
-                    }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '0.5rem', marginBottom: '0.375rem' }}>
-                      <h3
-                        id={`glossary-title-${entry.id}`}
-                        style={{
-                          fontSize: '1rem',
-                          fontWeight: 700,
-                          color: 'var(--ink)',
-                          margin: 0,
-                        }}
-                      >
-                        {entry.istilah}
-                      </h3>
-                      <a
-                        href={`#glossary-${entry.id}`}
-                        aria-label={`Link langsung ke ${entry.istilah}`}
-                        style={{
-                          fontSize: '0.75rem',
-                          color: 'var(--muted)',
-                          textDecoration: 'none',
-                          flexShrink: 0,
-                          marginTop: '2px',
-                        }}
-                        title="Salin tautan"
-                      >
-                        </a>
-                    </div>
-
-                    {entry.kepanjangan && (
-                      <p
-                        style={{
-                          fontSize: '0.8125rem',
-                          color: 'var(--muted)',
-                          margin: '0 0 0.5rem',
-                          fontWeight: 500,
-                        }}
-                      >
-                        {entry.kepanjangan}
-                      </p>
-                    )}
-
-                    <p
-                      style={{
-                        fontSize: '0.8125rem',
-                        color: 'var(--gold-deep)',
-                        fontStyle: 'italic',
-                        margin: '0 0 0.5rem',
-                        lineHeight: 1.5,
-                      }}
-                    >
-                      Singkatnya: {entry.singkat}
-                    </p>
-
-                    <p
-                      style={{
-                        fontSize: '0.875rem',
-                        color: 'var(--ink-secondary)',
-                        lineHeight: 1.6,
-                        margin: 0,
-                      }}
-                    >
-                      {entry.lengkap}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <style jsx>{`
-        .glossary-card {
-          transition: box-shadow 0.15s;
-        }
-        .glossary-card:hover {
-          box-shadow: var(--sh);
-        }
-        .glossary-card:target {
-          border-color: var(--primary);
-          box-shadow: 0 0 0 3px var(--primary-100);
-        }
-      `}</style>
+        {hasil.length ? (
+          <div className="rk-glos rk-c12">
+            {hasil.map((e) => (
+              <article key={e.id || e.istilah} id={e.id} className="rk-istilah" style={{ '--warna': KATEGORI_WARNA[e.kategori] || 'var(--rk-ink-3)' }}>
+                <header>
+                  <h3><Sorot teks={e.istilah} q={q} /></h3>
+                  <span className="kat">{e.kategori || 'Umum'}</span>
+                </header>
+                {e.kepanjangan ? <p className="kep"><Sorot teks={e.kepanjangan} q={q} /></p> : null}
+                <p className="singkat"><Sorot teks={e.singkat || ''} q={q} /></p>
+                {e.lengkap ? (
+                  <details>
+                    <summary>Penjelasan lengkap</summary>
+                    <p><Sorot teks={e.lengkap} q={q} /></p>
+                  </details>
+                ) : null}
+              </article>
+            ))}
+          </div>
+        ) : (
+          <section className="rk-panel rk-c12 rk-kosong">
+            <p>Tidak ada istilah yang cocok dengan “{query}”{kat ? ` pada kategori ${kat}` : ''}.</p>
+            <p className="rk-catatan">Coba kata lain, atau <Link href={`/cari?q=${encodeURIComponent(query)}`}>cari di seluruh dashboard</Link>.</p>
+          </section>
+        )}
+      </div>
     </>
   );
 }
