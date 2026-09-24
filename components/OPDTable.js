@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import slugify from '@/lib/slugify';
 
-export default function OPDTable({ list = [], butirCountMap = {} }) {
+export default function OPDTable({ list = [], butirCountMap = {}, polos = false }) {
   const [search, setSearch] = useState('');
   const [kategoriFilter, setKategoriFilter] = useState('');
   const [page, setPage] = useState(1);
@@ -44,7 +44,7 @@ export default function OPDTable({ list = [], butirCountMap = {} }) {
   }, [filteredList, page, pageSize]);
 
   return (
-    <div className="glow-card" style={{ padding: '24px' }}>
+    <div className={polos ? undefined : "glow-card"} style={polos ? undefined : { padding: '24px' }}>
       {/* Search & Filter Bar */}
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', marginBottom: '20px', alignItems: 'flex-end' }}>
         <div style={{ flex: 1, minWidth: '260px' }}>

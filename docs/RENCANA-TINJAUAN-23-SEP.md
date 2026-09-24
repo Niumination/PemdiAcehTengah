@@ -69,7 +69,7 @@ Verifikasi: cek-ui, lint, build, curl 12 rute, uji ganti persona/lebar tanpa CLS
 ### Tahap 3 — Reskin halaman lama ke gaya Ruang Kendali (#6, #7, #8) — dipecah 3 patch
 Prinsip: setiap halaman diberi **pola visual sendiri** sesuai kontennya (bervariasi, tidak kaku), semua memakai grid 12 kolom `rk-grid`, `Panel` lipat, token RK; inline-style diganti kelas; hero lama dihapus, diganti **baris situasi** (judul + 3–5 angka + aksi).
 - **3a** ✅ Patch 10 — `pemdi` → per aspek: **7 kartu "dial"** (busur skor mandiri vs asesor) yang membuka akordeon indikator; `requirement` → **papan tugas 3 kolom** (Belum/Proses/Diterima) + tab PPB sekunder; `cari` → dilebur ke Palet (Ctrl+K) + halaman hasil bergaya daftar RK.
-- **3b** `opd/index` → **peta ubin (treemap sederhana)** 52 OPD berdasar jumlah butir + tabel toggle; `opd/[slug]` → profil OPD dengan **strip linimasa butir**; `spbe` → **infografis perbandingan** SPBE 2025 (2,59) vs Pemdi asesor (1,42) vs target, batang horizontal per domain.
+- **3b** ✅ Patch 11 — `opd/index` → **peta ubin (treemap sederhana)** 52 OPD berdasar jumlah butir + tabel toggle; `opd/[slug]` → profil OPD dengan **strip linimasa butir**; `spbe` → **infografis perbandingan** SPBE 2025 (2,59) vs Pemdi asesor (1,42) vs target, batang horizontal per domain.
 - **3c** `modul-indikator` (terbesar, 1948 baris) → struktur **7 aspek → 20 indikator → 5 level** sebagai "anak tangga" (step ladder) per indikator, konten teks baku tetap; `probis` → **pohon L0–L1–L2** bisa dilipat (CFM tetap); `glosarium` → **indeks A–Z** dengan bilah huruf lengket.
 Setiap sub-patch: hapus inline-style halaman tersebut (target ≤ 20 sisa yang benar-benar dinamis), DOX `pages/AGENTS.md`.
 

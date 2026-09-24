@@ -597,3 +597,55 @@ html[data-nav-buka][data-nav='baris'] .rk-nav::before { opacity: 1; }
 .rk-hasil .tx b { font-weight: 600; color: var(--rk-ink); }
 .rk-hasil .tx small { font-size: 12px; color: var(--rk-ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .rk-mark { background: color-mix(in srgb, var(--rk-emas) 35%, transparent); color: inherit; border-radius: 2px; padding: 0 2px; }
+
+/* ═══ /opd peta ubin + profil, /spbe infografis (Patch 11, Tahap 3b) ═══ */
+.rk-ubin { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); grid-auto-rows: 44px; grid-auto-flow: dense; gap: 6px; }
+.rk-ubin .ub { display: flex; flex-direction: column; justify-content: flex-end; gap: 2px; padding: 8px 10px; border-radius: var(--rk-r-1); border: 1px solid color-mix(in srgb, var(--warna) 35%, var(--rk-line)); background: color-mix(in srgb, var(--warna) 10%, var(--rk-panel-2)); min-width: 0; overflow: hidden; transition: border-color .15s; }
+.rk-ubin .ub:hover, .rk-ubin .ub:focus-visible { border-color: var(--warna); }
+.rk-ubin .ub b { font-size: 12px; color: var(--rk-ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.rk-ubin .ub .n { font-family: var(--rk-f-mono); font-size: 11px; color: var(--warna); font-weight: 700; }
+.rk-ubin .ub .nm { font-size: 11px; color: var(--rk-ink-2); line-height: 1.3; overflow: hidden; }
+.rk-ubin .s0 { opacity: .7; }
+.rk-ubin .s2 { grid-column: span 2; }
+.rk-ubin .s3 { grid-column: span 2; grid-row: span 2; background: color-mix(in srgb, var(--warna) 16%, var(--rk-panel-2)); }
+.rk-ubin .s3 b, .rk-ubin .s4 b { font-size: 14px; }
+.rk-ubin .s4 { grid-column: span 3; grid-row: span 2; background: color-mix(in srgb, var(--warna) 22%, var(--rk-panel-2)); }
+.rk-ubin .s4 .n { font-size: 13px; }
+@media (max-width: 860px) { .rk-ubin { grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); } .rk-ubin .s4 { grid-column: span 2; } }
+.rk-strip-butir { display: flex; flex-wrap: wrap; gap: 3px; margin-bottom: 10px; }
+.rk-strip-butir .sb { width: 14px; height: 14px; border-radius: 3px; border: 1px solid transparent; background: var(--rk-line-2); padding: 0; }
+.rk-strip-butir .st-diterima { background: var(--rk-ok); } .rk-strip-butir .st-revisi { background: var(--rk-warn); } .rk-strip-butir .st-draf, .rk-strip-butir .st-proses { background: var(--rk-status-ink-draf); }
+.rk-strip-butir .pr-tinggi { border-color: var(--rk-bad); box-shadow: inset 0 0 0 1px var(--rk-bad); }
+.rk-strip-butir .sb:hover, .rk-strip-butir .sb:focus-visible { transform: scale(1.25); }
+.rk-pohon { display: grid; gap: 8px; font-size: var(--rk-fs-1); }
+.rk-pohon .lv { display: grid; grid-template-columns: 28px 1fr; gap: 8px; padding: 8px 10px; border-left: 2px solid var(--rk-emas); background: var(--rk-panel-2); border-radius: 0 var(--rk-r-1) var(--rk-r-1) 0; }
+.rk-pohon .lv:nth-child(2) { margin-left: 14px; } .rk-pohon .lv:nth-child(3) { margin-left: 28px; }
+.rk-pohon .lv b { color: var(--rk-ink); }
+.rk-pohon ul { margin: 4px 0 0; padding-left: 16px; color: var(--rk-ink-2); }
+.rk-pohon li { margin: 2px 0; }
+.rk-skala { display: grid; gap: 10px; padding-top: 34px; font-size: var(--rk-fs-1); }
+.rk-skala .sumbu { position: relative; height: 1px; background: var(--rk-line-2); margin: 0 0 18px 220px; }
+.rk-skala .tik { position: absolute; top: 4px; transform: translateX(-50%); font-family: var(--rk-f-mono); font-size: 11px; color: var(--rk-ink-3); }
+.rk-skala .amb { position: absolute; bottom: 6px; transform: translateX(-50%); font-size: 11px; color: var(--rk-ink-3); white-space: nowrap; }
+.rk-skala .amb i { display: block; width: 1px; height: 8px; background: var(--rk-line-2); margin: 0 auto 2px; }
+.rk-skala .baris { display: grid; grid-template-columns: 220px 1fr; gap: 0; align-items: center; }
+.rk-skala .lbl { font-weight: 600; color: var(--rk-ink); padding-right: 12px; }
+.rk-skala .lbl small { display: block; font-weight: 400; font-size: 11px; color: var(--rk-ink-3); }
+.rk-skala .jalur { position: relative; height: 22px; background: var(--rk-panel-2); border-radius: 4px; overflow: visible; }
+.rk-skala .jalur i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 4px; }
+.rk-skala .jalur b { position: absolute; top: 50%; transform: translate(6px, -50%); font-family: var(--rk-f-mono); font-size: 12px; color: var(--rk-ink); }
+.rk-skala .target .jalur i { background: transparent !important; border-right: 3px solid var(--rk-ok); border-radius: 0; }
+.rk-skala .target .jalur b { color: var(--rk-status-ink-ok); }
+@media (max-width: 860px) { .rk-skala .sumbu { margin-left: 0; } .rk-skala .baris { grid-template-columns: 1fr; gap: 4px; } .rk-skala .amb { display: none; } }
+.rk-domain { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+.rk-domain .dom { border: 1px solid var(--rk-line); border-radius: var(--rk-r-1); padding: 12px; background: var(--rk-panel-2); display: grid; gap: 8px; align-content: start; }
+.rk-domain .hd { display: flex; align-items: center; gap: 8px; }
+.rk-domain .hd b { margin-right: auto; }
+.rk-domain .nilai { font-weight: 700; font-size: var(--rk-fs-3); }
+.rk-domain .jalur { position: relative; height: 10px; border-radius: 5px; background: var(--rk-panel); border: 1px solid var(--rk-line); overflow: hidden; }
+.rk-domain .jalur i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 5px; }
+.rk-domain .jalur i.ok { background: var(--rk-ok); } .rk-domain .jalur i.warn { background: var(--rk-warn); } .rk-domain .jalur i.bad { background: var(--rk-bad); }
+.rk-domain .jalur .amb { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--rk-line-2); }
+.rk-domain .ke { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; color: var(--rk-ink-3); }
+.rk-domain .ke .rk-chip { height: 26px; display: inline-flex; align-items: center; gap: 6px; }
+.rk-domain .ke .sw { width: 8px; height: 8px; border-radius: 2px; display: inline-block; }

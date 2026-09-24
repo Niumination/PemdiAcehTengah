@@ -1,282 +1,125 @@
+/**
+ * /spbe — Indeks SPBE 2025 sebagai INFOGRAFIS PERBANDINGAN (Patch 11, Tahap 3b).
+ * Tiga skala berdampingan pada satu sumbu 0–5: SPBE 2025 (2,59 Cukup) · Pemdi mandiri (simulasi 0,35) ·
+ * Pemdi asesor sementara (1,24 Rintisan) · target 2026 (2,50); empat domain SPBE sebagai batang horizontal
+ * dengan ambang Kurang/Cukup/Baik; peta domain SPBE → aspek Pemdi; rekomendasi & kekuatan asli.
+ * Data tetap: opd.json → spbe; indeks Pemdi dari susunDataRK() (JSON + overlay CMS).
+ */
 import Head from 'next/head';
 import Link from 'next/link';
-import { formatDesimal } from '@/lib/format';
-import portalData from '@/data/opd.json';
+import PanelLipat, { LipatSemua } from '@/components/rk/PanelLipat';
+import Dial from '@/components/rk/Dial';
+import Ikon from '@/components/ui/Ikon';
 import { KerawangDivider } from '@/components/motif/KerawangMotifs';
+import portalData from '@/data/opd.json';
+import { susunDataRK } from '@/lib/rkData';
+import { fmt2, warnaAspek } from '@/lib/ruangKendali';
 
-/* ── CountStat lokal ── */
-function CountStat({ value, decimals = 0, color, style }) {
-  return <span className="countup" style={{ color, ...style }}>{formatDesimal(value ?? 0, decimals)}</span>;
-}
+const AMBANG = [{ v: 2, l: 'Kurang' }, { v: 3, l: 'Cukup' }, { v: 3.5, l: 'Baik' }, { v: 4.2, l: 'Sangat baik' }];
+function level(v) { return v >= 3 ? { k: 'ok', l: 'Baik' } : v >= 2 ? { k: 'warn', l: 'Cukup' } : { k: 'bad', l: 'Kurang' }; }
 
-/* ── Helpers ── */
-function getLevel(value) {
-  if (value >= 3.0) return { color: 'var(--ok)', label: 'Baik' };
-  if (value >= 2.0) return { color: 'var(--warn)', label: 'Cukup' };
-  return { color: 'var(--bad)', label: 'Kurang' };
-}
+const DOMAIN = [
+  { k: 'kebijakan_spbe', nama: 'Kebijakan SPBE', desc: 'Kebijakan internal yang mengatur penyelenggaraan SPBE di lingkungan Pemkab Aceh Tengah.', aspek: [1] },
+  { k: 'tata_kelola_spbe', nama: 'Tata Kelola SPBE', desc: 'Struktur organisasi, tim koordinasi, perencanaan, penganggaran, dan inovasi.', aspek: [1, 2] },
+  { k: 'manajemen_spbe', nama: 'Manajemen SPBE', desc: 'Pembangunan aplikasi, pusat data, jaringan intra, keamanan, audit TIK.', aspek: [3, 4, 5] },
+  { k: 'layanan_spbe', nama: 'Layanan SPBE', desc: 'Layanan administrasi pemerintahan dan layanan publik elektronik.', aspek: [6, 7] },
+];
 
-/* ── Domain card ── */
-function DomainCard({ nama, nilai }) {
-  const level = getLevel(nilai);
+/** Skala bersama 0–5 dengan beberapa penanda. */
+function Skala({ tanda }) {
   return (
-    <div
-      className="card"
-      style={{
-        padding: '1.25rem',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '0.75rem',
-      }}
-    >
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-        <div style={{ flex: 1 }}>
-          <div style={{ fontSize: '0.8rem', color: 'var(--muted)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-            Domain
-          </div>
-          <div style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--ink)' }}>
-            {nama}
-          </div>
+    <div className="rk-skala" role="img" aria-label={tanda.map((t) => `${t.l} ${fmt2(t.v)}`).join(', ')}>
+      <div className="sumbu">
+        {AMBANG.map((a) => <span key={a.l} className="amb" style={{ left: `${(a.v / 5) * 100}%` }}><i />{a.l} ≥ {fmt2(a.v)}</span>)}
+        {[0, 1, 2, 3, 4, 5].map((n) => <span key={n} className="tik" style={{ left: `${(n / 5) * 100}%` }}>{n}</span>)}
+      </div>
+      {tanda.map((t) => (
+        <div key={t.l} className={`baris ${t.k || ''}`}>
+          <span className="lbl">{t.l}<small>{t.ket}</small></span>
+          <span className="jalur"><i style={{ width: `${(t.v / 5) * 100}%`, background: t.warna }} /><b style={{ left: `${(t.v / 5) * 100}%` }}>{fmt2(t.v)}</b></span>
         </div>
-      </div>
-      <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.5rem' }}>
-        <span style={{ fontSize: '2rem', fontWeight: 700, color: level.color }}>
-          {formatDesimal(nilai)}
-        </span>
-        <span className="badge" style={{ background: `color-mix(in srgb, ${level.color} 10%, transparent)`, color: level.color, fontSize: '0.7rem' }}>
-          {level.label}
-        </span>
-      </div>
+      ))}
     </div>
   );
 }
 
-/* ── Page ── */
-export default function SpbePage({ data }) {
-  const spbe = data.spbe;
-  const indeks = spbe.indeks;
-  const kategori = spbe.kategori;
-  const domain = spbe.domain;
-  const rekomendasi = spbe.rekomendasi_prioritas || [];
-  const kekuatan = spbe.kekuatan || [];
-  const pemdiFramework = spbe.pemdi_framework;
-
-  const indeksLevel = getLevel(indeks);
-
+export default function SpbePage({ spbe, pemdi }) {
+  const d = spbe.domain;
+  const lv = level(spbe.indeks);
+  const tanda = [
+    { l: `SPBE ${spbe.tahun}`, ket: `${spbe.kategori} · Kemenpan RB`, v: spbe.indeks, warna: 'var(--rk-info)' },
+    { l: 'Pemdi asesor (sementara)', ket: 'interviu 21 Sep 2026 · skala 1–5', v: 1.24, warna: 'var(--rk-emas)' },
+    { l: 'Pemdi mandiri awal', ket: 'saat unggah eviden pertama', v: 1.42, warna: 'color-mix(in srgb, var(--rk-emas) 55%, transparent)' },
+    { l: 'Simulasi mandiri', ket: 'hanya bukti diterima · skala 0–5', v: pemdi.indeks, warna: 'var(--rk-ink-3)' },
+    { l: 'Target Pemdi 2026', ket: spbe.pemdi_framework?.target_predikat || 'Baik', v: spbe.pemdi_framework?.target_indeks || 2.5, warna: 'var(--rk-ok)', k: 'target' },
+  ];
   return (
     <>
       <Head>
-        <title>Indeks SPBE — Pemdi Aceh Tengah</title>
-        <meta name="description" content={`Indeks SPBE Kabupaten Aceh Tengah ${indeks} (${kategori}). Empat domain: Kebijakan ${domain.kebijakan_spbe}, Tata Kelola ${domain.tata_kelola_spbe}, Manajemen ${domain.manajemen_spbe}, Layanan ${domain.layanan_spbe}.`} />
+        <title>SPBE 2025 vs Pemdi 2026 — Dashboard Pemerintah Digital Aceh Tengah</title>
+        <meta name="description" content={`Indeks SPBE Kabupaten Aceh Tengah ${spbe.indeks} (${spbe.kategori}) dibandingkan indeks Pemdi 2026 — empat domain, peta ke tujuh aspek Pemdi, rekomendasi prioritas.`} />
       </Head>
-
-      {/* HERO */}
-      <section className="hero" style={{ padding: '2.5rem 2rem' }}>
-        <div style={{ position: 'relative', zIndex: 1 }}>
-          <div style={{ fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', opacity: 0.7, marginBottom: '0.5rem' }}>
-            Kabupaten Aceh Tengah · {spbe.tahun}
-          </div>
-          <h1 className="gold-head" style={{ fontSize: '1.75rem', fontWeight: 700, marginBottom: '0.75rem', lineHeight: 1.2 }}>
-            Indeks Sistem Pemerintahan Berbasis Elektronik (SPBE)
-          </h1>
-          <p style={{ fontSize: '0.9rem', opacity: 0.85, maxWidth: 600, lineHeight: 1.6 }}>
-            Berdasarkan Permenpan RB 59/2020 — Baseline evaluasi digital government Kabupaten Aceh Tengah.
-            Mulai 2026 bertransisi ke kerangka Pemerintah Digital (Pemdi) sesuai Permenpan RB 8/2026.
-          </p>
-
-          {/* Score hero */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '1.5rem',
-            marginTop: '1.5rem',
-            flexWrap: 'wrap',
-          }}>
-            <div style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '3rem', fontWeight: 800, lineHeight: 1 }}>
-                <CountStat value={indeks} decimals={2} />
-              </div>
-              <div style={{ fontSize: '0.75rem', opacity: 0.7, marginTop: '0.25rem' }}>dari 5.00</div>
-            </div>
-            <div className="hero-sep" />
-            <div>
-              <span className="hero-chip" style={{ fontSize: '0.85rem', padding: '0.35rem 1rem' }}>
-                {kategori}
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* DOMAIN SCORES */}
-      <section style={{ marginBottom: '2rem' }}>
-        <KerawangDivider label="Nilai per Domain" style={{ margin: '6px 0 18px' }} />
-        <div className="grid-2" style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
-          gap: '1rem',
-        }}>
-          <DomainCard nama="Kebijakan SPBE" nilai={domain.kebijakan_spbe} />
-          <DomainCard nama="Tata Kelola SPBE" nilai={domain.tata_kelola_spbe} />
-          <DomainCard nama="Manajemen SPBE" nilai={domain.manajemen_spbe} />
-          <DomainCard nama="Layanan SPBE" nilai={domain.layanan_spbe} />
-        </div>
-      </section>
-
-      {/* KEKUATAN & REKOMENDASI */}
-      <div className="grid-2" style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-        gap: '1.5rem',
-        marginBottom: '2rem',
-      }}>
-        {/* Kekuatan */}
-        <div className="card" style={{ padding: '1.5rem' }}>
-          <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.75rem', color: 'var(--ok)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            Kekuatan
-          </h3>
-          <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            {kekuatan.map((item, i) => (
-              <li key={i} style={{
-                padding: '0.5rem 0.75rem',
-                background: 'var(--ok-bg)',
-                borderRadius: 'var(--r-xs)',
-                fontSize: '0.85rem',
-                color: 'var(--ink)',
-                lineHeight: 1.4,
-              }}>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Rekomendasi Prioritas */}
-        <div className="card" style={{ padding: '1.5rem' }}>
-          <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.75rem', color: 'var(--bad)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            Prioritas Perbaikan
-          </h3>
-          <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            {rekomendasi.map((item, i) => (
-              <li key={i} style={{
-                padding: '0.5rem 0.75rem',
-                background: 'var(--bad-bg)',
-                borderRadius: 'var(--r-xs)',
-                fontSize: '0.85rem',
-                color: 'var(--ink)',
-                lineHeight: 1.4,
-              }}>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-
-      {/* TRANSISI PEMDI */}
-      {pemdiFramework && (
-        <section style={{ marginBottom: '2rem' }}>
-          <div className="card" style={{ padding: '1.5rem', background: 'var(--info-bg)', border: '1px solid var(--info)' }}>
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
-              <div>
-                <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem', color: 'var(--info)' }}>
-                  Transisi ke Pemerintah Digital (Pemdi)
-                </h3>
-                <p style={{ fontSize: '0.85rem', color: 'var(--ink-secondary)', lineHeight: 1.6, marginBottom: '0.75rem' }}>
-                  {pemdiFramework.catatan}
-                </p>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-                  <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--ink)' }}>
-                    Target Indeks Pemdi: <span style={{ color: 'var(--info)' }}>≥ {formatDesimal(pemdiFramework.target_indeks)} ({pemdiFramework.target_predikat})</span>
-                  </span>
-                  <Link href="/pemdi" className="btn btn-outline" style={{ fontSize: '0.8rem' }}>
-                    Lihat Dashboard Pemdi →
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div className="rk-grid">
+        <section className="rk-sit" aria-label="Ringkasan SPBE">
+          <div className="lead"><div className="lbl">Indeks SPBE {spbe.tahun} · Kemenpan RB</div><div className="val">{fmt2(spbe.indeks)}<small>{spbe.kategori}</small></div><div className="sub">baseline sebelum transisi ke Pemerintah Digital (PermenPANRB 8/2026)</div></div>
+          <div><div className="lbl">Domain tertinggi</div><div className="val" style={{ color: 'var(--rk-status-ink-ok)' }}>{fmt2(d.layanan_spbe)}<small>Layanan</small></div><div className="sub">{spbe.kekuatan?.[2] || ''}</div></div>
+          <div><div className="lbl">Domain terendah</div><div className="val" style={{ color: 'var(--rk-status-ink-bad)' }}>{fmt2(d.manajemen_spbe)}<small>Manajemen</small></div><div className="sub">6 indikator SPBE bernilai 1,00</div></div>
+          <div><div className="lbl">Pemdi asesor (sementara)</div><div className="val" style={{ color: 'var(--rk-emas-ink)' }}>1,24<small>Level 1 · Rintisan</small></div><div className="sub">mandiri awal 1,42 · target 2026 {fmt2(spbe.pemdi_framework?.target_indeks || 2.5)}</div></div>
+          <div><div className="lbl">Selisih ke target</div><div className="val">{fmt2((spbe.pemdi_framework?.target_indeks || 2.5) - 1.24)}</div><div className="sub">poin indeks Pemdi yang harus dikejar</div></div>
         </section>
-      )}
 
-      {/* DOMAIN DETAIL */}
-      <section style={{ marginBottom: '2rem' }}>
-        <h2 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--ink)' }}>
-          Detail Domain SPBE
-        </h2>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-          {Object.entries({
-            'Kebijakan SPBE': { nilai: domain.kebijakan_spbe, desc: 'Kebijakan internal yang mengatur penyelenggaraan SPBE di lingkungan Pemkab Aceh Tengah.' },
-            'Tata Kelola SPBE': { nilai: domain.tata_kelola_spbe, desc: 'Struktur organisasi, tim koordinasi, dan proses pengelolaan SPBE yang terdiri dari perencanaan, penganggaran, dan inovasi.' },
-            'Manajemen SPBE': { nilai: domain.manajemen_spbe, desc: 'Penerapan manajemen SPBE mencakup pembangunan aplikasi, pusat data, jaringan intra, keamanan, dan audit TIK.' },
-            'Layanan SPBE': { nilai: domain.layanan_spbe, desc: 'Ketersediaan dan kualitas layanan administrasi pemerintahan dan layanan publik yang diselenggarakan secara elektronik.' },
-          }).map(([nama, info]) => (
-            <details
-              key={nama}
-              className="card"
-              style={{
-                padding: '0',
-                borderRadius: 'var(--r-sm)',
-                overflow: 'hidden',
-              }}
-            >
-              <summary style={{
-                padding: '1rem 1.25rem',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.75rem',
-                fontSize: '0.9rem',
-                fontWeight: 600,
-                color: 'var(--ink)',
-                userSelect: 'none',
-              }}>
-                                <span style={{ flex: 1 }}>{nama}</span>
-                <span style={{ fontSize: '1.1rem', fontWeight: 700, color: getLevel(info.nilai).color }}>
-                  {formatDesimal(info.nilai)}
-                </span>
-                <span className="badge" style={{ background: `color-mix(in srgb, ${getLevel(info.nilai).color} 10%, transparent)`, color: getLevel(info.nilai).color, fontSize: '0.6875rem' }}>
-                  {getLevel(info.nilai).label}
-                </span>
-              </summary>
-              <div style={{
-                padding: '0 1.25rem 1rem',
-                fontSize: '0.85rem',
-                color: 'var(--ink-secondary)',
-                lineHeight: 1.6,
-                borderTop: '1px solid var(--line)',
-                paddingTop: '0.75rem',
-                marginTop: '0',
-              }}>
-                {info.desc}
-              </div>
-            </details>
-          ))}
-        </div>
-      </section>
+        <LipatSemua keterangan="Infografis: satu sumbu 0–5 untuk SPBE, Pemdi, dan target — skala SPBE dan Pemdi tidak identik, gunakan sebagai orientasi arah, bukan konversi." />
 
-      {/* FOOTNOTE */}
-      <section style={{
-        padding: '1.25rem',
-        background: 'var(--surface)',
-        borderRadius: 'var(--r-sm)',
-        fontSize: '0.8rem',
-        color: 'var(--muted)',
-        lineHeight: 1.6,
-        textAlign: 'center',
-      }}>
-        Data SPBE bersumber dari hasil evaluasi Diskominfo Aceh Tengah berdasarkan Permenpan RB 59/2020.
-        Data akan diperbarui secara berkala sesuai transisi ke kerangka Pemdi (Permenpan RB 8/2026).
-      </section>
+        <PanelLipat id="spbe-skala" className="rk-c8" judul="Posisi Aceh Tengah pada satu sumbu" ringkas="· SPBE 2,59 · Pemdi 1,24 · target 2,50">
+          <Skala tanda={tanda} />
+        </PanelLipat>
+
+        <PanelLipat id="spbe-dial" className="rk-c4" judul="SPBE vs target Pemdi" ringkas={`· ${fmt2(spbe.indeks)} / ${fmt2(spbe.pemdi_framework?.target_indeks || 2.5)}`}>
+          <div className="rk-aspek-atas">
+            <Dial nilai={spbe.indeks} target={spbe.pemdi_framework?.target_indeks || 2.5} warna="var(--rk-info)" label="target Pemdi" judul={`SPBE ${fmt2(spbe.indeks)} dibanding target Pemdi`} />
+            <div>
+              <p className="rk-desk">Predikat SPBE <b className={`rk-tag t-${lv.k === 'ok' ? 'diterima' : lv.k === 'warn' ? 'proses' : 'revisi'}`}>{lv.l}</b></p>
+              <p className="rk-desk">{spbe.pemdi_framework?.catatan}</p>
+            </div>
+          </div>
+        </PanelLipat>
+
+        <PanelLipat id="spbe-domain" judul="Empat domain SPBE → tujuh aspek Pemdi" ringkas="· 4 domain" aksi={<Link className="rk-act" href="/pemdi">Rinci per aspek →</Link>}>
+          <div className="rk-domain">
+            {DOMAIN.map((x) => {
+              const v = d[x.k]; const l = level(v);
+              return (
+                <div key={x.k} className="dom">
+                  <div className="hd"><b>{x.nama}</b><span className={`rk-tag t-${l.k === 'ok' ? 'diterima' : l.k === 'warn' ? 'proses' : 'revisi'}`}>{l.l}</span><span className="mono nilai">{fmt2(v)}</span></div>
+                  <div className="jalur"><i className={l.k} style={{ width: `${(v / 5) * 100}%` }} /><span className="amb" style={{ left: '40%' }} /><span className="amb" style={{ left: '60%' }} /></div>
+                  <p className="rk-desk">{x.desc}</p>
+                  <div className="ke"><Ikon nama="panah" size={14} /> {x.aspek.map((id) => { const a = pemdi.aspek.find((y) => y.id === id); return a ? <Link key={id} href={`/pemdi#aspek-${id}`} className="rk-chip" style={{ '--warna': warnaAspek(id) }}><i className="sw" style={{ background: warnaAspek(id) }} />{a.singkat || a.nama} · {fmt2(a.indeks)}</Link> : null; })}</div>
+                </div>
+              );
+            })}
+          </div>
+        </PanelLipat>
+
+        <div style={{ gridColumn: 'span 12' }}><KerawangDivider label="Catatan penilaian SPBE" /></div>
+        <PanelLipat id="spbe-rek" className="rk-c6" judul="Rekomendasi prioritas" ringkas={`· ${(spbe.rekomendasi_prioritas || []).length} butir`}>
+          <ol className="rk-ol">{(spbe.rekomendasi_prioritas || []).map((r, i) => <li key={i}>{r}</li>)}</ol>
+        </PanelLipat>
+        <PanelLipat id="spbe-kuat" className="rk-c6" judul="Kekuatan" ringkas={`· ${(spbe.kekuatan || []).length} butir`}>
+          <ul className="rk-ol">{(spbe.kekuatan || []).map((r, i) => <li key={i}>{r}</li>)}</ul>
+        </PanelLipat>
+        <section className="rk-panel rk-rujuk">
+          <h2>Sumber</h2>
+          <ul>
+            <li>Hasil evaluasi SPBE {spbe.tahun} Kemenpan RB (data Diskominfo). Angka Pemdi asesor 1,24 bersifat sementara (sesi interviu 21 Sep 2026) — panel data asesor lengkap menyusul.</li>
+            <li>Bobot 7 aspek Pemdi: {spbe.pemdi_framework?.aspek?.map((a) => `${a.nama} ${a.bobot}`).join(' · ')}.</li>
+          </ul>
+        </section>
+      </div>
     </>
   );
 }
 
-/* ── Data ── */
-export function getStaticProps() {
-  return {
-    props: {
-      data: JSON.parse(JSON.stringify(portalData)),
-    },
-  };
+export async function getStaticProps() {
+  const rk = await susunDataRK();
+  return { props: { spbe: JSON.parse(JSON.stringify(portalData.spbe)), pemdi: { indeks: rk.situasi.indeks, aspek: rk.situasi.aspek } }, revalidate: 60 };
 }

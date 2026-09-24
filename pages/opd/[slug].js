@@ -1,8 +1,15 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { formatAngka, formatDesimal, gabung } from '@/lib/format';
+import { formatAngka } from '@/lib/format';
 import portalData from '@/data/opd.json';
 import slugify from '@/lib/slugify';
+import { useMemo } from 'react';
+import { useRK } from '@/components/rk/RKShell';
+import PanelLipat from '@/components/rk/PanelLipat';
+import Ikon from '@/components/ui/Ikon';
+import StatusIkon from '@/components/ui/StatusIkon';
+import { antreanUntukOPD } from '@/lib/ruangKendali';
+import { LEVEL_RK } from './index';
 
 /* =============================================
    Slug helper — konsisten untuk getStaticPaths
@@ -76,404 +83,94 @@ function cariRelated(daftar, opd, limit = 6) {
 }
 
 /* =============================================
-   LEVEL — icon & colour mapping
+   PAGE — profil OPD gaya Ruang Kendali (Patch 11, Tahap 3b)
+   Baris situasi · strip butir Pemdi milik OPD (dari antrean RK, klik → Drawer) ·
+   Peta proses bisnis ringkas (L0 misi → L1 urusan → L2 proses) · OPD terkait.
    ============================================= */
-const LEVEL_META = {
-  Staf:      { color: 'var(--primary)',  label: 'Staf Ahli/Setda' },
-  Badan:     { color: 'var(--level-badan)',  label: 'Badan' },
-  Dinas:     { color: 'var(--level-dinas)',  label: 'Dinas' },
-  Lembaga:   { color: 'var(--level-lembaga)',  label: 'Lembaga' },
-  Kecamatan: { color: 'var(--level-kecamatan)',  label: 'Kecamatan' },
-};
 
-/* =============================================
-   PAGE COMPONENT
-   ============================================= */
+const PRIO = ['tinggi', 'sedang', 'rendah'];
+
 export default function OPDPage({ opd, urusanTerkait, probisMisi, relatedOpd, prosesOPD }) {
+  const rk = useRK();
+  const butir = useMemo(() => (opd && rk?.data?.antrean ? antreanUntukOPD(rk.data.antrean, opd) : []), [rk, opd]);
   if (!opd) {
     return (
-      <div className="container section" style={{ textAlign: 'center', paddingTop: '5rem' }}>
-        <h2>Perangkat Daerah Tidak Ditemukan</h2>
-        <p style={{ color: 'var(--gray-600)' }}>
-          OPD yang Anda cari tidak tersedia dalam basis data.
-        </p>
-        <Link href="/#opd" className="btn btn-primary mt-3">← Kembali ke Daftar</Link>
-      </div>
+      <div className="rk-grid"><section className="rk-panel"><h2>Perangkat daerah tidak ditemukan</h2><p className="muted">OPD yang Anda cari tidak tersedia dalam basis data. <Link href="/opd">← Daftar perangkat daerah</Link></p></section></div>
     );
   }
-
-  const levelMeta = LEVEL_META[opd.level] || { color: 'var(--ink-secondary)', label: opd.level };
-  const tipe = opd.jenis === 'kecamatan' ? 'Kecamatan' : 'Instansi Daerah';
-
+  const lv = LEVEL_RK[opd.level] || { warna: 'var(--rk-ink-2)', label: opd.level };
+  const tipe = opd.jenis === 'kecamatan' ? 'Kecamatan' : 'Instansi daerah';
+  const perPrio = PRIO.map((p) => ({ p, n: butir.filter((b) => b.prioritas === p).length }));
+  const perInd = Object.entries(butir.reduce((m, b) => { m[b.indikatorId] = (m[b.indikatorId] || 0) + 1; return m; }, {})).sort((x, y) => y[1] - x[1]);
+  const kategoriProses = [...new Set(prosesOPD.map((p) => p.kategori))];
   return (
     <>
       <Head>
-        <title>{`${opd.nama} — Pemdi Aceh Tengah`}</title>
-        <meta name="description" content={`${opd.nama} (${opd.singkat}) — ${opd.urusan}. ${opd.jumlah_asn > 0 ? `${formatAngka(opd.jumlah_asn)} ASN` : 'Data ASN belum tersedia'}. Peta Proses Bisnis Level 1–2.`} />
+        <title>{`${opd.nama} — Dashboard Pemerintah Digital Aceh Tengah`}</title>
+        <meta name="description" content={`${opd.nama} (${opd.singkat}) — ${opd.urusan}. ${opd.jumlah_asn > 0 ? `${formatAngka(opd.jumlah_asn)} ASN` : 'Data ASN belum tersedia'}. Butir bukti Pemdi yang menjadi tanggung jawab, peta proses bisnis L0–L2.`} />
       </Head>
-
-      {/* ============ HERO ============ */}
-      <section className="hero opd-hero">
-        <div className="container">
-          <div className="hero-content">
-            <Link href="/#opd" className="hero-back-link">← Daftar Perangkat Daerah</Link>
-            <div className="hero-badge">Detail Perangkat Daerah</div>
-            <h1>{opd.nama}</h1>
-            <p className="hero-subtitle">
-              {opd.singkat !== opd.nama ? (
-                <><strong>{opd.singkat}</strong> — {opd.urusan}</>
-              ) : opd.urusan}
-            </p>
-            <div className="hero-tags flex flex-wrap gap-2" style={{ marginTop: '1.5rem' }}>
-              <span className="badge" style={{
-                background: `color-mix(in srgb, ${levelMeta.color} 10%, transparent)`,
-                color: levelMeta.color,
-                border: `1px solid color-mix(in srgb, ${levelMeta.color} 25%, transparent)`,
-              }}>
-                {levelMeta.label}
-              </span>
-              <span className="badge badge-green">{opd.urusan}</span>
-              <span className="badge" style={{
-                background: tipe === 'Kecamatan' ? 'var(--warning-light)' : 'var(--primary-light)',
-                color: tipe === 'Kecamatan' ? 'var(--warning)' : 'var(--primary)',
-              }}>
-                {tipe}
-              </span>
-              {opd.jumlah_asn > 0 && (
-                <span className="badge badge-gray">
-                  {formatAngka(opd.jumlah_asn)} ASN
-                </span>
-              )}
-            </div>
+      <div className="rk-grid">
+        <section className="rk-sit" aria-label="Profil perangkat daerah">
+          <div className="lead">
+            <div className="lbl"><Link href="/opd" style={{ color: 'inherit' }}>← Perangkat daerah</Link> · {tipe}</div>
+            <div className="val" style={{ fontSize: 'var(--rk-fs-5, 24px)', lineHeight: 1.2 }}>{opd.nama}</div>
+            <div className="sub"><b style={{ color: lv.warna }}>{lv.label}</b> · {opd.singkat} · {opd.urusan}{opd.jumlah_asn > 0 ? ` · ${formatAngka(opd.jumlah_asn)} ASN` : ''}</div>
           </div>
-        </div>
-      </section>
+          <div><div className="lbl">Butir Pemdi yang menyebut OPD ini</div><div className="val">{butir.length}<small>butir</small></div><div className="sub">{perPrio.map((x) => `${x.n} ${x.p}`).join(' · ')}</div></div>
+          <div><div className="lbl">Indikator terkait</div><div className="val">{perInd.length}</div><div className="sub">{perInd.slice(0, 6).map(([i, n]) => `${i} (${n})`).join(' · ') || '—'}</div></div>
+          <div><div className="lbl">Proses bisnis L2</div><div className="val">{formatAngka(prosesOPD.length)}</div><div className="sub">{kategoriProses.length} kategori · urusan {urusanTerkait.length}</div></div>
+          <div><div className="lbl">Misi RPJMD terkait</div><div className="val" style={{ fontSize: 'var(--rk-fs-3)' }}>{probisMisi || '—'}</div><div className="sub">Level 0 · Visi & Misi 2025–2029</div></div>
+        </section>
 
-      {/* ============ INFO CARDS ============ */}
-      <section className="section">
-        <div className="container">
-          <div className="grid grid-3">
-            {/* CARD 1: Identitas */}
-            <div className="card">
-              <div className="card-header">
-                <div className="card-icon" style={{ background: 'var(--primary-light)', color: 'var(--primary)' }}>
-                  </div>
-                <h3>Identitas</h3>
-              </div>
-              <table className="info-table">
-                <tbody>
-                  <tr>
-                    <td className="info-label">Nama Lengkap</td>
-                    <td className="info-value">{opd.nama}</td>
-                  </tr>
-                  <tr>
-                    <td className="info-label">Singkatan</td>
-                    <td className="info-value"><code>{opd.singkat}</code></td>
-                  </tr>
-                  <tr>
-                    <td className="info-label">Level</td>
-                    <td className="info-value"><span className="badge badge-blue">{opd.level}</span></td>
-                  </tr>
-                  <tr>
-                    <td className="info-label">Jenis</td>
-                    <td className="info-value">{tipe}</td>
-                  </tr>
-                  <tr>
-                    <td className="info-label">ID OPD</td>
-                    <td className="info-value"><code>OPD-{String(opd.id).padStart(2, '0')}</code></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            {/* CARD 2: SDM & Urusan */}
-            <div className="card">
-              <div className="card-header">
-                <div className="card-icon" style={{ background: 'var(--success-light)', color: 'var(--success)' }}>
-                  </div>
-                <h3>SDM & Urusan</h3>
-              </div>
-              <table className="info-table">
-                <tbody>
-                  <tr>
-                    <td className="info-label">Jumlah ASN</td>
-                    <td className="info-value">
-                      {opd.jumlah_asn > 0 ? (
-                        <span className="stat-number">{formatAngka(opd.jumlah_asn)}</span>
-                      ) : (
-                        <span style={{ color: 'var(--gray-400)' }}>—</span>
-                      )}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="info-label">Urusan</td>
-                    <td className="info-value" style={{ fontWeight: 500 }}>{opd.urusan}</td>
-                  </tr>
-                  <tr>
-                    <td className="info-label">% ASN Daerah</td>
-                    <td className="info-value">
-                      {opd.jumlah_asn > 0 ? (
-                        <span className="stat-number-sm">
-                          {formatDesimal((opd.jumlah_asn / 4507) * 100, 1)}%
-                        </span>
-                      ) : (
-                        <span style={{ color: 'var(--gray-400)' }}>—</span>
-                      )}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="info-label">Sumber Data</td>
-                    <td className="info-value" style={{ fontSize: '0.75rem', color: 'var(--gray-500)' }}>
-                      e-Keurani BKPSDM — Mei 2026
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            {/* CARD 3: PPB Keterkaitan */}
-            <div className="card">
-              <div className="card-header">
-                <div className="card-icon" style={{ background: 'var(--info-light)', color: 'var(--info)' }}>
-                  </div>
-                <h3>Keterkaitan PPB</h3>
-              </div>
-              <table className="info-table">
-                <tbody>
-                  <tr>
-                    <td className="info-label">Urusan Terkait</td>
-                    <td className="info-value">
-                      {urusanTerkait.length > 0 ? (
-                        <div className="flex flex-wrap gap-1">
-                          {urusanTerkait.map((u, i) => (
-                            <span key={i} className="badge badge-blue badge-sm">{u}</span>
-                          ))}
-                        </div>
-                      ) : (
-                        <span style={{ color: 'var(--gray-400)' }}>—</span>
-                      )}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="info-label">Misi Pendukung</td>
-                    <td className="info-value">
-                      {probisMisi ? (
-                        <span className="badge badge-green badge-sm">{probisMisi}</span>
-                      ) : (
-                        <span style={{ color: 'var(--gray-400)' }}>—</span>
-                      )}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="info-label">Level PPB</td>
-                    <td className="info-value">
-                      <span className="badge badge-gray badge-sm">Level 0</span>
-                      <span style={{ margin: '0 0.25rem', color: 'var(--gray-400)' }}>→</span>
-                      <span className="badge badge-gray badge-sm">Level 1</span>
-                      <span style={{ margin: '0 0.25rem', color: 'var(--gray-400)' }}>→</span>
-                      <span className="badge badge-gray badge-sm">Level 2</span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ============ PPB HIERARCHY ============ */}
-      <section className="section section-alt">
-        <div className="container">
-          <div className="section-header">
-            <h2>Peta Proses Bisnis</h2>
-            <p>
-              Hierarki proses bisnis berdasarkan Permenpan 19/2018 — 
-              keterkaitan {opd.nama} dalam ekosistem tata kelola Aceh Tengah
-            </p>
-          </div>
-
-          <div className="grid grid-3 ppb-hierarchy">
-            {/* Level 0 */}
-            <div className="card ppb-card ppb-level-0">
-              <div className="ppb-level-badge">Level 0</div>
-              <h3>Visi & Misi</h3>
-              <p className="ppb-label">Visi Daerah</p>
-              <p className="ppb-value">"Aceh Tengah Islami, Maju, Sejahtera, dan Berkeadilan"</p>
-              <div style={{ marginTop: '1rem' }}>
-                <p className="ppb-label">Misi Terkait</p>
-                {probisMisi ? (
-                  <div className="ppb-misi-badge">{probisMisi}</div>
-                ) : (
-                  <span style={{ color: 'var(--gray-400)', fontSize: '0.875rem' }}>—</span>
-                )}
-              </div>
-            </div>
-
-            {/* Level 1 */}
-            <div className="card ppb-card ppb-level-1">
-              <div className="ppb-level-badge">Level 1</div>
-              <h3>Urusan Pemerintahan</h3>
-              <p className="ppb-label">Urusan Utama</p>
-              <p className="ppb-value">{opd.urusan}</p>
-              {urusanTerkait.length > 1 && (
-                <div style={{ marginTop: '1rem' }}>
-                  <p className="ppb-label">Urusan Lain yang Terkait</p>
-                  <div className="flex flex-wrap gap-1">
-                    {urusanTerkait.filter(u => u !== opd.urusan).map((u, i) => (
-                      <span key={i} className="badge badge-blue badge-sm">{u}</span>
-                    ))}
-                  </div>
-                </div>
-              )}
-              <p className="ppb-footnote">Berdasarkan UU 23/2014 · Permenpan 19/2018</p>
-            </div>
-
-            {/* Level 2 */}
-            <div className="card ppb-card ppb-level-2">
-              <div className="ppb-level-badge">Level 2</div>
-              <h3>Proses Bisnis OPD</h3>
-              <p className="ppb-label">Total Proses Terkait</p>
-              <p className="ppb-value" style={{ fontSize: '2rem' }}>{formatAngka(prosesOPD.length)}</p>
-              <div className="flex flex-wrap gap-1" style={{ marginTop: '0.75rem' }}>
-                {[...new Set(prosesOPD.map(p => p.kategori))].map(k => (
-                  <span key={k} className="badge badge-sm" style={{
-                    background: `color-mix(in srgb, ${prosesOPD.find(p => p.kategori === k)?.warna} 10%, transparent)`,
-                    color: prosesOPD.find(p => p.kategori === k)?.warna,
-                    border: `1px solid color-mix(in srgb, ${prosesOPD.find(p => p.kategori === k)?.warna} 25%, transparent)`,
-                  }}>
-                    {k}
-                  </span>
-                ))}
-              </div>
-              <p className="ppb-footnote">Proses bisnis spesifik untuk {opd.singkat}</p>
-            </div>
-          </div>
-
-          {/* Visual chain */}
-          <div className="ppb-chain">
-            <div className="ppb-chain-item">
-              <div className="ppb-chain-circle">1</div>
-              <span>Visi &amp; Misi</span>
-            </div>
-            <div className="ppb-chain-arrow">→</div>
-            <div className="ppb-chain-item">
-              <div className="ppb-chain-circle" style={{ background: 'var(--success)', color: 'white' }}>2</div>
-              <span>Urusan</span>
-            </div>
-            <div className="ppb-chain-arrow">→</div>
-            <div className="ppb-chain-item">
-              <div className="ppb-chain-circle" style={{ background: 'var(--warning)', color: 'white' }}>3</div>
-              <span>Proses Bisnis</span>
-            </div>
-            <div className="ppb-chain-arrow">→</div>
-            <div className="ppb-chain-item">
-              <div className="ppb-chain-circle ppb-chain-circle-active">
-                {opd.singkat.substring(0, 2).toUpperCase()}
-              </div>
-              <strong>{opd.singkat}</strong>
-            </div>
-          </div>
-
-          {/* Proses Bisnis Spesifik OPD */}
-          {prosesOPD.length > 0 && (
+        <PanelLipat id={`opd-butir-${opd.id}`} className="rk-c8" judul="Butir bukti Pemdi yang menjadi tanggung jawab" ringkas={`· ${butir.length} butir`} aksi={<Link className="rk-act" href="/antrean">Antrean lengkap →</Link>}>
+          {!rk?.data ? <p className="faint">Memuat…</p> : butir.length === 0 ? (
+            <p className="muted" style={{ margin: 0 }}>Belum ada catatan mandiri yang menyebut {opd.singkat} sebagai PJ. Bila OPD ini terlibat, tambahkan pada kolom PJ lewat <Link href="/admin">Admin CMS</Link>.</p>
+          ) : (
             <>
-              <div className="section-subheader" style={{ marginTop: '2.5rem', marginBottom: '1.25rem' }}>
-                <h3 style={{ fontSize: '1.125rem', fontWeight: 600, margin: 0 }}>
-                  Proses Bisnis {opd.singkat}
-                </h3>
-                <p style={{ fontSize: '0.8125rem', color: 'var(--muted)', margin: '0.25rem 0 0' }}>
-                  {formatAngka(prosesOPD.length)} proses bisnis spesifik berdasarkan tugas dan fungsi {opd.nama}
-                </p>
+              <div className="rk-strip-butir" aria-label="Strip status butir">
+                {butir.map((b) => <button key={b.id} type="button" className={`sb st-${b.status} pr-${b.prioritas}`} title={`${b.kode} · ${b.status} · ${b.prioritas}`} onClick={() => rk.bukaButir(b.id, b.indikatorId)} aria-label={`Buka butir ${b.kode}`} />)}
               </div>
-              <div className="grid grid-2" style={{ gap: '0.75rem' }}>
-                {prosesOPD.map((p, i) => (
-                  <div key={i} className="card" style={{ padding: '1rem' }}>
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="badge badge-sm" style={{
-                        background: `color-mix(in srgb, ${p.warna} 10%, transparent)`, color: p.warna,
-                        border: `1px solid color-mix(in srgb, ${p.warna} 25%, transparent)`, fontSize: '0.6875rem',
-                      }}>
-                        {p.kategori}
-                      </span>
+              <ul className="rk-butir">
+                {butir.slice(0, 30).map((b) => (
+                  <li key={b.id}>
+                    <div className="row">
+                      <StatusIkon k={b.status} />
+                      <span className="mono kode">{b.kode}</span>
+                      <span className="nama">{b.nama}</span>
+                      <span className={`rk-tag t-${b.prioritas === 'tinggi' ? 'revisi' : b.prioritas === 'sedang' ? 'proses' : 'belum'}`}>{b.prioritas}</span>
+                      <button type="button" className="rk-btn kecil" onClick={() => rk.bukaButir(b.id, b.indikatorId)} aria-label={`Buka butir ${b.kode}`}><Ikon nama="kanan" size={14} /></button>
                     </div>
-                    <h4 style={{ fontSize: '0.875rem', fontWeight: 600, margin: '0.375rem 0 0.25rem' }}>
-                      {p.nama}
-                    </h4>
-                    <p style={{ fontSize: '0.75rem', color: 'var(--muted)', margin: 0 }}>
-                      <span style={{ fontWeight: 600 }}>Output:</span> {p.output}
-                    </p>
-                  </div>
+                    {b.ringkas ? <div className="cat faint">{b.ringkas}</div> : null}
+                  </li>
                 ))}
-              </div>
-              <div className="flex justify-center" style={{ marginTop: '1.5rem' }}>
-                <a href="/probis#level-2" className="btn btn-outline btn-sm">
-                  Lihat Semua Proses Bisnis →
-                </a>
-              </div>
+              </ul>
+              {butir.length > 30 ? <p className="faint">+ {butir.length - 30} butir lain di <Link href="/antrean">Antrean</Link> (pilih persona PJ OPD → {opd.singkat}).</p> : null}
             </>
           )}
-        </div>
-      </section>
+        </PanelLipat>
 
-      {/* ============ RELATED OPD ============ */}
-      {relatedOpd.length > 0 && (
-        <section className="section">
-          <div className="container">
-            <div className="section-header">
-              <h2>Perangkat Daerah Terkait</h2>
-              <p>
-                {opd.level === 'Kecamatan'
-                  ? `Kecamatan lain di Kabupaten Aceh Tengah`
-                  : `OPD lain dengan level atau urusan yang sama`}
-              </p>
-            </div>
-            <div className="grid grid-2">
-              {relatedOpd.map((r) => (
-                <Link
-                  href={`/opd/${r.slug}`}
-                  key={r.id}
-                  className="card related-card"
-                >
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="badge badge-blue badge-sm">{r.level}</span>
-                    <span className="badge badge-gray badge-sm">
-                      {r.jenis === 'kecamatan' ? 'Kecamatan' : 'Instansi'}
-                    </span>
-                  </div>
-                  <h4 style={{ marginBottom: '0.25rem', fontSize: '1rem' }}>{r.nama}</h4>
-                  <p style={{ fontSize: '0.8125rem', color: 'var(--gray-600)', marginBottom: '0.25rem' }}>
-                    {r.urusan}
-                  </p>
-                  <small style={{ color: 'var(--gray-500)' }}>
-                    {r.jumlah_asn > 0 ? `${formatAngka(r.jumlah_asn)} ASN` : '—'}
-                  </small>
-                </Link>
-              ))}
+        <PanelLipat id={`opd-ppb-${opd.id}`} className="rk-c4" judul="Peta proses bisnis" ringkas={`· ${prosesOPD.length} proses`} aksi={<Link className="rk-act" href="/probis">Peta lengkap →</Link>}>
+          <div className="rk-pohon">
+            <div className="lv"><span className="mono faint">L0</span><b>{probisMisi || 'Misi RPJMD'}</b></div>
+            <div className="lv"><span className="mono faint">L1</span><b>{opd.urusan}</b>{urusanTerkait.filter((u) => u !== opd.urusan).length ? <span className="faint">+ {urusanTerkait.filter((u) => u !== opd.urusan).join(', ')}</span> : null}</div>
+            <div className="lv"><span className="mono faint">L2</span>
+              <ul>{prosesOPD.slice(0, 12).map((p, i) => <li key={i}><b>{p.nama}</b><span className="faint"> · {p.kategori}{p.output ? ` → ${p.output}` : ''}</span></li>)}</ul>
+              {prosesOPD.length > 12 ? <span className="faint">+ {prosesOPD.length - 12} proses lain</span> : null}
             </div>
           </div>
-        </section>
-      )}
+        </PanelLipat>
 
-      {/* ============ FOOTER NAV ============ */}
-      <section className="section section-alt" style={{ padding: '2rem 0' }}>
-        <div className="container">
-          <div className="flex justify-between items-center" style={{ flexWrap: 'wrap', gap: '1rem' }}>
-            <Link href="/#opd" className="btn btn-outline">
-              ← Daftar Perangkat Daerah
-            </Link>
-            <Link href="/#probis" className="btn btn-outline">
-              Peta Proses Bisnis →
-            </Link>
-          </div>
-        </div>
-      </section>
+        {relatedOpd.length > 0 ? (
+          <section className="rk-panel">
+            <h2>{opd.level === 'Kecamatan' ? 'Kecamatan lain' : 'OPD dengan level atau urusan yang sama'}</h2>
+            <div className="rk-chips">{relatedOpd.map((r) => <Link key={r.id} href={`/opd/${r.slug}`} className="rk-chip">{r.singkat}<span className="faint"> · {r.urusan}</span></Link>)}</div>
+          </section>
+        ) : null}
+      </div>
     </>
   );
 }
 
-/* =============================================
-   STATIC GENERATION — all 52 OPD paths
-   ============================================= */
 export async function getStaticPaths() {
   const { opd } = portalData;
   const paths = opd.daftar.map((d) => ({

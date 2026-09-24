@@ -10,7 +10,7 @@ import RKShell from '@/components/rk/RKShell';
  * opd, glosarium, 404; pemdi/requirement/cari sudah RK-native sejak Patch 10) dibungkus `.rk-legacy` supaya token lama (globals.css)
  * tetap berlaku di dalam kontennya. AppShell/Sidebar/BottomNav/Footer lama dihapus.
  */
-const RUTE_RK = new Set(['/dashboard', '/indikator', '/antrean', '/admin', '/pemdi', '/requirement', '/cari']); // Patch 10: /pemdi /requirement /cari kini RK-native
+const RUTE_RK = new Set(['/dashboard', '/indikator', '/antrean', '/admin', '/pemdi', '/requirement', '/cari', '/opd', '/opd/[slug]', '/spbe']); // Patch 10–11: halaman lama yang sudah RK-native
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { Analytics } from '@vercel/analytics/react';
