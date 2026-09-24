@@ -28,9 +28,9 @@ Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah. Transformasi menuju Peme
 | **Font** | Plus Jakarta Sans (Google Fonts, `display=swap` — lihat `_document.js`) |
 | **Data Source** | **Hanya** `data/*.json` (Pemdi, modul indikator, catatan mandiri, OPD, SPBE, ProBis, PPB, glosarium, dokumen kunci) dibundel saat build. Tidak ada DB runtime sejak reposisi 22 Sep 2026 (Supabase dihapus) |
 | **Komponen** | **komponen React aktif** (rk/ + PanelLipat, NavMenu, Dial) — rk/{RKShell, Panel, Kompas, Drawer, Palet}, ui/{Ikon, StatusIkon}, CatatanTujuan, asesor/{CatatanMandiri}, OPDTable, motif/KerawangMotifs (lihat `components/AGENTS.md`) |
-| **Halaman** | 14 route halaman + 14 API route (6 read-only + `/api/admin/*` 5 + `/api/auth/*` 3) — lihat `pages/AGENTS.md` |
+| **Halaman** | 15 route halaman (`/dashboard` `/indikator` `/antrean` `/pemdi` `/modul-indikator` `/requirement` `/cari` `/opd` `/opd/[slug]` `/spbe` `/probis` `/glosarium` `/asesor` `/admin` + `/404`) + 14 API route (6 read-only + `/api/admin/*` 5 + `/api/auth/*` 3) — lihat `pages/AGENTS.md` |
 | **Lib** | `lib/ruangKendali.js` + `lib/rkData.js` (payload dashboard), `lib/pemdiNilai.js` (rumus PermenPANRB 8/2026), `lib/catatanMandiri.js`, `lib/pjButir.js` (butir Pemdi per OPD), `lib/cmsAuth.js` (CMS: 2 peran sandi bersama), `lib/overlay.js` (overlay Neon Postgres di atas JSON), `lib/db.js` (serverless Postgres), `lib/search-index.js`, `lib/modeSitus.js`, `lib/slugify.js`, `lib/format.js` — lihat `lib/AGENTS.md` |
-| **Status** | 🎯 **Ruang Kendali + CMS + Tema Terang live (23 Sep 2026, `6209cd8`)** — lihat `REPOSISI-PEMDI.md` + `docs/RENCANA-RUANG-KENDALI-CMS.md`. Produk aktif: **Dashboard Pemdi internal** untuk Tim Koordinasi Pemdi + PJ OPD. Persona publik diarsipkan di tag `arsip/persona-publik-2026-09`. Semua rute di `RKShell`, `/` → 308 `/dashboard`, CMS `/admin` (overlay Neon Postgres; tanpa env → mode baca + API tulis 503; PGlite untuk uji lokal via `CMS_DB_LOKAL`), tema terang konsisten di seluruh halaman (Patch 5+6) |
+| **Status** | 🎯 **Ruang Kendali + CMS + Tema Terang + reskin 6 rute + data asesor live (24 Sep 2026, `9c3d9c4`)** — lihat `REPOSISI-PEMDI.md` + `docs/RENCANA-RUANG-KENDALI-CMS.md`. Produk aktif: **Dashboard Pemdi internal** untuk Tim Koordinasi Pemdi + PJ OPD. Persona publik diarsipkan di tag `arsip/persona-publik-2026-09`. Semua rute RK-native (jembatan `.rk-legacy` = jaring pengaman), menu Radial ⇄ Baris, `/` → 308 `/dashboard`, CMS `/admin` (overlay Neon Postgres; tanpa env → mode baca + API tulis 503; PGlite untuk uji lokal via `CMS_DB_LOKAL`), rute baru `/asesor` (data evaluator asesor eksternal) |
 | **Remote** | `git@github.com:Niumination/PemdiAcehTengah.git` |
 | **Production** | https://pemdi-aceh-tengah.vercel.app |
 | **License** | MIT |
@@ -47,11 +47,11 @@ Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah. Transformasi menuju Peme
 | **HEAD** | Patch 1–3 **Ruang Kendali** (22 Sep 2026, di atas `12ad08c`) + Patch 4 CMS (Neon Postgres) + Patch 5 Tema Terang (kontras & kedalaman) + **Patch 6 Tema terang di seluruh halaman lama** + **Patch 7 CMS revalidate eksplisit + PGlite** (23 Sep 2026, `6209cd8`): hero navy hardcoded → panel token di 10 halaman lama, `LEVEL_WARNA`/warna OPD → token per tema, `${warna}15` → `color-mix()`; `lib/revalidate.js` (hasil revalidate dilaporkan di respons API), `CMS_DB_LOKAL` → PGlite untuk uji lokal. Shell baru `components/rk/RKShell` untuk semua rute, `/` → 308 `/dashboard`, rute baru `/dashboard` `/indikator` `/antrean`, `/api/rk-data`, **CMS `/admin`** (2 peran sandi bersama, log audit, ekspor kembali ke `catatan-mandiri.json`), emoji → `Ikon`/`StatusIkon`, penjaga `scripts/cek-ui.mjs` (6 aturan sejak Patch 15). Rencana lengkap: `docs/RENCANA-RUANG-KENDALI-CMS.md` |
 | **Agent Skills** | `.agents/skills/` — **10** skill autoskills (React · Next.js · Supabase · Node · SEO · a11y · design). Lock file ada di **root repo**: `skills-lock.json` (10 entri, masing-masing `source` + `computedHash`). Pasang ulang: `npx autoskills` — ⚠️ registry masih menyediakan `next-cache-components` (**Next.js 16+ only**, sedangkan proyek ini di 14.2.35): keluarkan lagi bila terpasang ulang, sampai proyek benar-benar naik versi. |
 | **Env Vars** | **Tidak ada yang wajib** — situs penuh dari JSON. Opsional CMS: `DATABASE_URL` (Neon Postgres), `CMS_SANDI_KOORDINATOR`, `CMS_SANDI_PJ`, `CMS_SESI_RAHASIA` (lihat `.env.example`); tanpa ini `/admin` mode baca & API tulis 503. **`CMS_DB_LOKAL`** (Patch 7, dev saja — Postgres WASM via `@electric-sql/pglite`, mis. `.cache/pgdata`). Supabase/ADMIN_PASSWORD/IP_HASH_SALT lama dihapus 22 Sep 2026. `NEXT_PUBLIC_SITE_URL` opsional |
-| **Indeks Pemdi** | **0,35 — Simulasi Penilaian Mandiri** (rumus PermenPANRB 8/2026; hanya bukti `diterima` asesor yang dihitung) — target 2,50+. Label "Terverifikasi" DIHAPUS (prasyarat K8 REPOSISI-PEMDI.md) |
+| **Indeks Pemdi** | **1,24 · Level 1 · Rintisan** — angka utama hasil evaluasi asesor eksternal KemenPANRB (`data/evaluasi-asesor-2026.json`, Patch 14); pembanding: penilaian mandiri awal 1,42 · simulasi butir 0,35 (rumus PermenPANRB 8/2026; hanya bukti `diterima` asesor yang dihitung) — target 2,50+. Label "Terverifikasi" DIHAPUS (prasyarat K8 REPOSISI-PEMDI.md). Keputusan tim 23 Sep 2026: 1,24 = angka utama |
 | **Penilaian Tahap 1** | eval.spbe.go.id, sinkron 20 Sep 2026: 37 butir dinilai → **18 diterima** (PDF di `public/bukti-dukung/final/I#-L#-##.pdf`) · **19 revisi** (19 butir: 7 bukti tidak tepat · 10 belum diunggah · 2 ditolak otomatis — I1, I4, I8, I9, I10, I12, I13, I14, I15, I16, I19, I20) — catatan asesor asli di `eval.catatan`, jenis di `eval.jenis` (`tidak_tepat|belum_diunggah|otomatis_ditolak`), berkas tidak disimpan, ditandai 🔁. Metadata: `data/pemdi.json → penilaian_tahap1` |
 | **Total bukti dukung** | **232** butir (`data/pemdi.json`: 18 diterima / 19 revisi / 0 proses / 12 draf / 183 belum). Vokabuler status: `diterima · revisi · proses · draf · belum` (`lib/pemdiNilai.js → STATUS_META`) |
 | **Konvensi kode bukti** | `I{indikator}-L{level}-{NN}` ⇔ item modul `GT.I{indikator}_L{level}_{NN}` — NN = nomor urut butir di dalam level pada Modul Indikator. Sinkron via `scripts/apply-eval-tahap1.py` → `scripts/hitung-capaian-pemdi.py` → `scripts/build-draf-prioritas.py` → `scripts/build-kebutuhan-bukti.py` → `scripts/sinkron-modul-indikator.py` → `scripts/gabung-catatan-mandiri.py` (rantai LENGKAP wajib dijalankan berurutan agar 4 JSON turunan tidak berbeda; dijaga 6 tes KONSISTENSI di `test/pemdiNilai.test.mjs` + 10 tes `test/catatanMandiri.test.mjs`) |
-| **Catatan Mandiri (interviu asesor eksternal)** | (21 Sep 2026, tenggat **Senin 28 Sep 2026**) `data/catatan-mandiri.json` → `pemdi.json.bukti_dukung[].catatan_mandiri` — 48 butir (19 revisi + 29 butir level berikut), rujukan halaman PDF (RPJMD/Renstra/Peta Rencana/SK/draf panduan) + tautan JDIH; tampil di `/pemdi` & `/modul-indikator` (Salin · DOCX · Cetak/PDF per indikator). **Materi evaluasi asesor eksternal KemenPANRB belum diterima (akan menyusul)** — lihat `docs/catatan-mandiri-interviu-2026.md`; perbarui `materi_asesor_eksternal` saat diterima |
+| **Catatan Mandiri (interviu asesor eksternal)** | (21 Sep 2026, tenggat **Senin 28 Sep 2026**) `data/catatan-mandiri.json` → `pemdi.json.bukti_dukung[].catatan_mandiri` — 48 butir (19 revisi + 29 butir level berikut), rujukan halaman PDF (RPJMD/Renstra/Peta Rencana/SK/draf panduan) + tautan JDIH; tampil di `/pemdi` & `/modul-indikator` (Salin · DOCX · Cetak/PDF per indikator). **Materi evaluasi asesor eksternal KemenPANRB belum diterima** (per 24 Sep 2026; R5 di zip = interviu tim internal, bukan materi KemenPANRB) — lihat `docs/catatan-mandiri-interviu-2026.md`; perbarui `materi_asesor_eksternal` saat diterima |
 
 ## Tujuan Produk (catatan pemilik, 20 Sep 2026)
 
@@ -90,7 +90,7 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 | `package.json` | Dependencies: next 14.2.35, react 18.3.1 · `npm test` = node --test (Node 22) |
 | `next.config.js` | Standalone output, reactStrictMode, unoptimized images |
 | `jsconfig.json` | Path alias `@/*` |
-| `.github/workflows/ci.yml` | CI (Node 20): `npm ci` → lint → **`npm test`** (55 tes) → build. Gerbang mutu setiap push/PR ke `main` |
+| `.github/workflows/ci.yml` | CI (Node 20): `npm ci` → lint → **`npm test`** (58 tes) → build. Gerbang mutu setiap push/PR ke `main` |
 | `.gitignore` | node_modules, .next, .env, *.old, build |
 | `docs/riset-peta-proses-bisnis-permenpan-19-2018.md` | Riset lengkap framework PPB (408 lines) — Permenpan 19/2018, BPMN, template, contoh daerah |
 | `docs/riset-data-aceh-tengah.md` | Riset data Aceh Tengah (255 lines) — visi misi, RPJMD, OPD, urusan konkuren, SPBE, transformasi digital |
@@ -125,7 +125,7 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 
 | Path | Scope |
 |------|-------|
-| `pages/AGENTS.md` | 14 route halaman internal (utama `/dashboard`, CMS `/admin`) + 6 API read-only + 3 auth + 5 admin — routing, data flow, noindex |
+| `pages/AGENTS.md` | 15 route halaman internal (utama `/dashboard`, CMS `/admin`, asesor `/asesor`) + 6 API read-only + 3 auth + 5 admin — routing, data flow, noindex |
 | `pages/api/AGENTS.md` | REST API: read-only rk-data, opd, spbe, requirement, proxy-pdf, health. Tanpa DB, tanpa auth |
 | `components/AGENTS.md` | **komponen aktif** — rk/{RKShell, Panel, Kompas, Drawer, Palet}, ui/{Ikon, StatusIkon}, CatatanTujuan, asesor/{CatatanMandiri}, OPDTable, motif/KerawangMotifs |
 | `styles/AGENTS.md` | `tokens.css` (token `--rk-*`, revisi tema terang 23 Sep: kontras ≥4.5:1, panel berbayang halus, chip status tint; font Bricolage Grotesque + IBM Plex) · `ruang-kendali.css` (`.rk-*`, jembatan `.rk-legacy`) · `globals.css` (halaman lama, 1.156 baris) |
@@ -160,17 +160,17 @@ Gap sebelumnya (Sprint Redesign Award Level + Trust Infrastructure) sudah diimpl
 | CORS & XSS helpers | `lib/cors.js`, `lib/safeRichText.js` | ✅ | 14 Jun 2026 |
 | RFC 9116 | `.well-known/security.txt` | ✅ | 14 Jun 2026 |
 
-**Angka terkini (diverifikasi 23 Sep 2026, `6209cd8` Patch 6+7):**
+**Angka terkini (diverifikasi 24 Sep 2026, `9c3d9c4` Patch 15):**
 
-- **komponen aktif** di `components/` — rk/{RKShell, Panel, Kompas, Drawer, Palet}, ui/{Ikon, StatusIkon}, CatatanTujuan, asesor/{CatatanMandiri}, OPDTable, motif/KerawangMotifs
-- **14 route halaman + 14 API route** (6 read-only + 5 admin CMS + 3 auth)
+- **komponen aktif** di `components/` — rk/{RKShell, Panel, Kompas, Drawer, Palet, NavMenu, Dial, PanelLipat}, ui/{Ikon, StatusIkon}, CatatanTujuan, asesor/{CatatanMandiri}, OPDTable, motif/KerawangMotifs
+- **15 route halaman + 14 API route** (6 read-only + 5 admin CMS + 3 auth)
 - **12 modul** di `lib/`
-- **55 tes** (`pemdiNilai` 16 + `requirement` 4 + `catatanMandiri` 10 + `pjButir` + `cekUi` + `overlay` + `ruangKendali`) — dijalankan CI dan `npm test`
-- **62 halaman statis** di build (14 route inti + 48 halaman OPD `/opd/[slug]`) · `npx next lint` 0 error · `node scripts/cek-ui.mjs` bersih
+- **58 tes** (`pemdiNilai` 16 + `requirement` 4 + `catatanMandiri` 10 + `pjButir` + `cekUi` 6 aturan + `overlay` + `ruangKendali` + asesor) — dijalankan CI dan `npm test`
+- **63 halaman statis** di build (11 route inti + 52 halaman OPD `/opd/[slug]`; rute baru `/asesor`) · `npx next lint` 0 error (3 warning bawaan lama di admin.js) · `node scripts/cek-ui.mjs` bersih
 
-## Status Sekarang — 23 Sep 2026
+## Status Sekarang — 24 Sep 2026
 
-**Repo:** branch `main` · `git@github.com:Niumination/PemdiAcehTengah.git` · produksi `https://pemdi-aceh-tengah.vercel.app` · HEAD `6209cd8` (Patch 7 CMS revalidate+PGlite) · working tree bersih, semua commit ter-push.
+**Repo:** branch `main` · `git@github.com:Niumination/PemdiAcehTengah.git` · produksi `https://pemdi-aceh-tengah.vercel.app` · HEAD `9c3d9c4` (Patch 15 ponsel & penjaga akhir) · working tree bersih, semua commit ter-push.
 
 | Milestone | Ringkasan |
 |-----------|-----------|

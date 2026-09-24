@@ -74,5 +74,5 @@ data/*.json (pemdi, modul-indikator, opd, requirement, draf-bukti-prioritas,
 
 ## Verification
 - `npx next lint` — 0 error (1 warning `exhaustive-deps` di pemdi.js dikenal)
-- `npm test` — 55/55 pass (pemdiNilai · catatanMandiri · requirement · pjButir · cekUi · overlay · ruangKendali)
-- `npm run build` — sukses, 62 halaman statis ter-generate (14 route inti + 48 halaman OPD `/opd/[slug]`); `/skm /lapor /api/skm` → 404 (rute publik dihapus)
+- `npm test` — 58/58 pass (pemdiNilai · catatanMandiri · requirement · pjButir · cekUi · overlay · ruangKendali)
+- `npm run build` — sukses, 63 halaman statis ter-generate (11 route inti + 52 halaman OPD `/opd/[slug]`); `/skm /lapor /api/skm` → 404 (rute publik dihapus)

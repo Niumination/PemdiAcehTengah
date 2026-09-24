@@ -30,7 +30,7 @@ Situs melayani **satu persona: internal Pemdi**. Persona publik/warga (beranda w
 
 | Indikator | Nilai |
 |-----------|-------|
-| **Indeks Pemdi (simulasi mandiri)** | **0,35** — hanya 18 bukti **diterima asesor** Tahap 1 eval.spbe.go.id yang dihitung (rumus resmi PermenPANRB 8/2026) — *bukan nilai resmi* |
+| **Indeks Pemdi** | **1,24 · Level 1 · Rintisan** — hasil evaluasi asesor eksternal KemenPANRB (`data/evaluasi-asesor-2026.json`, Patch 14) · pembanding: simulasi mandiri 0,35 (18 bukti **diterima asesor** Tahap 1 eval.spbe.go.id, rumus PermenPANRB 8/2026) — *bukan nilai resmi* |
 | **Penilaian Tahap 1 (eval.spbe.go.id)** | 37 butir dinilai asesor → **18 diterima · 19 revisi** (19 butir: 7 bukti tidak tepat · 10 belum diunggah · 2 ditolak otomatis — I1, I4, I8, I9, I10, I12, I13, I14, I15, I16, I19, I20) — sinkron 20 Sep 2026 |
 | **Target Pemdi 2026** | 2.50 (Baik) |
 | **Indeks SPBE 2025** | 2,59 (Cukup) — baseline konversi |
@@ -71,17 +71,18 @@ Situs melayani **satu persona: internal Pemdi**. Persona publik/warga (beranda w
 
 ```
 PemdiAcehTengah/
-├── pages/                # 14 halaman internal + 14 API route (6 read-only + 5 admin + 3 auth) (lihat pages/AGENTS.md)
-│   ├── dashboard.js      # Dashboard (halaman utama) · indikator.js · antrean.js
-│   ├── pemdi.js          # Dashboard Pemdi — simulasi mandiri + catatan mandiri
-│   ├── modul-indikator.js, requirement.js, spbe.js, probis.js, glosarium.js, cari.js
-│   ├── opd/              # index + [slug] (52 SSG)
-│   └── api/              # opd, spbe, requirement, proxy-pdf, health
-├── components/           # 13 komponen — rk/{RKShell,Panel,Kompas,Drawer,Palet}, ui/{Ikon,StatusIkon}, asesor/*, motif/Kerawang
-├── lib/                  # pemdiNilai, catatanMandiri, pjButir, search-index, modeSitus, format, slugify
-├── data/                 # pemdi.json, modul-indikator.json, catatan-mandiri.json, opd.json, draf-bukti-prioritas.json, …
+├── pages/                # 15 halaman internal + 14 API route (6 read-only + 5 admin + 3 auth) (lihat pages/AGENTS.md)
+│   ├── dashboard.js      # Dashboard (halaman utama) · indikator.js · antrean.js · asesor.js
+│   ├── pemdi.js · modul-indikator.js · requirement.js · cari.js
+│   ├── spbe.js · probis.js · glosarium.js
+│   ├── opd/index.js · opd/[slug].js   # 52 OPD
+│   ├── admin/            # CMS (env Neon; tanpa env → mode baca + API tulis 503)
+│   └── api/              # REST read-only (rk-data, opd, spbe, requirement, proxy-pdf, health) + auth + admin
+├── components/           # 16 komponen — rk/{RKShell,Panel,Kompas,Drawer,Palet,NavMenu,Dial,PanelLipat}, ui/{Ikon,StatusIkon}, asesor/{CatatanMandiri,AsesorDial}, OPDTable, motif/Kerawang
+├── lib/                  # pemdiNilai, catatanMandiri, pjButir, search-index, modeSitus, format, slugify, cetak
+├── data/                 # pemdi.json, modul-indikator.json, catatan-mandiri.json, evaluasi-asesor-2026.json, opd.json, draf-bukti-prioritas.json, …
 ├── scripts/              # Rantai regenerasi data (python3) — lihat data/AGENTS.md
-├── test/                 # node --test (55 tes)
+├── test/                 # node --test (58 tes)
 ├── styles/               # globals.css — Navy/Beige/Gold + Kerawang Gayo
 ├── public/               # PWA, crest, panduan-bukti-l1/*.pdf
 ├── middleware.js         # X-Robots-Tag noindex semua rute
