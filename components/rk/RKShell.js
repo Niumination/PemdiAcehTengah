@@ -145,11 +145,11 @@ export default function RKShell({ children, data: dataProp, legacy = false }) {
         <header className="rk-bar">
           <Link href="/dashboard" className="rk-brand" aria-label="Dashboard Pemerintah Digital — beranda">
             <Image src="/crest-pemdi.svg" alt="" width={30} height={30} />
-            <span><b>Dashboard Pemerintah Digital</b><small>Kabupaten Aceh Tengah · Evaluasi Pemdi 2026</small></span>
+            <span><b><span className="rk-brand-panjang">Dashboard Pemerintah Digital</span><span className="rk-brand-pendek" aria-hidden="true"><span className="rk-brand-kata">Dashboard </span>Pemdi</span></b><small>Kabupaten Aceh Tengah · Evaluasi Pemdi 2026</small></span>
           </Link>
           <div className="rk-actions">
             <div className="rk-seg" role="group" aria-label="Persona">
-              <button type="button" aria-pressed={persona === 'koordinator'} onClick={() => setPersona('koordinator')}>Koordinator</button>
+              <button type="button" aria-pressed={persona === 'koordinator'} onClick={() => setPersona('koordinator')}><span className="rk-seg-panjang">Koordinator</span><span className="rk-seg-pendek" aria-hidden="true">Koord.</span></button>
               <button type="button" aria-pressed={persona === 'pj'} onClick={() => setPersona('pj')}>PJ OPD</button>
             </div>
             <button type="button" className="rk-kbtn" onClick={() => setPalet(true)} aria-label="Cari / perintah (Ctrl+K)">
@@ -166,7 +166,7 @@ export default function RKShell({ children, data: dataProp, legacy = false }) {
 
         <div className="rk-strip" aria-label="Informasi">
           <span className="rk-strip-lbl">Info</span>
-          <div className="rk-track" aria-label={teksMarquee}><span>{teksMarquee}</span><span aria-hidden="true">{teksMarquee}</span></div>
+          <div className="rk-strip-vw"><div className="rk-track" aria-label={teksMarquee}><span>{teksMarquee}</span><span aria-hidden="true">{teksMarquee}</span></div></div>
         </div>
 
         {persona === 'pj' ? (

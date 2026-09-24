@@ -1088,6 +1088,8 @@ a { transition: color 0.18s ease; }
   .opd-stack thead { display: none; }
   .opd-stack tr { margin-bottom: 12px; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); padding: 6px 0; }
   .opd-stack td { border: 0; padding: 8px 14px; text-align: left !important; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .opd-stack td > * { min-width: 0; }
+  .opd-stack td[data-th="Perangkat Daerah"] { flex-wrap: wrap; } /* nama + urusan membungkus, tidak keluar layar (Patch 17) */
   .opd-stack td::before { content: attr(data-th); font-size: 0.72rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; flex-shrink: 0; }
   .opd-stack td[data-th=""]::before { content: none; }
   .opd-stack td[data-th=""] { justify-content: flex-end; }

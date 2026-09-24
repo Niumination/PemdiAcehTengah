@@ -45,11 +45,14 @@ function ukur({ minTarget }) {
   const kecil = interaktif.filter((e) => { const r = kotak(e); return r.width < minTarget || r.height < minTarget; })
     .slice(0, 400).map((e) => `${e.tagName.toLowerCase()}.${String(e.className).split(' ')[0] || '-'} ${Math.round(kotak(e).width)}×${Math.round(kotak(e).height)}`);
   const keluar = [];
+  // elemen di dalam wadah gulir horizontal (overflow-x auto/scroll) yang wadahnya sendiri muat = strategi "geser", bukan cacat
+  const dalamGulir = (e) => { for (let a = e.parentElement; a && a !== document.body; a = a.parentElement) {
+    const ox = getComputedStyle(a).overflowX; if ((ox === 'auto' || ox === 'scroll') && kotak(a).right <= vw + 4) return true; } return false; };
   document.querySelectorAll('body *').forEach((e) => {
     if (keluar.length >= 6) return;
     const r = kotak(e);
     if (r.width > 0 && r.right > vw + 4 && !e.closest('.rk-marquee, .rk-track, .rk-nav, .rk-drawer, .rk-pal')
-      && !(e.parentElement && kotak(e.parentElement).right > vw + 4)) { // hanya elemen terluar yang keluar
+      && !(e.parentElement && kotak(e.parentElement).right > vw + 4) && !dalamGulir(e)) { // hanya elemen terluar yang keluar
       keluar.push(`${e.tagName.toLowerCase()}.${String(e.className).split(' ').slice(0, 2).join('.') || '-'} kanan=${Math.round(r.right)}`);
     }
   });

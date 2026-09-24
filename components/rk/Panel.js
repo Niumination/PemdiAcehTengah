@@ -74,7 +74,7 @@ export function AntreanTabel({ rows, ringkas = false }) {
       <table className="rk-table">
         <thead>
           <tr>
-            <th>Kode</th><th>Butir</th>{!ringkas ? <th>Jenis</th> : null}<th>Prioritas</th><th>PJ</th>{!ringkas ? <th>Status</th> : null}{!ringkas ? <th>Masih disiapkan</th> : null}
+            <th>Kode</th><th>Butir</th>{!ringkas ? <th className="p2">Jenis</th> : null}<th>Prioritas</th><th>PJ</th>{!ringkas ? <th>Status</th> : null}{!ringkas ? <th className="p2">Masih disiapkan</th> : null}
           </tr>
         </thead>
         <tbody>
@@ -82,11 +82,11 @@ export function AntreanTabel({ rows, ringkas = false }) {
             <tr key={b.id} className="klik" tabIndex={0} onClick={() => rk?.bukaButir(b.id, b.indikatorId)} onKeyDown={(e) => { if (e.key === 'Enter') rk?.bukaButir(b.id, b.indikatorId); }} aria-label={`Buka ${b.kode}`}>
               <td className="kode">{b.kode}</td>
               <td><div className="nm">{b.nama}</div><div className="faint" style={{ fontSize: 11.5 }}>{b.indikatorId} · {b.aspekNama} · bobot {b.bobot}%</div></td>
-              {!ringkas ? <td><Tag k={b.jenis === 'revisi' ? 'revisi' : 'gap'}>{b.jenis === 'revisi' ? 'revisi asesor' : 'gap'}</Tag></td> : null}
+              {!ringkas ? <td className="p2"><Tag k={b.jenis === 'revisi' ? 'revisi' : 'gap'}>{b.jenis === 'revisi' ? 'revisi asesor' : 'gap'}</Tag></td> : null}
               <td><Tag k={b.prioritas}>{b.prioritas}</Tag></td>
               <td style={{ whiteSpace: 'nowrap' }}>{b.pjKunci}</td>
               {!ringkas ? <td><Tag k={b.status}>{statusMeta(b.status).label}</Tag></td> : null}
-              {!ringkas ? <td className="muted" style={{ maxWidth: 320 }}>{b.nKebutuhan ? `${b.nKebutuhan} item — ${b.kebutuhan[0]}` : '—'}</td> : null}
+              {!ringkas ? <td className="muted p2" style={{ maxWidth: 320 }}>{b.nKebutuhan ? `${b.nKebutuhan} item — ${b.kebutuhan[0]}` : '—'}</td> : null}
             </tr>
           ))}
           {!rows.length ? <tr><td colSpan={7} className="faint" style={{ textAlign: 'center', padding: 20 }}>Tidak ada butir untuk filter ini.</td></tr> : null}

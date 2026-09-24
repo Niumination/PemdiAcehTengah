@@ -75,7 +75,7 @@ export default function AsesorPage({ rk, asesor }) {
         <PanelLipat id="as-tabel" judul="Catatan & rekomendasi tindak lanjut asesor per indikator" ringkas={`· ${daftar.length} indikator`} aksi={<Link className="rk-act" href="/antrean">Antrean catatan mandiri →</Link>}>
           <div className="gulir">
             <table className="rk-table rk-as">
-              <thead><tr><th>Kode</th><th>Indikator</th><th>Nilai</th><th title="Upload · Interview · Disetujui">U · I · D</th><th>Catatan asesor</th><th>Rekomendasi tindak lanjut</th><th>Simulasi</th></tr></thead>
+              <thead><tr><th>Kode</th><th>Indikator</th><th>Nilai</th><th title="Upload · Interview · Disetujui">U · I · D</th><th>Catatan asesor</th><th className="p2">Rekomendasi tindak lanjut</th><th className="p2">Simulasi</th></tr></thead>
               <tbody>
                 {daftar.map((i) => {
                   const r = aspekPeta[i.id];
@@ -86,8 +86,8 @@ export default function AsesorPage({ rk, asesor }) {
                       <td className="mono"><b>{fmt2(i.nilai)}</b><div className="faint">{i.level}</div></td>
                       <td className="mono verif"><span className={`v-${i.verifikasi.upload}`}>{V[i.verifikasi.upload]}</span><span className={`v-${i.verifikasi.interview}`}>{V[i.verifikasi.interview]}</span><span className={`v-${i.verifikasi.disetujui}`}>{V[i.verifikasi.disetujui]}</span></td>
                       <td>{i.catatan}</td>
-                      <td>{i.rekomendasi}{i.terpotong ? <span className="rk-tag t-belum" title="Teks terpotong pada materi sumber">terpotong</span> : null}</td>
-                      <td className="mono">{r ? <>L{r.levelDicapai}<div className="faint">{fmt2(r.nilai)} · {r.stat.diterima}/{r.stat.total}</div></> : '—'}</td>
+                      <td className="p2">{i.rekomendasi}{i.terpotong ? <span className="rk-tag t-belum" title="Teks terpotong pada materi sumber">terpotong</span> : null}</td>
+                      <td className="mono p2">{r ? <>L{r.levelDicapai}<div className="faint">{fmt2(r.nilai)} · {r.stat.diterima}/{r.stat.total}</div></> : '—'}</td>
                     </tr>
                   );
                 })}
