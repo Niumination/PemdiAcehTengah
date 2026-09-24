@@ -10,7 +10,7 @@ import RKShell from '@/components/rk/RKShell';
  * cabang ini dipertahankan sebagai jaring pengaman untuk halaman baru yang belum di-reskin) dibungkus `.rk-legacy` supaya token lama (globals.css)
  * tetap berlaku di dalam kontennya. AppShell/Sidebar/BottomNav/Footer lama dihapus.
  */
-const RUTE_RK = new Set(['/dashboard', '/indikator', '/antrean', '/admin', '/pemdi', '/requirement', '/cari', '/opd', '/opd/[slug]', '/spbe', '/probis', '/glosarium', '/404', '/modul-indikator']); // Patch 10–13: seluruh halaman RK-native; jembatan .rk-legacy tidak lagi dipakai rute mana pun
+const RUTE_RK = new Set(['/dashboard', '/indikator', '/antrean', '/admin', '/pemdi', '/requirement', '/cari', '/opd', '/opd/[slug]', '/spbe', '/probis', '/glosarium', '/404', '/modul-indikator', '/asesor']); // Patch 10–13: seluruh halaman RK-native; jembatan .rk-legacy tidak lagi dipakai rute mana pun
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { Analytics } from '@vercel/analytics/react';

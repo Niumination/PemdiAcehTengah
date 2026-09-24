@@ -1,0 +1,529 @@
+{
+ "tentang": "Hasil evaluasi kinerja Pemerintah Digital 2026 oleh asesor eksternal KemenPANRB untuk Kabupaten Aceh Tengah — disalin apa adanya dari materi sesi interviu (teks yang terpotong pada sumber ditandai `terpotong: true`). Hanya locus Aceh Tengah yang disimpan.",
+ "sumber": {
+  "dokumen": "Evaluasi Kinerja Pemerintah Digital 2026 — Materi Sesi Interview (Rekap 5 Kabupaten/Kota Locus Evaluasi)",
+  "evaluator": "DR. Ridha Hanafi, ST., MT.",
+  "tanggal": "2026-09-21",
+  "locus": "Locus 2 dari 5",
+  "berkas": "20260921_R5_Ridha_Hanafi_Interview_Evaluasi_Kinerja_Pemdi.pptx (tidak disimpan di repo)"
+ },
+ "skala": {
+  "min": 1.0,
+  "maks": 5.0,
+  "keterangan": "Skala Indeks Pemdi: 1,00 (Rintisan) s.d. 5,00 (Optimum). Asumsi nilai dari indikator yang menggunakan indeks lain = 1."
+ },
+ "indeks": {
+  "asesor": 1.24,
+  "mandiri_awal": 1.42,
+  "tampilan_sumber": "1,42/1,24",
+  "level": "Level 1 · Rintisan",
+  "keterangan": "Keputusan tim 23 Sep 2026: 1,24 = angka utama (hasil evaluasi asesor eksternal KemenPANRB); 1,42 = penilaian mandiri awal, ditampilkan sebagai pembanding."
+ },
+ "aspek": [
+  {
+   "id": "1",
+   "nama": "Tata Kelola dan Manajemen",
+   "bobot": 10,
+   "skor": 1.75
+  },
+  {
+   "id": "2",
+   "nama": "Penyelenggara",
+   "bobot": 10,
+   "skor": 1.28
+  },
+  {
+   "id": "3",
+   "nama": "Data",
+   "bobot": 15,
+   "skor": 1.0
+  },
+  {
+   "id": "4",
+   "nama": "Keamanan Pemerintah Digital",
+   "bobot": 15,
+   "skor": 1.17
+  },
+  {
+   "id": "5",
+   "nama": "Teknologi Pemerintah Digital",
+   "bobot": 10,
+   "skor": 1.08
+  },
+  {
+   "id": "6",
+   "nama": "Keterpaduan Layanan Digital Pemerintah",
+   "bobot": 15,
+   "skor": 1.4
+  },
+  {
+   "id": "7",
+   "nama": "Kepuasan Pengguna Layanan Digital Pemerintah",
+   "bobot": 25,
+   "skor": 1.18
+  }
+ ],
+ "legenda_verifikasi": {
+  "ya": "✓ Ada / Terpenuhi",
+  "tidak": "– Belum / Tidak ada",
+  "na": "◆ N/A — Indikator dinilai dari indeks eksternal/nasional"
+ },
+ "indikator": [
+  {
+   "kode": "1.1",
+   "id": "I1",
+   "nama": "Tata Kelola Pemerintah Digital",
+   "nilai": 2.0,
+   "level": "Terkelola",
+   "verifikasi": {
+    "upload": "ya",
+    "interview": "ya",
+    "disetujui": "ya"
+   },
+   "tanpa_bukti": false,
+   "indeks_lain": false,
+   "catatan": "Sudah ada perencanaan terkait Pemdi pada Peta Rencana, perlu dikonfirmasi terkait RPJMD/ Renstra",
+   "rekomendasi": "Perlu bukti pelaksanaan koordinasi kegiatan perencanaan pemerintah digital yang dikoordinasikan oleh tim koordinasi pemerintah digital, perencanaan dan penganggaran terkait pemerintah digital sebaiknya dilengkapi dengan dokumen perencanaan tahunan yang terkait misalnya berupa...",
+   "terpotong": true
+  },
+  {
+   "kode": "1.2",
+   "id": "I2",
+   "nama": "Manajemen Layanan Pemerintah Digital",
+   "nilai": 1.5,
+   "level": "Rintisan",
+   "verifikasi": {
+    "upload": "ya",
+    "interview": "ya",
+    "disetujui": "ya"
+   },
+   "tanpa_bukti": false,
+   "indeks_lain": false,
+   "catatan": "Pelaksanaan manajemen layanan perlu dilanjutkan dan diimplementasikan sesuai pedoman/ praktik baik yang berlaku",
+   "rekomendasi": "Pelaksanaan manajemen layanan digital pemerintah digital sebaiknya dilakukan untuk keseluruhan layanan digital pemerintah daerah, pelaksanaannya semestinya mengikuti SOP yang sudah disesuaikan dengan pedoman manajemen yang sudah ditetapkan di nasional misalnya manajemen risiko...",
+   "terpotong": true
+  },
+  {
+   "kode": "2.1",
+   "id": "I3",
+   "nama": "Sumber Daya Manusia Pemerintah Digital",
+   "nilai": 1.26,
+   "level": "Rintisan",
+   "verifikasi": {
+    "upload": "ya",
+    "interview": "tidak",
+    "disetujui": "ya"
+   },
+   "tanpa_bukti": false,
+   "indeks_lain": false,
+   "catatan": "Belum ada bukti pelaksanaan kolaborasi komunitas belajar, pemanfaatan microlearning (LMS)",
+   "rekomendasi": "Untuk pemenuhan level kurang sehingga dapat mencapai level kapabilitas cukup, perlu pelaksanaan kolaborasi komunitas belajar, pemanfaatan microlearning (LMS)",
+   "terpotong": false
+  },
+  {
+   "kode": "2.2",
+   "id": "I4",
+   "nama": "Kolaborasi Pemerintah Digital",
+   "nilai": 1.3,
+   "level": "Rintisan",
+   "verifikasi": {
+    "upload": "ya",
+    "interview": "ya",
+    "disetujui": "ya"
+   },
+   "tanpa_bukti": false,
+   "indeks_lain": false,
+   "catatan": "Dalam bukti dukung yang diberikan berupa RKA Diskominfo, belum terdapat item kegiatan terkait rencana kolaborasi an...",
+   "rekomendasi": "Perlu perencanaan terkait kolaboran antar perangkat daerah dalam menerapkan pemerintah digital",
+   "terpotong": false
+  },
+  {
+   "kode": "3.1",
+   "id": "I5",
+   "nama": "Tata Kelola Data",
+   "nilai": 1.0,
+   "level": "Rintisan",
+   "verifikasi": {
+    "upload": "na",
+    "interview": "na",
+    "disetujui": "na"
+   },
+   "tanpa_bukti": false,
+   "indeks_lain": true,
+   "catatan": "Bersumber dari indeks eksternal/nasional; tidak ada catatan lokal.",
+   "rekomendasi": "Tidak ada rekomendasi lokal — indikator dinilai dari indeks eksternal/nasional.",
+   "terpotong": false
+  },
+  {
+   "kode": "3.2",
+   "id": "I6",
+   "nama": "Operasional Pemanfaatan Informasi Geospasial",
+   "nilai": 1.0,
+   "level": "Rintisan",
+   "verifikasi": {
+    "upload": "na",
+    "interview": "na",
+    "disetujui": "na"
+   },
+   "tanpa_bukti": false,
+   "indeks_lain": true,
+   "catatan": "Bersumber dari indeks eksternal/nasional; tidak ada catatan lokal.",
+   "rekomendasi": "Tidak ada rekomendasi lokal — indikator dinilai dari indeks eksternal/nasional.",
+   "terpotong": false
+  },
+  {
+   "kode": "3.3",
+   "id": "I7",
+   "nama": "Pembangunan Statistik",
+   "nilai": 1.0,
+   "level": "Rintisan",
+   "verifikasi": {
+    "upload": "na",
+    "interview": "na",
+    "disetujui": "na"
+   },
+   "tanpa_bukti": false,
+   "indeks_lain": true,
+   "catatan": "Bersumber dari indeks eksternal/nasional; tidak ada catatan lokal.",
+   "rekomendasi": "Tidak ada rekomendasi lokal — indikator dinilai dari indeks eksternal/nasional.",
+   "terpotong": false
+  },
+  {
+   "kode": "3.4",
+   "id": "I8",
+   "nama": "Pelindungan Data Pribadi",
+   "nilai": 1.0,
+   "level": "Rintisan",
+   "verifikasi": {
+    "upload": "tidak",
+    "interview": "tidak",
+    "disetujui": "tidak"
+   },
+   "tanpa_bukti": true,
+   "indeks_lain": false,
+   "catatan": "Belum ada bukti dukung terkait PDP",
+   "rekomendasi": "Perlu mulai menyusun tata kelola PDP berupa menyusun kebijakan dan pedoman terkait, pelaksanaan awareness dan pengembangan kompetensi ASN terkait PDP, penetapan DPO/PPDP dan pelaksanaan praktik PDP yang relevan",
+   "terpotong": false
+  },
+  {
+   "kode": "4.1",
+   "id": "I9",
+   "nama": "Pelaksanaan Audit Keamanan & Teknologi Pemdi",
+   "nilai": 1.0,
+   "level": "Rintisan",
+   "verifikasi": {
+    "upload": "ya",
+    "interview": "ya",
+    "disetujui": "tidak"
+   },
+   "tanpa_bukti": false,
+   "indeks_lain": false,
+   "catatan": "Bukti dukung yang diberikan tidak tepat berupa SK tim asesor intenal evaluasi kinerja Pemdi, semestinya berupa SK t...",
+   "rekomendasi": "Perlu perencanaan pelaksanaan audit internal pemerintah digital, dan pembentukan team auditor internal pemerintah digital yang sdh ditetapkan",
+   "terpotong": false
+  },
+  {
+   "kode": "4.2",
+   "id": "I10",
+   "nama": "Keamanan Pemerintah Digital",
+   "nilai": 1.0,
+   "level": "Rintisan",
+   "verifikasi": {
+    "upload": "ya",
+    "interview": "ya",
+    "disetujui": "tidak"
+   },
+   "tanpa_bukti": false,
+   "indeks_lain": false,
+   "catatan": "Bukti dukung yang diberikan tidak sesuai yaitu indeks KAMI tahun 2023 semestinya adalah hasil penilaian indeks IKAS...",
+   "rekomendasi": "Perlu perencanaan dan pelaksanan Pengukuran Kematangan Keamanan Siber dan Sandi (IKASANDI) berkoordinasi dengan BSSN",
+   "terpotong": false
+  },
+  {
+   "kode": "4.3",
+   "id": "I11",
+   "nama": "Penerapan Kriptografi untuk Keamanan Data",
+   "nilai": 1.5,
+   "level": "Rintisan",
+   "verifikasi": {
+    "upload": "ya",
+    "interview": "ya",
+    "disetujui": "ya"
+   },
+   "tanpa_bukti": false,
+   "indeks_lain": false,
+   "catatan": "Belum ada kegiatan  perencanaan dan pelaksanan Pengukuran Kematangan Keamanan Siber dan Sandi (IKASANDI) terkait im...",
+   "rekomendasi": "Perlu perencanaan dan pelaksanan Pengukuran Kematangan Keamanan Siber dan Sandi (IKASANDI) terkait implementasi kriptografi berkoordinasi dengan BSSN",
+   "terpotong": false
+  },
+  {
+   "kode": "4.4",
+   "id": "I12",
+   "nama": "Kapabilitas Penanganan Insiden Siber",
+   "nilai": 1.25,
+   "level": "Rintisan",
+   "verifikasi": {
+    "upload": "ya",
+    "interview": "ya",
+    "disetujui": "ya"
+   },
+   "tanpa_bukti": false,
+   "indeks_lain": false,
+   "catatan": "Sudah ada pelaksanaan aktivitas penanganan insiden siber, Belum ada kegiatan  perencanaan dan pelaksanan Pengukuran...",
+   "rekomendasi": "Perlu ada kegiatan  perencanaan dan pelaksanan Pengukuran Kematangan Keamanan Siber dan Sandi (IKASANDI) terkait penanganan insiden siber berkoordinasi dengan BSSN",
+   "terpotong": false
+  },
+  {
+   "kode": "5.1",
+   "id": "I13",
+   "nama": "Aplikasi Pemerintah Digital",
+   "nilai": 1.17,
+   "level": "Rintisan",
+   "verifikasi": {
+    "upload": "ya",
+    "interview": "tidak",
+    "disetujui": "ya"
+   },
+   "tanpa_bukti": false,
+   "indeks_lain": false,
+   "catatan": "Pada dokumen RKA/ DPA yang diberikan belum ditemukan program/ kegiatan terkait perihal Pengembangan Aplikasi",
+   "rekomendasi": "Perlu adanya perencanaan terkait pengembangan aplikasi pemerintah digital dalam bentuk perencanaan pemdi terkait misalnya dalam bentuk RKA/ DPA perangkat daerah terkait/ diskominfo, penyusunan arsitektur aplikasi pada SIAP Digital, pelaksanaan pembangunan/ pengembangan aplikas...",
+   "terpotong": true
+  },
+  {
+   "kode": "5.2",
+   "id": "I14",
+   "nama": "Infrastruktur Pemerintah Digital",
+   "nilai": 1.0,
+   "level": "Rintisan",
+   "verifikasi": {
+    "upload": "tidak",
+    "interview": "tidak",
+    "disetujui": "tidak"
+   },
+   "tanpa_bukti": true,
+   "indeks_lain": false,
+   "catatan": "Belum upload bukti dukung",
+   "rekomendasi": "Perlu bukti pemanfaatan eksosistem pusat data, misalnya pemanfaatan pusat data nasional, dan penyusunan arsitektur infrastruktur/ teknologi pada SIAP Digital",
+   "terpotong": false
+  },
+  {
+   "kode": "6.1",
+   "id": "I15",
+   "nama": "Keterpaduan Proses Bisnis Lintas Sektor",
+   "nilai": 1.0,
+   "level": "Rintisan",
+   "verifikasi": {
+    "upload": "ya",
+    "interview": "ya",
+    "disetujui": "tidak"
+   },
+   "tanpa_bukti": false,
+   "indeks_lain": false,
+   "catatan": "Bukti dukung yang disampaikan tidak tepat berupa penjelasan pasal terkait arsitektur SPBE, semestinya penyusunan ar...",
+   "rekomendasi": "Penyusunan peta proses bisnis dan pemodelan proses bisnis pemerintah daerah pada arsitektur proses bisnis pada SIAP Digital",
+   "terpotong": false
+  },
+  {
+   "kode": "6.2",
+   "id": "I16",
+   "nama": "Integrasi Aplikasi",
+   "nilai": 1.0,
+   "level": "Rintisan",
+   "verifikasi": {
+    "upload": "tidak",
+    "interview": "tidak",
+    "disetujui": "tidak"
+   },
+   "tanpa_bukti": true,
+   "indeks_lain": false,
+   "catatan": "Belum upload bukti dukung",
+   "rekomendasi": "Perencanaan integrasi aplikasi khususnya aplikasi internal/ khusus pemerintah daerah yang terkait dengan layanan publik berbasis siklus hidup, misalnya rencana integrasi aplikasi/ layanan digital pada portal layanan publik terpadu pemerintah daerah",
+   "terpotong": false
+  },
+  {
+   "kode": "6.3",
+   "id": "I17",
+   "nama": "Portal Layanan Digital Pemerintah",
+   "nilai": 2.5,
+   "level": "Terkelola",
+   "verifikasi": {
+    "upload": "ya",
+    "interview": "ya",
+    "disetujui": "ya"
+   },
+   "tanpa_bukti": false,
+   "indeks_lain": false,
+   "catatan": "Portal layanan publik perlu dikembangkan lebih lanjut untuk mengakomodasi keseluruhan layanan berbasis siklus hidup...",
+   "rekomendasi": "Portal layanan publik perlu dikembangkan lebih lanjut untuk mengakomodasi keseluruhan layanan berbasis siklus hidup pemerintah daerah",
+   "terpotong": false
+  },
+  {
+   "kode": "6.4",
+   "id": "I18",
+   "nama": "Interoperabilitas Data",
+   "nilai": 1.0,
+   "level": "Rintisan",
+   "verifikasi": {
+    "upload": "na",
+    "interview": "na",
+    "disetujui": "na"
+   },
+   "tanpa_bukti": false,
+   "indeks_lain": true,
+   "catatan": "Bersumber dari indeks eksternal/nasional; tidak ada catatan lokal.",
+   "rekomendasi": "Tidak ada rekomendasi lokal — indikator dinilai dari indeks eksternal/nasional.",
+   "terpotong": false
+  },
+  {
+   "kode": "7.1",
+   "id": "I19",
+   "nama": "Fasilitas Dukungan Pengguna Layanan Digital Pemerintah",
+   "nilai": 1.0,
+   "level": "Rintisan",
+   "verifikasi": {
+    "upload": "ya",
+    "interview": "ya",
+    "disetujui": "tidak"
+   },
+   "tanpa_bukti": false,
+   "indeks_lain": false,
+   "catatan": "Bukti dukung yang diberikan tidak tepat berupa list layanan dan SLA nya, semestinya adalah dasbor pemantauan SLA da...",
+   "rekomendasi": "Perlu implementasi fasilitas dukungan layanan pengguna dalam bentuk helpdesk / sistem pengaduan yang dapat diakses pengguna layanan yang dapat melakukan monitoring /pemantauan proses dan SLA setiap tahapan layanan per-pengguna",
+   "terpotong": false
+  },
+  {
+   "kode": "7.2",
+   "id": "I20",
+   "nama": "Kepuasan Pengguna Layanan Digital Pemerintah",
+   "nilai": 1.3,
+   "level": "Rintisan",
+   "verifikasi": {
+    "upload": "ya",
+    "interview": "tidak",
+    "disetujui": "ya"
+   },
+   "tanpa_bukti": false,
+   "indeks_lain": false,
+   "catatan": "Belum ada bukti pelaksanaan survei terhadap kelompok rentan dan laporan tindak lanjut survei kepuasan pengguna",
+   "rekomendasi": "Perlu perluasan pelaksanaan SKM online untuk layanan digital lainnya dengan melibatkan kelompok rentan, pelaksanaan indak lanjut pengelolaan kepuasan pengguna layanan digital pemerintah yang dapat dimonitor oleh publik",
+   "terpotong": false
+  }
+ ],
+ "catatan_interview": [
+  {
+   "no": 1,
+   "topik": "Tata Kelola",
+   "catatan": "Perlu update RPJMD, Renstra Diskominfo untuk perencanaan Pemdi",
+   "indikator": [
+    "I1"
+   ]
+  },
+  {
+   "no": 2,
+   "topik": "Manajemen Layanan",
+   "catatan": "–",
+   "indikator": [
+    "I2"
+   ]
+  },
+  {
+   "no": 3,
+   "topik": "SDM",
+   "catatan": "Update bukti dukung komunitas belajar, pemanfaatan microlearning",
+   "indikator": [
+    "I3"
+   ]
+  },
+  {
+   "no": 4,
+   "topik": "Kolaborasi",
+   "catatan": "Update bukti pelaksanaan kegiatan kolaborasi Pemdi yang lebih sesuai (penyesuaian bukti dukung dari evaluasi ke perencanaan)",
+   "indikator": [
+    "I4"
+   ]
+  },
+  {
+   "no": 8,
+   "topik": "PDP",
+   "catatan": "Belum ada pelaksanaan praktik PDP",
+   "indikator": [
+    "I8"
+   ]
+  },
+  {
+   "no": 9,
+   "topik": "Audit",
+   "catatan": "Bukti dukung salah, belum ada rencana Audit Keamanan",
+   "indikator": [
+    "I9"
+   ]
+  },
+  {
+   "no": "10,11,12",
+   "topik": "Keamanan",
+   "catatan": "Baru ada dimulai asesmen IKASANDI internal (akan disusulkan)",
+   "indikator": [
+    "I10",
+    "I11",
+    "I12"
+   ]
+  },
+  {
+   "no": 13,
+   "topik": "Aplikasi",
+   "catatan": "akan disusulkan bukti Pengembangan aplikasi",
+   "indikator": [
+    "I13"
+   ]
+  },
+  {
+   "no": 14,
+   "topik": "Infrastruktur",
+   "catatan": "akan disusulkan dashboard pemanfaatan PDN/ PDNS",
+   "indikator": [
+    "I14"
+   ]
+  },
+  {
+   "no": 15,
+   "topik": "Keterpaduan proses bisnis",
+   "catatan": "Belum ada penyusunan Arsitektur SPBE/ Pemdi",
+   "indikator": [
+    "I15"
+   ]
+  },
+  {
+   "no": 16,
+   "topik": "Integrasi aplikasi",
+   "catatan": "akan disusulkan bukti  Integrasi aplikasi",
+   "indikator": [
+    "I16"
+   ]
+  },
+  {
+   "no": 17,
+   "topik": "Portal layanan",
+   "catatan": "–",
+   "indikator": [
+    "I17"
+   ]
+  },
+  {
+   "no": 19,
+   "topik": "Fasilitas dukungan layanan pengguna",
+   "catatan": "bukti dukung tidak tepat, akan diupdate berupa dashboard fasilitas layanan pengguna dan dashboard SLA",
+   "indikator": [
+    "I19"
+   ]
+  },
+  {
+   "no": 20,
+   "topik": "Kepuasan pengguna",
+   "catatan": "sudah ada implementasi SKM online dan laporannya, belum ada pelibatan kelompok rentan, laporan tindak lanjut",
+   "indikator": [
+    "I20"
+   ]
+  }
+ ]
+}

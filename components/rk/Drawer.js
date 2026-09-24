@@ -13,7 +13,7 @@ import {
   teksCatatanButir, teksCatatanIndikator, htmlCatatanIndikator, docxCatatanIndikator,
   namaBerkasCatatan, butirBercatatan,
 } from '@/lib/catatanMandiri';
-import { kodePortal, warnaAspek } from '@/lib/ruangKendali';
+import { fmt2, kodePortal, warnaAspek } from '@/lib/ruangKendali';
 
 async function salin(t) { try { await navigator.clipboard.writeText(t); return true; } catch { return false; } }
 function unduh(blob, nama) {
@@ -137,6 +137,7 @@ export default function Drawer({ state, onClose, data }) {
               <span className="rk-lv" aria-label={`Level ${f.levelDicapai} dari 5`}>{[1, 2, 3, 4, 5].map((n) => <i key={n} className={n <= f.levelDicapai ? 'on' : n === f.levelBerikut ? 'nx' : ''} />)}</span>
               <span>Level dicapai <b>{f.levelDicapai}</b>{f.levelBerikut ? <> · target berikut <b>{f.levelBerikut}</b> ({LEVEL_NAMA_RESMI[f.levelBerikut]})</> : null}</span>
               {ringkas?.pjLead ? <span className="faint">· PJ indikator: {ringkas.pjLead}</span> : null}
+              {ringkas?.asesor ? <span className="rk-tag t-asesor" title={`Hasil asesor eksternal ${ringkas.asesor.kode} · disetujui: ${ringkas.asesor.verifikasi.disetujui}`}>asesor {fmt2(ringkas.asesor.nilai)} · {ringkas.asesor.level}{ringkas.asesor.tanpaBukti ? ' · tanpa bukti' : ''}</span> : null}
             </div>
           </div>
           <div className="rk-drawer-act">

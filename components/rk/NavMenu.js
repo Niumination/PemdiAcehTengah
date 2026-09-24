@@ -24,6 +24,7 @@ export const RUTE_NAV = [
   { href: '/antrean', label: 'Antrean', ikon: 'antrean', k: 'a', utama: true },
   { href: '/modul-indikator', label: 'Modul', ikon: 'modul', k: 'm', utama: true },
   { href: '/requirement', label: 'Draf Bukti', ikon: 'draf', k: 'd', utama: true },
+  { href: '/asesor', label: 'Hasil asesor', ikon: 'cek', k: 'h' },
   { href: '/pemdi', label: 'Rinci per aspek', ikon: 'aspek', k: 'r' },
   { href: '/opd', label: 'Perangkat daerah', ikon: 'gedung', k: 'o' },
   { href: '/spbe', label: 'SPBE 2025', ikon: 'grafik', k: 'e' },

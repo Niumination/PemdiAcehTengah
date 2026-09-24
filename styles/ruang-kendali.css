@@ -789,3 +789,41 @@ a.rk-chip { display: inline-flex; align-items: center; gap: 6px; text-decoration
   .rk-modul .rk-butir .row { grid-template-columns: 18px minmax(0, 1fr) auto; } .rk-modul .rk-butir .kode, .rk-modul .rk-butir .aksi { display: none; } .rk-modul .rk-butir .cm-butir { margin-left: 0; }
   .rk-pratinjau { padding: 8px; }
 }
+
+/* ═══ Hasil asesor eksternal — /asesor, panel dashboard, tag Drawer (Patch 14, Tahap 2) ═══ */
+.rk-tag.t-asesor { color: var(--rk-emas-ink); border-color: color-mix(in srgb, var(--rk-emas) 55%, transparent); background: color-mix(in srgb, var(--rk-emas) var(--rk-tag-alpha, 0%), transparent); }
+.rk-banding { display: grid; gap: 6px; font-size: var(--rk-fs-1); }
+.rk-banding .kepala, .rk-banding .kaki { display: flex; justify-content: space-between; gap: 8px; font-size: 11px; color: var(--rk-ink-3); flex-wrap: wrap; }
+.rk-banding .kaki { border-top: 1px dashed var(--rk-line); padding-top: 6px; margin-top: 2px; color: var(--rk-ink-2); }
+.rk-banding .sw { display: inline-block; width: 10px; height: 8px; border-radius: 2px; vertical-align: middle; margin: 0 2px; }
+.rk-banding .sw.a { background: var(--rk-emas); } .rk-banding .sw.m { background: var(--rk-ink-3); }
+.rk-banding .brs { display: grid; grid-template-columns: 96px 1fr; gap: 8px; align-items: center; }
+.rk-banding.rinci .brs { grid-template-columns: 150px 1fr; }
+.rk-banding .lbl b { color: var(--rk-ink); font-weight: 600; } .rk-banding .lbl small { display: block; font-size: 11px; color: var(--rk-ink-3); }
+.rk-banding .jalur { position: relative; display: grid; gap: 2px; padding: 2px 0; }
+.rk-banding .jalur i { position: relative; display: block; height: 9px; border-radius: 3px; }
+.rk-banding .jalur i.a { background: var(--rk-emas); }
+.rk-banding .jalur i.m { background: color-mix(in srgb, var(--warna) 70%, var(--rk-panel-2)); }
+.rk-banding .jalur i b { position: absolute; left: calc(100% + 6px); top: -3px; font-family: var(--rk-f-mono); font-size: 11px; color: var(--rk-ink-2); font-weight: 600; }
+.rk-banding .jalur i.tgt { position: absolute; top: 0; bottom: 0; width: 2px; height: auto; background: var(--rk-ok); opacity: .7; border-radius: 0; z-index: 1; }
+.rk-banding.rinci .jalur i { height: 12px; }
+.rk-verif { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.rk-verif .sel { display: grid; gap: 2px; padding: 6px 8px; border: 1px solid var(--rk-line); border-left: 3px solid var(--warna); border-radius: 6px; background: var(--rk-panel-2); text-align: left; color: var(--rk-ink); font-size: 11px; cursor: pointer; }
+.rk-verif .sel:hover { background: color-mix(in srgb, var(--warna) 8%, var(--rk-panel-2)); }
+.rk-verif .sel.tanpa { border-color: var(--rk-bad); border-left-color: var(--warna); }
+.rk-verif .sel.lain { background: color-mix(in srgb, var(--rk-pembina) 8%, var(--rk-panel-2)); }
+.rk-verif .kd { font-family: var(--rk-f-mono); color: var(--rk-ink-3); }
+.rk-verif .nl { font-family: var(--rk-f-display); font-size: var(--rk-fs-3); font-weight: 700; line-height: 1; }
+.rk-verif .ttk { display: flex; gap: 3px; }
+.rk-verif .ttk i { width: 8px; height: 8px; border-radius: 50%; background: var(--rk-line-2); }
+.rk-verif .ttk i.ok { background: var(--rk-ok); } .rk-verif .ttk i.bad { background: var(--rk-bad); } .rk-verif .ttk i.na { background: var(--rk-pembina); }
+.rk-verif .lv { color: var(--rk-ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.rk-leg .s-eksternal { background: var(--rk-pembina); }
+.rk-as td .rk-tag { margin-left: 6px; vertical-align: middle; }
+.rk-as .kode { font-weight: 700; padding: 0; }
+.rk-as .verif span { display: inline-block; min-width: 18px; margin-right: 4px; text-align: center; font-weight: 700; }
+.rk-as .v-ya { color: var(--rk-status-ink-ok); } .rk-as .v-tidak { color: var(--rk-status-ink-bad); } .rk-as .v-na { color: var(--rk-status-ink-pembina); }
+.rk-as tr.tanpa td { background: color-mix(in srgb, var(--rk-bad) 4%, transparent); }
+.rk-as tr.lain td { color: var(--rk-ink-3); }
+.rk-as td:nth-child(5), .rk-as td:nth-child(6) { min-width: 220px; line-height: 1.5; }
+@media (max-width: 860px) { .rk-banding .brs, .rk-banding.rinci .brs { grid-template-columns: 80px 1fr; } .rk-verif { grid-template-columns: repeat(3, 1fr); } }

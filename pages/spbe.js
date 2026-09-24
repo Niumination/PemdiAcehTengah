@@ -14,6 +14,7 @@ import { KerawangDivider } from '@/components/motif/KerawangMotifs';
 import portalData from '@/data/opd.json';
 import { susunDataRK } from '@/lib/rkData';
 import { fmt2, warnaAspek } from '@/lib/ruangKendali';
+import asesorJson from '@/data/evaluasi-asesor-2026.json';
 
 const AMBANG = [{ v: 2, l: 'Kurang' }, { v: 3, l: 'Cukup' }, { v: 3.5, l: 'Baik' }, { v: 4.2, l: 'Sangat baik' }];
 function level(v) { return v >= 3 ? { k: 'ok', l: 'Baik' } : v >= 2 ? { k: 'warn', l: 'Cukup' } : { k: 'bad', l: 'Kurang' }; }
@@ -48,8 +49,8 @@ export default function SpbePage({ spbe, pemdi }) {
   const lv = level(spbe.indeks);
   const tanda = [
     { l: `SPBE ${spbe.tahun}`, ket: `${spbe.kategori} · Kemenpan RB`, v: spbe.indeks, warna: 'var(--rk-info)' },
-    { l: 'Pemdi asesor (sementara)', ket: 'interviu 21 Sep 2026 · skala 1–5', v: 1.24, warna: 'var(--rk-emas)' },
-    { l: 'Pemdi mandiri awal', ket: 'saat unggah eviden pertama', v: 1.42, warna: 'color-mix(in srgb, var(--rk-emas) 55%, transparent)' },
+    { l: 'Pemdi asesor KemenPANRB', ket: 'interviu 21 Sep 2026 · skala 1–5', v: asesorJson.indeks.asesor, warna: 'var(--rk-emas)' },
+    { l: 'Pemdi mandiri awal', ket: 'saat unggah eviden pertama', v: asesorJson.indeks.mandiri_awal, warna: 'color-mix(in srgb, var(--rk-emas) 55%, transparent)' },
     { l: 'Simulasi mandiri', ket: 'hanya bukti diterima · skala 0–5', v: pemdi.indeks, warna: 'var(--rk-ink-3)' },
     { l: 'Target Pemdi 2026', ket: spbe.pemdi_framework?.target_predikat || 'Baik', v: spbe.pemdi_framework?.target_indeks || 2.5, warna: 'var(--rk-ok)', k: 'target' },
   ];
@@ -64,8 +65,8 @@ export default function SpbePage({ spbe, pemdi }) {
           <div className="lead"><div className="lbl">Indeks SPBE {spbe.tahun} · Kemenpan RB</div><div className="val">{fmt2(spbe.indeks)}<small>{spbe.kategori}</small></div><div className="sub">baseline sebelum transisi ke Pemerintah Digital (PermenPANRB 8/2026)</div></div>
           <div><div className="lbl">Domain tertinggi</div><div className="val" style={{ color: 'var(--rk-status-ink-ok)' }}>{fmt2(d.layanan_spbe)}<small>Layanan</small></div><div className="sub">{spbe.kekuatan?.[2] || ''}</div></div>
           <div><div className="lbl">Domain terendah</div><div className="val" style={{ color: 'var(--rk-status-ink-bad)' }}>{fmt2(d.manajemen_spbe)}<small>Manajemen</small></div><div className="sub">6 indikator SPBE bernilai 1,00</div></div>
-          <div><div className="lbl">Pemdi asesor (sementara)</div><div className="val" style={{ color: 'var(--rk-emas-ink)' }}>1,24<small>Level 1 · Rintisan</small></div><div className="sub">mandiri awal 1,42 · target 2026 {fmt2(spbe.pemdi_framework?.target_indeks || 2.5)}</div></div>
-          <div><div className="lbl">Selisih ke target</div><div className="val">{fmt2((spbe.pemdi_framework?.target_indeks || 2.5) - 1.24)}</div><div className="sub">poin indeks Pemdi yang harus dikejar</div></div>
+          <div><div className="lbl">Pemdi asesor KemenPANRB</div><div className="val" style={{ color: 'var(--rk-emas-ink)' }}>{fmt2(asesorJson.indeks.asesor)}<small>{asesorJson.indeks.level}</small></div><div className="sub">mandiri awal {fmt2(asesorJson.indeks.mandiri_awal)} · target 2026 {fmt2(spbe.pemdi_framework?.target_indeks || 2.5)}</div></div>
+          <div><div className="lbl">Selisih ke target</div><div className="val">{fmt2((spbe.pemdi_framework?.target_indeks || 2.5) - asesorJson.indeks.asesor)}</div><div className="sub">poin indeks Pemdi yang harus dikejar</div></div>
         </section>
 
         <LipatSemua keterangan="Infografis: satu sumbu 0–5 untuk SPBE, Pemdi, dan target — skala SPBE dan Pemdi tidak identik, gunakan sebagai orientasi arah, bukan konversi." />
@@ -110,7 +111,7 @@ export default function SpbePage({ spbe, pemdi }) {
         <section className="rk-panel rk-rujuk">
           <h2>Sumber</h2>
           <ul>
-            <li>Hasil evaluasi SPBE {spbe.tahun} Kemenpan RB (data Diskominfo). Angka Pemdi asesor 1,24 bersifat sementara (sesi interviu 21 Sep 2026) — panel data asesor lengkap menyusul.</li>
+            <li>Hasil evaluasi SPBE {spbe.tahun} Kemenpan RB (data Diskominfo). Angka Pemdi asesor 1,24 dari sesi interviu 21 Sep 2026 — rincian per indikator di <Link href="/asesor">Hasil asesor</Link>.</li>
             <li>Bobot 7 aspek Pemdi: {spbe.pemdi_framework?.aspek?.map((a) => `${a.nama} ${a.bobot}`).join(' · ')}.</li>
           </ul>
         </section>

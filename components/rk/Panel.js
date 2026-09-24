@@ -37,9 +37,9 @@ export function Situasi({ s, now }) {
   return (
     <section className="rk-sit" aria-label="Situasi">
       <div className="lead">
-        <div className="lbl">Indeks Pemdi · simulasi mandiri</div>
-        <div className="val">{fmt2(s.indeks)}<small>/ target {fmt2(s.target)}</small></div>
-        <div className="sub">{s.predikat} · proyeksi bila target indikator tercapai {fmt2(s.proyeksi)} · baseline SPBE {fmt2(s.baselineSpbe)}</div>
+        <div className="lbl">Indeks Pemdi · hasil asesor KemenPANRB</div>
+        <div className="val">{s.asesor ? fmt2(s.asesor.indeks) : fmt2(s.indeks)}<small>/ target {fmt2(s.target)}{s.asesor ? ` · ${s.asesor.level}` : ''}</small></div>
+        <div className="sub">{s.asesor ? <>mandiri awal {fmt2(s.asesor.mandiriAwal)} · simulasi butir {fmt2(s.indeks)} ({s.predikat}) · proyeksi {fmt2(s.proyeksi)} · SPBE {fmt2(s.baselineSpbe)}</> : <>{s.predikat} · proyeksi {fmt2(s.proyeksi)} · baseline SPBE {fmt2(s.baselineSpbe)}</>}</div>
       </div>
       <div className={`hari${h <= 3 ? ' kritis' : ''}`}>
         <div className="lbl">Tenggat revisi internal</div>

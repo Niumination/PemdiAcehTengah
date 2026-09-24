@@ -60,7 +60,7 @@ Verifikasi: cek-ui, lint, build, curl 12 rute, uji ganti persona/lebar tanpa CLS
   - Prototipe HTML statis dulu (`desain/proto-nav-radial.html`, berisi kedua gaya + sakelar) untuk disetujui sebelum patch.
 - **`<Panel>` lipat** (#11): prop `id`, `dilipat`, ingat status per panel di `localStorage`; tombol "Lipat semua / Buka semua" per halaman; animasi hanya `grid-template-rows` 0fr→1fr (tanpa CLS, hormati `prefers-reduced-motion`). Diterapkan di dashboard, indikator, antrean dulu.
 
-### Tahap 2 — Data evaluator Aceh Tengah (#12)
+### Tahap 2 — Data evaluator Aceh Tengah (#12) ✅ Patch 14 — headline 1,24 (keputusan 23 Sep), halaman `/asesor`, panel `BandingAspek` di dashboard, tag di Drawer; ring asesor pada Kompas diganti panel batang; "janji susulan" = catatan interviu dengan chip indikator.
 - Berkas baru `data/evaluasi-asesor-2026.json` (hanya Aceh Tengah): indeks total (dua angka + keterangan), 7 aspek, 20 indikator {level, upload, interview, disetujui, catatan_detail, rekomendasi}, 20 catatan interviu, metadata sumber (evaluator, tanggal, "sementara — belum nilai resmi").
 - Dashboard: panel **"Hasil Interviu Asesor (sementara)"** — angka besar 1,42 vs target 2,50, badge Level 1 · Rintisan; **Kompas** mendapat lapisan kedua (ring asesor di atas ring mandiri) → terlihat selisih per indikator; **matriks verifikasi 20×3** (✓ / – / N/A) sebagai heat-strip; **daftar "Janji susulan"** yang otomatis terhubung ke butir antrean terkait (indikator → butir prioritas).
 - `/indikator` & drawer: tab "Catatan asesor" + "Rekomendasi" per indikator (teks baku, read-only).

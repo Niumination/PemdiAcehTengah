@@ -7,6 +7,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Kompas from '@/components/rk/Kompas';
 import PanelLipat, { LipatSemua } from '@/components/rk/PanelLipat';
+import { BandingAspek } from '@/components/rk/Asesor';
 import { Situasi, AntreanTabel, BebanPJ, Linimasa, Prasyarat, useAntreanAktif } from '@/components/rk/Panel';
 import OPDTable from '@/components/OPDTable';
 import { susunDataRK } from '@/lib/rkData';
@@ -51,6 +52,11 @@ export default function Dashboard({ rk, opdList, butirCountMap, dibangun, ppb })
           <AntreanTabel rows={tinggi} ringkas />
         </PanelLipat>
 
+        <PanelLipat id="asesor" className="rk-c4" judul="Asesor vs simulasi per aspek" ringkas={rk.situasi.asesor ? `· asesor ${Number(rk.situasi.asesor.indeks).toFixed(2).replace('.', ',')}` : ''} aksi={<Link className="rk-act" href="/asesor">Hasil asesor lengkap →</Link>}>
+          <BandingAspek situasi={rk.situasi} />
+          <p className="rk-catatan" style={{ marginTop: 8 }}>Hasil interviu asesor eksternal KemenPANRB 21 Sep 2026 (skala 1–5; indikator berindeks eksternal diasumsikan 1). Simulasi butir dihitung dari status bukti di portal.</p>
+        </PanelLipat>
+
         <PanelLipat id="beban" className="rk-c4" judul="Beban per penanggung jawab" ringkas={`· ${rk.opdPJ.length} OPD`} aksi={<span className="rk-act" style={{ color: 'var(--rk-ink-3)' }}>{rk.opdPJ.length} OPD</span>}>
           <BebanPJ rows={rk.opdPJ} />
         </PanelLipat>
@@ -59,7 +65,7 @@ export default function Dashboard({ rk, opdList, butirCountMap, dibangun, ppb })
           <Linimasa tahap={rk.linimasa} now={dibangun} />
         </PanelLipat>
 
-        <PanelLipat id="prasyarat" className="rk-c4" judul="Prasyarat lintas indikator" ringkas={`· ${(rk.prasyarat || []).length} dokumen`} aksi={<Link className="rk-act" href="/requirement">Draf bukti →</Link>}>
+        <PanelLipat id="prasyarat" className="rk-c12" judul="Prasyarat lintas indikator" ringkas={`· ${(rk.prasyarat || []).length} dokumen`} aksi={<Link className="rk-act" href="/requirement">Draf bukti →</Link>}>
           <Prasyarat rows={rk.prasyarat} />
         </PanelLipat>
 
