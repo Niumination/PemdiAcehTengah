@@ -12,6 +12,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "node --test",
+    "audit:ui": "node scripts/audit-ui.mjs",
     "postbuild": "next-sitemap"
   },
   "dependencies": {

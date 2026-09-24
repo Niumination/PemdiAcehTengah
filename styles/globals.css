@@ -312,7 +312,7 @@ img, svg {
   font-weight: 700;
   line-height: 1.25;
   cursor: pointer;
-  transition: all var(--transition);
+  transition: background-color var(--transition), color var(--transition), border-color var(--transition), box-shadow var(--transition);
   border: 1px solid transparent;
   text-decoration: none;
   white-space: nowrap;
@@ -375,7 +375,7 @@ img, svg {
   border: 1px solid var(--line);
   border-radius: var(--r);
   box-shadow: var(--sh);
-  transition: all var(--transition);
+  transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
 }
 .glow-card:hover {
   border-color: var(--primary);
@@ -603,7 +603,7 @@ input:focus, select:focus, textarea:focus {
   background:none;border:none;font-size:1.25rem;cursor:pointer;
   color:var(--ink-secondary);padding:.25rem .5rem;
   border-radius:var(--r-xs);line-height:1;flex-shrink:0;
-  transition:all 0.15s ease;
+  transition:background-color 0.15s ease, color 0.15s ease;
 }
 .sp-close:hover{background:var(--surface-hover);color:var(--ink)}
 .sp-body{

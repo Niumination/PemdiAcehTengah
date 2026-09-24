@@ -158,7 +158,8 @@ Portal ini dirancang agar **informasi yang padat tetap mudah dipahami banyak ora
 - Bahasa awam dulu ("Singkatnya…"), istilah resmi kemudian + glosarium.
 - *Progressive disclosure* (accordion/tab) agar layar tidak membanjiri pembaca.
 - Sistem warna status konsisten (🟢 Baik · 🟡 Cukup · 🔴 Perlu perbaikan) + label teks.
-- Lihat panduan lengkap di [`desain/PANDUAN_DESAIN_UIUX.md`](desain/PANDUAN_DESAIN_UIUX.md).
+- Lihat panduan lengkap di [`desain/PANDUAN_DESAIN_UIUX.md`](desain/PANDUAN_DESAIN_UIUX.md) (prinsip; sebagian ditulis untuk persona publik yang sudah diarsipkan).
+- **Daftar periksa mekanis wajib untuk setiap perubahan UI (Patch 16): [`desain/PEDOMAN-ANTARMUKA.md`](desain/PEDOMAN-ANTARMUKA.md)** — adaptasi Vercel Web Interface Guidelines; butir bertanda [cek-ui]/[audit-ui] dijaga otomatis.
 
 ---
 

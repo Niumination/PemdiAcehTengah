@@ -10,6 +10,9 @@
  *     (radial/baris × desktop/ponsel) di styles/ruang-kendali.css — item tanpa koordinat menumpuk di pemicu,
  *  6. (Patch 15) halaman di pages/*.js (bukan api/_app/_document) yang tidak terdaftar di `RUTE_RK` (pages/_app.js)
  *     — akan jatuh ke jembatan `.rk-legacy` yang sudah tidak dipakai; daftarkan setelah di-reskin.
+ *  7. (Patch 16) `transition: all` di CSS — animasikan properti yang disebut saja (pedoman desain/PEDOMAN-ANTARMUKA.md §Animasi),
+ *  8. (Patch 16) `user-scalable=no` / `maximum-scale=1` pada viewport — melarang zum pengguna ponsel,
+ *  9. (Patch 16) `<img` tanpa `width`+`height` di pages/components — memicu layout shift (CLS).
  * Jalankan: node scripts/cek-ui.mjs  (dipanggil juga oleh `npm test` lewat test/cekUi.test.mjs)
  */
 import { readdirSync, readFileSync, statSync } from 'node:fs';
@@ -39,6 +42,9 @@ export function periksa(root = process.cwd()) {
       if (!KECUALI.has(rel) && EMOJI.test(bersih)) masalah.push(`${rel}:${i + 1} emoji sebagai ikon — pakai <Ikon>/<StatusIkon>`);
       if (/window\.open\([^)]*noopener/.test(l)) masalah.push(`${rel}:${i + 1} window.open dengan 'noopener' mengembalikan null — pakai bukaCetak() dari lib/cetak.js`);
       if (/<OPDTable\b(?![^>]*\blist=)/.test(l)) masalah.push(`${rel}:${i + 1} <OPDTable> tanpa prop list= — tabel akan kosong`);
+      if (/transition\s*:\s*all\b/.test(l)) masalah.push(`${rel}:${i + 1} transition: all — sebutkan properti (background-color, color, border-color, box-shadow, transform, opacity)`);
+      if (/user-scalable\s*=\s*no|maximum-scale\s*=\s*1\b/.test(l)) masalah.push(`${rel}:${i + 1} viewport melarang zum — hapus user-scalable/maximum-scale`);
+      if (/<img\b/.test(l) && !(/\bwidth=/.test(l) && /\bheight=/.test(l))) masalah.push(`${rel}:${i + 1} <img> tanpa width+height — memicu layout shift`);
       for (const m of l.matchAll(/font-?[sS]ize:\s*['"]?([\d.]+)(px|rem)/g)) {
         const px = m[2] === 'rem' ? parseFloat(m[1]) * 16 : parseFloat(m[1]);
         if (px < 11) masalah.push(`${rel}:${i + 1} font-size ${m[1]}${m[2]} < 11px`);
