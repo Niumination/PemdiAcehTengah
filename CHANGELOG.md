@@ -3,16 +3,20 @@
 Semua perubahan penting proyek ini didokumentasikan di file ini.
 Ringkasan publik tanpa detail internal; dokumen kerja lengkap disimpan pemilik repo di lokasi privat.
 
-## 2026-09-24 — Patch 8–15: Menu Radial, reskin 6 rute, data asesor eksternal, ponsel
+## 2026-09-24 — Patch 8–15: Menu Radial, reskin 10 halaman, data asesor eksternal, ponsel
 
-Susulan ketiga dari arena (`pemdi-reposisi#5.zip`, basis `0911608`). 8 patch berurutan — tahap rencana `docs/RENCANA-TINJAUAN-23-SEP.md` (urutan terkinci 0 → 1 → 3a–3d → 2 → 4).
+Susulan ketiga dari arena (folder patch `pemdi-reposisi#5`, basis `0911608`). 8 patch berurutan — tahap rencana `docs/RENCANA-TINJAUAN-23-SEP.md` (urutan terkinci 0 → 1 → 3a–3d → 2 → 4).
 
 - **Patch 8 — Tahap 0 hotfix tinjauan live**: tabel 52 OPD di dashboard (prop list), Cetak/PDF (`lib/cetak`, tanpa noopener), menu Lainnya auto-tutup, header PJ OPD → baris konteks, marquee di bawah header, lebar halaman penuh + toggle 1800/1440, drawer 820px; `cek-ui` +2 aturan.
 - **Patch 9 — Tahap 1 menu navigasi**: menu **Radial ⇄ Baris** (`rk/NavMenu`, pemicu kiri, focus-trap, pintasan M) menggantikan tab/Lainnya/bottom-tab; `PanelLipat` + `LipatSemua` di 7 panel dashboard.
-- **Patch 10–13 — Tahap 3a–3d reskin**: `/pemdi` (7 kartu aspek ber-`Dial`), `/requirement` (papan P0/P1), `/cari`, `/opd`, `/opd/[slug]`, `/spbe` (skala SPBE↔Pemdi), `/probis`, `/glosarium`, `/404`, `/modul-indikator` (1.960 → ~330 baris, ≈640 baris dead code dihapus) ke gaya Ruang Kendali. Semua rute kini RK-native; jembatan `.rk-legacy` tinggal jaring pengaman.
+- **Patch 10–13 — Tahap 3a–3d reskin**: 10 halaman ke gaya Ruang Kendali — `/pemdi` (7 kartu aspek ber-`Dial`), `/requirement` (papan P0/P1), `/cari`, `/opd`, `/opd/[slug]`, `/spbe` (skala SPBE↔Pemdi), `/probis`, `/glosarium`, `/404`, `/modul-indikator` (1.960 → ~330 baris, ≈640 baris dead code dihapus). Semua rute kini RK-native; jembatan `.rk-legacy` tinggal jaring pengaman.
 - **Patch 14 — Tahap 2 data asesor**: berkas baru `data/evaluasi-asesor-2026.json` (Kab. Aceh Tengah). **Headline dashboard kini 1,24** (asesor KemenPANRB, Level 1 · Rintisan); mandiri awal 1,42 jadi pembanding. Rute baru **`/asesor`**.
 - **Patch 15 — Tahap 4 ponsel**: koordinat menu 13 rute, target sentuh ponsel, `cek-ui` aturan 5–6.
-- **Verifikasi**: 58/58 tes · `npx next lint` 0 error (3 warning bawaan lama) · `node scripts/cek-ui.mjs` bersih · `next build` ✓ 63 halaman statis (11 inti + 52 `/opd/[slug]`).
+- **Verifikasi**: 58/58 tes · `npx next lint` 0 error (3 warning bawaan lama) · `node scripts/cek-ui.mjs` bersih · `next build` ✓ 67 halaman statis (15 inti + 52 `/opd/[slug]` + `/500`).
+
+## 2026-09-24 — Koreksi DOX Hermes (5a2e4ef): angka & nama komponen salah
+
+Koreksi atas laporan arena — angka yang dipakai sebelumnya berasal dari `prerender-manifest.json` (63) yang tidak lengkap; angka benar dari HTML hasil build = 67. Diperbaiki: total halaman 63→67, komponen 16→15 (nama reka `AsesorDial` tidak ada — yang ada `rk/Asesor.js`), `pages/admin/` (direktori) → `pages/admin.js` (berkas), "reskin 6 rute" → 10 halaman, sebutan zip → folder patch.
 
 ## 2026-09-23 — Patch 6 + Patch 7: Tema terang menyeluruh + CMS revalidate eksplisit
 

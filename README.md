@@ -76,9 +76,9 @@ PemdiAcehTengah/
 │   ├── pemdi.js · modul-indikator.js · requirement.js · cari.js
 │   ├── spbe.js · probis.js · glosarium.js
 │   ├── opd/index.js · opd/[slug].js   # 52 OPD
-│   ├── admin/            # CMS (env Neon; tanpa env → mode baca + API tulis 503)
+│   ├── admin.js          # CMS (env Neon; tanpa env → mode baca + API tulis 503)
 │   └── api/              # REST read-only (rk-data, opd, spbe, requirement, proxy-pdf, health) + auth + admin
-├── components/           # 16 komponen — rk/{RKShell,Panel,Kompas,Drawer,Palet,NavMenu,Dial,PanelLipat}, ui/{Ikon,StatusIkon}, asesor/{CatatanMandiri,AsesorDial}, OPDTable, motif/Kerawang
+├── components/           # 15 komponen — rk/{RKShell,Panel,Kompas,Drawer,Palet,NavMenu,Dial,PanelLipat,Asesor}, ui/{Ikon,StatusIkon}, asesor/CatatanMandiri, CatatanTujuan, OPDTable, motif/Kerawang
 ├── lib/                  # pemdiNilai, catatanMandiri, pjButir, search-index, modeSitus, format, slugify, cetak
 ├── data/                 # pemdi.json, modul-indikator.json, catatan-mandiri.json, evaluasi-asesor-2026.json, opd.json, draf-bukti-prioritas.json, …
 ├── scripts/              # Rantai regenerasi data (python3) — lihat data/AGENTS.md
