@@ -73,7 +73,7 @@ Prinsip: setiap halaman diberi **pola visual sendiri** sesuai kontennya (bervari
 - **3c** ✅ Patch 12 (`probis` → aliran L0→L1→L2 dengan sorot OPD lintas level; `glosarium` → cari + chip kategori + kartu dua tingkat (bilah A–Z tidak perlu: 13 istilah); `404` RK). **3d** ✅ Patch 13 — `modul-indikator` (terbesar, 1948 baris) → struktur **7 aspek → 20 indikator → 5 level** sebagai "anak tangga" (step ladder) per indikator, konten teks baku tetap; `probis` → **pohon L0–L1–L2** bisa dilipat (CFM tetap); `glosarium` → **indeks A–Z** dengan bilah huruf lengket.
 Setiap sub-patch: hapus inline-style halaman tersebut (target ≤ 20 sisa yang benar-benar dinamis), DOX `pages/AGENTS.md`.
 
-### Tahap 4 — Ponsel & audit akhir
+### Tahap 4 — Ponsel & audit akhir ✅ Patch 15 (koordinat nav 13 rute, target sentuh ponsel, cek-ui aturan 5–6; aturan `opdList=`/`noopener` sudah sejak Patch 8; tinjauan visual 390 px oleh pemilik di web live)
 - Tinjauan 2 tema × ponsel (390 px) semua rute; target sentuh ≥ 44 px; kompas ponsel = 3–5 metrik; audit kontras ≥ 4,5:1; `cek-ui` diperluas: larang `opdList=` salah prop (uji prop), larang `window.open(...,'noopener')`.
 
 ---

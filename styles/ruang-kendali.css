@@ -401,68 +401,72 @@ html[data-nav-buka] .rk-nav li { opacity: 1; pointer-events: auto; transform: tr
 .rk-nav a:hover .lbl, .rk-nav a:focus-visible .lbl { border-color: var(--rk-emas); background: color-mix(in srgb, var(--rk-panel) 80%, transparent); }
 .rk-nav a[aria-current] .ic { background: var(--rk-emas); border-color: var(--rk-emas); color: #14203A; }
 .rk-nav a[aria-current] .lbl { background: color-mix(in srgb, var(--rk-navy, #14203A) 75%, transparent); color: #F4E9C8; border-color: var(--rk-navy, #14203A); }
-.rk-nav .busur { position: absolute; left: -270px; top: -270px; width: 540px; height: 540px; border-radius: 50%; border: 1px dashed color-mix(in srgb, var(--rk-emas) 50%, transparent); pointer-events: none; opacity: 0; transition: opacity .3s; }
+.rk-nav .busur { position: absolute; left: -290px; top: -290px; width: 580px; height: 580px; border-radius: 50%; border: 1px dashed color-mix(in srgb, var(--rk-emas) 50%, transparent); pointer-events: none; opacity: 0; transition: opacity .3s; }
 html[data-nav-buka][data-nav='radial'] .rk-nav .busur { opacity: 1; }
-/* radial: satu ring r=270px, jarak vertikal seragam 46px (x = √(r²−y²)) */
-html[data-nav='radial'] .rk-nav li:nth-child(1) { --x: 94px; --y: -253px; --d: 0ms; }
-html[data-nav='radial'] .rk-nav li:nth-child(2) { --x: 173px; --y: -207px; --d: 25ms; }
-html[data-nav='radial'] .rk-nav li:nth-child(3) { --x: 217px; --y: -161px; --d: 50ms; }
-html[data-nav='radial'] .rk-nav li:nth-child(4) { --x: 244px; --y: -115px; --d: 75ms; }
-html[data-nav='radial'] .rk-nav li:nth-child(5) { --x: 261px; --y: -69px; --d: 100ms; }
-html[data-nav='radial'] .rk-nav li:nth-child(6) { --x: 269px; --y: -23px; --d: 125ms; }
-html[data-nav='radial'] .rk-nav li:nth-child(7) { --x: 269px; --y: 23px; --d: 150ms; }
-html[data-nav='radial'] .rk-nav li:nth-child(8) { --x: 261px; --y: 69px; --d: 175ms; }
-html[data-nav='radial'] .rk-nav li:nth-child(9) { --x: 244px; --y: 115px; --d: 200ms; }
-html[data-nav='radial'] .rk-nav li:nth-child(10) { --x: 217px; --y: 161px; --d: 225ms; }
-html[data-nav='radial'] .rk-nav li:nth-child(11) { --x: 173px; --y: 207px; --d: 250ms; }
-html[data-nav='radial'] .rk-nav li:nth-child(12) { --x: 94px; --y: 253px; --d: 275ms; }
-/* baris: garis lurus vertikal — 5 utama, jeda, 7 lain */
+/* radial: satu ring r=290px, jarak vertikal seragam 46px (x = √(r²−y²)) — 13 rute (Patch 15) */
+html[data-nav='radial'] .rk-nav li:nth-child(1) { --x: 89px; --y: -276px; --d: 0ms; }
+html[data-nav='radial'] .rk-nav li:nth-child(2) { --x: 177px; --y: -230px; --d: 25ms; }
+html[data-nav='radial'] .rk-nav li:nth-child(3) { --x: 224px; --y: -184px; --d: 50ms; }
+html[data-nav='radial'] .rk-nav li:nth-child(4) { --x: 255px; --y: -138px; --d: 75ms; }
+html[data-nav='radial'] .rk-nav li:nth-child(5) { --x: 275px; --y: -92px; --d: 100ms; }
+html[data-nav='radial'] .rk-nav li:nth-child(6) { --x: 286px; --y: -46px; --d: 125ms; }
+html[data-nav='radial'] .rk-nav li:nth-child(7) { --x: 290px; --y: 0px; --d: 150ms; }
+html[data-nav='radial'] .rk-nav li:nth-child(8) { --x: 286px; --y: 46px; --d: 175ms; }
+html[data-nav='radial'] .rk-nav li:nth-child(9) { --x: 275px; --y: 92px; --d: 200ms; }
+html[data-nav='radial'] .rk-nav li:nth-child(10) { --x: 255px; --y: 138px; --d: 225ms; }
+html[data-nav='radial'] .rk-nav li:nth-child(11) { --x: 224px; --y: 184px; --d: 250ms; }
+html[data-nav='radial'] .rk-nav li:nth-child(12) { --x: 177px; --y: 230px; --d: 275ms; }
+html[data-nav='radial'] .rk-nav li:nth-child(13) { --x: 89px; --y: 276px; --d: 300ms; }
+/* baris: garis lurus vertikal — 5 utama, jeda, 8 lain (Patch 15) */
 html[data-nav='baris'] .rk-nav li { --x: 44px; }
-html[data-nav='baris'] .rk-nav li:nth-child(1) { --y: -290px; --d: 0ms; }
-html[data-nav='baris'] .rk-nav li:nth-child(2) { --y: -236px; --d: 25ms; }
-html[data-nav='baris'] .rk-nav li:nth-child(3) { --y: -182px; --d: 50ms; }
-html[data-nav='baris'] .rk-nav li:nth-child(4) { --y: -128px; --d: 75ms; }
-html[data-nav='baris'] .rk-nav li:nth-child(5) { --y: -74px; --d: 100ms; }
-html[data-nav='baris'] .rk-nav li:nth-child(6) { --y: -48px; --d: 125ms; }
-html[data-nav='baris'] .rk-nav li:nth-child(7) { --y: 0px; --d: 150ms; }
-html[data-nav='baris'] .rk-nav li:nth-child(8) { --y: 48px; --d: 175ms; }
-html[data-nav='baris'] .rk-nav li:nth-child(9) { --y: 96px; --d: 200ms; }
-html[data-nav='baris'] .rk-nav li:nth-child(10) { --y: 144px; --d: 225ms; }
-html[data-nav='baris'] .rk-nav li:nth-child(11) { --y: 192px; --d: 250ms; }
-html[data-nav='baris'] .rk-nav li:nth-child(12) { --y: 240px; --d: 275ms; }
-html[data-nav='baris'] .rk-nav::before { content: ''; position: absolute; left: 21px; top: -300px; height: 600px; width: 1px; background: color-mix(in srgb, var(--rk-emas) 45%, transparent); opacity: 0; transition: opacity .3s; }
+html[data-nav='baris'] .rk-nav li:nth-child(1) { --y: -313px; --d: 0ms; }
+html[data-nav='baris'] .rk-nav li:nth-child(2) { --y: -259px; --d: 25ms; }
+html[data-nav='baris'] .rk-nav li:nth-child(3) { --y: -205px; --d: 50ms; }
+html[data-nav='baris'] .rk-nav li:nth-child(4) { --y: -151px; --d: 75ms; }
+html[data-nav='baris'] .rk-nav li:nth-child(5) { --y: -97px; --d: 100ms; }
+html[data-nav='baris'] .rk-nav li:nth-child(6) { --y: -23px; --d: 125ms; }
+html[data-nav='baris'] .rk-nav li:nth-child(7) { --y: 25px; --d: 150ms; }
+html[data-nav='baris'] .rk-nav li:nth-child(8) { --y: 73px; --d: 175ms; }
+html[data-nav='baris'] .rk-nav li:nth-child(9) { --y: 121px; --d: 200ms; }
+html[data-nav='baris'] .rk-nav li:nth-child(10) { --y: 169px; --d: 225ms; }
+html[data-nav='baris'] .rk-nav li:nth-child(11) { --y: 217px; --d: 250ms; }
+html[data-nav='baris'] .rk-nav li:nth-child(12) { --y: 265px; --d: 275ms; }
+html[data-nav='baris'] .rk-nav li:nth-child(13) { --y: 313px; --d: 300ms; }
+html[data-nav='baris'] .rk-nav::before { content: ''; position: absolute; left: 21px; top: -343px; height: 686px; width: 1px; background: color-mix(in srgb, var(--rk-emas) 45%, transparent); opacity: 0; transition: opacity .3s; }
 html[data-nav-buka][data-nav='baris'] .rk-nav::before { opacity: 1; }
 @media (max-width: 860px) {
   .rk-nav-trig { top: auto; bottom: 24px; transform: none; }
   .rk-nav { top: auto; bottom: 52px; }
   .rk-nav .busur { display: none; }
   .rk-nav .lbl { font-size: 12px; padding: 4px 10px; } .rk-nav .lbl kbd { display: none; }
-  html[data-nav='radial'] .rk-nav li:nth-child(1) { --x: 44px; --y: -492px; }
-  html[data-nav='radial'] .rk-nav li:nth-child(2) { --x: 69px; --y: -450px; }
-  html[data-nav='radial'] .rk-nav li:nth-child(3) { --x: 93px; --y: -408px; }
-  html[data-nav='radial'] .rk-nav li:nth-child(4) { --x: 112px; --y: -366px; }
-  html[data-nav='radial'] .rk-nav li:nth-child(5) { --x: 126px; --y: -324px; }
-  html[data-nav='radial'] .rk-nav li:nth-child(6) { --x: 133px; --y: -282px; }
-  html[data-nav='radial'] .rk-nav li:nth-child(7) { --x: 133px; --y: -240px; }
-  html[data-nav='radial'] .rk-nav li:nth-child(8) { --x: 126px; --y: -198px; }
-  html[data-nav='radial'] .rk-nav li:nth-child(9) { --x: 112px; --y: -156px; }
-  html[data-nav='radial'] .rk-nav li:nth-child(10) { --x: 93px; --y: -114px; }
-  html[data-nav='radial'] .rk-nav li:nth-child(11) { --x: 69px; --y: -72px; }
-  html[data-nav='radial'] .rk-nav li:nth-child(12) { --x: 44px; --y: -30px; }
+  html[data-nav='radial'] .rk-nav li:nth-child(1) { --x: 44px; --y: -510px; }
+  html[data-nav='radial'] .rk-nav li:nth-child(2) { --x: 67px; --y: -470px; }
+  html[data-nav='radial'] .rk-nav li:nth-child(3) { --x: 88px; --y: -430px; }
+  html[data-nav='radial'] .rk-nav li:nth-child(4) { --x: 107px; --y: -390px; }
+  html[data-nav='radial'] .rk-nav li:nth-child(5) { --x: 121px; --y: -350px; }
+  html[data-nav='radial'] .rk-nav li:nth-child(6) { --x: 130px; --y: -310px; }
+  html[data-nav='radial'] .rk-nav li:nth-child(7) { --x: 133px; --y: -270px; }
+  html[data-nav='radial'] .rk-nav li:nth-child(8) { --x: 130px; --y: -230px; }
+  html[data-nav='radial'] .rk-nav li:nth-child(9) { --x: 121px; --y: -190px; }
+  html[data-nav='radial'] .rk-nav li:nth-child(10) { --x: 107px; --y: -150px; }
+  html[data-nav='radial'] .rk-nav li:nth-child(11) { --x: 88px; --y: -110px; }
+  html[data-nav='radial'] .rk-nav li:nth-child(12) { --x: 67px; --y: -70px; }
+  html[data-nav='radial'] .rk-nav li:nth-child(13) { --x: 44px; --y: -30px; }
   html[data-nav='baris'] .rk-nav li { --x: 40px; }
-  html[data-nav='baris'] .rk-nav li:nth-child(1) { --y: -560px; }
-  html[data-nav='baris'] .rk-nav li:nth-child(2) { --y: -510px; }
-  html[data-nav='baris'] .rk-nav li:nth-child(3) { --y: -460px; }
-  html[data-nav='baris'] .rk-nav li:nth-child(4) { --y: -410px; }
-  html[data-nav='baris'] .rk-nav li:nth-child(5) { --y: -360px; }
-  html[data-nav='baris'] .rk-nav li:nth-child(6) { --y: -296px; }
-  html[data-nav='baris'] .rk-nav li:nth-child(7) { --y: -252px; }
-  html[data-nav='baris'] .rk-nav li:nth-child(8) { --y: -208px; }
-  html[data-nav='baris'] .rk-nav li:nth-child(9) { --y: -164px; }
-  html[data-nav='baris'] .rk-nav li:nth-child(10) { --y: -120px; }
-  html[data-nav='baris'] .rk-nav li:nth-child(11) { --y: -76px; }
-  html[data-nav='baris'] .rk-nav li:nth-child(12) { --y: -32px; }
-  html[data-nav='baris'] .rk-nav::before { top: -580px; height: 580px; }
+  html[data-nav='baris'] .rk-nav li:nth-child(1) { --y: -588px; }
+  html[data-nav='baris'] .rk-nav li:nth-child(2) { --y: -540px; }
+  html[data-nav='baris'] .rk-nav li:nth-child(3) { --y: -492px; }
+  html[data-nav='baris'] .rk-nav li:nth-child(4) { --y: -444px; }
+  html[data-nav='baris'] .rk-nav li:nth-child(5) { --y: -396px; }
+  html[data-nav='baris'] .rk-nav li:nth-child(6) { --y: -340px; }
+  html[data-nav='baris'] .rk-nav li:nth-child(7) { --y: -296px; }
+  html[data-nav='baris'] .rk-nav li:nth-child(8) { --y: -252px; }
+  html[data-nav='baris'] .rk-nav li:nth-child(9) { --y: -208px; }
+  html[data-nav='baris'] .rk-nav li:nth-child(10) { --y: -164px; }
+  html[data-nav='baris'] .rk-nav li:nth-child(11) { --y: -120px; }
+  html[data-nav='baris'] .rk-nav li:nth-child(12) { --y: -76px; }
+  html[data-nav='baris'] .rk-nav li:nth-child(13) { --y: -32px; }
+  html[data-nav='baris'] .rk-nav::before { top: -568px; height: 568px; }
   .rk-nav-gaya { left: auto; right: 12px; bottom: 24px; } .rk-nav-hint { display: none !important; }
 }
 @media (prefers-reduced-motion: reduce) { .rk-nav li, .rk-nav-trig, .rk-nav-trig svg, .rk-nav-scrim, .rk-nav .busur { transition: none; } }
@@ -827,3 +831,27 @@ a.rk-chip { display: inline-flex; align-items: center; gap: 6px; text-decoration
 .rk-as tr.lain td { color: var(--rk-ink-3); }
 .rk-as td:nth-child(5), .rk-as td:nth-child(6) { min-width: 220px; line-height: 1.5; }
 @media (max-width: 860px) { .rk-banding .brs, .rk-banding.rinci .brs { grid-template-columns: 80px 1fr; } .rk-verif { grid-template-columns: repeat(3, 1fr); } }
+
+/* ═══ Ponsel: target sentuh ≥ 44px & kepadatan (Patch 15, Tahap 4) ═══ */
+@media (max-width: 860px) {
+  .rk-chip { height: 40px; padding: 0 14px; }
+  .rk-seg { height: 44px; } .rk-seg.kecil, .rk-lipat-semua .rk-seg.kecil { height: 40px; }
+  .rk-seg button, .rk-lipat-semua .rk-seg.kecil button { padding: 0 12px; }
+  .rk-btn.kecil { height: 40px; width: 40px; }
+  .rk-lipat { width: 40px; height: 40px; }
+  .rk-strip-butir { gap: 6px; } .rk-strip-butir .sb { width: 24px; height: 24px; }
+  .rk-misi > li > button { padding: 12px; min-height: 48px; }
+  .rk-modul > .hd { min-height: 52px; }
+  .rk-modul .rk-ladder { grid-template-columns: repeat(5, minmax(0, 1fr)); } .rk-modul .rk-ladder .rung { min-height: 44px; padding: 6px 4px; }
+  .rk-modul .rk-ladder .rung b { font-size: 11px; }
+  .rk-verif .sel { min-height: 56px; }
+  .rk-ubin { grid-auto-rows: 48px; }
+  .rk-banding .jalur i b { display: none; }
+  .rk-404 .kode { font-size: 64px; }
+  .rk-pratinjau .kotak { height: 92vh; }
+  .rk-lipat-semua { justify-content: flex-start; overflow-x: auto; }
+}
+@media (max-width: 860px) and (max-height: 720px) {
+  /* ponsel pendek: perkecil menu agar 13 rute tetap muat di atas pemicu */
+  .rk-nav { transform: scale(.82); transform-origin: left bottom; }
+}

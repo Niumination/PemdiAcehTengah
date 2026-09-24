@@ -6,6 +6,10 @@
  *  2. ada ukuran font < 11px (0.6875rem) di styles/*.css atau inline style,
  *  3. (Patch 8) `window.open(..., 'noopener')` — selalu mengembalikan null, tombol cetak mati; pakai lib/cetak.js,
  *  4. (Patch 8) <OPDTable> dipanggil tanpa prop `list` (mis. `opdList=`) — tabel akan kosong.
+ *  5. (Patch 15) jumlah rute di `RUTE_NAV` (components/rk/NavMenu.js) ≠ jumlah koordinat `li:nth-child(n)` per gaya
+ *     (radial/baris × desktop/ponsel) di styles/ruang-kendali.css — item tanpa koordinat menumpuk di pemicu,
+ *  6. (Patch 15) halaman di pages/*.js (bukan api/_app/_document) yang tidak terdaftar di `RUTE_RK` (pages/_app.js)
+ *     — akan jatuh ke jembatan `.rk-legacy` yang sudah tidak dipakai; daftarkan setelah di-reskin.
  * Jalankan: node scripts/cek-ui.mjs  (dipanggil juga oleh `npm test` lewat test/cekUi.test.mjs)
  */
 import { readdirSync, readFileSync, statSync } from 'node:fs';
@@ -41,6 +45,30 @@ export function periksa(root = process.cwd()) {
       }
     });
   }
+  // 5. koordinat menu navigasi vs jumlah rute
+  try {
+    const nav = readFileSync(join(root, 'components/rk/NavMenu.js'), 'utf8');
+    const nRute = (nav.match(/\{\s*href:\s*'\//g) || []).length;
+    const css = readFileSync(join(root, 'styles/ruang-kendali.css'), 'utf8');
+    const hitung = (gaya, mobile) => {
+      const blok = mobile ? css.slice(css.indexOf('@media (max-width: 860px) {\n  .rk-nav-trig')) : css.slice(0, css.indexOf('@media (max-width: 860px) {\n  .rk-nav-trig'));
+      const re = new RegExp(`html\\[data-nav='${gaya}'\\] \\.rk-nav li:nth-child\\((\\d+)\\)`, 'g');
+      return new Set([...blok.matchAll(re)].map((m) => Number(m[1]))).size;
+    };
+    for (const [gaya, mobile] of [['radial', false], ['baris', false], ['radial', true], ['baris', true]]) {
+      const n = hitung(gaya, mobile);
+      if (n !== nRute) masalah.push(`styles/ruang-kendali.css: koordinat nav ${gaya}${mobile ? ' (ponsel)' : ''} = ${n}, RUTE_NAV = ${nRute} — tambah/kurangi li:nth-child`);
+    }
+  } catch (e) { masalah.push(`cek nav gagal: ${e.message}`); }
+  // 6. semua halaman terdaftar di RUTE_RK
+  try {
+    const app = readFileSync(join(root, 'pages/_app.js'), 'utf8');
+    const m = app.match(/RUTE_RK = new Set\(\[([\s\S]*?)\]\);/);
+    const rute = new Set([...(m ? m[1] : '').matchAll(/'([^']+)'/g)].map((x) => x[1]));
+    const halaman = jalan(join(root, 'pages')).filter((f) => f.endsWith('.js') && !f.includes('/api/') && !/\/_(app|document)\.js$/.test(f))
+      .map((f) => f.slice(join(root, 'pages').length).replace(/\.js$/, '').replace(/\/index$/, '') || '/');
+    for (const h of halaman) if (!rute.has(h)) masalah.push(`pages${h}.js tidak ada di RUTE_RK (pages/_app.js) — halaman jatuh ke .rk-legacy`);
+  } catch (e) { masalah.push(`cek RUTE_RK gagal: ${e.message}`); }
   return masalah;
 }
 
