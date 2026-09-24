@@ -1,1952 +1,410 @@
+/**
+ * pages/modul-indikator.js — Modul Indikator Pemdi bergaya Ruang Kendali (Patch 13, Tahap 3d).
+ *
+ * Struktur "anak tangga": 20 modul → tiap modul kartu lipat dengan tangga L1–L5 (dicapai / target berikut),
+ * kriteria per level (teks baku Modul/PermenPANRB 8/2026 tidak diparafrasa) berdampingan dengan butir bukti
+ * existing per level (status asesor, dokumen kunci, pratinjau PDF, catatan mandiri). Matriks Kebutuhan L1–L2
+ * (NotebookLM × Panduan Bab 6) menjadi panel lipat tersendiri. Bagian yang sebelumnya `{false && …}` (≈640
+ * baris "Bukti Dukung Baru", "Peta Dokumen Kunci", "RPJMD", "Dokumen Pendukung") dihapus — hanya yang tampil.
+ * Data tetap: 5 JSON via getStaticProps (tidak berubah).
+ */
 import Head from 'next/head';
-import StatusIkon from '@/components/ui/StatusIkon';
-import { useMemo, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { KerawangDivider } from '@/components/motif/KerawangMotifs';
+import { useEffect, useMemo, useState } from 'react';
+import PanelLipat, { LipatSemua } from '@/components/rk/PanelLipat';
+import { useRK } from '@/components/rk/RKShell';
 import CatatanTujuan from '@/components/CatatanTujuan';
-
-// ── Data ──
-import { LEVEL_LABEL, LEVEL_NAMA_RESMI, STATUS_META, REVISI_JENIS, statistikIndikator } from '@/lib/pemdiNilai';
-import LevelFokus from '@/components/asesor/LevelFokus';
+import StatusIkon from '@/components/ui/StatusIkon';
+import Ikon from '@/components/ui/Ikon';
 import { CatatanButir, EksporCatatan } from '@/components/asesor/CatatanMandiri';
+import { LEVEL_LABEL, LEVEL_NAMA_RESMI, STATUS_META, REVISI_JENIS, statistikIndikator, fokusLevel, statusMeta } from '@/lib/pemdiNilai';
+import { warnaAspek, kodePortal } from '@/lib/ruangKendali';
 
-export default function ModulIndikatorPage({ moduls, pemdiData, dokumenKunci, buktiMapping, kebutuhanData }) {
-  const router = useRouter();
+const TAB = [
+  { key: 'semua', label: 'Semua' },
+  { key: 'revisi', label: 'Revisi asesor' },
+  { key: 'perlu', label: 'Perlu dikerjakan' },
+  { key: 'selesai', label: 'Selesai' },
+];
+const toProxyUrl = (url) => (!url ? '' : url.startsWith('/') ? url : `/api/proxy-pdf?url=${encodeURIComponent(url)}`);
+const potong = (s, n) => (s.length > n ? `${s.slice(0, n)}…` : s);
 
-// ── Helpers ──
-function cariIndikator(id) {
-  for (const a of pemdiData.aspek) {
-    for (const ind of a.indikator) {
-      if (ind.id === id) return { ...ind, aspekNama: a.nama, aspekSingkat: a.singkat };
-    }
-  }
-  return null;
-}
-
-// Jumlah item L1 terpenuhi vs total (untuk notice indikator belum-lengkap) — bukti UTAMA saja
-function hitungStatusL1(indId) {
-  const ind = cariIndikator(indId);
-  if (!ind) return '0 item';
-  const l1 = (ind.bukti_dukung || []).filter(b => b.level === 1);
-  const lkp = l1.filter(b => b._peran !== 'pendukung' && b.status === 'diterima').length;
-  const items = moduls.modules
-    .find(x => x.indikator_id === indId)?.level_kriteria
-    ?.find(lk => lk.level === 1)?.bukti_dukung?.length || 0;
-  return `${lkp}/${items} item Level 1 terpenuhi`;
-}
-
-// STATUS_META (diterima/revisi/proses/draf/belum) di-import dari lib/pemdiNilai.js
-
-// LEVEL_LABEL & LEVEL_NAMA_RESMI di-import dari lib/pemdiNilai.js (nama level resmi PermenPANRB 8/2026)
-// Palet level (B4): nilai literal (dipakai dengan concat alpha `color-mix(in srgb, ${warna} 10%, transparent)`)
-//  — dipilih agar kontras WCAG >= 5:1 vs putih & putih di atasnya (audit kontras 2026-09-18)
-const LEVEL_WARNA = { 0: 'var(--muted)', 1: 'var(--lv1)', 2: 'var(--lv2)', 3: 'var(--lv3)', 4: 'var(--lv4)', 5: 'var(--lv5)' };
-
-function hitungStatus(ind) {
-  const st = statistikIndikator(ind);
-  return { ...st, count: st.total };
-}
-
-// ── Mapping helper: bukti existing → dokumen kunci ──
-function getDokumenForBukti(indId, buktiId) {
-  const ind = buktiMapping.indikator.find(i => i.indikator_id === indId);
-  if (!ind) return [];
-  const b = ind.bukti.find(x => x.id === buktiId);
-  return b?.dokumen_kunci || [];
-}
-
-function getDokumenInfo(no) {
-  return dokumenKunci.dokumen.find(d => d.no === no);
-}
-
-// ── Kelompokkan bukti per dokumen kunci (untuk toggle view) ──
-function groupBuktiByDokumen(indId, buktis) {
-  const groups = new Map(); // no → { no, nama, buktis: [], lengkap, total }
-  for (const b of buktis) {
-    const dkNos = getDokumenForBukti(indId, b.id);
-    if (dkNos.length === 0) {
-      // Bukti tanpa mapping → grup "Tanpa Dokumen Kunci"
-      if (!groups.has(0)) groups.set(0, { no: 0, nama: 'Tanpa Dokumen Kunci', buktis: [], diterima: 0, total: 0 });
-      groups.get(0).buktis.push(b);
-    } else {
-      for (const no of dkNos) {
-        if (!groups.has(no)) {
-          const info = getDokumenInfo(no);
-          groups.set(no, { no, nama: info?.nama || `Dokumen #${no}`, buktis: [], diterima: 0, total: 0 });
-        }
-        groups.get(no).buktis.push(b);
-      }
-    }
-  }
-  // Hitung status
-  for (const g of groups.values()) {
-    g.total = g.buktis.length;
-    g.diterima = g.buktis.filter(b => b.status === 'diterima').length;
-    g.status = g.diterima === g.total && g.total > 0 ? 'lengkap' : g.diterima > 0 ? 'sebagian' : 'belum';
-  }
-  // Urutkan: dokumen kunci (1..31) dulu, "Tanpa" terakhir
-  return [...groups.values()].sort((a, b) => {
-    if (a.no === 0) return 1;
-    if (b.no === 0) return -1;
-    return a.no - b.no;
-  });
-}
-
-// ── Dokumen kunci yang dicakup indikator tapi BELUM punya bukti existing ──
-function getDokumenTanpaBukti(indId) {
-  const dkNos = groupBuktiByDokumen(indId, []);
-  // Dokumen kunci yang mencakup indikator ini
-  const semuaDk = dokumenKunci.dokumen.filter(d => d.indikator.includes(indId)).map(d => d.no);
-  const punyaBukti = new Set();
-  // kumpulkan dokumen yang sudah punya bukti
-  const indMapping = buktiMapping.indikator.find(i => i.indikator_id === indId);
-  if (indMapping) {
-    for (const b of indMapping.bukti) {
-      for (const no of b.dokumen_kunci) punyaBukti.add(no);
-    }
-  }
-  return semuaDk.filter(no => !punyaBukti.has(no));
-}
-
-// ── Deteksi duplikasi nama bukti (V1/V2 = dokumen sama di 2 level) ──
-function deteksiDuplikat(buktis) {
-  const seen = new Map(); // nama(55) → [ids]
-  for (const b of buktis) {
-    const key = (b.nama || '').slice(0, 55);
-    if (!seen.has(key)) seen.set(key, []);
-    seen.get(key).push(b.id);
-  }
-  const dups = new Map(); // id → true (kalau nama-nya muncul >1x)
-  for (const [key, ids] of seen) {
-    if (ids.length > 1) {
-      for (const id of ids) dups.set(id, true);
-    }
-  }
-  return dups;
-}
-
-// ── Kumpulkan semua bukti baru (P1.*) dari seluruh indikator ──
-function getBuktiBaru() {
-  const out = [];
-  for (const a of pemdiData.aspek) {
-    for (const ind of a.indikator) {
-      // All indicators shown — no _l1_lengkap filter
-      for (const b of ind.bukti_dukung || []) {
-        if (b._sumber_baru) {
-          out.push({ ...b, _indikator: ind.id, _namaIndikator: ind.nama });
-        }
-      }
-    }
-  }
-  return out.sort((x, y) => x.id.localeCompare(y.id));
-}
-
-function hitungBuktiBaru() {
-  const all = getBuktiBaru();
-  const proses = all.filter(b => b.status === 'proses' || b.status === 'diterima' || b.status === 'revisi').length;
-  const belum = all.filter(b => b.status === 'belum' || b.status === 'draf').length;
-  const dkSet = new Set();
-  for (const b of all) for (const no of (b._dokumen_kunci || [])) dkSet.add(no);
-  return { total: all.length, proses, belum, dokumen: dkSet.size };
-}
-
-// ── Format kriteria level (markdown-ish → HTML aman, tanpa dependency) ──
-// Kriteria di data/modul-indikator.json berisi artefak markdown mentah
-// (## / ### / ######, <br>, bullet • / - ● / - 1.). Converter ini:
-//   <br>      → baris baru
-//   ## Label  → div.kriteria-h (label section)
-//   • / - ●   → <ul><li>
-//   - 1. / 1. → <ol><li>
-//   inline "A - 1. x - 2. y" → label + <ol>
-// Semua input di-escape HTML dulu → aman dari XSS.
-function escapeHtml(s) {
-  return String(s)
-    .replace(/&nbsp;/gi, ' ')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;');
-}
-
-// Pecah "label - 1. a - 2. b" → { label: 'label', items: ['a', 'b'] }
-function splitInlineItems(str) {
-  const parts = str.split(/\s+-\s*(\d+)[.)]\s+/);
-  if (parts.length < 3) return { label: str.trim(), items: [] };
-  const items = [];
-  for (let i = 2; i < parts.length; i += 2) items.push(parts[i].trim());
-  return { label: parts[0].trim(), items };
-}
-
-function formatKriteria(text) {
-  if (!text) return '';
-  // <br> → baris baru; sisa "<br" tanpa ">" (artefak data terpotong di 500 char) juga dibersihkan
-  let t = String(text).replace(/<br\s*\/?>/gi, '\n').replace(/<br/gi, '\n');
-  // Promosikan marker heading (##..######) yang nyangkut di tengah baris
-  // (artefak ekstraksi) menjadi awal baris → dikenali sebagai section label.
-  // Butuh karakter sebelumnya non-spasi & non-hash supaya "###" di awal
-  // string tidak terpecah.
-  t = t.replace(/([^\s#])(\s*)(#{2,6})(\s+)/g, '$1\n$3 ');
-  t = escapeHtml(t);
-  const out = [];
-  let listType = null;
-  const closeList = () => { if (listType) { out.push(`</${listType}>`); listType = null; } };
-
-  const emit = (line) => {
-    const s = line.trim();
-    if (!s) { closeList(); return; }
-
-    // Heading: ## / ### / ... / ######
-    const hm = s.match(/^(#{1,6})\s+(.*)$/);
-    if (hm) {
-      closeList();
-      const seq = splitInlineItems(hm[2].trim());
-      if (seq.label.length > 60) {
-        // Heading panjang (artefak ekstraksi) → paragraf biasa, marker # dihilangkan
-        out.push(`<p>${seq.label}</p>`);
-      } else {
-        out.push(`<div class="kriteria-h">${seq.label}</div>`);
-      }
-      if (seq.items.length) {
-        out.push('<ol>');
-        seq.items.forEach(it => out.push(`<li>${it}</li>`));
-        out.push('</ol>');
-      }
-      return;
-    }
-
-    // Bullet: • / ● / ○ / "- ● ..."
-    const bm = s.match(/^(?:[•●○]|-\s*[●○•])\s*(.+)$/);
-    if (bm) {
-      if (listType !== 'ul') { closeList(); out.push('<ul>'); listType = 'ul'; }
-      out.push(`<li>${bm[1]}</li>`);
-      return;
-    }
-
-    // Ordered: "1. ..." atau "- 1. ..."
-    const om = s.match(/^(?:-\s*)?(\d+)[.)]\s+(.+)$/);
-    if (om) {
-      if (listType !== 'ol') { closeList(); out.push('<ol>'); listType = 'ol'; }
-      out.push(`<li>${om[2]}</li>`);
-      return;
-    }
-
-    // Dash bullet: "- teks"
-    const bm2 = s.match(/^-\s+(.+)$/);
-    if (bm2) {
-      if (listType !== 'ul') { closeList(); out.push('<ul>'); listType = 'ul'; }
-      out.push(`<li>${bm2[1]}</li>`);
-      return;
-    }
-
-    // Urutan inline: "teks - 1. a - 2. b"
-    const seq = splitInlineItems(s);
-    if (seq.items.length >= 2 && seq.label) {
-      closeList();
-      out.push(`<p>${seq.label}</p>`);
-      out.push('<ol>');
-      seq.items.forEach(it => out.push(`<li>${it}</li>`));
-      out.push('</ol>');
-      return;
-    }
-
-    closeList();
-    out.push(`<p>${s}</p>`);
-  };
-
-  t.split('\n').forEach(emit);
-  closeList();
-  return out.join('\n');
-}
-  const [cari, setCari] = useState('');
-  const [aspekFilter, setAspekFilter] = useState('all');
-  const [levelFilter, setLevelFilter] = useState(0); // 0 = all
-  const [buka, setBuka] = useState(null);
-  const [tabFilter, setTabFilter] = useState('semua'); // 'semua' | 'perlu' | 'selesai'
-  const [previewDoc, setPreviewDoc] = useState(null); // { url, title } | null
-  const [bukaDokumen, setBukaDokumen] = useState(null); // dokumen kunci accordion
-  const [viewMode, setViewMode] = useState({}); // per modul: { [nomor]: 'level' | 'dokumen' }
-  const [bukaMatriks, setBukaMatriks] = useState(null); // indikator aktif di matriks kebutuhan
-  const [bukaPanduanMx, setBukaPanduanMx] = useState(null); // box panduan Bab 6 di matriks
-
-  // Convert JDIH URL to proxy URL for same-origin iframe.
-  // File lokal (/bukti-dukung/...) dipakai langsung — same-origin, bebas X-Frame-Options.
-  const toProxyUrl = (url) => {
-    if (!url) return '';
-    if (url.startsWith('/')) return url;
-    return `/api/proxy-pdf?url=${encodeURIComponent(url)}`;
-  };
-
-  // Auto-open modul from query param ?modul=N
-  useEffect(() => {
-    if (router.query.modul) {
-      const n = parseInt(router.query.modul, 10);
-      if (n >= 1 && n <= 20) {
-        setBuka(n);
-        // Scroll to the modul after a brief delay for render
-        setTimeout(() => {
-          const el = document.getElementById(`modul-${n}`);
-          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 200);
-      }
-    }
-  }, [router.query.modul]);
-
-  // Build merged data: modul + pemdi
-  const merged = useMemo(() => {
-    return moduls.modules.map(m => {
-      const ind = cariIndikator(m.indikator_id);
-      const status = hitungStatus(ind);
-      return { ...m, ind, status };
-    });
-  }, []);
-
-  // Filtering
-  const filtered = useMemo(() => {
-    let list = merged;
-    if (aspekFilter !== 'all') list = list.filter(m => m.aspek === aspekFilter);
-    if (levelFilter > 0) list = list.filter(m =>
-      m.ind?.bukti_dukung?.some(b => b.level === levelFilter)
-    );
-    if (cari) {
-      const q = cari.toLowerCase();
-      list = list.filter(m =>
-        m.judul?.toLowerCase().includes(q) ||
-        m.deskripsi?.toLowerCase().includes(q) ||
-        m.indikator_id?.toLowerCase().includes(q)
-      );
-    }
-    if (tabFilter === 'revisi') list = list.filter(m => m.status.revisi > 0);
-    if (tabFilter === 'perlu') list = list.filter(m => m.status.hidden || m.status.belum > 0 || m.status.proses > 0 || m.status.draf > 0 || m.status.revisi > 0);
-    if (tabFilter === 'selesai') list = list.filter(m => m.status.diterima === m.status.count && m.status.count > 0);
-    return list;
-  }, [merged, aspekFilter, levelFilter, cari, tabFilter]);
-
-  const byAspek = useMemo(() => {
-    const map = {};
-    merged.forEach(m => {
-      if (!map[m.aspek]) map[m.aspek] = [];
-      map[m.aspek].push(m);
-    });
-    return map;
-  }, [merged]);
-
-  const semuaAspek = Object.keys(byAspek);
-
+/* ── Kartu modul ─────────────────────────────────────────────────────────── */
+function Modul({ m, warna, buka, onToggle, dokumenUntuk, infoDokumen, onPratinjau, metaCatatan }) {
+  const rk = useRK();
+  const ind = m.ind;
+  const f = ind ? fokusLevel(ind) : null;
+  const [lvAktif, setLvAktif] = useState(null); // null → level fokus
+  const perLevel = [1, 2, 3, 4, 5].map((l) => ({
+    l,
+    kriteria: m.level_kriteria?.find((x) => x.level === l) || null,
+    butir: ind?.bukti_dukung?.filter((b) => Number(b.level) === l) || [],
+    contoh: m.data_dukung_modul?.find((x) => x.level === l) || null,
+  }));
+  const lvTampil = lvAktif ?? (f?.levelBerikut || f?.levelDicapai || 1);
+  const aktif = perLevel[lvTampil - 1];
+  const st = m.status;
+  const pj = ind?.penanggung_jawab;
+  const l0 = m.level_kriteria?.find((x) => x.level === 0);
   return (
-    <>
-      <Head>
-        <title>Modul Indikator Pemdi — Pemkab Aceh Tengah</title>
-        <meta name="description"
-          content="Panduan bukti dukung 20 indikator Pemdi berdasarkan PermenPANRB 8/2026 — dilengkapi penanggung jawab, level kriteria, dan rekomendasi pengumpulan bukti." />
-      </Head>
+    <article id={`modul-${m.nomor}`} className={`rk-modul${buka ? ' on' : ''}`} style={{ '--warna': warna }}>
+      <button type="button" className="hd" onClick={onToggle} aria-expanded={buka}>
+        <span className="no">{m.nomor}</span>
+        <span className="ttl">
+          <b><span className="mono">{m.indikator_id}</span> {m.judul}</b>
+          <span className="sub">{m.aspek} · PJ {pj?.lead?.split(' (')[0] || '—'} · {st.count} butir</span>
+        </span>
+        <span className="tangga" aria-label={`Level dicapai ${f?.levelDicapai ?? 0}`}>
+          {[1, 2, 3, 4, 5].map((l) => <i key={l} className={l <= (f?.levelDicapai || 0) ? 'on' : l === f?.levelBerikut ? 'nx' : ''} title={`L${l} ${LEVEL_NAMA_RESMI[l]}`} />)}
+        </span>
+        <span className="rk-stack kecil" aria-hidden="true">
+          {['diterima', 'revisi', 'proses', 'draf', 'belum'].map((k) => (st[k] ? <i key={k} className={`s-${k}`} style={{ flex: st[k] }} /> : null))}
+        </span>
+        <span className="n mono">{st.diterima}/{st.count}{st.revisi ? <em> · {st.revisi} revisi</em> : null}</span>
+        <Ikon nama="lipat" size={14} />
+      </button>
 
-      {/* ════════ HERO ════════ */}
-      <section className="hero">
-        <div className="container">
-          <div style={{ position: 'relative', zIndex: 2 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '1rem' }}>
-            <Link href="/pemdi" className="back-link" style={{ flexShrink: 0 }}>
-              ← Halaman Pemdi
-            </Link>
-          </div>
-          <div style={{ marginTop: '1rem' }}>
-            <h1 className="gold-head">Modul Indikator Pemdi</h1>
-            <p style={{ color: 'var(--muted)', marginTop: '0.25rem', maxWidth: 640 }}>
-              Panduan penyusunan bukti dukung untuk 20 indikator Pemerintah Digital
-              berdasarkan PermenPANRB 8/2026 — status tiap butir mengikuti <strong>hasil penilaian asesor</strong> di
-              eval.spbe.go.id (Tahap 1). Kode bukti <code>I#-L#-##</code> = Indikator-Level-nomor urut butir.
-            </p>
-          </div>
-          </div>
-
-          {/* ════ Stat Bar ════ */}
-          <div className="stat-row" style={{ marginTop: '1.5rem', flexWrap: 'wrap', gap: '0.5rem' }}>
-            <span className="stat-badge">
-              {merged.reduce((s, m) => s + m.status.count, 0)} butir bukti · {merged.length} indikator
-            </span>
-            {['diterima', 'revisi', 'draf', 'belum'].map(k => (
-              <span key={k} className="stat-badge" style={{ background: STATUS_META[k].bg, color: STATUS_META[k].color }} title={STATUS_META[k].ket}>
-                <StatusIkon k={k} /> {merged.reduce((s, m) => s + (m.status[k] || 0), 0)} {STATUS_META[k].label}
-              </span>
-            ))}
-            {pemdiData.penilaian_tahap1 && (
-              <span className="stat-badge" style={{ background: 'var(--primary-bg)', color: 'var(--primary)' }}>
-                Tahap 1 eval.spbe.go.id: {pemdiData.penilaian_tahap1.dinilai} butir dinilai · sinkron {pemdiData.penilaian_tahap1.tanggal_sinkron}
-              </span>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* ════════ FILTER BAR ════════ */}
-      <section className="section">
-        <CatatanTujuan compact />
-        <div className="container">
-          <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '1.5rem', alignItems: 'center' }}>
-            <input
-              type="text" value={cari}
-              onChange={e => setCari(e.target.value)}
-              placeholder="Cari indikator / kata kunci..."
-              style={{
-                flex: 1, minWidth: '200px', padding: '0.6rem 1rem',
-                border: '1px solid var(--border)', borderRadius: '8px',
-                fontSize: '0.875rem', background: 'var(--card-bg)',
-              }}
-            />
-            <select value={aspekFilter} onChange={e => setAspekFilter(e.target.value)}
-              style={{ padding: '0.6rem 1rem', border: '1px solid var(--border)', borderRadius: '8px', fontSize: '0.85rem', background: 'var(--card-bg)' }}>
-              <option value="all">Semua Aspek</option>
-              {semuaAspek.map(a => <option key={a} value={a}>{a}</option>)}
-            </select>
-            <select value={levelFilter} onChange={e => setLevelFilter(Number(e.target.value))}
-              style={{ padding: '0.6rem 1rem', border: '1px solid var(--border)', borderRadius: '8px', fontSize: '0.85rem', background: 'var(--card-bg)' }}>
-              <option value={0}>Semua Level</option>
-              {[1,2,3,4,5].map(l => <option key={l} value={l}>Level {l} — {LEVEL_LABEL[l]}</option>)}
-            </select>
+      {buka ? (
+        <div className="isi">
+          {/* baris atas: deskripsi Permen + posisi */}
+          <div className="atas">
+            {m.deskripsi ? (
+              <details className="desk">
+                <summary>{m.deskripsi.split(/(?<=\.)\s/)[0]} <span>— baca deskripsi lengkap Permen</span></summary>
+                <p>{m.deskripsi.replace(/\.\s+([A-Z][^.:]{2,40}:)\s+1\./g, '.\n$1\n1.').replace(/\s(\d+\.)\s/g, '\n$1 ')}</p>
+              </details>
+            ) : null}
+            {m.rekomendasi?.length ? (
+              <div className="posisi">
+                <div className="lbl">Posisi &amp; langkah berikut</div>
+                <ul>{m.rekomendasi.map((r, i) => <li key={i}>{r}</li>)}</ul>
+              </div>
+            ) : null}
           </div>
 
-          {/* Tab filter */}
-          <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
-            {[
-              { key: 'semua', label: `Semua (${merged.length})` },
-              { key: 'revisi', label: `Revisi Asesor (${merged.filter(m => m.status.revisi > 0).length})` },
-              { key: 'perlu', label: `Perlu Dikerjakan (${merged.filter(m => m.status.belum > 0 || m.status.proses > 0 || m.status.draf > 0 || m.status.revisi > 0).length})` },
-              { key: 'selesai', label: `Selesai (${merged.filter(m => m.status.diterima === m.status.count && m.status.count > 0).length})` },
-            ].map(tab => (
-              <button key={tab.key} onClick={() => setTabFilter(tab.key)}
-                style={{
-                  padding: '0.4rem 1rem', borderRadius: '20px', border: 'none',
-                  fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer',
-                  background: tabFilter === tab.key ? 'var(--primary)' : 'var(--surface-2)',
-                  color: tabFilter === tab.key ? '#fff' : 'var(--text)',
-                  transition: 'all 0.15s',
-                }}>
-                {tab.label}
-              </button>
-            ))}
-          </div>
-
-          {/* ════════ MODUL LIST ════════ */}
-          <KerawangDivider label="Daftar Modul Indikator" style={{ margin: '6px 0 18px' }} />
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-            {filtered.map(modul => {
-              const warnaAspek = pemdiData.aspek.find(a => a.nama === modul.aspek) || {};
-              const w = warnaAspek.warna || 'var(--muted)';
-              const isOpen = buka === modul.nomor;
-              const pj = modul.ind?.penanggung_jawab;
-
+          {/* tangga level: pilih level → kriteria & butir */}
+          <div className="rk-ladder" role="tablist" aria-label="Pilih level">
+            {perLevel.map(({ l, butir }) => {
+              const cls = l <= (f?.levelDicapai || 0) ? ' on' : l === f?.levelBerikut ? ' nx' : '';
+              const dt = butir.filter((b) => b.status === 'diterima').length;
               return (
-                <div key={modul.nomor} id={`modul-${modul.nomor}`}
-                  style={{
-                    border: `1px solid color-mix(in srgb, ${w} 15%, transparent)`, borderRadius: '12px',
-                    background: 'var(--card-bg)', overflow: 'hidden',
-                    boxShadow: isOpen ? `0 0 0 2px color-mix(in srgb, ${w} 19%, transparent)` : 'none',
-                    transition: 'box-shadow 0.2s',
-                  }}>
-                  {/* ── HEADER ── */}
-                  <button onClick={() => setBuka(isOpen ? null : modul.nomor)}
-                    style={{
-                      width: '100%', padding: '1rem 1.25rem',
-                      display: 'flex', alignItems: 'center', gap: '0.75rem',
-                      border: 'none', background: 'transparent',
-                      cursor: 'pointer', textAlign: 'left', fontSize: '0.875rem', fontFamily: 'inherit',
-                    }}>
-                    <span style={{
-                      width: '36px', height: '36px', borderRadius: '8px',
-                      background: `color-mix(in srgb, ${w} 8%, transparent)`, color: w,
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      fontWeight: 700, fontSize: '0.8rem', flexShrink: 0,
-                    }}>{modul.nomor}</span>
+                <button key={l} type="button" role="tab" aria-selected={lvTampil === l} className={`rung${cls}${lvTampil === l ? ' pilih' : ''}`} onClick={() => setLvAktif(l)}>
+                  <b>L{l} · {LEVEL_NAMA_RESMI[l]}</b>
+                  <span>{butir.length} butir · {dt} diterima</span>
+                </button>
+              );
+            })}
+          </div>
+          {l0 ? <p className="rk-catatan l0">Kondisi awal (L0): {l0.ringkasan}</p> : null}
 
-                    <div style={{ flex: 1, minWidth: 0 }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
-                        <strong style={{ fontSize: '0.95rem', color: 'var(--text)' }}>
-                          {modul.indikator_id} — {modul.judul}
-                        </strong>
-                        <span style={{
-                          fontSize: '0.6875rem', padding: '0.15rem 0.4rem', borderRadius: '4px',
-                          background: `color-mix(in srgb, ${w} 8%, transparent)`, color: w, fontWeight: 600,
-                        }}>{modul.aspek?.replace('Aspek ', 'A')}</span>
-                      </div>
+          <div className="dua">
+            {/* kiri: kriteria & contoh bukti modul */}
+            <section className="krit">
+              <h4>Kriteria Level {lvTampil} <small>{LEVEL_LABEL[lvTampil]}</small></h4>
+              {aktif.kriteria ? (
+                <>
+                  {aktif.kriteria.ringkasan ? <p className="ring">{aktif.kriteria.ringkasan}</p> : null}
+                  {aktif.kriteria.bukti_dukung?.length ? (
+                    <ol className="item">
+                      {aktif.kriteria.bukti_dukung.map((b, i) => (
+                        <li key={i}><b>{b.item}</b>{b.output ? <span className="out">Output: {b.output}</span> : null}</li>
+                      ))}
+                    </ol>
+                  ) : <p className="rk-catatan">— indikator eksternal / belum ada item bukti di Daftar Lengkap</p>}
+                </>
+              ) : <p className="rk-catatan">— tidak ada kriteria pada level ini</p>}
+              {aktif.contoh?.items?.length ? (
+                <details className="contoh">
+                  <summary>Contoh bukti dukung sesuai kondisi Aceh Tengah ({aktif.contoh.items.length})</summary>
+                  <ul>{aktif.contoh.items.map((it, i) => <li key={i}>{it}</li>)}</ul>
+                </details>
+              ) : null}
+            </section>
 
-                      {/* Progress bar */}
-                      {modul.status.count > 0 && (
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.3rem' }}>
-                          <div style={{
-                            flex: 1, height: '4px', borderRadius: '2px',
-                            background: 'var(--line)', overflow: 'hidden', maxWidth: '200px',
-                          }}>
-                            <div style={{
-                              height: '100%', borderRadius: '2px',
-                              width: `${(modul.status.diterima / modul.status.count) * 100}%`,
-                              background: 'var(--ok)',
-                              transformOrigin: 'left',
-                            }} />
-                          </div>
-                          <span style={{ fontSize: '0.7rem', color: 'var(--muted)' }}>
-                            {modul.status.diterima}/{modul.status.count} diterima{modul.status.revisi > 0 ? ` · ${modul.status.revisi} revisi` : ''}
+            {/* kanan: butir existing pada level ini */}
+            <section className="butir">
+              <h4>Butir existing L{lvTampil} <small>{aktif.butir.filter((b) => b.status === 'diterima').length}/{aktif.butir.length} diterima</small></h4>
+              {st.revisi > 0 ? (
+                <p className="peringatan"><StatusIkon k="revisi" /> {st.revisi} butir indikator ini dinyatakan <b>revisi</b> oleh asesor — perbaiki lalu unggah ulang di eval.spbe.go.id. Draf perbaikan: <Link href="/requirement">Draf Bukti Dukung</Link>.</p>
+              ) : null}
+              {aktif.butir.length ? (
+                <ul className="rk-butir">
+                  {aktif.butir.map((b) => {
+                    const sm = statusMeta(b.status);
+                    const dk = ind ? dokumenUntuk(ind.id, b.id) : [];
+                    const url = b.url_preview || '';
+                    return (
+                      <li key={b.id}>
+                        <div className="row">
+                          <StatusIkon k={b.status} />
+                          <span className="mono kode">{b.eval?.kode || kodePortal(b.id)}</span>
+                          <span className="nama">
+                            {b.nama}
+                            {b._peran === 'pendukung' ? <span className="rk-tag t-belum" title="Dokumen penunjang — tidak dihitung kelengkapan level">pendukung</span> : null}
+                            {b.detail ? <span className="det">{b.detail}</span> : null}
+                            {b.status === 'revisi' && b.catatan ? <span className="rev">{REVISI_JENIS[b.eval?.jenis]?.label || 'Revisi'}: {b.catatan}</span> : null}
+                            <span className="meta">
+                              {b.opd?.map((o, i) => <span key={i} className="opd">{o}</span>)}
+                              {dk.map((no) => <span key={no} className="dk" title={infoDokumen(no)?.nama || ''}>#{no}</span>)}
+                            </span>
+                          </span>
+                          <span className="rk-tag" style={{ color: sm.color }}>{sm.label}</span>
+                          <span className="aksi">
+                            {b._ext === 'pdf' && url ? <button type="button" className="rk-btn kecil" title="Pratinjau PDF" onClick={() => onPratinjau({ url: toProxyUrl(url), title: b.nama })}><Ikon nama="dokumen" size={14} /></button> : null}
+                            {b._ext === 'url' && url ? <a className="rk-btn kecil" href={url} target="_blank" rel="noopener noreferrer" title="Buka tautan"><Ikon nama="luar" size={14} /></a> : null}
+                            {rk?.bukaButir ? <button type="button" className="rk-btn kecil" onClick={() => rk.bukaButir(b.id, ind.id)} aria-label={`Buka butir ${kodePortal(b.id)} di panel`}><Ikon nama="kanan" size={14} /></button> : null}
                           </span>
                         </div>
-                      )}
-                    </div>
+                        <CatatanButir b={b} ind={ind} />
+                      </li>
+                    );
+                  })}
+                </ul>
+              ) : <p className="rk-catatan">— belum ada butir bukti pada level ini</p>}
+            </section>
+          </div>
 
-                    <span style={{
-                      color: 'var(--muted)', fontSize: '1.2rem',
-                      transition: 'transform 0.2s', transform: isOpen ? 'rotate(180deg)' : 'none',
-                    }}>▾</span>
-                  </button>
+          <div className="rk-ind-ft">
+            {pj ? <span className="pj"><b>PJ</b> {pj.lead}{pj.support?.length ? <span className="faint"> · dukungan {pj.support.join(', ')}</span> : null}{pj.tim ? <span className="faint"> · {pj.tim}</span> : null}</span> : null}
+            <Link href="/pemdi" className="rk-btn"><Ikon nama="aspek" size={14} /> Lihat di simulasi</Link>
+            {rk?.bukaIndikator && ind ? <button type="button" className="rk-btn" onClick={() => rk.bukaIndikator(ind.id)}><Ikon nama="luar" size={14} /> Panel samping</button> : null}
+            {ind ? <EksporCatatan ind={ind} meta={metaCatatan} compact /> : null}
+          </div>
+        </div>
+      ) : null}
+    </article>
+  );
+}
 
-                  {/* ── CONTENT (expandable) ── */}
-                  {isOpen && (
-                    <div style={{
-                      padding: '0 1.25rem 1.5rem',
-                      borderTop: `1px solid color-mix(in srgb, ${w} 8%, transparent)`,
-                    }}>
-                      {/* Description — Deskripsi Indikator utuh dari PermenPANRB 8/2026 (disinkronkan scripts/sinkron-modul-indikator.py) */}
-                      {modul.deskripsi && (
-                        <details className="modul-desk" style={{ margin: '0.75rem 0' }}>
-                          <summary style={{ fontSize: '0.8rem', color: 'var(--muted)', cursor: 'pointer', lineHeight: 1.6 }}>
-                            {modul.deskripsi.split(/(?<=\.)\s/)[0]} <span style={{ color: 'var(--primary)', fontWeight: 600 }}>— baca deskripsi lengkap Permen</span>
-                          </summary>
-                          <p style={{ fontSize: '0.82rem', color: 'var(--text)', lineHeight: 1.65, margin: '0.5rem 0 0', whiteSpace: 'pre-line' }}>
-                            {modul.deskripsi.replace(/\.\s+([A-Z][^.:]{2,40}:)\s+1\./g, '.\n$1\n1.').replace(/\s(\d+\.)\s/g, '\n$1 ')}
-                          </p>
-                        </details>
-                      )}
-
-                      {/* Posisi saat ini — ringkas, dihitung dari pemdi.json (satu sumber) */}
-                      {modul.rekomendasi?.length > 0 && (
-                        <div style={{ padding: '0.6rem 0.8rem', borderRadius: '8px', background: 'var(--warn-bg)', border: '1px solid var(--warn)', marginBottom: '0.5rem' }}>
-                          <div style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--warn)', marginBottom: '0.25rem' }}>Posisi & langkah berikut</div>
-                          <ul style={{ margin: 0, paddingLeft: '1.1rem', fontSize: '0.76rem', lineHeight: 1.5, color: 'var(--ink-secondary)' }}>
-                            {modul.rekomendasi.map((r, i) => <li key={i}>{r}</li>)}
-                          </ul>
-                        </div>
-                      )}
-
-                      {/* ════ Level Criteria ════ */}
-                      {modul.level_kriteria?.length > 0 && (
-                        <div style={{ marginTop: '1rem' }}>
-                          <h4 style={{ fontSize: '0.85rem', fontWeight: 700, marginBottom: '0.5rem', color: 'var(--text)' }}>
-                            Kriteria per Level
-                          </h4>
-                          <LevelFokus
-                            ind={modul.ind}
-                            warna={LEVEL_WARNA}
-                            layout="stack"
-                            idPrefix="krit"
-                            levels={modul.level_kriteria.map(lk => lk.level).filter(l => l >= 1)}
-                            ringkas={(lv) => { const n = modul.level_kriteria.find(x => x.level === lv)?.bukti_dukung?.length || 0; return n ? `${n} butir bukti` : ''; }}
-                          >
-                            {(lv) => { const lk = modul.level_kriteria.find(x => x.level === lv); if (!lk) return null; return (
-                              <div style={{ borderRadius: '8px', border: '1px solid var(--border)', background: 'var(--surface-1)' }}>
-                                <div style={{ padding: '0.75rem', fontSize: '0.8rem', lineHeight: 1.6, color: 'var(--text)', overflowWrap: 'break-word' }}>
-                                  {/* Ringkasan singkat kriteria */}
-                                  {lk.ringkasan && (
-                                    <p style={{ margin: 0, marginBottom: lk.bukti_dukung?.length ? '0.6rem' : 0 }}>
-                                      {lk.ringkasan}
-                                    </p>
-                                  )}
-                                  {/* Daftar bukti dukung (dari Excel Daftar Lengkap sheet 2) */}
-                                  {lk.bukti_dukung?.length > 0 && (
-                                    <div>
-                                      <p style={{
-                                        fontSize: '0.6875rem', fontWeight: 700, color: 'var(--primary)',
-                                        margin: '0 0 0.3rem', textTransform: 'uppercase', letterSpacing: '0.5px',
-                                      }}>
-                                        Bukti Dukung ({lk.bukti_dukung.length})
-                                      </p>
-                                      <ul style={{ margin: 0, paddingLeft: '1.05rem' }}>
-                                        {lk.bukti_dukung.map((b, i) => (
-                                          <li key={i} style={{ fontSize: '0.73rem', marginBottom: '0.3rem', color: 'var(--muted)', lineHeight: 1.5 }}>
-                                            {b.item}
-                                          </li>
-                                        ))}
-                                      </ul>
-                                    </div>
-                                  )}
-                                  {!lk.bukti_dukung?.length && (
-                                    <p style={{ fontSize: '0.7rem', color: 'var(--muted)', margin: '0.25rem 0 0', fontStyle: 'italic' }}>
-                                      — indikator eksternal / belum ada item bukti di Daftar Lengkap
-                                    </p>
-                                  )}
-                                </div>
-                              </div>
-                            ); }}
-                          </LevelFokus>
-                          {modul.level_kriteria.some(lk => lk.level === 0) && (
-                            <p style={{ fontSize: '0.72rem', color: 'var(--muted)', margin: '0.5rem 0 0', fontStyle: 'italic' }}>
-                              Kondisi awal (L0): {modul.level_kriteria.find(lk => lk.level === 0)?.ringkasan}
-                            </p>
-                          )}
-                        </div>
-                      )}
-
-                      {/* ════ Evidence from Modul ════ */}
-                      {modul.data_dukung_modul?.length > 0 && (
-                        <div style={{ marginTop: '1rem' }}>
-                          <h4 style={{ fontSize: '0.85rem', fontWeight: 700, marginBottom: '0.3rem', color: 'var(--text)' }}>
-                            Contoh Bukti Dukung (Modul)
-                          </h4>
-                          <p style={{ fontSize: '0.7rem', color: 'var(--muted)', marginBottom: '0.6rem' }}>
-                            Disusun sesuai kondisi Pemkab Aceh Tengah — cocokkan dengan item bukti per level di atas.
-                          </p>
-                          {modul.data_dukung_modul.map((lv, li) => (
-                            <div key={li} style={{ marginBottom: '0.6rem', paddingLeft: '0.25rem' }}>
-                              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.25rem' }}>
-                                <span style={{
-                                  display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                                  background: LEVEL_WARNA[lv.level] || 'var(--muted)',
-                                  color: '#fff', fontWeight: 700, fontSize: '0.6875rem',
-                                  borderRadius: '5px', padding: '0.1rem 0.35rem', lineHeight: 1.5,
-                                }}>L{lv.level}</span>
-                                <span style={{ fontSize: '0.72rem', fontWeight: 600, color: 'var(--text)' }}>
-                                  {lv.label}
-                                </span>
-                              </div>
-                              <ul style={{ paddingLeft: '1.2rem', margin: 0 }}>
-                                {lv.items.map((item, i) => (
-                                  <li key={i} style={{ fontSize: '0.75rem', color: 'var(--muted)', marginBottom: '0.2rem', lineHeight: 1.5 }}>
-                                    {item}
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-
-                      {/* ════ Penanggung Jawab ════ */}
-                      {pj && (
-                        <div style={{ marginTop: '1rem', padding: '0.75rem', borderRadius: '8px', background: `${w}08`, border: `1px solid color-mix(in srgb, ${w} 12%, transparent)` }}>
-                          <h4 style={{ fontSize: '0.85rem', fontWeight: 700, marginBottom: '0.4rem', color: 'var(--text)' }}>
-                            Penanggung Jawab
-                          </h4>
-                          <div style={{ fontSize: '0.8rem', color: 'var(--muted)' }}>
-                            <div><strong>Lead:</strong> {pj.lead}</div>
-                            {pj.support?.length > 0 && (
-                              <div style={{ marginTop: '0.2rem' }}>
-                                <strong>Support:</strong> {pj.support.join(', ')}
-                              </div>
-                            )}
-                            {pj.tim && <div style={{ marginTop: '0.2rem' }}><strong>Tim:</strong> {pj.tim}</div>}
-                          </div>
-                        </div>
-                      )}
-
-                      {/* ════ Current Evidence Status — validated by PemdiArena ════ */}
-                      {modul.ind?.bukti_dukung?.length > 0 && (
-                        <div style={{ marginTop: '1rem' }}>
-                          {modul.status.revisi > 0 && (
-                            <div style={{
-                              padding: '0.75rem', borderRadius: '8px', marginBottom: '0.5rem',
-                              background: STATUS_META.revisi.bg, border: `1px solid ${STATUS_META.revisi.color}`,
-                              fontSize: '0.8rem', color: STATUS_META.revisi.color,
-                            }}>
-                              <strong>{modul.status.revisi} bukti dinyatakan REVISI oleh asesor</strong> — perbaiki sesuai catatan pada tabel di bawah,
-                              lalu unggah ulang di eval.spbe.go.id. Lihat draf perbaikan di <Link href="/requirement" style={{ color: 'inherit', fontWeight: 700 }}>Draf Bukti Dukung →</Link>
-                            </div>
-                          )}
-                          {modul.status.diterima === 0 && modul.status.count > 0 && (
-                            <div style={{
-                              padding: '0.75rem', borderRadius: '8px',
-                              background: 'var(--warn-bg)', border: '1px solid var(--warn)',
-                              fontSize: '0.8rem', color: 'var(--warn)',
-                            }}>
-                              <strong>Belum ada bukti yang diterima asesor</strong> pada indikator ini —
-                              butir Level 1 belum diunggah/dinilai di eval.spbe.go.id, sehingga nilai simulasi masih 0.
-                            </div>
-                          )}
-                          <h4 style={{ fontSize: '0.85rem', fontWeight: 700, marginBottom: '0.5rem', color: 'var(--text)' }}>
-                            Bukti Dukung — Kondisi Existing Pemkab Aceh Tengah
-                          </h4>
-
-                          {/* Toggle view: Per Level ↔ Per Dokumen Kunci */}
-                          <div style={{ display: 'flex', gap: '0.4rem', marginBottom: '0.75rem', alignItems: 'center', flexWrap: 'wrap' }}>
-                            <span style={{ fontSize: '0.7rem', color: 'var(--muted)' }}>Tampilkan:</span>
-                            {[
-                              { key: 'level', label: 'Per Level' },
-                              { key: 'dokumen', label: 'Per Dokumen Kunci' },
-                            ].map(mode => (
-                              <button
-                                key={mode.key}
-                                onClick={() => setViewMode(prev => ({ ...prev, [modul.nomor]: mode.key }))}
-                                style={{
-                                  padding: '0.25rem 0.6rem', borderRadius: '6px', border: '1px solid var(--border)',
-                                  background: (viewMode[modul.nomor] || 'level') === mode.key ? 'var(--primary)' : 'var(--surface-2)',
-                                  color: (viewMode[modul.nomor] || 'level') === mode.key ? '#fff' : 'var(--text)',
-                                  cursor: 'pointer', fontSize: '0.7rem', fontWeight: 600,
-                                }}
-                              >
-                                {mode.label}
-                              </button>
-                            ))}
-                          </div>
-
-                          <EksporCatatan ind={modul.ind} meta={{ versi: pemdiData.catatan_mandiri_meta?.versi, tahun: pemdiData.tahun }} compact />
-                          {(viewMode[modul.nomor] || 'level') === 'level' ? (
-                          <LevelFokus
-                            ind={modul.ind}
-                            warna={LEVEL_WARNA}
-                            layout="stack"
-                            idPrefix="bukti"
-                            ringkas={(lv) => { const it = modul.ind.bukti_dukung.filter(b => b.level === lv); return `${it.filter(b => b.status === 'diterima').length}/${it.length} diterima${it.some(b => b.status === 'revisi') ? ' · revisi' : ''}`; }}
-                          >
-                            {(lv) => { const rows = modul.ind.bukti_dukung.filter(b => b.level === lv); if (rows.length === 0) return <p style={{ fontSize: '0.75rem', color: 'var(--muted)', fontStyle: 'italic', margin: '0.25rem 0' }}>— belum ada butir bukti pada level ini</p>; return (
-                          <div style={{ overflowX: 'auto' }}>
-                            <table style={{
-                              width: '100%', borderCollapse: 'collapse', fontSize: '0.78rem',
-                              border: '1px solid var(--border)',
-                            }}>
-                              <thead>
-                                <tr style={{ background: 'var(--surface-2)' }}>
-                                  <th style={thStyle}>Level</th>
-                                  <th style={thStyle}>Nama Bukti Dukung</th>
-                                  <th style={thStyle}>OPD</th>
-                                  <th style={thStyle}>Status</th>
-                                  <th style={thStyle}>Dokumen Kunci</th>
-                                  <th style={{...thStyle, width:'70px', textAlign:'center'}}>Aksi</th>
-                                  <th style={thStyle}>Catatan</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                {rows.map(bd => {
-                                const sm = STATUS_META[bd.status] || STATUS_META.belum;
-                                const url = bd.url_preview || '';
-                                const isPdf = bd._ext === 'pdf' && !!url;
-                                const isUrl = bd._ext === 'url' && !!url;
-                                const canPreview = isPdf;
-                                const dkNos = getDokumenForBukti(modul.ind.id, bd.id);
-                                const isDup = deteksiDuplikat(modul.ind.bukti_dukung).has(bd.id);
-                                return (
-                                  <tr key={bd.id} style={{ borderBottom: '1px solid var(--border)', background: bd.status === 'revisi' ? STATUS_META.revisi.bg : undefined }}>
-                                    <td style={tdStyle}>
-                                      <span style={{
-                                        padding: '0.15rem 0.4rem', borderRadius: '4px',
-                                        background: `color-mix(in srgb, ${LEVEL_WARNA[bd.level] || 'var(--muted)'} 12%, transparent)`,
-                                        color: LEVEL_WARNA[bd.level] || 'var(--muted)',
-                                        fontWeight: 600, fontSize: '0.7rem',
-                                      }}>L{bd.level}</span>
-                                    </td>
-                                    <td style={{ ...tdStyle, fontWeight: 500 }}>
-                                      {bd.eval?.kode && (
-                                        <code style={{ fontSize: '0.6875rem', fontWeight: 800, color: sm.color, border: `1px solid ${sm.color}`, borderRadius: '3px', padding: '0 4px', marginRight: '0.4rem' }}
-                                          title={`Kode bukti di eval.spbe.go.id (Tahap ${bd.eval.tahap}) — hasil: ${sm.label}`}>{bd.eval.kode}</code>
-                                      )}
-                                      {bd.nama}
-                                      {bd.status === 'revisi' && bd.catatan && (
-                                        <div style={{ fontSize: '0.6875rem', color: STATUS_META.revisi.color, marginTop: '0.2rem', fontWeight: 600 }}><StatusIkon k={bd.eval?.jenis || 'revisi'} /> {REVISI_JENIS[bd.eval?.jenis]?.label || 'Revisi'}: {bd.catatan}</div>
-                                      )}
-                                      {bd._peran === 'pendukung' && (
-                                        <span style={{
-                                          display: 'inline-block', marginLeft: '0.4rem', padding: '0.1rem 0.4rem',
-                                          borderRadius: '4px', background: 'var(--surface-2)', color: 'var(--muted)',
-                                          border: '1px solid var(--border)', fontSize: '0.6875rem', fontWeight: 600, verticalAlign: 'middle',
-                                        }} title="Dokumen penunjang (perbup/SK umum) — mendukung bukti utama, tidak dihitung untuk kelengkapan level">
-                                          Pendukung
-                                        </span>
-                                      )}
-                                      {isDup && (
-                                        <span style={{
-                                          display: 'inline-block', marginLeft: '0.4rem', padding: '0.1rem 0.4rem',
-                                          borderRadius: '4px', background: 'var(--gold-light)', color: 'var(--gold-deep)',
-                                          fontSize: '0.6875rem', fontWeight: 600, verticalAlign: 'middle',
-                                        }} title="Dokumen yang sama dipakai sebagai bukti di lebih dari satu level — wajar sesuai kriteria level">
-                                          multi-level
-                                        </span>
-                                      )}
-                                      {bd.detail && <div style={{ fontSize: '0.7rem', color: 'var(--muted)', marginTop: '0.15rem' }}>{bd.detail}</div>}
-                                      <CatatanButir b={bd} ind={modul.ind} />
-                                    </td>
-                                    <td style={tdStyle}>
-                                      {bd.opd?.map((o, i) => (
-                                        <span key={i} style={{
-                                          display: 'inline-block', padding: '0.1rem 0.35rem',
-                                          margin: '0.1rem', borderRadius: '4px',
-                                          background: 'var(--surface-2)', fontSize: '0.7rem',
-                                        }}>{o}</span>
-                                      ))}
-                                    </td>
-                                    <td style={tdStyle}>
-                                      <span style={{
-                                        display: 'inline-flex', alignItems: 'center', gap: '0.25rem',
-                                        padding: '0.15rem 0.5rem', borderRadius: '4px',
-                                        background: sm.bg, color: sm.color,
-                                        fontSize: '0.7rem', fontWeight: 600, whiteSpace: 'nowrap',
-                                      }}>
-                                        <StatusIkon k={sm.key || sm.label.toLowerCase()} /> {sm.label}
-                                      </span>
-                                    </td>
-                                    <td style={tdStyle}>
-                                      {dkNos.length > 0 ? dkNos.map(no => {
-                                        const info = getDokumenInfo(no);
-                                        return (
-                                          <span key={no} style={{
-                                            display: 'inline-block', padding: '0.1rem 0.4rem', margin: '0.1rem',
-                                            borderRadius: '4px', background: 'var(--primary)15',
-                                            color: 'var(--primary)', fontSize: '0.6875rem', fontWeight: 700,
-                                            border: '1px solid var(--primary)30',
-                                            cursor: 'pointer', whiteSpace: 'nowrap',
-                                          }}
-                                          title={info?.nama || ''}
-                                          onClick={() => setBukaDokumen(no)}
-                                          >
-                                            #{no}
-                                          </span>
-                                        );
-                                      }) : (
-                                        <span style={{ fontSize: '0.6875rem', color: 'var(--muted)' }}>—</span>
-                                      )}
-                                    </td>
-                                    <td style={{...tdStyle, textAlign:'center'}}>
-                                      {canPreview ? (
-                                        <button onClick={() => setPreviewDoc({url: toProxyUrl(url), title: bd.nama})}
-                                          style={{
-                                            padding: '0.25rem 0.5rem', borderRadius: '4px', border: 'none',
-                                            background: 'var(--primary)', color: '#fff', cursor: 'pointer',
-                                            fontSize: '0.7rem', fontWeight: 600, whiteSpace: 'nowrap',
-                                          }}>
-                                          Lihat
-                                        </button>
-                                      ) : isUrl ? (
-                                        <a href={url} target="_blank" rel="noopener noreferrer"
-                                          style={{
-                                            display: 'inline-block', padding: '0.25rem 0.5rem', borderRadius: '4px',
-                                            background: 'var(--primary)', color: '#fff', textDecoration: 'none',
-                                            fontSize: '0.7rem', fontWeight: 600, whiteSpace: 'nowrap',
-                                          }}>
-                                          Buka
-                                        </a>
-                                      ) : (
-                                        <span style={{ fontSize: '0.6875rem', color: 'var(--muted)' }}>—</span>
-                                      )}
-                                    </td>
-                                    <td style={{ ...tdStyle, fontSize: '0.7rem', color: 'var(--muted)', maxWidth: '160px' }}>
-                                      {bd.catatan || '-'}
-                                    </td>
-                                  </tr>
-                                );
-                                })}
-                              </tbody>
-                            </table>
-                          </div>
-                            ); }}
-                          </LevelFokus>
-                          ) : (
-                          /* ── VIEW PER DOKUMEN KUNCI ── */
-                          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                            {groupBuktiByDokumen(modul.ind.id, modul.ind.bukti_dukung).map(group => {
-                              const stColor = group.status === 'lengkap' ? 'var(--ok)' : group.status === 'sebagian' ? 'var(--warn)' : 'var(--muted)';
-                              const stBg = group.status === 'lengkap' ? 'var(--ok-bg)' : group.status === 'sebagian' ? 'var(--warn-bg)' : 'var(--surface-2)';
+/* ── Matriks kebutuhan L1–L2 ─────────────────────────────────────────────── */
+function Matriks({ data, aspekWarna }) {
+  const [buka, setBuka] = useState(null);
+  const si = data.status_indikasi;
+  return (
+    <>
+      <div className="rk-chips" style={{ marginBottom: 10 }}>
+        <span className="rk-tag t-belum">{data.cakupan.total_kebutuhan} kebutuhan L1+L2</span>
+        <span className="rk-tag t-belum">{data.cakupan.indikator} indikator</span>
+        <span className="rk-tag t-diterima">{si.diterima} indikasi diterima</span>
+        {si.revisi ? <span className="rk-tag t-revisi">{si.revisi} revisi</span> : null}
+        {si.draf ? <span className="rk-tag t-draf">{si.draf} draf lokal</span> : null}
+        <span className="rk-tag t-belum">{si.belum} belum</span>
+        <span className="rk-tag t-proses">{si.perlu_verifikasi} perlu verifikasi</span>
+      </div>
+      <p className="rk-catatan" style={{ marginBottom: 10 }}><b>Catatan implementasi:</b> {data.catatan_implementasi}</p>
+      <div className="rk-mx">
+        {data.indikator.map((e) => {
+          const on = buka === e.indikator;
+          const semua = e.level.flatMap((lv) => lv.kebutuhan);
+          const n = semua.filter((k) => k.status_indikasi === 'diterima').length;
+          const w = aspekWarna(e.aspek_singkat);
+          return (
+            <article key={e.indikator} id={`matriks-${e.indikator}`} className={`rk-modul${on ? ' on' : ''}`} style={{ '--warna': w }}>
+              <button type="button" className="hd" onClick={() => setBuka(on ? null : e.indikator)} aria-expanded={on}>
+                <span className="no">{e.indikator}</span>
+                <span className="ttl"><b>{e.nama}</b><span className="sub">{e.aspek} · bobot {e.bobot}% · nilai {e.nilai_saat_ini} → target {e.target_indikator}</span></span>
+                <span className="jalur"><i style={{ width: `${(n / Math.max(1, semua.length)) * 100}%` }} /></span>
+                <span className="n mono">{n}/{semua.length}</span>
+                <Ikon nama="lipat" size={14} />
+              </button>
+              {on ? (
+                <div className="isi">
+                  {e.catatan_grup ? <p className="rk-catatan">{e.catatan_grup}</p> : null}
+                  {e.pic ? <p className="rk-catatan"><b>PIC:</b> {e.pic.lead}{e.pic.support?.length ? ` (${e.pic.support.slice(0, 3).join(', ')}${e.pic.support.length > 3 ? '…' : ''})` : ''}</p> : null}
+                  {e.level.map((lv) => (
+                    <div key={lv.level} className="rk-lvl">
+                      <div className="rk-lvl-h"><span className="mono">L{lv.level}</span> {LEVEL_NAMA_RESMI[lv.level] || `Level ${lv.level}`}</div>
+                      <div className="gulir">
+                        <table className="rk-table">
+                          <thead><tr><th>#</th><th>Kebutuhan bukti dukung</th><th>Status indikasi</th><th>Rujukan modul</th></tr></thead>
+                          <tbody>
+                            {lv.kebutuhan.map((k) => {
+                              const sm = k.status_indikasi ? STATUS_META[k.status_indikasi] || STATUS_META.belum : { key: 'proses', label: 'Perlu verifikasi', color: 'var(--rk-status-ink-warn)' };
+                              const gt = k.bukti_terkait?.[0];
                               return (
-                                <div key={group.no} style={{
-                                  border: '1px solid var(--border)', borderRadius: '8px', overflow: 'hidden',
-                                }}>
-                                  <div style={{
-                                    display: 'flex', alignItems: 'center', gap: '0.5rem',
-                                    padding: '0.5rem 0.75rem', background: 'var(--surface-2)',
-                                    borderBottom: '1px solid var(--border)',
-                                  }}>
-                                    {group.no > 0 ? (
-                                      <button
-                                        onClick={() => setBukaDokumen(group.no)}
-                                        style={{
-                                          border: 'none', background: 'var(--primary)', color: '#fff',
-                                          borderRadius: '4px', padding: '0.15rem 0.45rem',
-                                          fontSize: '0.7rem', fontWeight: 700, cursor: 'pointer',
-                                        }}
-                                      >#{group.no}</button>
-                                    ) : (
-                                      <span style={{ fontSize: '0.7rem', color: 'var(--muted)', fontWeight: 700 }}>—</span>
-                                    )}
-                                    <span style={{ flex: 1, fontSize: '0.75rem', fontWeight: 600, color: 'var(--text)' }}>
-                                      {group.nama}
-                                    </span>
-                                    <span style={{
-                                      fontSize: '0.6875rem', padding: '0.15rem 0.5rem', borderRadius: '10px',
-                                      background: stBg, color: stColor, fontWeight: 600, whiteSpace: 'nowrap',
-                                    }}>
-                                      {group.diterima}/{group.total} diterima
-                                    </span>
-                                  </div>
-                                  <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.75rem' }}>
-                                    <thead>
-                                      <tr style={{ background: 'var(--surface-2)' }}>
-                                        <th style={{...thStyle, width:'50px'}}>Level</th>
-                                        <th style={thStyle}>Nama Bukti Dukung</th>
-                                        <th style={{...thStyle, width:'100px'}}>Status</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      {group.buktis.map((bd, i) => {
-                                        const sm = STATUS_META[bd.status] || STATUS_META.belum;
-                                        return (
-                                          <tr key={bd.id} style={{ borderBottom: '1px solid var(--border)' }}>
-                                            <td style={tdStyle}>
-                                              <span style={{
-                                                padding: '0.15rem 0.4rem', borderRadius: '4px',
-                                                background: `color-mix(in srgb, ${LEVEL_WARNA[bd.level] || 'var(--muted)'} 12%, transparent)`,
-                                                color: LEVEL_WARNA[bd.level] || 'var(--muted)',
-                                                fontWeight: 600, fontSize: '0.7rem',
-                                              }}>L{bd.level}</span>
-                                            </td>
-                                            <td style={{ ...tdStyle, fontWeight: 500 }}>
-                                              {bd.nama}
-                                              {bd.detail && <div style={{ fontSize: '0.6875rem', color: 'var(--muted)', marginTop: '0.1rem' }}>{bd.detail}</div>}
-                                            </td>
-                                            <td style={tdStyle}>
-                                              <span style={{
-                                                display: 'inline-flex', alignItems: 'center', gap: '0.25rem',
-                                                padding: '0.15rem 0.5rem', borderRadius: '4px',
-                                                background: sm.bg, color: sm.color,
-                                                fontSize: '0.7rem', fontWeight: 600, whiteSpace: 'nowrap',
-                                              }}>
-                                                <StatusIkon k={sm.key || sm.label.toLowerCase()} /> {sm.label}
-                                              </span>
-                                            </td>
-                                          </tr>
-                                        );
-                                      })}
-                                    </tbody>
-                                  </table>
-                                </div>
+                                <tr key={k.no}>
+                                  <td className="mono faint">{k.no}</td>
+                                  <td>{k.bukti}{k.kondisi ? <div className="faint">{k.kondisi}</div> : null}{gt ? <div className="rujuk">{gt.id} — {potong(gt.nama.replace(/^\d+\.\s*/, ''), 90)}</div> : null}</td>
+                                  <td><span className="rk-tag" style={{ color: sm.color }}><StatusIkon k={sm.key || k.status_indikasi || 'proses'} /> {sm.label}</span></td>
+                                  <td>{k.modul_item ? <span className="ok" title={k.modul_item}>terpetakan</span> : <span className="faint" title="Tidak ditemukan item modul yang persis sama — cek kriteria level pada modul">— (elaborasi)</span>}</td>
+                                </tr>
                               );
                             })}
-
-                            {/* ═══ Placeholder: dokumen kunci tanpa bukti existing ═══ */}
-                            {getDokumenTanpaBukti(modul.ind.id).map(no => {
-                              const info = getDokumenInfo(no);
-                              return (
-                                <div key={`ph-${no}`} style={{
-                                  border: '1px dashed var(--warn)', borderRadius: '8px', overflow: 'hidden',
-                                  background: 'var(--warn-bg)10',
-                                }}>
-                                  <div style={{
-                                    display: 'flex', alignItems: 'center', gap: '0.5rem',
-                                    padding: '0.5rem 0.75rem', background: 'var(--warn-bg)30',
-                                  }}>
-                                    <button
-                                      onClick={() => setBukaDokumen(no)}
-                                      style={{
-                                        border: 'none', background: 'var(--warn)', color: '#fff',
-                                        borderRadius: '4px', padding: '0.15rem 0.45rem',
-                                        fontSize: '0.7rem', fontWeight: 700, cursor: 'pointer',
-                                      }}
-                                    >#{no}</button>
-                                    <span style={{ flex: 1, fontSize: '0.75rem', fontWeight: 600, color: 'var(--text)' }}>
-                                      {info?.nama || `Dokumen #${no}`}
-                                    </span>
-                                    <span style={{
-                                      fontSize: '0.6875rem', padding: '0.15rem 0.5rem', borderRadius: '10px',
-                                      background: 'var(--warn-bg)', color: 'var(--warn)', fontWeight: 700, whiteSpace: 'nowrap',
-                                    }}>
-                                      Perlu Disusun
-                                    </span>
-                                  </div>
-                                  <div style={{ padding: '0.5rem 0.75rem', fontSize: '0.7rem', color: 'var(--muted)' }}>
-                                    Belum ada bukti dukung existing untuk dokumen kunci ini. Lihat substansi wajib di
-                                    section <strong>Peta Dokumen Kunci</strong> di bawah untuk panduan penyusunan.
-                                  </div>
-                                </div>
-                              );
-                            })}
-                          </div>
-                          )}
-                        </div>
-                      )}
-
-
-                      {/* ════ Quick Actions ════ */}
-                      <div style={{ marginTop: '1rem', display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                        <Link href="/pemdi" style={{
-                          padding: '0.4rem 0.75rem', borderRadius: '6px',
-                          fontSize: '0.78rem', fontWeight: 600, textDecoration: 'none',
-                          background: 'var(--primary)', color: '#fff',
-                          display: 'inline-flex', alignItems: 'center', gap: '0.3rem',
-                        }}>
-                          Lihat di Halaman Pemdi →
-                        </Link>
+                          </tbody>
+                        </table>
                       </div>
                     </div>
-                  )}
-                </div>
-              );
-            })}
-
-            {filtered.length === 0 && (
-              <div style={{ textAlign: 'center', padding: '3rem', color: 'var(--muted)' }}>
-                Tidak ada modul yang cocok dengan filter.
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* ════════ MATRIKS KEBUTUHAN BUKTI DUKUNG — LEVEL 1 & 2 (sumber: NotebookLM) ════════ */}
-      <section className="section" id="matriks-kebutuhan" style={{ marginTop: '3rem' }}>
-        <div className="container">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem', flexWrap: 'wrap' }}>
-            <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text)', margin: 0 }}>
-              Matriks Kebutuhan Bukti Dukung — Level 1 &amp; 2
-            </h2>
-            <span className="badge badge-yellow" style={{ fontSize: '0.6875rem' }}>BARU · SESUAI MODUL</span>
-          </div>
-          <p style={{ color: 'var(--muted)', fontSize: '0.85rem', maxWidth: 800, marginBottom: '0.75rem', lineHeight: 1.6 }}>
-            Disusun dari dokumen <em>Analisis Bukti Dukung Kematangan Pemerintah Digital (Level 1 &amp; 2)</em> — hasil
-            analisis &amp; ekstraksi NotebookLM atas 20 PPTX Modul Indikator Pemdi (<code>docs/analisis-bukti-dukung-l1-l2.md</code>),
-            disilangkan dengan item modul resmi, status bukti existing, dan tabel Panduan Bab 6. Indikator eksternal
-            ({kebutuhanData.cakupan.tidak_dibahas.map(x => x.split(' ')[0]).join(', ')}) tidak dibahas pada dokumen sumber.
-          </p>
-
-          {/* Catatan implementasi */}
-          <div style={{
-            padding: '0.75rem 1rem', borderRadius: '10px', marginBottom: '1rem',
-            background: 'var(--warn-bg)', border: '1px solid var(--warn)',
-            fontSize: '0.8rem', color: 'var(--warn)', lineHeight: 1.55,
-          }}>
-            <strong>Catatan implementasi:</strong> {kebutuhanData.catatan_implementasi}
-          </div>
-
-          {/* Stat mini */}
-          <div className="stat-row" style={{ flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.25rem' }}>
-            <span className="stat-badge" style={{ background: 'var(--primary-bg)', color: 'var(--primary)' }}>
-              {kebutuhanData.cakupan.total_kebutuhan} kebutuhan bukti (L1+L2)
-            </span>
-            <span className="stat-badge" style={{ background: 'var(--surface-2)', color: 'var(--muted)' }}>
-              {kebutuhanData.cakupan.indikator} indikator
-            </span>
-            <span className="stat-badge" style={{ background: 'var(--ok-bg)', color: 'var(--ok)' }}>
-              {kebutuhanData.status_indikasi.diterima} indikasi diterima asesor
-            </span>
-            {kebutuhanData.status_indikasi.revisi > 0 && (
-              <span className="stat-badge" style={{ background: STATUS_META.revisi.bg, color: STATUS_META.revisi.color }}>
-                {kebutuhanData.status_indikasi.revisi} revisi
-              </span>
-            )}
-            {kebutuhanData.status_indikasi.draf > 0 && (
-              <span className="stat-badge" style={{ background: 'var(--surface-2)', color: 'var(--primary)' }}>
-                {kebutuhanData.status_indikasi.draf} draf lokal
-              </span>
-            )}
-            <span className="stat-badge" style={{ background: 'var(--surface-2)', color: 'var(--muted)' }}>
-              {kebutuhanData.status_indikasi.belum} belum
-            </span>
-            <span className="stat-badge" style={{ background: 'var(--warn-bg)', color: 'var(--warn)' }}>
-              {kebutuhanData.status_indikasi.perlu_verifikasi} perlu verifikasi
-            </span>
-          </div>
-
-          {/* Accordion per indikator */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-            {kebutuhanData.indikator.map((e) => {
-              const open = bukaMatriks === e.indikator;
-              const semua = e.level.flatMap((lv) => lv.kebutuhan);
-              const nLengkap = semua.filter((k) => k.status_indikasi === 'diterima').length;
-              const pct = Math.round((nLengkap / semua.length) * 100);
-              const w = pemdiData.aspek.find((a) => a.singkat === e.aspek_singkat)?.warna || 'var(--muted)';
-              return (
-                <div key={e.indikator} id={`matriks-${e.indikator}`}
-                  style={{
-                    border: `1px solid color-mix(in srgb, ${w} 15%, transparent)`, borderRadius: '12px',
-                    background: 'var(--card-bg)', overflow: 'hidden',
-                    boxShadow: open ? `0 0 0 2px color-mix(in srgb, ${w} 19%, transparent)` : 'none',
-                  }}>
-                  {/* Header */}
-                  <button onClick={() => setBukaMatriks(open ? null : e.indikator)}
-                    style={{
-                      width: '100%', padding: '0.9rem 1.1rem', display: 'flex', alignItems: 'center',
-                      gap: '0.75rem', border: 'none', background: 'transparent', cursor: 'pointer',
-                      textAlign: 'left', fontSize: '0.875rem', fontFamily: 'inherit',
-                    }}>
-                    <span style={{
-                      width: 34, height: 34, borderRadius: '8px', background: `color-mix(in srgb, ${w} 8%, transparent)`, color: w,
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      fontWeight: 700, fontSize: '0.72rem', flexShrink: 0,
-                    }}>{e.indikator}</span>
-                    <div style={{ flex: 1, minWidth: 0 }}>
-                      <strong style={{ fontSize: '0.9rem', color: 'var(--text)' }}>{e.nama}</strong>
-                      <div style={{ fontSize: '0.6875rem', color: 'var(--muted)', marginTop: '2px' }}>
-                        {e.aspek} · Bobot {e.bobot}% · Nilai saat ini {e.nilai_saat_ini} (target {e.target_indikator})
-                      </div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '4px' }}>
-                        <div style={{ flex: 1, maxWidth: 180, height: 4, borderRadius: 2, background: 'var(--line)', overflow: 'hidden' }}>
-                          <div style={{ height: '100%', width: `${pct}%`, borderRadius: 2, background: 'var(--ok)' }} />
-                        </div>
-                        <span style={{ fontSize: '0.6875rem', color: 'var(--muted)' }}>{nLengkap}/{semua.length} indikasi diterima asesor</span>
-                      </div>
-                    </div>
-                    <span style={{ color: 'var(--muted)', transform: open ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}>▾</span>
-                  </button>
-
-                  {/* Body */}
-                  {open && (
-                    <div style={{ padding: '0 1.1rem 1.25rem', borderTop: `1px solid color-mix(in srgb, ${w} 8%, transparent)` }}>
-                      {e.catatan_grup && (
-                        <p style={{ fontSize: '0.7rem', color: 'var(--muted)', fontStyle: 'italic', margin: '0.6rem 0 0' }}>
-                          ℹ️ {e.catatan_grup}
-                        </p>
-                      )}
-                      {e.pic && (
-                        <p style={{ fontSize: '0.75rem', color: 'var(--muted)', margin: '0.6rem 0' }}>
-                          <strong>PIC:</strong> {e.pic.lead}
-                          {e.pic.support?.length > 0 && <span> ({e.pic.support.slice(0, 3).join(', ')}{e.pic.support.length > 3 ? '…' : ''})</span>}
-                        </p>
-                      )}
-
-                      {e.level.map((lv) => (
-                        <div key={lv.level} style={{ marginTop: '0.9rem' }}>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.4rem' }}>
-                            <span style={{
-                              display: 'inline-flex', background: LEVEL_WARNA[lv.level], color: '#fff',
-                              fontWeight: 700, fontSize: '0.6875rem', borderRadius: '5px', padding: '0.12rem 0.4rem',
-                            }}>L{lv.level}</span>
-                            <span style={{ fontSize: '0.76rem', fontWeight: 700, color: 'var(--text)' }} title={LEVEL_NAMA_RESMI[lv.level] || ''}>
-                              {LEVEL_NAMA_RESMI[lv.level] || `Level ${lv.level}`}
-                            </span>
-                          </div>
-                          <div style={{ overflowX: 'auto' }}>
-                            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.76rem', border: '1px solid var(--border)' }}>
-                              <thead>
-                                <tr style={{ background: 'var(--surface-2)' }}>
-                                  <th style={{ ...thStyle, width: 36 }}>#</th>
-                                  <th style={thStyle}>Kebutuhan Bukti Dukung</th>
-                                  <th style={{ ...thStyle, width: 110 }}>Status Indikasi</th>
-                                  <th style={{ ...thStyle, width: 95 }}>Rujukan Modul</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                {lv.kebutuhan.map((k) => {
-                                  const sm = k.status_indikasi
-                                    ? STATUS_META[k.status_indikasi] || STATUS_META.belum
-                                    : { key: 'proses', label: 'Perlu Verifikasi', color: 'var(--warn)', bg: 'var(--surface-2)' };
-                                  const gt = k.bukti_terkait?.[0];
-                                  return (
-                                    <tr key={k.no} style={{ borderBottom: '1px solid var(--border)' }}>
-                                      <td style={{ ...tdStyle, color: 'var(--muted)', fontWeight: 700 }}>{k.no}</td>
-                                      <td style={tdStyle}>
-                                        {k.bukti}
-                                        {k.kondisi && (
-                                          <div style={{ fontSize: '0.6875rem', color: 'var(--muted)', marginTop: '0.15rem' }}>{k.kondisi}</div>
-                                        )}
-                                        {gt && (
-                                          <div style={{ fontSize: '0.6875rem', color: 'var(--primary)', marginTop: '0.15rem' }}>
-                                            {gt.id} — {gt.nama.replace(/^\d+\.\s*/, '').slice(0, 90)}
-                                            {gt.nama.replace(/^\d+\.\s*/, '').length > 90 ? '…' : ''}
-                                          </div>
-                                        )}
-                                      </td>
-                                      <td style={tdStyle}>
-                                        <span style={{
-                                          display: 'inline-flex', alignItems: 'center', gap: '0.25rem',
-                                          padding: '0.15rem 0.5rem', borderRadius: '4px',
-                                          background: sm.bg, color: sm.color, fontSize: '0.6875rem', fontWeight: 600, whiteSpace: 'nowrap',
-                                        }}>
-                                          <StatusIkon k={sm.key || sm.label.toLowerCase()} /> {sm.label}
-                                        </span>
-                                      </td>
-                                      <td style={tdStyle}>
-                                        {k.modul_item ? (
-                                          <span title={k.modul_item} style={{ fontSize: '0.6875rem', color: 'var(--ok)', fontWeight: 700 }}>
-                                            terpetakan
-                                          </span>
-                                        ) : (
-                                          <span title="Tidak ditemukan item modul yang persis sama — cek kriteria level pada modul" style={{ fontSize: '0.6875rem', color: 'var(--muted)' }}>
-                                            — (elaborasi)
-                                          </span>
-                                        )}
-                                      </td>
-                                    </tr>
-                                  );
-                                })}
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                      ))}
-
-                      {/* Panduan Bab 6 */}
-                      {e.panduan_bab6 && (
-                        <div style={{ marginTop: '1rem', border: '1px dashed var(--border)', borderRadius: '10px', overflow: 'hidden' }}>
-                          <button onClick={() => setBukaPanduanMx(bukaPanduanMx === e.indikator ? null : e.indikator)}
-                            style={{
-                              width: '100%', display: 'flex', alignItems: 'center', gap: '0.5rem',
-                              padding: '0.6rem 0.9rem', border: 'none', background: 'var(--surface-2)',
-                              cursor: 'pointer', fontSize: '0.76rem', fontWeight: 700, color: 'var(--text)',
-                            }}>
-                            Panduan Bab 6 — cara memperoleh dokumen
-                            {e.panduan_bab6.target && (
-                              <span style={{ marginLeft: 'auto', fontSize: '0.6875rem', color: 'var(--primary)', fontWeight: 600 }}>
-                                Target: {e.panduan_bab6.target}
-                              </span>
-                            )}
-                            <span style={{ color: 'var(--muted)', transform: bukaPanduanMx === e.indikator ? 'rotate(180deg)' : 'none' }}>▾</span>
-                          </button>
-                          {bukaPanduanMx === e.indikator && (
-                            <div style={{ overflowX: 'auto', padding: 0 }}>
-                              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.72rem' }}>
-                                <thead>
-                                  <tr style={{ background: 'var(--surface-2)' }}>
-                                    <th style={thStyle}>Dokumen</th>
-                                    <th style={{ ...thStyle, width: 100 }}>Format</th>
-                                    {e.panduan_bab6.dokumen.some((d) => d.pic) && <th style={{ ...thStyle, width: 130 }}>Penanggung Jawab</th>}
-                                    <th style={thStyle}>Cara Mendapatkan</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  {e.panduan_bab6.dokumen.map((d, i) => (
-                                    <tr key={i} style={{ borderBottom: '1px solid var(--border)' }}>
-                                      <td style={{ ...tdStyle, fontWeight: 600 }}>{d.dokumen}</td>
-                                      <td style={tdStyle}>{d.format}</td>
-                                      {e.panduan_bab6.dokumen.some((x) => x.pic) && <td style={tdStyle}>{d.pic || '—'}</td>}
-                                      <td style={tdStyle}>{d.cara}</td>
-                                    </tr>
-                                  ))}
-                                </tbody>
-                              </table>
-                            </div>
-                          )}
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-
-          <p style={{ fontSize: '0.7rem', color: 'var(--muted)', marginTop: '1rem', lineHeight: 1.6 }}>
-            Status indikasi dipetakan otomatis ke bukti dukung existing di <code>data/pemdi.json</code> (indikatif —
-            tetap perlu verifikasi substansi kriteria level). Dibangun oleh <code>scripts/build-kebutuhan-bukti.py</code>
-            pada {kebutuhanData.dibangun}. Sumber: {kebutuhanData.sumber}.
-          </p>
-        </div>
-      </section>
-
-      {/* ════════ SEMUA SECTION BUKTI DUKUNG DISEMBUNYIKAN (file tetap, UI dibersihkan) ════════ */}
-      {false && (<>
-      {/* ════════ BUKTI DUKUNG BARU 2026 — Portal Evaluasi & Dokumen (inject baru) ════════ */}
-      <section style={{ marginTop: '3rem' }}>
-        <div className="container">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
-            <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text)', margin: 0 }}>
-              Bukti Dukung Baru — Portal Evaluasi & Dokumen 2026
-            </h2>
-            <span className="badge badge-yellow" style={{ fontSize: '0.6875rem' }}>BARU</span>
-          </div>
-          <p style={{ color: 'var(--muted)', fontSize: '0.85rem', maxWidth: 760, marginBottom: '1rem' }}>
-            <strong>20 bukti dukung</strong> baru yang dipetakan ke Peta Dokumen Kunci — berasal dari
-            <strong> portal evaluasi PEMDI (eval.spbe.go.id)</strong> kode <code>PG_04</code> & <code>TD_13</code> (SK Tim
-            Koordinasi, DPA/RKA, rapat koordinasi, KAK & laporan aplikasi Bapokting) dan dokumen Diskominfo 2026 yang
-            ditemukan di Documents (Indeks KAMI, Perbup persandian, SK Forum Satu Data, RPJMD, Renstra, Renja, DPA, RKA).
-            Status mengikuti hasil asesor eval.spbe.go.id; butir yang belum diunggah berstatus Draf/Belum.
-          </p>
-
-          {/* Stat mini */}
-          <div className="stat-row" style={{ flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.25rem' }}>
-            <span className="stat-badge" style={{ background: 'var(--ok-bg)', color: 'var(--ok)' }}>
-              {hitungBuktiBaru().total} bukti baru
-            </span>
-            <span className="stat-badge" style={{ background: 'var(--warn-bg)', color: 'var(--warn)' }}>
-              {hitungBuktiBaru().proses} sudah dinilai di portal eval
-            </span>
-            <span className="stat-badge" style={{ background: 'var(--surface-2)', color: 'var(--muted)' }}>
-              {hitungBuktiBaru().belum} belum diunggah
-            </span>
-            <span className="stat-badge" style={{ background: 'var(--primary-bg)', color: 'var(--primary)' }}>
-              {hitungBuktiBaru().dokumen} dokumen kunci terdukung
-            </span>
-          </div>
-
-          {/* Tabel bukti baru */}
-          <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.75rem' }}>
-              <thead>
-                <tr style={{ background: 'var(--surface-2)' }}>
-                  <th style={{...thStyle, width:'50px'}}>Ind.</th>
-                  <th style={thStyle}>Nama Bukti Dukung</th>
-                  <th style={{...thStyle, width:'70px'}}>Level</th>
-                  <th style={{...thStyle, width:'110px'}}>Dok. Kunci</th>
-                  <th style={{...thStyle, width:'110px'}}>Status</th>
-                  <th style={{...thStyle, width:'150px'}}>Sumber</th>
-                </tr>
-              </thead>
-              <tbody>
-                {getBuktiBaru().map(bd => {
-                  const sm = STATUS_META[bd.status] || STATUS_META.belum;
-                  const dkNos = bd._dokumen_kunci || [];
-                  const url = bd.url_preview || '';
-                  const isPdf = bd._ext === 'pdf' && !!url;
-                  return (
-                    <tr key={bd.id} style={{ borderBottom: '1px solid var(--border)' }}>
-                      <td style={tdStyle}>
-                        <span style={{ padding: '0.15rem 0.4rem', borderRadius: '4px', background: 'var(--primary-bg)', color: 'var(--primary)', fontWeight: 700, fontSize: '0.6875rem' }}>
-                          {bd._indikator}
-                        </span>
-                      </td>
-                      <td style={{ ...tdStyle, fontWeight: 500 }}>
-                        {bd.nama}
-                        {bd.detail && <div style={{ fontSize: '0.6875rem', color: 'var(--muted)', marginTop: '0.15rem' }}>{bd.detail}</div>}
-                        {bd.catatan && <div style={{ fontSize: '0.6875rem', color: 'var(--muted)', marginTop: '0.15rem', opacity: 0.85 }}>{bd.catatan}</div>}
-                        {url && (
-                          <a href={url} target="_blank" rel="noopener noreferrer"
-                            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.6875rem', color: 'var(--primary)', marginTop: '0.2rem', textDecoration: 'underline' }}>
-                            {bd._ext === 'url' ? 'Buka URL' : isPdf ? 'Buka PDF' : 'Lihat preview'} ↗
-                          </a>
-                        )}
-                      </td>
-                      <td style={tdStyle}>
-                        <span style={{ padding: '0.15rem 0.4rem', borderRadius: '4px', background: `color-mix(in srgb, ${LEVEL_WARNA[bd.level] || 'var(--muted)'} 12%, transparent)`, color: LEVEL_WARNA[bd.level] || 'var(--muted)', fontWeight: 600, fontSize: '0.7rem' }}>
-                          L{bd.level}
-                        </span>
-                      </td>
-                      <td style={tdStyle}>
-                        {dkNos.length > 0 ? dkNos.map(no => (
-                          <button key={no} onClick={() => setBukaDokumen(no)} style={{
-                            border: 'none', background: 'var(--primary)', color: '#fff', borderRadius: '4px',
-                            padding: '0.15rem 0.45rem', fontSize: '0.6875rem', fontWeight: 700, cursor: 'pointer', marginRight: '0.25rem',
-                          }}>#{no}</button>
-                        )) : <span style={{ color: 'var(--muted)', fontSize: '0.7rem' }}>—</span>}
-                      </td>
-                      <td style={tdStyle}>
-                        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', padding: '0.15rem 0.5rem', borderRadius: '4px', background: sm.bg, color: sm.color, fontSize: '0.7rem', fontWeight: 600, whiteSpace: 'nowrap' }}>
-                          <StatusIkon k={sm.key || sm.label.toLowerCase()} /> {sm.label}
-                        </span>
-                      </td>
-                      <td style={{ ...tdStyle, fontSize: '0.6875rem', color: 'var(--muted)' }}>
-                        {bd._portal ? 'Portal eval.spbe.go.id' : 'Documents 2026'}
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      {/* ════════ DOKUMEN KUNCI — detail bukti dukung (tambahan, tidak mengubah modul) ════════ */}
-      <section style={{ marginTop: '3rem' }}>
-        <div className="container">
-          <div style={{
-            display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem',
-          }}>
-            <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text)', margin: 0 }}>
-              Peta Dokumen Kunci Bukti Dukung
-            </h2>
-          </div>
-          <p style={{ color: 'var(--muted)', fontSize: '0.85rem', maxWidth: 720, marginBottom: '1rem' }}>
-            {dokumenKunci.total_dokumen} dokumen kunci yang harus disiapkan — satu dokumen dapat menginisiasi
-            beberapa indikator sekaligus. Klik untuk melihat substansi/isi wajib di dalamnya.
-          </p>
-
-          {/* Stat mini */}
-          <div className="stat-row" style={{ flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.25rem' }}>
-            <span className="stat-badge" style={{ background: 'var(--surface-2)', color: 'var(--muted)' }}>
-              {dokumenKunci.total_dokumen} dokumen kunci
-            </span>
-            <span className="stat-badge" style={{ background: 'var(--warn-bg)', color: 'var(--warn)' }}>
-              {dokumenKunci.dokumen.filter(d => d.prioritas.toLowerCase().includes('tertinggi')).length} prioritas tertinggi
-            </span>
-            <span className="stat-badge" style={{ background: 'var(--ok-bg)', color: 'var(--ok)' }}>
-              {dokumenKunci.dokumen.reduce((s, d) => s + d.substansi.length, 0)} item substansi wajib
-            </span>
-          </div>
-
-          {/* Daftar dokumen kunci (accordion) */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            {dokumenKunci.dokumen.map((doc) => {
-              const open = bukaDokumen === doc.no;
-              const prioritasWarna = doc.prioritas.toLowerCase().includes('tertinggi')
-                ? 'var(--bad)' : doc.prioritas.toLowerCase().includes('tinggi')
-                ? 'var(--warn)' : 'var(--muted)';
-              return (
-                <div key={doc.no} style={{
-                  border: '1px solid var(--border)', borderRadius: '10px',
-                  background: open ? 'var(--surface-2)' : 'var(--card-bg)',
-                  overflow: 'hidden', transition: 'all 0.2s',
-                }}>
-                  {/* Header */}
-                  <button
-                    onClick={() => setBukaDokumen(open ? null : doc.no)}
-                    style={{
-                      width: '100%', display: 'flex', alignItems: 'center', gap: '0.75rem',
-                      padding: '0.85rem 1rem', border: 'none', background: 'transparent',
-                      cursor: 'pointer', textAlign: 'left', color: 'var(--text)',
-                    }}
-                  >
-                    <span style={{
-                      minWidth: '28px', height: '28px', borderRadius: '8px',
-                      background: 'var(--surface-2)', display: 'flex', alignItems: 'center',
-                      justifyContent: 'center', fontSize: '0.75rem', fontWeight: 700,
-                      color: 'var(--muted)',
-                    }}>{doc.no}</span>
-                    <span style={{ flex: 1, fontWeight: 600, fontSize: '0.85rem' }}>{doc.nama}</span>
-                    <span style={{ fontSize: '0.7rem', color: prioritasWarna, fontWeight: 600, whiteSpace: 'nowrap' }}>
-                      {doc.prioritas}
-                    </span>
-                    <span style={{
-                      fontSize: '0.6875rem', color: 'var(--muted)', background: 'var(--surface-2)',
-                      padding: '0.15rem 0.5rem', borderRadius: '12px', whiteSpace: 'nowrap',
-                    }}>
-                      {doc.indikator.length > 0 ? doc.indikator.join(' · ') : 'Lintas indikator'}
-                    </span>
-                    <span style={{ color: 'var(--muted)', transform: open ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}>▾</span>
-                  </button>
-
-                  {/* Isi (accordion body) */}
-                  {open && (
-                    <div style={{ padding: '0.25rem 1rem 1rem 1rem', borderTop: '1px solid var(--border)' }}>
-                      {/* Jenis */}
-                      {doc.jenis && (
-                        <p style={{ fontSize: '0.75rem', color: 'var(--muted)', margin: '0.75rem 0 0.25rem' }}>
-                          <strong style={{ color: 'var(--text)' }}>Jenis:</strong> {doc.jenis}
-                        </p>
-                      )}
-                      {/* Penanggung jawab */}
-                      {doc.penanggung_jawab && (
-                        <p style={{ fontSize: '0.75rem', color: 'var(--muted)', margin: '0.25rem 0' }}>
-                          <strong style={{ color: 'var(--text)' }}>Penanggung Jawab:</strong> {doc.penanggung_jawab}
-                        </p>
-                      )}
-                      {/* Unit pendukung */}
-                      {doc.unit_pendukung && (
-                        <p style={{ fontSize: '0.75rem', color: 'var(--muted)', margin: '0.25rem 0' }}>
-                          <strong style={{ color: 'var(--text)' }}>Unit Pendukung:</strong> {doc.unit_pendukung}
-                        </p>
-                      )}
-                      {/* Indikator & level */}
-                      {doc.indikator_level && (
-                        <p style={{ fontSize: '0.75rem', color: 'var(--muted)', margin: '0.25rem 0' }}>
-                          <strong style={{ color: 'var(--text)' }}>Indikator & Level Dicakup:</strong> {doc.indikator_level}
-                        </p>
-                      )}
-
-                      {/* Substansi wajib */}
-                      {doc.substansi.length > 0 && (
-                        <div style={{ marginTop: '0.75rem' }}>
-                          <p style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text)', marginBottom: '0.4rem' }}>
-                            Substansi / Isi yang Wajib Dimuat:
-                          </p>
-                          <ul style={{ margin: 0, paddingLeft: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
-                            {doc.substansi.map((s, i) => (
-                              <li key={i} style={{ fontSize: '0.75rem', color: 'var(--muted)', lineHeight: 1.5 }}>
-                                {s}
-                              </li>
+                  ))}
+                  {e.panduan_bab6 ? (
+                    <details className="bab6">
+                      <summary>Panduan Bab 6 — cara memperoleh dokumen{e.panduan_bab6.target ? <span className="faint"> · target {e.panduan_bab6.target}</span> : null}</summary>
+                      <div className="gulir">
+                        <table className="rk-table">
+                          <thead><tr><th>Dokumen</th><th>Format</th>{e.panduan_bab6.dokumen.some((d) => d.pic) ? <th>Penanggung jawab</th> : null}<th>Cara mendapatkan</th></tr></thead>
+                          <tbody>
+                            {e.panduan_bab6.dokumen.map((d, i) => (
+                              <tr key={i}><td><b>{d.dokumen}</b></td><td>{d.format}</td>{e.panduan_bab6.dokumen.some((x) => x.pic) ? <td>{d.pic || '—'}</td> : null}<td>{d.cara}</td></tr>
                             ))}
-                          </ul>
-                        </div>
-                      )}
-                    </div>
-                  )}
+                          </tbody>
+                        </table>
+                      </div>
+                    </details>
+                  ) : null}
                 </div>
-              );
-            })}
-          </div>
-
-          <p style={{ fontSize: '0.7rem', color: 'var(--muted)', marginTop: '1rem' }}>
-            Sumber: {dokumenKunci.sumber}
-          </p>
-        </div>
-      </section>
-
-      {/* ════════ ANALISIS KESESUAIAN RPJMD 2025-2029 ════════ */}
-      <section style={{ marginTop: '3rem' }}>
-        <div className="container">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
-            <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text)', margin: 0 }}>
-              Analisis Kesesuaian RPJMD 2025-2029
-            </h2>
-          </div>
-          <p style={{ color: 'var(--muted)', fontSize: '0.85rem', maxWidth: 760, marginBottom: '1rem' }}>
-            Hasil ekstraksi dan analisis <strong>RPJMD Kabupaten Aceh Tengah 2025-2029</strong> (Qanun Tahun 2025,
-            409 halaman) terhadap substansi yang dibutuhkan pada Peta Dokumen Kunci — khususnya
-            <strong> Dokumen #1 (RPJMD/RKPD/Renstra/Renja yang Memuat Substansi RAN Pemdi)</strong>.
-            Berikut poin-poin yang <strong style={{ color: 'var(--ok)' }}>sudah termuat</strong>.
-          </p>
-
-          {/* Ringkasan stat */}
-          <div className="stat-row" style={{ flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.25rem' }}>
-            <span className="stat-badge" style={{ background: 'var(--ok-bg)', color: 'var(--ok)' }}>
-              6/9 substansi termuat
-            </span>
-            <span className="stat-badge" style={{ background: 'var(--warn-bg)', color: 'var(--warn)' }}>
-              3 perlu penguatan
-            </span>
-            <span className="stat-badge" style={{ background: 'var(--surface-2)', color: 'var(--muted)' }}>
-              Indeks SPBE target: 1,5 → 1,92 (2029)
-            </span>
-          </div>
-
-          {/* Tabel kesesuaian substansi */}
-          <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.75rem' }}>
-              <thead>
-                <tr style={{ background: 'var(--surface-2)' }}>
-                  <th style={{ padding: '0.5rem 0.75rem', textAlign: 'left', color: 'var(--text)', borderBottom: '1px solid var(--border)' }}>Substansi Wajib (Dokumen #1)</th>
-                  <th style={{ padding: '0.5rem 0.75rem', textAlign: 'center', color: 'var(--text)', borderBottom: '1px solid var(--border)' }}>Status</th>
-                  <th style={{ padding: '0.5rem 0.75rem', textAlign: 'left', color: 'var(--text)', borderBottom: '1px solid var(--border)' }}>Lokasi di RPJMD</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Bab/uraian khusus Pemerintah Digital (SPBE/Pemdi) — visi, misi, arah kebijakan, strategi</td>
-                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--ok)' }}>Termuat</span></td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Bab 2.3.4 Transformasi Digital (II-116); Sasaran "Meningkatnya Transformasi Digital dalam Tata Kelola" (III-28)</td>
-                </tr>
-                <tr>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Program & kegiatan Pemdi beserta indikator kinerja + target</td>
-                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--ok)' }}>Termuat</span></td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Program Pengelolaan Aplikasi Informatika, Indeks SPBE 1,5→1,92, IPTIK 5,7→7,0</td>
-                </tr>
-                <tr>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Rencana pengembangan aplikasi & pemaduan layanan ke portal</td>
-                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--ok)' }}>Termuat</span></td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Koordinasi pemanfaatan Portal Pelayanan Pemerintah Daerah terintegrasi (III-40); portal layanan terpadu + aplikasi mobile + sistem data terpadu</td>
-                </tr>
-                <tr>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Kebijakan anggaran Pemdi (arah alokasi anggaran lintas PD)</td>
-                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--ok)' }}>Termuat</span></td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Proyeksi belanja Kominfo (Rp 212-247 jt/tahun) & Persandian (Rp 27-77 jt/tahun) 2025-2029</td>
-                </tr>
-                <tr>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Interoperabilitas data & integrasi layanan (Sistem Penghubung Layanan)</td>
-                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--ok)' }}>Termuat</span></td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Sub kegiatan "Sistem Penghubung Layanan Pemerintah Daerah dalam rangka interoperabilitas data dan integrasi layanan"</td>
-                </tr>
-                <tr>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Rencana kolaborasi antar PD & instansi (Pemdi lintas sektor)</td>
-                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--ok)' }}>Termuat (parsial)</span></td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Forum Satu Data, koordinasi e-walidata SIPD, kolaborasi dengan PT & komunitas digital (II-116)</td>
-                </tr>
-                <tr>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Matriks pemetaan (full mapping) substansi RAN Pemdi → bab/program</td>
-                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--warn)' }}>Perlu penguatan</span></td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Tersirat integrasi IPD ke kinerja seluruh OPD, belum ada matriks eksplisit</td>
-                </tr>
-                <tr>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Manajemen layanan digital (risiko, perubahan, pengetahuan, BCP, relasi pengguna)</td>
-                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--warn)' }}>Perlu penguatan</span></td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Belum eksplisit — perlu SOP/IK manajemen layanan digital (Dokumen #8)</td>
-                </tr>
-                <tr>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Keterkaitan eksplisit dengan Arsitektur Pemdi (SIAP Digital) & RAN Pemdi</td>
-                  <td style={{ padding: '0.5rem 0.75rem', textAlign: 'center', borderBottom: '1px solid var(--border)' }}><span style={{ color: 'var(--warn)' }}>Perlu penguatan</span></td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Mengadopsi kerangka IPD & EGA, belum referensi silang ke SIAP Digital</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          {/* Screenshot bukti */}
-          <div style={{ marginBottom: '1.5rem' }}>
-            <p style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text)', marginBottom: '0.75rem' }}>
-              Bukti Visual dari RPJMD:
-            </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1rem' }}>
-              {[
-                { src: '/docs/rpjmd/bab-transformasi-digital.png', title: 'Bab 2.3.4 Transformasi Digital (II-116)', desc: 'Pengarusutamaan transformasi digital: super platform, percepatan digitalisasi, talenta digital' },
-                { src: '/docs/rpjmd/tabel-indeks-spbe.png', title: 'Capaian Indeks SPBE (II-150)', desc: 'Tabel kinerja Kominfo: Indeks SPBE 1,54 (2020) → 2,18 (2024), target 2029: 1,92' },
-                { src: '/docs/rpjmd/arah-kebijakan-digital.png', title: 'Arah Kebijakan Transformasi Digital (III-28)', desc: 'Misi 3: percepatan transformasi digital, perluasan infrastruktur, SDM digital, digitalisasi layanan prioritas' },
-                { src: '/docs/rpjmd/program-portal.png', title: 'Program Portal Terpadu (III-40)', desc: 'Koordinasi pemanfaatan Portal Pelayanan Pemerintah Daerah terintegrasi + interoperabilitas data' },
-              ].map((img, i) => (
-                <div key={i} style={{
-                  border: '1px solid var(--border)', borderRadius: '10px', overflow: 'hidden',
-                  background: 'var(--card-bg)',
-                }}>
-                  <button
-                    onClick={() => setPreviewDoc({ url: img.src, title: img.title })}
-                    style={{ padding: 0, border: 'none', background: 'transparent', cursor: 'pointer', width: '100%', display: 'block' }}
-                  >
-                    <img src={img.src} alt={img.title} style={{ width: '100%', height: 'auto', display: 'block' }} />
-                  </button>
-                  <div style={{ padding: '0.6rem 0.75rem' }}>
-                    <p style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text)', margin: 0 }}>{img.title}</p>
-                    <p style={{ fontSize: '0.6875rem', color: 'var(--muted)', margin: '0.25rem 0 0' }}>{img.desc}</p>
-                    <p style={{ fontSize: '0.6875rem', color: 'var(--ok)', margin: '0.25rem 0 0' }}>Klik untuk perbesar</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Kesimpulan */}
-          <div style={{
-            background: 'var(--ok-bg)', border: '1px solid var(--ok)', borderRadius: '10px',
-            padding: '1rem', fontSize: '0.78rem', color: 'var(--text)', lineHeight: 1.6,
-          }}>
-            <strong>Kesimpulan:</strong> RPJMD 2025-2029 sudah memuat <strong>6 dari 9 substansi</strong> yang
-            dibutuhkan Dokumen #1 (bab transformasi digital, program & indikator SPBE, portal terpadu, anggaran,
-            interoperabilitas, kolaborasi). Perlu penguatan: <strong>matriks mapping RAN Pemdi</strong>,
-            <strong> manajemen layanan digital</strong> (SOP/IK — Dokumen #8), dan
-            <strong> referensi eksplisit ke Arsitektur SIAP Digital</strong>. Ini bisa menjadi bahan verifikasi
-            tingkat kematangan <strong>I1 Level 1-2</strong> (kebijakan & rencana aksi Pemdi termuat dalam dokumen
-            perencanaan resmi/Qanun).
-          </div>
-        </div>
-      </section>
-
-      {/* ════════ RPJMD UNTUK INDIKATOR LAIN ════════ */}
-      <section style={{ marginTop: '3rem' }}>
-        <div className="container">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
-            <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text)', margin: 0 }}>
-              RPJMD untuk Indikator Lainnya
-            </h2>
-          </div>
-          <p style={{ color: 'var(--muted)', fontSize: '0.85rem', maxWidth: 760, marginBottom: '1rem' }}>
-            Selain Dokumen #1, RPJMD 2025-2029 juga memuat substansi yang dibutuhkan untuk
-            <strong> 7 indikator lain</strong> (I3, I5, I7, I10, I11, I12, I14, I15, I17, I20) —
-            terkait Dokumen #9, #18, #20, #22, #23-24, #26, #27, #29, #31 pada Peta Dokumen Kunci.
-          </p>
-
-          {/* Stat mini */}
-          <div className="stat-row" style={{ flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.25rem' }}>
-            <span className="stat-badge" style={{ background: 'var(--ok-bg)', color: 'var(--ok)' }}>
-              10 indikator lain terdukung
-            </span>
-            <span className="stat-badge" style={{ background: 'var(--warn-bg)', color: 'var(--warn)' }}>
-              7 dokumen kunci terkait
-            </span>
-          </div>
-
-          {/* Tabel indikator lain */}
-          <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.75rem' }}>
-              <thead>
-                <tr style={{ background: 'var(--surface-2)' }}>
-                  <th style={{ padding: '0.5rem 0.75rem', textAlign: 'left', color: 'var(--text)', borderBottom: '1px solid var(--border)' }}>Indikator</th>
-                  <th style={{ padding: '0.5rem 0.75rem', textAlign: 'left', color: 'var(--text)', borderBottom: '1px solid var(--border)' }}>Substansi RPJMD yang Termuat</th>
-                  <th style={{ padding: '0.5rem 0.75rem', textAlign: 'left', color: 'var(--text)', borderBottom: '1px solid var(--border)' }}>Dokumen Kunci Terkait</th>
-                  <th style={{ padding: '0.5rem 0.75rem', textAlign: 'left', color: 'var(--text)', borderBottom: '1px solid var(--border)' }}>Lokasi di RPJMD</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>I3</strong> — SDM Digital ASN</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Peningkatan kapasitas SDM digital & literasi digital; produksi talenta digital</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>#9 (Peta Kompetensi), #10 (Diklat)</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Arah Kebijakan Misi 3 (III-28)</td>
-                </tr>
-                <tr>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>I5</strong> — Tata Kelola Data (SDI)</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Program unggulan "Aceh Tengah Satu Data"; Forum Satu Data & e-walidata SIPD</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>#18 (Bukti eksternal SDI)</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Program Unggulan #1 (III-38)</td>
-                </tr>
-                <tr>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>I7</strong> — Pembangunan Statistik (EPSS)</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Pemenuhan Prinsip Satu Data Indonesia; Program Statistik Sektoral; Persentase data statistik sektoral 80→90%</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>#18 (Bukti eksternal EPSS)</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Program Unggulan #1 + Bidang Statistik</td>
-                </tr>
-                <tr>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>I10</strong> — Keamanan Siber (IKASANDI)</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Menguatnya keamanan siber & sandi; penguatan keamanan siber untuk melindungi data & informasi</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>#20 (IKASANDI siber)</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Bidang Persandian (III-90)</td>
-                </tr>
-                <tr>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>I11</strong> — Kriptografi</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Program penyelenggaraan persandian untuk pengamanan informasi; layanan keamanan informasi & persandian</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>#22 (Kriptografi)</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Bidang Persandian (III-90)</td>
-                </tr>
-                <tr>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>I12</strong> — Penanganan Insiden</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Penguatan keamanan siber (fondasi penanganan insiden); kebijakan tata kelola keamanan informasi</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>#23-24 (CSIRT/insiden)</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Bidang Persandian (III-90)</td>
-                </tr>
-                <tr>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>I14</strong> — Infrastruktur Digital</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Pembangunan infrastruktur e-government (portal terpadu, aplikasi mobile, data terpadu); penyediaan akses internet; broadband</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>#26 (Infrastruktur)</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Rencana Aksi (III-40), Akses Internet (III-89)</td>
-                </tr>
-                <tr>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>I15</strong> — Proses Bisnis</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Peningkatan ketatalaksanaan (business process); identifikasi "Belum disusun Peta Proses Bisnis OPD" sebagai akar masalah</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>#27 (BPMN)</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Arah Kebijakan Misi 3 + Analisis isu</td>
-                </tr>
-                <tr>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>I17</strong> — Portal Layanan</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Penguatan pelayanan publik digital via Command Center & sistem e-government</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>#29 (Portal)</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Analisis Tata Kelola (II-211)</td>
-                </tr>
-                <tr>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>I20</strong> — Kepuasan Pengguna</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Indeks Survey Kepuasan Masyarakat (%) sebagai indikator kinerja target (mis. Dinas Pendidikan 82,13→88,40)</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>#31 (SKM)</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Indikator Kinerja OPD (IV-35)</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          {/* P5 (audit UI/UX 19 Sep 2026): blok ini selalu kosong — 26 aset /docs/bukti/*
-              tidak pernah ada. Disembunyikan; hapus bloknya bila aset disediakan. */}
-          {/* Screenshot bukti */}
-          <div>
-            <p style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text)', marginBottom: '0.75rem' }}>
-              Bukti Visual dari RPJMD:
-            </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1rem' }}>
-              {[
-                { src: '/docs/rpjmd/program-satu-data.png', title: 'Program Unggulan Satu Data (III-38)', desc: 'I5 & I7: "Aceh Tengah Satu Data" + Program Statistik Sektoral, Pemenuhan Prinsip SDI' },
-                { src: '/docs/rpjmd/keamanan-persandian.png', title: 'Bidang Persandian & Keamanan (III-90)', desc: 'I10-I12: Program persandian, keamanan siber, kebijakan tata kelola keamanan informasi' },
-                { src: '/docs/rpjmd/indeks-kepuasan.png', title: 'Indeks Kepuasan Masyarakat (IV-35)', desc: 'I20: Target IKM sebagai indikator kinerja OPD (82,13 → 88,40)' },
-                { src: '/docs/rpjmd/command-center.png', title: 'Command Center & e-Gov (II-211)', desc: 'I17: Penguatan pelayanan publik berbasis digital melalui Command Center' },
-              ].map((img, i) => (
-                <div key={i} style={{
-                  border: '1px solid var(--border)', borderRadius: '10px', overflow: 'hidden',
-                  background: 'var(--card-bg)',
-                }}>
-                  <button
-                    onClick={() => setPreviewDoc({ url: img.src, title: img.title })}
-                    style={{ padding: 0, border: 'none', background: 'transparent', cursor: 'pointer', width: '100%', display: 'block' }}
-                  >
-                    <img src={img.src} alt={img.title} style={{ width: '100%', height: 'auto', display: 'block' }} />
-                  </button>
-                  <div style={{ padding: '0.6rem 0.75rem' }}>
-                    <p style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text)', margin: 0 }}>{img.title}</p>
-                    <p style={{ fontSize: '0.6875rem', color: 'var(--muted)', margin: '0.25rem 0 0' }}>{img.desc}</p>
-                    <p style={{ fontSize: '0.6875rem', color: 'var(--ok)', margin: '0.25rem 0 0' }}>Klik untuk perbesar</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ════════ BUKTI DUKUNG DOKUMEN PENDUKUNG ════════ */}
-      <section style={{ marginTop: '3rem' }}>
-        <div className="container">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
-            <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text)', margin: 0 }}>
-              Bukti Dukung Dokumen Pendukung
-            </h2>
-          </div>
-          <p style={{ color: 'var(--muted)', fontSize: '0.85rem', maxWidth: 760, marginBottom: '1rem' }}>
-            Hasil ekstraksi <strong>5 dokumen pendukung Diskominfo</strong> (RENSTRA 2025-2029, Renja 2026,
-            DPA 2026, RKA Rincian Belanja SPBE, dan Capaian Realisasi RKPD) — substansi yang mendukung
-            <strong> 9 indikator</strong> pada Peta Dokumen Kunci.
-          </p>
-
-          {/* Stat mini */}
-          <div className="stat-row" style={{ flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.25rem' }}>
-            <span className="stat-badge" style={{ background: 'var(--ok-bg)', color: 'var(--ok)' }}>
-              5 dokumen pendukung
-            </span>
-            <span className="stat-badge" style={{ background: 'var(--warn-bg)', color: 'var(--warn)' }}>
-              9 indikator terdukung
-            </span>
-            <span className="stat-badge" style={{ background: 'var(--surface-2)', color: 'var(--muted)' }}>
-              SPBE realisasi 2025: 2,59
-            </span>
-          </div>
-
-          {/* Tabel dokumen × substansi × indikator */}
-          <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.75rem' }}>
-              <thead>
-                <tr style={{ background: 'var(--surface-2)' }}>
-                  <th style={{ padding: '0.5rem 0.75rem', textAlign: 'left', color: 'var(--text)', borderBottom: '1px solid var(--border)' }}>Dokumen</th>
-                  <th style={{ padding: '0.5rem 0.75rem', textAlign: 'left', color: 'var(--text)', borderBottom: '1px solid var(--border)' }}>Substansi yang Termuat</th>
-                  <th style={{ padding: '0.5rem 0.75rem', textAlign: 'left', color: 'var(--text)', borderBottom: '1px solid var(--border)' }}>Indikator Terkait</th>
-                  <th style={{ padding: '0.5rem 0.75rem', textAlign: 'left', color: 'var(--text)', borderBottom: '1px solid var(--border)' }}>Dokumen Kunci</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>RENSTRA Diskominfo 2025-2029</strong></td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Tujuan-sasaran SPBE (Indeks SPBE 2,6→2,9); strategi implementasi SPBE terintegrasi; program pengelolaan aplikasi informatika (Indeks SPBE 2,88-2,96); 7 dokumen kebijakan tata kelola SPBE (arsitektur, peta rencana, proses bisnis)</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>I1, I2, I4, I13, I15, I16</strong></td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>#1, #2, #3, #8, #25</td>
-                </tr>
-                <tr>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>Ranhir Renja Diskominfo 2026</strong></td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Target Indeks SPBE 2,8→2,9 (2026); kegiatan koordinasi tata kelola SPBE 7 dokumen Rp 150 jt; pelatihan ASN pengelola SPBE 10 orang; literasi SPBE 2% masyarakat</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>I1, I3</strong></td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>#1, #9</td>
-                </tr>
-                <tr>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>DPA Diskominfo 2026</strong></td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Anggaran portal terpadu Rp 90 jt; promosi literasi SPBE Rp 64,6 jt; koordinasi tata kelola SPBE Rp 154,6 jt; kabupaten cerdas Rp 179,4 jt; persandian Rp 86,4 jt</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>I1, I10, I11, I14, I17</strong></td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>#4, #20, #22, #26, #29</td>
-                </tr>
-                <tr>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>RKA Rincian Belanja (Sub Keg. 0037)</strong></td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Rincian belanja koordinasi kebijakan tata kelola SPBE: arsitektur, peta rencana, proses bisnis, rencana & anggaran SPBE — Rp 154,6 jt (ATK, cetak, perjalanan dinas)</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>I1, I15</strong></td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>#4, #27</td>
-                </tr>
-                <tr>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>Capaian Realisasi RKPD</strong></td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>Evaluasi capaian 2025: Indeks Transformasi Digital (target 48), Indeks SPBE realisasi <strong>2,59</strong> (target 2,8), IPS 2,97 (target 3,14), kepuasan masyarakat 60% (target 60,18%) — kategori Sangat Tinggi</td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}><strong>I1, I7, I20</strong></td>
-                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border)' }}>#1, #18, #31</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          {/* P5 (audit UI/UX 19 Sep 2026): blok ini selalu kosong — 26 aset /docs/bukti/*
-              tidak pernah ada. Disembunyikan; hapus bloknya bila aset disediakan. */}
-          {/* Screenshot bukti */}
-          <div style={{ display: 'none' }} aria-hidden="true">
-            <p style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text)', marginBottom: '0.75rem' }}>
-              Bukti Visual dari Dokumen Pendukung:
-            </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1rem' }}>
-              {[
-              ].map((img, i) => (
-                <div key={i} style={{
-                  border: '1px solid var(--border)', borderRadius: '10px', overflow: 'hidden',
-                  background: 'var(--card-bg)',
-                }}>
-                  <button
-                    onClick={() => setPreviewDoc({ url: img.src, title: img.title })}
-                    style={{ padding: 0, border: 'none', background: 'transparent', cursor: 'pointer', width: '100%', display: 'block' }}
-                  >
-                    <img src={img.src} alt={img.title} style={{ width: '100%', height: 'auto', display: 'block' }} />
-                  </button>
-                  <div style={{ padding: '0.6rem 0.75rem' }}>
-                    <p style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text)', margin: 0 }}>{img.title}</p>
-                    <p style={{ fontSize: '0.6875rem', color: 'var(--muted)', margin: '0.25rem 0 0' }}>{img.desc}</p>
-                    <p style={{ fontSize: '0.6875rem', color: 'var(--ok)', margin: '0.25rem 0 0' }}>Klik untuk perbesar</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* ─── Screenshot Bukti Dukung Eksternal (1 sumber: lokal) ─── */}
-          {/* P5: idem blok di atas — daftar screenshot eksternal kosong. */}
-          <div style={{ marginTop: '2.5rem', display: 'none' }} aria-hidden="true">
-            <p style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text)', marginBottom: '0.4rem' }}>
-              Bukti Visual Dokumen Eksternal (JDIH & OpenData):
-            </p>
-            <p style={{ fontSize: '0.72rem', color: 'var(--muted)', marginBottom: '0.75rem' }}>
-              15 dokumen hukum & data dari JDIH Aceh Tengah + OpenData — di-download ke repository lokal (1 sumber). Klik untuk perbesar; nama file = sumber resmi.
-            </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1rem' }}>
-              {[
-              ].map((img, i) => (
-                <div key={i} style={{
-                  border: '1px solid var(--border)', borderRadius: '10px', overflow: 'hidden',
-                  background: 'var(--card-bg)',
-                }}>
-                  <button
-                    onClick={() => setPreviewDoc({ url: img.src, title: img.title })}
-                    style={{ padding: 0, border: 'none', background: 'transparent', cursor: 'pointer', width: '100%', display: 'block' }}
-                  >
-                    <img src={img.src} alt={img.title} style={{ width: '100%', height: 'auto', display: 'block' }} />
-                  </button>
-                  <div style={{ padding: '0.6rem 0.75rem' }}>
-                    <p style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text)', margin: 0 }}>{img.title}</p>
-                    <p style={{ fontSize: '0.6875rem', color: 'var(--muted)', margin: '0.25rem 0 0' }}>{img.desc}</p>
-                    <p style={{ fontSize: '0.6875rem', color: 'var(--ok)', margin: '0.25rem 0 0' }}>Klik untuk perbesar</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      </>)}
-      {/* ════════ PREVIEW MODAL ════════ */}
-      {previewDoc && (
-        <div onClick={() => setPreviewDoc(null)} style={{
-          position: 'fixed', inset: 0, zIndex: 9999,
-          background: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(4px)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          padding: '2rem',
-        }}>
-          <div onClick={e => e.stopPropagation()} style={{
-            background: 'var(--card-bg)', borderRadius: '12px',
-            width: '100%', maxWidth: '1000px', height: '90vh',
-            display: 'flex', flexDirection: 'column',
-            overflow: 'hidden', boxShadow: '0 20px 60px rgba(0,0,0,0.3)',
-          }}>
-            {/* Header */}
-            <div style={{
-              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-              padding: '1rem 1.25rem', borderBottom: '1px solid var(--border)',
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <span style={{ fontWeight: 600, fontSize: '0.9rem', color: 'var(--text)' }}>
-                  {previewDoc.title}
-                </span>
-              </div>
-              <button onClick={() => setPreviewDoc(null)} style={{
-                background: 'var(--surface-2)', border: 'none', borderRadius: '8px',
-                width: '36px', height: '36px', cursor: 'pointer',
-                fontSize: '1.2rem', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                color: 'var(--muted)', transition: 'all 0.15s',
-              }} onMouseOver={e => e.target.style.background = 'var(--surface-hover)'}
-              onMouseOut={e => e.target.style.background = 'var(--surface-2)'} aria-label="Tutup">×</button>
-            </div>
-            {/* PDF preview via proxy (same-origin, no XFO issues) */}
-            <div style={{ flex: 1, position: 'relative', background: 'var(--surface-2)' }}>
-              <iframe
-                src={previewDoc.url}
-                style={{ width: '100%', height: '100%', border: 'none' }}
-                title={previewDoc.title}
-              />
-            </div>
-          </div>
-        </div>
-      )}
-
-      <style jsx>{`
-        .stat-row {
-          display: flex;
-          align-items: center;
-        }
-        .stat-badge {
-          display: inline-flex;
-          align-items: center;
-          padding: 0.25rem 0.75rem;
-          border-radius: 20px;
-          background: var(--surface-2);
-          color: var(--muted);
-          font-size: 0.78rem;
-          font-weight: 600;
-        }
-        .kriteria-render p { margin: 0.2rem 0; }
-        .kriteria-render ul, .kriteria-render ol { margin: 0.2rem 0 0.4rem; padding-left: 1.3rem; }
-        .kriteria-render li { margin-bottom: 0.15rem; line-height: 1.55; }
-        .kriteria-h {
-          font-weight: 700;
-          font-size: 0.72rem;
-          color: var(--primary);
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-          margin: 0.45rem 0 0.2rem;
-        }
-        .kriteria-h:first-child { margin-top: 0; }
-      `}</style>
+              ) : null}
+            </article>
+          );
+        })}
+      </div>
+      <p className="rk-catatan" style={{ marginTop: 10 }}>Status indikasi dipetakan otomatis ke bukti existing di <code>data/pemdi.json</code> (indikatif — tetap perlu verifikasi substansi kriteria level). Dibangun oleh <code>scripts/build-kebutuhan-bukti.py</code> pada {data.dibangun}. Sumber: {data.sumber}. Indikator eksternal ({data.cakupan.tidak_dibahas.map((x) => x.split(' ')[0]).join(', ')}) tidak dibahas pada dokumen sumber.</p>
     </>
   );
 }
 
-const thStyle = {
-  padding: '0.5rem 0.75rem', textAlign: 'left', fontWeight: 600,
-  fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.02em',
-  borderBottom: '2px solid var(--border)', whiteSpace: 'nowrap',
-};
+/* ── Halaman ─────────────────────────────────────────────────────────────── */
+export default function ModulIndikatorPage({ moduls, pemdiData, dokumenKunci, buktiMapping, kebutuhanData }) {
+  const router = useRouter();
+  const [cari, setCari] = useState('');
+  const [aspek, setAspek] = useState('');
+  const [level, setLevel] = useState(0);
+  const [tab, setTab] = useState('semua');
+  const [buka, setBuka] = useState(null);
+  const [pratinjau, setPratinjau] = useState(null);
 
-const tdStyle = {
-  padding: '0.5rem 0.75rem', verticalAlign: 'top',
-};
+  const indMap = useMemo(() => {
+    const m = {};
+    pemdiData.aspek.forEach((a) => a.indikator.forEach((i) => { m[i.id] = { ...i, aspekNama: a.nama, aspekSingkat: a.singkat, aspekWarna: a.warna }; }));
+    return m;
+  }, [pemdiData]);
+  const merged = useMemo(() => moduls.modules.map((m) => {
+    const ind = indMap[m.indikator_id];
+    const s = statistikIndikator(ind);
+    return { ...m, ind, status: { ...s, count: s.total } };
+  }), [moduls, indMap]);
+  const aspekList = useMemo(() => [...new Set(merged.map((m) => m.aspek))], [merged]);
+  const hitungTab = (k, list) => list.filter((m) => (k === 'revisi' ? m.status.revisi > 0 : k === 'perlu' ? m.status.belum + m.status.proses + m.status.draf + m.status.revisi > 0 : k === 'selesai' ? m.status.count > 0 && m.status.diterima === m.status.count : true)).length;
+  const filtered = useMemo(() => {
+    const q = cari.trim().toLowerCase();
+    return merged.filter((m) => (!aspek || m.aspek === aspek)
+      && (!level || m.ind?.bukti_dukung?.some((b) => Number(b.level) === level))
+      && (!q || m.judul?.toLowerCase().includes(q) || m.deskripsi?.toLowerCase().includes(q) || m.indikator_id?.toLowerCase().includes(q))
+      && hitungTab(tab, [m]) === 1);
+  }, [merged, aspek, level, cari, tab]);
 
-/* Data dikirim via getStaticProps (Sprint B2) — JSON keluar dari client bundle,
-   pindah ke __NEXT_DATA__ yang di-generate saat build. */
+  const dokumenUntuk = (indId, buktiId) => buktiMapping.indikator.find((i) => i.indikator_id === indId)?.bukti.find((x) => x.id === buktiId)?.dokumen_kunci || [];
+  const infoDokumen = (no) => dokumenKunci.dokumen.find((d) => String(d.no) === String(no));
+  const aspekWarna = (singkat) => pemdiData.aspek.find((a) => a.singkat === singkat)?.warna || warnaAspek(singkat) || 'var(--rk-ink-3)';
+  const warnaModul = (m) => m.ind?.aspekWarna || warnaAspek(m.ind?.aspekSingkat) || 'var(--rk-ink-3)';
+
+  useEffect(() => {
+    const n = parseInt(router.query.modul, 10);
+    if (n >= 1 && n <= 20) {
+      setBuka(String(n));
+      const t = setTimeout(() => document.getElementById(`modul-${n}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 200);
+      return () => clearTimeout(t);
+    }
+    return undefined;
+  }, [router.query.modul]);
+  useEffect(() => {
+    if (!pratinjau) return undefined;
+    const h = (e) => { if (e.key === 'Escape') setPratinjau(null); };
+    window.addEventListener('keydown', h);
+    return () => window.removeEventListener('keydown', h);
+  }, [pratinjau]);
+
+  const tot = (k) => merged.reduce((s, m) => s + (m.status[k] || 0), 0);
+  const t1 = pemdiData.penilaian_tahap1;
+  const metaCatatan = { versi: pemdiData.catatan_mandiri_meta?.versi, tahun: pemdiData.tahun };
+  const dicapai = merged.filter((m) => m.ind && fokusLevel(m.ind).levelDicapai >= 1).length;
+
+  return (
+    <>
+      <Head>
+        <title>Modul indikator — Dashboard Pemerintah Digital Aceh Tengah</title>
+        <meta name="description" content="Panduan bukti dukung 20 indikator Pemerintah Digital (PermenPANRB 8/2026): kriteria per level, butir existing berstatus asesor, penanggung jawab, matriks kebutuhan L1–L2." />
+      </Head>
+      <div className="rk-grid">
+        <section className="rk-sit" aria-label="Ringkasan modul indikator">
+          <div className="lead"><div className="lbl">Modul indikator</div><div className="val">{merged.length}<small>indikator · {tot('count')} butir</small></div><div className="sub">kode bukti <span className="mono">I#-L#-##</span> = indikator-level-urut · status mengikuti asesor eval.spbe.go.id</div></div>
+          <div><div className="lbl">Diterima</div><div className="val" style={{ color: 'var(--rk-status-ink-ok)' }}>{tot('diterima')}</div><div className="sub">{dicapai} indikator sudah mencapai ≥ L1</div></div>
+          <div><div className="lbl">Revisi</div><div className="val" style={{ color: 'var(--rk-status-ink-bad)' }}>{tot('revisi')}</div><div className="sub">{hitungTab('revisi', merged)} indikator terdampak</div></div>
+          <div><div className="lbl">Draf lokal</div><div className="val">{tot('draf') + tot('proses')}</div><div className="sub">belum diunggah ke portal</div></div>
+          <div><div className="lbl">Tahap 1 portal</div><div className="val">{t1?.dinilai ?? '—'}<small>dinilai</small></div><div className="sub">sinkron {t1?.tanggal_sinkron || '—'}</div></div>
+        </section>
+
+        <CatatanTujuan compact />
+
+        <LipatSemua keterangan="Tiap modul: tangga L1–L5 → klik level untuk melihat kriteria baku dan butir existing berdampingan.">
+          <span className="rk-seg kecil" role="group" aria-label="Saring status">
+            {TAB.map((t) => <button key={t.key} type="button" aria-pressed={tab === t.key} onClick={() => setTab(t.key)}>{t.label} ({hitungTab(t.key, merged)})</button>)}
+          </span>
+        </LipatSemua>
+
+        <section className="rk-panel rk-c12 rk-modul-kendali">
+          <label className="rk-cari-box">
+            <Ikon nama="cari" size={16} />
+            <input type="search" value={cari} onChange={(e) => setCari(e.target.value)} placeholder="Cari indikator / kata kunci…" aria-label="Cari modul indikator" autoComplete="off" />
+            {cari ? <button type="button" className="rk-act" onClick={() => setCari('')} aria-label="Bersihkan"><Ikon nama="tutup" size={12} /></button> : null}
+          </label>
+          <div className="rk-chips" role="group" aria-label="Saring aspek">
+            <button type="button" className="rk-chip" aria-pressed={!aspek} onClick={() => setAspek('')}>Semua aspek</button>
+            {aspekList.map((a) => <button key={a} type="button" className="rk-chip" aria-pressed={aspek === a} onClick={() => setAspek(aspek === a ? '' : a)}><span className="sw" style={{ background: aspekWarna(pemdiData.aspek.find((x) => x.nama === a)?.singkat) }} />{a.replace(/^Aspek /, '')}</button>)}
+          </div>
+          <span className="rk-seg kecil" role="group" aria-label="Saring level">
+            <button type="button" aria-pressed={!level} onClick={() => setLevel(0)}>Semua level</button>
+            {[1, 2, 3, 4, 5].map((l) => <button key={l} type="button" aria-pressed={level === l} onClick={() => setLevel(level === l ? 0 : l)} title={LEVEL_NAMA_RESMI[l]}>L{l}</button>)}
+          </span>
+        </section>
+
+        <PanelLipat id="modul-daftar" judul="Daftar modul indikator" ringkas={`· ${filtered.length} dari ${merged.length}`} aksi={<span className="rk-act faint">{buka ? <button type="button" className="rk-act" onClick={() => setBuka(null)}>tutup modul</button> : 'klik modul untuk membuka'}</span>}>
+          <div className="rk-modul-daftar">
+            {filtered.map((m) => (
+              <Modul key={m.nomor} m={m} warna={warnaModul(m)} buka={buka === String(m.nomor)} onToggle={() => setBuka(buka === String(m.nomor) ? null : String(m.nomor))} dokumenUntuk={dokumenUntuk} infoDokumen={infoDokumen} onPratinjau={setPratinjau} metaCatatan={metaCatatan} />
+            ))}
+            {!filtered.length ? <p className="rk-catatan" style={{ padding: 20, textAlign: 'center' }}>Tidak ada modul yang cocok dengan saringan.</p> : null}
+          </div>
+        </PanelLipat>
+
+        <PanelLipat id="modul-matriks" judul="Matriks kebutuhan bukti dukung — Level 1 & 2" ringkas={`· ${kebutuhanData.cakupan.total_kebutuhan} kebutuhan`} awal="tutup" aksi={<span className="rk-act faint">NotebookLM × Modul × Panduan Bab 6</span>}>
+          <p className="rk-catatan" style={{ marginBottom: 10 }}>Disusun dari <em>Analisis Bukti Dukung Kematangan Pemerintah Digital (Level 1 &amp; 2)</em> — ekstraksi NotebookLM atas 20 PPTX Modul Indikator (<code>docs/analisis-bukti-dukung-l1-l2.md</code>), disilangkan dengan item modul resmi, status bukti existing, dan tabel Panduan Bab 6.</p>
+          <Matriks data={kebutuhanData} aspekWarna={aspekWarna} />
+        </PanelLipat>
+
+        <PanelLipat id="modul-dokumen" judul="Peta dokumen kunci" ringkas={`· ${dokumenKunci.dokumen.length} dokumen`} awal="tutup" aksi={<span className="rk-act faint">#nomor dirujuk pada butir existing</span>}>
+          <div className="gulir">
+            <table className="rk-table rk-dok">
+              <thead><tr><th>#</th><th>Dokumen</th><th>Penanggung jawab</th><th>Indikator · level</th><th>Prioritas</th></tr></thead>
+              <tbody>
+                {dokumenKunci.dokumen.map((d) => (
+                  <tr key={d.no} id={`dok-${d.no}`}>
+                    <td className="mono">{d.no}</td>
+                    <td><b>{d.nama}</b>{d.jenis ? <div className="faint">{d.jenis}</div> : null}</td>
+                    <td>{d.penanggung_jawab}{d.unit_pendukung ? <div className="faint">{d.unit_pendukung.replace(/,\s*$/, '')}</div> : null}</td>
+                    <td className="mono kecil">{d.indikator_level}</td>
+                    <td>{d.prioritas}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="rk-catatan" style={{ marginTop: 8 }}>Sumber: {dokumenKunci.sumber}.</p>
+        </PanelLipat>
+      </div>
+
+      {pratinjau ? (
+        <div className="rk-pratinjau" role="dialog" aria-modal="true" aria-label={`Pratinjau ${pratinjau.title}`} onClick={() => setPratinjau(null)}>
+          <div className="kotak" onClick={(e) => e.stopPropagation()}>
+            <div className="bar"><b>{pratinjau.title}</b><a href={pratinjau.url} target="_blank" rel="noopener noreferrer" className="rk-btn"><Ikon nama="luar" size={14} /> Buka di tab baru</a><button type="button" className="rk-btn kecil" onClick={() => setPratinjau(null)} aria-label="Tutup pratinjau"><Ikon nama="tutup" size={14} /></button></div>
+            <iframe src={pratinjau.url} title={pratinjau.title} />
+          </div>
+        </div>
+      ) : null}
+    </>
+  );
+}
+
+/* Data dikirim via getStaticProps (Sprint B2) — JSON keluar dari client bundle. */
 export async function getStaticProps() {
   return {
     props: {
