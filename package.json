@@ -15,6 +15,7 @@
     "audit:ui": "node scripts/audit-ui.mjs",
     "cek:ui": "node scripts/cek-ui.mjs",
     "cek:data": "node scripts/cek-data.mjs",
+    "uji:tugas": "node scripts/uji-tugas.mjs",
     "inventaris": "node scripts/inventaris-konten.mjs",
     "postbuild": "next-sitemap"
   },

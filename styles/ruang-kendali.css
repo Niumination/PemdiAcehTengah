@@ -960,3 +960,16 @@ a.rk-chip { display: inline-flex; align-items: center; gap: 6px; text-decoration
 @media (max-width: 860px) { .rk-tugas-aksi { flex-basis: 100%; } .rk-tugas-ls li .row { grid-template-columns: 18px minmax(0, 1fr) 16px; } .rk-tugas-ls .kode { grid-column: 2; } .rk-tugas-ls .nama { grid-column: 2; } .rk-tugas-ls li .row > svg:last-child { grid-column: 3; grid-row: 1; } }
 .rk-tugas-lagi { padding: 8px 4px 2px; }
 .rk-tugas-lagi .rk-btn { width: 100%; justify-content: center; min-height: 44px; }
+
+/* ── Tahap F (Patch 21): cetak & bagikan ───────────────────────── */
+.rk-tugas-hint { margin-left: auto; font-size: var(--rk-fs-1); }
+@media (max-width: 860px) { .rk-kbtn-cetak, .rk-tugas-hint { display: none; } }
+@media print {
+  .rk-bar, .rk-strip, .rk-gov, .rk-konteks, .rk-lipat-semua, .rk-nav, .rk-nav-trig, .rk-nav-scrim, .rk-nav-gaya, .rk-nav-hint, .rk-navmenu, .rk-foot button, .rk-drawer, .rk-pal, .rk-lipat, .rk-act, .rk-tugas-aksi { display: none !important; }
+  html, body { background: #fff !important; color: #000 !important; }
+  .rk-main, .rk-grid { display: block !important; max-width: none !important; padding: 0 !important; }
+  .rk-panel, .rk-sit { break-inside: avoid; border: 1px solid #999 !important; box-shadow: none !important; margin: 0 0 8mm !important; page-break-inside: avoid; }
+  .rk-panel[data-lipat='tutup'] > *:not(h2) { display: block !important; }
+  a { color: inherit !important; text-decoration: none !important; }
+  .rk-foot { border: 0 !important; font-size: 11px; }
+}

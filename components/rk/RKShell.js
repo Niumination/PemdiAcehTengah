@@ -158,6 +158,9 @@ export default function RKShell({ children, data: dataProp, legacy = false }) {
             <button type="button" className="rk-kbtn rk-kbtn-lebar" onClick={gantiLebar} aria-label={`Lebar halaman: ${LABEL_LEBAR[lebar]} — klik untuk mengubah`} title={`Lebar halaman: ${LABEL_LEBAR[lebar]}`} suppressHydrationWarning>
               <Ikon nama="lebar" /><span className="rk-kbtn-lbl">{LABEL_LEBAR[lebar]}</span>
             </button>
+            <button type="button" className="rk-kbtn rk-kbtn-cetak" onClick={() => window.print()} aria-label="Cetak halaman ini (ringkasan rapat)" title="Cetak halaman ini">
+              <Ikon nama="cetak" />
+            </button>
             <button type="button" className="rk-kbtn" onClick={gantiTema} aria-label={tema === 'dark' ? 'Ganti ke tema terang' : 'Ganti ke tema gelap'} suppressHydrationWarning>
               <Ikon nama="tema" />
             </button>
@@ -185,6 +188,9 @@ export default function RKShell({ children, data: dataProp, legacy = false }) {
         <footer className="rk-foot">
           <span>© {new Date().getFullYear()} Pemerintah Kabupaten Aceh Tengah · Diskominfo · Tim Koordinasi Pemdi</span>
           <span>Simulasi penilaian mandiri — bukan nilai resmi asesor · Data: eval.spbe.go.id (sinkron 20 Sep 2026)</span>
+          <button type="button" className="rk-lapor rk-bagikan" onClick={() => { const t = `${document.title}\n${window.location.href}`; window.open(`https://wa.me/?text=${encodeURIComponent(t)}`, '_blank'); }}>
+            <Ikon nama="salin" size={14} /> Bagikan tautan halaman ini
+          </button>
           <button type="button" className="rk-lapor" onClick={() => { const t = `Laporan masalah halaman Dashboard Pemdi\nHalaman: ${window.location.href}\nPerangkat: ${navigator.userAgent.slice(0, 80)}\nMasalah: `; window.open(`https://wa.me/?text=${encodeURIComponent(t)}`, '_blank'); }}>
             <Ikon nama="peringatan" size={14} /> Laporkan masalah halaman ini
           </button>

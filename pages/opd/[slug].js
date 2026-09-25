@@ -105,11 +105,12 @@ const AKSI = {
 const LABEL_PRIO = { tinggi: 'Minggu ini', sedang: 'Berikutnya', rendah: 'Bila sempat' };
 
 function TugasSaya({ opd, butir, siap, buka }) {
-  const [tampil, setTampil] = useState({ tinggi: true, sedang: false, rendah: false });
+  const grup = PRIO.map((p) => ({ p, rows: butir.filter((b) => b.prioritas === p) })).filter((g) => g.rows.length);
+  // Grup pertama yang berisi dibuka (OPD tanpa butir prioritas tinggi tetap melihat tugasnya tanpa klik).
+  const [tampil, setTampil] = useState(() => ({ [grup[0]?.p || 'tinggi']: true }));
   const [disalin, setDisalin] = useState(false);
   const [semua, setSemua] = useState({});
   const BATAS = 8;
-  const grup = PRIO.map((p) => ({ p, rows: butir.filter((b) => b.prioritas === p) })).filter((g) => g.rows.length);
   const st = butir.reduce((m, b) => { m[b.status] = (m[b.status] || 0) + 1; return m; }, {});
   const total = butir.length || 1;
   const salinTautan = async () => {
@@ -140,7 +141,7 @@ function TugasSaya({ opd, butir, siap, buka }) {
           {grup.map(({ p, rows }) => (
             <section key={p} className={`rk-tugas g-${p}`}>
               <h3><button type="button" className="rk-tugas-hd" aria-expanded={tampil[p]} onClick={() => setTampil((t) => ({ ...t, [p]: !t[p] }))}>
-                <Ikon nama="lipat" size={14} /> <b>{LABEL_PRIO[p]}</b> <span className="faint">· prioritas {p} · {rows.length} butir</span>
+                <Ikon nama="lipat" size={14} /> <b>{LABEL_PRIO[p]}</b> <span className="faint">· prioritas {p} · {rows.length} butir</span>{!tampil[p] ? <span className="faint rk-tugas-hint">— ketuk untuk membuka</span> : null}
               </button></h3>
               {tampil[p] ? (
                 <ul className="rk-butir rk-tugas-ls">
