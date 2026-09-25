@@ -159,11 +159,11 @@ export default function Requirement() {
               </div>
               {revisi.map((r) => <KartuRevisi key={r.kode} r={r} />)}
             </PanelLipat>
-            <PanelLipat id="req-p1" className="rk-kolom" judul={<><span className="rk-no" style={{ color: 'var(--rk-status-ink-warn)' }}>P1</span>Gap ke level berikut</>} ringkas={`· ${drafPrioritas.gap.length} indikator`} aksi={<span className="rk-act faint">{drafPrioritas.gap.length}</span>}>
+            <PanelLipat id="req-p1" ponsel="tutup" className="rk-kolom" judul={<><span className="rk-no" style={{ color: 'var(--rk-status-ink-warn)' }}>P1</span>Gap ke level berikut</>} ringkas={`· ${drafPrioritas.gap.length} indikator`} aksi={<span className="rk-act faint">{drafPrioritas.gap.length}</span>}>
               <p className="rk-desk">Indikator yang paling menaikkan indeks bila butir kurangnya dipenuhi — urutan = daya ungkit.</p>
               {drafPrioritas.gap.map((g, i) => <KartuGap key={g.indikator} g={g} urut={i + 1} />)}
             </PanelLipat>
-            <PanelLipat id="req-panduan" className="rk-kolom" judul={<><span className="rk-no" style={{ color: 'var(--rk-status-ink-ok)' }}>L1</span>Panduan penyusunan</>} ringkas={`· ${dokPanduan} dokumen`} aksi={<span className="rk-act faint">{panduanBukti.indikator.length} ind.</span>}>
+            <PanelLipat id="req-panduan" ponsel="tutup" className="rk-kolom" judul={<><span className="rk-no" style={{ color: 'var(--rk-status-ink-ok)' }}>L1</span>Panduan penyusunan</>} ringkas={`· ${dokPanduan} dokumen`} aksi={<span className="rk-act faint">{panduanBukti.indikator.length} ind.</span>}>
               <p className="rk-desk">Draf acuan per indikator sesuai kriteria modul PermenPANRB 8/2026 — <b>bukan bukti final</b>: isian contoh, tanda tangan/cap placeholder; finalisasi sebelum unggah.</p>
               {panduanBukti.indikator.map((ind) => <KartuPanduan key={ind.indikator} ind={ind} />)}
             </PanelLipat>

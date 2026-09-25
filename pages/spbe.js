@@ -85,7 +85,7 @@ export default function SpbePage({ spbe, pemdi }) {
           </div>
         </PanelLipat>
 
-        <PanelLipat id="spbe-domain" judul="Empat domain SPBE → tujuh aspek Pemdi" ringkas="· 4 domain" aksi={<Link className="rk-act" href="/pemdi">Rinci per aspek →</Link>}>
+        <PanelLipat id="spbe-domain" ponsel="tutup" judul="Empat domain SPBE → tujuh aspek Pemdi" ringkas="· 4 domain" aksi={<Link className="rk-act" href="/pemdi">Rinci per aspek →</Link>}>
           <div className="rk-domain">
             {DOMAIN.map((x) => {
               const v = d[x.k]; const l = level(v);
@@ -102,10 +102,10 @@ export default function SpbePage({ spbe, pemdi }) {
         </PanelLipat>
 
         <div style={{ gridColumn: 'span 12' }}><KerawangDivider label="Catatan penilaian SPBE" /></div>
-        <PanelLipat id="spbe-rek" className="rk-c6" judul="Rekomendasi prioritas" ringkas={`· ${(spbe.rekomendasi_prioritas || []).length} butir`}>
+        <PanelLipat id="spbe-rek" ponsel="tutup" className="rk-c6" judul="Rekomendasi prioritas" ringkas={`· ${(spbe.rekomendasi_prioritas || []).length} butir`}>
           <ol className="rk-ol">{(spbe.rekomendasi_prioritas || []).map((r, i) => <li key={i}>{r}</li>)}</ol>
         </PanelLipat>
-        <PanelLipat id="spbe-kuat" className="rk-c6" judul="Kekuatan" ringkas={`· ${(spbe.kekuatan || []).length} butir`}>
+        <PanelLipat id="spbe-kuat" ponsel="tutup" className="rk-c6" judul="Kekuatan" ringkas={`· ${(spbe.kekuatan || []).length} butir`}>
           <ul className="rk-ol">{(spbe.kekuatan || []).map((r, i) => <li key={i}>{r}</li>)}</ul>
         </PanelLipat>
         <section className="rk-panel rk-rujuk">

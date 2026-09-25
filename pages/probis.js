@@ -97,7 +97,7 @@ export default function PetaProsesBisnis({ data }) {
           </ol>
         </PanelLipat>
 
-        <PanelLipat id="ppb-beban" judul="Beban keterlibatan OPD" ringkas={`· ${bebanOPD.length} OPD`} className="rk-c4">
+        <PanelLipat id="ppb-beban" ponsel="tutup" judul="Beban keterlibatan OPD" ringkas={`· ${bebanOPD.length} OPD`} className="rk-c4">
           <ol className="rk-beban">
             {bebanOPD.slice(0, 12).map((b) => {
               const o = opdMap[b.id];
@@ -114,7 +114,7 @@ export default function PetaProsesBisnis({ data }) {
           <p className="rk-catatan">Jumlah penyebutan pada urusan L1 dan proses L2. Konsentrasi beban pada sedikit OPD adalah temuan asesor (arsitektur SPBE belum menjadi rujukan lintas OPD).</p>
         </PanelLipat>
 
-        <PanelLipat id="ppb-l1" judul="L1 · Urusan pemerintahan" ringkas={`· ${urusan.length} urusan`} aksi={<span className="rk-act faint">panjang batang = jumlah OPD pengampu</span>}>
+        <PanelLipat id="ppb-l1" ponsel="tutup" judul="L1 · Urusan pemerintahan" ringkas={`· ${urusan.length} urusan`} aksi={<span className="rk-act faint">panjang batang = jumlah OPD pengampu</span>}>
           <div className="rk-urusan">
             {urusan.map((u, i) => (
               <div key={i} className="ur" data-redup={!sorot(u.opd_terkait) || undefined}>
@@ -126,7 +126,7 @@ export default function PetaProsesBisnis({ data }) {
           </div>
         </PanelLipat>
 
-        <PanelLipat id="ppb-l2" judul="L2 · Proses bisnis per kategori" ringkas={`· ${totalProses} proses`} aksi={<span className="rk-act faint">{probis.level_2.deskripsi}</span>}>
+        <PanelLipat id="ppb-l2" ponsel="tutup" judul="L2 · Proses bisnis per kategori" ringkas={`· ${totalProses} proses`} aksi={<span className="rk-act faint">{probis.level_2.deskripsi}</span>}>
           <div className="rk-lajur">
             {kategori.map((k, i) => (
               <section key={i} className="lj" style={{ '--warna': k.warna || WARNA_KAT[i % WARNA_KAT.length] }}>

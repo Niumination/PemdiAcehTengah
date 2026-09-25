@@ -74,7 +74,7 @@ export default function OPDIndex({ data, butirCountMap }) {
           </div>
         </PanelLipat>
 
-        <PanelLipat id="opd-tabel" judul="Daftar lengkap" ringkas={`· ${daftar.length} baris`} aksi={<span className="rk-act faint">cari · saring · halaman</span>}>
+        <PanelLipat id="opd-tabel" ponsel="tutup" judul="Daftar lengkap" ringkas={`· ${daftar.length} baris`} aksi={<span className="rk-act faint">cari · saring · halaman</span>}>
           <OPDTable polos list={daftar} butirCountMap={butirCountMap} />
         </PanelLipat>
 

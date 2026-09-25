@@ -136,7 +136,7 @@ export default function PemdiPage({ rk, aspekMeta, dibangun, metaCatatan }) {
           const nilai = sit?.indeks ?? a.nilai_aktual;
           return (
             <PanelLipat
-              key={a.id} id={`aspek-${a.id}`} className="rk-aspek"
+              key={a.id} id={`aspek-${a.id}`} className="rk-aspek" ponsel={a.id === aspekMeta[0].id ? undefined : 'tutup'}
               judul={<><span className="rk-no" style={{ color: warna }}>Aspek {a.id}</span>{a.nama}</>}
               ringkas={`· ${fmt2(nilai)} / ${fmt2(a.target)} · ${st.diterima}/${semuaButir.length} diterima`}
               aksi={<span className="rk-act faint mono">bobot {a.bobot}%</span>}

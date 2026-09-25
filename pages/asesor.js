@@ -72,7 +72,7 @@ export default function AsesorPage({ rk, asesor }) {
           <p className="rk-catatan" style={{ marginTop: 6 }}>Tiga titik per sel = upload bukti · interview · disetujui. Bingkai merah = tanpa bukti dukung; ungu = dinilai dari indeks lain.</p>
         </PanelLipat>
 
-        <PanelLipat id="as-tabel" judul="Catatan & rekomendasi tindak lanjut asesor per indikator" ringkas={`· ${daftar.length} indikator`} aksi={<Link className="rk-act" href="/antrean">Antrean catatan mandiri →</Link>}>
+        <PanelLipat id="as-tabel" ponsel="tutup" judul="Catatan & rekomendasi tindak lanjut asesor per indikator" ringkas={`· ${daftar.length} indikator`} aksi={<Link className="rk-act" href="/antrean">Antrean catatan mandiri →</Link>}>
           <div className="gulir">
             <table className="rk-table rk-as">
               <thead><tr><th>Kode</th><th>Indikator</th><th>Nilai</th><th title="Upload · Interview · Disetujui">U · I · D</th><th>Catatan asesor</th><th className="p2">Rekomendasi tindak lanjut</th><th className="p2">Simulasi</th></tr></thead>
@@ -96,7 +96,7 @@ export default function AsesorPage({ rk, asesor }) {
           </div>
         </PanelLipat>
 
-        <PanelLipat id="as-interview" className="rk-c6" judul="Catatan interviu" ringkas={`· ${asesor.catatan_interview.length} butir`} awal="tutup">
+        <PanelLipat id="as-interview" ponsel="tutup" className="rk-c6" judul="Catatan interviu" ringkas={`· ${asesor.catatan_interview.length} butir`} awal="tutup">
           <ol className="rk-ol">
             {asesor.catatan_interview.map((c) => (
               <li key={String(c.no)}><b>{c.topik}</b> — {c.catatan} <span className="rk-chips" style={{ display: 'inline-flex', marginLeft: 4 }}>{c.indikator.map((id) => <button key={id} type="button" className="rk-chip" style={{ height: 22 }} onClick={() => buka(id)}>{id}</button>)}</span></li>

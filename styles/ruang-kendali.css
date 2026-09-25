@@ -281,7 +281,9 @@ html[data-lebar='1440'] { --rk-lebar: 1440px; }
   /* kepala panel: aksi turun baris, teks panjang membungkus (Patch 17) */
   .rk-panel > h2 { flex-wrap: wrap; row-gap: 4px; }
   .rk-panel > h2 .rk-act { white-space: normal; overflow-wrap: anywhere; }
-  .rk-panel > h2 .rk-act.faint { flex-basis: 100%; }
+  .rk-panel > h2 .rk-act { flex-basis: 100%; }
+  .rk-panel > h2 .rk-judul { flex: 1 1 0; min-width: 0; } /* tombol lipat + judul tetap satu baris; aksi turun */
+  html .rk-panel[data-lipat='tutup'] > h2, html .rk-panel[data-ponsel='tutup'] > h2 { margin-bottom: 0; border-bottom: 0; padding-bottom: 0; }
   /* tabel: kolom prioritas rendah disembunyikan, kolom pertama beku saat digeser */
   .rk-table .p2 { display: none; }
   .rk-wrap .rk-table th:first-child, .rk-wrap .rk-table td:first-child { position: sticky; left: 0; background: var(--rk-panel); z-index: 1; }
@@ -926,4 +928,13 @@ a.rk-chip { display: inline-flex; align-items: center; gap: 6px; text-decoration
   .rk-as td .rk-act, .rk-table button.rk-act { min-height: 32px; display: inline-flex; align-items: center; }
   .rk-tujuan a, .rk-rujuk a { display: inline-block; padding: 6px 0; }
   .rk-sit-ringkas > span { min-height: 32px; display: inline-flex; align-items: center; gap: 4px; }
+}
+
+/* ═══ Tahap D — panjang halaman ponsel (Patch 19) ═══ */
+@media (max-width: 860px) {
+  /* pra-hidrasi: panel ber-`ponsel="tutup"` langsung terlipat (tanpa layout shift) */
+  .rk-panel[data-ponsel='tutup'] > .rk-lipat-wrap { grid-template-rows: 0fr; }
+  .rk-panel[data-ponsel='tutup'] .rk-lipat svg { transform: rotate(-90deg); }
+  .rk-panel[data-lipat] > .rk-lipat-wrap { transition: none; } /* ponsel: tanpa animasi lipat (hemat, tanpa CLS) */
+  .rk-lipat-semua { position: sticky; top: calc(var(--rk-bar-h) + 30px); z-index: 30; padding: 6px 0; background: var(--rk-bg); }
 }

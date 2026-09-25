@@ -369,12 +369,12 @@ export default function ModulIndikatorPage({ moduls, pemdiData, dokumenKunci, bu
           </div>
         </PanelLipat>
 
-        <PanelLipat id="modul-matriks" judul="Matriks kebutuhan bukti dukung — Level 1 & 2" ringkas={`· ${kebutuhanData.cakupan.total_kebutuhan} kebutuhan`} awal="tutup" aksi={<span className="rk-act faint">NotebookLM × Modul × Panduan Bab 6</span>}>
+        <PanelLipat id="modul-matriks" ponsel="tutup" judul="Matriks kebutuhan bukti dukung — Level 1 & 2" ringkas={`· ${kebutuhanData.cakupan.total_kebutuhan} kebutuhan`} awal="tutup" aksi={<span className="rk-act faint">NotebookLM × Modul × Panduan Bab 6</span>}>
           <p className="rk-catatan" style={{ marginBottom: 10 }}>Disusun dari <em>Analisis Bukti Dukung Kematangan Pemerintah Digital (Level 1 &amp; 2)</em> — ekstraksi NotebookLM atas 20 PPTX Modul Indikator (<code>docs/analisis-bukti-dukung-l1-l2.md</code>), disilangkan dengan item modul resmi, status bukti existing, dan tabel Panduan Bab 6.</p>
           <Matriks data={kebutuhanData} aspekWarna={aspekWarna} />
         </PanelLipat>
 
-        <PanelLipat id="modul-dokumen" judul="Peta dokumen kunci" ringkas={`· ${dokumenKunci.dokumen.length} dokumen`} awal="tutup" aksi={<span className="rk-act faint">#nomor dirujuk pada butir existing</span>}>
+        <PanelLipat id="modul-dokumen" ponsel="tutup" judul="Peta dokumen kunci" ringkas={`· ${dokumenKunci.dokumen.length} dokumen`} awal="tutup" aksi={<span className="rk-act faint">#nomor dirujuk pada butir existing</span>}>
           <div className="gulir">
             <table className="rk-table rk-dok">
               <thead><tr><th>#</th><th>Dokumen</th><th>Penanggung jawab</th><th>Indikator · level</th><th>Prioritas</th></tr></thead>
