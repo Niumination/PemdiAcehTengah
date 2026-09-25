@@ -92,7 +92,7 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 | `package.json` | Dependencies: next 14.2.35, react 18.3.1 · `npm test` = node --test (Node 22) |
 | `next.config.js` | Standalone output, reactStrictMode, unoptimized images |
 | `jsconfig.json` | Path alias `@/*` |
-| `.github/workflows/ci.yml` | CI (Node 20): `npm ci` → lint → **`npm test`** (58 tes) → build. Gerbang mutu setiap push/PR ke `main` |
+| `.github/workflows/ci.yml` | CI (Node 20): `npm ci` → lint → **`npm test`** (59 tes) → build. Gerbang mutu setiap push/PR ke `main` |
 | `.gitignore` | node_modules, .next, .env, *.old, build |
 | `docs/riset-peta-proses-bisnis-permenpan-19-2018.md` | Riset lengkap framework PPB (408 lines) — Permenpan 19/2018, BPMN, template, contoh daerah |
 | `docs/riset-data-aceh-tengah.md` | Riset data Aceh Tengah (255 lines) — visi misi, RPJMD, OPD, urusan konkuren, SPBE, transformasi digital |
@@ -167,7 +167,7 @@ Gap sebelumnya (Sprint Redesign Award Level + Trust Infrastructure) sudah diimpl
 - **komponen aktif** di `components/` — rk/{RKShell, Panel, Kompas, Drawer, Palet, NavMenu, Dial, PanelLipat, Asesor}, ui/{Ikon, StatusIkon}, asesor/{CatatanMandiri}, CatatanTujuan, OPDTable, motif/KerawangMotifs — total **15 berkas** (lihat `components/AGENTS.md`)
 - **15 route halaman + 14 API route** (6 read-only + 5 admin CMS + 3 auth)
 - **12 modul** di `lib/`
-- **58 tes** (`pemdiNilai` 16 + `requirement` 4 + `catatanMandiri` 10 + `pjButir` + `cekUi` 6 aturan + `overlay` + `ruangKendali` + asesor) — dijalankan CI dan `npm test`
+- **59 tes** (`pemdiNilai` 16 + `requirement` 4 + `catatanMandiri` 10 + `pjButir` + `cekUi` 6 aturan + `overlay` + `ruangKendali` + asesor + `cekData`) — dijalankan CI dan `npm test`
 - **67 halaman statis** di build (15 rute inti + 52 halaman OPD `/opd/[slug]` + `/500`; rute baru `/asesor`) · `npx next lint` 0 error (3 warning bawaan lama di admin.js) · `node scripts/cek-ui.mjs` bersih
 
 ## Status Sekarang — 24 Sep 2026

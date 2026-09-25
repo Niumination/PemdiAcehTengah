@@ -82,7 +82,7 @@ PemdiAcehTengah/
 ├── lib/                  # pemdiNilai, catatanMandiri, pjButir, search-index, modeSitus, format, slugify, cetak
 ├── data/                 # pemdi.json, modul-indikator.json, catatan-mandiri.json, evaluasi-asesor-2026.json, opd.json, draf-bukti-prioritas.json, …
 ├── scripts/              # Rantai regenerasi data (python3) — lihat data/AGENTS.md
-├── test/                 # node --test (58 tes)
+├── test/                 # node --test (59 tes)
 ├── styles/               # globals.css — Navy/Beige/Gold + Kerawang Gayo
 ├── public/               # PWA, crest, panduan-bukti-l1/*.pdf
 ├── middleware.js         # X-Robots-Tag noindex semua rute

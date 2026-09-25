@@ -12,7 +12,7 @@ Susulan ketiga dari arena (folder patch `pemdi-reposisi#5`, basis `0911608`). 8 
 - **Patch 10–13 — Tahap 3a–3d reskin**: 10 halaman ke gaya Ruang Kendali — `/pemdi` (7 kartu aspek ber-`Dial`), `/requirement` (papan P0/P1), `/cari`, `/opd`, `/opd/[slug]`, `/spbe` (skala SPBE↔Pemdi), `/probis`, `/glosarium`, `/404`, `/modul-indikator` (1.960 → ~330 baris, ≈640 baris dead code dihapus). Semua rute kini RK-native; jembatan `.rk-legacy` tinggal jaring pengaman.
 - **Patch 14 — Tahap 2 data asesor**: berkas baru `data/evaluasi-asesor-2026.json` (Kab. Aceh Tengah). **Headline dashboard kini 1,24** (asesor KemenPANRB, Level 1 · Rintisan); mandiri awal 1,42 jadi pembanding. Rute baru **`/asesor`**.
 - **Patch 15 — Tahap 4 ponsel**: koordinat menu 13 rute, target sentuh ponsel, `cek-ui` aturan 5–6.
-- **Verifikasi**: 58/58 tes · `npx next lint` 0 error (3 warning bawaan lama) · `node scripts/cek-ui.mjs` bersih · `next build` ✓ 67 halaman statis (15 inti + 52 `/opd/[slug]` + `/500`).
+- **Verifikasi**: 59/59 tes · `npx next lint` 0 error (3 warning bawaan lama) · `node scripts/cek-ui.mjs` bersih (9 aturan) · `node scripts/cek-data.mjs` konsisten · `next build` ✓ 67 halaman statis (15 inti + 52 `/opd/[slug]` + `/500`) · `npm run uji:tugas` 8/8 lolos · `npm run audit:ui` 45 tangkapan, 0 overflow/tindih.
 
 ## 2026-09-24 — Koreksi DOX Hermes (5a2e4ef): angka & nama komponen salah
 
