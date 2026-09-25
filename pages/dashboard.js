@@ -3,6 +3,7 @@
  * Keputusan yang dioptimalkan: butir mana yang harus dikerjakan siapa sebelum tenggat.
  * Data: getStaticProps → lib/rkData.susunDataRK (pemdi.json + catatan mandiri + opd.json).
  */
+import { useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Kompas from '@/components/rk/Kompas';
@@ -20,8 +21,72 @@ function hitungPPB() {
   const pb = opdJson.probis || {};
   const misi = (pb.level_0?.misi || []).length;
   const urusan = (pb.level_1?.urusan || []).length;
-  const proses = (pb.level_2?.kategori || []).reduce((n, k) => n + (k.proses || []).length, 0);
+  const proses = (pb.level_2?.kategori || []).reduce((n, k) => (n + (k.proses || []).length), 0);
   return { misi, urusan, proses };
+}
+
+/**
+ * Pengumuman coordinator — tampil_inline (center + bold + blink) DAN popup sekali
+ * per muat halaman (25 Sep 2026, permintaan pemilik).
+ * Popup hilang saat ditutup; kembali muncul begitu halaman dimuat ulang (tanpa
+ * localStorage — sengaja "hanya di awal", bukan sekali per perangkat).
+ * prefers-reduced-motion: blink dimatikan di CSS, teks tetap terbaca.
+ */
+function PengumumanPopup({ teks }) {
+  const [tampil, setTampil] = useState(false);
+  const [popup, setPopup] = useState(false);
+  const tutupRef = useRef(null);
+  const dialogRef = useRef(null);
+
+  useEffect(() => {
+    if (!teks) return undefined;
+    setTampil(true);
+    const t = setTimeout(() => setPopup(true), 350);
+    return () => clearTimeout(t);
+  }, [teks]);
+
+  // fokus masuk ke tombol tutup saat popup muncul (a11y: keyboard tidak terjebak)
+  useEffect(() => {
+    if (popup) tutupRef.current?.focus();
+  }, [popup]);
+
+  // Esc menutup popup; focus trap sederhana di dalam dialog
+  useEffect(() => {
+    if (!popup) return undefined;
+    const h = (e) => {
+      if (e.key === 'Escape') { e.preventDefault(); setPopup(false); return; }
+      if (e.key !== 'Tab') return;
+      const f = dialogRef.current?.querySelectorAll('button, [href]');
+      if (!f || !f.length) return;
+      const i = Array.from(f).indexOf(document.activeElement);
+      e.preventDefault();
+      f[i >= f.length - 1 ? 0 : i + 1]?.focus();
+    };
+    window.addEventListener('keydown', h);
+    return () => window.removeEventListener('keydown', h);
+  }, [popup]);
+
+  return (
+    <>
+      {/* 1. inline di dashboard: center, bold, blink */}
+      {tampil ? (
+        <section className="rk-panel rk-pengumuman" role="status" aria-live="polite">
+          <h2>Pengumuman Tim Koordinasi</h2>
+          <p className="rk-pengumuman-teks">{teks}</p>
+        </section>
+      ) : null}
+      {/* 2. popup: sekali di awal, hilang bila ditutup, muncul lagi di reload */}
+      {popup ? (
+        <div className="rk-peng-popup" role="dialog" aria-modal="true" aria-labelledby="rk-peng-judul" ref={dialogRef}>
+          <div className="rk-peng-popup-kotak">
+            <h2 id="rk-peng-judul">Pengumuman Tim Koordinasi</h2>
+            <p className="rk-peng-popup-teks">{teks}</p>
+            <button type="button" className="rk-btn" onClick={() => setPopup(false)} ref={tutupRef}>Tutup</button>
+          </div>
+        </div>
+      ) : null}
+    </>
+  );
 }
 
 export default function Dashboard({ rk, opdList, butirCountMap, dibangun, ppb }) {
@@ -36,10 +101,7 @@ export default function Dashboard({ rk, opdList, butirCountMap, dibangun, ppb })
       <div className="rk-grid">
         <Situasi s={rk.situasi} now={dibangun} />
         {rk.konten?.pengumuman ? (
-          <section className="rk-panel rk-pengumuman" role="status">
-            <h2>Pengumuman Tim Koordinasi</h2>
-            <p>{rk.konten.pengumuman}</p>
-          </section>
+          <PengumumanPopup teks={rk.konten.pengumuman} />
         ) : null}
 
         <LipatSemua keterangan="Panel dapat dilipat; status diingat di perangkat ini." />

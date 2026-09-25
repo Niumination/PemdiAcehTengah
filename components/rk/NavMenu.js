@@ -9,7 +9,9 @@
  *   - Gaya "baris": overlay & item yang sama, disusun garis lurus vertikal di samping pemicu.
  *   - Sakelar gaya di dalam menu; tersimpan localStorage `pemdi:nav`; default desktop radial, ponsel baris.
  *   - Auto-hide: routeChangeStart / klik scrim / Esc. Auto-focus ke rute aktif. Focus trap (Tab/panah).
- *   - Pintasan `g` + huruf (data-k) tetap bekerja walau menu tertutup; Ctrl+K tetap di RKShell.
+ *   - Pintasan **angka langsung 1–9, 0** (data-k) bekerja walau menu tertutup — urutan mengikuti
+ *     urutan di layar, jadi tidak perlu mengingat huruf. Tekan `?` untuk membuka daftar pintasan.
+ *     Ctrl+K tetap di RKShell.
  *   - Animasi hanya transform/opacity; dimatikan oleh prefers-reduced-motion (CSS).
  * Koordinat item ada di CSS (.rk-nav li:nth-child) agar tanpa JS layout → tanpa CLS.
  */
@@ -19,17 +21,17 @@ import Link from 'next/link';
 import Ikon from '@/components/ui/Ikon';
 
 export const RUTE_NAV = [
-  { href: '/dashboard', label: 'Situasi', ikon: 'kompas', k: 's', utama: true },
-  { href: '/indikator', label: 'Indikator', ikon: 'daftar', k: 'i', utama: true },
-  { href: '/antrean', label: 'Antrean', ikon: 'antrean', k: 'a', utama: true },
-  { href: '/modul-indikator', label: 'Modul', ikon: 'modul', k: 'm', utama: true },
-  { href: '/requirement', label: 'Draf Bukti', ikon: 'draf', k: 'd', utama: true },
-  { href: '/asesor', label: 'Hasil asesor', ikon: 'cek', k: 'h' },
-  { href: '/pemdi', label: 'Rinci per aspek', ikon: 'aspek', k: 'r' },
-  { href: '/opd', label: 'Perangkat daerah', ikon: 'gedung', k: 'o' },
-  { href: '/spbe', label: 'SPBE 2025', ikon: 'grafik', k: 'e' },
-  { href: '/probis', label: 'Proses bisnis', ikon: 'probis', k: 'p' },
-  { href: '/glosarium', label: 'Glosarium', ikon: 'buku', k: 'l' },
+  { href: '/dashboard', label: 'Situasi', ikon: 'kompas', k: '1', utama: true },
+  { href: '/indikator', label: 'Indikator', ikon: 'daftar', k: '2', utama: true },
+  { href: '/antrean', label: 'Antrean', ikon: 'antrean', k: '3', utama: true },
+  { href: '/modul-indikator', label: 'Modul', ikon: 'modul', k: '4', utama: true },
+  { href: '/requirement', label: 'Draf Bukti', ikon: 'draf', k: '5', utama: true },
+  { href: '/asesor', label: 'Hasil asesor', ikon: 'cek', k: '6' },
+  { href: '/pemdi', label: 'Rinci per aspek', ikon: 'aspek', k: '7' },
+  { href: '/opd', label: 'Perangkat daerah', ikon: 'gedung', k: '8' },
+  { href: '/spbe', label: 'SPBE 2025', ikon: 'grafik', k: '9' },
+  { href: '/probis', label: 'Proses bisnis', ikon: 'probis', k: '0' },
+  { href: '/glosarium', label: 'Glosarium', ikon: 'buku', k: 'g' },
   { href: '/cari', label: 'Cari', ikon: 'cari', k: 'c' },
   { href: '/admin', label: 'Admin CMS', ikon: 'roda', k: 'x' },
 ];
@@ -86,7 +88,7 @@ export default function NavMenu() {
     return undefined;
   }, [buka, gaya, fokusAktif]);
 
-  // papan ketik: Esc, M, focus trap, panah, g+huruf
+  // papan ketik: Esc, M, focus trap, panah, angka 1-9,0
   useEffect(() => {
     const h = (e) => {
       const tag = e.target?.tagName;
@@ -94,14 +96,9 @@ export default function NavMenu() {
       if (e.key === 'Escape' && buka) { e.preventDefault(); tutup(); return; }
       if (!buka && !diForm && !e.ctrlKey && !e.metaKey && !e.altKey) {
         if (e.key === 'm' || e.key === 'M') { e.preventDefault(); bukaMenu(); return; }
-        const now = Date.now();
-        if (e.key === 'g') { gWaktu.current = now; return; }
-        if (now - gWaktu.current < 900 && gWaktu.current) {
-          const r = RUTE_NAV.find((x) => x.k === e.key);
-          gWaktu.current = 0;
-          if (r) { e.preventDefault(); router.push(r.href); }
-          return;
-        }
+        if (e.key === '?') { e.preventDefault(); bukaMenu(); return; }
+        const r = RUTE_NAV.find((x) => x.k === e.key);
+        if (r) { e.preventDefault(); router.push(r.href); return; }
       }
       if (buka) {
         const f = Array.from(document.querySelectorAll('.rk-nav a, .rk-nav-gaya button, .rk-nav-trig'));
@@ -109,6 +106,10 @@ export default function NavMenu() {
         if (e.key === 'Tab') { e.preventDefault(); f[e.shiftKey ? (i <= 0 ? f.length - 1 : i - 1) : (i >= f.length - 1 ? 0 : i + 1)]?.focus(); }
         else if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); f[(i + 1) % f.length]?.focus(); }
         else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); f[(i - 1 + f.length) % f.length]?.focus(); }
+        else if (!diForm && !e.ctrlKey && !e.metaKey && !e.altKey) {
+          const r = RUTE_NAV.find((x) => x.k === e.key);
+          if (r) { e.preventDefault(); router.push(r.href); }
+        }
       }
     };
     window.addEventListener('keydown', h);
@@ -133,13 +134,13 @@ export default function NavMenu() {
         <button type="button" aria-pressed={gaya === 'radial'} onClick={() => gantiGaya('radial')}><Ikon nama="radial" size={14} /> Radial</button>
         <button type="button" aria-pressed={gaya === 'baris'} onClick={() => gantiGaya('baris')}><Ikon nama="baris" size={14} /> Baris</button>
       </div>
-      <span className="rk-nav-hint" aria-hidden="true">Esc menutup · g+huruf pintasan</span>
+      <span className="rk-nav-hint" aria-hidden="true">Esc menutup · angka cepat · ? daftar</span>
       <ul className="rk-nav" id="rk-nav" ref={wadah} role="menu" aria-label="Navigasi halaman" aria-hidden={!buka}>
         {RUTE_NAV.map((r) => (
           <li key={r.href} role="none" className={r.utama ? undefined : 'lain'}>
             <Link role="menuitem" href={r.href} aria-current={aktif(r.href) ? 'page' : undefined} tabIndex={buka ? 0 : -1} data-k={r.k}>
               <span className="ic"><Ikon nama={r.ikon} size={18} /></span>
-              <span className="lbl">{r.label}<kbd>g {r.k}</kbd></span>
+              <span className="lbl">{r.label}<kbd>{r.k}</kbd></span>
             </Link>
           </li>
         ))}
