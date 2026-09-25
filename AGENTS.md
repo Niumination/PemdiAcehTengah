@@ -172,7 +172,33 @@ Gap sebelumnya (Sprint Redesign Award Level + Trust Infrastructure) sudah diimpl
 
 ## Status Sekarang — 24 Sep 2026
 
-**Repo:** branch `main` · `git@github.com:Niumination/PemdiAcehTengah.git` · produksi `https://pemdi-aceh-tengah.vercel.app` · HEAD `9c3d9c4` (Patch 15 ponsel & penjaga akhir) · working tree bersih, semua commit ter-push.
+**Repo:** branch `main` · `git@github.com:Niumination/PemdiAcehTengah.git` · produksi `https://pemdi-aceh-tengah.vercel.app` · HEAD `3b367bf` (Patch 22 — CatatanTujuan rentang penuh di `/modul-indikator` + hapus garis menu navigasi) · working tree bersih, semua commit ter-push.
+
+### CMS AKTIF DI PRODUKSI (25 Sep 2026)
+
+Storage Neon **`pemdi-cms`** sudah ter-connect ke proyek Vercel (region `ap-southeast-1`, Free): `DATABASE_URL` (pooled) ada di Production + Preview. Tiga env CMS terpasang sebagai **Sensitive** di Production:
+
+| Env | Isi | Fungsi |
+|---|---|---|
+| `CMS_SESI_RAHASIA` | `openssl rand -base64 48` (64 char) | HMAC cookie `pemdi_cms`; mengganti = semua sesi keluar |
+| `CMS_SANDI_KOORDINATOR` | **sementara `admin123`** | wewenang penuh: butir, konten tampilan, log, ekspor |
+| `CMS_SANDI_PJ` | **sementara `admin123`** | hanya butir OPD-nya; tak bisa ubah PJ / set "diterima" |
+
+⚠️ **Sandi masih default — wajib diganti sebelum dipakai nyata:**
+```bash
+cd ~/Desktop/Niumination/apps/PemdiAcehTengah
+vercel env add CMS_SANDI_KOORDINATOR production --sensitive --force --value "$(openssl rand -base64 12)" -y
+vercel env add CMS_SANDI_PJ production --sensitive --force --value "$(openssl rand -base64 12)" -y
+vercel --prod --yes
+```
+
+**Verifikasi produksi (25 Sep 2026, semua lulus).** `GET /api/auth/sesi` → `{"sesi":null,"cmsAktif":true,"dbAktif":true}`. Login koordinator → `PUT /api/admin/konten/pengumuman` 200 dengan `segar.ok` = `/dashboard /indikator /antrean /admin`, `gagal: []`; isi tersimpan di Neon (`GET /api/admin/overlay`), tampil di dashboard, dan tercatat di `GET /api/admin/log` (aksi `ubah_konten`). Peran PJ: `status=diterima` → 403, ubah `pj` → 403, `prioritas` pada butir miliknya → 200, `PUT` konten → 403, anonim → 401, field tak dikenal → 400.
+
+**Jebakan integrasi API** (perilaku yang sudah benar — catat agar tidak dipakai keliru):
+- Field body konten = **`nilai`**, bukan `isi`.
+- `opd` pada `POST /api/auth/masuk` = **id angka** dari `data/opd.json` (`o.id`, mis. `1` = Setda) — bukan `singkat` (`setda`) atau nama. Kirim `setda` → semua `PATCH /api/admin/butir/*` kena 403 "bukan tanggung jawab OPD Anda".
+
+Panduan langkah + troubleshooting: `docs/PANDUAN-AKTIVASI-CMS.md`.
 
 | Milestone | Ringkasan |
 |-----------|-----------|

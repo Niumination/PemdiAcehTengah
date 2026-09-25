@@ -62,7 +62,8 @@ data/*.json (pemdi, modul-indikator, opd, requirement, draf-bukti-prioritas,
 - **getStaticProps** untuk data besar & search index (`dashboard.js`, `indikator.js`, `antrean.js` via `susunDataRK()`; `cari.js`)
 - **Tidak ada penulisan data** dari web; perubahan konten = edit `data/*.json` lewat rantai skrip (lihat `data/AGENTS.md`) + patch git
 - **Health**: `GET /api/health` → 200 sehat / 503 gagal — pantau dengan uptime monitor
-- **noindex**: `middleware.js` menambahkan `X-Robots-Tag: noindex, nofollow` ke semua respons; `next-sitemap` disallow `/`; `_document` meta robots noindex. Belum ada login (keputusan 22 Sep: akses = noindex saja)
+- **noindex**: `middleware.js` menambahkan `X-Robots-Tag: noindex, nofollow` ke semua respons; `next-sitemap` disallow `/`; `_document` meta robots noindex. Login **hanya** untuk CMS `/admin` (2 peran sandi bersama, `lib/cmsAuth.js`); seluruh halaman produk tetap terbuka tanpa login — akses yang dijaga noindex, bukan autentikasi
+- **CMS aktif di produksi (25 Sep 2026)**: `DATABASE_URL` (Neon `pemdi-cms`) + 3 env `CMS_*` terpasang → `/api/auth/sesi` melaporkan `cmsAktif:true, dbAktif:true`. Saat memanggil API secara manual: body konten = `nilai`; `opd` = **id angka** dari `data/opd.json` (`1` = Setda), bukan `singkat`. Rincian di AGENTS.md §CMS AKTIF
 
 ## Work Guidance
 - Halaman baru: buat `.js` di `pages/`; tambahkan ke `TAB_RK` (tab utama) atau menu **Lainnya** di `components/rk/RKShell.js`; bila butuh prop `rk`, daftarkan di `RUTE_RK` (`_app.js`)
@@ -74,5 +75,5 @@ data/*.json (pemdi, modul-indikator, opd, requirement, draf-bukti-prioritas,
 
 ## Verification
 - `npx next lint` — 0 error (1 warning `exhaustive-deps` di pemdi.js dikenal)
-- `npm test` — 58/58 pass (pemdiNilai · catatanMandiri · requirement · pjButir · cekUi · overlay · ruangKendali)
+- `npm test` — 59/59 pass (pemdiNilai · catatanMandiri · requirement · pjButir · cekUi · overlay · ruangKendali · asesor · cekData)
 - `npm run build` — sukses, 67 halaman statis ter-generate (15 rute inti + 52 halaman OPD `/opd/[slug]` + `/500`); `/skm /lapor /api/skm` → 404 (rute publik dihapus)

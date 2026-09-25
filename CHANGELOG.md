@@ -3,6 +3,20 @@
 Semua perubahan penting proyek ini didokumentasikan di file ini.
 Ringkasan publik tanpa detail internal; dokumen kerja lengkap disimpan pemilik repo di lokasi privat.
 
+## 2026-09-25 — Patch 16–22: pengukuran UI, presisi ponsel & desktop, audit konten, CMS aktif
+
+Empat patch arena berurutan (folder `pemdi-reposisi#6` dan `#7`, basis `f3c19cc` lalu `012849c`). Fokus: ukur dulu, baru perbaiki yang terukur.
+
+- **Patch 16 — Tahap A: alat ukur & pedoman.** `npm run audit:ui` (Playwright, dipasang manual — bukan dependency): 15 rute × 1440/1024/390 → overflow, elemen keluar viewport, target <44px (ponsel)/<32px (desktop), tumpang tindih header, tinggi halaman, CLS, tangkapan layar. Baseline 25 Sep (web live `f3c19cc`): tumpang tindih header ponsel **15/15 rute**, overflow di 10 rute, tinggi ponsel /probis 16.552px. `desain/PEDOMAN-ANTARMUKA.md`; `cek-ui` +3 aturan. Tanpa perubahan visual.
+- **Patch 17 — Tahap B: P0 ponsel terukur.** Tumpang tindih header 15/15 → **0**; elemen keluar viewport 10 rute → **0**. Header (merek dua varian, ellipsis), marquee di dalam mask, pemicu menu radial 44px, kepala panel membungkus, tabel: kolom prioritas disembunyi ≤860px + kolom pertama beku.
+- **Patch 18 — Tahap C: presisi desktop.** Target <32px: /pemdi 176→**1**, /requirement 163→**1**, /probis 215→**2**. Hierarki KPI (angka 1,24 jadi 64px, `tabular-nums`), bar `Situasi ringkas` di /pemdi, /pemdi multikolom CSS, dan **URL = state** (`lib/useUrlState.js`: filter/tab tercermin di query string, tak lagi hilang saat tautan dibagikan).
+- **Patch 19 — Tahap D: panjang halaman ponsel.** Tinggi /probis **16.574 → 2.280px**, /dashboard 9.736 → 3.617, /requirement 8.507 → 4.706, /pemdi 6.208 → 3.978. Panel sekunder terlipat awal di ≤860px tanpa layout shift; tombol Buka semua tetap terjangkau.
+- **Patch 20 — Tahap E: audit konten & "Tugas saya".** `npm run inventaris` memetakan rute → sumber data → panel → aksi; `npm run cek:data` menjaga kesegaran data, konsistensi indeks, dan butir yatim. `/opd/[slug]` menjadi daftar kerja PJ OPD: butir dikelompokkan Minggu ini / Berikutnya / Bila sempat dengan aksi berikutnya, Salin tautan / Bagikan WA / Cetak.
+- **Patch 21 — Tahap F: pra-uji tugas 3 persona × 5 tugas.** `npm run uji:tugas` (Playwright) mensimulasikan T1–T5 → putaran 2 **8/8** lolos. Perbaikan: tombol Cetak di header, tombol Bagikan tautan di footer, grup pertama terbuka otomatis.
+- **Patch 22 — koreksi kecil.** `CatatanTujuan` di /modul-indikator merentang penuh selebar grid (sebelumnya cuma satu kolom); garis busur radial & garis vertikal Baris pada menu navigasi dihapus. Ditambah **`docs/PANDUAN-AKTIVASI-CMS.md`**.
+- **CMS AKTIF DI PRODUKSI (25 Sep 2026).** Storage Neon `pemdi-cms` ter-connect; env `DATABASE_URL` + `CMS_SESI_RAHASIA` + `CMS_SANDI_KOORDINATOR` + `CMS_SANDI_PJ` terpasang di Production. `/admin` kini menulis overlay ke Postgres di atas `data/*.json` (sumber dasar tetap JSON; ekspor harian kembali ke repo). Login 2 peran (Koordinator penuh · PJ OPD terbatas butirnya). **Sandi sementara `admin123` — wajib diganti** sebelum dipakai nyata.
+- **Verifikasi**: 59/59 tes · `npx next lint` 0 error (3 warning bawaan lama di admin.js) · `node scripts/cek-ui.mjs` bersih (9 aturan) · `npm run cek:data` konsisten · `next build` ✓ 67 halaman statis · CI hijau di setiap push.
+
 ## 2026-09-24 — Patch 8–15: Menu Radial, reskin 10 halaman, data asesor eksternal, ponsel
 
 Susulan ketiga dari arena (folder patch `pemdi-reposisi#5`, basis `0911608`). 8 patch berurutan — tahap rencana `docs/RENCANA-TINJAUAN-23-SEP.md` (urutan terkinci 0 → 1 → 3a–3d → 2 → 4).

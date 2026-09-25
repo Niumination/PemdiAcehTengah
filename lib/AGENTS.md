@@ -26,6 +26,6 @@ Utility server-side & shared — murni fungsi, tanpa React.
 > **Dihapus 22 Sep 2026** (arsip tag `arsip/persona-publik-2026-09`): `security.js`, `sanitize.js`, `rate-limit-db.js`, `adminAuth.js`, `supabaseAdmin.js`, `persona.js`, `sektorLayanan.js` beserta `db/*.sql` dan `test/persona.test.mjs`. Dependensi `@supabase/supabase-js` dilepas dari `package.json`.
 
 ## Key Rules
-- Perubahan `pemdiNilai.js` wajib `npm test` hijau (pin rumus + fokusLevel + KONSISTENSI lintas-data pemdi⇔modul⇔draf: indeks simulasi 0,35 · proyeksi 2,29 · 232 bukti = 18 diterima/19 revisi/0 proses/12 draf/183 belum) — total suite **58 tes** (pemdiNilai · requirement · catatanMandiri · pjButir · cekUi · overlay · ruangKendali · asesor)
+- Perubahan `pemdiNilai.js` wajib `npm test` hijau (pin rumus + fokusLevel + KONSISTENSI lintas-data pemdi⇔modul⇔draf: indeks simulasi 0,35 · proyeksi 2,29 · 232 bukti = 18 diterima/19 revisi/0 proses/12 draf/183 belum) — total suite **59 tes** (pemdiNilai · requirement · catatanMandiri · pjButir · cekUi · overlay · ruangKendali · asesor · cekData; `cekData` masuk Patch 20)
 - `pjButir.js`: bila menambah OPD/PJ baru di `catatan-mandiri.json`, pastikan singkatan ada di `data/opd.json` atau tambahkan alias di `ALIAS`; jalankan `node --test test/pjButir.test.mjs`
 - Modul yang dipakai middleware Edge (`modeSitus.js`) harus tetap CommonJS tanpa import Node
