@@ -185,6 +185,9 @@ export default function RKShell({ children, data: dataProp, legacy = false }) {
         <footer className="rk-foot">
           <span>© {new Date().getFullYear()} Pemerintah Kabupaten Aceh Tengah · Diskominfo · Tim Koordinasi Pemdi</span>
           <span>Simulasi penilaian mandiri — bukan nilai resmi asesor · Data: eval.spbe.go.id (sinkron 20 Sep 2026)</span>
+          <button type="button" className="rk-lapor" onClick={() => { const t = `Laporan masalah halaman Dashboard Pemdi\nHalaman: ${window.location.href}\nPerangkat: ${navigator.userAgent.slice(0, 80)}\nMasalah: `; window.open(`https://wa.me/?text=${encodeURIComponent(t)}`, '_blank'); }}>
+            <Ikon nama="peringatan" size={14} /> Laporkan masalah halaman ini
+          </button>
         </footer>
 
         <NavMenu />

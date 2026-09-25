@@ -75,7 +75,7 @@ Prinsip: **setiap angka/panel harus punya pemilik, sumber, tanggal, dan aksi lan
 | **B — P0 ponsel** ✅ Patch 17 (overflow 0, tindih 0; tabel = geser + kolom beku + kolom prioritas, bukan kartu penuh) | header ponsel (judul + 1 aksi + persona ke menu), overflow (tabel → mode kartu, tag wrap, drawer 100vw), marquee mask, pemicu menu terlihat ≥44px + ikon | overflow = 0 di 15 rute; target <44 = 0 |
 | **C — Presisi desktop** ✅ Patch 18 (target <32px /pemdi 176→1, /probis 215→2; KPI hierarki; multikolom; URL-state 4 halaman) | grid 8px, kepala panel (judul/aksi), legenda `tabular-nums`, hierarki KPI (1,24 dominan), seg-control lipat, hover/focus semua chip, URL-state filter/tab | lembar heuristik ≥8/10 per halaman |
 | **D — Panjang halaman ponsel** ✅ Patch 19 (/probis 16.574→2.280px, /dashboard 9.736→3.617px; panel sekunder terlipat awal di ponsel tanpa CLS) | segmen/tab ponsel untuk dashboard, /probis, /requirement; panel default lipat | tinggi ponsel ≤ 4.000px per tab |
-| **E — Konten** | inventaris + matriks JTBD + metadata sumber/tanggal + `cek-data.mjs` + tombol lapor | 0 panel tanpa pemilik/aksi |
+| **E — Konten** ✅ Patch 20 (`npm run inventaris` → docs/INVENTARIS-KONTEN.md 15 rute/33 panel + matriks JTBD; `npm run cek:data` lolos 0 masalah; `/opd/[slug]` → "Tugas saya" 6.396→3.443px, target kecil 82→0; tombol lapor di footer) | inventaris + matriks JTBD + metadata sumber/tanggal + `cek-data.mjs` + tombol lapor | 0 panel tanpa pemilik/aksi |
 | **F — Uji tugas** | 3 persona × 5 tugas, catat, perbaiki | ≥ 4/5 tugas selesai <2 menit |
 
 Tahap A+B dapat dikerjakan dulu sebelum 28 Sep (tenggat revisi) karena berdampak langsung pada PJ OPD yang membuka di ponsel; C–F setelahnya.

@@ -938,3 +938,25 @@ a.rk-chip { display: inline-flex; align-items: center; gap: 6px; text-decoration
   .rk-panel[data-lipat] > .rk-lipat-wrap { transition: none; } /* ponsel: tanpa animasi lipat (hemat, tanpa CLS) */
   .rk-lipat-semua { position: sticky; top: calc(var(--rk-bar-h) + 30px); z-index: 30; padding: 6px 0; background: var(--rk-bg); }
 }
+
+/* ═══ Tahap E — Tugas saya (/opd/[slug]) & lapor masalah (Patch 20) ═══ */
+.rk-tugas-aksi { display: inline-flex; gap: 6px; flex-wrap: wrap; }
+.rk-tugas-aksi .rk-btn { height: 32px; font-size: 12px; padding: 0 10px; }
+.rk-tugas-bar { display: flex; height: 10px; border-radius: 999px; overflow: hidden; background: var(--rk-line); margin: 4px 0 6px; }
+.rk-tugas-bar i { display: block; height: 100%; } .rk-tugas-bar .st-diterima { background: var(--rk-ok); } .rk-tugas-bar .st-revisi { background: var(--rk-warn); } .rk-tugas-bar .st-draf { background: var(--rk-status-ink-draf); } .rk-tugas-bar .st-belum { background: transparent; }
+.rk-tugas-ket { margin: 0 0 10px; font-size: var(--rk-fs-1); } .rk-tugas-ket b { color: var(--rk-status-ink-bad); }
+.rk-tugas { border-top: 1px solid var(--rk-line); padding-top: 6px; margin-top: 6px; }
+.rk-tugas h3 { margin: 0; font-size: var(--rk-fs-2); }
+.rk-tugas-hd { display: flex; align-items: center; gap: 8px; width: 100%; min-height: 44px; padding: 0 4px; background: none; border: 0; color: var(--rk-ink); text-align: left; font: inherit; font-size: var(--rk-fs-2); }
+.rk-tugas-hd svg { transition: transform .2s; } .rk-tugas-hd[aria-expanded='false'] svg { transform: rotate(-90deg); }
+.rk-tugas.g-tinggi .rk-tugas-hd b { color: var(--rk-status-ink-bad); }
+.rk-tugas-ls li .row { display: grid; grid-template-columns: 18px auto minmax(0, 1fr) 16px; gap: 10px; align-items: start; width: 100%; padding: 10px 4px; background: none; border: 0; border-bottom: 1px solid var(--rk-line); color: var(--rk-ink); text-align: left; font: inherit; min-height: 44px; }
+.rk-tugas-ls li:last-child .row { border-bottom: 0; }
+.rk-tugas-ls li .row:hover { background: var(--rk-panel-2); }
+.rk-tugas-ls .nama { font-size: var(--rk-fs-1); line-height: 1.4; }
+.rk-tugas-ls .aksi { display: block; margin-top: 3px; font-size: 12px; color: var(--rk-emas-ink); }
+.rk-lapor { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 8px; background: none; border: 1px solid var(--rk-line); border-radius: var(--rk-r-1); color: var(--rk-ink-3); font: inherit; font-size: var(--rk-fs-1); }
+.rk-lapor:hover { color: var(--rk-ink); border-color: var(--rk-line-2); }
+@media (max-width: 860px) { .rk-tugas-aksi { flex-basis: 100%; } .rk-tugas-ls li .row { grid-template-columns: 18px minmax(0, 1fr) 16px; } .rk-tugas-ls .kode { grid-column: 2; } .rk-tugas-ls .nama { grid-column: 2; } .rk-tugas-ls li .row > svg:last-child { grid-column: 3; grid-row: 1; } }
+.rk-tugas-lagi { padding: 8px 4px 2px; }
+.rk-tugas-lagi .rk-btn { width: 100%; justify-content: center; min-height: 44px; }

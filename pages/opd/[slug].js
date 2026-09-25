@@ -3,12 +3,14 @@ import Link from 'next/link';
 import { formatAngka } from '@/lib/format';
 import portalData from '@/data/opd.json';
 import slugify from '@/lib/slugify';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useRK } from '@/components/rk/RKShell';
 import PanelLipat from '@/components/rk/PanelLipat';
 import Ikon from '@/components/ui/Ikon';
 import StatusIkon from '@/components/ui/StatusIkon';
-import { antreanUntukOPD } from '@/lib/ruangKendali';
+import { antreanUntukOPD, antreanButir } from '@/lib/ruangKendali';
+import pemdiJson from '@/data/pemdi.json';
+import { bukaCetak } from '@/lib/cetak';
 import { LEVEL_RK } from './index';
 
 /* =============================================
@@ -90,9 +92,86 @@ function cariRelated(daftar, opd, limit = 6) {
 
 const PRIO = ['tinggi', 'sedang', 'rendah'];
 
-export default function OPDPage({ opd, urusanTerkait, probisMisi, relatedOpd, prosesOPD }) {
+/* =============================================
+   Tugas saya — Patch 20 (Tahap E audit konten).
+   Halaman OPD dibaca PJ OPD di ponsel untuk menjawab: "apa yang harus saya siapkan minggu ini?"
+   Setiap butir punya aksi berikutnya (bukan sekadar status), dikelompokkan per prioritas;
+   tautan bisa dibagikan (WhatsApp) dan daftar bisa dicetak. Strip 232 sel diganti bilah ringkas.
+   ============================================= */
+const AKSI = {
+  revisi: 'Tanggapi catatan revisi asesor — perbaiki dokumen sesuai catatan, unggah ulang',
+  gap: 'Siapkan dokumen level berikut — lihat kebutuhan bukti di panel butir',
+};
+const LABEL_PRIO = { tinggi: 'Minggu ini', sedang: 'Berikutnya', rendah: 'Bila sempat' };
+
+function TugasSaya({ opd, butir, siap, buka }) {
+  const [tampil, setTampil] = useState({ tinggi: true, sedang: false, rendah: false });
+  const [disalin, setDisalin] = useState(false);
+  const [semua, setSemua] = useState({});
+  const BATAS = 8;
+  const grup = PRIO.map((p) => ({ p, rows: butir.filter((b) => b.prioritas === p) })).filter((g) => g.rows.length);
+  const st = butir.reduce((m, b) => { m[b.status] = (m[b.status] || 0) + 1; return m; }, {});
+  const total = butir.length || 1;
+  const salinTautan = async () => {
+    try { await navigator.clipboard.writeText(window.location.href); setDisalin(true); setTimeout(() => setDisalin(false), 1500); } catch { /* abaikan */ }
+  };
+  const bagikanWA = () => {
+    const teks = `Daftar tugas bukti Pemdi ${opd.singkat} (${butir.length} butir, ${st.revisi || 0} revisi asesor): ${window.location.href}`;
+    window.open(`https://wa.me/?text=${encodeURIComponent(teks)}`, '_blank');
+  };
+  const cetak = () => {
+    const baris = butir.map((b) => `<tr><td>${b.kode}</td><td>${b.nama}</td><td>${b.status}</td><td>${b.prioritas}</td><td>${b.jenis === 'revisi' ? 'Tanggapi revisi asesor' : 'Siapkan dokumen level berikut'}</td></tr>`).join('');
+    bukaCetak(`<!doctype html><html lang="id"><head><meta charset="utf-8"><title>Tugas bukti Pemdi — ${opd.nama}</title>
+<style>body{font:12px/1.4 system-ui;margin:24px}h1{font-size:18px;margin:0 0 4px}p{margin:0 0 12px;color:#444}table{border-collapse:collapse;width:100%}th,td{border:1px solid #bbb;padding:4px 6px;text-align:left;vertical-align:top}th{background:#eee}</style></head>
+<body><h1>Tugas bukti Pemdi — ${opd.nama}</h1><p>${butir.length} butir · ${st.revisi || 0} revisi asesor · dicetak ${new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })} · Dashboard Pemerintah Digital Kab. Aceh Tengah</p>
+<table><thead><tr><th>Kode</th><th>Butir</th><th>Status</th><th>Prioritas</th><th>Aksi berikutnya</th></tr></thead><tbody>${baris}</tbody></table></body></html>`);
+  };
+  return (
+    <PanelLipat id={`opd-butir-${opd.id}`} className="rk-c8" judul="Tugas saya — bukti Pemdi yang menjadi tanggung jawab" ringkas={`· ${butir.length} butir`}
+      aksi={<span className="rk-tugas-aksi"><button type="button" className="rk-btn" onClick={salinTautan} aria-live="polite">{disalin ? 'Tautan disalin' : 'Salin tautan'}</button><button type="button" className="rk-btn" onClick={bagikanWA}>Bagikan WA</button><button type="button" className="rk-btn" onClick={cetak}><Ikon nama="cetak" size={14} /> Cetak</button></span>}>
+      {!siap ? <p className="faint">Memuat…</p> : butir.length === 0 ? (
+        <p className="muted" style={{ margin: 0 }}>Belum ada catatan mandiri yang menyebut {opd.singkat} sebagai PJ. Bila OPD ini terlibat, tambahkan pada kolom PJ lewat <Link href="/admin">Admin CMS</Link>.</p>
+      ) : (
+        <>
+          <div className="rk-tugas-bar" role="img" aria-label={`${st.diterima || 0} diterima, ${st.revisi || 0} revisi, ${st.draf || 0} draf, ${st.belum || 0} belum`}>
+            {['diterima', 'revisi', 'draf', 'belum'].map((k) => st[k] ? <i key={k} className={`st-${k}`} style={{ width: `${(st[k] / total) * 100}%` }} /> : null)}
+          </div>
+          <p className="rk-tugas-ket faint">{st.diterima || 0} diterima · <b>{st.revisi || 0} revisi asesor</b> · {st.draf || 0} draf lokal · {st.belum || 0} belum ada dokumen. Klik butir untuk kebutuhan dokumen & catatan asesor.</p>
+          {grup.map(({ p, rows }) => (
+            <section key={p} className={`rk-tugas g-${p}`}>
+              <h3><button type="button" className="rk-tugas-hd" aria-expanded={tampil[p]} onClick={() => setTampil((t) => ({ ...t, [p]: !t[p] }))}>
+                <Ikon nama="lipat" size={14} /> <b>{LABEL_PRIO[p]}</b> <span className="faint">· prioritas {p} · {rows.length} butir</span>
+              </button></h3>
+              {tampil[p] ? (
+                <ul className="rk-butir rk-tugas-ls">
+                  {(semua[p] ? rows : rows.slice(0, BATAS)).map((b) => (
+                    <li key={b.id}>
+                      <button type="button" className="row" onClick={() => buka(b)} aria-label={`Buka butir ${b.kode}`}>
+                        <StatusIkon k={b.status} />
+                        <span className="mono kode">{b.kode}</span>
+                        <span className="nama">{b.nama}<span className="aksi">{AKSI[b.jenis] || AKSI.gap}{b.kebutuhan?.[0] ? ` — ${b.kebutuhan[0]}` : ''}</span></span>
+                        <Ikon nama="kanan" size={14} />
+                      </button>
+                    </li>
+                  ))}
+                  {rows.length > BATAS && !semua[p] ? (
+                    <li className="rk-tugas-lagi"><button type="button" className="rk-btn" onClick={() => setSemua((x) => ({ ...x, [p]: true }))}>Tampilkan {rows.length - BATAS} butir lagi</button></li>
+                  ) : null}
+                </ul>
+              ) : null}
+            </section>
+          ))}
+        </>
+      )}
+    </PanelLipat>
+  );
+}
+
+
+export default function OPDPage({ opd, urusanTerkait, probisMisi, relatedOpd, prosesOPD, butirStatis = [] }) {
   const rk = useRK();
-  const butir = useMemo(() => (opd && rk?.data?.antrean ? antreanUntukOPD(rk.data.antrean, opd) : []), [rk, opd]);
+  // Patch 20: butir dihitung saat build (tanpa CLS/"Memuat…"); data klien (overlay CMS) menggantikannya bila sudah ada.
+  const butir = useMemo(() => (opd && rk?.data?.antrean ? antreanUntukOPD(rk.data.antrean, opd) : butirStatis), [rk, opd, butirStatis]);
   if (!opd) {
     return (
       <div className="rk-grid"><section className="rk-panel"><h2>Perangkat daerah tidak ditemukan</h2><p className="muted">OPD yang Anda cari tidak tersedia dalam basis data. <Link href="/opd">← Daftar perangkat daerah</Link></p></section></div>
@@ -122,32 +201,7 @@ export default function OPDPage({ opd, urusanTerkait, probisMisi, relatedOpd, pr
           <div><div className="lbl">Misi RPJMD terkait</div><div className="val" style={{ fontSize: 'var(--rk-fs-3)' }}>{probisMisi || '—'}</div><div className="sub">Level 0 · Visi & Misi 2025–2029</div></div>
         </section>
 
-        <PanelLipat id={`opd-butir-${opd.id}`} className="rk-c8" judul="Butir bukti Pemdi yang menjadi tanggung jawab" ringkas={`· ${butir.length} butir`} aksi={<Link className="rk-act" href="/antrean">Antrean lengkap →</Link>}>
-          {!rk?.data ? <p className="faint">Memuat…</p> : butir.length === 0 ? (
-            <p className="muted" style={{ margin: 0 }}>Belum ada catatan mandiri yang menyebut {opd.singkat} sebagai PJ. Bila OPD ini terlibat, tambahkan pada kolom PJ lewat <Link href="/admin">Admin CMS</Link>.</p>
-          ) : (
-            <>
-              <div className="rk-strip-butir" aria-label="Strip status butir">
-                {butir.map((b) => <button key={b.id} type="button" className={`sb st-${b.status} pr-${b.prioritas}`} title={`${b.kode} · ${b.status} · ${b.prioritas}`} onClick={() => rk.bukaButir(b.id, b.indikatorId)} aria-label={`Buka butir ${b.kode}`} />)}
-              </div>
-              <ul className="rk-butir">
-                {butir.slice(0, 30).map((b) => (
-                  <li key={b.id}>
-                    <div className="row">
-                      <StatusIkon k={b.status} />
-                      <span className="mono kode">{b.kode}</span>
-                      <span className="nama">{b.nama}</span>
-                      <span className={`rk-tag t-${b.prioritas === 'tinggi' ? 'revisi' : b.prioritas === 'sedang' ? 'proses' : 'belum'}`}>{b.prioritas}</span>
-                      <button type="button" className="rk-btn kecil" onClick={() => rk.bukaButir(b.id, b.indikatorId)} aria-label={`Buka butir ${b.kode}`}><Ikon nama="kanan" size={14} /></button>
-                    </div>
-                    {b.ringkas ? <div className="cat faint">{b.ringkas}</div> : null}
-                  </li>
-                ))}
-              </ul>
-              {butir.length > 30 ? <p className="faint">+ {butir.length - 30} butir lain di <Link href="/antrean">Antrean</Link> (pilih persona PJ OPD → {opd.singkat}).</p> : null}
-            </>
-          )}
-        </PanelLipat>
+        <TugasSaya opd={opd} butir={butir} siap buka={(b) => rk.bukaButir(b.id, b.indikatorId)} />
 
         <PanelLipat id={`opd-ppb-${opd.id}`} className="rk-c4" judul="Peta proses bisnis" ringkas={`· ${prosesOPD.length} proses`} aksi={<Link className="rk-act" href="/probis">Peta lengkap →</Link>}>
           <div className="rk-pohon">
@@ -193,6 +247,7 @@ export async function getStaticProps({ params }) {
       probisMisi: URUSAN_TO_MISI[opd.urusan] || null,
       relatedOpd: cariRelated(opdSection.daftar, opd),
       prosesOPD: cariProsesOPD(probis, opd.id),
+      butirStatis: antreanUntukOPD(antreanButir(pemdiJson), opd),
     },
   };
 }
