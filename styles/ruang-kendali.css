@@ -361,7 +361,15 @@ html[data-theme='light'] .rk-legacy, html:not([data-theme]) .rk-legacy { --prima
 textarea.rk-input { resize: vertical; line-height: 1.5; }
 .rk-galat { color: var(--rk-status-ink-bad); font-size: var(--rk-fs-1); margin: 0; }
 .rk-catatan { color: var(--rk-ink-3); font-size: var(--rk-fs-1); line-height: 1.5; margin: 0; }
-.rk-admin-masuk { max-width: 520px; }
+/* Login CMS — kartu di tengah halaman, seperti halaman login pada umumnya
+   (25 Sep 2026: sebelumnya rk-c6 → panel menempel kiri). */
+.rk-admin-masuk { display: grid; place-items: center; padding: 40px 20px; }
+.rk-admin-masuk-kotak { width: min(420px, 100%); }
+.rk-admin-masuk-kotak > h2 { text-align: center; }
+.rk-admin-masuk .rk-form .rk-seg { justify-content: center; }
+.rk-admin-masuk .rk-select { max-width: none; }
+.rk-admin-masuk .rk-btn.primer { width: 100%; }
+.rk-admin-masuk .rk-catatan:last-child { margin-top: 14px; text-align: center; }
 .rk-admin-kepala p { margin: 4px 0 0; font-size: var(--rk-fs-1); line-height: 1.5; }
 .rk-admin-tbl tr.disunting td:first-child { box-shadow: inset 3px 0 0 var(--rk-emas); }
 .rk-admin-form-baris td { background: var(--rk-panel-2); padding: 16px; }

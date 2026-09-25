@@ -33,7 +33,8 @@ function Masuk({ opdPJ, onMasuk, status }) {
     catch (err) { setGalat(err.message); } finally { setSibuk(false); }
   };
   return (
-    <section className="rk-panel rk-c6 rk-admin-masuk">
+    <section className="rk-panel rk-c12 rk-admin-masuk">
+      <div className="rk-admin-masuk-kotak">
       <h2>Masuk CMS</h2>
       {!status.cmsAktif ? <p className="rk-catatan">CMS belum dikonfigurasi di server (env <code>CMS_SANDI_KOORDINATOR</code>, <code>CMS_SANDI_PJ</code>, <code>CMS_SESI_RAHASIA</code>). Dashboard tetap berjalan dari JSON.</p> : null}
       {status.cmsAktif && !status.dbAktif ? <p className="rk-catatan">Peringatan: <code>DATABASE_URL</code> belum diatur — masuk bisa, tetapi penyimpanan dinonaktifkan.</p> : null}
@@ -57,6 +58,7 @@ function Masuk({ opdPJ, onMasuk, status }) {
         <button className="rk-btn primer" type="submit" disabled={sibuk || !status.cmsAktif}>{sibuk ? 'Memeriksa…' : 'Masuk'}</button>
       </form>
       <p className="rk-catatan">Kata sandi dibagikan oleh Tim Koordinasi Pemdi. Sesi 12 jam, cookie httpOnly. Semua perubahan tercatat di log audit.</p>
+      </div>
     </section>
   );
 }
