@@ -30,16 +30,17 @@ export default function CatatanTujuan({ compact = false }) {
   return (
     <aside
       aria-label={t.judul}
+      className="rk-tujuan"
       style={{
-        margin: '0 0 24px',
+        margin: compact ? 0 : '0 0 24px',
         padding: compact ? '12px 16px' : '18px 20px',
-        borderRadius: '12px',
+        borderRadius: compact ? 'var(--rk-r-2, 12px)' : '12px',
         border: '1px solid var(--gold, #C6A75E)',
         borderLeftWidth: '5px',
-        background: 'var(--surface)',
+        background: compact ? 'var(--rk-panel)' : 'var(--surface)',
         fontSize: '0.86rem',
         lineHeight: 1.6,
-        color: 'var(--text)',
+        color: compact ? 'var(--rk-ink)' : 'var(--text)',
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>

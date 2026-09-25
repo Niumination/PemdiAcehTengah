@@ -422,8 +422,6 @@ html[data-nav-buka] .rk-nav li { opacity: 1; pointer-events: auto; transform: tr
 .rk-nav a:hover .lbl, .rk-nav a:focus-visible .lbl { border-color: var(--rk-emas); background: color-mix(in srgb, var(--rk-panel) 80%, transparent); }
 .rk-nav a[aria-current] .ic { background: var(--rk-emas); border-color: var(--rk-emas); color: #14203A; }
 .rk-nav a[aria-current] .lbl { background: color-mix(in srgb, var(--rk-navy, #14203A) 75%, transparent); color: #F4E9C8; border-color: var(--rk-navy, #14203A); }
-.rk-nav .busur { position: absolute; left: -290px; top: -290px; width: 580px; height: 580px; border-radius: 50%; border: 1px dashed color-mix(in srgb, var(--rk-emas) 50%, transparent); pointer-events: none; opacity: 0; transition: opacity .3s; }
-html[data-nav-buka][data-nav='radial'] .rk-nav .busur { opacity: 1; }
 /* radial: satu ring r=290px, jarak vertikal seragam 46px (x = √(r²−y²)) — 13 rute (Patch 15) */
 html[data-nav='radial'] .rk-nav li:nth-child(1) { --x: 89px; --y: -276px; --d: 0ms; }
 html[data-nav='radial'] .rk-nav li:nth-child(2) { --x: 177px; --y: -230px; --d: 25ms; }
@@ -453,12 +451,9 @@ html[data-nav='baris'] .rk-nav li:nth-child(10) { --y: 169px; --d: 225ms; }
 html[data-nav='baris'] .rk-nav li:nth-child(11) { --y: 217px; --d: 250ms; }
 html[data-nav='baris'] .rk-nav li:nth-child(12) { --y: 265px; --d: 275ms; }
 html[data-nav='baris'] .rk-nav li:nth-child(13) { --y: 313px; --d: 300ms; }
-html[data-nav='baris'] .rk-nav::before { content: ''; position: absolute; left: 21px; top: -343px; height: 686px; width: 1px; background: color-mix(in srgb, var(--rk-emas) 45%, transparent); opacity: 0; transition: opacity .3s; }
-html[data-nav-buka][data-nav='baris'] .rk-nav::before { opacity: 1; }
 @media (max-width: 860px) {
   .rk-nav-trig { top: auto; bottom: 24px; transform: none; }
   .rk-nav { top: auto; bottom: 52px; }
-  .rk-nav .busur { display: none; }
   .rk-nav .lbl { font-size: 12px; padding: 4px 10px; } .rk-nav .lbl kbd { display: none; }
   html[data-nav='radial'] .rk-nav li:nth-child(1) { --x: 44px; --y: -510px; }
   html[data-nav='radial'] .rk-nav li:nth-child(2) { --x: 67px; --y: -470px; }
@@ -487,10 +482,9 @@ html[data-nav-buka][data-nav='baris'] .rk-nav::before { opacity: 1; }
   html[data-nav='baris'] .rk-nav li:nth-child(11) { --y: -120px; }
   html[data-nav='baris'] .rk-nav li:nth-child(12) { --y: -76px; }
   html[data-nav='baris'] .rk-nav li:nth-child(13) { --y: -32px; }
-  html[data-nav='baris'] .rk-nav::before { top: -568px; height: 568px; }
   .rk-nav-gaya { left: auto; right: 12px; bottom: 24px; } .rk-nav-hint { display: none !important; }
 }
-@media (prefers-reduced-motion: reduce) { .rk-nav li, .rk-nav-trig, .rk-nav-trig svg, .rk-nav-scrim, .rk-nav .busur { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .rk-nav li, .rk-nav-trig, .rk-nav-trig svg, .rk-nav-scrim { transition: none; } }
 
 /* ═══ Panel lipat (Patch 9) ═══ */
 .rk-panel[data-lipat] > h2 { margin-bottom: 0; }
@@ -973,3 +967,6 @@ a.rk-chip { display: inline-flex; align-items: center; gap: 6px; text-decoration
   a { color: inherit !important; text-decoration: none !important; }
   .rk-foot { border: 0 !important; font-size: 11px; }
 }
+
+/* CatatanTujuan di dalam .rk-grid (/modul-indikator): rentang penuh, tanpa margin ganda */
+.rk-grid > .rk-tujuan { grid-column: 1 / -1; min-width: 0; }

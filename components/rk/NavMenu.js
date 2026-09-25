@@ -4,7 +4,7 @@
  * Menggantikan tab atas, menu "Lainnya", dan bottom-tab ponsel di RKShell. Prototipe
  * yang disetujui pemilik: desain/proto-nav-radial.html (v5).
  *   - Pemicu bulat di TEPI KIRI layar (tengah vertikal; ponsel kiri-bawah). Tombol M membuka.
- *   - Gaya "radial": 12 rute mekar di satu busur r=270px dengan jarak vertikal seragam 46px
+ *   - Gaya "radial": 12 rute mekar di satu busur r=270px dengan jarak vertikal seragam 46px (garis busur/garis vertikal Baris dihapus 25 Sep — hanya tombol & label)
  *     (x = √(r²−y²)) — ikon di dalam, label di luar, tetap horizontal.
  *   - Gaya "baris": overlay & item yang sama, disusun garis lurus vertikal di samping pemicu.
  *   - Sakelar gaya di dalam menu; tersimpan localStorage `pemdi:nav`; default desktop radial, ponsel baris.
@@ -143,7 +143,6 @@ export default function NavMenu() {
             </Link>
           </li>
         ))}
-        <span className="busur" aria-hidden="true" />
       </ul>
     </>
   );
