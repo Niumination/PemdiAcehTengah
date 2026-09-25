@@ -4,7 +4,8 @@
  * warna = jenis/level; klik ubin → halaman OPD. Di bawahnya tabel OPDTable (cari/saring/halaman).
  * Data tetap: opd.json + pemdi.json (petaButirOPD).
  */
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
+import useUrlState from '@/lib/useUrlState';
 import Head from 'next/head';
 import Link from 'next/link';
 import OPDTable from '@/components/OPDTable';
@@ -25,7 +26,7 @@ export const LEVEL_RK = {
 
 export default function OPDIndex({ data, butirCountMap }) {
   const daftar = data.opd.daftar;
-  const [level, setLevel] = useState('');
+  const [level, setLevel] = useUrlState('level', '');
   const totalASN = daftar.reduce((s, d) => s + (d.jumlah_asn || 0), 0);
   const kecamatan = daftar.filter((d) => d.jenis === 'kecamatan').length;
   const punyaButir = daftar.filter((d) => butirCountMap[d.id] > 0);

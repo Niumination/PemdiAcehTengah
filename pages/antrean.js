@@ -3,7 +3,8 @@
  * Filter: teks, prioritas, jenis, PJ (persona PJ otomatis memfilter OPD).
  */
 import Head from 'next/head';
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
+import useUrlState from '@/lib/useUrlState';
 import { AntreanTabel, useAntreanAktif } from '@/components/rk/Panel';
 import { susunDataRK } from '@/lib/rkData';
 
@@ -11,9 +12,9 @@ const PRI = ['tinggi', 'sedang', 'rendah'];
 
 export default function Antrean({ rk }) {
   const dasar = useAntreanAktif();
-  const [q, setQ] = useState('');
-  const [pri, setPri] = useState('');
-  const [jenis, setJenis] = useState('');
+  const [q, setQ] = useUrlState('q', '');
+  const [pri, setPri] = useUrlState('pri', '');
+  const [jenis, setJenis] = useUrlState('jenis', '');
   const rows = useMemo(() => {
     const k = q.trim().toLowerCase();
     return dasar.filter((b) => (!pri || b.prioritas === pri) && (!jenis || b.jenis === jenis)

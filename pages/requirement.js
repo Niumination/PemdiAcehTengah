@@ -6,6 +6,7 @@
  * draf-bukti-prioritas.json · panduan-bukti-l1.json · requirement.json.
  */
 import { useMemo, useState } from 'react';
+import useUrlState from '@/lib/useUrlState';
 import Head from 'next/head';
 import Link from 'next/link';
 import PanelLipat, { LipatSemua } from '@/components/rk/PanelLipat';
@@ -113,8 +114,8 @@ function KartuPanduan({ ind }) {
 }
 
 export default function Requirement() {
-  const [tab, setTab] = useState('pemdi');
-  const [jenis, setJenis] = useState('');
+  const [tab, setTab] = useUrlState('tab', 'pemdi');
+  const [jenis, setJenis] = useUrlState('jenis', '');
   const [kat, setKat] = useState(null);
   const t1 = drafPrioritas.penilaian_tahap1;
   const rv = drafPrioritas.ringkas;

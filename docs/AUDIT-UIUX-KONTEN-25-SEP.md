@@ -73,7 +73,7 @@ Prinsip: **setiap angka/panel harus punya pemilik, sumber, tanggal, dan aksi lan
 |---|---|---|
 | **A — Penjaga & alat** ✅ Patch 16 | `scripts/audit-ui.mjs` (Playwright, devDep) + `desain/PEDOMAN-ANTARMUKA.md` (vendor WIG) + cek-ui aturan 7–9 (overflow-x, `transition:all`, `outline:none`) | laporan.json baseline |
 | **B — P0 ponsel** ✅ Patch 17 (overflow 0, tindih 0; tabel = geser + kolom beku + kolom prioritas, bukan kartu penuh) | header ponsel (judul + 1 aksi + persona ke menu), overflow (tabel → mode kartu, tag wrap, drawer 100vw), marquee mask, pemicu menu terlihat ≥44px + ikon | overflow = 0 di 15 rute; target <44 = 0 |
-| **C — Presisi desktop** | grid 8px, kepala panel (judul/aksi), legenda `tabular-nums`, hierarki KPI (1,24 dominan), seg-control lipat, hover/focus semua chip, URL-state filter/tab | lembar heuristik ≥8/10 per halaman |
+| **C — Presisi desktop** ✅ Patch 18 (target <32px /pemdi 176→1, /probis 215→2; KPI hierarki; multikolom; URL-state 4 halaman) | grid 8px, kepala panel (judul/aksi), legenda `tabular-nums`, hierarki KPI (1,24 dominan), seg-control lipat, hover/focus semua chip, URL-state filter/tab | lembar heuristik ≥8/10 per halaman |
 | **D — Panjang halaman ponsel** | segmen/tab ponsel untuk dashboard, /probis, /requirement; panel default lipat | tinggi ponsel ≤ 4.000px per tab |
 | **E — Konten** | inventaris + matriks JTBD + metadata sumber/tanggal + `cek-data.mjs` + tombol lapor | 0 panel tanpa pemilik/aksi |
 | **F — Uji tugas** | 3 persona × 5 tugas, catat, perbaiki | ≥ 4/5 tugas selesai <2 menit |

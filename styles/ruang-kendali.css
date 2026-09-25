@@ -874,3 +874,56 @@ a.rk-chip { display: inline-flex; align-items: center; gap: 6px; text-decoration
   /* ponsel pendek: perkecil menu agar 13 rute tetap muat di atas pemicu */
   .rk-nav { transform: scale(.82); transform-origin: left bottom; }
 }
+
+/* ═══ Tahap C — presisi desktop (Patch 18, 25 Sep 2026) ═══ */
+/* 1. Hierarki KPI: hanya 1,24 yang besar; 4 kartu lain diredupkan (Refactoring UI: tegaskan dengan meredupkan pesaing) */
+@media (min-width: 861px) {
+  .rk-sit { grid-template-columns: minmax(300px, 2fr) repeat(4, minmax(150px, 1fr)); }
+  .rk-sit .lead { grid-column: span 1; } /* kolom 2fr sudah lebar; span 2 akan membungkus baris */
+  .rk-sit .lead .val { font-size: var(--rk-fs-7); letter-spacing: -0.02em; }
+  .rk-sit .lead .val small { letter-spacing: 0; }
+  .rk-sit > div:not(.lead) .val { font-size: var(--rk-fs-4); }
+  .rk-sit > div:not(.lead) .lbl { color: var(--rk-ink-3); }
+}
+.rk-sit .val, .rk-sit .sub, .rk-legend .w, .rk-table td.num, .rk-table .mono, .rk .mono, .rk-banding, .rk-beban .n, .rk-sit-ringkas { font-variant-numeric: tabular-nums; }
+
+/* 2. Bar situasi ringkas (halaman selain /dashboard) */
+.rk-sit-ringkas {
+  grid-column: span 12; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 20px;
+  padding: 10px 16px; border: 1px solid var(--rk-line); border-radius: var(--rk-r-2); background: var(--rk-panel);
+  font-size: var(--rk-fs-1); color: var(--rk-ink-2); box-shadow: var(--rk-shadow-1, none);
+}
+.rk-sit-ringkas b { color: var(--rk-ink); font-weight: 700; }
+.rk-sit-ringkas .utama b { font-family: var(--rk-f-display); font-size: var(--rk-fs-4); }
+.rk-sit-ringkas .ok { color: var(--rk-status-ink-ok); } .rk-sit-ringkas .bad, .rk-sit-ringkas .bad b { color: var(--rk-status-ink-bad); } .rk-sit-ringkas .warn b { color: var(--rk-status-ink-warn); }
+.rk-sit-ringkas .rk-act { margin-left: auto; color: var(--rk-emas); font-weight: 500; }
+
+/* 3. /pemdi: dua kolom seimbang (multikolom, kartu tidak terbelah) — kolom kosong 800px hilang */
+.rk-aspek-wrap { grid-column: span 12; display: grid; gap: 16px; }
+.rk-aspek-wrap.dua { display: block; columns: 2; column-gap: 16px; }
+.rk-aspek-wrap.dua > .rk-aspek { break-inside: avoid; margin-bottom: 16px; }
+@media (max-width: 1100px) { .rk-aspek-wrap.dua { columns: 1; } }
+.rk-ladder .rung b { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; line-height: 1.25; } /* chip level tidak terpotong "Kurang (Merin…" */
+
+/* 4. Target interaktif desktop ≥ 32px (ponsel tetap ≥ 40/44 di blok @media 860) */
+@media (min-width: 861px) {
+  .rk-lipat { width: 32px; height: 32px; }
+  .rk-lipat-semua .rk-kbtn, .rk-lipat-semua .rk-seg.kecil, .rk-seg.kecil { height: 32px; }
+  .rk-chip { height: 32px; }
+  .rk-btn.kecil { height: 32px; width: 32px; }
+  .rk-panel > h2 .rk-act, .rk-sit-ringkas .rk-act { display: inline-flex; align-items: center; min-height: 32px; }
+  .rk-legend button { min-height: 32px; }
+  .rk-strip-butir .sb { width: 18px; height: 18px; } .rk-strip-butir { gap: 3px; }
+  .rk-domain .ke .rk-chip { height: 32px; }
+}
+/* 5. Panel: kepala rapi — aksi selalu di kanan atas, tidak ikut baseline judul */
+.rk-panel > h2 { align-items: center; }
+.rk-panel > h2 { text-wrap: balance; }
+@media (min-width: 861px) {
+  .rk-beban .row button { min-height: 32px; display: inline-flex; align-items: center; }
+  .rk-kartu .aksi .rk-btn, .rk-kartu .dok .rk-btn { height: 32px; }
+  .rk .cm-btn { min-height: 32px; padding: 0 12px; font-size: 12px; display: inline-flex; align-items: center; }
+  .rk-as td .rk-act, .rk-table button.rk-act { min-height: 32px; display: inline-flex; align-items: center; }
+  .rk-tujuan a, .rk-rujuk a { display: inline-block; padding: 6px 0; }
+  .rk-sit-ringkas > span { min-height: 32px; display: inline-flex; align-items: center; gap: 4px; }
+}

@@ -117,7 +117,7 @@ export default function PemdiPage({ rk, aspekMeta, dibangun, metaCatatan }) {
         <meta name="description" content="Tujuh aspek, 20 indikator, dan 232 butir bukti evaluasi Pemerintah Digital 2026 Kabupaten Aceh Tengah — nilai simulasi mandiri, target, tangga level, catatan mandiri." />
       </Head>
       <div className="rk-grid">
-        <Situasi s={rk.situasi} now={dibangun} />
+        <Situasi s={rk.situasi} now={dibangun} ringkas />
         <div className="rk-tujuan"><CatatanTujuan compact /></div>
         <LipatSemua keterangan={`${aspekMeta.length} aspek · ${rk.indikator.length} indikator · ${rk.situasi.stat.total ?? 232} butir bukti · klik indikator untuk tangga level & butir`}>
           <span className="rk-seg kecil" role="group" aria-label="Jumlah kolom">
@@ -126,6 +126,7 @@ export default function PemdiPage({ rk, aspekMeta, dibangun, metaCatatan }) {
           </span>
         </LipatSemua>
 
+        <div className={`rk-aspek-wrap${kolom === 2 ? ' dua' : ''}`}>
         {aspekMeta.map((a) => {
           const warna = warnaAspek(a.id);
           const inds = a.indikator.map((id) => peta[id]).filter(Boolean);
@@ -135,7 +136,7 @@ export default function PemdiPage({ rk, aspekMeta, dibangun, metaCatatan }) {
           const nilai = sit?.indeks ?? a.nilai_aktual;
           return (
             <PanelLipat
-              key={a.id} id={`aspek-${a.id}`} className={`rk-aspek${kolom === 2 ? ' rk-c6' : ''}`}
+              key={a.id} id={`aspek-${a.id}`} className="rk-aspek"
               judul={<><span className="rk-no" style={{ color: warna }}>Aspek {a.id}</span>{a.nama}</>}
               ringkas={`· ${fmt2(nilai)} / ${fmt2(a.target)} · ${st.diterima}/${semuaButir.length} diterima`}
               aksi={<span className="rk-act faint mono">bobot {a.bobot}%</span>}
@@ -154,6 +155,7 @@ export default function PemdiPage({ rk, aspekMeta, dibangun, metaCatatan }) {
             </PanelLipat>
           );
         })}
+        </div>
 
         <div style={{ gridColumn: 'span 12' }}><KerawangDivider label="Rujukan" /></div>
         <section className="rk-panel rk-rujuk">

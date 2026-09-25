@@ -12,6 +12,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useMemo, useState } from 'react';
+import useUrlState from '@/lib/useUrlState';
 import PanelLipat, { LipatSemua } from '@/components/rk/PanelLipat';
 import { useRK } from '@/components/rk/RKShell';
 import CatatanTujuan from '@/components/CatatanTujuan';
@@ -266,9 +267,11 @@ function Matriks({ data, aspekWarna }) {
 export default function ModulIndikatorPage({ moduls, pemdiData, dokumenKunci, buktiMapping, kebutuhanData }) {
   const router = useRouter();
   const [cari, setCari] = useState('');
-  const [aspek, setAspek] = useState('');
-  const [level, setLevel] = useState(0);
-  const [tab, setTab] = useState('semua');
+  const [aspek, setAspek] = useUrlState('aspek', '');
+  const [levelStr, setLevelStr] = useUrlState('level', '0');
+  const level = Number(levelStr) || 0;
+  const setLevel = (v) => setLevelStr(String(typeof v === 'function' ? v(level) : v));
+  const [tab, setTab] = useUrlState('tab', 'semua');
   const [buka, setBuka] = useState(null);
   const [pratinjau, setPratinjau] = useState(null);
 

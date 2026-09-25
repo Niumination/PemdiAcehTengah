@@ -28,12 +28,25 @@ export const Mini = ({ s }) => {
 const TGL = (iso) => new Date(`${iso}T00:00:00+07:00`).toLocaleDateString('id-ID', { day: 'numeric', month: 'short' });
 
 /** Pita situasi — 5–7 metrik, kritis di kiri. */
-export function Situasi({ s, now }) {
+export function Situasi({ s, now, ringkas = false }) {
   const rk = useRK();
   const antrean = rk?.opd ? antreanUntukOPD(rk.data.antrean, rk.opd) : rk?.data?.antrean || [];
   const tinggi = antrean.filter((b) => b.prioritas === 'tinggi').length;
   const h = hariKe(s.tenggat, now);
   const hv = hariKe('2026-10-01', now);
+  if (ringkas) {
+    // Patch 18: bar konteks 1 baris — strip 5 kartu hanya di /dashboard (hierarki: satu tempat untuk angka besar)
+    return (
+      <section className="rk-sit-ringkas" aria-label="Situasi ringkas">
+        <span className="utama"><b>{s.asesor ? fmt2(s.asesor.indeks) : fmt2(s.indeks)}</b><span className="faint"> / {fmt2(s.target)}{s.asesor ? ` · ${s.asesor.level}` : ''}</span></span>
+        <span className={h <= 3 ? 'bad' : 'warn'}><b>{h >= 0 ? `H−${h}` : `H+${-h}`}</b> revisi internal</span>
+        <span><b className="ok">{s.tahap1.diterima}</b> diterima · <b className="bad">{s.tahap1.revisi}</b> revisi</span>
+        <span><b>{antrean.length}</b> antrean · <b className="bad">{tinggi}</b> tinggi</span>
+        <span><b>{s.stat.diterima + s.stat.revisi + s.stat.draf}</b>/{s.stat.total ?? 232} disentuh</span>
+        <Link href="/dashboard" className="rk-act">Situasi lengkap →</Link>
+      </section>
+    );
+  }
   return (
     <section className="rk-sit" aria-label="Situasi">
       <div className="lead">
