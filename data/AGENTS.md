@@ -54,7 +54,9 @@ Data berasal dari **e-Keurani BKPSDM** (sumber tunggal terharmonisasi):
 - **Lembaga Lainnya** (7): MPU (13), MAG (8), MPD (6), Baitul Mal (6), Korpri (7), RSUD Datu Beru (466), Kesbangpol (15)
 - **Kecamatan** (14): Bebesen, Lut Tawar, Kebayakan, Bintang, Pegasing, Bies, Linge, Atu Lintang, Rusip Antara, Jagong Jeget, Silih Nara, Celala, Ketol, Kute Panang
 
-### SPBE (Indeks & 4 Domain — format lama Permenpan 59/2020; rincian 47 indikator ada di docs PDF laporan resmi)
+### SPBE (Indeks & 4 Domain — format lama Permenpan 59/2020)
+
+> **Koreksi 26 Sep 2026:** DOX ini sebelumnya menulis "rincian 47 indikator ada di docs PDF laporan resmi". **Klaim itu salah** — `data/opd.json` key `spbe` hanya berisi `indeks` (2,59) + `domain` (dict 4 nilai indeks: Kebijakan 2,30 · Tata Kelola 1,70 · Manajemen 1,00 · Layanan 3,75) + rekomendasi prioritas. Tidak ada PDF SPBE di `docs/` dan angka 47 tidak muncul di repo mana pun.
 
 **Baseline 2025 (akan diganti ke framework Pemdi Permenpan 8/2026)**:
 

@@ -113,7 +113,7 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 
 1. **Data flow**: `data/opd.json` → `getStaticProps` di pages → props ke components. API routes juga baca dari file yang sama.
 2. **Data statis saja**: seluruh konten dari `data/*.json` (dibundel saat build). Perubahan konten = jalankan rantai skrip di `data/AGENTS.md`, commit, deploy. Tidak ada DB runtime / env rahasia (sejak 22 Sep 2026).
-3. **CSS architecture**: Satu file `styles/globals.css` (1.732 baris) — palet **Luxury Navy/Beige/Gold** sejak 8 Agu 2026: `--primary` #1F2A44, `--bg` #F5F1E8, `--gold` #C6A75E, `--teal`, `--warn`, `--muted` #5E6980. Font **Plus Jakarta Sans self-host** (`next/font/local`, bukan Google Fonts/Inter). Tema gelap via `[data-theme="dark"]` + toggle manual (default terang). Layout max-width 1180px. Kontrak tap target mobile ≥44px. Detail token: `styles/AGENTS.md`.
+3. **CSS architecture**: 3 berkas — `styles/tokens.css` (127 baris, token `--rk-*`) · `styles/ruang-kendali.css` (1.013 baris, semua kelas `.rk-*` — **file utama untuk komponen Ruang Kendali**) · `styles/globals.css` (1.158 baris, halaman lama). Palet **Luxury Navy/Beige/Gold** sejak 8 Agu 2026: `--primary` #1F2A44, `--bg` #F5F1E8, `--gold` #C6A75E, `--teal`, `--warn`, `--muted` #5E6980. Font **Plus Jakarta Sans self-host** (`next/font/local`, bukan Google Fonts/Inter). Tema gelap via `[data-theme="dark"]` + toggle manual (default terang). Layout max-width 1180px. Kontrak tap target mobile ≥44px. Detail token: `styles/AGENTS.md`.
 4. **Components**: Semua di `components/` — reusable, props-driven. Layout component wrapping.
 5. **API routes**: RESTful, JSON response, read from `data/opd.json`.
 6. **Deployment**: Vercel production branch `main`. Deploy via Vercel CLI atau push ke GitHub.
@@ -130,10 +130,10 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 | `pages/AGENTS.md` | 15 route halaman internal (utama `/dashboard`, CMS `/admin`, asesor `/asesor`) + 6 API read-only + 3 auth + 5 admin — routing, data flow, noindex |
 | `pages/api/AGENTS.md` | REST API: read-only rk-data, opd, spbe, requirement, proxy-pdf, health. Tanpa DB, tanpa auth |
 | `components/AGENTS.md` | **komponen aktif** — rk/{RKShell, Panel, Kompas, Drawer, Palet}, ui/{Ikon, StatusIkon}, CatatanTujuan, asesor/{CatatanMandiri}, OPDTable, motif/KerawangMotifs |
-| `styles/AGENTS.md` | `tokens.css` (token `--rk-*`, revisi tema terang 23 Sep: kontras ≥4.5:1, panel berbayang halus, chip status tint; font Bricolage Grotesque + IBM Plex) · `ruang-kendali.css` (`.rk-*`, jembatan `.rk-legacy`) · `globals.css` (halaman lama, 1.156 baris) |
+| `styles/AGENTS.md` | `tokens.css` (token `--rk-*`, revisi tema terang 23 Sep: kontras ≥4.5:1, panel berbayang halus, chip status tint; font Bricolage Grotesque + IBM Plex; 127 baris) · `ruang-kendali.css` (`.rk-*`, 1.013 baris) · `globals.css` (halaman lama, 1.158 baris) |
 | `data/AGENTS.md` | Struktur data: pemdi.json (7 aspek, 20 indikator, 232 bukti, catatan_mandiri), modul-indikator.json, catatan-mandiri.json, opd.json (52 OPD, PPB), draf-bukti-prioritas.json, kebutuhan-bukti-dukung.json, glosarium, dokumen-kunci; rantai skrip regenerasi |
 | `STRATEGI_PEMDIACEHTENGAH.md` | **Dokumen perencanaan strategis (file ini)** — 4 fase, quick wins, risiko, metrik |
-| `lib/AGENTS.md` | 12 modul — ruangKendali, rkData, overlay, db, cmsAuth, pemdiNilai (rumus resmi; tes pin), catatanMandiri (ekspor teks/HTML/DOCX), pjButir (butir per OPD), search-index, modeSitus, format, slugify |
+| `lib/AGENTS.md` | 15 modul — ruangKendali, rkData, overlay, db, cmsAuth, pemdiNilai (rumus resmi; tes pin), catatanMandiri (ekspor teks/HTML/DOCX), pjButir (butir per OPD), search-index, modeSitus, format, slugify, useUrlState, cetak, revalidate |
 | `public/AGENTS.md` | PWA assets: manifest.json, icons (192/512 PNG + maskable-512 + apple-touch + SVG), favicon, crest-pemdi.svg, og-image.jpg |
 | **`REPOSISI-PEMDI.md`** | **Arah reposisi Opsi B** — B1 Dashboard Pemdi (internal, aktif); B2/B3 ditunda; §Arsip persona publik (tag `arsip/persona-publik-2026-09`). Baca ini dulu sebelum kerja selanjutnya |
 

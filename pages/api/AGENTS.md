@@ -25,7 +25,7 @@ REST API read-only — serverless functions Next.js yang membaca `data/*.json` a
 |-------|------|---------|--------|--------|
 | `/api/rk-data` | `rk-data.js` | GET | Payload Ruang Kendali (`lib/rkData.susunDataRK()`: indikator ringkas, antrean, bebanPJ, linimasa, OPD) — cache modul + `Cache-Control: s-maxage=3600`; dipakai `RKShell` pada halaman lama | ✅ Active (22 Sep 2026) |
 | `/api/opd` | `opd.js` | GET | Daftar lengkap OPD (52 entries) + data umum | ✅ Active |
-| `/api/spbe` | `spbe.js` | GET | Data SPBE 2025 (4 domain, 47 indikator) | ✅ Active |
+| `/api/spbe` | `spbe.js` | GET | Data SPBE 2025 — `indeks` 2,59 + `domain` (4 nilai indeks: Kebijakan 2,30 · Tata Kelola 1,70 · Manajemen 1,00 · Layanan 3,75). **Bukan** daftar indikator (koreksi 26 Sep 2026) | ✅ Active |
 | `/api/requirement` | `requirement.js` | GET | 83 requirements PPB (12 kategori, 3 fase) | ✅ Active |
 | `/api/proxy-pdf` | `proxy-pdf.js` | GET | Proxy PDF `https://jdih.acehtengahkab.go.id/*` (allowlist domain) agar bisa di-iframe same-origin | ✅ Active |
 | `/api/health` | `health.js` | GET | Cek kesehatan: app + integritas data (`pemdi.json` 20 indikator ⇔ `modul-indikator.json` 20 modul), `mode: "internal"`; 200 sehat / 503 gagal | ✅ Active |

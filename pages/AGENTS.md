@@ -40,7 +40,7 @@ Halaman Next.js Pages Router — entry point untuk **pengguna internal Pemdi** (
 | `/api/admin/overlay` · `log` · `ekspor` | GET | daftar overlay · 200 log terakhir · unduh `catatan-mandiri-YYYY-MM-DD.json` (`hash_dasar: terserap`) | sesi · koordinator · koordinator |
 | `/api/health` | `api/health.js` | GET | Health check app + DB (dipantau uptime monitor) | — |
 | `/api/opd` | `api/opd.js` | GET | Daftar lengkap OPD (52) | — |
-| `/api/spbe` | `api/spbe.js` | GET | Data SPBE 2025 | — |
+| `/api/spbe` | `api/spbe.js` | GET | Data SPBE 2025 — indeks 2,59 + 4 domain (Kebijakan 2,30 · Tata Kelola 1,70 · Manajemen 1,00 · Layanan 3,75). `spbe.domain` di `data/opd.json` adalah **dict nilai indeks per domain**, bukan daftar indikator; rincian indikator tidak ada di repo | — |
 | `/api/requirement` | `api/requirement.js` | GET | 83 requirements PPB | — |
 | `/api/proxy-pdf` | `api/proxy-pdf.js` | GET | Proxy PDF JDIH (whitelist host + content-type) | — |
 
