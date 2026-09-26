@@ -3,7 +3,7 @@
 ## Purpose
 Utility server-side & shared — murni fungsi, tanpa React.
 
-## Ownership — 13 modul
+## Ownership — 15 modul
 
 | Modul | File | Fungsi | Dipakai di |
 |-------|------|--------|------------|

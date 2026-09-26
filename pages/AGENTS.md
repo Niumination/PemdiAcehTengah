@@ -5,14 +5,14 @@ Halaman Next.js Pages Router — entry point untuk **pengguna internal Pemdi** (
 
 > **Reposisi 22 Sep 2026** — persona publik (layanan, SKM, lapor, FAQ, tanya, bantuan, dashboard-kepuasan, kebijakan-privasi, admin + API-nya) **dihapus dari cabang utama** dan diarsipkan di tag git `arsip/persona-publik-2026-09` (commit `eeaa573`). Jangan dihidupkan lagi tanpa keputusan pemilik; lihat `REPOSISI-PEMDI.md` §Arsip.
 
-## Ownership — Halaman (14 + 2 wrapper)
+## Ownership — Halaman (13 + 2 wrapper)
 
 > **Ruang Kendali (22 Sep 2026)**: `/` → **308 permanen ke `/dashboard`** (`next.config.js redirects()`); `pages/index.js` & `BerandaAsesor` dihapus. Rute baru `/dashboard`, `/indikator`, `/antrean` menerima prop `rk` (dari `_app.js`, `RUTE_RK`); halaman lama dibungkus `<div class="rk-legacy">` agar token lama terpetakan ke token rk.
 
 | Route | File | Fungsi | Komponen Kunci |
 |-------|------|--------|----------------|
 | `/asesor` | `asesor.js` | **Hasil asesor eksternal 2026 — Kab. Aceh Tengah** (Patch 14, RK-native, ISR 60): `rk-sit` (1,24 headline · mandiri awal 1,42 · selisih ke target · disetujui/20 · tanpa bukti), saring (belum disetujui / tanpa bukti / indeks eksternal / ≥ Terkelola), `BandingAspek rinci`, `PetaVerifikasi`, tabel catatan & rekomendasi asesor per indikator (teks baku; tag `terpotong`) + kolom simulasi (level/nilai/butir), catatan interviu (chip indikator → Drawer), sumber & ketentuan | rk/Asesor, rk/PanelLipat, useRK |
-| `/dashboard` | `dashboard.js` | **Dashboard — Ruang kendali evaluasi 2026** (halaman utama): `Situasi` bar (Patch 14: angka utama = indeks asesor 1,24; simulasi butir & mandiri awal di sub-baris), panel **Asesor vs simulasi per aspek** (`BandingAspek`, c4), `Kompas` Pemdi (c8), Antrean ringkas, Beban PJ, Linimasa (`data/linimasa.json`), Prasyarat, blok PPB (`hitungPPB()` dari `opd.json.probis`: 8 misi/35 urusan/78 proses), `OPDTable` 52 OPD | rk/Panel, rk/Kompas, OPDTable |
+| `/dashboard` | `dashboard.js` | **Dashboard — Ruang kendali evaluasi 2026** (halaman utama): `Situasi` bar (Patch 14: angka utama = indeks asesor 1,24; simulasi butir & mandiri awal di sub-baris), panel **Asesor vs simulasi per aspek** (`BandingAspek`, c4), `Kompas` Pemdi (c8), Antrean ringkas, Beban PJ, Linimasa (`data/linimasa.json`), Prasyarat, blok PPB (`hitungPPB()` dari `opd.json.probis`: 8 misi/35 urusan/78 proses), `OPDTable` 52 OPD. **Pengumuman** (25 Sep 2026): komponen `PengumumanPopup` di dalam `pages/dashboard.js` — bila `rk.konten.pengumuman` tidak kosong, tampil **inline** (`.rk-pengumuman-teks`: center, `font-weight: 800`, blink `rk-peng-kedip` 1,15 s) **dan** popup sekali per muat halaman (`.rk-peng-popup` overlay, muncul 350 ms setelah load, `role="dialog"`, Esc/Tutup, focus trap; **tanpa localStorage** — reload memunculkan lagi; `prefers-reduced-motion` mematikan blink, teks tetap center+bold). Panel login CMS `/admin` juga sudah **center** (`.rk-admin-masuk` `place-items:center`, kartu 420px) | rk/Panel, rk/Kompas, OPDTable |
 | `/indikator` | `indikator.js` | 20 indikator × 7 aspek: level dicapai/target, butir per level, klik butir → drawer `?butir=`; menerima hash `#I{n}` | rk/Panel |
 | `/admin` | `admin.js` | **CMS Ruang Kendali** (Patch 4) — masuk per peran (Koordinator / PJ OPD + pilih OPD), tabel butir bercatatan mandiri (cari, sunting status·prioritas·PJ·ringkas·kebutuhan; PJ tidak bisa ganti PJ / tandai diterima), tab Konten tampilan (marquee, pengumuman, tenggat), Log audit, Ekspor JSON. `getStaticProps` + ISR 60 dtk; prop `rk` + `opdRingkas` | rk/Panel.Tag, ui/Ikon |
 | `/antrean` | `antrean.js` | Antrean kerja butir (revisi + gap) berprioritas, filter persona PJ OPD, kelompok per PJ | rk/Panel |
@@ -74,6 +74,6 @@ data/*.json (pemdi, modul-indikator, opd, requirement, draf-bukti-prioritas,
 - **Status bukti**: gunakan `STATUS_META`/`statistikIndikator` dari `lib/pemdiNilai.js` — jangan definisikan ulang di halaman. `/requirement` = **Draf Bukti Dukung Prioritas** (tab `pemdi`, data `draf-bukti-prioritas.json`) + tab `ppb` (83 kebutuhan PPB, data `requirement.json`)
 
 ## Verification
-- `npx next lint` — 0 error (1 warning `exhaustive-deps` di pemdi.js dikenal)
+- `npx next lint` — 0 error (3 warning `aria-pressed is not supported by the role tab` di `pages/admin.js` baris 205–207 — dikenal dan aman: segmen peran adalah toggle visual, `role="tab"` dipertahankan demi navigasi keyboard)
 - `npm test` — 59/59 pass (pemdiNilai · catatanMandiri · requirement · pjButir · cekUi · overlay · ruangKendali · asesor · cekData)
 - `npm run build` — sukses, 67 halaman statis ter-generate (15 rute inti + 52 halaman OPD `/opd/[slug]` + `/500`); `/skm /lapor /api/skm` → 404 (rute publik dihapus)
