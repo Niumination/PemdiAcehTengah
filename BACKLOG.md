@@ -28,6 +28,7 @@
 - [x] **Rencana tahap lanjut** — `docs/rencana-mobile-ux-tahap-2.md` (9 item T2-1…T2-9, belum dieksekusi)
 
 ## ✅ Completed — Hardening Audit 2026-09-17
+
 - [x] **Audit menyeluruh repo + 7 branch + live web** — autoskills checklist + ponytail + premortem (arsip internal pemilik)
 - [x] **Ponytail: hapus 22 dead code (2.241 baris)** — 18 komponen + 2 motif + lib/cors + lib/safeRichText; DOX pass 4 file AGENTS.md + README sinkron
 - [x] **Rate limiter atomic** — RPC `bump_rate_limit` (db/rate-limit-schema.sql), hapus cache 2 dtk yang bisa ditembus
@@ -41,6 +42,7 @@
 - [x] **Higien git**: 6 branch stale dihapus; sitemap/robots (hasil generate) keluar dari git
 
 ## ✅ Completed — Eksekusi 11 Skills autoskills (2026-09-17)
+
 - [x] 11 skill dijalankan sebagai review pass — ringkasan di CHANGELOG.md (laporan lengkap arsip internal). *Catatan 19 Sep 2026: kini **10** autoskill setelah `next-cache-components` (Next.js 16+ only) dikeluarkan.*
 - [x] react: admin.js token via state (bukan read saat render); Footer year init-once + suppressHydrationWarning
 - [x] a11y: SkmPrompt role=status + aria-live polite; gov-strip bukan lagi banner ganda
@@ -52,26 +54,18 @@
 ## 🟡 P2 — Active
 
 - [ ] **Mengejar bukti dukung 2026** — gap 203/250 item (47 lengkap, 19%). Prioritas bobot: Kepuasan 25% → Data/Keamanan/Keterpaduan 15% → dll. PIC OPD per indikator sudah tampil di /pemdi
-- [x] **Sprint A6** — api/requirement.js dedup ke data/requirement.json (respons identik) + 4 pin test — 18 Sep 2026
-- [x] **Sprint A7** — Sidebar: /lapor /tanya /bantuan /kebijakan-privasi ≤1 klik — 18 Sep 2026
-- [x] **Sprint A1 (DB)** — Supabase aktif kembali (un-pause); live terverifikasi 200. SQL RPC baru **DITERAPKAN** 18 Sep 2026: `bump_rate_limit`, `skm_stats_dimensi`, `rate_limits` + RLS (dicek pemilik di SQL Editor: 4 fungsi + RLS aktif) — 18 Sep 2026
-- [x] **A5 rotasi ADMIN_PASSWORD** — 18 Sep 2026: nilai lama (16 char) diganti 64 hex dan disimpan di vault lokal (bukan repo); kini bertipe *sensitive* di Vercel sehingga tidak bisa dibaca lagi dari dashboard/CLI. `ADMIN_TOKEN` (legacy 10 char — jalur fallback `ADMIN_PASSWORD || ADMIN_TOKEN`) **DIHAPUS**. Cadangan nilai lama ada di vault untuk rollback
-- [x] **A2 uptime monitor** — 18 Sep 2026: watchdog Hermes (`pemdi-health-watch.sh`, job `20481acb6f2b`) diuji tiga skenario (sehat → diam, 404 → alarm, host mati → alarm), lalu **DIJEDA 19 Sep 2026 atas permintaan pemilik**: tidak diperlukan selama Pemdi belum berjalan di server 24/7 (cron ini hanya hidup saat Mac menyala). Aktifkan kembali saat Pemdi dipindah ke server 24/7, atau pakai monitor eksternal (UptimeRobot → `/api/health`, keyword `"db":"ok"`) yang berjalan 24/7 tanpa bergantung pada Mac
-- [x] **A4 deskripsi repo** — 19 Sep 2026: deskripsi + homepage (URL produksi) dipasang via `gh repo edit`, diverifikasi dari API GitHub
-- [x] **A9 kunci produksi jadi *sensitive* + insiden nilai ter-escape** — 19 Sep 2026: `SUPABASE_SERVICE_ROLE_KEY` (akses penuh database) dan `IP_HASH_SALT` diubah ke tipe *sensitive* di Vercel; hanya `SUPABASE_URL` yang tetap non-sensitive (bukan rahasia). **Insiden & pelajaran:** saat mengirim ulang nilai, sumbernya adalah hasil `vercel env pull` yang menulis nilai dalam bentuk ter-escape (`"...\n"`). Escape itu ikut terkirim sebagai dua karakter literal sehingga kunci tidak valid → deploy `dzcsq17c3` menampilkan `db: error` dan `/api/skm` 500 (produksi terganggu ±12 menit, 01:07–01:19 WIB). Pemulihan: `vercel promote` ke deployment sehat terakhir, lalu nilai dikirim ulang hasil *decode* (newline sungguhan, sama seperti aslinya) → `db: ok` terverifikasi di deploy `90erb988h`. **Aturan:** jangan pernah menyalin nilai dari `vercel env pull` apa adanya — decode escape dulu, atau pasang dari sumber aslinya. Catatan: dua commit kosong (`0c55951`, `32e9143`) hanya pemicu redeploy, boleh di-squash kapan saja
-- [x] **A8 pembersih `rate_limits`** — `db/rate-limit-cleanup.sql` dijalankan di Supabase SQL Editor 18 Sep 2026: pg_cron `bersihkan-rate-limits` terdaftar (jobid 1, active true, harian 03:17 UTC = 10:17 WIB). Verifikasi saat pemasangan: tabel 1 baris, 0 kadaluarsa
-- [x] **Sprint B** — B1 font self-host (0 request Google Fonts) · B2 /pemdi 174→114 kB & /modul-indikator 172→113 kB · B3 SSR+ISR ringkasan kepuasan · B4 kontras 30 PASS/0 FAIL · B5 13 token warna + dark override — 18 Sep 2026
 - [ ] **Sprint C** — Next 15 (+React 19), repo slimming *(audit log admin dipindah ke Patch 4 CMS)*
 - [ ] **Backup ritme git** — push ke origin tiap akhir sesi kerja (sempat tertinggal 3 commit; sudah disinkronkan 10 Agu 2026)
 
-## 🔄 Future
+## Recent Activity
 
-- [ ] **Phase Fondasi** — Pengembangan lebih lanjut portal — @pemdi-aceh-tengah
+- [x] **Koreksi klaim SPBE 47 indikator + arsitektur CSS 3 berkas** — docs/dox (`ec57d1a`) — @pemdi-aceh-tengah
+- [x] **Sinkronkan AGENTS.md anak** — status UI 25 Sep 2026 (`9a44e44`) — @pemdi-aceh-tengah
+- [x] **Panel login CMS di center** — seperti halaman login pada umumnya (`546fe6c`) — @pemdi-aceh-tengah
 
 ---
 
-*Terakhir diperbarui: 19 Sep 2026 — audit UI/UX, perbaikan T2+P1–P6, `/layanan` mobile selesai; rencana tahap lanjut di `docs/rencana-mobile-ux-tahap-2.md`*
-
+*Terakhir diperbarui: 6 Okt 2026 — P1-P6 done, P2 active (mengejar bukti dukung)*
 
 ## Reposisi selesai — tahap pembersihan (22 Sep 2026)
 
@@ -83,3 +77,7 @@
 ## Mode internal (21 Sep 2026) — *diperbarui 22 Sep: `/admin` lama sudah dihapus, bukan dimatikan*
 
 - [ ] **Fitur kirim eviden dari OPD/SKPD** — menggantikan slot `/admin` (Panel Admin Diskominfo, kini dimatikan lewat `lib/modeSitus.js`). Kebutuhan: PIC OPD mengunggah berkas bukti per kode `I#-L#-##`, status tinjauan Tim Asesor Internal, riwayat versi (REPOSISI-PEMDI.md B1 "Tambahkan"). Akses internal (SSO/akun ASN) menjadi prasyarat.
+
+## 🔄 Future
+
+- [ ] **Phase Fondasi** — Pengembangan lebih lanjut portal — @pemdi-aceh-tengah
