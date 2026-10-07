@@ -32,7 +32,7 @@ Portal Digital Pemerintah Daerah Kabupaten Aceh Tengah. Transformasi menuju Peme
 | **Lib** | `lib/ruangKendali.js` + `lib/rkData.js` (payload dashboard), `lib/pemdiNilai.js` (rumus PermenPANRB 8/2026), `lib/catatanMandiri.js`, `lib/pjButir.js` (butir Pemdi per OPD), `lib/cmsAuth.js` (CMS: 2 peran sandi bersama), `lib/overlay.js` (overlay Neon Postgres di atas JSON), `lib/db.js` (serverless Postgres), `lib/search-index.js`, `lib/modeSitus.js`, `lib/slugify.js`, `lib/format.js` — lihat `lib/AGENTS.md` |
 | **Status** | 🎯 **Ruang Kendali + CMS + Tema Terang + reskin 10 halaman + data asesor live (24 Sep 2026, `9c3d9c4`)** — lihat `REPOSISI-PEMDI.md` + `docs/RENCANA-RUANG-KENDALI-CMS.md`. Produk aktif: **Dashboard Pemdi internal** untuk Tim Koordinasi Pemdi + PJ OPD. Persona publik diarsipkan di tag `arsip/persona-publik-2026-09`. Semua rute RK-native (jembatan `.rk-legacy` = jaring pengaman), menu Radial ⇄ Baris, `/` → 308 `/dashboard`, CMS `/admin` (overlay Neon Postgres; tanpa env → mode baca + API tulis 503; PGlite untuk uji lokal via `CMS_DB_LOKAL`), rute baru `/asesor` (data evaluator asesor eksternal) |
 | **Remote** | `git@github.com:Niumination/PemdiAcehTengah.git` |
-| **Production** | https://pemdi-aceh-tengah.vercel.app — **PAUSED** (7 Okt 2026, pemilik pause deploy Vercel, tidak dilanjutkan sementara) |
+| **Production** | https://pemdi-aceh-tengah.vercel.app — **LIVE** (7 Okt 2026, unpause via dashboard Vercel) |
 | **License** | MIT |
 | **Bupati** | Drs. Haili Yoga, M.Si. & Muchsin Hasan, MSP (2025–2030) |
 | **Visi** | *"Aceh Tengah Islami, Maju, Sejahtera, dan Berkeadilan"* |
@@ -116,7 +116,7 @@ Keduanya **tidak menggantikan satu sama lain** — hidup berdampingan:
 3. **CSS architecture**: 3 berkas — `styles/tokens.css` (127 baris, token `--rk-*`) · `styles/ruang-kendali.css` (1.013 baris, semua kelas `.rk-*` — **file utama untuk komponen Ruang Kendali**) · `styles/globals.css` (1.158 baris, halaman lama). Palet **Luxury Navy/Beige/Gold** sejak 8 Agu 2026: `--primary` #1F2A44, `--bg` #F5F1E8, `--gold` #C6A75E, `--teal`, `--warn`, `--muted` #5E6980. Font **Plus Jakarta Sans self-host** (`next/font/local`, bukan Google Fonts/Inter). Tema gelap via `[data-theme="dark"]` + toggle manual (default terang). Layout max-width 1180px. Kontrak tap target mobile ≥44px. Detail token: `styles/AGENTS.md`.
 4. **Components**: Semua di `components/` — reusable, props-driven. Layout component wrapping.
 5. **API routes**: RESTful, JSON response, read from `data/opd.json`.
-6. **Deployment**: Vercel production branch `main`. **PAUSED** (7 Okt 2026) — pemilik pause deploy Vercel, tidak dilanjutkan sementara. Deploy via Vercel CLI atau push ke GitHub saat dilanjutkan.
+6. **Deployment**: Vercel production branch `main`. **LIVE** (7 Okt 2026) — unpause via dashboard Vercel. Deploy via Vercel CLI atau push ke GitHub.
 7. **No API keys / secrets** di repo — semua placeholder `YOUR_API_KEY`.
 8. **Bahasa**: Dokumentasi dan konten portal dalam Bahasa Indonesia.
 9. **Persona**: hanya **internal Pemdi** (Tim Koordinasi Pemdi + penanggung jawab OPD). Fitur publik (layanan, SKM, lapor, FAQ, tanya, bantuan, dashboard-kepuasan, kebijakan-privasi, admin) **tidak boleh dihidupkan lagi di main**; kode arsip di tag `arsip/persona-publik-2026-09` (commit `eeaa573`). Istilah UI: "Dashboard" (bukan "Kokpit").

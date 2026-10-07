@@ -115,7 +115,7 @@ Project ini menggunakan [DOX](https://github.com/agent0ai/dox) — hierarki AGEN
 
 ## 🚀 Deploy di Vercel
 
-> ⚠️ **PAUSED** (7 Okt 2026) — pemilik pause deploy Vercel, tidak dilanjutkan sementara. Site production tidak di-update sampai pemilik nyatakan lanjut.
+> ✅ **LIVE** (7 Okt 2026) — unpause via dashboard Vercel.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Niumination/PemdiAcehTengah)
 

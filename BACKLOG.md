@@ -70,7 +70,7 @@
 ## Reposisi selesai — tahap pembersihan (22 Sep 2026)
 
 - [x] **Patch 0 — pembersihan reposisi**: persona publik dihapus dari `main` + tag `arsip/persona-publik-2026-09`; env Supabase/ADMIN_PASSWORD/IP_HASH_SALT tidak dipakai lagi → **TODO pemilik: lepas env tsb di Vercel & pause/hapus proyek Supabase lama**; "Kokpit" → "Dashboard"; kolom OPD "Butir Pemdi" (`lib/pjButir`)
-- [ ] **Deployment PAUSED** (7 Okt 2026) — pemilik pause deploy Vercel, tidak dilanjutkan sementara. Site production tidak di-update sampai pemilik nyatakan lanjut.
+- [x] **Deployment LIVE** (7 Okt 2026) — unpause via dashboard Vercel.
 - [ ] **Patch 1–2 — Ruang Kendali fase A–C**: `styles/tokens.css` 2 tema + font self-host (Bricolage Grotesque + IBM Plex), `/dashboard` beranda baru (Kompas Pemdi, antrean butir, PJ OPD), `/indikator`, drawer butir (reuse CatatanButir/EksporCatatan), Ctrl+K
 - [ ] **Patch 3 — fase D**: emoji → SVG, inline style → kelas, lint guard, redirect `/pemdi` → `/dashboard`
 - [ ] **Patch 4 — CMS admin**: peran koordinator/PJ, login, edit status/catatan/PJ langsung dari drawer + `/admin` baru, impor hasil eval, audit log; JSON tetap sumber dasar, DB = overlay, ekspor kembali ke `catatan-mandiri.json`
